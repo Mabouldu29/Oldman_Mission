@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Bodybag_01_black_F",[13132.4,8590.58,0.17556],[[0.995027,-0.0995993,0.000328545],[0.000565921,0.00895226,0.99996]],0,"",true,false,[],false,2]]
+		,
+		//--- #size
+		1
+]

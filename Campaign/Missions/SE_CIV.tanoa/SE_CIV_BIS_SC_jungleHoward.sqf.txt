@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_2_F_afro_sick","BIS_Howard",[13142.5,8589.33,0.00221252],64.6694,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_burgundy_sick",[]],[],[],"H_Cap_tan","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = [_this,""BIS_Howard"",""Acts_CivilShocked_1"",1] spawn BIS_fnc_OM_setInjuredCivil"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_EmergencyBlanket_01_discarded_F",[13142.7,8589.12,-0.0282669],[[0.670632,0.741747,0.00799347],[0.145786,-0.142359,0.97902]],0,"",false,false,[],false,2],["Land_EmergencyBlanket_01_discarded_F",[13142.6,8589.41,0.00862885],[[-0.907669,-0.413127,0.07391],[0.139144,-0.13008,0.981691]],0,"",false,false,[],false,2],["Land_Sleeping_bag_brown_folded_F",[13143,8589.71,0.0872116],[[0.670631,0.741748,0.00799485],[0.145784,-0.142359,0.97902]],0,"",false,false,[],false,1],["Land_ClutterCutter_small_F",[13142.5,8589.08,-0.0342712],[[0.670632,0.741747,0.00799347],[0.145786,-0.142359,0.97902]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		1
+]

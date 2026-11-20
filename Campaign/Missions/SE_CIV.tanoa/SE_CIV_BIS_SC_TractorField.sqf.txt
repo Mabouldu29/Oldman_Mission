@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Tractor_01_F","",[12503.3,8115.74,0.0327377],[[0.938412,-0.344893,-0.0207663],[0.000329653,-0.0592083,0.998246]],0,1,[],["a3\soft_f_enoch\tractor_01\data\tractor_01_2_red_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[12489.3,8117.19,-5.72205e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[12523.6,8123.99,-0.000255585],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[12490.6,8117.15,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_man_polo_6_F_afro","",[12499.1,8106.94,0.00101852],0,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_redwhite",[]],[],[],"H_Hat_Safari_olive_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[],[["C_man_polo_6_F_afro","BIS_OM_ambientConvo_4v9eca8tsbs3o5h",[12500,8114.5,0.00126648],0,0.5,0,"Up",[[],[],[],["U_C_Mechanic_01_F",[]],[],[],"H_Hat_Safari_olive_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",[" [ [""BIS_OM_ambientConvo_4v9eca8tsbs3o5h""], false] spawn BIS_fnc_OM_createConversation "]],["#init",["[_this, ""REPAIR_VEH_KNEEL"", ""NONE""] call BIS_fnc_ambientAnim; _this setDir 21.551;"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_TrailerCistern_wreck_F",[12498.4,8116.26,-4.19617e-005],[[-0.19498,0.979893,0.0423402],[-0.0106641,-0.0452841,0.998917]],0,"",true,false,[],false,3]]
+		,
+		//--- #size
+		50
+]

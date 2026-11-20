@@ -1,0 +1,47 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_TableSmall_01_F",[12445.3,8445.46,0.554825],[[-0.98014,-0.198304,1.82763e-005],[6.45405e-006,6.0263e-005,1]],0,"",true,false,[],false,1,0],["Land_FlowerPot_01_Flower_F",[12440.2,8444.06,0.590199],[[0.83663,0.547768,0],[0,0,1]],0,"",false,false,[],true,2,1],["Land_FlowerPot_01_Flower_F",[12446.9,8446.1,0.518204],[[0.836346,0.548202,8.60066e-006],[-3.85365e-005,4.31031e-005,1]],0,"",true,false,[],false,2,2],["Land_FlowerPot_01_Flower_F",[12442.8,8440.18,0.643452],[[0.836348,0.548199,1.21886e-005],[-4.7344e-005,4.99954e-005,1]],0,"",true,false,[],false,2,3],["Land_FMradio_F",[12445.1,8445.37,0.996979],[[-0.607507,-0.794314,0],[0,0,1]],0,"",false,false,[],false,0,4],["Land_Microwave_01_F",[12441.5,8448.16,1.53146],[[0.812752,0.58261,0],[0,0,1]],0,"",false,false,[],true,-1,5],["Land_OfficeCabinet_02_F",[12442.3,8445.38,0.54649],[[-0.999071,-0.0430965,0],[0,0,1]],0,"",false,false,[],true,-1,6],["Land_OfficeCabinet_02_F",[12437.7,8443.8,0.548386],[[-0.0169988,-0.999856,0],[0,0,1]],0,"",false,false,[],true,-1,7],["Land_OfficeChair_01_F",[12446.4,8447.64,0.549767],[[0.714263,-0.699877,-0.000197894],[0.000277102,4.23679e-008,1]],0,"bis_chair",true,false,[],false,2,8],["Land_PCSet_01_case_F",[12445.6,8448.64,0.541328],[[-0.00289375,0.999996,0],[0,0,1]],0,"",false,false,[],true,-1,9],["Land_PCSet_01_keyboard_F",[12446.4,8448.5,1.34165],[[0.489142,0.872204,0],[0,0,1]],0,"",false,false,[],true,-1,10],["Land_PCSet_01_mouse_F",[12446.1,8448.66,1.35946],[[0.273313,0.961925,0],[0,0,1]],0,"",false,false,[],true,-1,11],["Land_PCSet_01_screen_F",[12446.5,8448.81,1.34003],[[0.525427,0.850839,0],[0,0,1]],0,"",false,false,[],true,-1,12],["Land_RattanChair_01_F",[12437,8448.53,0.444622],[[-0.361726,0.932284,0],[0,0,1]],0,"",false,false,[],true,1,13],["Land_RattanTable_01_F",[12446.6,8441.5,0.593594],[[0.999671,0.0256326,0],[0,0,1]],0,"",false,false,[],true,-1,14],["Fridge_01_closed_F",[12441.6,8448.22,0.507313],[[0.999695,0.024682,0],[0,0,1]],0,"",false,false,[],true,-1,15],["Land_Rug_01_F",[12446,8447.26,0.54414],[[-0.056256,0.998416,0],[0,0,1]],0,"",false,false,[],false,2,16],["Land_Rug_01_Traditional_F",[12445.3,8444.9,0.547272],[[0.967302,0.253628,0],[0,0,1]],0,"",false,false,[],false,2,17],["MapBoard_Tanoa_F",[12444.4,8448.83,0.497719],[[-0.509827,0.860277,0],[0,0,1]],0,"",false,false,[],true,-1,18],["Land_WoodenTable_small_F",[12443.3,8448.31,0.507706],[[0.999759,0.0219574,0],[0,0,1]],0,"",false,false,[],true,2,19],["Land_Sofa_01_F",[12445.2,8443.96,0.561916],[[0,1,0],[0,0,1]],0,"",false,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 0, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,20],["Land_OfficeCabinet_02_F",[12441.6,8444.15,0.566181],[[0.740369,-0.672201,0],[0,0,1]],0,"",false,false,[],true,-1,21],["Land_Laptop_Intel_Oldman_F",[12445.7,8448.61,1.33655],[[0.0267162,-0.999643,4.96929e-005],[4.58546e-007,4.97229e-005,1]],0,"BIS_screenNtb",true,false,[["#init",["_this setObjectTexture [0, ""\a3\Missions_F_Oldman\Data\img\Screens\OldmanNtbDesktop_co.paa""];
+0 = [] spawn {sleep 5; BIS_MillerPCLight = ""#lightpoint"" createVehicleLocal getpos BIS_screenNtb;
+BIS_MillerPCLight setLightBrightness 0.15; 
+BIS_MillerPCLight setLightAmbient [0, 0.5, 0.5]; 
+BIS_MillerPCLight setLightColor [0, 0.5, 0.5];
+BIS_MillerPCLight setLightAttenuation [2,4,4,0,9,10]; 
+}"]]],false,1,22],["Land_RattanChair_01_F",[12446.7,8442.54,0.575531],[[0.614045,0.789271,2.07579e-005],[-3.1867e-005,-1.50789e-006,1]],0,"",true,false,[],false,1,23],["Land_Rack_F",[12440.9,8443.2,0.592793],[[0.999595,0.0284449,0],[0,0,1]],0,"",false,false,[],true,-1,24],["OfficeTable_01_old_F",[12446.1,8448.67,0.510151],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,25],["Land_TableBig_01_F",[12436.9,8446.66,0.474815],[[-0.999879,-0.01555,0],[0,0,1]],0,"",false,false,[],true,-1,26],["Land_RattanChair_01_F",[12436.7,8445.01,0.505318],[[-0.500278,-0.865865,0],[0,0,1]],0,"",false,false,[],true,1,27],["Land_ArmChair_01_F",[12437.1,8442.63,0.560081],[[0.655391,-0.755289,0],[0,0,1]],0,"",false,false,[],true,-1,28],["Book_02_F",[12440.7,8445.95,0.530273],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1,29],["Land_TableSmall_01_F",[12436.8,8441.22,0.585678],[[-0.0339074,0.999425,0],[0,0,1]],0,"",false,false,[],true,1,30],["Land_CratesPlastic_F",[12439.5,8448.74,0.478455],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1,31],["Land_EmergencyBlanket_01_F",[12443,8448.03,1.3707],[[0.476763,0.879032,0],[0,0,1]],0,"",false,false,[],true,-1,32],["Land_PortableGenerator_01_black_F",[12442.9,8448.34,0.507],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,33],["Land_ArmChair_01_F",[12441.3,8445.58,0.538223],[[-0.926039,-0.377428,0],[0,0,1]],0,"",true,false,[],true,-1,34],["Land_BatteryPack_01_battery_olive_F",[12444.2,8448.15,0.514111],[[-0.937651,-0.347577,0],[0,0,1]],0,"",false,false,[],true,-1,35],["Land_BatteryPack_01_open_olive_F",[12444,8448.39,0.503231],[[-0.529244,-0.84847,0],[0,0,1]],0,"",false,false,[],true,-1,36],["Land_EmergencyBlanket_01_discarded_F",[12443.3,8447.7,0.513409],[[0.970781,-0.239968,0],[0,0,1]],0,"",false,false,[],true,-1,37],["Land_TentLamp_01_suspended_F",[12444.8,8438.45,3.9944],[[-0.9999,0.0140529,0.00128481],[0.000623051,-0.0469944,0.998895]],0,"",true,false,[],false,1,38],["Land_Camping_Light_off_F",[12445.4,8445.53,0.985115],[[0.982185,0.187915,0.000619415],[-0.000874429,0.00127418,0.999999]],0,"",true,false,[["#init",["BIS_OMHouseLamp02 = _this; 
+BIS_OMHouse_light2 = ""#lightpoint"" createVehicleLocal getpos BIS_OMHouseLamp02; 
+BIS_OMHouse_light2 setLightBrightness 0.15; 
+BIS_OMHouse_light2 setLightAmbient [0.5, 0.5, 0.3]; 
+BIS_OMHouse_light2 setLightColor [0.5, 0.5, 0.3]; 
+BIS_OMHouse_light2 lightAttachObject [BIS_OMHouseLamp02, [0,0,0]];"]]],false,0,39],["Land_Camping_Light_off_F",[12437.1,8446.59,1.37248],[[0.982297,0.18733,-0.000327039],[0.000293874,0.000204811,1]],0,"",true,false,[["#init",["BIS_OMHouseLamp01 = _this; 
+BIS_OMHouse_light1 = ""#lightpoint"" createVehicleLocal getpos BIS_OMHouseLamp01; 
+ BIS_OMHouse_light1 setLightBrightness 0.15; 
+ BIS_OMHouse_light1 setLightAmbient [0.5, 0.5, 0.3]; 
+ BIS_OMHouse_light1 setLightColor [0.5, 0.5, 0.3]; 
+ BIS_OMHouse_light1 lightAttachObject [BIS_OMHouseLamp01, [0,0,0]];"]]],false,0,40],["Land_RattanChair_01_F",[12446.7,8440.38,0.614994],[[0.724242,-0.689546,1.16551e-005],[-2.00902e-005,-4.19848e-006,1]],0,"",true,false,[],false,1,41],["Land_EmergencyBlanket_01_discarded_F",[12442.7,8443.86,0.564354],[[0.220734,-0.975334,0],[0,0,1]],0,"",false,false,[],true,-1,42],["Land_EmergencyBlanket_01_stack_F",[12442.5,8442.67,0.595394],[[-0.02005,0.999799,2.42585e-007],[-7.65462e-008,-2.44169e-007,1]],0,"",true,false,[],false,1,43],["Land_EmergencyBlanket_01_F",[12442.4,8444.57,0.69257],[[0.995519,-0.0945628,0],[0,0,1]],0,"",false,false,[],true,-1,44]]
+		,
+		//--- #size
+		1
+]

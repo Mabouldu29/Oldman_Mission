@@ -1,0 +1,35 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Ground_sheet_khaki_F",[11665.8,7793.28,-0.00671387],[[0.709662,-0.704542,3.18885e-006],[-0.0602877,-0.0607213,0.996332]],0,"",true,false,[["#init",["BIS_MilBack = createVehicle [""groundWeaponHolder"", [1,1,1], [], 0, ""can_collide""];  
+BIS_MilBack attachTo [BIS_backHolder, [-0.525,0.425,0.35]];  
+BIS_MilBack addBackpackCargoGlobal [""B_Bergen_tna_F"", 1];  
+BIS_MilBack setVectorDirAndUp [[7,-6,-10], [5,-4.45,7]];  
+BIS_MilBack setDamage 1; 
+BIS_backHolder setDir -80; 
+BIS_backHolder setPos [11665.8,7794.4,-0.5]; 
+ 
+if (missionNamespace getVariable [""BIS_MillersBackFull"", true]) then {  
+    private _MillersBackpack = ""Supply500"" createVehicle [0,0,0];    
+    _MillersBackpack attachTo [BIS_MilBack, [0,0,0.3]];    
+    _MillersBackpack addItemCargo [""Sleeping_bag_folded_01"", 1];   
+    missionNamespace setVariable [""BIS_MillersBackFull"", false];  
+    player addEventHandler [""Take"", {   
+        params [""_unit"", ""_container"", ""_item""];   
+        if (_item == ""Sleeping_bag_folded_01"") then {  
+            player setVariable [""BIS_playerStealSleepingBag"", true];   
+            player removeEventHandler [""Take"", _thisEventHandler];  
+        };   
+    }];   
+};"]]],false,2,0],["Land_ClutterCutter_small_F",[11665.8,7792.31,0.102707],[[0,0.91711,0.398634],[-0.396576,-0.365947,0.841909]],0,"",true,false,[],false,1,1]]
+		,
+		//--- #size
+		1
+]

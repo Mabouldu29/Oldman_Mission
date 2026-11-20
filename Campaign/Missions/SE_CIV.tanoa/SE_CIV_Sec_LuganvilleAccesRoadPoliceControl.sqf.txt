@@ -1,0 +1,20 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[EAST,["SAFE","LIMITED","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[13898.8,8395.56,0.00156641],121.043,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["[_this] spawn 
+{ 
+ params [""_guy""]; 
+ waituntil {sleep 0.5; player distance _guy < 10}; 
+ if (behaviour _guy != ""COMBAT"") then {_guy playmove ""Acts_PercMstpSlowWrflDnon_handup2C""}; 
+};"]]]]]],[EAST,["SAFE","LIMITED","WEDGE","YELLOW"],[[[13900.2,8397.65,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[120,120,120],0],[[13873.6,8405.34,5.72205e-006],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13889.5,8428.62,-0.000160217],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13911.5,8412.48,0.000121117],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13901.2,8396.52,0.172676],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["O_GEN_Soldier_F","",[13899.9,8398.41,0.00158548],122.583,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[EAST,["SAFE","LIMITED","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[13934.7,8381.89,0.00142717],285.33,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["TapeSign_F",[13902.1,8398.69,0],[[-0.868005,0.496556,0],[0,0,1]],0,"",true,false,[],false,2],["Land_Sign_MinesDanger_Greek_F",[13901.1,8398.6,4.76837e-007],[[-0.771132,0.636675,0],[0,0,1]],0,"",true,false,[["#init",["_this setobjecttexture [0,""\a3\Missions_F_Oldman\data\img\Mosquito_Sign_ca.paa""];"]]],false,2],["Land_Sign_MinesDanger_Greek_F",[13897.3,8391.99,0],[[-0.946272,0.323373,0],[0,0,1]],0,"",true,false,[["#init",["_this setobjecttexture [0,""\a3\Missions_F_Oldman\data\img\Mosquito_Sign_ca.paa""];"]]],false,2]]
+		,
+		//--- #size
+		1
+]

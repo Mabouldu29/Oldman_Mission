@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Offroad_01_F","",[12895.7,7318.05,0.010973],[[0.806094,0.591734,-0.00797084],[0.00633086,0.00484563,0.999968]],0,1,[],["a3\soft_f\offroad_01\data\offroad_01_ext_base03_co.paa","a3\soft_f\offroad_01\data\offroad_01_ext_base03_co.paa"],false,[["#init",["_this lock true"]]],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_6_F_afro","BIS_OM_ambientConvo_835d855qsrae6i6",[12894.2,7378.53,0.00148749],0,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_redwhite",[]],[],[],"H_Bandanna_gry","G_Sport_Blackyellow",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",[" [ [""BIS_OM_ambientConvo_jbvuinrvorpsf9p"",""BIS_OM_ambientConvo_835d855qsrae6i6""], true] spawn BIS_fnc_OM_createConversation "]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_p_fugitive_F_afro","BIS_OM_ambientConvo_jbvuinrvorpsf9p",[12895,7379.49,0.00136542],216.549,0.5,0,"Up",[[],[],[],["U_C_Poor_1",[]],[],[],"H_Hat_blue","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_2_F_afro","",[12897.6,7335.39,0.00143898],0,0.5,0,"Middle",[[],[],[],["U_C_Poloshirt_burgundy",[]],[],[],"","G_Spectacles",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_6_F_afro","",[12893.6,7318.34,0.00143886],298.933,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_redwhite",[]],[],[],"H_Bandanna_mcamo","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_LuggageHeap_01_F",[12883.4,7392.38,0.00101423],[[0,0.999645,0.0266571],[0.0346456,-0.0266411,0.999045]],0,"",false,false,[],false,1],["Land_LuggageHeap_02_F",[12884.5,7391.15,-0.00170898],[[0,0.9994,0.0346456],[0.0346456,-0.0346248,0.9988]],0,"",false,false,[],false,1],["Land_Tyre_F",[12913,7408.1,0.00594854],[[0,0.999773,-0.0213263],[0.0239963,0.0213202,0.999485]],0,"",true,false,[],true,1],["Land_Tyre_01_F",[12912.4,7409.72,0.199365],[[0,0.999773,-0.0213263],[0.0239963,0.0213202,0.999485]],0,"",true,false,[],true,-1],["Land_Bucket_F",[12897.2,7336.41,-0.000229478],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1],["Land_CanisterPlastic_F",[12892.1,7317,2.40803e-005],[[-0.000138427,1,-1.4507e-005],[2.35127e-005,1.45103e-005,1]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		134.869
+]

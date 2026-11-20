@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_1_F_afro","",[12805.6,7294.85,0.00163603],9.54332,0.5,0,"Up",[[],[],[],["U_C_E_LooterJacket_01_F",[]],[],[],"H_Cap_surfer","G_Blindfold_01_white_F",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this disableai ""anim"";_this playAction ""sitdown"";_this addGoggles ""g_blindfold_01_white_f"";"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_sport_3_F_afro","",[12832.6,7300.52,1.37969],228.212,0.5,0,"Up",[[],[],[],["U_C_man_sport_3_F",[]],[],[],"","G_Sport_Blackred",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_LuggageHeap_02_F",[12833.1,7299.45,1.61084],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1]]
+		,
+		//--- #size
+		109.483
+]

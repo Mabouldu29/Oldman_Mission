@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[13945,8357.22,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13953.5,8292.18,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[14064.1,8379.8,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13971.6,8390.94,1.33514e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13945.3,8359.52,0.000225067],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_man_polo_4_F_afro","",[13940.5,8362,0.00170946],0,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_tricolour",[]],[],[],"H_Beret_blk","G_Sport_Blackyellow",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[14032.1,8404.29,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13975.8,8284.08,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13939,8357.89,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[14027,8403.32,0.697029],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_casual_5_F_afro_sick","",[14025.9,8375.58,0.00165129],0,0.5,0,"Up",[[],[],[],["U_C_Man_casual_5_sick_F",[]],[],[],"","G_Sport_Blackred",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[13912.6,8316.35,-4.00543e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13960.8,8296.64,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13997.9,8376.4,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[13912.8,8319.98,-7.62939e-006],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_man_p_beggar_F_afro","",[13912.7,8311.99,0.00134468],0,0.5,0,"Up",[[],[],[],["U_C_Poor_2",[]],[],[],"H_Cap_grn","G_Sport_Greenblack",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		100
+]

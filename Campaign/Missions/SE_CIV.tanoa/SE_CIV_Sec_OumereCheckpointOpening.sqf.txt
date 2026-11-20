@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Van_02_transport_F","",[12776.5,7320.22,0.00126791],[[0.199018,0.979995,0.000898376],[-0.0107192,0.0012602,0.999942]],0,1,[],["a3\soft_f_orange\van_02\data\van_body_black_co.paa","a3\soft_f_orange\van_02\data\van_wheel_transport_co.paa","a3\soft_f_orange\van_02\data\van_glass_transport_ca.paa","a3\soft_f_orange\van_02\data\van_body_black_co.paa"],false,[["#steal",[EAST,200]],["#init",["_This animateDoor [""Door_3_source"",1]; _This animateDoor [""Door_2_source"",1]; "]]],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_p_beggar_F_afro","",[12775.4,7315.65,0.00147295],80.5488,0.5,0,"Up",[[],[],[],["U_C_Poor_2",[]],[],[],"H_Hat_tan","G_Aviator",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]]]]]],[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_GEN_Commander_F","",[12777.3,7314.73,0.00142145],323.498,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Commander_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",1,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",4,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["SmokeShellYellow",1,1]]],[],"H_Beret_gen_F","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["Land_FoodSacks_01_small_brown_F",[12774.1,7316.78,-8.29697e-005],[[0.830466,-0.557045,-0.00516715],[0.00800059,0.00265196,0.999964]],0,"",true,false,[],true,1],["Land_FoodSack_01_full_brown_F",[12773.4,7315.93,-7.96318e-005],[[0,0.999986,0.00532655],[0.00800059,-0.00532638,0.999954]],0,"",true,false,[],true,-1],["Land_ConcreteHedgehog_01_F",[12772.4,7313.84,0.0103407],[[-0.929937,0.367333,0.0168354],[0.0159975,-0.00532587,0.999858]],0,"",false,false,[],true,2],["Land_ConcreteHedgehog_01_F",[12769.7,7312.61,0.0104127],[[-0.929894,0.36737,0.0183398],[0.0186626,-0.00267394,0.999822]],0,"",false,false,[],true,2]]
+		,
+		//--- #size
+		167.745
+]

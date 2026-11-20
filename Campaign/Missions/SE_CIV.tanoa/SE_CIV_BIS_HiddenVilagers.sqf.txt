@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_3_F_tanoan","",[13136.7,8592.4,0.00140381],10.7362,0.5,0,"Up",[[],[],[],["U_C_Man_casual_3_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["BIS_Doctor = _this ; _EHkilledIdx = _this addEventHandler [""killed"", {BIS_DoctorDead = true}]; _this setidentity ""BIS_Doctor"" ; if (!isNil ""BIS_DoctorDead"") then {deleteVehicle _this}"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_LuggageHeap_02_F",[13141.3,8588.73,-0.176559],[[0.337637,0.941276,0],[0,0,1]],0,"",true,false,[],false,1],["Land_WoodPile_F",[13135.1,8592.6,-0.00461578],[[-0.99762,-0.0648181,0.0235244],[0.026659,-0.0479275,0.998495]],0,"",true,false,[],false,2],["Land_WoodenLog_02_F",[13135.3,8594.73,0.000991821],[[0,0.99885,0.0479446],[0.026659,-0.0479275,0.998495]],0,"",false,false,[],false,1],["Campfire_burning_F",[13135.8,8597.17,3.05176e-005],[[0,0.991228,0.132163],[0.0266571,-0.132116,0.990876]],0,"",true,false,[],false,2],["Land_WoodenLog_02_F",[13134.3,8596.55,-0.20211],[[0.38307,-0.920927,0.0717721],[0.0266571,0.088688,0.995703]],0,"",false,false,[],false,1],["Land_WoodenLog_02_F",[13135.8,8599.11,-0.267448],[[0.936632,0.334128,0.105254],[-0.0874513,-0.0679282,0.99385]],0,"",false,false,[],false,1],["MedicalGarbage_01_3x3_v2_F",[13137.1,8588.18,0.124245],[[0.0833589,0.996209,-0.0248612],[-0.0182592,0.0264707,0.999483]],0,"",false,false,[],false,2],["MedicalGarbage_01_1x1_v2_F",[13148.3,8621.19,1.37322],[[0,1,0],[0,0,1]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		100
+]

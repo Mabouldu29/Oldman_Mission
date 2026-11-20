@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_3_F_tanoan","BIS_Doctor",[12445.2,8438.74,0.663216],357.714,0.5,0,"Up",[[],[],[],["U_C_Man_casual_3_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["BIS_Doctor = _this ; _EHkilledIdx = _this addEventHandler [""killed"", {BIS_DoctorDead = true}]; _this setidentity ""BIS_Doctor"" ; if (!isNil ""BIS_DoctorDead"") then {deleteVehicle _this}"]]]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		1
+]

@@ -1,0 +1,16 @@
+{ call compile format ["%1 = objNull", _x] } forEach ["BIS_foodBox01", "BIS_foodBox02", "BIS_CarRepairingMan", "BIS_Sunny", "BIS_Howard", "BIS_renly", "BIS_Lucas", "BIS_John"];
+
+ //--- create mags for rifle in empty house
+_RifleMag = "groundweaponHolder" createVehicle [11552.9,7995.39,0.253937];
+_RifleMag addMagazineCargoGlobal ["30Rnd_580x42_Mag_F", 1];
+_RifleMag setPos [11552.9,7995.39,0.253937];
+
+
+#ifndef OM_MAIN_MISSION
+ BIS_StartMissionDate = date;
+
+#else
+
+
+
+#endif

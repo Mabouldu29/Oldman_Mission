@@ -1,0 +1,22 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_4_F_afro","",[9849.88,6372.22,0.00135589],349.86,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_tricolour",[]],[],[],"H_Beret_red","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["0=[_this,[[9836.2,6307.03,1.57122],318.496,[""C_Scooter_Transport_01_F"",""C_Rubberboat""],false]] spawn  
+{ 
+  sleep 2; 
+  [_this select 0,_this select 1] spawn BIS_fnc_OM_addRepairMan; 
+};
+_this addEventHandler [""Killed"", { 
+ [4, [""BIS_C_Boat01""]] call BIS_fnc_OM_moduleSmartMarkers; 
+}];"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Boat_01_abandoned_blue_F",[9847.42,6367.22,0.337466],[[-0.677957,-0.734204,-0.0363047],[-0.0505929,-0.00266717,0.998716]],0,"",false,false,[],false,3],["Land_Boat_03_abandoned_F",[9863.2,6357.44,-0.189644],[[-0.939236,0.343212,-0.00632598],[-0.02133,-0.0399591,0.998974]],0,"",false,false,[],false,3],["Land_FishingGear_02_F",[9846.55,6371.06,0.0749576],[[0,0.999996,0.00265199],[-0.031983,-0.00265063,0.999485]],0,"",true,false,[],false,2],["Land_ClothShelter_02_F",[9848.43,6372.31,0.137],[[-0.0779717,0.996956,0],[0,0,1]],0,"",false,false,[],false,3],["Land_WoodenCounter_01_F",[9849.62,6373.59,0.00824428],[[0.291838,-0.956468,0],[0,0,1]],0,"",false,false,[],true,-1]]
+		,
+		//--- #size
+		5
+]

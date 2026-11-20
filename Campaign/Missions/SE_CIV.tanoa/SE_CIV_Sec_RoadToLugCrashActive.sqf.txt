@@ -1,0 +1,25 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Offroad_01_F","",[13237.9,7984.95,0.0335159],[[0.602866,-0.794725,-0.0704621],[0.0657111,-0.0385571,0.997094]],0,1,[],["a3\soft_f\offroad_01\data\offroad_01_ext_base05_co.paa","a3\soft_f\offroad_01\data\offroad_01_ext_base05_co.paa"],false,[["#init",["_this setHitPointDamage [""hitrfwheel"",1] ; BIS_carWithFood = _this ;
+_this lock true;
+[ 
+ _this, 
+ [""Bluecustom"",1],  
+ [""HideDoor1"",0,""HideDoor2"",0,""HideDoor3"",1,""HideBackpacks"",1,""HideBumper1"",0,""HideBumper2"",1,""HideConstruction"",1,""hidePolice"",1,""HideServices"",1,""BeaconsStart"",0,""BeaconsServicesStart"",0] 
+] call BIS_fnc_initVehicle; 
+[] spawn { ""LUGCRASH: Waiting for BIS_carWithFood is not null"" call BIS_fnc_Log; WaitUntil {sleep 0.5; !isNull BIS_carWithFood && !isNull BIS_foodBox01 && !isNull BIS_foodBox02}; ""LUGCRASH: BIS_carWithFood is not null - attaching"" call BIS_fnc_Log; Sleep 1;
+BIS_foodBox01 attachTo [BIS_carWithFood,[-0.3,-2.2,-0.45]] ; BIS_foodBox01 setDir 26;
+BIS_foodBox02 attachTo [BIS_carWithFood,[0.3,-2.8,-0.45]] ; BIS_foodBox02 setDir 90;
+};"]]],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_5_F","BIS_CarRepairingMan",[13241,7984.56,0.00117111],249.732,0.5,0,"Up",[[],[],[],["U_C_Man_casual_5_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["[BIS_CarRepairingMan, ""REPAIR_VEH_KNEEL"", ""NONE""] call BIS_fnc_ambientAnim; _this setDir 249 ; _EHkilledIdx = _this addEventHandler [""killed"", {BIS_SmugglerDead = true}]"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_PaperBox_01_small_destroyed_brown_F",[13232,7989.66,0.0031395],[[0.831508,0.554317,-0.036432],[0.0836279,-0.0600721,0.994685]],0,"",true,false,[],false,1],["Land_PaperBox_01_small_closed_brown_food_F",[13236.3,7988.43,0.113113],[[-0.542635,0.650846,0.530986],[0.351384,-0.398289,0.847287]],0,"BIS_foodBox02",true,false,[],false,1],["Land_PaperBox_01_small_closed_brown_food_F",[13234.9,7987.74,0.00888443],[[-0.782398,-0.622486,0.0191105],[0.08406,-0.07515,0.993623]],0,"BIS_foodBox01",true,false,[],false,1],["Land_PaperBox_01_small_closed_brown_food_F",[13235.1,7988.53,0.347019],[[-0.627487,0.773087,0.0927194],[0.775298,0.631359,-0.0173188]],0,"",true,false,[],false,1],["Land_CerealsBox_F",[13228.8,7996.88,0.0114441],[[0.0740935,-0.100581,0.992166],[0.0599792,0.993549,0.0962416]],0,"",true,false,[],false,1],["Land_CerealsBox_F",[13228.3,7995.13,0.109985],[[-0.00245688,0.00530395,-0.999983],[0.0704486,-0.9975,-0.00546387]],0,"",true,false,[],false,1],["Land_RiceBox_F",[13228.8,7995.77,0.00148392],[[-0.892305,0.435329,0.1195],[0.0928713,-0.0820283,0.992293]],0,"",true,false,[],false,0],["Land_RiceBox_F",[13229.6,7996.84,0.0499687],[[-0.995859,-0.0598396,0.0684434],[0.0524919,-0.993135,-0.10453]],0,"",true,false,[],false,0],["Land_PaperBox_01_small_destroyed_brown_F",[13229.9,7993.63,0.00468826],[[-0.918284,0.380248,0.110298],[0.0904855,-0.0696533,0.993459]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		50
+]

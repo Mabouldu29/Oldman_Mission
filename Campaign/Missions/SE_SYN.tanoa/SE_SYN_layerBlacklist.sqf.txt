@@ -1,0 +1,2 @@
+
+["bis_junglehideout_01","bis_junglehideout_02","bis_oldmanhousedoctor","bis_oldmanhouse","bis_team_a_1","bis_junglehideoutpermanent","bis_sc_mainstash","bis_se_millerstash","bis_syndicamp_a_1","bis_syndigarage","bis_sc_om_weaponshed"]

@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Grave_forest_F",[13152.2,8626.58,5.34058e-005],[[-0.0105716,-0.999944,0],[0,0,1]],0,"",true,false,[],false,2]]
+		,
+		//--- #size
+		1
+]

@@ -1,0 +1,39 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_IDAP_Offroad_02_unarmed_F","",[13914.5,8390.87,0.00176001],[[0.550067,-0.834939,-0.0174058],[0.0114517,-0.013299,0.999846]],0,1,[],["a3\soft_f_orange\offroad_02\data\offroad_02_ext_idap_co.paa","a3\soft_f_orange\offroad_02\data\offroad_02_ext_idap_co.paa","a3\soft_f_exp\offroad_02\data\offroad_02_int_brown_co.paa","a3\soft_f_exp\offroad_02\data\offroad_02_int_brown_co.paa"],false,[["#steal",[CIV,200]]],[true,false]],["C_IDAP_Truck_02_transport_F","",[13940.4,8381.81,0.00115824],[[0.141058,0.989633,-0.0270136],[0.0350394,0.0222787,0.999138]],0,1,[],["a3\soft_f_orange\truck_02\data\truck_02_kab_idap_co.paa","a3\soft_f_orange\truck_02\data\truck_02_kuz_idap_co.paa","a3\soft_f_orange\truck_02\data\truck_02_int_idap_co.paa"],false,[["#steal",[CIV,200]]],[true,false]],["C_Offroad_01_F","",[13874,8411.97,0.00879574],[[-0.596356,-0.802672,0.00880135],[0.0529597,-0.0284019,0.998192]],0,1,[],["a3\soft_f\offroad_01\data\offroad_01_ext_base01_co.paa","a3\soft_f\offroad_01\data\offroad_01_ext_base01_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_IDAP_Man_AidWorker_07_F","",[13925.1,8397.24,0.00130653],220.37,0.5,0,"Up",[[],[],[],["U_C_IDAP_Man_TeeShorts_F",[["FirstAidKit",3]]],["V_Plain_medical_F",[]],[],"H_Cap_White_IDAP_F","G_Shades_Green",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["[_this] spawn 
+{ 
+ params [""_guy""]; 
+ waituntil {sleep 1; behaviour _guy != ""AWARE""}; 
+ _guy allowFleeing 1; 
+ _guy setSpeedMode ""full""; 
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_IDAP_Man_AidWorker_02_F","BIS_OM_ambientConvo_bo4bbqgpdvi74pb",[13904.8,8396.17,0.00157356],73.9136,0.5,0,"Up",[[],[],[],["U_C_IDAP_Man_Jeans_F",[["FirstAidKit",2]]],[],[],"H_Cap_Black_IDAP_F","G_Shades_Red",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["[_this] spawn 
+{ 
+ params [""_guy""]; 
+ waituntil {sleep 1; behaviour _guy != ""AWARE""}; 
+ _guy allowFleeing 1; 
+ _guy setSpeedMode ""full""; 
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_IDAP_Man_AidWorker_08_F","BIS_OM_ambientConvo_sadmt6oz67rw6qk",[13906.5,8396.84,0.001297],239.758,0.5,0,"Up",[[],[],[],["U_C_IDAP_Man_Tee_F",[["FirstAidKit",3]]],["V_Pocketed_black_F",[["FirstAidKit",1]]],[],"H_Hat_Safari_sand_F","G_WirelessEarpiece_F",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",[" [ [""BIS_OM_ambientConvo_bo4bbqgpdvi74pb"",""BIS_OM_ambientConvo_sadmt6oz67rw6qk""], true] spawn BIS_fnc_OM_createConversation "]],["#init",["[_this] spawn 
+{ 
+ params [""_guy""]; 
+ waituntil {sleep 1; behaviour _guy != ""AWARE""}; 
+ _guy allowFleeing 1; 
+ _guy setSpeedMode ""full""; 
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_IDAP_Man_AidWorker_06_F","",[13918.6,8390.12,0.0014658],0,0.5,0,"Middle",[[],[],[],["U_C_IDAP_Man_shorts_F",[["FirstAidKit",2]]],[],[],"H_Bandanna_gry","G_Shades_Blue",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["[_this] spawn 
+{ 
+ params [""_guy""]; 
+ waituntil {sleep 1; behaviour _guy != ""AWARE""}; 
+ _guy allowFleeing 1; 
+ _guy setSpeedMode ""full""; 
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_sport_3_F_tanoan","",[13918.1,8392,0.00136995],215.314,0.5,0,"Up",[[],[],[],["U_C_man_sport_3_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this switchmove ""Acts_CivilInjuredChest_1"";_this setbehaviour ""CARELESS"";_this disableAI ""ALL"";_this setAnimSpeedCoef (0.40 + random 0.2);"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_FoodSacks_01_cargo_brown_idap_F",[13924.9,8393.97,-0.00313234],[[0,0.999773,0.0213271],[0.0506016,-0.0212998,0.998492]],0,"",false,false,[],false,2],["Land_EmergencyBlanket_01_discarded_F",[13923.1,8393.25,0.000105381],[[0,0.999773,0.0213271],[0.037308,-0.0213123,0.999077]],0,"",false,false,[],false,2],["Land_EmergencyBlanket_01_discarded_F",[13918.5,8392.44,3.86238e-005],[[-0.680195,-0.732999,-0.00684563],[0.0186626,-0.0266525,0.999471]],0,"",false,false,[],false,2],["Land_EmergencyBlanket_01_stack_F",[13923.8,8393.41,0.000614643],[[0,0.999773,0.0213271],[0.0506016,-0.0212998,0.998492]],0,"",false,false,[],false,1],["Land_FirstAidKit_01_closed_F",[13922.6,8394.17,0.000409603],[[0,0.999773,0.0213271],[0.037308,-0.0213123,0.999077]],0,"",false,false,[],false,1],["Land_PlasticNetFence_01_short_d_F",[13918.8,8386.79,-2.43187e-005],[[-0.618958,-0.785424,0],[0,0,1]],0,"",true,false,[],false,2],["Land_PlasticNetFence_01_long_d_F",[13923,8388.49,1.52588e-005],[[0.746016,-0.665928,0],[0,0,1]],0,"",true,false,[],false,3],["Land_PlasticNetFence_01_roll_F",[13920.8,8385.24,0.000107288],[[0.451729,-0.891895,-0.021562],[0.0266657,-0.0106598,0.999588]],0,"",false,false,[],false,1],["Land_MedicalTent_01_white_IDAP_closed_F",[13916,8398.49,-0.0599995],[[-0.716509,0.697578,0],[0,0,1]],0,"",false,false,[],false,3],["Land_WaterBottle_01_full_F",[13918.4,8391.79,0.000119686],[[0,0.999645,0.0266571],[0.0186626,-0.0266525,0.999471]],0,"",false,false,[],false,0],["Land_WaterBottle_01_pack_F",[13919.2,8391.03,0.000157833],[[0,0.999645,0.0266571],[0.0186626,-0.0266525,0.999471]],0,"",false,false,[],false,1],["Land_WaterBottle_01_pack_F",[13919.2,8390.74,0.00331402],[[0.854199,0.519947,0],[0,0,1]],0,"",false,false,[],false,1],["Land_WaterBottle_01_stack_F",[13923.1,8395.44,0.00114632],[[0,0.999773,0.0213271],[0.037308,-0.0213123,0.999077]],0,"",false,false,[],false,2],["Item_Antimalaricum",[13923.8,8393.4,0.390962],[[0,0.999773,0.0213262],[0.0506107,-0.0212988,0.998491]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		1
+]

@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_4_F_afro","",[12620.9,7714.89,0.00142384],206.016,0.5,0,"Up",[[],[],[],["U_C_Man_casual_4_F",[]],[],[],"","G_Shades_Blue",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this disableai ""anim"";_this switchMove ""Acts_CivilTalking_2"";"]],["#init",["_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_shorts_1_F_afro","",[12618.9,7714.25,0.0014534],37.6494,0.5,0,"Up",[[],[],[],["U_C_Man_casual_5_F",[]],[],[],"H_Bandanna_surfer_grn","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["Land_Basket_F",[12622.7,7714.36,9.25064e-005],[[-1.42809e-005,1,-6.01835e-005],[0.0105746,6.03312e-005,0.999944]],0,"",true,false,[],false,1],["Land_CratesShabby_F",[12617.8,7714.58,0.158019],[[0,1,0],[0.00532321,0,0.999986]],0,"",true,false,[],false,2],["Land_Sack_F",[12617.3,7719.05,-0.00261593],[[-0.940903,0.338639,0.00501184],[0.00532655,0,0.999986]],0,"",true,false,[],false,1],["Land_Sack_F",[12617.3,7719.74,0.0534821],[[0,1,0],[0.00532655,0,0.999986]],0,"",true,false,[],false,1],["Land_Sack_F",[12616.6,7719.58,0.0689583],[[0,1,0],[0.00532655,0,0.999986]],0,"",true,false,[],false,1],["Land_WoodenCart_F",[12575.5,7713.67,0.225553],[[0.882232,0.470227,-0.0235261],[0.0266571,0,0.999645]],0,"",false,false,[],true,3],["Land_Sack_F",[12573.8,7715.88,0.000238419],[[0.164196,0.986427,0.000875722],[0.0266571,-0.00532465,0.99963]],0,"",true,false,[],false,1],["Land_Sack_F",[12573.9,7716.54,0.000287056],[[0,0.999986,0.00532655],[0.0266571,-0.00532465,0.99963]],0,"",true,false,[],false,1],["Land_Sack_F",[12573.3,7717.12,0.000738144],[[0,0.999986,0.00533751],[0.0213271,-0.0053363,0.999758]],0,"",true,false,[],false,1],["Land_Sack_F",[12573.1,7716.39,0.000203133],[[0,0.999986,0.00533751],[0.0213271,-0.0053363,0.999758]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		20
+]

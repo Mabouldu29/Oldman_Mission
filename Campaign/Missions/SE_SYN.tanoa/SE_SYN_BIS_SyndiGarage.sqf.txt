@@ -1,0 +1,32 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Laptop_unfolded_F",[10893.5,7850.48,1.0695],[[0.968133,0.250435,9.34482e-005],[-7.70888e-005,-7.51331e-005,1]],0,"BIS_SyndiNTB",true,false,[["#init",["[    
+ _this,               
+ Localize ""STR_A3_OM_HOLDACTION_exploreSynLaptop_Text"",              
+ ""\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa"",     
+ ""\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa"",     
+ ""(player distance BIS_SyndiNTB < 2) && {BIS_Bossfsm getFSMVariable ['_syndiTraitorIntel', false] && isNil 'BIS_SQ0_D_TraitorHouse'}"",       
+ ""player distance BIS_SyndiNTB < 2"",          
+ {playSound ""OMIntelGrabLaptop_03""},                 
+ {},                 
+ {BIS_SQsfsm setFSMVariable [""_playerHasSyndiIntel"", true];},        
+ {},                 
+ [],                 
+ 1,                 
+ 0,                 
+ true,                
+ false                
+] call BIS_fnc_holdActionAdd;
+_this setObjectTexture [0, ""\a3\Missions_F_Oldman\Data\img\Screens\SyndiaktLaptopDesktop_co.paa""];"]]],false,1,0],["Land_WoodenTable_large_F",[10893.1,7849.9,0.197075],[[0.275721,0.961238,0],[0,0,1]],0,"",false,false,[],true,2,1]]
+		,
+		//--- #size
+		1
+]

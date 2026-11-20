@@ -1,0 +1,40 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["B_GEN_Offroad_01_gen_F","",[13978.2,8225.05,0.00166988],[[0.278301,-0.96046,0.00809467],[-9.42892e-005,0.00840029,0.999965]],0,1,[],["a3\soft_f_exp\offroad_01\data\offroad_01_ext_gen_co.paa","a3\soft_f_exp\offroad_01\data\offroad_01_ext_gen_co.paa"],false,[["#init",["player action  [""LightOn"", _this];if (player getvariable [""BIS_smuglers"",false]) exitwith {Deletevehicle _this};
+"]]],[true,false]]]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","LIMITED","WEDGE","YELLOW"],[[[13982.1,8214.25,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["O_GEN_Soldier_F","",[13985.5,8218.69,0.00147533],205.159,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["[_this,""STAND"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]]]],[EAST,["AWARE","LIMITED","WEDGE","YELLOW"],[[[13980.6,8211.78,0],"GUARD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["O_GEN_Soldier_F","",[13979,8212.43,0.00149965],100.367,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["[_this,""WATCH"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_p_beggar_F_afro_sick","",[13985.9,8213.33,0.00142479],209.367,0.5,0,"Up",[[],[],[],["U_C_Poor_2_sick",[]],[],[],"H_Cap_khaki_specops_UK","G_Sport_Blackred",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["0= [_this] spawn 
+{ 
+ params [""_guy""]; 
+ if (player getvariable [""BIS_smuglers"",false])exitwith {Deletevehicle _guy};
+ sleep random 1; 
+ _guy switchmove ""Acts_ExecutionVictim_Loop""; 
+ _guy stop true; 
+ waitUntil 
+ {sleep 1; 
+  count ((_guy nearEntities [""man"",50]) select {side _x == EAST}) == 0 
+  && 
+  player distance _guy < 2
+  &&
+  vehicle player == player  
+ };
+ sleep random 1; 
+ { 
+  _x stop false; 
+  _x allowFleeing 1; 
+  _x setSpeedMode ""Full"";
+  _x setunitpos ""up"";
+  _x playmove ""Acts_ExecutionVictim_Unbow""; 
+ } foreach [_guy];
+player setvariable [""BIS_smuglers"",true]
+};"]]]]]]]
+		,
+		//--- #objectData
+		[["BloodPool_01_Large_New_F",[13978.8,8209.36,0.00704384],[[0,0.999911,0.0133342],[0.0266657,-0.0133294,0.999556]],0,"",false,false,[],false,2],["Land_EmergencyBlanket_01_discarded_F",[13985.6,8216.77,-0.0109882],[[0,1,0],[-0.0133339,0,0.999911]],0,"",false,false,[],false,2],["Land_Garbage_square5_F",[13979.9,8200.62,-0.00185585],[[0,0.999968,-0.00799352],[0.0346375,0.00798873,0.999368]],0,"",false,false,[],false,3],["RoadBarrier_F",[13981.9,8198.4,-0.00366831],[[-0.312089,-0.950007,0.00929746],[0.0222498,0.00247495,0.999749]],0.01254,"",true,false,[],false,2],["Land_Garbage_square5_F",[13983.2,8214.06,0.00143909],[[0,0.999773,0.0213262],[0.00267059,-0.0213261,0.999769]],0,"",false,false,[],false,3],["Land_RattanChair_01_F",[13986,8211.78,0.266675],[[-0.0770954,0.997023,0.00114183],[-0.996821,-0.0771028,0.0200895]],0,"",false,false,[],false,1],["Land_Bodybag_01_black_F",[13979,8210.49,0.00059557],[[-0.884487,-0.466241,0.0173722],[0.0266571,-0.0133266,0.999556]],0,"",false,false,[],false,2],["Weapon_arifle_AKM_F",[13985.6,8217.2,0.0205078],[[0.263248,0.964728,-1.67638e-008],[-0.0128571,0.00350837,0.999911]],0,"",true,false,[],false,1],["Weapon_arifle_AKM_F",[13985.5,8216.54,0.0533004],[[0.645852,0.758406,0.0877238],[-0.144594,0.00868645,0.989453]],0,"",true,false,[],false,1],["Weapon_arifle_AKS_F",[13985.7,8216.37,0.0473919],[[-0.401607,0.915812,-5.00679e-006],[-0.0425478,-0.0186529,0.99892]],0,"",true,false,[],false,1],["Weapon_arifle_AKS_F",[13985.7,8216.97,0.0370002],[[0,1,0],[-0.0353879,0,0.999374]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		20
+]

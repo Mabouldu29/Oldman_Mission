@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_ClutterCutter_small_F",[11654.6,7818.9,0.0388641],[[-0.070858,0.997486,0],[0,0,1]],0,"",true,false,[],false,1,0],["Land_ClutterCutter_small_F",[11657.8,7823.19,0.0540771],[[-0.070858,0.997486,0],[0,0,1]],0,"",true,false,[],false,1,1]]
+		,
+		//--- #size
+		20
+]

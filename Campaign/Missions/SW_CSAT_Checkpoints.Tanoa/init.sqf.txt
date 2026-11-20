@@ -1,0 +1,7 @@
+  BIS_currentManPower = 8;
+
+#ifndef OM_MAIN_MISSION
+    BIS_StartMissionDate = date;
+    waituntil {!isNil "BIS_missionInitDone"};
+    #include "\a3\Missions_F_Oldman\Campaign\Missions\Oldman.tanoa\init_systemExec.sqf"
+#endif

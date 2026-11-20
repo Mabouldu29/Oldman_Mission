@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[14342.1,8923.57,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[14400.2,8919,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[14408.8,8817.17,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[14343.3,8920.97,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_man_polo_4_F_afro","",[14339.9,8928.59,0.0016098],0,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_tricolour",[]],[],[],"H_Hat_blue","G_Spectacles_Tinted",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[14393,8833.25,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[14445,8860.74,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[14404.8,8922.6,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[14394.7,8831.71,0.000336647],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_man_polo_6_F_afro","",[14398.6,8832.07,0.00321198],0,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_redwhite",[]],[],[],"H_StrawHat","G_Sport_Red",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		100
+]

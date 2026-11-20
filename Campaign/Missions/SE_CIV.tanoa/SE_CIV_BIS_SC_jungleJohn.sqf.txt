@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_4_F_afro_sick","BIS_John",[13136.3,8588.2,0.0233231],0,0.5,0,"Up",[[],[],[],["U_C_Man_casual_4_sick_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = [_this,""BIS_John"",""Acts_CivilInjuredChest_1"",0.5] spawn BIS_fnc_OM_setInjuredCivil"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_EmergencyBlanket_01_discarded_F",[13136.1,8588.3,0.0309982],[[0,1,0],[0.00048906,0,1]],0,"",false,false,[],false,2],["MedicalGarbage_01_Bandage_F",[13136.6,8587.3,0.0830078],[[0,1,0],[0,0,1]],0,"",false,false,[],false,0],["Land_BottlePlastic_V2_F",[13136.2,8586.81,0.0630035],[[0,1,0],[0.00048906,0,1]],0,"",false,false,[],false,0],["Land_EmergencyBlanket_02_discarded_F",[13136.3,8587.73,0.0439987],[[0.552315,0.833635,-0.000270115],[0.00048906,0,1]],0,"",false,false,[],false,2],["Land_EmergencyBlanket_01_F",[13135.9,8587.74,0.0280762],[[0,1,0],[-0.0673362,0,0.99773]],0,"",false,false,[],false,1]]
+		,
+		//--- #size
+		1
+]

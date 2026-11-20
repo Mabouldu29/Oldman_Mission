@@ -1,0 +1,72 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_6_F","",[7272.23,7871.82,0.155872],0,0.5,0,"Up",[[],[],[],["U_C_Man_casual_6_F",[]],[],[],"H_StrawHat","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this disableAI ""ANIM"";_this switchmove ""Acts_Dance_02"";_this attachto [BIS_dancefloor,[0.5,1.2,0.1]];"]],["#init",["0= _this spawn {waitUntil {behaviour _this != ""AWARE""};detach _this;_this switchmove """";_this enableai ""ALL"";_this allowFleeing 1};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_4_F_afro","BIS_dancerb",[7269.14,7874.54,0.160131],99.012,0.5,0,"Up",[[],[],[],["U_C_Man_casual_4_F",[]],[],[],"H_Hat_Tinfoil_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this disableAI ""ANIM"";_this switchmove ""Acts_Dance_02"";_this attachto [BIS_dancefloor,[0,-1.5,0.1]];"]],["#init",["0= _this spawn {waitUntil {behaviour _this != ""AWARE""};detach _this;_this switchmove """";_this enableai ""ALL"";_this allowFleeing 1};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_2_F_afro","",[7268.34,7872.65,0.161236],0,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_burgundy",[]],[],[],"H_PilotHelmetFighter_B","G_Shades_Blue",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this disableAI ""ANIM"";_this switchmove ""Acts_Dance_01"";_this attachto [BIS_dancefloor,[-3.5,-2,0.1]];"]],["#init",["0= _this spawn {waitUntil {behaviour _this != ""AWARE""};detach _this;_this switchmove """";_this enableai ""ALL"";_this allowFleeing 1};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_5_F_tanoan","",[7271.47,7874.18,0.156911],247.984,0.5,0,"Up",[[],[],[],["U_C_Man_casual_5_F",[]],[],[],"H_RacingHelmet_3_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this disableAI ""ANIM"";_this switchmove ""Acts_Dance_01"";_this attachto [BIS_dancefloor,[1.5,-1,0.1]];"]],["#init",["0= _this spawn {waitUntil {behaviour _this != ""AWARE""};detach _this;_this switchmove """";_this enableai ""ALL"";_this allowFleeing 1};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_sport_1_F_tanoan","",[7270.18,7871.73,0.158692],9.751,0.5,0,"Up",[[],[],[],["U_C_man_sport_1_F",[]],[],[],"H_Construction_basic_yellow_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this disableAI ""ANIM"";_this switchmove ""Acts_Dance_01"";_this attachto [BIS_dancefloor,[1.5,1.5,0.1]];"]],["#init",["0= _this spawn {waitUntil {behaviour _this != ""AWARE""};detach _this;_this switchmove """";_this enableai ""ALL"";_this allowFleeing 1};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_4_F_afro","BIS_dancera",[7273.83,7875.81,0.153647],250.579,0.5,0,"Up",[[],[],[],["U_C_Man_casual_2_F",[]],[],[],"H_WirelessEarpiece_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",[" 
+[_this,""AeropurtoPass"",0] spawn BIS_fnc_OM_GetRZAccess; 
+ 
+_this spawn 
+{ 
+    scriptname ""DiscoOwnerBehavior""; 
+    if (player getVariable [""AeropurtoPass"",false]) exitwith {}; 
+    waituntil {behaviour _this == ""COMBAT"" || (cursorobject == _this && currentweapon player != """" && player distance _this < 5) || !isnil ""BIS_discoHijack""}; 
+    BIS_DiscoSurrender = TRUE; 
+    _this allowfleeing 0; 
+    _this setBehaviour ""COMBAT""; 
+    _this stop TRUE; 
+    _this playmovenow ""ApanPercMstpSnonWnonDnon_ApanPknlMstpSnonWnonDnon""; 
+    [""eve_dancera_afraid_in"",""none""] call BIS_fnc_om_conversation; 
+ 
+    sleep 2; 
+    _this playmovenow ""ApanPknlMstpSnonWnonDnon_G01""; 
+    waituntil {player getvariable [""AeropurtoPass"",false]}; 
+    [""eve_dancera_afraid_out"",""none""] call BIS_fnc_om_conversation; 
+}; 
+ 
+ 
+_this spawn 
+{ 
+    scriptName ""DiscoOwnerTalk""; 
+ 
+    _convArray = [""eve_dancera_go_away_a"",""eve_dancera_go_away_a"",""eve_dancera_go_away_c""]; 
+    while {isnil ""BIS_DiscoSurrender""} do 
+    { 
+        _conv = selectrandom _convArray; 
+        if (behaviour _this == ""COMBAT"") exitWith {}; 
+        waitUntil {player distance _this < 5}; 
+        _convArray = _convArray - [_conv]; 
+        sleep 2; 
+        [_conv,""none""] call BIS_fnc_om_conversation; 
+        sleep 8; 
+        if (count (_convArray) == 0) exitwith {}; 
+    }; 
+}; 
+ 
+"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_ArmChair_01_F",[7264.94,7873.99,0.164402],[[0.845928,0.533298,-1.79216e-006],[0.000731293,-0.00115663,0.999999]],0,"",false,false,[],true,-1],["Land_ArmChair_01_F",[7274.25,7876.77,-0.0003016],[[-0.0784927,-0.996915,4.23004e-006],[-0.00135759,0.000111133,0.999999]],0,"",false,false,[],true,-1],["Land_TableSmall_01_F",[7274.69,7874.6,0.148542],[[-0.563474,0.826133,-3.55236e-006],[0.00113279,0.000776933,0.999999]],0,"",false,false,[],true,-1],["Land_FlowerPot_01_Flower_F",[7275.15,7876.75,0.176235],[[0,1,0],[0.00138075,0,0.999999]],0,"",false,false,[],true,-1],["Land_Garbage_square5_F",[7271.4,7872.87,0.15527],[[0,1,0],[0.00138075,0,0.999999]],0,"",false,false,[],false,3],["Land_Garbage_square5_F",[7267.91,7871.73,0.159818],[[0.750189,-0.661224,0],[0,0,1]],0,"",false,false,[],false,3],["OfficeTable_01_old_F",[7269.46,7868.36,0.115586],[[0.831679,0.555256,-4.3257e-006],[0.000764672,-0.00113756,0.999999]],0,"",false,false,[],true,-1],["Land_Sofa_01_F",[7275.81,7875.2,0.156904],[[-0.836002,-0.548726,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_Sofa_01_F",[7264.96,7875.95,0.168062],[[0.581425,-0.8136,0],[0,0,1]],0,"",false,false,[],true,-1],["OfficeTable_01_old_F",[7268.47,7868.09,0.116079],[[-0.544609,0.83869,-5.69539e-006],[0.00114328,0.000749187,0.999999]],0,"",false,false,[],true,-1],["Land_PaperBox_01_small_closed_brown_F",[7273.11,7879.92,0.155228],[[-0.50868,0.860956,-2.01317e-006],[0.00118429,0.000702053,0.999999]],0,"",true,false,[],true,-1],["Land_ChairWood_F",[7272.48,7880.7,0.153438],[[0,1,0],[0.00138075,0,0.999999]],0,"",true,false,[],true,-1],["Land_Laptop_unfolded_F",[7269.17,7868.51,0.962349],[[-0.101535,-0.994832,0],[0,0,1]],0,"",false,false,[],true,-1],["Fridge_01_closed_F",[7273.86,7878.83,0.0669093],[[0.839263,0.543726,4.94823e-007],[0.000742261,-0.00114662,0.999999]],0,"",true,false,[],true,-1],["Fridge_01_closed_F",[7273.49,7879.44,0.0666573],[[0.839263,0.543726,4.94823e-007],[0.000742261,-0.00114662,0.999999]],0,"",true,false,[],true,-1],["Land_WaterBottle_01_full_F",[7273.5,7879.49,1.09284],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1],["Reflector_Cone_01_blue_F",[7272.05,7871.68,3.29956],[[0,0.0388238,-0.999246],[0,0.999246,0.0388238]],0,"BIS_discoLight1",true,false,[["#init",["playSound3D [""a3\Music_f_oldman\music\radio\dance\Track_D_01.ogg"",_this, true, (getPosASL _this), 5, 1, 100]; 
+
+0 = [] spawn  
+{ 
+waituntil {!isnull bis_discolight2};
+ _lights = [bis_discolight1,bis_discolight2,objNull];
+ sleep 3;
+ _smoke = ""SmokeShell"" createVehicle getpos BIS_dancefloor;
+ while {player distance bis_discolight1 < 200 && !(isnull bis_discolight1)} do  
+ { 
+  _new_light = selectRandom _lights; 
+  _new_light hideobject true; 
+  sleep 0.2 + random 0.3; 
+  {_x hideobject false} forEach _lights; 
+ }; 
+ waitUntil {player distance bis_discolight1 <200}; 
+}; 
+"]]],false,0],["Reflector_Cone_01_red_F",[7271.9,7871.6,3.24319],[[0,0.130526,-0.991445],[0,0.991445,0.130526]],0,"BIS_discoLight2",true,false,[],false,0],["Land_Tableware_01_cup_F",[7270.55,7875.1,0.165439],[[0,0.116688,0.993169],[0.00137884,-0.993168,0.116688]],0,"",false,false,[],true,-1],["WaterSpill_01_Small_New_F",[7270.71,7874.58,0.112612],[[0,1,0],[0.00138075,0,0.999999]],0,"",true,false,[],false,2],["WaterSpill_01_Small_New_F",[7270.98,7871.8,0.156519],[[0.54101,-0.841016,0],[0,0,1]],0,"",true,false,[],false,2]]
+		,
+		//--- #size
+		30
+]

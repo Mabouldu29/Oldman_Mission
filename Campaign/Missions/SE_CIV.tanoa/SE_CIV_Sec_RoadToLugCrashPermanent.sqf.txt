@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_CrashBarrier_01_4m_F",[13237.8,7982.97,0.0425224],[[-0.591791,-0.760426,-0.267463],[-0.154758,-0.218451,0.963498]],0,"",true,false,[],false,2]]
+		,
+		//--- #size
+		50
+]

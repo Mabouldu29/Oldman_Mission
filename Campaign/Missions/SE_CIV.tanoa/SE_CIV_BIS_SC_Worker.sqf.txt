@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_p_beggar_F_afro","",[12832.3,7560.82,0.00143194],0,0.5,0,"Up",[[],[],[],["U_C_Poor_2",[]],[],[],"H_Construction_basic_yellow_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]],["#init",["_this disableAI ""Anim"";_this switchmove ""Acts_CivilListening_1"";"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Pallet_F",[12828,7561.26,0.00681829],[[0,0.999911,0.0133313],[0.031983,-0.0133245,0.9994]],0,"",false,false,[],true,2],["Land_Plank_01_4m_F",[12823.2,7564.52,2.86102e-006],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Land_WorkStand_F",[12830,7563.4,0.0057106],[[0,0.999712,0.023991],[0.013327,-0.0239889,0.999623]],0,"",false,false,[],true,-1],["Land_Tableware_01_stackOfNapkins_F",[12831.5,7563.14,0.870605],[[0,0.999712,0.0239886],[0.013327,-0.0239865,0.999623]],0,"",false,false,[],false,0],["Land_FMradio_F",[12832,7563.22,0.870602],[[0.483643,-0.874835,-0.0274401],[0.013327,-0.0239865,0.999623]],0,"",false,false,[],false,0],["Land_WheelCart_F",[12834.2,7561.64,0.0143554],[[-0.953182,-0.302383,0.00291175],[0.0106641,-0.0239897,0.999655]],0,"",false,false,[],true,-1],["Land_CinderBlocks_01_F",[12839.6,7563.19,0.00073266],[[0,0.999091,0.0426276],[-0.0053265,-0.042627,0.999077]],0,"",false,false,[],false,2],["Land_CinderBlocks_01_F",[12838.7,7561.8,-0.00280833],[[-0.997547,-0.0695037,-0.00828382],[-0.0053265,-0.042627,0.999077]],0,"",false,false,[],false,2],["Land_BottlePlastic_V2_F",[12831.7,7563.18,0.868838],[[0,0.999712,0.0239886],[0.013327,-0.0239865,0.999623]],0,"",false,false,[],true,0]]
+		,
+		//--- #size
+		5
+]

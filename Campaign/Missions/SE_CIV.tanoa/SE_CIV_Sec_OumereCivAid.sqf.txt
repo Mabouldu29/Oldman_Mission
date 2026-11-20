@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_2_F_afro","",[12769.1,7239.73,0.00130081],136.68,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_burgundy",[]],[],[],"H_Bandanna_khk","G_Sport_Greenblack",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_p_shorts_1_F_afro","",[12769.2,7240.93,0.00129366],178.443,0.5,0,"Up",[[],[],[],["U_C_Poor_shorts_1",[]],[],[],"H_Bandanna_surfer","G_Sport_Red",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_6_F_afro","",[12769.5,7238.27,0.00156164],110.605,0.5,0,"Up",[[],[],[],["U_C_Man_casual_6_F",[]],[],[],"","G_Spectacles_Tinted",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this disableai ""anim"";_this switchMove ""Acts_CivilTalking_1"";_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]]]]]],[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_T_Officer_F","",[12771.9,7237.32,0.00125599],282.116,0.5,0,"Auto",[["SMG_02_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_Pistol_heavy_02_F","","","optic_Yorris",["6Rnd_45ACP_Cylinder",6],[],""],["U_O_T_Officer_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",3,30]]],["V_BandollierB_ghex_F",[["6Rnd_45ACP_Cylinder",2,6],["SmokeShell",1,1],["SmokeShellRed",1,1],["Chemlight_red",2,1]]],[],"H_Beret_CSAT_01_F","",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["[_this,""WATCH1"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		207.422
+]

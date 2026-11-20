@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_6_F_afro_sick","BIS_ArthurInjured",[13134.7,8598.48,0.00183105],103.465,0.5,0,"Up",[[],[],[],["U_C_Man_casual_6_sick_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = [_this,""BIS_Arthur"",""Acts_AidlPercMstpSnonWnonDnon_warmup_4_loop"",1] spawn BIS_fnc_OM_setInjuredCivil"]]]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		1
+]
