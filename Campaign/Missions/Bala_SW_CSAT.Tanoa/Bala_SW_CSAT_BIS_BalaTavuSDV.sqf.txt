@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["O_SDV_01_F","",[887.565,7767.98,4.52693],[[-0.858605,0.511114,-0.0395083],[-0.0250761,0.035102,0.999069]],0,1,[],["a3\boat_f_beta\sdv_01\data\sdv_ext_opfor_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["UnderwaterMine_Range_Ammo",[888.69,7808.49,-42.3271],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,0],["UnderwaterMine_Range_Ammo",[861.867,7792.68,-38.7046],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,1],["UnderwaterMine_Range_Ammo",[824.478,7772.01,-38.9913],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,2]]
+		,
+		//--- #size
+		1
+]

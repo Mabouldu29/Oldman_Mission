@@ -1,0 +1,31 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_CanisterPlastic_F",[2144.61,4529.56,0.346158],[[-0.423771,-0.905769,0.000358398],[0.000845734,0,1]],0,"",true,false,[],true,1,0],["Land_BarrelWater_F",[2145.12,4527.98,2.09808e-005],[[0,0.999986,0.00532655],[-0.0053265,-0.00532647,0.999972]],0,"",true,false,[],true,-1,1],["Land_BarrelWater_F",[2145.33,4527.48,2.09808e-005],[[0,0.999986,0.00532655],[-0.0053265,-0.00532647,0.999972]],0,"",true,false,[],true,-1,2],["Land_Sofa_01_F",[2138.24,4523.99,0.151922],[[0.850127,-0.526578,-0.000718981],[0.000845734,0,1]],0,"",false,false,[],false,2,3],["Land_WoodenBed_01_F",[2138.49,4529.67,0.133111],[[-0.8488,0.528713,0.000716286],[0.000844295,6.65051e-007,0.999999]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,4],["Land_FlowerPot_01_Flower_F",[2139.11,4525.44,0.133265],[[0.627515,-0.778604,-0.000530711],[0.000845734,0,1]],0,"",false,false,[],false,2,5],["Land_FMradio_F",[2137.69,4530.21,1.04778],[[0.861401,-0.507925,-0.000728516],[0.000845734,0,1]],0,"",false,false,[],false,0,6],["Land_Rug_01_Traditional_F",[2139.56,4523.11,0.151763],[[-0.519114,-0.854705,0.000439033],[0.000845734,0,1]],0,"",false,false,[],false,2,7],["Land_ChairWood_F",[2142.96,4527.89,0.255714],[[0.934376,-0.356288,-0.000790234],[0.000845734,0,1]],0,"",true,false,[],true,2,8],["Land_ChairWood_F",[2142.47,4527,0.258229],[[0.739403,-0.673263,-0.000625338],[0.000845734,0,1]],0,"",true,false,[],true,2,9],["Land_ChairWood_F",[2141.92,4528.45,0.216383],[[-0.937688,0.347478,0.000793035],[0.000845734,0,1]],0,"",true,false,[],true,2,10],["Land_ChairWood_F",[2141.54,4527.56,0.21218],[[-0.90775,0.419511,0.000767716],[0.000845734,0,1]],0,"",true,false,[],true,2,11],["Book_01_F",[2137.49,4529.96,1.02225],[[-0.943144,-0.332384,0.000795925],[0.000830491,3.80647e-005,1]],0,"",true,false,[],false,0,12],["Land_ChairPlastic_F",[2143.75,4530.32,0.312845],[[-0.981101,0.193493,0.000829751],[0.000845734,0,1]],0,"",true,false,[],true,-1,13],["Land_ChairPlastic_F",[2144.14,4532.48,0.378142],[[0.98207,-0.188516,-0.00083057],[0.000845734,0,1]],0,"",true,false,[],true,-1,14],["Land_ChairPlastic_F",[2145.32,4531.32,0.396345],[[0.0996202,-0.995026,-8.42522e-005],[0.000845734,0,1]],0,"",true,false,[],true,-1,15],["Land_Tableware_01_cup_F",[2144.03,4531.44,1.23156],[[0.627515,-0.778604,-0.000530711],[0.000845734,0,1]],0,"",true,false,[],true,-1,16],["Land_WaterBottle_01_compressed_F",[2143.61,4531.68,1.22478],[[0.627515,-0.778604,-0.000530711],[0.000845734,0,1]],0,"",true,false,[],true,-1,17],["Land_TablePlastic_01_F",[2143.91,4531.5,0.340935],[[-0.542848,-0.839831,0.000459105],[0.000845734,0,1]],0,"",true,false,[],true,-1,18],["Land_WaterBottle_01_cap_F",[2143.74,4531.77,0.236315],[[0.627516,-0.778604,0],[0,0,1]],0,"",true,false,[],true,-1,19],["Land_WaterBottle_01_full_F",[2143.87,4531.42,1.22178],[[0.627515,-0.778604,-0.000530711],[0.000845734,0,1]],0,"",true,false,[],true,-1,20],["Land_EmergencyBlanket_01_stack_F",[2138.67,4524.49,0.787502],[[-0.479515,-0.877533,0],[0,0,1]],0,"",false,false,[],false,1,21],["Land_EmergencyBlanket_01_discarded_F",[2138.97,4529.51,0.625822],[[-0.43648,-0.899714,-0.000245254],[0.00564173,-0.00300957,0.99998]],0,"",false,false,[],false,2,22],["Land_CerealsBox_F",[2142.11,4527.64,1.12838],[[-0.38973,-0.920929,0.000665279],[0.000736538,0.000410702,1]],0,"",false,false,[],false,1,23],["Land_BottlePlastic_V1_F",[2142.09,4527.49,1.12503],[[0.627515,-0.778604,-0.000530711],[0.000845734,0,1]],0,"",false,false,[],false,0,24],["Land_Tableware_01_tray_F",[2141.69,4527.5,0.953747],[[0.899383,-0.437161,0],[0,0,1]],0,"",false,false,[],false,1,25],["Land_Tableware_01_spoon_F",[2141.59,4527.43,0.968911],[[0.639065,-0.769153,0],[0,0,1]],0,"",false,false,[],false,0,26],["Land_Tableware_01_tray_F",[2142.3,4527.21,0.949095],[[-0.883683,0.468085,0],[0,0,1]],0,"",false,false,[],false,1,27],["Land_Tableware_01_spoon_F",[2142.39,4527.35,0.966783],[[0.386445,0.922313,0],[0,0,1]],0,"",false,false,[],false,0,28],["Land_TableBig_01_F",[2142.25,4527.82,0.244621],[[0.86509,-0.501617,-0.000725036],[0.000838105,0,1]],0,"",true,false,[],true,-1,29]]
+		,
+		//--- #size
+		5
+]

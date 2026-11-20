@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[7056.16,4222.11,0.00149059],281.281,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["[_this,""STAND"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]]]],[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[7063.7,4221.78,0.138813],281.281,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		45.176
+]

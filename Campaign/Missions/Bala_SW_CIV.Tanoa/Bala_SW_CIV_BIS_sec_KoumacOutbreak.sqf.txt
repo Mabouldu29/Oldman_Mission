@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_4_F_tanoan","",[1256.88,3030.62,0.00154877],0,0.5,0,"Up",[[],[],[],["U_C_Man_casual_4_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this disableAI ""ANIM"";_this switchmove ""Acts_CivilInjuredGeneral_1"";_this setAnimSpeedCoef 0.5;"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_2_F_tanoan","",[1258.6,3030.46,0.00160456],332.66,0.5,0,"Up",[[],[],[],["U_C_Man_casual_2_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this disableAI ""ANIM"";_this switchmove ""Acts_CivilInjuredGeneral_1"";_this setAnimSpeedCoef 0.5;"]]]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		88.521
+]

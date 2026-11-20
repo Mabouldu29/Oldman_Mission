@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[EAST,["SAFE","LIMITED","WEDGE","YELLOW"],[[[4162.62,3128.17,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[4377.56,3028.81,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[4467.05,3227.77,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[4158.02,3138.92,-0.00022316],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["O_GEN_Commander_F","",[4483.76,3280.85,0.00178146],239.161,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Commander_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",1,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",4,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["SmokeShellYellow",1,1]]],[],"H_Beret_gen_F","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]],["O_GEN_Soldier_F","",[4484.34,3280.04,0.00183487],281.212,0.5,0,"Auto",[["srifle_DMR_06_hunter_F","","","",["10Rnd_Mk14_762x51_Mag",10],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["10Rnd_Mk14_762x51_Mag",3,10]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]],["O_GEN_Soldier_F","",[4484.17,3281.96,0.00152206],273.6,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		206.707
+]

@@ -1,0 +1,57 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["B_GEN_Offroad_01_covered_F","",[1597.38,8481.16,0.00552607],[[-0.482962,0.875121,-0.0301763],[-0.00439031,0.0320414,0.999477]],0,1,[],["a3\soft_f_exp\offroad_01\data\offroad_01_ext_gen_co.paa","a3\soft_f_exp\offroad_01\data\offroad_01_ext_gen_co.paa","a3\soft_f_enoch\offroad_01\data\offroad_01_cover_gen_co.paa"],false,[["#steal",[CIV,200]]],[true,false]],["C_Van_01_transport_F","",[1610,8508.08,0.0190938],[[0.869719,0.493392,-0.0123353],[-0.0118745,0.0459045,0.998875]],0,1,[],["a3\soft_f_gamma\van_01\data\van_01_ext_red_co.paa","a3\soft_f_gamma\van_01\data\van_01_adds_co.paa","a3\soft_f_gamma\van_01\data\van_01_int_base_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[1582.16,8500.82,0.00153255],313.474,0.5,0,"Middle",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[EAST,["SAFE","LIMITED","WEDGE","YELLOW"],[[[1602.21,8498.05,2.3365e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[10,10,10],0],[[1617.95,8513,1.88351e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[10,10,10],0],[[1624.65,8512.91,3.38554e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[10,10,10],0],[[1620.21,8506.23,2.00272e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[10,10,10],0],[[1607.78,8492.83,3.43323e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[10,10,10],0],[[1604.14,8489.27,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["O_GEN_Soldier_F","",[1596.78,8492.06,0.00131607],131.206,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[1599.29,8481.75,0.00136423],145.914,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["if !(bis_night) exitwith {deletevehicle _this}"]],["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilTalking_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";
+ _this switchmove """";  
+ _this playAction ""Stand"" 
+};"]]]]]],[EAST,["SAFE","LIMITED","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[1600.04,8480.26,0.00149584],316.973,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["if !(bis_night) exitwith {deletevehicle _this}"]],["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilListening_2""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";  
+ _this switchmove """";
+ _this playAction ""Stand"" 
+};"]]]]]],[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[1617.48,8507.61,0.00130224],123.778,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilTalking_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";
+ _this switchmove """";  
+ _this playAction ""Stand"" 
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_2_F_afro","",[1581.62,8501.96,0.00151682],269.29,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_burgundy",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[["#init",["_this setdamage 1;"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_3_F_afro","",[1583.26,8496.79,0.00155425],315.228,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_stripped",[]],[],[],"H_StrawHat_dark","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_p_fugitive_F_afro","",[1585.1,8497.69,0.00156617],299.957,0.5,0,"Up",[[],[],[],["U_C_Poor_1",[]],[],[],"H_Cap_red","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilListening_2""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";  
+ _this switchmove """";
+ _this playAction ""Stand"" 
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_1_F_afro","",[1618.57,8506.72,0.00155973],294.151,0.5,0,"Up",[[],[],[],["U_C_Man_casual_1_F",[]],[],[],"","G_Aviator",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilListening_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";  
+ _this switchmove """";
+ _this playAction ""Stand"" 
+};"]]]]]],[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[1584.05,8498.63,0.00134468],131.206,0.5,0,"Auto",[["SMG_05_F","","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilTalking_2""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";
+ _this switchmove """";  
+ _this playAction ""Stand"" 
+};"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Boat_01_abandoned_blue_F",[1568.7,8553.42,0.000148952],[[0,0.998974,-0.0452932],[-0.0186565,0.0452854,0.9988]],0,"",false,false,[],false,3,0],["Land_Boat_03_abandoned_F",[1603.52,8518.39,-0.0004282],[[0.633068,0.774087,0.00373309],[-0.0026529,-0.00265293,0.999993]],0,"",false,false,[],false,3,1],["BloodSplatter_01_Large_Old_F",[1581.54,8501.74,-8.10623e-005],[[0,0.999645,-0.0266571],[-0.00265204,0.026657,0.999641]],0,"",true,false,[],false,2,2],["Land_ChairWood_F",[1573.9,8494.27,-0.000635386],[[-0.980116,-0.198224,0.00898743],[0,0.0452932,0.998974]],0,"",false,false,[],true,-1,3],["Land_ChairWood_F",[1604.98,8468.72,-0.00059557],[[-0.980116,-0.198402,0.00317364],[0,0.015994,0.999872]],0,"",false,false,[],true,-1,4],["Land_GarbageHeap_02_F",[1590.41,8490.32,-0.008636],[[-0.484565,-0.873635,0.0442564],[0,0.0505929,0.998719]],0,"",false,false,[],false,3,5],["Land_GarbageHeap_02_F",[1578.54,8519.05,-0.00151134],[[0.611995,-0.790372,0.0278188],[-0.0213263,0.0186697,0.999598]],0,"",false,false,[],false,3,6],["Land_GarbageHeap_03_F",[1614.65,8475.53,0.000954628],[[0.645135,0.764066,0.00171148],[-0.0026529,0,0.999996]],0,"",false,false,[],false,3,7],["Land_GarbageHeap_04_F",[1601.26,8499.6,-0.00300241],[[-0.679906,0.732578,-0.0325158],[-0.0133339,0.0319836,0.999399]],0,"",false,false,[],false,2,8],["Land_BarrelTrash_F",[1579.53,8518.66,0.000294685],[[0,0.999826,-0.018666],[-0.018666,0.0186627,0.999652]],0,"",false,false,[],true,-1,9],["Land_RattanChair_01_F",[1599.08,8500.91,0.112332],[[0,1,0],[0.000690285,0,1]],0,"",false,false,[],true,1,10],["TapeSign_F",[1582.51,8497.8,2.64645e-005],[[-0.521324,0.853359,0],[0,0,1]],0,"",true,false,[],false,2,11],["TapeSign_F",[1585.39,8501.08,3.09944e-005],[[-0.999998,-0.0022106,0],[0,0,1]],0,"",true,false,[],false,2,12],["TapeSign_F",[1579.9,8498.12,7.84397e-005],[[0.599931,0.800052,0],[0,0,1]],0,"",true,false,[],false,2,13],["TapeSign_F",[1577.67,8500.46,6.53267e-005],[[0.82415,0.566372,0],[0,0,1]],0,"",true,false,[],false,2,14],["TapeSign_F",[1582.82,8506.05,1.35899e-005],[[0.160907,0.98697,0],[0,0,1]],0,"",true,false,[],false,2,15],["TapeSign_F",[1584.95,8504.27,0.0567319],[[0.970103,0.242695,0],[0,0,1]],0,"",true,false,[],false,2,16],["TapeSign_F",[1580.02,8505.33,1.95503e-005],[[0.581208,-0.813755,0],[0,0,1]],0,"",true,false,[],false,2,17],["TapeSign_F",[1577.82,8503.22,1.40667e-005],[[0.790999,-0.611818,0],[0,0,1]],0,"",true,false,[],false,2,18],["Land_GarbageContainer_closed_F",[1577.82,8516.3,0.00445175],[[-0.986872,0.160307,-0.0196417],[-0.0159977,0.0239906,0.999584]],0,"",false,false,[],true,-1,19],["Land_GarbageContainer_closed_F",[1587.36,8484.74,0.00516558],[[0.539689,0.841001,-0.0381254],[0,0.0452868,0.998974]],0,"",false,false,[],true,-1,20],["Land_GarbageContainer_open_F",[1578.52,8518.07,0.000573635],[[-0.717258,0.696232,-0.0283063],[-0.0213263,0.0186697,0.999598]],0,"",false,false,[],false,2,21],["Land_WaterTank_03_F",[1602.2,8473.73,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,22],["Land_WaterTank_03_F",[1594.5,8499.79,-2.38419e-007],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,23],["Land_WaterTank_04_F",[1601.29,8474.87,0],[[-0.585825,-0.810438,0],[0,0,1]],0,"",false,false,[],false,2,24],["Land_WoodenTable_large_F",[1600.05,8500.38,0.097224],[[0.783248,0.62171,-0.000540664],[0.000690285,0,1]],0,"",false,false,[],true,2,25],["Land_Hammer_F",[1577.23,8519.03,0.023669],[[0.998906,1.47521e-005,0.0467536],[0.000858515,0.999825,-0.0186574]],0,"",true,false,[],false,1,26],["BloodSplatter_01_Small_Old_F",[1577.23,8519,-5.57899e-005],[[0,0.999826,-0.018666],[-0.02133,0.0186617,0.999598]],0,"",true,false,[],false,1,27],["Item_Antimalaricum",[1593.57,8487.49,0.575198],[[-0.484565,-0.874755,0],[0,0,1]],0,"",true,false,[],false,1,28]]
+		,
+		//--- #size
+		69.484
+]

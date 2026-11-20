@@ -1,0 +1,2 @@
+
+["checkpointlaikoro","checkpointrautake","checkpointbalabridge","checkpointkatkoulasw","checkpointkatkoulas"]

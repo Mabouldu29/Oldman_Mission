@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Plane_Civil_01_F","",[2170.17,3460.75,0.00129223],[[-0.419008,0.907983,-0.000264816],[-0.002011,-0.000636364,0.999998]],0,1,[],["a3\air_f_exp\plane_civil_01\data\btt_ext_01_redline_co.paa","a3\air_f_exp\plane_civil_01\data\btt_ext_02_redline_co.paa","a3\air_f_exp\plane_civil_01\data\btt_int_01_tan_co.paa","a3\air_f_exp\plane_civil_01\data\btt_int_02_tan_co.paa"],false,[],[true,false]],["C_Plane_Civil_01_F","",[2163,3444.3,0.00250912],[[-0.488171,0.872747,0.000954801],[0.00210265,8.21027e-005,0.999998]],0,1,[],["a3\air_f_exp\plane_civil_01\data\btt_ext_01_tribal_co.paa","a3\air_f_exp\plane_civil_01\data\btt_ext_02_tribal_co.paa","a3\air_f_exp\plane_civil_01\data\btt_int_01_co.paa","a3\air_f_exp\plane_civil_01\data\btt_int_02_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		15.246
+]

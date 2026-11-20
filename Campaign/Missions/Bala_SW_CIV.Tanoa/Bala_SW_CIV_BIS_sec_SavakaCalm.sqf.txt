@@ -1,0 +1,40 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_4_F_tanoan","BIS_OM_ambientConvo_5ym2n6o1epa44v8",[7134.35,4241.53,0.00142431],0,0.5,0,"Up",[[],[],[],["U_C_Man_casual_4_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",[" [ [""BIS_OM_ambientConvo_5ym2n6o1epa44v8""], false] spawn BIS_fnc_OM_createConversation "]],["#init",["_this disableAI ""ANIM"";_this switchmove ""Acts_CivilIdle_2"""]],["#init",["_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_4_F_tanoan","",[7163.75,4235.57,0.00148773],0,0.5,0,"Up",[[],[],[],["U_C_Man_casual_4_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilTalking_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM""; 
+ _this switchmove """"; 
+ _this playAction ""Stand"" 
+};"]],["#init",["if !(BIS_night) then {deletevehicle _this};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_sport_2_F_afro_sick","",[7174.95,4240.02,0.00135589],260.795,0.5,0,"Up",[[],[],[],["U_C_man_sport_2_sick_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = _this spawn  
+{_this disableAI ""ANIM""; 
+ _this playAction ""SitDown"";
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)}; 
+ _this enableAI ""ANIM""; 
+ _this playAction ""Stand""
+};"]]]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[7075.73,4238.76,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[7172.34,4240.78,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[30,30,30],-1],[[7077.57,4240.34,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_casual_5_F_tanoan","",[7173.72,4237.79,0.00146317],0,0.5,0,"Up",[[],[],[],["U_C_Man_casual_5_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_sport_1_F_tanoan","BIS_OM_ambientConvo_e1m65xxogz2pbac",[7162.53,4237.53,0.00146079],93.9814,0.5,0,"Up",[[],[],[],["U_C_man_sport_1_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[["#init",[" [ [""BIS_OM_ambientConvo_8m9g1jy2nyzw6tr"",""BIS_OM_ambientConvo_e1m65xxogz2pbac""], true] spawn BIS_fnc_OM_createConversation "]],["#init",["if !(BIS_night) then {deletevehicle _this};"]],["#init",["0 = _this spawn  
+{_this disableAI ""ANIM""; 
+ _this playAction ""SitDown"";
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)}; 
+ _this enableAI ""ANIM""; 
+ _this playAction ""Stand""
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_3_F_tanoan","BIS_OM_ambientConvo_8m9g1jy2nyzw6tr",[7165.1,4236.95,0.00138998],266.277,0.5,0,"Up",[[],[],[],["U_C_Man_casual_3_F",[]],[],["B_Messenger_Olive_F",[]],"H_Cap_surfer","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[["#init",["if !(BIS_night) then {deletevehicle _this};"]],["#init",["0 = _this spawn  
+{_this disableAI ""ANIM""; 
+ _this playAction ""SitDown"";
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)}; 
+ _this enableAI ""ANIM""; 
+ _this playAction ""Stand""
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_4_F_afro_sick","",[7169.64,4225.62,0.627029],344.324,0.5,0,"Up",[[],[],[],["U_C_Man_casual_4_sick_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this spawn {waituntil {sleep 1; behaviour _this == ""COMBAT""};detach _this;_this enableai ""All"";_this switchmove """";_this allowFleeing 1;};"]],["#init",["_this disableAI ""ANIM"";_this switchmove ""Acts_CivilIdle_1"""]]]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		88.521
+]

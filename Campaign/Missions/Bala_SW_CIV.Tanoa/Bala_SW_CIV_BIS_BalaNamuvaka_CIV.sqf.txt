@@ -1,0 +1,33 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Tractor_01_F","",[2737.45,5740.32,0.0457015],[[0.997141,-0.0610459,0.044526],[-0.0478218,-0.0536361,0.997415]],0,1,[],["a3\soft_f_enoch\tractor_01\data\tractor_01_2_red_co.paa"],false,[["#init",["_this lock true"]]],[true,false]],["C_Truck_02_covered_F","",[2789.46,5707.9,-0.0194926],[[-0.990551,0.135667,0.0200949],[0.0164271,-0.0281005,0.99947]],0,1,[],["a3\soft_f_beta\truck_02\data\truck_02_kab_co.paa","a3\soft_f_beta\truck_02\data\truck_02_kuz_co.paa","a3\soft_f_beta\truck_02\data\truck_02_int_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_5_F_afro","",[2736.48,5738.29,0.00121641],0,0.5,0,"Middle",[[],[],[],["U_C_Poloshirt_salmon",[]],[],[],"H_Hat_tan","G_Sport_Checkered",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_1_F_afro","BIS_OM_ambientConvo_nnvijcer7fo1lk7",[2797.57,5710.97,0.00126171],0,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_blue",[]],[],[],"H_Beret_red","G_Squares_Tinted",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[["#init",[" [ [""BIS_OM_ambientConvo_orq1mpbe618v37u"",""BIS_OM_ambientConvo_nnvijcer7fo1lk7""], true] spawn BIS_fnc_OM_createConversation "]],["#init",["0 = _this spawn   
+{_this disableAI ""ANIM"";  
+ _this playAction ""SitDown""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";  
+ _this playAction ""Stand"" 
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_2_F_afro","",[2775.46,5703.64,0.0012207],290.225,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_burgundy",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_5_F_afro","",[2800.11,5712.48,0.00138617],279.793,0.5,0,"Middle",[[],[],[],["U_C_Poloshirt_salmon",[]],[],[],"","G_Sport_Red",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[["#init",["if !(bis_night) exitwith {deletevehicle _this} "]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_4_F_afro","BIS_OM_ambientConvo_orq1mpbe618v37u",[2796.27,5714.31,0.00151873],143.916,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_tricolour",[]],[],[],"H_Cap_blk_Raven","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn   
+{_this disableAI ""ANIM"";  
+ _this playAction ""SitDown""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";  
+ _this playAction ""Stand"" 
+};"]],["#init",["if !(bis_night) exitwith {deletevehicle _this} "]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_4_F_afro","",[2765.86,5714.03,0.00123787],0,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_tricolour",[]],[],[],"H_StrawHat","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = _this spawn   
+{_this disableAI ""ANIM"";  
+ _this playAction ""SitDown""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";  
+ _this playAction ""Stand"" 
+};"]]]]]]]
+		,
+		//--- #objectData
+		[["Campfire_burning_F",[2797.95,5712.78,1.00136e-005],[[0,0.999645,0.0266571],[-0.0106641,-0.0266556,0.999588]],0,"",true,false,[],false,2,0],["Land_DuctTape_F",[2737.81,5738.3,0.000189781],[[0,0.998719,0.0506016],[-0.061218,-0.0505067,0.996846]],0,"",false,false,[],true,-1,1],["Land_Wreck_Offroad_F",[2694.68,5731.29,0.0176828],[[0.985514,0.165711,0.0360936],[-0.023996,-0.0744348,0.996937]],0,"",false,false,[],false,3,2],["Land_GarbageHeap_02_F",[2797.47,5719.55,0.0046382],[[0,0.999826,0.0186626],[-0.0106641,-0.0186616,0.999769]],0,"",false,false,[],false,3,3],["Land_GarbageHeap_03_F",[2798.33,5717.44,0.00390959],[[0,0.999872,0.0159975],[-0.0053265,-0.0159973,0.999858]],0,"",false,false,[],false,3,4],["Land_PlasticBucket_01_closed_F",[2735.71,5738.73,-0.00143051],[[0,0.99885,0.0479446],[-0.0532564,-0.0478765,0.997432]],0,"",false,false,[],true,-1,5],["Land_Sack_F",[2784.34,5723.7,1.09673e-005],[[0.878635,-0.477487,-0.00254339],[0,-0.00532655,0.999986]],0,"",false,false,[],false,1,6],["Land_Sack_F",[2783.7,5723.67,2.76566e-005],[[0.955001,0.296598,0.00157987],[0,-0.00532655,0.999986]],0,"",false,false,[],false,1,7],["Land_Sack_F",[2784.11,5723.06,2.90871e-005],[[0.210608,0.977557,0.00520708],[0,-0.00532655,0.999986]],0,"",false,false,[],false,1,8],["Land_Sacks_heap_F",[2784.15,5724.72,2.38419e-006],[[0,0.999996,0.00265199],[0.00265199,-0.00265198,0.999993]],0,"",false,false,[],false,2,9],["Item_ToolKit",[2738.06,5738.04,0.00258112],[[0.0211048,0.99843,0.0518831],[-0.061218,-0.0505067,0.996846]],0,"",true,false,[],false,2,10],["Land_WaterTank_01_F",[2774.89,5736.23,0],[[0.940792,-0.338984,0],[0,0,1]],0,"",false,false,[],false,3,11],["Land_WaterTank_03_F",[2807.43,5714.25,4.76837e-007],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,12],["Land_WaterTank_04_F",[2806.81,5713,0],[[0.935451,-0.353456,0],[0,0,1]],0,"",false,false,[],false,2,13],["Land_WoodenCounter_01_F",[2786.45,5722.14,0.000411034],[[0.319679,0.947517,0.00421561],[-0.0053265,-0.00265195,0.999982]],0,"",false,false,[],true,-1,14],["Land_WoodenCounter_01_F",[2785.18,5723.48,-0.000129223],[[0.945592,-0.325351,-0.00173302],[0,-0.00532655,0.999986]],0,"",false,false,[],true,-1,15]]
+		,
+		//--- #size
+		80.862
+]

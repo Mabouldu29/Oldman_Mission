@@ -1,0 +1,29 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","LIMITED","WEDGE","YELLOW"],[],[["C_man_shorts_1_F","",[1254.88,3025.72,0.00142407],59.449,0.5,0,"Up",[[],[],[],["U_C_Commoner_shorts",[]],[],[],"H_Bandanna_camo","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilTalking_2""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";
+ _this switchmove """";  
+ _this playAction ""Stand"" 
+};"]]]]]],[GUER,["SAFE","LIMITED","WEDGE","YELLOW"],[],[["I_C_Soldier_Bandit_4_F","",[1256.16,3026.17,0.00140762],229.632,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_4_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",1,30]]],["V_BandollierB_blk",[["30Rnd_762x39_Mag_F",4,30],["MiniGrenade",2,1]]],[],"","G_Shades_Green",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilListening_2""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";  
+ _this switchmove """";
+ _this playAction ""Stand"" 
+};"]]]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		88.521
+]

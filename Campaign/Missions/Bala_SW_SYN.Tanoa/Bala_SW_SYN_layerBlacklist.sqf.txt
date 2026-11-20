@@ -1,0 +1,2 @@
+
+["sc_balasynrestpoint","bis_sc_balaplanes","bis_balafight","bis_balaairfield_syn","bis_balacerebu_syn","bis_balabay_syn","bis_balahill_syn","bis_balalailai_syn","bis_balayanukka_syn","bis_balaheli_syn","bis_balabayconflict_syn","balagen_borderoutpost","bis_sc_balaminefield","bis_sc_sq7plane","bis_sc_syn_motorizedpatrol","bis_sc_genguarpatrol"]

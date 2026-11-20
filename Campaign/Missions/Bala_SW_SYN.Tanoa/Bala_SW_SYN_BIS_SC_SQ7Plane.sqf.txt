@@ -1,0 +1,51 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["I_C_Plane_Civil_01_F","BIS_Zipper_Plane",[2134.76,3471.62,0.000496864],[[0.993056,0.117637,-0.000717213],[0.000749795,-0.000232718,1]],0,1,[],["a3\air_f_exp\plane_civil_01\data\btt_ext_01_tribal_co.paa","a3\air_f_exp\plane_civil_01\data\btt_ext_02_tribal_co.paa","a3\air_f_exp\plane_civil_01\data\btt_int_01_tan_co.paa","a3\air_f_exp\plane_civil_01\data\btt_int_02_tan_co.paa"],false,[["#init",["_this setFuel 0.8;_this lock true;_this addEventHandler [""Killed"", {BIS_SQ7_ZipperPlane_destroyed = true
+}];"]]],[true,false]]]
+		,
+		//--- #groupData
+		[[GUER,["SAFE","LIMITED","WEDGE","BLUE"],[],[["I_C_Pilot_F","BIS_Pilot",[2133.28,3467.04,0.00143909],201.85,0.5,0,"Auto",[[],[],[],["U_I_C_Soldier_Bandit_3_F",[]],[],[],"H_Cap_marshal","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilListening_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";  
+ _this switchmove """";
+ _this playAction ""Stand"" 
+};"]]]],["I_C_Soldier_Para_1_F","BIS_Smugglera",[2132.4,3465.51,0.00143909],31.98,0.5,0,"Auto",[["arifle_AK12_F","","","",["30Rnd_762x39_AK12_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Para_1_F",[["FirstAidKit",1],["30Rnd_762x39_AK12_Mag_F",2,30]]],["V_Chestrig_khk",[["30Rnd_762x39_AK12_Mag_F",3,30],["HandGrenade",2,1]]],[],"H_Bandanna_sand","G_Shades_Green",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn 
+{ 
+    waituntil {player distance _this < 15 && BIS_dbgReputationValue >= 600 && isnil ""BIS_SQ7_created""}; 
+        [""eve_gun_runners"",""none""] call BIS_fnc_om_conversation; 
+        [ 
+            _this, 
+            Localize ""STR_A3_OM_HOLDACTION_AcceptTask"", ""\A3\Missions_F_Oldman\Data\img\HoldActions\holdAction_talk_ca.paa"",
+""\A3\Missions_F_Oldman\Data\img\HoldActions\holdAction_talk_ca.paa"",
+            ""player distance _target <12"", 
+            ""player distance _target <12"", 
+            { 
+ 
+            }, 
+            { 
+ 
+            }, 
+            { 
+                BIS_Planefsm = [""OldMan.Tanoa"", ""FSM_SuperQuests\SQ7.fsm""] call BIS_fnc_OM_EXEC; 
+                [""ta_plane_work_offer"",""none""] call BIS_fnc_om_conversation; 
+            }, 
+            { 
+            }, 
+            [], 
+            3, 
+            nil, 
+            true, 
+            false 
+        ] call BIS_fnc_holdActionAdd; 
+ };"]]]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		10
+]

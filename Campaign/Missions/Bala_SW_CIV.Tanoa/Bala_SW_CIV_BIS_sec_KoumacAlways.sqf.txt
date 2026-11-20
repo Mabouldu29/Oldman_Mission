@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_WoodenTable_02_large_F",[1219.7,2997.18,0.00194287],[[0.669107,-0.7423,-0.0358674],[0.0239963,-0.026658,0.999357]],0,"",false,false,[],true,-1,0],["Land_Campfire_F",[1221.92,2999.59,1.85966e-005],[[0,0.999488,0.031983],[0.023991,-0.0319738,0.999201]],0,"",true,false,[],false,2,1]]
+		,
+		//--- #size
+		88.521
+]

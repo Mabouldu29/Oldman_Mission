@@ -1,0 +1,16 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Para_1_F","",[4447.73,3872.81,0.00151634],184.12,0.5,0,"Down",[["arifle_AK12_F","muzzle_snds_B","","optic_MRCO",["30Rnd_762x39_AK12_Mag_F",30],[],"bipod_03_F_blk"],[],[],["U_I_C_Soldier_Para_1_F",[["FirstAidKit",1],["30Rnd_762x39_AK12_Mag_F",2,30]]],["V_Chestrig_khk",[["30Rnd_762x39_AK12_Mag_F",3,30],["HandGrenade",2,1]]],[],"H_Booniehat_khk","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["_randomChance = floor (random 10); 
+if (_randomChance >= 2) then  {deletevehicle _this} else {_this setskill 1;_this setunitpos ""Down""};"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Ground_sheet_khaki_F",[4447.62,3872.66,0.000131607],[[-0.167947,-0.978126,-0.122735],[0.0452882,-0.132028,0.990211]],0,"",true,false,[],false,2,0]]
+		,
+		//--- #size
+		20.013
+]

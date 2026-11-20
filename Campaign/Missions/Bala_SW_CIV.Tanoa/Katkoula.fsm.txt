@@ -1,0 +1,384 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Katkoula">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Start",0,250,-50.000000,-125.000000,50.000000,-75.000000,0.000000,"Start"};
+item1[] = {"Default",8,218,75.000000,-125.000000,175.000000,-75.000000,0.000000,"Default"};
+item2[] = {"Terminate",1,250,200.000000,-125.000000,300.000000,-75.000000,0.000000,"Terminate"};
+item3[] = {"Initialize",4,218,-50.000000,-50.000000,50.000000,0.000000,1.000000,"Initialize"};
+item4[] = {"Check_state",2,250,-50.000000,25.000000,50.000000,75.000000,0.000000,"Check state"};
+item5[] = {"Calm",2,250,-50.000000,250.000000,50.000000,300.000000,0.000000,"Calm"};
+item6[] = {"",7,210,-4.000000,121.000000,4.000000,129.000000,0.000000,""};
+item7[] = {"",7,210,121.000000,121.000000,129.000000,129.000000,0.000000,""};
+item8[] = {"State_0",4,218,-50.000000,175.000000,50.000000,225.000000,3.000000,"State 0"};
+item9[] = {"State_1",4,4314,75.000000,175.000000,175.000000,225.000000,4.000000,"State 1"};
+item10[] = {"Outbreak",2,250,75.000000,250.000000,175.000000,300.000000,0.000000,"Outbreak"};
+item11[] = {"_",8,218,-50.000000,325.000000,50.000000,375.000000,0.000000,""};
+item12[] = {"",7,210,121.000000,346.000000,129.000000,354.000000,0.000000,""};
+item13[] = {"",7,210,-129.000000,346.000000,-120.999992,354.000000,0.000000,""};
+item14[] = {"Sector_despawned",4,218,75.000000,25.000000,175.000000,75.000000,2.000000,"Sector" \n "despawned"};
+item15[] = {"Terminate_1",1,250,200.000000,25.000000,300.000000,75.000000,0.000000,"Terminate"};
+item16[] = {"",7,210,-129.000000,46.000000,-120.999992,54.000000,0.000000,""};
+item17[] = {"State_2",4,218,200.000000,175.000000,300.000000,225.000000,5.000000,"State 2"};
+item18[] = {"After_Outbreak",2,250,200.000000,250.000000,300.000000,300.000000,0.000000,"After Outbreak"};
+item19[] = {"",7,210,246.000000,346.000000,254.000000,354.000000,0.000000,""};
+item20[] = {"",7,210,246.000000,121.000000,254.000000,129.000000,0.000000,""};
+item21[] = {"State_3",4,218,325.000000,175.000000,425.000000,225.000000,6.000000,"State 3"};
+item22[] = {"Final",2,250,325.000000,250.000000,425.000000,300.000000,0.000000,"Final"};
+item23[] = {"",7,210,371.000000,121.000000,379.000000,129.000000,0.000000,""};
+item24[] = {"",7,210,371.000000,346.000000,379.000000,354.000000,0.000000,""};
+item25[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,1};
+link1[] = {0,3};
+link2[] = {1,2};
+link3[] = {3,4};
+link4[] = {4,6};
+link5[] = {4,14};
+link6[] = {5,11};
+link7[] = {6,7};
+link8[] = {6,8};
+link9[] = {7,9};
+link10[] = {7,20};
+link11[] = {8,5};
+link12[] = {9,10};
+link13[] = {10,12};
+link14[] = {11,13};
+link15[] = {12,11};
+link16[] = {13,16};
+link17[] = {14,15};
+link18[] = {16,4};
+link19[] = {17,18};
+link20[] = {18,19};
+link21[] = {19,12};
+link22[] = {20,17};
+link23[] = {21,22};
+link24[] = {22,24};
+link25[] = {23,21};
+link26[] = {25,21};
+globals[] = {0.000000,0,0,0,0,640,480,1,51,6316128,1,-368.067505,563.423584,970.607361,-414.899384,675,1004,1};
+window[] = {2,-1,-1,-1,-1,1109,260,1700,260,3,693};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "Katkoula";
+        class States
+        {
+                /*%FSM<STATE "Start">*/
+                class Start
+                {
+                        name = "Start";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"params [""_sector"", ""_sectorState""];" \n
+                         "" \n
+                         "[""Sector %1 in state %2"", _sector, _sectorState] call BIS_fnc_LogFormat;" \n
+                         "" \n
+                         "// Sector states" \n
+                         "#define S_DESPAWNED		0" \n
+                         "#define S_BUSY			1" \n
+                         "#define S_SPAWNED		2" \n
+                         "#define S_SPAWNED_VEHICLES	3" \n
+                         "" \n
+                         "" \n
+                         "_sector setVariable [""forceChange"", false];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Initialize">*/
+                                class Initialize
+                                {
+                                        itemno = 3;
+                                        priority = 1.000000;
+                                        to="Check_state";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Default">*/
+                                class Default
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Terminate";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Terminate">*/
+                class Terminate
+                {
+                        name = "Terminate";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Check_state">*/
+                class Check_state
+                {
+                        name = "Check_state";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"private _localState = _sector getVariable [""state"",0];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "State_2">*/
+                                class State_2
+                                {
+                                        itemno = 17;
+                                        priority = 5.000000;
+                                        to="After_Outbreak";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_spawnAfterOutbreak""" \n
+                                         "&&" \n
+                                         "_sectorState != 2" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil {_sector getVariable ""MalariaOutbreakUntil""} " \n
+                                         "	&&" \n
+                                         "	{ [date, _sector getVariable ""MalariaOutbreakUntil""] call BIS_fnc_isDateTimeNewer } " \n
+                                         "	&&" \n
+                                         "	{ [_sector getVariable [""MalariaOutbreakAfterUntil"",[2040,1,1,1,1]],date] call BIS_fnc_isDateTimeNewer }" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "State_1">*/
+                                class State_1
+                                {
+                                        itemno = 9;
+                                        priority = 4.000000;
+                                        to="Outbreak";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_spawnCalm""" \n
+                                         "&&" \n
+                                         "isNil ""_spawnOutbreak""" \n
+                                         "&&" \n
+                                         "_sectorState != 2" \n
+                                         "&&" \n
+                                         "!isNil {_sector getVariable ""MalariaOutbreak""} " \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	(isNil {_sector getVariable ""MalariaOutbreakUntil""})" \n
+                                         "	||" \n
+                                         "	(!isNil {_sector getVariable ""MalariaOutbreakUntil""} " \n
+                                         "	&&" \n
+                                         "	{ [_sector getVariable ""MalariaOutbreakUntil"",date] call BIS_fnc_isDateTimeNewer })" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "State_0">*/
+                                class State_0
+                                {
+                                        itemno = 8;
+                                        priority = 3.000000;
+                                        to="Calm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_spawnCalm""" \n
+                                         "&&" \n
+                                         "_sectorState != 2" \n
+                                         "&&" \n
+                                         "isNil {_sector getVariable ""MalariaOutbreak""} " \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Sector_despawned">*/
+                                class Sector_despawned
+                                {
+                                        itemno = 14;
+                                        priority = 2.000000;
+                                        to="Terminate_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(_sector getVariable [""#state"", -1]) == 0" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Calm">*/
+                class Calm
+                {
+                        name = "Calm";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"_spawnCalm = true;" \n
+                         "" \n
+                         "BIS_KatkoulaCalm setVariable [""condition"", ""true""];" \n
+                         "BIS_KatkoulaOutbreak setVariable [""condition"", ""false""];" \n
+                         "BIS_KatkoulaCSAT setVariable [""condition"", ""false""];" \n
+                         "BIS_KatkoulaAfterOutbreak setVariable [""condition"", ""false""];" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Check_state";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Outbreak">*/
+                class Outbreak
+                {
+                        name = "Outbreak";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/"_spawnOutbreak = true;" \n
+                         "" \n
+                         "BIS_KatkoulaCalm setVariable [""condition"", ""false""];" \n
+                         "BIS_KatkoulaOutbreak setVariable [""condition"", ""true""];" \n
+                         "BIS_KatkoulaCSAT setVariable [""condition"", ""true""];" \n
+                         "BIS_KatkoulaAfterOutbreak setVariable [""condition"", ""false""];" \n
+                         "" \n
+                         "//SET DATES / TIMEOUTS" \n
+                         "if (isNil {_sector getVariable ""MalariaOutbreakUntil""}) then " \n
+                         "{ " \n
+                         "	_sector setVariable [""MalariaOutbreakUntil"", [date,12,""h""] call BIS_fnc_calculateDatetime];" \n
+                         "	[getMarkerPos ""BIS_infectedVillageKatkoula"",12,120] spawn BIS_fnc_OM_Mosquitos;" \n
+                         "};" \n
+                         "" \n
+                         "if(isNil {_sector getVariable ""MalariaOutbreakAfterUntil""}) then" \n
+                         "{" \n
+                         "	_sector setVariable [""MalariaOutbreakAfterUntil"", [date,36,""h""] call BIS_fnc_calculateDatetime];" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Check_state";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Terminate_1">*/
+                class Terminate_1
+                {
+                        name = "Terminate_1";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "After_Outbreak">*/
+                class After_Outbreak
+                {
+                        name = "After_Outbreak";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"_spawnAfterOutbreak = true;" \n
+                         "" \n
+                         "BIS_KatkoulaCalm setVariable [""condition"", ""false""];" \n
+                         "BIS_KatkoulaCSAT setVariable [""condition"", ""false""];" \n
+                         "BIS_KatkoulaOutbreak setVariable [""condition"", ""true""];" \n
+                         "BIS_KatkoulaAfterOutbreak setVariable [""condition"", ""true""];" \n
+                         "" \n
+                         "//SET DATES / TIMEOUTS" \n
+                         "if( isNil {_sector getVariable ""MalariaOutbreakAfterUntil""} ) then { _sector setVariable [""MalariaOutbreakAfterUntil"", [date,24,""h""] call BIS_fnc_calculateDatetime] };"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Check_state";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Final">*/
+                class Final
+                {
+                        name = "Final";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"_spawnFinal = true;" \n
+                         "" \n
+                         "BIS_KatkoulaCalm setVariable [""condition"", ""false""];" \n
+                         "BIS_KatkoulaOutbreak setVariable [""condition"", ""false""];" \n
+                         "BIS_KatkoulaAfterOutbreak setVariable [""condition"", ""false""];" \n
+                         "BIS_KatkoulaFinal setVariable [""condition"", ""true""];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "State_3">*/
+                                class State_3
+                                {
+                                        itemno = 21;
+                                        priority = 6.000000;
+                                        to="Final";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_spawnFinal""" \n
+                                         "&&" \n
+                                         "_sectorState != 2" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil {_sector getVariable ""MalariaOutbreakAfterUntil""} " \n
+                                         "	&&" \n
+                                         "	{ [date, _sector getVariable ""MalariaOutbreakAfterUntil""] call BIS_fnc_isDateTimeNewer } " \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Start";
+        finalStates[] =
+        {
+                "Terminate",
+                "Terminate_1",
+        };
+};
+/*%FSM</COMPILE>*/

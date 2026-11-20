@@ -1,0 +1,22 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Van_01_transport_F","",[4551.28,2162.75,0.015213],[[0.963569,0.266893,-0.0173775],[0.0179769,0.000197582,0.999838]],0,1,[],["a3\soft_f_gamma\van_01\data\van_01_ext_black_co.paa","a3\soft_f_gamma\van_01\data\van_01_adds_co.paa","a3\soft_f_gamma\van_01\data\van_01_int_base_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Para_7_F","",[4553.1,2177.14,0.00137329],0,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Para_4_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",2,30]]],["V_Chestrig_khk",[["30Rnd_762x39_Mag_F",3,30],["HandGrenade",2,1]]],[],"H_Bandanna_camo","G_Bandanna_tan",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[GUER,["SAFE","LIMITED","WEDGE","YELLOW"],[[[4575.39,2171.02,1.52588e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[15,15,15],0],[[4556.91,2152.81,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[15,15,15],0],[[4538.25,2169.84,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["I_C_Soldier_Para_6_F","",[4550.54,2191.15,0.0012207],261.06,0.5,0,"Auto",[["arifle_AK12_GL_F","","","",["30Rnd_762x39_AK12_Mag_F",30],["1Rnd_HE_Grenade_shell",1],""],[],[],["U_I_C_Soldier_Para_1_F",[["FirstAidKit",1],["30Rnd_762x39_AK12_Mag_F",2,30]]],["V_Chestrig_oli",[["30Rnd_762x39_AK12_Mag_F",3,30],["1Rnd_HE_Grenade_shell",5,1]]],[],"H_Bandanna_blu","G_Bandanna_aviator",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["SyndikatSoldier_Default","",[4553.55,2179.53,0.00152588],196.687,0.5,0,"Auto",[["srifle_DMR_06_hunter_F","","","optic_KHS_old",["10Rnd_Mk14_762x51_Mag",10],[],""],[],[],["U_I_C_Soldier_Para_1_F",[["FirstAidKit",1],["10Rnd_Mk14_762x51_Mag",3,10]]],["V_Chestrig_khk",[["HandGrenade",2,1]]],[],"H_Beret_blk","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilTalking_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";
+ _this switchmove """";  
+ _this playAction ""Stand"" 
+};"]]]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[[[4566.45,2233.34,-4.57764e-005],"GUARD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["I_C_Soldier_Para_2_F","",[4565.9,2231.48,0.00149536],17.1162,0.5,0,"Down",[["srifle_DMR_06_hunter_F","muzzle_snds_B","","optic_KHS_blk",["10Rnd_Mk14_762x51_Mag",10],[],""],[],["hgun_Pistol_01_F","","","",["10Rnd_9x21_Mag",10],[],""],["U_I_C_Soldier_Para_2_F",[["FirstAidKit",1],["10Rnd_Mk14_762x51_Mag",3,10]]],["V_TacVest_oli",[["10Rnd_9x21_Mag",2,10],["HandGrenade",2,1],["10Rnd_Mk14_762x51_Mag",2,10],["20Rnd_762x51_Mag",2,20]]],[],"H_Bandanna_khk","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["Land_PortableLongRangeRadio_F",[4567.13,2231.33,0.00134277],[[0.914273,0.403929,-0.0307781],[-0.039967,0.165547,0.985392]],0,"",false,false,[],true,-1,0],["Land_PowderedMilk_F",[4566.83,2231.39,0.0143738],[[0,0.98618,-0.165679],[-0.039967,0.165547,0.985392]],0,"",false,false,[],true,-1,1],["Land_Canteen_F",[4567.05,2231.67,0.00120544],[[0,0.98618,-0.165679],[-0.039967,0.165547,0.985392]],0,"",false,false,[],true,-1,2],["Item_Antimalaricum",[4537.99,2168.28,0.533997],[[0,1,0],[0.00048906,0,1]],0,"",true,false,[],false,1,3]]
+		,
+		//--- #size
+		22.995
+]

@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Bodybag_01_black_F",[3232.7,5900.48,0.00546646],[[0.399838,0.915031,0.0533738],[-0.0053265,-0.0559105,0.998422]],0,"",false,false,[],true,2,0],["Land_Bodybag_01_black_F",[3231.59,5900.87,0.00621605],[[0,0.998436,0.0559113],[-0.0106641,-0.0559081,0.998379]],0,"",false,false,[],true,2,1],["Land_dirt_road_damage_long_02_F",[3229.28,5887.57,0],[[0.933114,-0.35958,0],[0,0,1]],0,"",false,false,[],false,3,2],["Land_dirt_road_damage_long_02_F",[3241.26,5898.7,0],[[-0.432459,0.901653,0],[0,0,1]],0,"",false,false,[],false,3,3],["Land_PaperBox_01_small_destroyed_brown_F",[3234.21,5888.69,0.204472],[[0,0.998719,0.0506016],[0.00532655,-0.0506009,0.998705]],0,"",false,false,[],true,-1,4],["Land_PaperBox_01_small_destroyed_brown_F",[3233.64,5889.34,0.204256],[[0.999944,-0.0106189,0],[0,0,1]],0,"",false,false,[],true,-1,5],["Land_PaperBox_01_small_ransacked_brown_F",[3235.13,5891.01,9.53674e-005],[[0,0.99957,0.0293202],[0.00532655,-0.0293197,0.999556]],0,"",false,false,[],false,1,6]]
+		,
+		//--- #size
+		88.521
+]
