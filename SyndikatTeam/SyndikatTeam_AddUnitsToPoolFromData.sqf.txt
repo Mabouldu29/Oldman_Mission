@@ -1,0 +1,48 @@
+#include "definitions.inc"
+#define GET_CONFIG_ENTRY(ENTRY,UNITYPE) configfile >> "SyndikatPoolUnits" >> UNITYPE >> ENTRY
+#define GROUP_BEHAVIOR ["AWARE", "NORMAL", "WEDGE", "YELLOW"]
+#define SOLDIER_CLASSES getArray (configfile >> "SyndikatPoolUnits" >> "classes")
+#define SOLDIER_WEIGHTS getArray (configfile >> "SyndikatPoolUnits" >> "weights")
+
+_input params [ [ "_unitsArray", [ ["SyndikatSoldier_Rifleman",1] ], [ [] ] ] ];
+/* _unitsArray = _input param [1, [ ["SyndikatSoldier_Rifleman",1] ], [ [[]] ] ]; */
+
+private _sectors = [] call BIS_fnc_OM_ModuleSyndikatTeam_getSyndikatSectors;
+
+private _poolNumber = [[ [],_logic getVariable "#groupData"]] call BIS_fnc_OM_getNumberFromData;
+private _poolMax = _logic getVariable "PoolMax";
+/* private _positionModules = _logic getVariable "unitPositions"; */
+private _sector = _logic getVariable "sector";
+private _groupData = [];
+private _level = _logic getVariable "actualLevel";
+{
+  private _unitType = objNull;
+  private _selectRandom = if(isNil {_x#0}) then  { true } else { _unitType = _x#0; false };
+  private _unitsToAdd = (_poolMax - _poolNumber) min _x#1;                    //either the wanted nr of units or just the rest to the poolMax
+
+  for "_iLoop" from 1 to _unitsToAdd do
+  {
+    if( _selectRandom) then
+    {
+      _unitType = SOLDIER_CLASSES selectRandomWeighted SOLDIER_WEIGHTS;       //if the class is not passed then select random class (weighted)
+    };
+    private _classes = ( GET_CONFIG_ENTRY( "types", _unitType ));
+    if( isNull(_classes) ) exitWith { false };                                //this unit class doesn't exist
+    private _selectedClass = selectRandom (getArray _classes);                 //select a class from the array
+    private _unitSkill = [_level] call BIS_fnc_OM_ModuleSyndikatTeam_getSkill;
+    private _unitLoadout = [_level, _selectedClass] call BIS_fnc_OM_ModuleSyndikatAgent_setGear;
+
+    _groupData pushBack
+    [
+      independent,      //side
+      GROUP_BEHAVIOR,   //behavior
+      [],               //waypoints
+      [ [_selectedClass, "", [0,0,0], 0, _unitSkill, 0, "AUTO", _unitLoadout, "", false, []] ]  //unit
+    ];
+
+  };
+  [ [ [], _groupData], _logic] call BIS_fnc_om_addToSector;
+  SVAR( _logic, "PoolPower", [ [ [],GVAR(_logic, "#groupData")]] call BIS_fnc_OM_ModuleSyndikatAgent_GetTeamPower);
+} forEach _unitsArray;
+UPDATE_POOLNUMBER();
+[MODE_DISTRIBUTE_UNITS_TO_SECTORS] call BIS_fnc_OM_ModuleSyndikatTeam;

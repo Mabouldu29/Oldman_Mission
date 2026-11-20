@@ -1,0 +1,6 @@
+#include "definitions.inc"
+
+[ EVENT_DESTROY, uiNamespace getVariable "BIS_OM_SyndikatTeam_ID" ] call BIS_fnc_OM_handleMapControls;                      //we don't need the handling of the map
+SWITCH_TO_STANDARD_MODE();
+
+//TODO: Deactivate the map target mode after closing (in case the CANCEL button was pressed, the target mode is still active)

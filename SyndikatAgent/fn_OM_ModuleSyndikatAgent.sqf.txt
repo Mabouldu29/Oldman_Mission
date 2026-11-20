@@ -1,0 +1,81 @@
+private _fnc_scriptName = 'BIS_fnc_OM_ModuleSyndikatAgent';
+
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "SyndikatAgentFunctions.sqf"
+#include "\a3\Missions_F_Oldman\Systems\scripts\SyndikatCommon\SyndikatCommon.sqf"
+#include "\a3\Missions_F_Oldman\Systems\scripts\SyndikatCommon\SyndikatsInfo.sqf"
+/* #include "\a3\Missions_F_Oldman\Systems\UI\SyndikatPool\DefinesSyndikatPool.inc" */
+
+
+
+_mode = param [0,"",[""]];
+_input = param [1,[],[[]]];
+private _logic = _input param [0, SYNDIKAT_AGENT_LOGIC, [objNull, nil, "", true, [], 999 ]]; // Module logic
+/* (str _this) call BIS_fnc_log; */
+
+
+
+switch _mode do
+{
+	// Default object init
+	case "init":
+	{
+		//Called one time, on the start of the mission
+		WaitUntil{!isNil "BIS_missionInitDone"};
+		/* ["OM_SyndikatAgent","RscDisplayLoadingOM"] call bis_fnc_startloadingscreen; */
+		[true, ""] call BIS_fnc_OM_loadingScreenWrapper;
+		"BOOT: SyndikatAgent init " call BIS_fnc_Log;
+		[_logic] call _Init;
+		/* "OM_SyndikatAgent" call bis_fnc_endloadingscreen; */
+		[false, ""] call BIS_fnc_OM_loadingScreenWrapper;
+		"BOOT: SyndikatAgent init end" call BIS_fnc_Log;
+	};
+	case "AddUnitsToPool":
+	{
+		if( GVAR(SYNDIKAT_AGENT_LOGIC, "enableSystem") ) then
+		{	[SYNDIKAT_AGENT_LOGIC, _this#1] call _AddUnitsToPool; };
+	};
+
+	//select the event
+	case "EventSelectTarget":
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{	[_logic, _input select 1] call _EventSelectTarget; };
+	};
+	case "UpdateDebugInfo":
+	{
+		[_logic] call _UpdateDebugInfo;
+	};
+	case "ConfigurePool":
+	{
+		[] spawn _ConfigurePool;
+	};
+	case "GetNumbersFromUI":
+	{
+		[_logic, _this#1#1#1] spawn _GetNumbersFromUI;
+	};
+	case "Enable":
+	{
+		[true, _input#0] call _EnableSystem;
+	};
+	case "Disable":
+	{
+		[false, [false]] call _EnableSystem;
+	};
+	case "SetAgentValue":
+	{
+		[missionNamespace getVariable "BIS_OM_SyndikatAgent_logic", _input#0, _input#1] spawn _SetAgentValue;
+	};
+	case "LevelUp":
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{	[_logic, +1] call _Level };
+	};
+	case "LevelDown":
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{	[_logic, -1] call _Level };
+	};
+};
+
+SYNDIKAT_UPDATE_INFO_ASSAULT();

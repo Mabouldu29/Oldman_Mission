@@ -1,0 +1,77 @@
+#ifndef __SYNDIKAT_TEAM_COMMON_DEFINITIONS
+#define __SYNDIKAT_TEAM_COMMON_DEFINITIONS 1
+
+#define MODE_INIT 										    "init"
+#define MODE_ADD_UNITS								    1
+#define MODE_ADD_UNITS_FROM_DATA 			    2
+#define MODE_ACTIVATE_CAMP 						    3
+#define MODE_DEACTIVATE_CAMP 					    4
+#define MODE_CREATE_ASSAULT 					    5
+#define MODE_DISTRIBUTE_UNITS_TO_SECTORS  6
+#define MODE_REMOVE_UNITS_FROM_POOL       7
+#define MODE_RETURN_UNITS_TO_POOL         8
+#define MODE_LEVEL_UP                     9
+#define MODE_LEVEL_DOWN                   10
+
+#define BIS_SYNDIKATTEAM_LOGIC                  (missionNameSpace getVariable "BIS_OM_SyndikatTeam_logic")
+
+#define DIRECT_ACTIVATION_ENABLED               2
+#define INDIRECT_ACTIVATION_ENABLED             4
+
+#define SYNDIKATTEAM_SET_FLAG(FLAG)             \
+BIS_SYNDIKATTEAM_LOGIC setVariable ["SyndikatTeamFlags", [ BIS_SYNDIKATTEAM_LOGIC getVariable ["SyndikatTeamFlags", 0], FLAG] call BIS_fnc_bitflagsSet ]
+#define SYNDIKATTEAM_CLEAR_FLAG(FLAG)           \
+BIS_SYNDIKATTEAM_LOGIC setVariable ["SyndikatTeamFlags", [ BIS_SYNDIKATTEAM_LOGIC getVariable ["SyndikatTeamFlags", 0], FLAG] call BIS_fnc_bitflagsUnSet ]
+
+#define SYNDIKATTEAM_IS_FLAG_ENABLED(FLAG)      \
+[ BIS_SYNDIKATTEAM_LOGIC getVariable ["SyndikatTeamFlags",DIRECT_ACTIVATION_ENABLED], FLAG ] call BIS_fnc_bitflagsCheck
+
+#define SYNDIKATTEAM_SET_ASSAULT_DISCOUNT(VALUE)  BIS_SYNDIKATTEAM_LOGIC setVariable ["assaultDiscount", VALUE];
+#define SYNDIKATTEAM_GET_ASSAULT_DISCOUNT()       BIS_SYNDIKATTEAM_LOGIC getVariable ["assaultDiscount", 0];
+
+#define GUER INDEPENDENT
+
+//LEVELING OF SYNDIKATS
+#define INDEX_PRIMARY_WEAPON                          0
+  #define INDEX_PRIMARY_WEAPON_TYPE                   0
+  #define INDEX_PRIMARY_WEAPON_SILENCER               1
+  #define INDEX_PRIMARY_WEAPON_POINTER                2
+  #define INDEX_PRIMARY_WEAPON_OPTIC                  3
+  #define INDEX_PRIMARY_WEAPON_LOADEDMAG_PRIMARY      4
+  #define INDEX_PRIMARY_WEAPON_LOADEDMAG_SECONDARY    5
+  #define INDEX_PRIMARY_WEAPON_BIPOD                  6
+
+#define INDEX_SECONDARY_WEAPON                        1
+
+#define INDEX_VEST                                    4
+  #define INDEX_VEST_TYPE                             0
+  #define INDEX_VEST_ITEMS                            1 //Magazines: [type, ammo, count]
+
+#define INDEX_ITEMS                                   6
+
+//Syndikats need either to achieve X wins or they need to be equipped by player via stashes in the defined amount
+//Equipment and wins are summed up, therefore to level up they don't need to achieve the absolute numbers
+#define LEVEL_0_WINS                                    0         //How many wins Syndikats need to achieve level 0
+#define LEVEL_0_EQUIPS                                  0         //How much of the equipment (in $) Syndikats need to achieve level 0
+#define LEVEL_1_WINS                                    6         //How many wins Syndikats need to achieve level 1
+#define LEVEL_1_EQUIPS                               50000        //How much of the equipment (in $) Syndikats need to achieve level 1
+#define LEVEL_2_WINS                                   20         //How many wins Syndikats need to achieve level 2 (the difference is needed i.e 20 - 6 = 14)
+#define LEVEL_2_EQUIPS                              125000        //How much of the equipment (in $) Syndikats need to achieve level 2 (the difference is needed i.e 125000 - 50000 = 75000)
+
+#define GET_MAGAZINE_TYPES(WEAPON) getArray (configfile >> "CfgWeapons" >> WEAPON >> "magazines")
+
+#define SYNDIKAT_TEAM_LOGIC (missionNamespace getVariable 'BIS_OM_SyndikatTeam_logic')
+
+#define GET_UNITS_BACK_AFTER_ASSAULT(QUEST_ID) \
+	[MODE_RETURN_UNITS_TO_POOL, [QUEST_ID]] call BIS_fnc_OM_ModuleSyndikatTeam;
+
+#define GIVE_PLAYER_MORE_RECRUITS(SUCCESS) \
+	private _poolMax = (BIS_SyndikatTeam getVariable 'poolMax'); \
+	private _poolInitNumber = (BIS_SyndikatTeam getVariable 'poolNumber');\
+	private _randomArray = if(SUCCESS == 1) then {[3,3,3]} else {[1,2,3]};\
+	['AddUnitsToPoolFromData', [nil,[[nil,round random ( if(_poolInitNumber >= _poolMax/2 ) then { _randomArray }	else { [_poolMax/(8*SUCCESS), _poolMax/(4*SUCCESS), _poolMax/(2*SUCCESS)] } )]]]] call BIS_fnc_OM_ModuleSyndikatTeam;
+
+#define LEVEL_ADD_WIN [1] spawn BIS_fnc_OM_ModuleSyndikatAgent_setLevel;
+#define LEVEL_ADD_STASH_EQUIP(PRICE) [0, PRICE] spawn BIS_fnc_OM_ModuleSyndikatAgent_setLevel
+
+#endif

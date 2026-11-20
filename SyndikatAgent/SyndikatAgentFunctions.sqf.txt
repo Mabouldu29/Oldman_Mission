@@ -1,0 +1,664 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "\a3\Missions_F_Oldman\Systems\UI\SyndikatPool\DefinesSyndikatPool.inc"
+#include "definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\defines\questDefines.inc"
+
+#define TIME_FLOAT_CONVERT_HOURS		0.000114155			// 1/(365*24)
+#define TIME_FLOAT_CONVERT_MINUTES	0.000001903			// 1/(60*365*24)
+#define TIME_FLOAT_CONVERT_SECONDS	0.0000000317146		// 1/(3600*365*24)
+
+//definitions for the sectors array structure
+#define BASE_NAME				0
+#define BASE_POWER			1
+#define BASE_TIMESTAMP	2
+
+#define SOLDIER_CLASSES getArray (configfile >> "SyndikatPoolUnits" >> "classes")
+#define SOLDIER_WEIGHTS getArray (configfile >> "SyndikatPoolUnits" >> "weights")
+#define GET_CONFIG_ENTRY(ENTRY,UNITYPE) configfile >> "SyndikatPoolUnits" >> UNITYPE >> ENTRY
+#define SYNDIKATPOOL_UNITS ((_logic getVariable 'basicgroup') select 1 select 0 select 3)
+#define SYNDIKATPOOL_GROUPS ((_logic getVariable 'basicgroup') select 1)
+#define GROUP_BEHAVIOR ["AWARE", "NORMAL", "WEDGE", "YELLOW"]
+
+#define DISTANCE_TO_DISAPPEAR             200
+#define MIN_TIME_AFTER_EVENT_FINISHED     180
+
+BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo";
+  if(BIS_SyndikatPool_Debug) then
+  {
+    private _logic = MGVAR("BIS_OM_SyndikatAgent_logic");
+    params [ "_uiItem" ];
+    GVAR( _logic, "uiToUpdate") pushBackUnique _uiItem;
+  };
+};
+
+BIS_fnc_OM_ModuleSyndikatAgent_returnGroupsToPool =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatAgent_returnGroupsToPool";
+  params [ "_data", ["_target", [0,0,0], [[]] ] ];
+  /* ["Data: %1", _data] call BIS_fnc_LogFormat; */
+
+  if(count _data > 0) then
+  {
+    private _arrOfUnits = [];
+    { _arrOfUnits append (units _x) } foreach (_data#1);
+    (str _arrOfUnits) call BIS_fnc_log;
+    ["SYNDIKATAGENT: Returning %1 Syndikat units to the pool after the succesfully finished assault", count _arrOfUnits] call BIS_fnc_logFormat;
+    {
+      _x doMove _target;
+      [_x] spawn
+      {
+				scriptName "BIS_fnc_OM_ModuleSyndikatAgent_returnGroupsToPool/Spawn1";
+        private _unit = _this select 0;
+        private _logic = MGVAR("BIS_OM_SyndikatAgent_logic");
+        if( alive _unit ) then
+        {
+          WaitUntil{sleep 1; (player distance _unit) > DISTANCE_TO_DISAPPEAR};
+          private _groupToAdd = ([_unit] call BIS_fnc_om_scanAndDelete)#1#0;
+          (str _groupToAdd) call BIS_fnc_Log;
+          private _basicGroup = GVAR(_logic, 'basicGroup');
+          private _actualNumberOfUnits = [_basicGroup] call BIS_fnc_OM_ModuleSyndikatAgent_getNumberFromData;
+          if( _actualNumberOfUnits < GVAR( _logic, 'poolMax') ) then
+          {
+            (_basicGroup#1) pushBack _groupToAdd;
+            SVAR( _logic, "PoolInitNumber", _actualNumberOfUnits );
+            SVAR( _logic, "PoolPower", [_basicGroup] call BIS_fnc_OM_ModuleSyndikatAgent_GetTeamPower );
+          };
+        };
+      };
+    } forEach _arrOfUnits;
+  }
+  else
+  {
+    //we are trying to get non existing groups (most likely the support was canceled prematurely), lets get back groups from the backup
+    private _logic = MGVAR("BIS_OM_SyndikatAgent_logic");
+    {
+        //TODO: do it properly (we are counting groups, but in group could be more than one soldier)
+        if( ([GVAR(_logic,"basicGroup")] call BIS_fnc_OM_ModuleSyndikatAgent_getNumberFromData) < GVAR( _logic, "poolMax" ) ) then
+        {
+          SYNDIKATPOOL_GROUPS pushBack _x;
+        };
+    } forEach (GVAR(_logic, "copyOfUnits"))#1;    //copy units back to Pool, but add them in case another units appeared in the pool meanwhile
+    ["SYNDIKATAGENT: Returning %1 Syndikat units to the pool after the assault was canceled before it started", count ((GVAR(_logic, "copyOfUnits")) select 1)] call BIS_fnc_logFormat;
+    SVAR( _logic, "copyOfUnits", nil);
+    SVAR( _logic, "PoolInitNumber",  [GVAR(_logic,"basicGroup")] call BIS_fnc_OM_ModuleSyndikatAgent_getNumberFromData );
+    SVAR( _logic, "PoolPower", [GVAR(_logic,"basicGroup")] call BIS_fnc_OM_ModuleSyndikatAgent_GetTeamPower );
+  };
+};
+
+BIS_fnc_OM_ModuleSyndikatAgent_getNumberFromData =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatAgent_getNumberFromData";
+ params ["_data"];
+ private _power = 0;
+ {
+  _power = _power + count (_x#3);
+ } forEach (_data#1);
+ _power
+};
+
+BIS_fnc_OM_ModuleSyndikatAgent_setTimeStamp =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatAgent_setTimeStamp";
+  private _logic = MGVAR("BIS_OM_SyndikatAgent_logic");
+  params [ [ "_sector", objNull, [objNull] ], [ "_date", date, [[]] ] ];
+  private _sectors = GVAR(_logic, "sectors");
+  _index = [ GVAR(_logic, "sectors"), _sector ] call BIS_fnc_findNestedElement;
+  (_sectors select (_index select 0)) set [2, _date];
+};
+
+BIS_fnc_OM_ModuleSyndikatAgent_BuildSectorsData =
+{
+		scriptName "BIS_fnc_OM_ModuleSyndikatAgent_BuildSectorsData";
+		private _logic = MGVAR("BIS_OM_SyndikatAgent_logic");
+		private _restrictedAreas = ([false] call BIS_fnc_OM_SectorGetSectors) select 0;
+		private _sectors = [];
+		{
+      private _newDate = [date, -1*((_logic getVariable "minTimeBetweenEvents"))] call BIS_fnc_CalculateDateTime;
+      ["Sector %1, New date = %2", _x, _newDate] call BIS_fnc_LogFormat;
+      _sectors pushback [_x, [_x] call BIS_fnc_OM_getSectorPower, _newDate ];
+		} forEach _restrictedAreas;
+		/* SVAR(_logic, "sectors", _sectors); */
+		_sectors
+};
+BIS_fnc_OM_ModuleSyndikatAgent_UpdateSectorsData =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatAgent_UpdateSectorsData";
+  {
+    _x set [1, [_x select 0] call BIS_fnc_OM_getSectorPower];
+  } forEach (SYNDIKAT_AGENT_LOGIC getVariable "sectors");
+  SYNDIKAT_AGENT_LOGIC getVariable "sectors"
+};
+
+BIS_fnc_OM_ModuleSyndikatAgent_GetActiveQuests =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatAgent_GetActiveQuests";
+  count ([["questTemplate", "SupportQuestTemplate_SyndikatAgent"], false] call bis_fnc_questGetDataMultiple)
+};
+
+BIS_fnc_OM_ModuleSyndikatAgent_FilterSectors =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatAgent_FilterSectors";
+	//filter all sectors based on power and timeout
+	params [ ["_sectors", objNull, [[]] ], ["_power",0, [999] ], ["_timeStamp", date, [[],999] ], ["_range", 99999, [9999]], ["_timeUnit", "s", ["s"] ] ];
+  private _selectedSectors = [];
+	{
+		if(_x#1 <= _power && _x#1 > 0) then
+		{
+
+			private _newdate = [ _x#2, _timeStamp, _timeUnit ] call BIS_fnc_CalculateDateTime;
+			private _dateIsNewer = [date, _newdate] call BIS_fnc_IsDateTimeNewer;
+			if( _dateIsNewer ) then
+			{
+				_selectedSectors pushBack _x;
+			};
+		};
+	} forEach _sectors;
+
+	_selectedSectors select {(_x select 0) distance2D player <= _range};
+};
+
+
+BIS_fnc_OM_ModuleSyndikatAgent_GetTeamPower =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatAgent_GetTeamPower";
+	params [ ["_SyndikatGroup", SYNDIKATPOOL_BASIC_GROUP, [[]] ] ];
+	[_SyndikatGroup] call BIS_fnc_OM_getPowerFromData
+};
+
+private _UpdateDebugInfo =
+{
+	scriptName "_UpdateDebugInfo";
+	if(!BIS_SyndikatPool_Debug) exitWith {-1};
+	params [ ["_logic", objNull, [objNull] ]];
+	waitUntil
+	{
+		_display = [] call BIS_fnc_displayMission;
+		!isNull _display;
+	};
+	private _syndikatAgentDebugUI = UGVAR("_syndikatAgentDebugUI");
+  if(isNil "_syndikatAgentDebugUI") exitWith {-1};
+	if( GVAR(_logic, "State") == SYNDIKATAGENT_STATE_RUNNING) then
+	{
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTACTUALPOOLVALUE ctrlSetText (str (GVAR(_logic, "poolInitNumber")));
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTPOOLMAXVALUE ctrlSetText (str (GVAR(_logic, "poolMax")));
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTPOOLMINVALUE ctrlSetText (str (GVAR(_logic, "poolMin")));
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTINCOMEUNITSVALUE ctrlSetText (str (GVAR(_logic, "poolIncomeUnits")));
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTINCOMETIMEVALUE ctrlSetText (str (GVAR(_logic, "poolIncomeTime")));
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTBASEPOWERVALUE ctrlSetText (str (GVAR(_logic, "basePower")));
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTBASESELECTEDVALUE ctrlSetText (str (GVAR(_logic, "baseObject")));
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTNEXTEVENTDATEOFFSETVALUE ctrlSetText (str (GVAR(_logic, "EventSelectionPeriod")));
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTTEAMPOWERVALUE ctrlSetText (str (GVAR(_logic, "poolPower")));
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTBASECOOLDOWNVALUE ctrlSetText (str (GVAR(_logic, "minTimeBetweenEvents")));
+		_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTNEXTEVENTDATEVALUE	ctrlSetText str (floor (([date, GVAR(_logic, "NextEventDate")] call BIS_fnc_CalculateDateTime) / 60));
+		//_syndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTNEXTEVENTDATEVALUE	ctrlSetText (format ["%1.%2 %3:%4",_eventDate select 2, _eventDate select 1, _eventDate select 3, _eventDate select 4]);
+		{
+			[_syndikatAgentDebugUI, _x, _logic] spawn
+			{
+				scriptName "_UpdateDebugInfo/Spawn1";
+				(_this select 0) displayCtrl (_this select 1) ctrlSetTextColor [0.64, 0.13, 0.13, 0.99];
+				sleep 0.5;
+				(_this select 0) displayCtrl (_this select 1) ctrlSetTextColor [0.91, 1.0, 1.0, 0.94];
+				GVAR( _this select 2, "uiToUpdate") call BIS_fnc_arrayPop;
+			};
+
+		} forEach GVAR( _logic, "uiToUpdate");
+	};
+};
+
+private _Init =
+{
+	scriptName "_Init";
+  params [ ["_logic", objNull, [objNull] ]];
+
+  #ifdef SYNDIKATPOOL_DEBUG
+    if(isNil "BIS_SyndikatPool_Debug") then
+    { BIS_SyndikatPool_Debug = SYNDIKATPOOL_DEBUG };
+  #else
+    if(isNil "BIS_SyndikatPool_Debug") then
+    { BIS_SyndikatPool_Debug = false }
+  #endif
+
+	SMGVAR("BIS_OM_SyndikatAgent_logic", _logic);
+  SVAR( _logic, "State", SYNDIKATAGENT_STATE_RUNNING);
+  private _lastEventDate = [date, -1*MIN_TIME_AFTER_EVENT_FINISHED] call BIS_fnc_CalculateDateTime;
+  SVAR( _logic, "LastEventDate", _lastEventDate );
+	private _newDate = [date, (GVAR(_logic,"EventSelectionPeriod"))] call BIS_fnc_CalculateDateTime;
+	SVAR( _logic, "NextEventDate", _newDate);
+  SVAR( _logic, "poolIncomeTime", (GVAR( _logic, "poolIncomeTime"))*60 );
+  SVAR( _logic, "questIDs", -1);
+
+	//Initialize the Syndikat Pool
+	private _basicGroup = synchronizedObjects _logic;
+	if( count _basicGroup > 0 ) then
+	{
+		_basicGroup = [_basicGroup] call BIS_fnc_om_scanAndDelete;
+	}
+	else
+	{
+		//use the very basic group if any unit is synchronized to the module
+		_basicGroup = SYNDIKATPOOL_BASIC_GROUP;
+	};
+
+  SVAR( _logic, "basicGroup", _basicGroup );
+  SVAR( _logic, "PoolInitNumber", [_basicGroup] call BIS_fnc_OM_ModuleSyndikatAgent_getNumberFromData );
+  SVAR( _logic, "PoolPower", [_basicGroup] call BIS_fnc_OM_ModuleSyndikatAgent_GetTeamPower );
+	SVAR( _logic, "sectors", [] call BIS_fnc_OM_ModuleSyndikatAgent_BuildSectorsData );
+  [] spawn _DumpSectorsInfo;
+  _logic setVariable [ "levels", count (getArray (configFile >> "SyndikatGear" >> "primaryWeapons")) ];
+  _logic setVariable [ "actualLevel", 0 ];
+
+
+	SVAR(_logic, "uiToUpdate", []);
+
+	private _UIeh = addMissionEventHandler
+  ["Map",
+   {
+		 scriptName "_Init/MapHandler";
+    params ["_mapIsOpened", "_mapIsForced"];
+   	if(BIS_SyndikatPool_Debug && {_mapIsOpened}) then
+	 	{
+		 	USVAR("_syndikatAgentDebugUI", findDisplay 46 createDisplay "RscSyndikatPool");
+			["UpdateDebugInfo", [MGVAR("BIS_OM_SyndikatAgent_logic")] ] call BIS_fnc_OM_ModuleSyndikatAgent;
+			[] spawn
+			{
+				scriptName "_Init/MapHandler/Spawn1";
+				private _controls = [IDC_SYNDIKATPOOL_EDITACTUALPOOLVALUE, IDC_SYNDIKATPOOL_EDITPOOLMINVALUE, IDC_SYNDIKATPOOL_EDITPOOLMAXVALUE, IDC_SYNDIKATPOOL_EDITINCOMEUNITSVALUE, IDC_SYNDIKATPOOL_EDITINCOMETIMEVALUE];
+				{
+					ctrlEnable [_x, false];
+				} foreach _controls;
+				uiSleep 2;
+				{
+					ctrlEnable [_x, true];
+				} foreach _controls;
+			};
+		}
+		else
+		{
+			(UGVAR("_syndikatAgentDebugUI")) closeDisplay 1;
+		};
+   }
+  ];
+
+  [_logic] spawn
+  {
+    scriptName "syndikatAgent_eventLoop";
+    //timer 1 - for selecting events
+    private _logic = _this select 0;
+    private "_diff";
+    while {true} do
+    {
+      private _originalDate = date;
+      private _originalPeriod = GVAR(_logic, "EventSelectionPeriod");
+      private _newDate = [_originalDate, _originalPeriod] call BIS_fnc_CalculateDateTime;
+      WaitUntil
+      {
+        Sleep 1;
+        if(_originalPeriod != GVAR(_logic, "EventSelectionPeriod") || _logic getVariable ["BIS_restartTimer", false]) then
+        {
+          _originalDate = date;
+          _originalPeriod = GVAR(_logic, "EventSelectionPeriod");
+          _newDate = [_originalDate, GVAR(_logic, "EventSelectionPeriod")] call BIS_fnc_CalculateDateTime;
+          _logic setVariable ["BIS_restartTimer", false];
+        }; //value updated, reset the datetime the new event will be computed from
+
+        /* ([date, _newDate] call BIS_fnc_IsDateTimeNewer)
+        ||
+        (([date, _newDate] call BIS_fnc_CompareDateTimes) isEqualType true) */
+         _diff = [date, _newDate, "m"] call BIS_fnc_CalculateDateTime;
+         _diff <= 0;
+      };
+      ["EventSelectTarget", [_logic, _diff]] spawn BIS_fnc_OM_ModuleSyndikatAgent
+    };
+  };
+
+  [_logic] spawn
+  {
+    scriptName "syndikatAgent_teamIncrease";
+    //timer 2 - for increasing the team
+    private _logic = _this select 0;
+
+    while {true} do
+    {
+      private _originalDate = date;
+      private _poolIncomeUnits = GVAR(_logic, "PoolIncomeUnits");
+      private _poolIncomeTime = GVAR(_logic, "poolIncomeTime");
+      private _newDate = _originalDate;
+
+
+      WaitUntil
+      {
+        Sleep 1;
+        if( _poolIncomeUnits != GVAR(_logic, "PoolIncomeUnits")) then {_poolIncomeUnits = GVAR(_logic, "PoolIncomeUnits"); _originalDate = date; "income units changed" call BIS_fnc_log; };
+        if( _poolIncomeTime != GVAR(_logic, "poolIncomeTime")) then {_poolIncomeTime = GVAR(_logic, "poolIncomeTime"); _originalDate = date; ["income TIME changed to: %1", _poolIncomeTime] call BIS_fnc_log;}; //in case the value is changed during the game. It would add many units in case there was a lower value before.
+        _newDate = [_originalDate, GVAR(_logic, "poolIncomeTime")] call BIS_fnc_CalculateDateTime;
+        ([date, _newDate] call BIS_fnc_IsDateTimeNewer)     //date is greater
+        ||
+        (([date, _newDate] call BIS_fnc_CompareDateTimes) isEqualType true)
+      };
+      private _unitsToAdd = (round ((([ _originalDate, date ] call BIS_fnc_CalculateDatetime))/_poolIncomeTime)) * _poolIncomeUnits;
+      /* ["Wanted Units: %1", _unitsToAdd] call BIS_fnc_LogFormat; */
+      [
+        "AddUnitsToPool",
+        [ [nil, _unitsToAdd] ]
+      ] spawn BIS_fnc_OM_ModuleSyndikatAgent;
+      //hack - should be part of the Syndikat Team
+      if(SYNDIKATTEAM_IS_FLAG_ENABLED(DIRECT_ACTIVATION_ENABLED)) then
+      {
+        switch (GET_REPUTATION_LEVEL()) do
+        {
+            case (0): { [ MODE_ADD_UNITS_FROM_DATA, [ [ [nil,round random[1,1,2] ] ]] ] call BIS_fnc_OM_ModuleSyndikatTeam };
+            case (1): { [ MODE_ADD_UNITS_FROM_DATA, [ [ [nil,round random[2,3,4] ] ]] ] call BIS_fnc_OM_ModuleSyndikatTeam };
+            case (2): { [ MODE_ADD_UNITS_FROM_DATA, [ [ [nil,round random[3,3,5] ] ]] ] call BIS_fnc_OM_ModuleSyndikatTeam };
+        };
+      };
+
+    };
+  };
+
+  [_logic] spawn
+  {
+    scriptName "syndikatAgent_debugUpdate";
+    //timer 3 - for debug update
+    while {true} do
+    {
+      ["UpdateDebugInfo", [_this select 0]] spawn BIS_fnc_OM_ModuleSyndikatAgent;
+      Sleep SYNDIKATPOOL_DEBUG_UPDATE_INTERVAL;
+    };
+  };
+};
+
+private _AddUnitsToPool =
+{
+	scriptName "_AddUnitsToPool";
+  params [ "_logic", ["_unitsArray", [ ["SyndikatSoldier_Rifleman",1] ], [ [[]] ] ] ];
+  private _poolNumber = [GVAR( _logic, "basicGroup" )] call BIS_fnc_OM_getNumberFromData;
+  private _poolMax = GVAR(_logic, "PoolMax");
+  private _level = _logic getVariable "actualLevel";
+  {
+    private _unitType = _x#0;
+    private _selectRandom = if(isNil "_unitType") then {true} else {false};
+    private _unitsToAdd = (_poolMax - _poolNumber) min _x#1;                    //either the wanted nr of units or just the rest to the poolMax
+
+    for "_iLoop" from 1 to _unitsToAdd do
+    {
+      if( _selectRandom) then
+      {
+        _unitType = SOLDIER_CLASSES selectRandomWeighted SOLDIER_WEIGHTS;       //if the class is not defined then select random class (weighted)
+      };
+
+      private _classes = (GET_CONFIG_ENTRY( "types", _unitType ));
+      if( isNull(_classes) ) exitWith { false };                                //this unit class doesn't exist
+      private _selectedClass = selectRandom (getArray _classes);                 //select a class from the array
+      private _unitSkill = [_level] call BIS_fnc_OM_ModuleSyndikatTeam_getSkill;
+      private _unitLoadout = [_level, _selectedClass] call BIS_fnc_OM_ModuleSyndikatAgent_setGear;
+      private _unitPosition = selectRandom (getArray (GET_CONFIG_ENTRY("positions",_unitType))); //TODO: function get free position (post)
+      private _newUnit = [_selectedClass, "", _unitPosition, 0, _unitSkill, 0, "AUTO", _unitLoadout, "", false, []];
+      private _newGroup = [independent, GROUP_BEHAVIOR, [], [_newUnit]];
+      ["SYNDIKATAGENT: adding %1 to pool on level %2", _selectedClass, _level] call BIS_fnc_logFormat;
+      SYNDIKATPOOL_GROUPS pushBack _newGroup;
+      _poolNumber = _poolNumber + 1;
+      SVAR( _logic, "PoolPower", [GVAR(_logic, "basicGroup")] call BIS_fnc_OM_ModuleSyndikatAgent_GetTeamPower);
+  		SVAR(_logic, "PoolInitNumber", _poolNumber);
+      [IDC_SYNDIKATPOOL_TEXTACTUALPOOLVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+      [IDC_SYNDIKATPOOL_TEXTBASEPOWERVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+    };
+  } forEach _unitsArray;
+};
+
+private _EventSelectTarget =
+{
+		scriptname "_EventSelectTarget";
+    params [ ["_logic", objNull, [objNull] ], "_diff"];
+    ["SYNDIKATAGENT: Starting to select the target on %1", date] call BIS_fnc_logFormat;
+    ["SYNDIKATAGENT: the actual pool is %1", GVAR(_logic, "PoolInitNumber")] call BIS_fnc_logFormat;
+    if (is3DEN) exitWith {};
+    if ( ([] call BIS_fnc_OM_ModuleSyndikatAgent_GetActiveQuests) >= (GVAR(_logic, "MaximumActiveSupports")) ) exitWith
+    {
+      ["SYNDIKATAGENT: Target selection FAILED: there are already %1 active Syndikats assaults", GVAR(_logic, "MaximumActiveSupports")] call BIS_fnc_logFormat;
+      SVAR( _logic, "baseObject", "Quests already active" );
+      [IDC_SYNDIKATPOOL_TEXTBASESELECTEDVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+    };
+    if( _diff <= (-1*ALLOWED_DELAY)) exitWith
+    {
+      ["SYNDIKATAGENT: Target selection FAILED: Allowed delay < %1", ALLOWED_DELAY] call BIS_fnc_logFormat;
+      SVAR( _logic, "baseObject", "Allowed delay" );
+      [IDC_SYNDIKATPOOL_TEXTBASESELECTEDVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+    };
+
+    private _lastEventDate = GVAR( _logic, "LastEventDate");
+    private _minDate = [_lastEventDate, MIN_TIME_AFTER_EVENT_FINISHED] call BIS_fnc_CalculateDateTime;
+    if!( [date, _minDate] call BIS_fnc_IsDateTimeNewer ) exitWith
+    {
+      ["SYNDIKATAGENT: Target selection FAILED: Too early, the last fight was on %1", _lastEventDate] call BIS_fnc_logFormat;
+      SVAR( _logic, "baseObject", "Too early after Event" );
+      [IDC_SYNDIKATPOOL_TEXTBASESELECTEDVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+    };
+
+    //private _probabilityOfEvent = linearConversion [0, TEMP_MAX_BASES_ON_ISLAND, count _sectors, 0,1,true];
+    if!( random 1 <= (_logic getVariable ["SupportProbability", 1]) ) exitWith
+    {
+      ["SYNDIKATAGENT: Target selection FAILED: Probability to small", _lastEventDate] call BIS_fnc_logFormat;
+      SVAR( _logic, "baseObject", "Probability" );
+      [IDC_SYNDIKATPOOL_TEXTBASESELECTEDVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+    };
+    if( GVAR( _logic, "poolInitNumber" ) <  GVAR( _logic, "poolMin" ) ) exitWith
+    {
+      ["SYNDIKATAGENT: Target selection FAILED: Number of Syndikats is under minimum: %1",  GVAR( _logic, "poolMin" )] call BIS_fnc_logFormat;
+      SVAR( _logic, "baseObject", "Low Pool" );
+      [IDC_SYNDIKATPOOL_TEXTBASESELECTEDVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+    };
+  	private _sectors = [] call BIS_fnc_OM_ModuleSyndikatAgent_UpdateSectorsData;
+    ["SYNDIKATAGENT: Target selection. %1 sectors before filter",  count _sectors] call BIS_fnc_logFormat;
+    [] spawn _DumpSectorsInfo;
+		private _filteredSectors =
+		[
+			_sectors,
+			GVAR( _logic, "poolPower" ),
+			GVAR( _logic, "minTimeBetweenEvents" ),
+      IN_DEFAULT_RANGE_FROM_PLAYER
+		] call BIS_fnc_OM_ModuleSyndikatAgent_FilterSectors;
+    ["SYNDIKATAGENT: Target selection. %1 filtered sectors",  count _filteredSectors] call BIS_fnc_logFormat;
+    [_filteredSectors] spawn _DumpSectorsInfo;
+
+    if( count _filteredSectors == 0 ) exitWith
+    {
+      ["SYNDIKATAGENT: Target selection FAILED: there's 0 sectors available", 0] call BIS_fnc_logFormat;
+      ["SYNDIKATAGENT: Filter params: poolPower must be: %1, pause between assaults: %2", GVAR( _logic, "poolPower" ), GVAR( _logic, "minTimeBetweenEvents" )] call BIS_fnc_logFormat;
+      SVAR( _logic, "baseObject", "0 sectors available" );
+      [IDC_SYNDIKATPOOL_TEXTBASESELECTEDVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+    };
+		private _randomIndex = floor random (count _filteredSectors);
+		private _baseSelected =  _filteredSectors select _randomIndex;
+		SVAR( _logic, "baseObject", _baseSelected#BASE_NAME );
+		SVAR( _logic, "basePower", _baseSelected#BASE_POWER );
+		SVAR( _logic, "baseTimeStamp", _baseSelected#BASE_TIMESTAMP );
+    ["SYNDIKATAGENT: Target selection SUCCESS: %1 selected as target on %2", _baseSelected, date] call BIS_fnc_logFormat;
+    private _copyOfUnits =+ (_logic getVariable "basicGroup");
+    SVAR(_logic, "copyOfUnits", _copyOfUnits); //do a backup in case the support will be canceled before the groups are spawned
+    private _poolNumber = [GVAR( _logic, "basicGroup" )] call BIS_fnc_OM_getNumberFromData;
+    SVAR( _logic, "poolNumberCopy", _poolNumber );  //to know how many we are sending them
+  	//update the timestamp of the last selection
+  	( _sectors select ( [ _sectors, _baseSelected#BASE_NAME ] call BIS_fnc_FindNestedElement select 0) ) set [ BASE_TIMESTAMP, date ];
+    private _codeForQueue =
+    {
+      params["_logic", "_copyOfUnits", "_baseSelected"];
+      ["SYNDIKATAGENT: Creating the Quest. %1 fighters will be sent to %2", count (_copyOfUnits select 1), _baseSelected] call BIS_fnc_logFormat;
+      _logic setVariable ["questIDs",
+      (
+        [
+        "SupportQuestTemplate_SyndikatAgent",
+        [ GVAR( _logic, "baseObject" ), _copyOfUnits],
+        random [10,30,60]
+        ] call bis_fnc_questCreateManualy
+      )];
+      private _basicGroup = GVAR( _logic, "basicGroup");
+      //delete the reserved units from the pool
+      ["SYNDIKATAGENT: Removing the group from the pool", 0] call BIS_fnc_logFormat;
+      (GVAR( _logic, "basicGroup")) set [1, [] ];
+      SVAR( _logic, "PoolInitNumber", [_basicGroup] call BIS_fnc_OM_ModuleSyndikatAgent_getNumberFromData );
+      SVAR( _logic, "PoolPower", [_basicGroup] call BIS_fnc_OM_ModuleSyndikatAgent_GetTeamPower );
+      [IDC_SYNDIKATPOOL_TEXTACTUALPOOLVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+      [IDC_SYNDIKATPOOL_TEXTTEAMPOWERVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+
+      private _newDate = [date, (GVAR(_logic,"EventSelectionPeriod"))] call BIS_fnc_CalculateDateTime;
+      SVAR( _logic, "nextEventDate", _newDate);
+      ["SYNDIKATAGENT: Next event can selection will occur on %1", _newDate ] call BIS_fnc_logFormat;
+      [IDC_SYNDIKATPOOL_TEXTNEXTEVENTDATEVALUE] call BIS_fnc_OM_ModuleSyndikatAgent_EnqueueDebugInfo;
+    };
+    [ MODE_ADDTOQUEUE, [ [ _codeForQueue, [_logic, _copyOfUnits, _baseSelected], 1, 120, {"Quest created from queue" call BIS_fnc_Log},nil,nil,nil,nil, "SyndikatAgent"] ] ] call BIS_fnc_OM_moduleActionQueue;
+};
+
+private _ConfigurePool =
+{
+	scriptName "_ConfigurePool";
+	private _logic = MGVAR("BIS_OM_SyndikatAgent_logic");
+	/* private _syndikatAgentDebugUI = UGVAR("_syndikatAgentDebugUI"); */
+	/* private _newDate = [date, (GVAR(_logic,"MinTimeBetweenEvents"))] call BIS_fnc_OM_CalculateDate;
+	SVAR( _logic, "NextEventDate", _newDate); */
+	private _sHandle = createDialog "RscSyndikatPoolEdit";
+	SVAR(_logic, "state", SYNDIKATAGENT_STATE_CONFIGURE);
+
+	ctrlSetText [IDC_SYNDIKATPOOL_EDITACTUALPOOLVALUE, str GVAR(_logic, "poolInitNumber")];
+	ctrlSetText [IDC_SYNDIKATPOOL_EDITPOOLMINVALUE, str GVAR(_logic, "poolMin")];
+	ctrlSetText [IDC_SYNDIKATPOOL_EDITPOOLMAXVALUE, str GVAR(_logic, "poolMax")];
+	ctrlSetText [IDC_SYNDIKATPOOL_EDITINCOMEUNITSVALUE, str GVAR(_logic, "poolIncomeUnits")];
+	ctrlSetText [IDC_SYNDIKATPOOL_EDITINCOMETIMEVALUE, str GVAR(_logic, "poolIncomeTime")];
+
+	/* private _controls = [IDC_SYNDIKATPOOL_EDITACTUALPOOLVALUE, IDC_SYNDIKATPOOL_EDITPOOLMINVALUE, IDC_SYNDIKATPOOL_EDITPOOLMAXVALUE, IDC_SYNDIKATPOOL_EDITINCOMEUNITSVALUE, IDC_SYNDIKATPOOL_EDITINCOMETIMEVALUE];
+
+
+	ctrlEnable [IDC_SYNDIKATPOOL_EDITACTUALPOOLVALUE, true];
+	ctrlEnable [IDC_SYNDIKATPOOL_EDITPOOLMINVALUE, true];
+	ctrlEnable [IDC_SYNDIKATPOOL_EDITPOOLMAXVALUE, true];
+	ctrlEnable [IDC_SYNDIKATPOOL_EDITINCOMEUNITSVALUE, true];
+	ctrlEnable [IDC_SYNDIKATPOOL_EDITINCOMETIMEVALUE, true]; */
+
+	WaitUntil{ GVAR(_logic, "state") == SYNDIKATAGENT_STATE_RUNNING  };
+	[] call _GetNumbersFromUI;
+	closeDialog 1;
+};
+
+private _GetNumbersFromUI =
+{
+	scriptName "_GetNumbersFromUI";
+	params [ ["_logic", objNull, [objNull] ], ["_keyCode", 49, [999] ] ];
+  if( _keyCode == 109 ) exitWith {openMap false};
+  if( _keyCode < 48 || _keyCode > 57) exitWith {-1}; //non numeric key entered
+  if( _keycode == 61 ) exitWith {setAcctime (accTime + 1);};
+  if( _keycode == 45 ) exitWith {setAcctime (accTime - 1);};
+  SVAR(_logic, "State", SYNDIKATAGENT_STATE_CONFIGURE);
+  uiSleep 2;
+  if (!isNull findDisplay IDC_SYNDIKATPOOL) then
+  {
+    //SVAR(_logic, "PoolInitNumber", parsenumber ctrltext ((uiNamespace getvariable "_syndikatAgentDebugUI") displayCtrl IDC_SYNDIKATPOOL_TEXTACTUALPOOLVALUE));
+  	SVAR(_logic, "PoolMin", parsenumber ctrltext ((uiNamespace getvariable "_syndikatAgentDebugUI") displayCtrl IDC_SYNDIKATPOOL_TEXTPOOLMINVALUE));
+  	SVAR(_logic, "PoolMax", parsenumber ctrltext ((uiNamespace getvariable "_syndikatAgentDebugUI") displayCtrl IDC_SYNDIKATPOOL_TEXTPOOLMAXVALUE));
+  	SVAR(_logic, "PoolIncomeUnits", parsenumber ctrltext ((uiNamespace getvariable "_syndikatAgentDebugUI") displayCtrl IDC_SYNDIKATPOOL_TEXTINCOMEUNITSVALUE));
+    if( (parsenumber ctrltext ((uiNamespace getvariable "_syndikatAgentDebugUI") displayCtrl IDC_SYNDIKATPOOL_TEXTINCOMETIMEVALUE)) != (GVAR(_logic, "PoolIncomeTime") )) then
+    {
+      SVAR(_logic, "PoolIncomeTime", parsenumber ctrltext ((uiNamespace getvariable "_syndikatAgentDebugUI") displayCtrl IDC_SYNDIKATPOOL_TEXTINCOMETIMEVALUE)*60);
+    };
+  	SVAR(_logic, "EventSelectionPeriod", parsenumber ctrltext ((uiNamespace getvariable "_syndikatAgentDebugUI") displayCtrl IDC_SYNDIKATPOOL_TEXTNEXTEVENTDATEOFFSETVALUE));
+  	SVAR(_logic, "MinTimeBetweenEvents", parsenumber ctrltext ((uiNamespace getvariable "_syndikatAgentDebugUI") displayCtrl IDC_SYNDIKATPOOL_TEXTBASECOOLDOWNVALUE));
+  	private _newdate = [date, GVAR(_logic, "EventSelectionPeriod")] call BIS_fnc_CalculateDateTime;
+  	SVAR(_logic, "NextEventDate", _newdate);
+  };
+  SVAR(_logic, "State", SYNDIKATAGENT_STATE_RUNNING);
+};
+
+private _EnableSystem =
+{
+	scriptName "_EnableSystem";
+  params[ "_on", [ "_rebuildData", true, [true] ] ];
+  if(_on && _rebuildData) then
+  {
+    private _lastEventDate = [date, -1*MIN_TIME_AFTER_EVENT_FINISHED] call BIS_fnc_CalculateDateTime;
+    SVAR( SYNDIKAT_AGENT_LOGIC, "LastEventDate", _lastEventDate );
+    private _newDate = [date, (GVAR(SYNDIKAT_AGENT_LOGIC,"EventSelectionPeriod"))] call BIS_fnc_CalculateDateTime;
+    SVAR( SYNDIKAT_AGENT_LOGIC, "NextEventDate", _newDate);
+    SVAR( SYNDIKAT_AGENT_LOGIC, "sectors", [] call BIS_fnc_OM_ModuleSyndikatAgent_BuildSectorsData );
+    SVAR( SYNDIKAT_AGENT_LOGIC, "State", SYNDIKATAGENT_STATE_RUNNING);
+  };
+  SYNDIKAT_AGENT_LOGIC setVariable ["BIS_restartTimer", true];
+  SVAR( MGVAR("BIS_OM_SyndikatAgent_logic"), "enableSystem", _on );
+};
+
+private _SetAgentValue =
+{
+	scriptName "_SetAgentValue";
+  params [ "_logic", ["_parameter", "", [""] ], ["_value", 0, [99] ] ];
+  if( !isNil {call compile format ["%1 getVariable '%2'", _logic, _parameter]} ) then
+  {
+    call compile format ["%1 setVariable ['%2', %3]", _logic, _parameter, _value];
+  }
+  else
+  {
+    "SYNDIKAT AGENT: PARAMETER CHANGE" call BIS_fnc_Log;
+    "---------------------------------------------------------------------------" call BIS_fnc_Log;
+    "Parameter doesn't exist. Try:" call BIS_fnc_Log;
+    private _attributes = [configfile >> "CfgVehicles" >> "ModuleOMSyndikatAgent" >> "Attributes"] call BIS_fnc_returnChildren;
+    {
+      private _arr = (str _x) splitString "/";
+      private _attrName = _arr select (count _arr - 1);
+      private _attrDescr = getText (_x >> "displayName");
+      private _attrToolTip = getText (_x >> "tooltip");
+      if( _attrDescr != "") then
+      {
+        ["* %1:      [%2]", _attrName, _attrToolTip] call BIS_fnc_LogFormat;
+      };
+    } forEach _attributes;
+		"---------------------------------------------------------------------------" call BIS_fnc_Log;
+		"Example: ['SetAgentValue', ['poolMax', 15]] call BIS_fnc_OM_ModuleSyndikatAgent" call BIS_fnc_Log;
+		"---------------------------------------------------------------------------" call BIS_fnc_Log;
+  };
+};
+
+private _Level =
+{
+	scriptName "_Level";
+  params ["_logic", "_offset"];
+  private _newLevel = (_logic getVariable "actualLevel") + _offset;
+  if( _newLevel >= 0 && _newLevel < (_logic getVariable "levels")) then
+  {
+    ["SYNDIKATAGENT: The new level of Syndikat units: %1", _newLevel] call BIS_fnc_logFormat;
+    _logic setVariable [ "actualLevel", _newLevel ];
+    private _unitsToLevelUp = _logic getVariable "PoolInitNumber";
+    _logic setVariable ["basicGroup", [[],[]] ];
+    [
+      "AddUnitsToPool",
+      [ [nil, _unitsToLevelUp] ]
+    ] spawn BIS_fnc_OM_ModuleSyndikatAgent;
+  };
+};
+
+
+#define TABCODE   9
+#define TAB       toString[TABCODE]
+
+
+private _DumpSectorsInfo =
+{
+	scriptName "_DumpSectorsInfo";
+  params [ ["_sectors", GVAR( SYNDIKAT_AGENT_LOGIC, "sectors" ), [[]] ] ];
+
+  private _fnc_CreateTabs =
+  {
+      params[ ["_tabs", 1, [99] ] ];
+      private _array = [];
+      for "_iLoop" from 1 to _tabs do
+      {
+        _array pushBack TABCODE;
+      };
+      toString _array
+  };
+
+  "SYNDIKATAGENT: Sector dump" call BIS_fnc_Log;
+  ["SYNDIKATAGENT: --------------------------------------------------------------------------------------------------------------------------", 0] call BIS_fnc_logFormat;
+  ["SYNDIKATAGENT: NAME%1    POWER%1    LAST ATTACK", [3] call _fnc_CreateTabs] call BIS_fnc_logFormat;
+  _sectors sort false;
+  {
+      ["SYNDIKATAGENT: %2%1%3%1%4", [3] call _fnc_CreateTabs, _x#0, _x#1, _x#2] call BIS_fnc_logFormat;
+  } forEach _sectors;
+};

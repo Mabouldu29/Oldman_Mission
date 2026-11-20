@@ -1,0 +1,25 @@
+class SyndikatEquipment
+{
+	vests[] =
+	{
+		//level 1
+		{"V_LegStrapBag_black_F", "V_Chestrig_blk", "V_Chestrig_rgr", "V_HarnessOGL_ghex_F"	},
+		//level 2
+		{ "V_TacChestrig_cbr_F", "V_TacVestIR_blk", "V_TacVest_oli"	},
+		//level3
+		{	"V_PlateCarrier2_rgr_noflag_F", "V_PlateCarrier2_tna_F"}
+		//another levels can be defined
+	};
+
+	weapons[] =
+	{
+		//level 1
+		{"SMG_05_F", "arifle_AKS_F", "arifle_AKM_F",},
+		//level 2
+		{},
+		//level3
+		{"arifle_AK12_F", "arifle_AK12_GL_F", "MMG_02_black_F"}
+		//another levels can be defined
+	}
+
+};

@@ -1,0 +1,23 @@
+private _sectors = [] call BIS_fnc_OM_ModuleSyndikatTeam_getSyndikatSectors;
+{
+  private _groupDataCopy = +(_logic getVariable "#groupData");
+  private _sector = _x;
+  [_sector] call BIS_fnc_OM_ModuleSyndikatTeam_unlockAllPositions;  //unlock previously occupied positions
+  { _sector setVariable [_x, []] } forEach ["#vehicleData", "#groupData"];
+  private _campPositions = (synchronizedObjects _sector) select {_x isKindOf "ModuleOMSyndikatCamppos"};
+  /* ["sector: %1 ----------------------", _sector] call BIS_fnc_logFormat; */
+  {
+    private _group = _x;
+    /* ["group: %1", _group] call BIS_fnc_logFormat; */
+    private _units = _group select 3;
+    {
+      private _unit = _x;
+      /* ["Units: %1", _unit select 0] call BIS_fnc_logFormat; */
+      private _campPositionType = [_unit select INDEX_UNIT_CLASS] call BIS_fnc_OM_ModuleSyndikatTeam_getPositionType;
+      private _selectedPosition = [_campPositions, _campPositionType, true] call BIS_fnc_OM_ModuleSyndikatTeam_getCampPosition;
+      /* ["Selected position: %1", _selectedPosition] call BIS_fnc_logFormat; */
+      private _newGroup = [ independent, GROUP_BEHAVIOR, [], [_unit] ];
+      [ [[], [_newGroup] ], _sector,  _selectedPosition ] call BIS_fnc_OM_ModuleSyndikatTeam_addToSyndikatCamp;
+    } forEach _units;
+  } forEach _groupDataCopy;
+} forEach _sectors;

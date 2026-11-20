@@ -1,0 +1,32 @@
+#include "common_definitions.inc"
+
+#ifndef SYNDIKATPOOL_COMMON_DEFINES
+#define SYNDIKATPOOL_COMMON_DEFINES         1
+
+#define TEMP_MAX_BASES_ON_ISLAND 	          30
+#define TEMP_ACTUAL_ACTIVE_BASES 	          25
+#define SYNDIKATAGENT_STATE_RUNNING         1
+#define SYNDIKATAGENT_STATE_CONFIGURE       2
+#define SYNDIKATPOOL_DEBUG_UPDATE_INTERVAL  4
+#define ALLOWED_DELAY                       15
+
+#define GUER INDEPENDENT
+#define SYNDIKATPOOL_BASIC_GROUP \
+[ \
+  [], \
+  [ \
+    [GUER, \
+    ["AWARE","NORMAL","WEDGE","YELLOW"] \
+    ,[] \
+    ,[ \
+        ["I_Soldier_SL_F",[748.065,7477.22,0.00143909],0,0.5,0,[["arifle_Mk20_MRCO_pointer_F","","acc_pointer_IR","optic_MRCO",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",9],[],""],["U_I_CombatUniform_shortsleeve",[["FirstAidKit",1],["30Rnd_556x45_Stanag",3,30]]],["V_PlateCarrierIA2_dgtl",[["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["9Rnd_45ACP_Mag",2,9],["HandGrenade",2,1],["I_IR_Grenade",2,1],["SmokeShell",1,1],["SmokeShellGreen",1,1],["SmokeShellOrange",1,1],["SmokeShellPurple",1,1],["Chemlight_green",2,1]]],[],"H_HelmetIA","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch","NVGoggles_INDEP"]],"",false,[]],["I_Soldier_AR_F",[753.065,7472.22,0.00143909],16.2,0.4,0,[["LMG_Mk200_LP_BI_F","","acc_pointer_IR","",["200Rnd_65x39_cased_Box",200],[],"bipod_03_F_blk"],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",9],[],""],["U_I_CombatUniform_shortsleeve",[["FirstAidKit",1],["9Rnd_45ACP_Mag",2,9],["HandGrenade",1,1],["SmokeShell",1,1]]],["V_PlateCarrierIA2_dgtl",[["200Rnd_65x39_cased_Box",2,200],["SmokeShellGreen",1,1],["Chemlight_green",2,1]]],[],"H_HelmetIA_camo","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_INDEP"]],"",false,[]],["I_Soldier_GL_F",[743.065,7472.22,0.00143909],316.8,0.45,0,[["arifle_Mk20_GL_ACO_F","","","optic_ACO_grn",["30Rnd_556x45_Stanag",30],["1Rnd_HE_Grenade_shell",1],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",9],[],""],["U_I_CombatUniform",[["FirstAidKit",1],["30Rnd_556x45_Stanag",3,30],["1Rnd_SmokePurple_Grenade_shell",1,1]]],["V_PlateCarrierIAGL_dgtl",[["30Rnd_556x45_Stanag",2,30],["9Rnd_45ACP_Mag",2,9],["HandGrenade",2,1],["MiniGrenade",2,1],["1Rnd_HE_Grenade_shell",5,1],["SmokeShell",1,1],["SmokeShellGreen",1,1],["Chemlight_green",2,1],["1Rnd_Smoke_Grenade_shell",2,1],["1Rnd_SmokeGreen_Grenade_shell",1,1],["1Rnd_SmokeOrange_Grenade_shell",1,1]]],[],"H_HelmetIA_net","G_Combat",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_INDEP"]],"",false,[]],["I_Soldier_M_F",[758.065,7467.22,0.00143909],43.2,0.5,0,[["srifle_EBR_MRCO_LP_BI_F","","acc_pointer_IR","optic_MRCO",["20Rnd_762x51_Mag",20],[],"bipod_03_F_blk"],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",9],[],""],["U_I_CombatUniform",[["FirstAidKit",1],["20Rnd_762x51_Mag",1,20],["Chemlight_green",1,1]]],["V_PlateCarrierIA1_dgtl",[["20Rnd_762x51_Mag",6,20],["9Rnd_45ACP_Mag",2,9],["HandGrenade",2,1],["SmokeShell",1,1],["SmokeShellGreen",1,1],["Chemlight_green",1,1]]],[],"H_HelmetIA","G_Tactical_Black",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_INDEP"]],"",false,[]],["I_Soldier_AT_F",[738.065,7467.22,0.00143909],302.4,0.45,0,[["arifle_Mk20C_ACO_pointer_F","","acc_pointer_IR","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],["launch_I_Titan_short_F","","","",["Titan_AT",1],[],""],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",9],[],""],["U_I_CombatUniform",[["FirstAidKit",1],["30Rnd_556x45_Stanag",3,30]]],["V_PlateCarrierIA2_dgtl",[["30Rnd_556x45_Stanag",2,30],["9Rnd_45ACP_Mag",2,9],["SmokeShell",1,1],["SmokeShellGreen",1,1],["Chemlight_green",2,1]]],["I_Fieldpack_oli_AT",[["Titan_AT",2,1]]],"H_HelmetIA_camo","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_INDEP"]],"",false,[]],["I_Soldier_AAT_F",[763.065,7462.22,0.00143909],43.2,0.4,0,[["arifle_Mk20_ACO_pointer_F","","acc_pointer_IR","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",9],[],""],["U_I_CombatUniform_tshirt",[["FirstAidKit",1],["30Rnd_556x45_Stanag",3,30]]],["V_Chestrig_oli",[["30Rnd_556x45_Stanag",4,30],["9Rnd_45ACP_Mag",2,9],["HandGrenade",2,1],["I_IR_Grenade",2,1],["SmokeShell",1,1],["SmokeShellGreen",1,1],["Chemlight_green",2,1]]],["I_Carryall_oli_AAT",[["Titan_AT",2,1],["Titan_AP",2,1]]],"H_HelmetIA","G_Shades_Black",["Rangefinder","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_INDEP"]],"",false,[]],["I_Soldier_A_F",[733.065,7462.22,0.00143909],316.8,0.4,0,[["arifle_Mk20_ACO_pointer_F","","acc_pointer_IR","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",9],[],""],["U_I_CombatUniform_shortsleeve",[["FirstAidKit",1],["30Rnd_556x45_Stanag",3,30]]],["V_PlateCarrierIA1_dgtl",[["30Rnd_556x45_Stanag",8,30],["9Rnd_45ACP_Mag",2,9],["HandGrenade",2,1],["SmokeShell",1,1],["SmokeShellGreen",1,1],["Chemlight_green",2,1]]],["I_Fieldpack_oli_Ammo",[["FirstAidKit",4],["30Rnd_556x45_Stanag",8,30],["200Rnd_65x39_cased_Box",1,200],["NLAW_F",1,1],["HandGrenade",2,1],["MiniGrenade",2,1],["1Rnd_HE_Grenade_shell",6,1],["20Rnd_762x51_Mag",3,20]]],"H_HelmetIA_net","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_INDEP"]],"",false,[]],["I_medic_F",[768.065,7457.22,0.00143909],43.2,0.4,0,[["arifle_Mk20_pointer_F","","acc_pointer_IR","",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",9],[],""],["U_I_CombatUniform_shortsleeve",[["FirstAidKit",1],["30Rnd_556x45_Stanag",3,30]]],["V_PlateCarrierIA2_dgtl",[["30Rnd_556x45_Stanag",2,30],["9Rnd_45ACP_Mag",2,9],["SmokeShell",1,1],["SmokeShellGreen",1,1],["SmokeShellOrange",1,1],["SmokeShellPurple",1,1],["Chemlight_green",2,1]]],["I_Fieldpack_oli_Medic",[["Medikit",1],["FirstAidKit",10]]],"H_HelmetIA","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_INDEP"]], \
+        "", \
+        false, \
+        [] \
+      ] \
+    ] \
+  ] \
+  ] \
+]
+
+#endif

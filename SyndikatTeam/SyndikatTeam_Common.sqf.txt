@@ -1,0 +1,179 @@
+#include "definitions.inc"
+#include "\A3\Missions_F_Oldman\Systems\defines\SyndikatCamp_defines.inc"
+
+
+
+BIS_fnc_OM_ModuleSyndikatTeam_getCampPosition =
+{
+  params [ "_positionModules", ["_positionType", POSITION_TYPE_STANDARD, [99] ], ["_lockIt", false, [false]], [ "_ignoreType", false, [false] ] ];
+  private _selectedPositionModule = objNull;
+
+  private _suitableModules = _positionModules select {!GVARS(_x, "isOccupied", false) && {_positionType == GVAR(_x, "PositionType")}};
+  if(count _suitableModules > 0) then
+  { _selectedPositionModule = _suitableModules select 0 }
+  else
+  {
+    //did not find any unlocked position module of the given type, so find any unlocked position module regardless of the type
+    _suitableModules = _positionModules select {!GVARS(_x, "isOccupied", false)};
+    if(count _suitableModules > 0) then
+    { _selectedPositionModule = _suitableModules select 0 };
+  };
+
+  if(!isNull _selectedPositionModule && {_lockIt}) then
+  { _selectedPositionModule setVariable ["isOccupied", true] };
+  _selectedPositionModule
+};
+
+
+BIS_fnc_OM_ModuleSyndikatTeam_getPositionType =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatTeam_getPositionType";
+  params [ [ "_unit", objNull, [ objNull, ""] ] ];
+
+  if( _unit isEqualType objNull ) then
+  {
+    _unit = typeOf _unit;
+  };
+  private _role = getText (configfile >> "CfgVehicles" >> _unit >> "role");
+  private "_campPositionType";
+  switch (_role) do
+  {
+    case "Rifleman": { _campPositionType = POSITION_TYPE_RIFLEMAN;};
+    case "MachineGunner": { _campPositionType = POSITION_TYPE_MG;};
+    case "CombatLifeSaver": { _campPositionType = POSITION_TYPE_MEDIC;};
+    case "MissileSpecialist": { _campPositionType = POSITION_TYPE_AT;};
+    case "Grenadier": { _campPositionType = POSITION_TYPE_RIFLEMAN;};
+    case "Sapper": { _campPositionType = POSITION_TYPE_ENGINEER;};
+    case "Marksman": { _campPositionType = POSITION_TYPE_SNIPER;};
+    default { _campPositionType = POSITION_TYPE_STANDARD };
+  };
+  _campPositionType
+};
+
+
+// Scan object and injects campPos data into his behavior
+BIS_fnc_OM_ModuleSyndikatTeam_addToSyndikatCamp =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatTeam_addToSyndikatCamp";
+	params ["_data","_sector","_campPos",["_keepDamage",false]];
+	if (_data isEqualType objNull) then {
+		_data = [_data] call BIS_fnc_om_scanAndDelete;
+	};
+	// Change the data
+  if(!isNull _campPos) then
+  {
+  	(_data#1#0) params ["_side","_b","_w","_units"];
+  	(_data#1#0) set [1,GVAR(_campPos,"beh")];
+  	(_data#1#0) set [2,GVAR(_campPos,"wps")];
+
+  	(_units#0) set [2,getPosWorld _campPos];
+  	(_units#0) set [3,direction _campPos];
+  	(_units#0) set [10,GVAR(_campPos,"#spc")];
+    /* ["Setting position: %1", getPosWorld _campPos] call BIS_fnc_LogFormat; */
+  	if (_keepDamage) then {
+  		(_units#0) set [5,0];
+  	};
+    [_data,_sector] call BIS_fnc_om_addToSector;
+  }
+};
+
+
+BIS_fnc_OM_ModuleSyndikatTeam_removeGroupsFromSector =
+{
+  params [ "_groups", "_sector" ];
+  private _index = count _groups -1;
+  while {_index >= 0} do
+  {
+    {
+      [_x, _sector] call BIS_fnc_om_removeFromSector;
+    } forEach units (_groups#_index);
+    _index = _index - 1;
+  };
+  COPY_SECTORDATA_TO_LOGIC;
+  //free the occupied position
+  {
+    SVAR(_x, "isOccupied", false);
+  } forEach (GVAR( MGVAR("BIS_OM_SyndikatTeam_logic"), "unitPositions"));
+};
+
+BIS_fnc_OM_ModuleSyndikatTeam_sendSyndikatTeamAway =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatTeam_sendSyndikatTeamAway";
+  params [ ["_groups", [], [ [] ] ], "_target" ];
+  private _index = count _groups -1;
+  /* ["Groups %1", _groups] call BIS_fnc_LogFormat; */
+  //TODO: delete waypoints of the units, otherwise they might not go away, or they can inherit the unwanted behavior (speed, mode)
+  while {_index >= 0} do
+  {
+    {
+      _x doMove _target; _x setBehaviour "SAFE"; _x setSpeedMode "NORMAL"; _x setUnitPos "UP";
+      missionNameSpace setVariable ['moveAway', true];
+      "sending away" call BIS_fnc_log;
+      [_x] spawn
+      {
+        private _unit = _this select 0;
+        WaitUntil{sleep 1; (player distance _unit) > DISTANCE_TO_DISAPPEAR};
+        [_unit] call BIS_fnc_om_despawn;
+        missionNameSpace setVariable ['moveAway', false];
+      }
+    } forEach units (_groups#_index);
+
+    _index = _index - 1;
+  }
+};
+
+
+BIS_fnc_OM_ModuleSyndikatTeam_getSyndikatSectors =
+{
+  (
+    (missionNamespace getVariable "BIS_allSectors") select { [_x getVariable "side"] call BIS_fnc_numberToSide == INDEPENDENT }
+  ) select {"ModuleOMSyndikatCamppos" countType (synchronizedObjects _x) > 0}
+};
+
+BIS_fnc_OM_ModuleSyndikatTeam_getNearestSyndikatSector =
+{
+  params [ ["_target", player, [[],objNull] ] ];
+  private _syndiSectors = [] call BIS_fnc_OM_ModuleSyndikatTeam_getSyndikatSectors;
+  private _res = nil; private _dist = 99999; private "_tmpDist";
+  {
+    _tmpDist = _x distance2D _target;
+    if(_tmpDist < _dist) then
+    {
+      _dist = _tmpDist; _res = _x;
+    };
+  } forEach _syndiSectors;
+  [_res, _dist]
+};
+
+
+BIS_fnc_OM_ModuleSyndikatTeam_unlockPosition =
+{
+  params ["_sector", "_positionType"];
+  private _positions = ((synchronizedObjects _sector) select {_x isKindOf "ModuleOMSyndikatCamppos"} ) select {_x getVariable "positionType" == _positionType};
+  if(count _positions > 0) then {(_positions select 0) setVariable ["isOccupied", false]};
+};
+
+BIS_fnc_OM_ModuleSyndikatTeam_unlockAllPositions =
+{
+  params ["_sector"];
+  private _positions = ((synchronizedObjects _sector) select {_x isKindOf "ModuleOMSyndikatCamppos"} );
+  {
+      _x setVariable ["isOccupied", false];
+  } forEach _positions;
+};
+
+BIS_fnc_OM_ModuleSyndikatTeam_makeGroupDataCopy =
+{
+  params ["_questID", "_groupData"];
+  private _p_copies = BIS_SYNDIKATTEAM_LOGIC getVariable "groupDataCopies";
+  _p_copies pushBack [_questID, +_groupData];
+  +_groupData
+};
+
+BIS_fnc_OM_ModuleSyndikatTeam_restoreGroupDataCopy =
+{
+  params ["_questID"];
+  private _p_copies = BIS_SYNDIKATTEAM_LOGIC getVariable "groupDataCopies";
+  private _index = _p_copies findIf {_x select 0 == _questID};
+  ( _p_copies deleteAt _index) select 1
+};

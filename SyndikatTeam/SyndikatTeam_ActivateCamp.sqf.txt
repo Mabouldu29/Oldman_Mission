@@ -1,0 +1,137 @@
+#include "definitions.inc"
+#define MOUSE_LMB               0
+#define MOUSE_RMB               1
+#define EVENT_DESTROY           4
+#define EVENT_INIT							3
+#define EVENT_DRAW              2
+#define EVENT_MOUSE_BUTT_DOWN   1
+#define EVENT_MOUSE_BUTT_UP     0
+
+#define BASE_NAME				0
+#define BASE_POWER			1
+#define BASE_TIMESTAMP	2
+//params [ ["_logic", objNull, [objNull] ], ["_trigger", objNull, [objNull] ] ];
+
+_input params[ ["_contactedByPhone", false, [false] ] ];
+
+BIS_fnc_OM_openTheStrategicMap =
+{
+    params ["_logic"];
+
+    private _eventHandlers = [];
+    SWITCH_TO_TARGESEL_MODE();
+    private _activeSectors = (nearestObjects [player, ["ModuleOMSector_F"], 250]);
+		_logic setVariable ["activeSector", if(count _activeSectors > 0) then {_activeSectors select 0}];  //TODO: once we have the onSpawn Script fired when the sector is spawned, use a flag rather than nearestobject
+
+		["SYNDIKATTEAM: active sectors: %1", _activeSectors] call BIS_fnc_logFormat;
+
+    if (!(isNil {(missionNameSpace getVariable "BIS_OM_customEventHandlers" select 0)})) then { [ EVENT_DESTROY, uiNamespace getVariable "BIS_OM_SyndikatTeam_ID" ] call BIS_fnc_OM_handleMapControls; };	//TODO: replace 0 with parameter
+
+    private _sectors = [] call BIS_fnc_OM_BuildSectorsData;
+    SVAR( _logic,  "sectors", _sectors );
+
+		["SYNDIKATTEAM: sectors: %1", _sectors] call BIS_fnc_logFormat;
+
+    uiNamespace setVariable
+		[
+			"BIS_OM_SyndikatTeam_ID",
+			[ EVENT_INIT, [],
+        {
+          [ MODE_CREATE_ASSAULT, [_this select 2, _this] ] call BIS_fnc_OM_ModuleSyndikatTeam;
+        }, EVENT_MOUSE_BUTT_DOWN
+      ] call BIS_fnc_OM_handleMapControls
+		];
+
+    if(!visibleMap) then { openMap true };
+		["SYNDIKATTEAM: opening map: %1", 1] call BIS_fnc_logFormat;
+    /* private _eventInfo = "<t align='left'><t size='1.25' color='#ff0000'>Welcome to the Syndikat Camp</t><br/>";
+    _eventInfo = _eventInfo + "<t size='1.00' color='#71a0a4'>Open the map</t><br/>";
+    _eventInfo = _eventInfo + "<t size='1.00' color='#71a0a4'>and select the base</t><br/>";
+    _eventInfo = _eventInfo + "<t size='1.00' color='#89bd35'>you want to attack.</t><br/></t>";
+    //hint _eventInfo;
+    hintSilent parseText format
+    [
+      _eventInfo, 0, 0, 0, 0
+    ];
+		*/
+		[] spawn
+		{
+			waitUntil{ Sleep 1; !visibleMap };
+			["SYNDIKATTEAM: deactivating camp: %1", 1] call BIS_fnc_logFormat;
+			[ MODE_DEACTIVATE_CAMP ] call BIS_fnc_OM_ModuleSyndikatTeam;
+		};
+};
+
+private "_codeForQueue";
+switch (_contactedByPhone) do
+{
+    case (true):
+    {
+      if( SYNDIKATTEAM_IS_FLAG_ENABLED(INDIRECT_ACTIVATION_ENABLED)) then
+      {
+        _codeForQueue =
+        {
+          params["_logic"];
+          private _speech =
+          {
+            playSound "OMPhoneRejectedCall";
+            sleep 12;
+            ["Boss",Localize "str_a3_sms_insurgentsAvailable"] call BIS_fnc_OM_phone_SMS;
+            [_this select 0] call BIS_fnc_OM_openTheStrategicMap;
+          };
+          [1,
+            [ 
+              [_speech, [_logic], 2, 9999999, {}, {}, false, 4, false, "Boss_droped_call_syndikat_assault_yes" ] 
+            ] 
+          ] call BIS_fnc_OM_moduleActionQueue;
+        };
+      }
+      else
+      {
+        _codeForQueue =
+        {
+          params["_logic"];
+          private _speech =
+          {
+            playSound "OMPhoneRejectedCall";
+            sleep 12;
+            ["Boss",Localize "str_a3_sms_insurgentsNotAvailablePhone"] call BIS_fnc_OM_phone_SMS;
+          };
+          [1,
+            [ 
+              [_speech, [], 2, 9999999, {}, {}, false, 4, false, "Boss_droped_call_syndikat_assault_yes_in_camp" ] 
+            ] 
+          ] call BIS_fnc_OM_moduleActionQueue;
+        };
+        //TODO: THE REPUTATION LEVEL EXPLANATION BY BOSS
+      };
+    };
+    case (false):
+    {
+      if( SYNDIKATTEAM_IS_FLAG_ENABLED(DIRECT_ACTIVATION_ENABLED) ) then
+      {
+        _codeForQueue = {params["_logic"];[_logic] call BIS_fnc_OM_openTheStrategicMap;};
+      }
+      else
+      {
+        _codeForQueue =
+        {
+          params["_logic"];
+          private _speech =
+          {
+            playSound "OMPhoneRejectedCall";
+            sleep 12;
+            ["Boss",Localize "str_a3_sms_insurgentsNotAvailable"] call BIS_fnc_OM_phone_SMS;
+          };
+          [1,
+            [ 
+              [_speech, [], 2, 9999999, {}, {}, false, 4, false, "Boss_droped_call_syndikat_assault_no" ] 
+            ] 
+          ] call BIS_fnc_OM_moduleActionQueue;
+        };
+        //TODO: THE REPUTATION LEVEL EXPLANATION BY BOSS
+      };
+    };
+};
+
+[ MODE_ADDTOQUEUE, [ [ _codeForQueue, [_logic], 1, 120, {"Syndikat Team Activate Camp" call BIS_fnc_Log},nil,nil,nil,nil, "SyndikatTeamActivateCamp"] ] ] call BIS_fnc_OM_moduleActionQueue;

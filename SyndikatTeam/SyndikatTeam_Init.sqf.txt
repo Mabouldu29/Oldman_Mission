@@ -1,0 +1,22 @@
+SMGVAR("BIS_OM_SyndikatTeam_logic", _logic);
+
+SVAR(_logic,"#groupData",[]);
+SVAR(_logic,"#vehicleData",[]);
+
+[synchronizedObjects _logic, _logic] call BIS_fnc_om_addToSector;
+
+private _sectors = [] call BIS_fnc_OM_ModuleSyndikatTeam_getSyndikatSectors;
+{
+  _x setVariable ["#vehicleData", []];
+  _x setVariable ["#groupData", []];
+} forEach _sectors;
+
+[MODE_DISTRIBUTE_UNITS_TO_SECTORS] call BIS_fnc_OM_ModuleSyndikatTeam;
+
+
+_logic setVariable ["questIDs", -1];
+_logic setVariable ["groupDataCopies", []];
+UPDATE_POOLNUMBER();
+
+_logic setVariable [ "levels", count (getArray (configFile >> "SyndikatGear" >> "primaryWeapons")) ];
+_logic setVariable [ "actualLevel", 0 ];

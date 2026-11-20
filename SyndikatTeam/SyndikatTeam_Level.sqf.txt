@@ -1,0 +1,10 @@
+#include "definitions.inc"
+
+private _newLevel = (_logic getVariable "actualLevel") + _offset;
+if( _newLevel >= 0 && _newLevel < (_logic getVariable "levels")) then
+{
+  _logic setVariable [ "actualLevel", _newLevel ];
+  private _unitsToLevelUp = _logic getVariable "poolNumber";
+  _logic setVariable ["#groupData", []];
+  [ MODE_ADD_UNITS_FROM_DATA, [ [[nil,_unitsToLevelUp]] ]  ] call BIS_fnc_OM_ModuleSyndikatTeam;
+};

@@ -1,0 +1,25 @@
+#define SELECT_UNITS(GROUP)             (GROUP select 3)
+#define NUMBER_OF_GROUPS(GROUPDATA)     (count GROUPDATA)
+
+_input params [ "_questID"];
+private _groups = [_questId, "vehicleGroups"] call bis_fnc_questGetData;
+private "_groupData";
+if(isNil "_groups") then
+{
+  _groupData = [ [], [_questID] call BIS_fnc_OM_ModuleSyndikatTeam_restoreGroupDataCopy];  //the Distraction was canceled prematurely (or skipped)
+}
+else
+{
+  _groupData = [];
+  {
+    private _units = units _x;
+    {
+      if(alive _x) then { _groupData pushBack _x; };
+    } forEach _units;
+  } forEach (_groups select 1);
+  _groupData = [_groupData] call BIS_fnc_om_scanAndDelete;
+};
+
+[_groupData, _logic] call BIS_fnc_om_addToSector;
+UPDATE_POOLNUMBER();
+[MODE_DISTRIBUTE_UNITS_TO_SECTORS] call BIS_fnc_OM_ModuleSyndikatTeam;

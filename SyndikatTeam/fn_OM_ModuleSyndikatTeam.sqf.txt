@@ -1,0 +1,125 @@
+//TODO: guard multiple includes
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\SyndikatCommon\SyndikatCommon.sqf"
+#include "definitions.inc"
+
+//definitions for the sectors array structure
+#define BASE_NAME				0
+#define BASE_POWER			1
+#define BASE_TIMESTAMP	2
+
+
+_mode = param [0,"",["",999]];
+private _input = param [1,[],[[]]];
+private "_logic";
+if(typename _mode == "STRING" && {_mode == MODE_INIT}) then
+{	_logic = _input param [ 0, objNull, [objNull] ]; missionNamespace setVariable ["BIS_OM_SyndikatTeam_logic", _logic]}
+else
+{	_logic = missionNamespace getVariable  "BIS_OM_SyndikatTeam_logic"};
+private _ret = 0;
+BIS_OM_SyndikatTeam_Debug = true;
+
+#include "SyndikatTeam_Common.sqf"
+
+switch _mode do
+{
+	case MODE_INIT:
+	{
+		SVAR(_logic,"enableSystem",false);
+		/* if!(_logic getVariable ["dependencies","[]"] isEqualTo []) then
+		{ _logic setVariable ["dependencies", "[]"] }; */
+		private _dependencies = (call compile (_logic getVariable ["dependencies","[]"]));
+		_dependencies = _dependencies + SYNDIKATTEAM_DEPENDENCIES;
+		["Waiting for all dependencies: %1",_dependencies] call BIS_fnc_LogFormat;
+		WaitUntil{ {!isNil _x} count _dependencies == count _dependencies };
+		[true, ""] call BIS_fnc_OM_loadingScreenWrapper;
+		/* ["OM_SyndikatTeam","RscDisplayLoadingOM"] call bis_fnc_startloadingscreen; */
+		"BOOT: SyndikatTeam init " call BIS_fnc_Log;
+		"All dependencies OK. Syndikat Team Init Done." call BIS_fnc_Log;
+		SVAR(_logic,"enableSystem",true);
+		#include "SyndikatTeam_Init.sqf"
+		/* "OM_SyndikatTeam" call bis_fnc_endloadingscreen; */
+		[false, ""] call BIS_fnc_OM_loadingScreenWrapper;
+		"BOOT: SyndikatTeam init end" call BIS_fnc_Log;
+		//DEBUG_GROUPS;
+	};
+
+	case MODE_ACTIVATE_CAMP:
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{
+			#include "SyndikatTeam_ActivateCamp.sqf"
+		};
+		//DEBUG_GROUPS;
+	};
+	case MODE_DEACTIVATE_CAMP:
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{
+			#include "SyndikatTeam_DeactivateCamp.sqf"
+		};
+	};
+	case MODE_CREATE_ASSAULT:
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{
+			#include "SyndikatTeam_CreateAssault.sqf"
+		};
+	};
+	case MODE_ADD_UNITS:
+	{
+		#include "SyndikatTeam_AddUnitsToPool.sqf"
+		//DEBUG_GROUPS;
+	};
+	case MODE_ADD_UNITS_FROM_DATA:
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{
+			#include "SyndikatTeam_AddUnitsToPoolFromData.sqf"
+			//DEBUG_GROUPS;
+		};
+	};
+	case MODE_DISTRIBUTE_UNITS_TO_SECTORS:
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{
+			#include "SyndikatTeam_DistributeUnitsToSectors.sqf"
+		};
+	};
+	case MODE_REMOVE_UNITS_FROM_POOL:
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{
+			#include "SyndikatTeam_RemoveUnitsFromPool.sqf"
+		};
+		//DEBUG_GROUPS;
+	};
+	case MODE_RETURN_UNITS_TO_POOL:
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{
+			#include "SyndikatTeam_ReturnUnitsToPool.sqf"
+		};
+		//DEBUG_GROUPS;
+	};
+	case MODE_LEVEL_UP:
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{
+			private _offset = +1;
+			#include "SyndikatTeam_Level.sqf"
+		};
+		//DEBUG_GROUPS;
+	};
+	case MODE_LEVEL_DOWN:
+	{
+		if( GVAR(_logic, "enableSystem") ) then
+		{
+			private _offset = -1;
+			#include "SyndikatTeam_Level.sqf"
+		};
+		//DEBUG_GROUPS;
+	};
+};
+SYNDIKAT_UPDATE_INFO_TEAM();
+_ret

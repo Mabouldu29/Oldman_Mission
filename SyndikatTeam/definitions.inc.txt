@@ -1,0 +1,38 @@
+#include "common_definitions.inc"
+
+#ifndef __SYNDIKAT_TEAM_DEFINITIONS
+#define __SYNDIKAT_TEAM_DEFINITIONS 1
+
+#define SYNDIKATTEAM_DEPENDENCIES   ["BIS_allSectors"]
+
+#define EDEN_ACTIONS                  ["dragged3DEN", "attributesChanged3DEN"]
+
+#define MOUSE_LMB               0
+#define MOUSE_RMB               1
+#define EVENT_DESTROY           4
+#define EVENT_INIT							3
+#define EVENT_DRAW              2
+#define EVENT_MOUSE_BUTT_DOWN   1
+#define EVENT_MOUSE_BUTT_UP     0
+#define LINECOLOR               [0.56, 0.67, 0.82, 0.8]
+#define MARKER_CONTROL          "marker"
+#define INFINITE_DATE           [3000,07,27,00,00]
+#define EVENT_DEFAULT_POS       [0,0,0]
+#define SOLDIERS_TYPES          ["I_G_Soldier_M_F", "I_G_Soldier_F"]
+#define MARKER_TYPE_ATTACK      "mil_box"
+#define SYNDIKAT_SPEED          2.22222222222222                                //8 km/h
+
+#define CALCULATE_DISCOUNT(PRICE, DISCOUNT) (PRICE + (SYNDIKATTEAM_GET_ASSAULT_DISCOUNT*(PRICE/100)))
+#define UPDATE_POOLNUMBER() _logic setVariable ["poolNumber", [ [ [], _logic getVariable "#groupData"] ] call BIS_fnc_OM_getNumberFromData ];
+
+#define INDEX_UNIT_CLASS        0
+#define INDEX_UNIT_POSITION     2
+#define INDEX_UNIT_DIR          3
+
+/* #define DEBUG_GROUPS  ["Internal version: %1", INTERNAL_VERSION] call BIS_fnc_logFormat
+
+#define DEBUG_GROUPS \
+if( !isNil {INTERNAL_VERSION} ) then
+{ [BIS_SYNDIKATTEAM_LOGIC getVariable "#groupData"] call BIS_fnc_OM_DumpGroups } */
+
+#endif

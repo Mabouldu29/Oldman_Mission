@@ -1,0 +1,80 @@
+#include "definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\UI\UIcommonDefines.inc"
+
+_dataset = param [ 1, [], [[]] ];
+_uidata = _dataset param [ 1, [], [[]] ];
+//_uidatasubset = param [ 1, [], [[]] ];
+_uidata params [ "_event", "_map", "_coordinates", "_mouseCoords", "_ctrlUnderMouse" ];
+
+private _sectorSelected = objNull;
+
+if(_event == EVENT_MOUSE_BUTT_DOWN) then
+{
+  if((_ctrlUnderMouse select 0) == "marker") then
+  {
+    private _sectorsInRange = _coordinates nearObjects ["ModuleOmSector_F", 50];
+    if( (count _sectorsInRange) > 0 ) then
+    {
+      _sectorSelected = _sectorsInRange select 0;
+      private _nearestSyndiSector = [_sectorSelected] call BIS_fnc_OM_ModuleSyndikatTeam_getNearestSyndikatSector; //from where we send the team (virtualy)
+      /* ["SYNDIKATTEAM: _nearestSyndiSector: %1 | _sectorSelected: %2", _nearestSyndiSector, _sectorSelected] call BIS_fnc_LogFormat; */
+      SVAR(_logic, "estimatedTimeToSector", ( (_nearestSyndiSector select  1) / SYNDIKAT_SPEED)/((_logic getVariable "actualLevel")+1) );
+      [
+        "SYNDIKATTEAM: Target selected: %1 | Units will be sent from: %2 which is %3m away and they can be there in %4 minutes",
+        _sectorSelected, _nearestSyndiSector select 0, _nearestSyndiSector select 1,(( (_nearestSyndiSector select  1) / SYNDIKAT_SPEED)/((_logic getVariable "actualLevel")+1)/60)
+      ] call BIS_fnc_LogFormat;
+      SVAR( _logic, "baseObject", _sectorSelected );
+      [ EVENT_DESTROY, uiNamespace getVariable "BIS_OM_SyndikatTeam_ID" ] call BIS_fnc_OM_handleMapControls;                      //we don't need the handling of the map
+      {
+        deleteMarker _x;
+      } foreach (GVAR( _logic, "markersArray" ));
+      SVAR( _logic, "markersArray", [] );
+      //private _dialog = createdialog "RscDatetimeSelector";
+      [] execVM "\a3\Missions_F_Oldman\Systems\UI\SyndikatTeam\CreateTeamUI.SQF";
+      waitUntil {!isNull findDisplay IDD_REST_DISPLAY};
+			waitUntil {isNull findDisplay IDD_REST_DISPLAY};
+
+			["SYNDIKATTEAM: teamUI finished: %1", !isNull findDisplay IDD_REST_DISPLAY] call BIS_fnc_logFormat;
+
+      [_sectorSelected, _logic] spawn
+      {
+        params ["_sectorSelected", "_logic"];
+
+        //_logic setVariable ["unitsSelectedFromUI", _logic getVariable "poolNumber"];
+        waitUntil {isNull findDisplay IDD_REST_DISPLAY};
+        if (_logic getVariable ['playerConfirmedAssault', false]) then
+        {
+          Sleep 2;
+          private _codeForQueue =
+          {
+            params ["_logic", "_sectorSelected"];
+            private _nrOfunits = _logic getVariable "unitsSelectedFromUI";
+            private _selectedGroups = +( [MODE_REMOVE_UNITS_FROM_POOL,[ _nrOfunits ]] call BIS_fnc_OM_moduleSyndikatTeam );
+            /* private _selectedGroups = +([MODE_REMOVE_UNITS_FROM_POOL,[_logic getVariable "poolNumber"]] call BIS_fnc_OM_moduleSyndikatTeam); */
+						["SYNDIKATTEAM: %1 units will be sent to %2", count _selectedGroups, _sectorSelected] call BIS_fnc_LogFormat;
+            private _questID =
+            [
+              "SupportQuestTemplate_SyndikatTeam",
+              [ _sectorSelected, [ [], _selectedGroups] ],
+              ([date, GVAR( _logic, "eventStart") ] call BIS_fnc_CalculateDateTime)/60
+            ] call bis_fnc_questCreateManualy;  //create the assault
+
+            private _groupDataCopy = [_questID, _selectedGroups ] call BIS_fnc_OM_ModuleSyndikatTeam_makeGroupDataCopy;  //in case the event is canceled before the units are spawned
+						private _sector = _logic getVariable "activeSector";
+            if(!isNil "_sector") then //check if we are sending syndikats from a camp or if it was called over the phone
+            {
+						  [ (_sector getVariable "#groups") select {(_sector getVariable "#groups") find _x < _nrOfunits}, position (GVAR(_logic, "baseObject"))] call BIS_fnc_OM_ModuleSyndikatTeam_sendSyndikatTeamAway;
+            };
+						UPDATE_POOLNUMBER();
+          };
+          [ MODE_ADDTOQUEUE, [ [ _codeForQueue, [_logic, _sectorSelected], 1, 120, {"SYNDIKATTEAM: Quest created from queue" call BIS_fnc_Log},nil,nil,nil,nil, "SyndikatTeam"] ] ] call BIS_fnc_OM_moduleActionQueue;
+        }
+        else
+        {
+					[MODE_DEACTIVATE_CAMP] call BIS_fnc_OM_ModuleSyndikatTeam;
+					openMap false;
+        };
+      };
+    } else {"Nothing selected!"};
+  };
+};

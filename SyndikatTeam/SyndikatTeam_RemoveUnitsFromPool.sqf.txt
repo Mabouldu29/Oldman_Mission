@@ -1,0 +1,27 @@
+#include "definitions.inc"
+
+#define INDEX_UNIT_CLASS        0
+#define INDEX_UNIT_POSITION     2
+#define INDEX_UNIT_DIR          3
+#define SELECT_UNITS(GROUP)             (GROUP select 3)
+#define NUMBER_OF_GROUPS(GROUPDATA)     (count GROUPDATA)
+
+_input params [ ["_unitsToSelect", 1, [99] ] ];
+/* _logic = BIS_SYNDIKATTEAM_LOGIC; */
+/* ["Units to select: %1", _unitsToSelect] call BIS_fnc_logFormat;
+["Units in groupData: %1", count (_logic getVariable "#groupData")] call BIS_fnc_logFormat; */
+private _groupData = (_logic getVariable "#groupData");
+private _selectedUnits = [];
+
+for "iLoop" from 1 to (_unitsToSelect min NUMBER_OF_GROUPS(_groupData)) do
+{
+  private _randIndex = floor random NUMBER_OF_GROUPS(_groupData);
+  private _selectedGroup = _groupData select _randIndex;
+  private _selectedUnit = (SELECT_UNITS(_selectedGroup) select 0);
+  _selectedUnits pushBack _selectedGroup;
+  /* ["selectedUnits: %1", _selectedUnits] call BIS_fnc_LogFormat; */
+  _groupData deleteAt _randIndex;
+};
+[MODE_DISTRIBUTE_UNITS_TO_SECTORS] call BIS_fnc_OM_ModuleSyndikatTeam;
+
+_ret = _selectedUnits;

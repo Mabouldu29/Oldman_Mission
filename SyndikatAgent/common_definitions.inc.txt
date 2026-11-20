@@ -1,0 +1,15 @@
+#define SYNDIKAT_AGENT_LOGIC                            (missionNamespace getVariable 'BIS_OM_SyndikatAgent_logic')
+
+//HOW MUCH IS PROBABLE THE SUPPORT EVENT WILL BE GENERATED. RANGE: 0.0 - 1.0
+#define SUPPORT_SET_EVENT_PROBABILITY(PROB)             (SYNDIKAT_AGENT_LOGIC setVariable ["SupportProbability", PROB])
+#define SYNDIKATPOOL_DEBUG false
+#define IN_DEFAULT_RANGE_FROM_PLAYER										5000				//Syndikats will be selecting CSAT bases in this range from player (to prevent the player from travelling so far)
+
+#define SYNDIKAT_SUPPORT_LOGIC (missionNamespace getVariable 'BIS_OM_SyndikatAgent_logic')
+
+#define TMP_GET_AGENT_UNITS_BACK_AFTER_ASSAULT \
+	private _vehicleGroups = [_this select 0, 'vehicleGroups'] call bis_fnc_questGetData; if(isNil '_vehicleGroups') then {_vehicleGroups = []}; \
+	[ _vehicleGroups, position SYNDIKAT_SUPPORT_LOGIC] call BIS_fnc_OM_ModuleSyndikatAgent_returnGroupsToPool;\
+	SYNDIKAT_SUPPORT_LOGIC setVariable ['lastEventDate', date];[3, ['Radio_Tanoa_News',['News_Event_rebels_attack_Lugganville',32]]] call BIS_fnc_OM_moduleRadio;
+
+#define TMP_SET_FLAG_FIRST_TIME_ATTACK_FINISHED(RESULT) if((missionNameSpace getVariable ['BIS_SupportQuestFirstTime', 0]) == 0) then {missionNameSpace setVariable ['BIS_SupportQuestFirstTime', RESULT]}; str RESULT call BIS_fnc_Log;

@@ -1,0 +1,6 @@
+#include "definitions.inc"
+
+private _units = (synchronizedObjects _logic) select {_x isKindOf "Man"};
+{
+  [ _x, _sector, _selectedPosition] call BIS_fnc_OM_ModuleSyndikatTeam_addToSyndikatCamp;
+} forEach _units;
