@@ -1,0 +1,66 @@
+//--- ToDo: check if this code is stil valid?
+#ifndef __INIT_FACILITY
+	#define __INIT_FACILITY 1
+
+	{
+		if( isNil _x ) then
+		{
+			call compile format [ "%1 = objNull", _x ];
+			["BOOT: compiling: %1", compile format [ "%1 = objNull", _x ]] call BIS_fnc_logFormat;
+		};
+	} forEach	[	"BIS_at01", "BIS_at02", "BIS_at03", "BIS_at04", "BIS_at05", "BIS_at06" ];
+
+	BIS_turrets_mrks = ["MI_marker_0","MI_marker_1","MI_marker_2","MI_marker_3","MI_marker_6","MI_marker_7","MI_marker_20","MI_marker_21","MI_marker_26","MI_marker_27","MI_marker_28","MI_marker_24","MI_marker_25","MI_marker_22","MI_marker_23"];
+	BIS_minefield_mrks = ["MI_marker_8","MI_marker_9","MI_marker_10","MI_marker_11","MI_marker_12","MI_marker_13","MI_marker_14","MI_marker_15","MI_marker_16","MI_marker_17","MI_marker_18","MI_marker_19"];
+
+	#ifndef OM_MAIN_MISSION
+
+	player setvariable ["AAsystems",TRUE];
+	player setvariable ["Drones",TRUE];
+	player setvariable ["DisableTurrets",TRUE];
+	player setvariable ["RevealTurrets",TRUE];
+	player setvariable ["Minefields",TRUE];
+
+	// disable AA threats on Military island
+	[] spawn
+	{
+		waituntil {sleep 0.5; !(player getvariable "AAsystems")};
+		//{_x enableSimulation false} foreach (entities "O_SAM_System_04_F");
+		{deletevehicle (gunner _x)} foreach (entities "O_SAM_System_04_F");
+	};
+
+	// disable Turrets on Military island
+	[] spawn
+	{
+		waituntil {sleep 0.5; !(player getvariable "DisableTurrets")};
+		{deletevehicle (gunner _x)} foreach (entities "O_HMG_01_A_F");
+		{deletevehicle (gunner _x)} foreach (entities "O_GMG_01_A_F");
+	};
+	// reveal autonomous turrets
+	[] spawn
+	{
+		waituntil {sleep 0.5; !(player getvariable "RevealTurrets")};
+		{_x setMarkerAlpha 1} foreach BIS_turrets_mrks;
+	};
+
+	// reveale minefields
+	[] spawn
+	{
+		waituntil {sleep 0.5; !(player getvariable "Minefields")};
+		{_x setMarkerAlpha 1} foreach BIS_minefield_mrks;
+		{independent revealMine _x;} forEach (position T_D_FacilityTarget0 nearObjects ["MineBase", 500]);
+	};
+
+	sleep 2;
+
+	{EAST revealMine _x;} forEach (position T_D_FacilityTarget0 nearObjects ["MineBase", 500]);
+
+	#endif
+#endif
+
+#ifndef OM_MAIN_MISSION
+	waituntil {!isNil "BIS_missionInitDone"};
+	#include "\a3\Missions_F_Oldman\Campaign\Missions\Oldman.tanoa\init_systemExec.sqf"
+#else
+
+#endif

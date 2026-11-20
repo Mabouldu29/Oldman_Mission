@@ -1,0 +1,2 @@
+
+["bis_sc_mi_firingrange","bis_sc_mi_tanksbase","bis_sc_mi_airfieldveh","bis_sc_mi_tanksairport","bis_sc_mi_tempharbor","bis_mi_facility_guards","bis_mi_airport_gateguard","bis_sc_tuvanaka","bis_sc_belfort","bis_mi_researchcontainer","bis_mi_hq","bis_sc_facilityobjects","bis_sc_mines_sw","bis_sc_mines_se","bis_sc_mines_n","bis_sc_facilitydestroyed"]

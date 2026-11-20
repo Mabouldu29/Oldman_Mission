@@ -1,0 +1,14 @@
+class T_SQ_D_Facility: DestroyQuest
+{
+	title =  __EVAL(localize "STR_A3_T_IslandFacility_questDefines.incT_SQ_D_Facility0");
+	description[] = { __EVAL(localize "STR_A3_T_IslandFacility_questDefines.incT_SQ_D_Facility1"),'BIS_MilIslandFlag'};
+	parentTemplate = MainQuest;
+
+  	class StateModifiers: StateModifiers {
+	class Completed: Completed {
+		customCondition = "true";
+		code = "bis_fnc_missionFlow_fsm setFSMVariable ['_SQ99', true]; setStatValue ['Om_T_SQ_D_Facility_done',1]";
+		conversations[] = {};
+		};
+	};
+};

@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["O_Plane_CAS_02_dynamicLoadout_F","BIS_MI_SUplane",[2199.96,13378.4,-0.0138035],[[0.639396,-0.768849,-0.00664146],[0.00424345,-0.00510902,0.999978]],0,1,[],["a3\air_f_epc\plane_cas_02\data\fighter02_ext01_co.paa","a3\air_f_epc\plane_cas_02\data\fighter02_ext02_co.paa"],false,[["#init",["_this enableSimulation true;_This enableDynamicSimulation true;"]]],[true,false]],["O_T_VTOL_02_infantry_dynamicLoadout_F","",[2421.8,13334.1,-0.0196657],[[-0.996123,-0.0879648,-0.000478923],[0.00160486,-0.0236165,0.99972]],0,1,[],["a3\air_f_exp\vtol_02\data\vtol_02_ext01_ghex_co.paa","a3\air_f_exp\vtol_02\data\vtol_02_ext02_ghex_co.paa","a3\air_f_exp\vtol_02\data\vtol_02_ext03_l_ghex_co.paa","a3\air_f_exp\vtol_02\data\vtol_02_ext03_r_ghex_co.paa"],false,[["#datalink",[true,true,true]]],[true,false]]]
+		,
+		//--- #groupData
+		[[EAST,["SAFE","LIMITED","WEDGE","YELLOW"],[[[2465.57,13326.7,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[2366.66,13362.4,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[2465.18,13325.6,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["O_T_Soldier_M_F","",[2456.24,13324.8,0.0016489],135.535,0.5,0,"Auto",[["srifle_DMR_07_blk_DMS_F","","","optic_DMS",["20Rnd_650x39_Cased_Mag_F",20],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_T_Soldier_F",[["FirstAidKit",1],["20Rnd_650x39_Cased_Mag_F",3,20],["SmokeShell",1,1]]],["V_TacVest_oli",[["20Rnd_650x39_Cased_Mag_F",6,20],["16Rnd_9x21_Mag",2,16],["HandGrenade",2,1],["SmokeShellRed",1,1],["Chemlight_red",2,1]]],[],"H_HelmetO_ghex_F","G_Sport_Checkered",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","O_NVGoggles_ghex_F"]],"",false,[]],["O_T_Soldier_GL_F","",[2452.96,13322.6,0.00102425],0,0.5,0,"Auto",[["arifle_CTAR_GL_blk_ACO_F","","","optic_ACO_grn",["30Rnd_580x42_Mag_F",30],["1Rnd_HE_Grenade_shell",1],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_T_Soldier_F",[["FirstAidKit",1],["30Rnd_580x42_Mag_F",3,30],["1Rnd_SmokeYellow_Grenade_shell",1,1]]],["V_HarnessOGL_ghex_F",[["30Rnd_580x42_Mag_F",2,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",2,1],["MiniGrenade",2,1],["1Rnd_HE_Grenade_shell",5,1],["SmokeShell",1,1],["SmokeShellRed",1,1],["Chemlight_red",2,1],["1Rnd_Smoke_Grenade_shell",2,1],["1Rnd_SmokeRed_Grenade_shell",1,1],["1Rnd_SmokeOrange_Grenade_shell",1,1]]],[],"H_HelmetLeaderO_ghex_F","G_Sport_BlackWhite",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","O_NVGoggles_ghex_F"]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		79.617
+]

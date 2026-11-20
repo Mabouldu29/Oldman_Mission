@@ -1,0 +1,577 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, facilityFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-47.482010,-666.596985,52.517990,-616.596985,0.000000,"Init"};
+item1[] = {"",7,210,-1.680206,-531.179016,6.319794,-523.178955,0.000000,""};
+item2[] = {"facility_gone",4,218,-42.495209,-480.212341,47.504791,-430.212402,0.000000,"facility gone"};
+item3[] = {"Facility_destoye",1,250,-43.294952,-385.801453,46.705086,-335.801453,0.000000,"Facility" \n "destoyed"};
+item4[] = {"_",2,250,71.091545,-392.613556,161.091568,-342.613525,0.000000,""};
+item5[] = {"AA_system_disabl",4,218,72.264511,-478.846802,162.264511,-428.846863,0.000000,"AA system" \n "disabled"};
+item6[] = {"",7,210,115.268143,-531.178894,123.268143,-523.178833,0.000000,""};
+item7[] = {"",7,210,112.026733,-293.003876,120.026733,-285.003876,0.000000,""};
+item8[] = {"disable_Turrets",4,218,203.496872,-477.328247,293.496857,-427.328308,0.000000,"disable Turrets"};
+item9[] = {"",7,210,244.312317,-530.836792,252.312317,-522.836792,0.000000,""};
+item10[] = {"__1",2,250,203.638840,-394.562439,293.638855,-344.562408,0.000000,""};
+item11[] = {"",7,210,245.074661,-293.134094,253.074646,-285.134094,0.000000,""};
+item12[] = {"",7,210,366.057495,-292.862183,374.057495,-284.862183,0.000000,""};
+item13[] = {"",7,210,361.662354,-530.997986,369.662354,-522.997986,0.000000,""};
+item14[] = {"reveal_turrets",4,218,320.528259,-477.033600,410.528229,-427.033661,0.000000,"reveal turrets"};
+item15[] = {"__2",2,250,323.363770,-393.173523,413.363800,-343.173492,0.000000,""};
+item16[] = {"reveal_minefield",4,218,443.675293,-477.594757,533.675354,-427.594818,0.000000,"reveal minefield"};
+item17[] = {"",7,210,484.731445,-530.997925,492.731476,-522.997986,0.000000,""};
+item18[] = {"__3",2,250,442.582550,-395.055786,532.582642,-345.055756,0.000000,""};
+item19[] = {"",7,210,483.443237,-291.742096,491.443237,-283.742096,0.000000,""};
+item20[] = {"",7,210,672.147034,-291.189484,680.147034,-283.189484,0.000000,""};
+item21[] = {"",7,210,669.638916,-551.849487,677.638916,-543.849487,0.000000,""};
+item22[] = {"",7,210,20.612045,-553.493042,28.612045,-545.493042,0.000000,""};
+item23[] = {"",7,210,602.031494,-530.828064,610.031494,-522.828064,0.000000,""};
+item24[] = {"",7,210,606.911743,-291.688782,614.911743,-283.688782,0.000000,""};
+item25[] = {"__4",2,250,562.965637,-393.428986,652.965698,-343.428955,0.000000,""};
+item26[] = {"reveal_drones",4,218,560.804688,-477.594727,650.804810,-427.594788,0.000000,"reveal drones"};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {1,6};
+link3[] = {2,3};
+link4[] = {4,7};
+link5[] = {5,4};
+link6[] = {6,5};
+link7[] = {6,9};
+link8[] = {7,11};
+link9[] = {8,10};
+link10[] = {9,8};
+link11[] = {9,13};
+link12[] = {10,11};
+link13[] = {11,12};
+link14[] = {12,19};
+link15[] = {13,14};
+link16[] = {13,17};
+link17[] = {14,15};
+link18[] = {15,12};
+link19[] = {16,18};
+link20[] = {17,16};
+link21[] = {17,23};
+link22[] = {18,19};
+link23[] = {19,24};
+link24[] = {20,21};
+link25[] = {21,22};
+link26[] = {22,1};
+link27[] = {23,26};
+link28[] = {24,20};
+link29[] = {25,24};
+link30[] = {26,25};
+globals[] = {0.000000,0,0,0,0,640,480,1,357,6316128,1,-142.344803,929.714905,10.082153,-806.570251,1318,1004,1};
+window[] = {2,-1,-1,-1,-1,1254,208,1054,208,3,1336};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "facilityFlow";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"""BIS_destroyFacility"" call BIS_fnc_missionTasks;" \n
+                         "" \n
+                         "player setvariable [""AAsystems"",FALSE];" \n
+                         "player setvariable [""Drones"",FALSE];" \n
+                         "player setvariable [""DisableTurrets"",FALSE];" \n
+                         "player setvariable [""RevealTurrets"",FALSE];" \n
+                         "player setvariable [""Minefields"",FALSE];" \n
+                         "" \n
+                         "private _getInfoAA = true;" \n
+                         "private _getInfoDron = true;" \n
+                         "private _getInfoTurets = true;" \n
+                         "private _getInfoTurDis = true;" \n
+                         "private _getInfoMines = true"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "AA_system_disabl">*/
+                                class AA_system_disabl
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""AAsystems"" && _getInfoAA"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "disable_Turrets">*/
+                                class disable_Turrets
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""DisableTurrets"" && _getInfoTurDis"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_turrets">*/
+                                class reveal_turrets
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""RevealTurrets"" && _getInfoTurets"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_minefield">*/
+                                class reveal_minefield
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Minefields"" && _getInfoMines"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_drones">*/
+                                class reveal_drones
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Drones"" && _getInfoDron"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "facility_gone">*/
+                                class facility_gone
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Facility_destoye";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive BIS_dome"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Facility_destoye">*/
+                class Facility_destoye
+                {
+                        name = "Facility_destoye";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"Hint ""faclity gone"";"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"_getInfoAA = false;" \n
+                         "{deletevehicle (gunner _x)} foreach (entities ""O_SAM_System_04_F"");" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "AA_system_disabl">*/
+                                class AA_system_disabl
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""AAsystems"" && _getInfoAA"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "disable_Turrets">*/
+                                class disable_Turrets
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""DisableTurrets"" && _getInfoTurDis"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_turrets">*/
+                                class reveal_turrets
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""RevealTurrets"" && _getInfoTurets"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_minefield">*/
+                                class reveal_minefield
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Minefields"" && _getInfoMines"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_drones">*/
+                                class reveal_drones
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Drones"" && _getInfoDron"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "facility_gone">*/
+                                class facility_gone
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Facility_destoye";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive BIS_dome"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__1">*/
+                class __1
+                {
+                        name = "__1";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/"_getInfoTurDis = false;" \n
+                         "{deletevehicle (gunner _x)} foreach (entities ""O_HMG_01_A_F"");" \n
+                         "{deletevehicle (gunner _x)} foreach (entities ""O_GMG_01_A_F"");" \n
+                         "{_x setMarkerColor ""ColorGrey""} foreach BIS_turrets_mrks;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "AA_system_disabl">*/
+                                class AA_system_disabl
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""AAsystems"" && _getInfoAA"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "disable_Turrets">*/
+                                class disable_Turrets
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""DisableTurrets"" && _getInfoTurDis"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_turrets">*/
+                                class reveal_turrets
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""RevealTurrets"" && _getInfoTurets"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_minefield">*/
+                                class reveal_minefield
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Minefields"" && _getInfoMines"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_drones">*/
+                                class reveal_drones
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Drones"" && _getInfoDron"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "facility_gone">*/
+                                class facility_gone
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Facility_destoye";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive BIS_dome"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__2">*/
+                class __2
+                {
+                        name = "__2";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"_getInfoTurets = false;" \n
+                         "{_x setMarkerAlpha 1} foreach BIS_turrets_mrks;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "AA_system_disabl">*/
+                                class AA_system_disabl
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""AAsystems"" && _getInfoAA"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "disable_Turrets">*/
+                                class disable_Turrets
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""DisableTurrets"" && _getInfoTurDis"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_turrets">*/
+                                class reveal_turrets
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""RevealTurrets"" && _getInfoTurets"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_minefield">*/
+                                class reveal_minefield
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Minefields"" && _getInfoMines"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_drones">*/
+                                class reveal_drones
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Drones"" && _getInfoDron"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "facility_gone">*/
+                                class facility_gone
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Facility_destoye";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive BIS_dome"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__3">*/
+                class __3
+                {
+                        name = "__3";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"_getInfoMines = false;" \n
+                         "{_x setMarkerAlpha 1} foreach BIS_minefield_mrks;" \n
+                         "{independent revealMine _x;} forEach (position BIS_dome nearObjects [""MineBase"", 500]);"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "AA_system_disabl">*/
+                                class AA_system_disabl
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""AAsystems"" && _getInfoAA"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "disable_Turrets">*/
+                                class disable_Turrets
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""DisableTurrets"" && _getInfoTurDis"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_turrets">*/
+                                class reveal_turrets
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""RevealTurrets"" && _getInfoTurets"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_minefield">*/
+                                class reveal_minefield
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Minefields"" && _getInfoMines"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_drones">*/
+                                class reveal_drones
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Drones"" && _getInfoDron"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "facility_gone">*/
+                                class facility_gone
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Facility_destoye";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive BIS_dome"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__4">*/
+                class __4
+                {
+                        name = "__4";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/"_getInfoDron = false;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "AA_system_disabl">*/
+                                class AA_system_disabl
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""AAsystems"" && _getInfoAA"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "disable_Turrets">*/
+                                class disable_Turrets
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""DisableTurrets"" && _getInfoTurDis"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_turrets">*/
+                                class reveal_turrets
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""RevealTurrets"" && _getInfoTurets"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_minefield">*/
+                                class reveal_minefield
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Minefields"" && _getInfoMines"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reveal_drones">*/
+                                class reveal_drones
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player getvariable ""Drones"" && _getInfoDron"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "facility_gone">*/
+                                class facility_gone
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Facility_destoye";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!alive BIS_dome"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "Facility_destoye",
+        };
+};
+/*%FSM</COMPILE>*/

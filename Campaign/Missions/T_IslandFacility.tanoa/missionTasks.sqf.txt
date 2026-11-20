@@ -1,0 +1,22 @@
+// 1# DESTROY FACILITY
+case "BIS_destroyFacility" : {
+	if (_taskState == "") then {
+
+		[
+			player,
+			_taskID,
+			[
+				"CSAT is producing unknown chemical weapon and is testing them on civilians. Facility is located somewhere on northwest <marker name = 'MI_marker_5'>military island</marker>.",
+				"Destroy facility"
+			],
+			nil,
+			true,
+			nil,
+			true,
+			"destroy",
+			false
+		] call BIS_fnc_taskCreate;
+	} else {
+		[_taskID, _this] call BIS_fnc_taskSetState;
+	};
+};
