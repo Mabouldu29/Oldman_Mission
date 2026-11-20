@@ -1,0 +1,20 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_quest", "_eventData"];
+//TODO specify mods
+//["quest DESTROY PROGRESS"] call bis_fnc_logFormat;
+
+private _specificProperties = GVAR(_quest, "specificProperties");
+private _currentProgress = GVAR(_quest, "currentProgress");
+private _progressPercentage = GVAR(_quest, "progressPercentage");
+
+private _objectsCount = GVAR(_quest, "defendedObjectsCounter"); //GVAR(_unit, "objectsCount");
+_specificProperties#1 params["_unitsToBeDefendedPercentage"];
+_eventData params["_questNPCUnit"];
+
+_objectsCount = _objectsCount + 1;
+SVAR(_quest, "defendedObjectsCount", _objectsCount);
+
+// ["quest DESTROY PROGRESS %1", [_unit, _damage, _objectsCount, _progressPercentage,  _progressPercentage/_objectsCount,_currentProgress]] call bis_fnc_logFormat;
+private _currentProgress = ([_objectsCount, _progressPercentage, GVAR(_quest, "currentProgress")] call BIS_fnc_questProgress);  //([_damage, _progressPercentage/_objectsCount,_currentProgress] call BIS_fnc_questProgress);
+if (_currentProgress >= _unitsToBeDefendedPercentage) then {_currentProgress = QUEST_CODE_FAILED;};
+_currentProgress

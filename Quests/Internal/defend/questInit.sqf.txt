@@ -1,0 +1,117 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params[
+	["_areaInfo", [], [ [] ]],
+	 "_quest"
+];
+
+private _templateName = GVAR(_quest, "currentTemplateName");
+private _questType = GVAR(_quest, "questType");
+
+private _allObjects = GVARS(_quest, "allObjects", [objNull]);
+private _module = _allObjects#0;
+
+_areaInfo params["_syncObjects", "_supportUnits", "_markerParams"];
+ 
+private _area = _syncObjects getVariable "objectArea";
+private _apos = getPos _syncObjects;
+
+private _defendAreas = [synchronizedObjects _syncObjects + [_syncObjects], [], { player distance _x }, "ASCEND"] call BIS_fnc_sortBy;
+if (!(_defendAreas isEqualTo [])) then { 
+	private _nearestArea = (_defendAreas#0);	
+	_apos = getPos _nearestArea; 
+	_area = _nearestArea getVariable "objectArea";
+};
+//["quest DEFEND INIT %1 %2", _area, _apos] call bis_fnc_logFormat; 
+
+private _specificProperies = (GVAR(_quest, "specificProperties"))#1;
+private _triggerCheckCheckpoint = createTrigger ["EmptyDetector", _apos];
+_triggerCheckCheckpoint setTriggerArea _area;
+
+private _triggerConditon = "";
+private _formattedActivation = "";
+private _defendMode = _specificProperies#0;
+switch (_defendMode) do {
+case DEFEND_MODE_ENTRANCE: { // Prevent enemy side to enter the area. (TODO sync with sector)
+	private _side = _specificProperies#1;
+	private _unitNumbers = _specificProperies#2;
+	private _delayToFailSec = _specificProperies#3;
+
+	_triggerCheckCheckpoint setTriggerActivation [_side, "PRESENT", true];
+	_formattedActivation = format["_f=%1; _f call bis_fnc_questSetState", [_templateName, QUEST_FAILED]];
+	_triggerConditon = format["this && %1 countSide thisList > %2", _side, _unitNumbers]; 
+	_triggerCheckCheckpoint setTriggerStatements [_triggerConditon,  _formattedActivation, ""]; 
+	_triggerCheckCheckpoint setTriggerTimeout [_delayToFailSec, _delayToFailSec, _delayToFailSec, true];
+	SVAR(_quest, "timeoutExpiredState" , QUEST_COMPLETED);
+};
+case DEFEND_MODE_PRESERVE: { //Amount of units in given side in the area 
+	_side = INDEPENDENT;
+	_unitNumbers = 2;
+	_triggerCheckCheckpoint setTriggerActivation [str _side, "NOT PRESENT", true];
+	// _triggerCheckCheckpoint setTriggerType "NONE";
+	_formattedActivation = format["_f=%1; _f call bis_fnc_questSetState", [_templateName, QUEST_FAILED]];
+	
+	_triggerConditon = format["this && %1 countSide thisList <= %2", str _side, _unitNumbers];
+	_triggerCheckCheckpoint setTriggerStatements [_triggerConditon,  _formattedActivation, "hint 'fail'"]; 
+	_triggerCheckCheckpoint setTriggerTimeout [1, 1, 1, true];
+	SVAR(_quest, "timeoutExpiredState", QUEST_COMPLETED);
+};
+case DEFEND_MODE_AREA: { 
+	private _areaTimeout = _specificProperies#1;
+	_triggerCheckCheckpoint setTriggerActivation ["ANYPLAYER", "NOT PRESENT", false];  
+  	_formattedActivation = format["_f=%1; _f call bis_fnc_questSetState", [_templateName, QUEST_FAILED]];
+	_triggerConditon = "this";//format["this && player in thisList"];
+	_triggerCheckCheckpoint setTriggerStatements [_triggerConditon, _formattedActivation , ""]; 
+	_triggerCheckCheckpoint setTriggerTimeout [_areaTimeout, _areaTimeout, _areaTimeout, true];
+	_triggerCheckCheckpoint spawn {
+		while {!(isNull _this)} do {
+			private _t = floor triggerTimeoutCurrent _this;
+			if(_t > 0) then { "down" cutText [format["<t valign='bottom' shadow='1' size='1.2' color='#ff0000'><br/><br/>GET BACK TO DEFENDED AREA! [%1]", _t], "PLAIN DOWN", 0.0001, true, true]; };
+		};
+	};
+	SVAR(_quest, "timeoutExpiredState" , QUEST_COMPLETED);
+};
+
+case DEFEND_MODE_OBJECTS: { //Selected object/NPC needs to stay alive 
+	private _defendedObjects = GVARS(_module, "syncedObjects", []);//(synchronizedObjects _module) apply {vehicleVarName _x};
+	private _terrainObjects = GVARS(_module, "terrainObjects", []);
+	private _terrainMode = GVARS(_module, "useTerrainObject", false);
+	if (_terrainMode) then { _defendedObjects = _terrainObjects; } else {
+		if (_defendedObjects isEqualTo []) then { _defendedObjects = _specificProperties#1; };	
+	};
+	private _specProp = GVAR(_quest, "specificProperties");
+	private _defendedObjectsCount = count _defendedObjects;
+	SVAR(_quest, "defendedObjectsCounter",  0);
+	
+	//TODO template ?  
+	SVAR(_quest, "timeoutExpiredState" , QUEST_COMPLETED);
+	private _progressPercentage = if (_defendedObjectsCount > 0) then { QUEST_PERCENTAGE_AMMOUNT(_defendedObjectsCount) } else { 0 };
+	SVAR(_quest, "progressPercentage", _progressPercentage);
+
+	{
+		private _questNPCUnit = objNull;
+		if (!_terrainMode) then { 
+			waitUntil {sleep 0.5; _questNPCUnit = MGVARS(_x, objNull); !isNull _questNPCUnit}; 
+		} else { _questNPCUnit = _x; };
+		SVAR(_questNPCUnit, "templateName",  _templateName );
+		SVAR(_questNPCUnit, "attachedQuestParams",  _this);
+		//TODO removing EH when the quest is finished without destroying specified j
+		if ( (GVARS(_questNPCUnit, "_questNPCUnitKilledHandler", -1)) isEqualTo -1) then {
+			private _questNPCUnitKilledHandler = _questNPCUnit addEventHandler ["Killed", { params["_questNpc"]; [GVAR(_questNpc, "templateName"), [_questNpc],"",[]] spawn bis_fnc_questCheckActive; }];
+			SVAR(_questNPCUnit, "_questNPCUnitKilledHandler", _questNPCUnitKilledHandler);
+		};
+	
+		// Delete handler
+		if ( (GVARS(_questNPCUnit, "_questNPCUnitDeleteHandler", -1)) isEqualTo -1) then {
+		private _questNPCUnitDeleteHandler = _questNPCUnit addEventHandler ["Deleted", {
+			params ["_questNpc"];
+			private _params = GVAR(_questNpc, "attachedQuestParams");
+			_params spawn QUEST_INIT("defend");	
+		}];
+		SVAR(_questNPCUnit, "_questNPCUnitDeleteHandler", _questNPCUnitDeleteHandler);
+		};
+	
+	} forEach _defendedObjects;
+};
+default { throw str format ["Invalid defend quest mode(%1)!", _defendMode]; };
+};
+_apos

@@ -1,0 +1,7 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_quest", "_eventData"];
+
+_eventData params["_unit"];
+SVAR(_unit, "TaskTemplate", nil);
+
+true

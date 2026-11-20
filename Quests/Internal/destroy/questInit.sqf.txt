@@ -1,0 +1,78 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+
+private _pos = getPos (_this#0#0);
+_this spawn {
+
+params[
+	"_modules",
+	 "_quest"
+];
+
+private _templateName = GVAR(_quest, "currentTemplateName");
+private _questType = GVAR(_quest, "questType");
+
+// sleep 0.3;
+private _module = _modules#0;
+
+if (!(isNil "_module")) then {
+	//["quest DESTROY INIT %1 %2", [_module, _templateName, _questType], count _modules] call bis_fnc_logFormat;
+
+	//TODO resolve markers issue
+	private _editorBuildingNames = parseSimpleArray GVARS(_module, "editorBuildingNames", "[]");
+	//["quest DESTROY _editorBuildingNames %1", _editorBuildingNames] call bis_fnc_logFormat;
+
+	private _buildings = GVARS(_module, "#buildings", []);
+
+	if (count _editorBuildingNames > 0) then {
+		//["quest DESTROY INIT WAIT STARTS"] call bis_fnc_logFormat;
+		waitUntil {sleep 1; _editorBuildingNames findIf {isNull (missionNamespace getVariable _x)} == -1};
+		{
+			_editorBuilding = missionNamespace getVariable _x;
+			_buildings pushBackUnique _editorBuilding;
+			//["quest DESTROY INIT ADDING %1 TO [BUILDINS]", _editorBuilding] call bis_fnc_logFormat;
+			SVAR(_editorBuilding, "params", _this);
+			_editorBuilding addEventHandler ["Deleted", {
+				params ["_editorBuilding"];
+				//["quest DESTROY INIT deleted %1 - adding again", _editorBuilding] call bis_fnc_logFormat;
+				GVAR(_editorBuilding, "params") call QUEST_INIT("destroy");
+			}];
+		} forEach _editorBuildingNames;
+		//["quest DESTROY INIT WAIT DONE"] call bis_fnc_logFormat;
+	};
+	//["quest DESTROY ADDING EVENTS"] call bis_fnc_logFormat;
+
+	private _objectsCount = 1;
+	if ((GVARS(_module, "onlyOneObject", false)) isEqualTo false) then {
+		_objectsCount = count _buildings;
+	};
+	{
+		private _building = _x;
+		SVAR(_building, "TaskTemplate", _templateName);
+		SVAR(_building, "QuestType", _questType);
+		SVAR(_building, "objectsCount", _objectsCount);
+		//["quest DESTROY EVENT ADDED FOR %1 - %2 [%3]",_module, _building, _objectsCount] call bis_fnc_logFormat;
+
+		// _building addEventHandler ["HandleDamage", { //Dammaged
+		// 	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+		// 	private _templateName = GVAR(_unit, "TaskTemplate");
+
+		// 	if (!(isNil "_templateName")) then {	
+		// 		["quest DESTROY DAMAGE damage given %1", _damage] call bis_fnc_logFormat;	
+		// 		[_templateName, [_unit, _damage], GVAR(_unit, "QuestType"),[]] spawn bis_fnc_questCheckActive;
+		// 	};	
+		// }];
+
+		_building addEventHandler ["Killed", {
+			params ["_unit", "_killer", "_instigator", "_useEffects"];
+			private _templateName = GVAR(_unit, "TaskTemplate");
+			if (!(isNil "_templateName")) then {	
+				private _damage = 1;
+				//["quest DESTROY DAMAGE killed"] call bis_fnc_logFormat;	
+				[_templateName, [_unit, _damage], GVAR(_unit, "QuestType"),[]] spawn bis_fnc_questCheckActive;
+			};		
+		}];
+	} forEach _buildings;
+
+};
+};
+_pos

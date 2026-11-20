@@ -1,0 +1,4 @@
+params["_progress", "_onePergentageAmmount","_currentProgress"];
+private _questProgress = _currentProgress + (_progress*_onePergentageAmmount);
+//["quest progressed by %1%% currentProgress:%2, progress:%3 onePergentageAmmount:%4", _questProgress, _currentProgress, _progress, _onePergentageAmmount] call bis_fnc_logFormat;
+_questProgress

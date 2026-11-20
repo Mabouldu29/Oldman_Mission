@@ -1,0 +1,12 @@
+ #include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_quest", "_eventData"];
+
+private _specificProperties = GVAR(_quest, "specificProperties");
+private _currentProgress = GVAR(_quest, "currentProgress");
+private _progressPercentage = GVAR(_quest, "progressPercentage");
+
+_specificProperties#1 params["_itemCategory","_itemTypes", "_itemCount"];
+_eventData params["_unit", "_itemCountc"];
+
+// ["quest DESTROY PROGRESS %1", [_unit, _damage, _objectsCount, _progressPercentage,  _progressPercentage/_objectsCount,_currentProgress]] call bis_fnc_logFormat;
+([_itemCountc, _progressPercentage/_itemCount,_currentProgress] call BIS_fnc_questProgress)

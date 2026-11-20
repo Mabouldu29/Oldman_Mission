@@ -1,0 +1,35 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params[
+	["_areaInfo", [], [ [] ]],
+	 "_quest"
+];
+
+private _templateName = GVAR(_quest, "currentTemplateName");
+private _questType = GVAR(_quest, "questType");
+
+private _allObject = GVAR(_quest, "allObjects");
+SVAR(_quest, "sector", _allObject#0);
+
+_areaInfo params["_syncObjects", "_supportUnits", "_markerParams"];
+
+private _area = _syncObjects getVariable "objectArea";
+private _apos = getPos _syncObjects;
+
+//["quest SUPPORT INIT %1 %2", _area, _apos] call bis_fnc_logFormat;
+
+private _triggerCheckCheckpoint = createTrigger ["EmptyDetector", _apos];
+_triggerCheckCheckpoint setTriggerArea _area;
+SVAR(_triggerCheckCheckpoint, "_supportUnits", _supportUnits);
+SVAR(_triggerCheckCheckpoint, "_sector", _syncObjects); 
+
+
+private _startingPositions = ((synchronizedObjects _syncObjects) select {_x isKindOf "ModuleOmQuest_Support_StartingPos_F"}) apply {getPos _x}; //TODO check type
+SVAR(_triggerCheckCheckpoint, "_startingPositions", _startingPositions); 
+
+//["quest SUPPORT INIT POS %1", _startingPositions] call bis_fnc_logFormat;
+
+// TODO FIX we have to delay checking of quests, since the quest array will be set AFTER the init
+private _delay = 10;
+[_templateName, [_triggerCheckCheckpoint] ,_questType, [], _delay] spawn bis_fnc_questCheckActive;
+
+_apos

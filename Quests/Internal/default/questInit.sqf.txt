@@ -1,0 +1,10 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params[
+	["_areaInfo", [], [ [] ]],
+	 "_quest"
+];
+//"quest DEFAULT INIT started" call bis_fnc_logFormat;
+private _templateName = GVAR(_quest, "currentTemplateName");
+private _questType = GVAR(_quest, "questType");
+
+[]

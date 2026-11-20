@@ -1,0 +1,66 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_quest", ["_state", true]];
+
+private _isParent = [_quest, "isParent"] call bis_fnc_questGetData;
+private _questId = GVAR(_quest, "questId");
+private _taskStringId =  QUEST_TASK_ID(_questId);
+if (_state isEqualType "" && {([_taskStringId] call bis_fnc_taskExists)}) then {
+	[_taskStringId, _state, !_isParent] call BIS_fnc_taskSetState;
+} else {
+	private _proceed = if (typeName _state == typeName TRUE) then {TRUE} else {!(toLower _state in ["canceled", "cancelled", "failed"])};
+	if (_proceed) then {
+		if (count (GVAR(_quest, "taskIds")) > 1) then {
+			if !([(GVAR(_quest, "taskIds")) # 1] call BIS_fnc_taskExists) then {
+				private _parentID = GVAR(_quest, "parentId");
+				if (_parentID != -1) then {
+					private _taskStringIdParent = QUEST_TASK_ID(_parentID);
+					if !([_taskStringIdParent] call bis_fnc_taskExists) then {
+						_parentID = (entities "Logic") findIf {(_x getVariable ["questId", -1]) == _parentID};
+						private _parent = (entities "Logic") # _parentID;
+						[_parent] call bis_fnc_questParseDescription;
+						[
+							player,
+							(GVAR(_parent, "taskIds")),
+							[GVAR(_parent, "description"), GVAR(_parent, "title")],
+							objNull,
+							nil,
+							nil,
+							FALSE,
+							GVAR(_parent, "iconType") //TODO our quest type => cfgTasktypes "default"
+						] call BIS_fnc_taskCreate;
+					};
+				};
+			};
+		};
+		[_quest] call bis_fnc_questParseDescription;
+		[
+			player,
+			(GVAR(_quest, "taskIds")),
+			[GVAR(_quest, "description"), GVAR(_quest, "title")],
+			objNull,
+			_state,
+			nil,
+			if !(_isParent) then {
+				if (typeName _state == typeName TRUE) then {TRUE} else {FALSE};
+			} else {
+				FALSE;
+			},
+			GVAR(_quest, "iconType") //TODO our quest type => cfgTasktypes "default"
+		] call BIS_fnc_taskCreate;
+		
+	};
+};
+
+if (typeName _state == typeName "") then {_state = toUpper _state};
+if (_isParent) then {
+	private _notification = switch (_state) do {
+		case FALSE: {"TaskCreatedOMParent"};
+		case TRUE: {"TaskAssignedOMParent"};
+		case "CANCELLED";
+		case "CANCELED": {"TaskCanceledOMParent"};
+		case "SUCCEEDED": {"TaskSucceededOMParent"};
+		case "FAILED": {"TaskFailedOMParent"};
+		default "TaskAssignedOMParent";
+	};
+	[_notification, ["", GVAR(_quest, "title")]] spawn BIS_fnc_showNotification;
+};

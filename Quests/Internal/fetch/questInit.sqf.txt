@@ -1,0 +1,277 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+_this spawn {
+
+//["quest INIT FETCH STARTS"] call bis_fnc_logFormat;
+params[
+	"_questSettings",
+	"_quest"
+];
+
+private _templateName = GVAR(_quest, "currentTemplateName");
+private _questType = GVAR(_quest, "questType");
+private _questNPC = GVAR(_quest, "questNPC");
+
+if (isNil "BIS_OM_globalEquipBox") then {
+	BIS_OM_globalEquipBox = "VirtualReammoBox_F" createVehicle [100,100,0];
+	BIS_OM_globalEquipBox setPos [100,100,500];
+	BIS_OM_globalEquipBox hideObject TRUE;
+	BIS_OM_globalEquipBox enableSimulation FALSE;
+	BIS_OM_globalEquipBox setVariable ["ContainersLink", []];
+};
+
+waitUntil {PROFILE_INFO("questInitFetch", "questInitFetch"+str (_quest getVariable "questID"),1 );sleep 0.5; !isNil {_quest getVariable "questID"}};
+
+private _questID = _quest getVariable "questId";
+private _specProp = GVAR(_quest, "specificProperties");
+_specProp#1 params["_itemCategory", "_itemTypes", "_itemCount", "_continuous"];
+_questSettings params ["_module"];
+
+if (typeOf _module != "ModuleOmQuest_DeliverPoint_F") exitWith {
+	["Fetch Quest Init: Wrong module provided"] call BIS_fnc_error;
+};
+
+private _containers = [];
+{_containers append (["ReammoBox_F", _x] call bis_fnc_objectsInArea)} forEach ([_module] + synchronizedObjects _module);
+_containers pushBackUnique BIS_OM_globalEquipBox;
+private _cargoCount = count _containers;
+SVAR(_quest, "cargoAliveStateCounter", _cargoCount);
+
+BIS_OM_recalculateFetchDropOff = FALSE;
+
+[_templateName, _questType, _quest, _itemTypes, _itemCount, _questID, BIS_OM_globalEquipBox] spawn {
+	params ["_templateName", "_questType", "_quest", "_itemTypes", "_itemCount", "_questID", "_container"];
+
+	while {!([_questID] call BIS_fnc_questIsFinished)} do {
+		waitUntil {sleep 0.5; BIS_OM_recalculateFetchDropOff || ([_questID] call BIS_fnc_questIsFinished)};
+		if (BIS_OM_recalculateFetchDropOff) then {
+			_needed = _itemCount;
+
+			{
+				_itemType = _x;
+				_itemPool = [];
+				PROFILE_INFO("questInitFetchRecalculate", "questInitFetchRecalculate"+str _itemType, 1 );
+
+				_curCargo = +(backpackCargo _container);
+
+				if (_curCargo findIf {_x isKindOf _itemType} != -1) then {
+					_itemPool = _curCargo select {_x isKindOf _itemType};
+				} else {
+					_curCargo = +(weaponCargo _container);
+
+					if (_curCargo findIf {_x isKindOf [_itemType, configFile >> "CfgWeapons"]} != -1) then {
+						_itemPool = _curCargo select {_x isKindOf [_itemType, configFile >> "CfgWeapons"]};
+					} else {
+						_curCargo = +(magazineCargo _container);
+
+						if (_curCargo findIf {_x isKindOf [_itemType, configFile >> "CfgMagazines"]} != -1) then {
+							_itemPool = _curCargo select {_x isKindOf [_itemType, configFile >> "CfgMagazines"]};
+						} else {
+							_curCargo = +(itemCargo _container);
+
+							if (_curCargo findIf {_x isKindOf [_itemType, configFile >> "CfgWeapons"]} != -1) then {
+								_itemPool = _curCargo select {_x isKindOf [_itemType, configFile >> "CfgWeapons"]};
+							};
+						};
+					};
+				};
+
+				_itemCnt = count _itemPool;
+
+				if (_itemCnt > _needed) then {
+					_itemPool resize _needed;
+					_itemCnt = _needed;
+				};
+
+				if (_itemCnt > 0) then {
+					_needed = _needed - _itemCnt;
+					_itemsUnique = [];
+					{_itemsUnique pushBackUnique _x} forEach _itemPool;
+
+					[_templateName, [_container, _itemsUnique, true], _questType,[]] call BIS_fnc_questCheckActive;
+				};
+			} forEach _itemTypes;
+
+			sleep 1;
+
+			BIS_OM_recalculateFetchDropOff = FALSE;
+		};
+	};
+};
+
+
+for "_i" from 0 to (_cargoCount -1) do {
+	private _container = _containers#_i;
+	if (_container != BIS_OM_globalEquipBox) then {
+		//["quest INIT this FCK %1 - %2 %3 %4", _this, _templateName, _questType] call bis_fnc_logFormat;
+
+		SVAR(_container, "TaskTemplate", _templateName);
+		SVAR(_container, "QuestType", _questType);
+		SVAR(_container, "questId",  GVAR(_quest, "questId") );
+		private _linked = (_containers - [_container]);
+		SVAR(_container, "ContainersLink", _linked);
+
+		private _initialItemsCount =  [_container, _itemTypes] call bis_fnc_countCargoItems;
+		SVAR(_container, "initialItemsCount", _initialItemsCount);
+
+		private _containerKilledHandler = _container addEventHandler ["Killed", {
+			params ["_container"];
+			private _quest = GVAR(_container, "questId");
+			private _c = ([_quest, "cargoAliveStateCounter"] call bis_fnc_questGetData);
+			private _newCounter = _c -1;
+			[_quest, "cargoAliveStateCounter", _newCounter] call bis_fnc_questSetData;
+
+			if (_newCounter <= 0) then { [_quest, QUEST_CANCELED] call bis_fnc_questSetState;	};
+			_container removeEventHandler ["Killed", GVAR(_container, "_containerKilledHandler")];
+		}];
+		SVAR(_container, "_containerKilledHandler", _containerKilledHandler);
+
+		//_container removeAllEventHandlers "ContainerClosed";
+		//_container removeAllEventHandlers "ContainerOpened";
+
+		_eh1 = _container addEventHandler ["ContainerClosed", {
+			params ["_container", "_unit"];
+			_unit removeAllEventHandlers "Put";
+		}];
+		_eh2 = _container addEventHandler ["ContainerOpened", {
+			//#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+			params ["_container", "_unit"];
+			//["quest Container Opened - %1 %2", _container, _unit] call bis_fnc_logFormat;
+
+			SVAR(_unit, "currentContainer", _container);
+			SVAR(_unit, "current", _container);
+
+			_unit addEventHandler ["Put", {
+				//"quest PUT activated" call bis_fnc_logFormat;
+				#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+				params["_unit", "_container", "_item"];
+				if (GVAR(_unit, "currentContainer") == _container) then {
+					private _templateName = GVAR(_container, "TaskTemplate");
+					//["quest TEMPLATE NAME %1", _templateName] call bis_fnc_logFormat;
+					if (!(isNil "_templateName")) then {
+						//TODO active quest checking - TODO rename
+						// [QUEST_CREATED,] spawn bis_fnc_questCreateFromPool;
+						[_templateName, [_container, [_item], true], GVAR(_container, "QuestType"),[]] spawn bis_fnc_questCheckActive;
+					};
+				};
+			}];
+		}];
+
+		[_quest, _container, _eh1, _eh2, _questID] spawn {
+			params ["_quest", "_container", "_eh1", "_eh2", "_questID"];
+			waitUntil {sleep 0.5; [_questID] call BIS_fnc_questIsFinished};
+			_container removeEventHandler ["ContainerClosed", _eh1];
+			_container removeEventHandler ["ContainerOpened", _eh2];
+		};
+	};
+ };
+
+if !(_questNPC isEqualTo "") then {
+	//["quest FETCH INIT NPC NAME %1", _questNPC] call bis_fnc_logFormat;
+	// [_quest, _container, _templateName, _questType, _questNPC] spawn {
+	// params["_quest", "_container", "_templateName", "_questType", "_questNPC"];
+	private _questNPCUnit = objNull;
+	waitUntil {PROFILE_INFO("questInitFetchWait", "questInitFetchWait", 1); sleep 0.5; _questNPCUnit = MGVARS(_questNPC, objNull); !isNull _questNPCUnit || ([_questID] call BIS_fnc_questIsFinished)};
+
+	if !([_questID] call BIS_fnc_questIsFinished) then {
+
+		//["quest FETCH INIT NPC %1", _questNPCUnit] call bis_fnc_logFormat;
+
+		private _attachedQuestParams = GVARS(_questNPCUnit, "attachedQuestParams", []);
+		_attachedQuestParams pushback _this;
+		SVAR(_questNPCUnit, "attachedQuestParams",  _attachedQuestParams);
+
+		private _quests = GVARS(_questNPCUnit, "questIds", []);
+		_quests pushback (GVAR(_quest, "questId"));
+		SVAR(_questNPCUnit, "questIds",  _quests);
+
+		//we are registering handler only once...
+		private _npcKilledEHTemplates = GVARS(_questNPCUnit, "npcKilledEHTemplates", []);
+			_npcKilledEHTemplates pushBack _templateName;
+			private _questNPCUnitDeletedHandler = _questNPCUnit addEventHandler ["Deleted", {
+				params ["_questNPCUnit"];
+				private _attachedQuestParams = GVARS(_questNPCUnit, "attachedQuestParams", []);
+				for "_i" from (count _attachedQuestParams -1) to 0 step -1 do {
+					 private _params = _attachedQuestParams#_i;
+					//["quest FETCH HANDLER %1", _params] call bis_fnc_logFormat;
+					_attachedQuestParams deleteAt _i;
+					//SVAR(_questNPCUnit, "params", nil);
+					_params call QUEST_INIT("fetch");
+				};
+
+				SVAR(_questNPCUnit, "attachedQuestParams", _attachedQuestParams);
+				_npcKilledEHTemplates deleteAt _i;
+				private _npcKilledEHTemplates = SVAR(_questNPCUnit, "npcKilledEHTemplates", []);
+
+			}];
+			SVAR(_questNPCUnit, "questNPCUnitDeletedHandler", _questNPCUnitDeletedHandler);
+
+			private _questNPCUnitKilledHandler = _questNPCUnit addEventHandler ["Killed", {
+				params ["_questNPCUnit"];
+				private _fetchQuestActionIds = GVARS(_questNPCUnit, "fetchQuestActionIds", []);
+				private _fetchQuestActionIds = GVARS(_questNPCUnit, "fetchQuestActionIds", []);
+				private _quests = GVAR(_questNPCUnit, "questIds");
+
+				{
+					private _questId = _x;
+					private _taskStringId = QUEST_TASK_ID(_questId);
+					if ([_taskStringId] call bis_fnc_taskExists) then {
+						[_x , QUEST_CANCELED] call bis_fnc_questSetState;
+					};
+				} forEach _quests;
+
+				_questNPCUnit removeEventHandler ["Deleted", GVAR(_questNPCUnit, "questNPCUnitDeletedHandler")];
+				_questNPCUnit removeEventHandler ["Killed", GVAR(_questNPCUnit, "questNPCUnitKilledHandler")];
+			}];
+			SVAR(_questNPCUnit, "questNPCUnitKilledHandler", _questNPCUnitKilledHandler);
+
+
+		private _itemTypes = _itemTypes#0;
+
+		//add holdAction
+		private _holdActionTitle = Localize "STR_A3_OM_System_Quest_FetchHoldAction";
+		private _idleIcon = "\A3\Missions_F_Oldman\Data\img\HoldActions\holdAction_box_ca.paa";
+		private _progressIcon = _idleIcon;
+		private _continuous = true;
+		private _itemCountToCheckForHoldAction = if (_continuous) then {1} else {_itemCount};
+		private _holdActionCondition = format["((_this distance _target <= 5) && alive _target) && {([player, %1] call bis_fnc_countUnitItems > %2)}", str _itemTypes , 0];
+
+		private _actionId = [
+			_questNPCUnit, // Object the action is attached to
+			_holdActionTitle,    // Title of the action
+			_idleIcon,           // Idleicon shown on screen
+			_progressIcon,       // Progress icon shown on screen
+			_holdActionCondition,
+			_holdActionCondition,  // Condition for the action to progress
+			{
+			},//--- when hold action starts
+			{
+			},//--- tick every frame (out of 24)
+			{
+				_arguments params["_templateName", "_container", "_itemType", "_itemCount", "_questType", "_continuous"];
+				private _realCount = if (_continuous) then { ([player, _itemType] call bis_fnc_countUnitItems) min _itemCount} else { _itemCount };
+				for "_i" from 1 to _realCount do {
+					player removeItem _itemType;
+				};
+				_container addItemCargo [_itemType, _realCount];
+				_target removeEventHandler ["Deleted", GVAR(_target, "questNPCUnitDeletedHandler")]; //REMOVE event handler which is used to re-add action when despawned
+				_target removeEventHandler ["Killed", GVAR(_target, "questNPCUnitKilledHandler")];
+				[_templateName, [_container, [_itemType], false, false, _realCount], _questType,[]] spawn bis_fnc_questCheckActive;
+			},//--- when holdaction ends
+			{
+			},//--- when action is terminated
+			[_templateName, _containers # 0, _itemTypes, _itemCount, GVAR((_containers # 0), "QuestType"), _continuous],// Arguments passed to the scripts as _this select 3
+			1,	   // Time
+			0,	   // Priority
+			!_continuous,  // Remove on completion
+			false  // Show in unconscious state
+		] call BIS_fnc_holdActionAdd;
+		if (_continuous) then { SVAR(_quest, "actionId" , _actionId); };
+		private _fetchQuestActionIds = GVARS(_questNPCUnit, "fetchQuestActionIds", []);
+		_fetchQuestActionIds pushBack _holdActionCondition;
+		SVAR(_questNPCUnit, "_fetchQuestActionIds", _fetchQuestActionIds);
+	};
+};
+
+};
+
+[]

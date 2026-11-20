@@ -1,0 +1,3 @@
+// #include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+// params["_quest", "_eventData"];
+100

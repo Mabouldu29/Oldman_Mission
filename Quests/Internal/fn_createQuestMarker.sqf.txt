@@ -1,0 +1,9 @@
+params["_markerName", "_markerPosition", "_markerType", "_markerColor", "_markerText"];
+
+//["quest modifiers GA: %1", _this] call BIS_fnc_logFormat; 
+
+private _mmarker = createMarker [_markerName, _markerPosition]; 
+_markerName setMarkerType _markerType; 
+_markerName setMarkerColor _markerColor; 
+_markerName setMarkerText _markerText; 
+_mmarker

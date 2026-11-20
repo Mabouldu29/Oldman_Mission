@@ -1,0 +1,6 @@
+// #include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+// params[
+// 	["_areaInfo", [], [ [] ]],
+// 	 "_quest"
+// ];
+[]

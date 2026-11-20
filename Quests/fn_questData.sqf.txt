@@ -1,0 +1,119 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+#include "\A3\Missions_F_Oldman\Systems\scripts\SmartMarkers\common_definitions.inc";
+params[
+	["_idQuestOrQuery", -1, [-1,objNull, [], ""]],
+	["_property", ""],
+	["_useArchivedQuests", true],
+	["_value", nil],
+	["_append", false],
+	["_setState", false],
+	["_eventData", []],
+	["_returnMultiple", false],
+	["_customConditon", "false"]
+];
+PROFILE_INFO("BIS_fnc_questIsData","BIS_fnc_questIsData",1);
+private _isQuestLogic = _idQuestOrQuery isEqualType objNull;
+private _questListAll = QUEST_POOL_ACTIVE();
+
+if (_returnMultiple) exitWith {
+	private _all = false;
+	if (_idQuestOrQuery isEqualTo []) then { _all = true; };
+	_questListAll select { (_all||(_idQuestOrQuery#1) isEqualTo GVAR(_x, _idQuestOrQuery#0)) && { _useArchivedQuests || !([_x] call bis_fnc_questIsFinished) } }
+
+	// && {[_x] call bis_fnc_questIsInitialized}
+	//_questListAll select { ([_x, true] call bis_fnc_questIsInitialized) && { _useArchivedQuests || !([_x] call bis_fnc_questIsFinished) }}
+	// 	_questListAll select {call compile _customConditon}
+};
+
+private _arrayIndex = -1;
+//trying to get the quest...
+private _quest =
+if (_isQuestLogic) then {
+	_arrayIndex = GVARS(_idQuestOrQuery, "arrayIndex", -1); //TODO SET PROPERLY
+	_idQuestOrQuery
+} else {
+	private _searchedValue = "";
+	private _property = "";
+	//swutch ? we got string - we search by template
+	if (_idQuestOrQuery isEqualType "") then {
+		_property = "questTemplate";
+		_searchedValue = _idQuestOrQuery;
+	} else {
+		if (_idQuestOrQuery isEqualType [])  then {
+			_property = _idQuestOrQuery#0;
+			_searchedValue = _idQuestOrQuery#1;
+		} else {
+			_property = "questId";
+			_searchedValue = _idQuestOrQuery;
+		};
+	};
+	_arrayIndex = _questListAll findIf {_searchedValue isEqualTo GVAR(_x, _property)  };   //&& { _useArchivedQuests || !([_x] call bis_fnc_questIsFinished) }
+	//["quest GD searching quest by template[%1]", _arrayIndex] call BIS_fnc_logFormat;
+	if (FOUND(_arrayIndex)) then { _questListAll#_arrayIndex } else {objNull};
+};
+//["quest GD - quest found!? %1 %2 %3| %4", _idQuestOrQuery,_quest, _arrayIndex, _this] call bis_fnc_logFormat;
+
+// premature return - we can use array definition to define default value
+if (isNull _quest) exitWith {
+	//["quest GD - questData returned prematuraly(%1-%2)",_quest, _this] call bis_fnc_logFormat;
+	if (_property isEqualType []) then {if (count _property > 1) then {_property#1} else {nil}} else {nil};
+};
+//===============================================================================================================================================
+//we have a quest/or not, now lets make some operations with the data
+#define QUEST_DATA_SET	0
+#define QUEST_DATA_GET	1
+
+//TODO sent mode from outside
+private _mode = if (isNil "_value") then { QUEST_DATA_GET } else { QUEST_DATA_SET };
+private _questDataCarry =
+switch (_mode) do {
+	case QUEST_DATA_GET: {
+		switch (true) do {
+			case (_property isEqualTo "" && !(_isQuestLogic)): { _quest };
+			case (_property isEqualType []): { GVARS(_quest, _property#0, _property#1) }; // we can use array definition to define default value
+			default { GVAR(_quest, _property) };
+		}
+	 };
+	case QUEST_DATA_SET: {
+		private _dataSetResult = false;
+		//["quest GD SET start[%1]", _arrayIndex] call BIS_fnc_logFormat;
+		if (_append) then {
+			private _prevValue = GVAR(_quest, _property);
+			_prevValue pushBack _value;
+			_value = _prevValue;
+		};
+		if (_setState) then {
+			//["quest GD quest SET %1", _quest] call BIS_fnc_logFormat;
+			//TODO check if its mandatory | quest 1 SET to FINISHED: parentQuest set to assigned //& (GVAR(_quest, "isMandatory"))
+			private _parentId = GVARS(_quest, "parentId", -1);
+			if (FOUND(_parentId)) then { [_parentId, QUEST_ASSIGNED] spawn bis_fnc_questSetState; };
+			_dataSetResult = [_quest, _value, _eventData, false] call bis_fnc_questChangeState;
+			if (_dataSetResult isEqualType 0) then { _dataSetResult = (_dataSetResult >= QUEST_CODE_FINISHED); };
+			//["quest GD setState realIndex[%1:%2]", _arrayIndex] call BIS_fnc_logFormat;
+			if (_dataSetResult && {_value >= QUEST_COMPLETED}) then {
+				private _questId  = GVAR(_quest, "questId");
+
+				[MODE_DELETE, [GVAR(_quest, "questTemplate")]] call BIS_fnc_OM_moduleSmartMarkers; // QUEST_TASK_ID(_questId)
+				if (!GVAR(_quest, "keepInDiary")) then {
+					[QUEST_TASK_ID(_questId)] call BIS_fnc_deleteTask;
+				};
+			};
+		};
+		if (!_setState || _dataSetResult) then { //set state only if was successfully changed
+			SVAR(_quest, _property, _value);
+			//["quest GD SET questData[%1]", _arrayIndex] call BIS_fnc_logFormat;
+			_questListAll set [_arrayIndex, _quest];
+			QUEST_POOL_ACTIVE_SET(_questListAll);
+			_dataSetResult = true; // data should be set successfullly
+		};
+		_dataSetResult
+	};
+	default {};
+};
+if (isNil "_questDataCarry") then {
+	// ["quest GD questData returned NIL(%1)", _this] call BIS_fnc_logFormat;
+	  nil
+} else {
+	//["quest GD questData returned %1(%2)", _questDataCarry, _this] call BIS_fnc_logFormat;
+	 _questDataCarry
+};

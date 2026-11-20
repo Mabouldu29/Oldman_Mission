@@ -1,0 +1,11 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_idQuestOrQuery", "_markerID", ["_assignParent", false]];
+private _taskIds = if (_assignParent) then {
+	 ([_idQuestOrQuery, ["taskIds", []]] call bis_fnc_questData)
+} else {
+	private _questId = [_idQuestOrQuery, ["questId", -1]] call bis_fnc_questData;
+	if (_questId isEqualTo -1) exitWith {[]};
+	[QUEST_TASK_ID(_questId)]
+};
+if (_taskIds isEqualTo []) exitWith {};
+[MODE_ASSOCIATETASK, [_markerID,  player getVariable (_taskIds call bis_fnc_taskVar)]] call BIS_fnc_OM_moduleSmartMarkers; 	

@@ -1,0 +1,207 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_cfg", "_quest"];
+
+private _fnc_quest_getCfgData = {
+	params["_cfg", "_property", ["_quest",objNull], ["_isBool", false], ["_defaultType", ""] ];
+	private _questClassName = "cfgQuests";
+	
+	private _defaultType = "";
+	if (_property isEqualType []) then {
+		_defaultType = _property#1;
+		_property =	_property#0;
+	};
+	
+	private _cfgDataValue = ([_questClassName, _cfg, _property] call BIS_fnc_getCfgData);
+	if (isNil "_cfgDataValue") then {
+		_cfgDataValue = objNull;
+	} else {
+		if ((!(_defaultType isEqualTo "")) && (_cfgDataValue isEqualTo _defaultType)) then {
+			_cfgDataValue = [_cfg, _defaultType, _quest, _isBool] call _fnc_quest_getCfgData;
+		};
+	};
+	if (_isBool) then {
+		_cfgDataValue = call (compile _cfgDataValue);
+	};
+	
+	if (!(isNull _quest)) then {
+		 SVAR(_quest, _property, _cfgDataValue);
+	};
+	_cfgDataValue
+};
+
+//TODO OBSOLETE
+private _fnc_quest_cfgConditionStr = {
+	params["_cfg"];
+	private _completitionParams = [_cfg, "defaultCompletitionParams"] call _fnc_quest_getCfgData;
+	private _codeParams = [];
+	for "_i" from 0 to (count _completitionParams -1) do {
+		_codeParams pushBack ([_cfg, _completitionParams#_i] call _fnc_quest_getCfgData);
+	};
+	_codeParams
+};
+//TODO OBSOLETE
+private _fnc_quest_cfgItemTypes = {
+	private _itemTypes = [];	
+	{
+		private _currentItemType =  _x;
+		_itemTypes pushBack [_currentItemType, ["cfgQuests", "ItemTypes", _currentItemType, "name"] call BIS_fnc_getCfgData,["cfgQuests", "ItemTypes", _currentItemType, "types"] call BIS_fnc_getCfgData];
+	} forEach (["cfgQuests", "ItemTypes"] call Bis_fnc_getCfgSubClasses);
+	_itemTypes
+};
+
+private _fnc_quest_getMarkerSettings = {
+	params["_cfg", "_propertyName", "_quest"];
+	private _markerData = [];	
+	private _questMarkerCfg = ["cfgQuests", _cfg, "QuestSmartMarker"] call BIS_fnc_getCfg;
+	
+	private _markerData = [(_questMarkerCfg >> "markerTitle") call BIS_fnc_getCfgData, (_questMarkerCfg >> "markerTooltipTitle") call BIS_fnc_getCfgData, (_questMarkerCfg >> "markerTooltipText") call BIS_fnc_getCfgData];
+	SVAR(_quest, _propertyName, _markerData);
+	_markerData
+};
+
+private _fnc_quest_getStateModifier = {
+	params["_cfg", "_propertyName", "_quest"];
+	private _questStateModifiers = [];	
+	private _stateModifiers = ["cfgQuests", _cfg, "StateModifiers"] call BIS_fnc_getCfg;
+	private _statePropertiesNames = ((_stateModifiers >> "properties") call BIS_fnc_getCfgData);
+
+	{ 
+		private _currentState = _x;
+		private _stateProperties = [];
+		{
+			_stateProperties pushBack ((_stateModifiers >> _currentState >> _x) call BIS_fnc_getCfgData);
+		} forEach  _statePropertiesNames;
+		_questStateModifiers pushBack _stateProperties;
+	} forEach ((_stateModifiers >> "states") call BIS_fnc_getCfgData);
+
+	private _val = [_statePropertiesNames, _questStateModifiers];
+	SVAR(_quest, _propertyName, _val);
+	_val
+};
+
+private _fnc_quest_getSpecificProperties = {
+	params["_cfg","_propertyName", "_quest"];
+	private _specificProperties = [];	
+	private _specificPropertiesNames = [_cfg, "specificProperties"] call _fnc_quest_getCfgData;
+	{
+		private _currentProp = _x; 
+		_specificProperties pushBack ([_cfg, _currentProp] call _fnc_quest_getCfgData);
+	} forEach _specificPropertiesNames;
+
+	private _val = 	[_specificPropertiesNames, _specificProperties];
+	SVAR(_quest, _propertyName, _val);
+	_val
+};
+
+// TODO use item categories: ITEM_TYPES = [] call _fnc_quest_cfgItemTypes;
+
+private _type = [_cfg, "type", _quest] call _fnc_quest_getCfgData;
+private _typeName = [_cfg, "typeName", _quest] call _fnc_quest_getCfgData;
+private _title = [_cfg, "title", _quest] call _fnc_quest_getCfgData;
+private _description =  [_cfg, "description"] call _fnc_quest_getCfgData;
+SVAR(_quest, "descriptionArray", _description);  //We want different logic variable name
+private _createCondition = [_cfg, "createCondition", _quest] call _fnc_quest_getCfgData;
+
+[_cfg, "markerDescription", _quest] call _fnc_quest_getCfgData;
+[_cfg, "markerPicture", _quest] call _fnc_quest_getCfgData;
+[_cfg, "smartMarkerPrefix", _quest] call _fnc_quest_getCfgData;
+[_cfg, ["iconType", "typeName"], _quest] call _fnc_quest_getCfgData;
+[_cfg, ["questFunctionsType", "typeName"], _quest] call _fnc_quest_getCfgData;
+[_cfg, "timeoutFromStartInMinutes", _quest, false, -1] call _fnc_quest_getCfgData;
+
+private _createEffect = [_cfg, "createEffect", _quest] call _fnc_quest_getCfgData;
+private _completitionEffect = [_cfg, "completitionEffect", _quest] call _fnc_quest_getCfgData;
+
+private _timeout = [_cfg, "timeoutMinutes", _quest] call _fnc_quest_getCfgData;
+
+private _questNPC = [_cfg, "questNPC",_quest] call _fnc_quest_getCfgData;
+private _progressPercentageCount = [_cfg, [_cfg, "progressPercentage"] call _fnc_quest_getCfgData, _quest] call _fnc_quest_getCfgData;
+
+private _progressPercentage = if (_progressPercentageCount > 0) then { QUEST_PERCENTAGE_AMMOUNT(_progressPercentageCount) } else { 0 };
+  
+private _questModifiersAndNames = [_cfg, "questModifiersAndNames", _quest] call _fnc_quest_getStateModifier;
+private _specificProperties = [_cfg,"specificProperties", _quest] call _fnc_quest_getSpecificProperties;
+
+private _questMarkerSettings = [_cfg, "markerData", _quest] call _fnc_quest_getMarkerSettings;
+
+[_cfg, "keepInDiary", _quest, true] call _fnc_quest_getCfgData;
+private _currentProgress = 0; 
+SVAR(_quest, "progressPercentage", _progressPercentage);
+SVAR(_quest, "currentProgress", _currentProgress);
+
+SVAR(_quest, "questType", _typeName); //TODO FIX this is redarded, result of arrays of arrays
+
+//  private _questInfo = [_type,_title, _questMarkerSettings, _timeout, _description, _questModifiersAndNames, _specificProperties, _progressPercentage, _currentProgress];
+
+_isParent = [_cfg, "isParent", _quest, true] call _fnc_quest_getCfgData;
+if (_isParent) then {
+	 _iconType = [_cfg, "iconType", _quest] call _fnc_quest_getCfgData;
+};
+
+private _subQuestsFinishingTheParent = [_cfg, "subQuestsFinishingTheParent", _quest, true] call _fnc_quest_getCfgData;
+[_cfg, "isMandatory", _quest, true] call _fnc_quest_getCfgData;
+
+SVAR(_quest, "progressPercentage", _progressPercentage);
+
+//TODO init on first use, cache info somewhere
+SVAR(_quest, "subQuestIds", []);
+
+//get templateBase
+private _cfgTemplate = ["cfgQuests", _cfg] call BIS_fnc_getCfg;
+private _cfgTemplates = (["cfgQuests", "templates"] call BIS_fnc_getCfgData);
+private _parentClasses = [_cfgTemplate] call BIS_fnc_returnParents;
+private _parentTemplateIndex = _parentClasses findIf {configName _x in _cfgTemplates};
+
+//["quest TEMPLATE PARENT SSA: %1 %2 %3", _parentClasses,_cfgTemplates, _parentClasses findIf {_x in _cfgTemplates}] call BIS_fnc_logFormat; 
+
+if (!(_parentTemplateIndex isEqualTo -1)) then { //TODO NOT_FOUND()
+	private _templateBase = configName (_parentClasses#_parentTemplateIndex);
+	//["quest TEMPLATE PARENT params: %1", _templateBase] call BIS_fnc_logFormat; 
+	SVAR(_quest, "templateBase", _templateBase);
+};
+
+[_cfg, "canBeCompletedWithoutAssigning", _quest, true] call _fnc_quest_getCfgData; //TODO use modules version
+//quest parent template
+private _parentTemplate = [_cfg, "parentTemplate", _quest] call _fnc_quest_getCfgData;
+SVAR(_quest, "questParentClass", _parentTemplate);
+
+if (_isParent) then { 
+	private _mandatoryQuestsNeededPercent = [_cfg, "percentageOfMandatoryQuestsNeeded", _quest] call _fnc_quest_getCfgData;
+	
+	[_cfg, "mandatoryQuestsFinishedState", _quest] call _fnc_quest_getCfgData;
+	[_cfg, "optionalQuestsFinishedState", _quest] call _fnc_quest_getCfgData;
+	
+	//["quest CREATE PARENT fffffffffffffffffffffff [%1]", _cfg] call BIS_fnc_logFormat;  //inheritsFrom _x == (missionConfigFile >> 'cfgQuests' >> 'Quest') &&
+	private _allSubquestTemplates =  ((format[" getText (_x >> 'parentTemplate') isEqualTo '%1'" , _cfg]) configClasses (missionConfigFile >> "cfgQuests") );
+	private _subQuestTemplates = [];
+	private _subQuestMandatoryCounter = 0;
+	{
+		private _configName = configName _x;
+		_subQuestTemplates pushBack _configName;
+		private _isMandatory = ([_x >> "isMandatory"] call BIS_fnc_getCfgData);
+		_subQuestMandatoryCounter = _subQuestMandatoryCounter + (parseNumber (_isMandatory call BIS_fnc_parseNumber));
+
+		//["quest CREATE PARENT[%1] [[[[[[[[[[[[[]]]]]]]]] SUBQUEST: %2 %3 %4", _cfg, _configName, _isMandatory, _subQuestMandatoryCounter] call BIS_fnc_logFormat; 
+	} forEach _allSubquestTemplates;
+	
+	private _subQuestCounter  = count _allSubquestTemplates;
+	
+	SVAR(_quest, "subQuestCounter", _subQuestCounter);
+	SVAR(_quest, "subQuestMandatoryCounter", _subQuestMandatoryCounter);
+	//we need number of quests that needs to be complett and then substract it from total number of child quests
+	private _subQuestMandatoryNeeded = _subQuestMandatoryCounter - (round(_subQuestMandatoryCounter/100*_mandatoryQuestsNeededPercent));
+	SVAR(_quest, "subQuestMandatoryNeeded", _subQuestMandatoryNeeded);
+
+	SVAR(_quest, "subQuestTemplates", _subQuestTemplates);
+
+	SVAR(_quest, "subQuestsIds", []);
+	SVAR(_quest, "subQuestsIdsOptional", []);
+
+
+	//["quest CREATE PARENT[%1] DDDDDDD SUBQUEST: %2", _cfg, _subQuestMandatoryCounter] call BIS_fnc_logFormat; 
+};
+
+//["quest modifiers: %1", _questMarkerSettings] call BIS_fnc_logFormat;
+
+//["quest params: %1", _quest] call BIS_fnc_logFormat; 
+_quest

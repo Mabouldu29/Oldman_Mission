@@ -1,0 +1,20 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params[
+	["_areaInfo", [], [ [] ]],
+	 "_quest"
+];
+private _allObjects = GVARS(_quest, "allObjects", [objNull]);
+private _apos = getPos (_allObjects#0);
+
+ _this spawn {
+	params["_areaInfo", "_quest"];
+
+	private _questObjectName = GVAR(_quest, "questNPC");
+	private _hostageNPC = MGVARS(_questObjectName, objNull);
+	private _template = GVAR(_quest, "currentTemplateName");	
+	private _ehId =  [_questObjectName, compile 
+		format["(_this # 0) setVariable ['BIS_OM_hostageQuestID', '%1']; [(_this#0), Localize ""STR_A3_OM_System_Quest_HostageHoldAction"", compile ""['%1', 'COMPLETED'] call bis_fnc_questSetState;""] call BIS_fnc_hostageAI;", _template]
+	] call BIS_fnc_om_spawn_addInitEventHandler;
+	SVAR(_quest, "ehId" , _ehId);
+};
+_apos

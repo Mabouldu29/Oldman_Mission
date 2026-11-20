@@ -1,0 +1,156 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+#include "\A3\Missions_F_Oldman\Systems\scripts\SmartMarkers\common_definitions.inc";
+params["_quest", "_eventData"];
+//["------ quest Progress: %1 | %2", _quest, _eventData] call bis_fnc_logFormat;
+//"quest SUPPORT PROGRESS started" call bis_fnc_logFormat;
+
+private _specificProperties = GVAR(_quest, "specificProperties");
+
+private _timeoutMinutes = [_quest, ["timeoutMinutesDateTime", date]] call bis_fnc_questData;
+_specificProperties#1 params["_supportCount","_enemyCount", "_enemyDistanceFromArea", "_onStartedConversation"];
+_eventData params["_triggerCheckCheckpoint"];
+
+//["------ quest _triggerCheckCheckpoint: %1 | %2", _quest, _triggerCheckCheckpoint] call bis_fnc_logFormat;
+
+
+private _sector = GVAR(_quest, "sector");
+private _startingPositions = GVAR(_triggerCheckCheckpoint, "_startingPositions");
+
+// [_sector, false] spawn BIS_fnc_sectorSetManualControl;
+
+
+private _limit = 30*60;
+//["quest SUPPORT starting to check for progress"] call bis_fnc_logFormat;
+
+_fncSupportStarted = {
+	params["_triggerCheckCheckpoint", "_sector", "_quest"];
+	_triggerCheckCheckpoint setTriggerActivation ["EAST", "PRESENT", true];
+	//["quest SUPPORT SECTOR IS: %1", _sector] call bis_fnc_logFormat;
+	[_sector, true] spawn BIS_fnc_sectorSetManualControl;
+	[_sector] spawn BIS_fnc_om_sectorActivate;
+	waitUntil {sleep 0.5;  GVAR(_sector, "#state") isEqualTo S_SPAWNED; };
+	//["quest SUPPORT SECTOR SPAWNED"] call bis_fnc_logFormat;
+
+	//["quest SUPPORT STARTED"] call bis_fnc_logFormat;
+	private _supportUnits = GVAR(_triggerCheckCheckpoint, "_supportUnits");
+
+	private _apos = getPos _triggerCheckCheckpoint;
+	//resolve starting pos for units
+	private _spawnPos = [];
+	if (!(_startingPositions isEqualTo [])) then {
+		//["quest SUPPORT STARTING POS %1", _startingPositions] call bis_fnc_logFormat;
+		_spawnPos = selectRandom _startingPositions;  //_spawnPos = [getPos (selectRandom _startingPositions), 0, 1] call BIS_fnc_findSafePos;
+	} else {
+		private _area = triggerArea _triggerCheckCheckpoint;
+		private _areaConSize = (_area#0) max (_area#1);
+
+		private _areaSpawn = _areaConSize + _enemyDistanceFromArea;
+		_spawnPos = [_apos, _areaSpawn] call BIS_fnc_findSafePos;
+		_spawnPos pushBack (getTerrainHeightASL _spawnPos);  //TODO handle fail
+	};
+	if (_spawnPos isEqualTo []) throw "Quest Support Error: No positions found!";
+
+	//["quest SUPPORT WILLSPAWN"] call bis_fnc_logFormat;
+	private _vehicleGroups =  [_supportUnits, _spawnPos] call BIS_fnc_om_spawnFromData;
+	SVAR(_quest, "vehicleGroups", _vehicleGroups);
+
+	private _markerID = [MODE_CREATE, ["SmartMarker_I_Ambush_F", QUEST_TASK_ID_CURRENT(_quest)+"attack", _spawnPos]] call BIS_fnc_OM_moduleSmartMarkers;
+	private _markerName = [MODE_GETMARKERNAME, [_markerID]] call BIS_fnc_OM_moduleSmartMarkers;
+	_markerName setMarkerColor "ColorBlack";
+	_markerName setMarkerDir (_spawnPos getDir _apos);
+
+	if (count _onStartedConversation > 0) then {
+		private _selectedConversation = selectRandom _onStartedConversation;
+		//["quest CONVERSATION: %1", _selectedConversation] call bis_fnc_logFormat;
+		/* [_selectedConversation,"om_Oldman",nil,"Global"] call BIS_fnc_kbTell; */
+		[ 1, [ [ {_this call BIS_fnc_om_conversation;}, [_selectedConversation], 2, 99999999, {},nil,nil,nil,nil, 'SyndikatSupport'] ] ] call BIS_fnc_OM_moduleActionQueue;
+	};
+
+	private _allSupporGroups = _vehicleGroups#1;
+	private _allSupportUnits = GVARS(_quest, "allSupportUnits", []);
+	{//all spawned groups
+		private _group = _x;
+		_allSupportUnits append (units _group);
+		_group move _apos;
+	} forEach _allSupporGroups;
+	SVAR(_quest, "allSupportUnits", _allSupportUnits);
+};
+
+private _supportStarted = false;
+while {!_supportStarted} do { //waitUntil {
+	sleep 1;
+	if (GVAR(_quest, "currentProgress") == QUEST_CODE_CANCELED) exitWith {
+		//["quest SUPPORT CANCELED before it started!"] call bis_fnc_logFormat;
+		true
+	};
+	private _finishedByPlayer = false;
+	if (GVAR(_sector, "#state") isEqualTo S_SPAWNED) then {
+		//["quest SUPPORT SECTOR SP"] call bis_fnc_logFormat;
+		_triggerCheckCheckpoint setTriggerActivation ["EAST", "PRESENT", true];
+		sleep 3;
+		//["quest SUPPORT SECTOR SPAWNED plAYER %1", list _triggerCheckCheckpoint] call bis_fnc_logFormat;
+		if ((count (list _triggerCheckCheckpoint)) <= _enemyCount) then {
+			//["quest SUPPORT FINISHED BY PLAYER ALONE!"] call bis_fnc_logFormat;
+			SVAR(_quest, "currentProgress", QUEST_CODE_FINISHED);
+			_finishedByPlayer = true;
+		};
+	};
+	if (_finishedByPlayer) exitWith {_supportStarted = true;true};
+
+	private _diff = 0;
+	if (!(_timeoutMinutes isEqualType [] && { _timeoutMinutes isEqualTo []})) then {
+		_diff = [date, _timeoutMinutes] call bis_fnc_CalculateDateTime;
+	};
+	if ( (_diff <= 0) ) then {
+		//["quest SUPPORT DIFF %1<=0 FOR %2 - %3", _diff, date, _timeoutMinutes] call bis_fnc_logFormat;
+		if (-1*(_limit)  >= _diff || _diff >= _limit) then {
+			//["quest SUPPORT FAILED CAUSE TIMEOUT"] call bis_fnc_logFormat;
+			SVAR(_quest, "currentProgress", QUEST_CODE_CANCELED);
+		} else {
+			[_triggerCheckCheckpoint, _sector, _quest] call _fncSupportStarted;
+		};
+		_supportStarted = true;
+	};
+};
+
+//["quest SUPPORT SPAWNED AND ATTACKING"] call bis_fnc_logFormat;
+while {GVAR(_quest, "currentProgress") == 0} do {
+	uiSleep (3+random 4);
+	if (count list _triggerCheckCheckpoint <= _enemyCount) then {
+		//["quest SUPPORT FINISHED - checkpoint dead"] call bis_fnc_logFormat;
+		SVAR(_quest, "currentProgress", QUEST_CODE_FINISHED);
+	} else {
+		if (
+			// (scriptDone _attackStartedHandle) &&
+			 ({alive _x} count GVARS(_quest, "allSupportUnits", []) <= _supportCount)) then {
+				//["quest SUPPORT FINISHED - support dead"] call bis_fnc_logFormat;
+				SVAR(_quest, "currentProgress", QUEST_CODE_FAILED);
+		} else {
+			if (!(_timeoutMinutes isEqualTo [])) then {
+				private _diff = [_timeoutMinutes, date] call bis_fnc_CalculateDateTime;
+				if (_diff >= _limit) then {
+					//["quest SUPPORT STARTED BUT HIT LIMIT %1 %2",_diff, _limit] call bis_fnc_logFormat;
+					SVAR(_quest, "currentProgress", QUEST_CODE_CANCELED);
+				};
+			};
+		};
+	};
+};
+
+//["quest SUPPORT FINISHED code is: %1", GVAR(_quest, "currentProgress")] call bis_fnc_logFormat;
+
+//check the player distance to
+private _requiredPlayerDistance = 1500 + random 100;
+if (player distance _triggerCheckCheckpoint > _requiredPlayerDistance) then {
+	//["quest SUPPORT CANCELED - OUT OF RANGE"] call bis_fnc_logFormat;
+	SVAR(_quest, "currentProgress", QUEST_CODE_CANCELED);
+};
+
+[_sector, false] spawn BIS_fnc_sectorSetManualControl;
+//["------ quest Deleting trigger: %1 | %2", _quest, _triggerCheckCheckpoint] call bis_fnc_logFormat;
+deleteVehicle  _triggerCheckCheckpoint;
+[MODE_DELETE, [QUEST_TASK_ID_CURRENT(_quest)+"attack"]] call BIS_fnc_OM_moduleSmartMarkers;
+private _currentProgress = GVAR(_quest, "currentProgress");
+//["QUEST SUPPORT ENDED WITH: %1", _currentProgress] call bis_fnc_logFormat;
+
+_currentProgress

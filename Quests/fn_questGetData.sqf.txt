@@ -1,0 +1,17 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params[
+	"_idQuestOrQuery",
+	["_property", ""],
+	["_useArchivedQuests", true],
+	"_defaultValue",
+	["_multipleItems", false]
+];
+
+if (!isNil "_defaultValue") then
+{
+	[_idQuestOrQuery, [_property, _defaultValue], _useArchivedQuests, _defaultValue, false, false, [], _multipleItems] call bis_fnc_questData;
+}
+else
+{
+	[_idQuestOrQuery, _property, _useArchivedQuests, nil, false, false, [], _multipleItems] call bis_fnc_questData;
+};

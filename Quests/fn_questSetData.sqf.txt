@@ -1,0 +1,3 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_idQuestOrQuery", "_property", "_value", ["_append", false], ["_useArchivedQuests", false]];
+[_idQuestOrQuery, _property, _useArchivedQuests, _value, _append] call bis_fnc_questData;

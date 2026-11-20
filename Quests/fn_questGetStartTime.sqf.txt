@@ -1,0 +1,11 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params[ 
+	["_idQuest", -1, [-1,objNull]],
+	["_useStructuredText", true, [true]]
+];
+private _dateToReturn = [_idQuest, "timeoutMinutesDateTime"] call bis_fnc_questGetData;
+if (_useStructuredText) then {
+	_dateToReturn = [_dateToReturn] call bis_fnc_dateToText;
+};
+
+_dateToReturn

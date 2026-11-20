@@ -1,0 +1,16 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+
+STATE_UNPACK(_this);
+private _currentTemplateName = GVAR(_quest, "currentTemplateName");
+
+// [_questData, _eventData] call QUEST_FINISHED(_questType);
+//CANCELED
+
+[_taskStringId, "CANCELED"] call BIS_fnc_taskSetState;
+
+// [_taskStringId, player] call BIS_fnc_deleteTask;s]
+
+
+
+//["quest [%1] TIMEOUT ELAPSED %2", _currentTemplateName, _taskStringId] call bis_fnc_logFormat;
+100

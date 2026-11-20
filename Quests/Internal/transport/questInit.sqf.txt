@@ -1,0 +1,43 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+
+params[
+	["_areaInfo", [], [ [] ]],
+	 "_quest"
+];
+
+private _templateName = GVAR(_quest, "currentTemplateName");
+private _questType = GVAR(_quest, "questType");
+private _vehClass = (GVAR(_quest, "specificProperties")) # 1 # 0;
+
+_areaInfo params["_syncObjects", "_markerParams"];
+
+private _area = _syncObjects getVariable "objectArea";
+private _apos = getPos _syncObjects;
+
+//["quest TRANSPORT INIT %1 %2", _area, _apos] call bis_fnc_logFormat;
+
+private _triggerCheckCheckpoint = createTrigger ["EmptyDetector", _apos];
+
+_triggerCheckCheckpoint setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+_triggerCheckCheckpoint setTriggerArea _area;
+
+private _message = format[ localize "STR_A3_OM_questInit.sqf0", ([_quest, "title"] call bis_fnc_questGetData)]; 
+private _notificationParams = ["TaskLocationReachedIcon",[ ["default"] call bis_fnc_taskTypeIcon, _message]];
+
+private _formattedActivation = format["_f=%1;
+if ((vehicle player) isKindOf '%3') then {%2 call bis_fnc_showNotification};
+player setVariable['f',_f];
+player setVariable['trigger', thisTrigger];
+_id=player addEventHandler ['GetOutMan', {
+	params ['_unit', '_role', '_vehicle', '_turret'];
+	_f = (_unit getVariable 'f');
+	_f set [1,[(_unit getVariable 'trigger'), _vehicle]];
+	_f spawn bis_fnc_questCheckActive;
+	_vehicle lock TRUE;
+	
+	_unit removeEventHandler ['GetOutMan', player getVariable 'id'];
+}];player setVariable['id',_id];
+", [_templateName, [] ,_questType, [] ], _notificationParams, _vehClass];
+
+_triggerCheckCheckpoint setTriggerStatements ["this && vehicle player != player",  _formattedActivation, "player removeEventHandler ['GetOutMan', player getVariable ['id', -1]]"];
+_apos

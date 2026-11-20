@@ -1,0 +1,5 @@
+params[
+["_idQuestOrQuery", [], [[]]],
+["_useArchivedQuests", true]
+];
+([_idQuestOrQuery, "", _useArchivedQuests, nil, true] call bis_fnc_questGetData)

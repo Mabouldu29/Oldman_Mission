@@ -1,0 +1,28 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+
+params[
+	["_areaInfo", [], [ [] ]],
+	 "_quest"
+];
+
+private _templateName = GVAR(_quest, "currentTemplateName");
+private _questType = GVAR(_quest, "questType");
+
+_areaInfo params["_syncObjects", "_markerParams"];
+private _apos = getPos _syncObjects;
+private _questTrgs = [];
+
+{
+	private _pos = position _x;
+	private _area = _x getVariable "objectArea";
+	private _formattedActivation = format["_f=%1;_f call bis_fnc_questSetState", [_templateName, QUEST_COMPLETED]];
+	private _triggerCheckCheckpoint = createTrigger ["EmptyDetector", _pos];
+	_triggerCheckCheckpoint setTriggerActivation ["ANYPLAYER", "PRESENT", true];
+	_triggerCheckCheckpoint setTriggerArea _area;
+	_triggerCheckCheckpoint setTriggerStatements [format["this && {%1};", _formattedActivation],  _formattedActivation, ""];
+	_questTrgs pushBack _triggerCheckCheckpoint;
+} forEach ([_syncObjects] + synchronizedObjects _syncObjects);
+
+SVAR(_quest, "_triggerCheckCheckpoints", _questTrgs);
+
+_apos

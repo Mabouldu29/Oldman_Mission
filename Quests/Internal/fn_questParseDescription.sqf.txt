@@ -1,0 +1,26 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_quest"];
+
+_markerName = [_quest, ["markerName", ""]] call bis_fnc_questData;
+_timeoutMinutes = [_quest, "timeoutMinutes"] call bis_fnc_questData;
+
+//create current task
+private _descriptionToParse = [];  
+_arrayStuff =  ([_quest, "descriptionArray"] call bis_fnc_questData);
+
+ private _descriptionFormat =
+ if (count _arrayStuff > 1 && !(_arrayStuff#0 isEqualTo "")) then {
+	AR = _arrayStuff;
+
+	_descriptionToParse append _arrayStuff; // _descriptionToParse =+ _arrayStuff;
+	private _descriptionFormat = [_descriptionToParse deleteAt 0];
+	{
+		_descriptionFormat pushBack ([] call compile _x);
+	} forEach _descriptionToParse;
+	_descriptionFormat
+} else { _arrayStuff };
+
+private _description = format _descriptionFormat;
+[_quest, "description", _description] call bis_fnc_questSetData;
+
+_description

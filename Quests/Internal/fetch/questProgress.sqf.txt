@@ -1,0 +1,98 @@
+ #include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_quest", "_eventData"];
+
+//["FETCH UPDATE_NUMBERS --------------------------------------------------------------------------- START"] call bis_fnc_logFormat;
+
+private _specificProperties = GVAR(_quest, "specificProperties");
+_specificProperties#1 params["_itemCategory","_itemTypes", "_itemCount"];
+_eventData params["_container", "_items", ["_overridePreviousItems", false], ["_uniformFix", false], ["_finalCount", -1]];
+
+if (_finalCount isEqualTo -1) then {
+	private _allContainers = [_container];
+	_allContainers append (everyBackpack _container);
+
+	private _linkedContainers = GVAR(_container, "ContainersLink");
+	//["FETCH UPDATE_NUMBERS SSSSSSSSSS %1", _container in _linkedContainers] call bis_fnc_logFormat;
+
+	//["quest progresses %1 == %2 %3", _itemTypes, _itemCount, _itemCategory] call bis_fnc_logFormat;
+	//["quest progresses _allContainers[%2] %1", _allContainers, count _allContainers] call bis_fnc_logFormat;
+
+	private _currentCount = ([_container, _itemTypes] call bis_fnc_countCargoItems); //we need to subtract the item we just placed
+
+	private _progressCondition = false; 
+	private _itemCargoCount = 0; 	
+
+	if (_overridePreviousItems && _uniformFix) then {
+		SVAR(_container, "prevCount", 0);
+	};
+
+	private _prevCount = GVARS(_container, "prevCount", 0);
+
+	private _realCount = 0;
+	private _otherCargoname = objNull;
+	private _itemDiff = 0;
+
+	{
+		_otherCargoname = _x;
+		private _prevCountLinked = (GVARS(_otherCargoname, "prevCount", 0));
+		private _realCount = ([_otherCargoname, _itemTypes] call bis_fnc_countCargoItems);
+
+		if (!_overridePreviousItems && _uniformFix) then { _itemCargoCount = _itemCargoCount + _realCount; };
+		if ( _prevCountLinked > _realCount) then {
+			_itemDiff = _realCount;
+			_prevCount = _prevCount + _prevCountLinked - _itemDiff; 
+			SVAR(_otherCargoname,  "prevCount", _itemDiff);
+		};
+		
+		//["FETCH UPDATE_NUMBERS ================== LINKED[%1] %2", _realCount, _otherCargoname] call bis_fnc_logFormat;
+	} forEach _linkedContainers;
+
+	//["FETCH UPDATE_NUMBERS ^^^^ PrevCount: %1 CurrentCount:%2 REALCOUNT[%4]:%3", _prevCount, _currentCount, _realCount, _otherCargoname] call bis_fnc_logFormat;
+
+	private _uniformFixture = false; 
+	{
+		private _item = _x;
+		//in case player takes uniform
+		if (_uniformFix && _itemCount isEqualTo 1 && { ([_item, _itemTypes] call bis_fnc_inventoryItemIsKindOf) || ([primaryWeaponItems player+handgunItems player++secondaryWeaponItems player, _itemTypes] call bis_fnc_inventoryItemIsKindOf)  } )  exitWith { _uniformFixture = true;}; 
+
+		//["FETCH UPDATE_NUMBERS 000000000000000000: %1", _item] call bis_fnc_logFormat;
+		if (([_item, "ReammoBox"] call bis_fnc_inventoryItemIsKindOf)) then {
+			_progressCondition=true;
+		} else {
+			{if (([_item, _x] call bis_fnc_inventoryItemIsKindOf)) exitWith {_progressCondition=true;};} forEach _itemTypes;
+		};
+
+		if (_progressCondition) then {
+			{
+				private _container = _x;
+				private _initialItemsCount = GVARS(_container, "initialItemsCount", 10e10);
+				if (_currentCount >= _initialItemsCount) then {
+					_itemCargoCount = -_initialItemsCount;
+				};			
+
+				//["FETCH UPDATE_NUMBERS[%1] PrevCount: %2",_container, _prevCount] call bis_fnc_logFormat;
+				_itemCargoCount =  _itemCargoCount + ([_container, _itemTypes] call bis_fnc_countCargoItems);
+			} forEach _allContainers;
+		};	
+
+	} forEach _items;
+
+	//we changed unform which is single item, uniform fix is used, so we take it that we finished the quest
+	if (_uniformFixture) exitWith {100};
+
+	_itemCargoCount = _itemCargoCount - _itemDiff;
+	//["FETCH UPDATE_NUMBERS --- itemCargoCount:%1 prevCount:%2 itemCargoCount - prevCount:%3",_itemCargoCount, _prevCount, _itemCargoCount - _prevCount] call bis_fnc_logFormat;
+	SVAR(_container, "prevCount", _itemCargoCount); 
+
+	//["FETCH UPDATE_NUMBERS --------------------------------------------------------------------------- END"] call bis_fnc_logFormat;
+
+	_finalCount = _itemCargoCount - _prevCount;
+	[_quest, "itemCargoCount", _itemCargoCount] call bis_fnc_questSetData;
+} else {
+	private _itemCargoCount = [_quest, ["itemCargoCount", 0]] call bis_fnc_questData;
+	_finalCount = _itemCargoCount + _finalCount;
+	[_quest, "itemCargoCount", _finalCount] call bis_fnc_questSetData;
+};
+sleep 1;
+
+([_finalCount, GVAR(_quest, "progressPercentage"), GVAR(_quest, "currentProgress")] call BIS_fnc_questProgress)

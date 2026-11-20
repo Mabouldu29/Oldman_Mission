@@ -1,0 +1,58 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc"
+params[
+	"_quest",
+	"_questNextState",
+	["_extraStateData", []],
+	["_questDataContext", true] //when calling from questData fnc or just anything else than activeQuest function, this should be false
+];
+
+//["quest NEXTSTATE CHANGING TO %1", _questNextState] call BIS_fnc_logFormat;
+
+
+private _stateChanged = 0;
+private _questModifiersAndNames = GVAR(_quest, "questModifiersAndNames");
+
+QUEST_DATA_UNPACK_MODIFER(_questModifiersAndNames);
+
+private _modifier = _questModifiers select _questNextState;
+_modifier params [
+	["_customCondition", "true", ["string"]],
+	"_code",
+	 "_conversations"
+];
+
+private _questId = GVAR(_quest, "questId");
+if (_questDataContext) then { SVAR(_quest, "questState", _questNextState); };
+
+if ((_customCondition == "") || (_customCondition == " ") || (isNil "_customCondition") || !(_customCondition isEqualType "")) then {_customCondition = "true"; /*"quest STATE CHANGE SAFEQUARD STR codition is now true" call BIS_fnc_logFormat;*/};
+//["quest CUSTOMCONDI AR H%1H", _customCondition] call BIS_fnc_logFormat;
+
+private _stateChangedConditon = ([] call compile _customCondition);
+if ((isNil "_stateChangedConditon") || !(_stateChangedConditon isEqualType true)) then {_stateChangedConditon = true; /*"quest STATE CHANGE SAFEQUARD COMPILE codition is now true" call BIS_fnc_logFormat;*/};
+if (_stateChangedConditon) then {
+	//"quest STATE CHANGE codition TRUE" call BIS_fnc_logFormat;
+	private _taskStringId = QUEST_TASK_ID(_questId);
+	_stateChanged = [_quest, _questId, _taskStringId, _extraStateData] call QUEST_STATE_FNC(_questNextState);
+
+	//play conversations
+	if (count _conversations > 0) then {
+		private _selectedConversation = selectRandom _conversations;
+		//["quest CONVERSATION: %1", _selectedConversation] call bis_fnc_logFormat;
+		/* [_selectedConversation,"om_Oldman",nil,"Global"] call BIS_fnc_kbTell; */
+		[MODE_ADDTOQUEUE,
+			[[
+					{_this call BIS_fnc_om_conversation},
+					[_selectedConversation],
+					PRIORITY_NORMAL, VALIDITY_QUEST_SUPPORT, {}, {},
+					ACTION_INTERRUPTIBLE, PRIORITY_NORMAL, !ACTION_CAN_INTERRUPT_PREVIOUS, "QUEST CHANGED DIALOG"
+			]]
+		] call BIS_fnc_OM_moduleActionQueue;
+		ACTION_ADD_PAUSE(2, PRIORITY_NORMAL);
+		// ["", localize _conversation] call BIS_fnc_showSubtitle;
+	};
+
+	//["quest STATE CHANGED %1 to %2", _stateChanged, _questNextState] call BIS_fnc_logFormat;
+
+	[_questId] call compile _code;
+};
+_stateChanged

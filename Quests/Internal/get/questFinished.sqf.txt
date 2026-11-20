@@ -1,0 +1,9 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_quest", "_eventData"];
+
+_eventData params[["_container", objNull]];
+if (!(isNull _container)) then { SVAR(_container, "TaskTemplate", nil); };
+
+private _inventoryDialogExitCode = 602;
+closeDialog _inventoryDialogExitCode;
+true

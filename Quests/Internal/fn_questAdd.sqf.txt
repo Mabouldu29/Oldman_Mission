@@ -1,0 +1,5 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+
+private _questList = QUEST_POOL();
+_questList pushBack _this;
+QUEST_POOL_SET(_questList);

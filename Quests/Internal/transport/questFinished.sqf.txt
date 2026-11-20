@@ -1,0 +1,11 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+// params["_questData", "_eventData"];
+// QUEST_DATA_UNPACK(_questData);
+
+// _eventData params["_unit", "_container", "_item"];
+// SVAR(_container, "TaskTemplate", nil);
+
+// private _inventoryDialogExitCode = 602;
+// closeDialog _inventoryDialogExitCode;
+
+true

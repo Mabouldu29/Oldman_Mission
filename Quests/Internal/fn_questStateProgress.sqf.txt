@@ -1,0 +1,3 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+STATE_UNPACK(_this);
+[_quest, _eventData] call QUEST_PROGRESS(GVAR(_quest, "questFunctionsType"))

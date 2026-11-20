@@ -1,0 +1,62 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+_this spawn {
+
+//["quest INIT GET STARTS"] call bis_fnc_logFormat;
+params[
+	"_questSettings",
+	"_quest"
+];
+
+private _templateName = GVAR(_quest, "currentTemplateName");
+private _questType = GVAR(_quest, "questType");
+private _questNPC = GVAR(_quest, "questNPC");
+
+private _specProp = GVAR(_quest, "specificProperties");
+_specProp#1 params["_itemCategory", "_itemTypes", "_itemCount"];
+
+private _itemsIndexes = GVARS(player, "itemsIndexes", []);	
+private _templatesForItems = GVARS(player, "templatesForItems", []);
+_itemsIndexes pushBack _itemTypes;
+SVAR(player, "itemsIndexes", _itemsIndexes);
+_templatesForItems pushBack [_templateName, _questType];
+SVAR(player, "templatesForItems", _templatesForItems);
+
+private _questModifiersAndNames = GVAR(_quest, "questModifiersAndNames");
+QUEST_DATA_UNPACK_MODIFER(_questModifiersAndNames);
+private _modifier = _questModifiers select 3;
+_modifier params [
+	["_customCondition", "true", ["string"]],
+	"_code",
+	 "_conversations"
+];
+if ((_customCondition == "") || (_customCondition == " ") || (isNil "_customCondition") || !(_customCondition isEqualType "")) then {_customCondition = "true"; /*"quest STATE CHANGE SAFEQUARD STR codition is now true" call BIS_fnc_logFormat;*/};
+private _customCondArr = GVARS(player, "customCondArr", []);	
+_customCondArr pushBack _customCondition;
+SVAR(player, "customCondArr", _customCondArr);
+
+
+player addEventHandler ["Take", { _this spawn {
+	params ["_unit", "_container", "_item"];	
+	sleep 1;
+	private _itemsIndexes = GVAR(_unit, "itemsIndexes");	
+	//["quest TEMPLATE NAME %1", _itemsIndexes] call bis_fnc_logFormat;
+	if (!(_itemsIndexes isEqualTo [])) then {
+		_templateIndex = _itemsIndexes findIf { ([_item, _x] call bis_fnc_inventoryItemIsKindOf) }; // is the item one of the wanted items	
+		// if (NOT_FOUND(_templateIndex)) then {
+		// 	_templateIndex = _itemsIndexes findIf {([primaryWeaponItems player+handgunItems player+secondaryWeaponItems player, _x] call bis_fnc_inventoryItemIsKindOf) }; 
+		// };
+		if (FOUND(_templateIndex)) then {
+			private _stateChangedConditon = [] call compile ((player getVariable "customCondArr") # _templateIndex);
+			if ((isNil "_stateChangedConditon") || !(_stateChangedConditon isEqualType true)) then {_stateChangedConditon = true; /*"quest STATE CHANGE SAFEQUARD COMPILE codition is now true" call BIS_fnc_logFormat;*/};
+			
+			if (_stateChangedConditon) then {
+				_templateIndexPrevious = GVARS(player, "templateIndex", _templateIndex);	
+				_templateForItem = (GVAR(_unit, "templatesForItems"))#_templateIndex;
+				private _itemRealCount = [_unit, _itemsIndexes#_templateIndex] call bis_fnc_countUnitItems;	
+				[_templateForItem#0, [_unit, _itemRealCount], _templateForItem#1,[] ] call  bis_fnc_questCheckActive;
+			};
+		};
+	 };
+};}];
+};
+[]

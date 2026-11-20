@@ -1,0 +1,61 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+
+_getQuestSpecificFunctions = {
+	params["_questType"];
+	
+	private _functionNames =
+	[
+		"questInit",
+		"questProgress",
+		"questFinished"
+	];
+	_path =  format["\A3\Missions_F_Oldman\Systems\scripts\Quests\Internal\%1\",_questType];
+	[
+		_path,
+		"bis_fnc_" + _questType,
+		_functionNames
+	] call bis_fnc_loadFunctions;
+};
+
+private _fnc_quest_initModule = {
+	params["_module"];
+
+	private _def = [0,0];
+	private _area = GVARS(_module, "objectArea", _def);
+	private _areaSize = (_area#0) max (_area#1);
+	private _templateName =  GVAR(_module,"TaskTemplate");
+	private _questType =  [configfile >> "cfgVehicles" >> typeOf _module >> "questType"] call BIS_fnc_getCfgData;
+	private _areaPos = getPos _module;
+	[_areaPos, _areaSize, _templateName, _questType]
+};
+
+private _fnc_getAreaObjects = {
+	params["_areaPos", "_areaSize", "_className"];
+	(_areaPos nearObjects ["All", _areaSize] select {if (_x isKindOf "Man") then { _x canAddItemToBackpack "Default"} else {_x canAdd "Default"}} )
+};
+
+
+//register general function aliases
+QUEST_STATE_FNC_ALIAS(QUEST_CREATED,	"bis_fnc_questStateCreate");
+QUEST_STATE_FNC_ALIAS(QUEST_ASSIGNED,	"bis_fnc_questStateAssigned");
+QUEST_STATE_FNC_ALIAS(QUEST_PROGRESSING,"bis_fnc_questStateProgress");
+QUEST_STATE_FNC_ALIAS(QUEST_COMPLETED,	"bis_fnc_questStateFinished");
+
+QUEST_STATE_FNC_ALIAS(QUEST_ELAPSED,	"bis_fnc_questStateElapsed");
+QUEST_STATE_FNC_ALIAS(QUEST_CANCELED,	"bis_fnc_questStateCanceled");
+QUEST_STATE_FNC_ALIAS(QUEST_FAILED,		"bis_fnc_questStateFailed");
+
+["fetch"] call _getQuestSpecificFunctions;
+["get"] call _getQuestSpecificFunctions;
+["support"] call _getQuestSpecificFunctions; 
+["destroy"] call _getQuestSpecificFunctions;
+["transport"] call _getQuestSpecificFunctions;
+["transportPerson"] call _getQuestSpecificFunctions;
+["default"] call _getQuestSpecificFunctions;
+["defaultParent"] call _getQuestSpecificFunctions;
+["location"] call _getQuestSpecificFunctions;
+["defend"] call _getQuestSpecificFunctions;
+["holdAction"] call _getQuestSpecificFunctions;
+["hostageRescue"] call _getQuestSpecificFunctions;
+
+[] call bis_fnc_questCreateFromPool;

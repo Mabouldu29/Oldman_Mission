@@ -1,0 +1,77 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+#include "\A3\Missions_F_Oldman\Systems\scripts\SmartMarkers\common_definitions.inc";
+STATE_UNPACK(_this);
+
+private _currentTemplateName = GVAR(_quest, "currentTemplateName");
+private _allObjects = GVAR(_quest, "allObjects");
+private _title = GVAR(_quest, "title");
+private _questType = GVAR(_quest, "questType");
+
+//["quest %1 ASSIGNED condition fullfiled %2 %3 %4", _title, _taskStringId, _questId, _questType] call BIS_fnc_logFormat;
+
+private _questMarkerSettings = GVAR(_quest,"questMarkerSettings");
+
+private _questPos = GVARS(_quest, "questPos", []);
+private _markerName = "";
+//DISABLING a marker
+// if (!(_questPos isEqualTo []) && !(_questMarkerSettings isEqualTo [])) then {
+// 	private _markerParams = [_taskStringId, _questPos];
+// 	_markerParams append _questMarkerSettings;
+// 	_markerName = _markerParams call bis_fnc_createQuestMarker;
+// };
+
+SVAR(_quest, "questAssigned", true);
+SVAR(_quest, "startedDate", date);
+
+private _useSmartMarker = true; //TODO option ?
+private "_markerID";
+
+private _taskPos = objNull;
+private _iconType = GVAR(_quest, "iconType");
+private _startTimeText = ([_quest] call bis_fnc_questGetStartTime);
+
+if (!(_questPos isEqualTo [])) then {
+	if (_useSmartMarker) then {
+		private _smartMarkerName = format["SmartMarker_%1_%2_F",GVAR(_quest,"smartMarkerPrefix"), ([_iconType] call bis_fnc_capitalizeString)];
+		private _smartMarkerTitle = _title;
+		if (!(_startTimeText isEqualTo "")) then {
+			_smartMarkerTitle = format["%1 (%2)", _smartMarkerTitle, _startTimeText];
+		};
+		//["quest CREATE SmartMarker %1 %2", _smartMarkerName, _startTimeText] call bis_fnc_logFormat;
+		private _markerParams = [ [SM_TOOLTIP_TITLE, _smartMarkerTitle],[SM_TOOLTIP_DESCR, GVAR(_quest, "markerDescription")] ];
+		private _markerPicture = GVAR(_quest, "markerPicture");
+		if (!(_markerPicture isEqualTo "")) then {
+			_markerParams pushBack ([SM_TOOLTIP_IMAGE, _markerPicture]);
+		};
+		//CREATE MARKER WITH CUSTOM DATA                (use macros: SM_NAME, SM_TOOLTIP_TITLE, SM_TOOLTIP_DESCR, SM_TOOLTIP_IMAGE)
+		private _showSmartMarker = GVAR(_quest, "showSmartMarker");
+		private _showSmartMarkerFlag = if (_showSmartMarker) then { MODE_SHOW } else { MODE_HIDE };
+		_markerID = [MODE_CREATE, [_smartMarkerName, _currentTemplateName, _questPos, !_showSmartMarker , _markerParams]] call BIS_fnc_OM_moduleSmartMarkers;
+	 	 _markerName = [MODE_GETMARKERNAME, [_markerID]] call BIS_fnc_OM_moduleSmartMarkers; //override link to marker
+		[_quest, "markerName", _markerName] call bis_fnc_questSetData;
+		[_quest, "markerId", _markerID] call bis_fnc_questSetData;
+
+		private _markerData = GVAR(_quest, "markerData");
+		_markerData params["_markerTitle", "_markerTooltipTitle", "_markerTooltipText"];
+		private _paramsMarker = [];
+		if (_markerTitle != "") then { _paramsMarker pushBack [SM_NAME, _markerTitle]; };
+		if (_markerTooltipTitle != "") then { _paramsMarker pushBack [SM_TOOLTIP_TITLE, _markerTooltipTitle]; };
+		if (_markerTooltipText != "") then { _paramsMarker pushBack [SM_TOOLTIP_DESCR, _markerTooltipText]; };
+		if (!(_paramsMarker isEqualTo [])) then { [MODE_CHANGEATTRIBUTES, [_markerID, _paramsMarker ] ] call BIS_fnc_OM_moduleSmartMarkers; };
+	} else {
+		_taskPos = _questObject;
+	};
+};
+
+//set task date - the variable is used within the templates.
+_timeoutMinutes = format["<font color='#F53659'>%1</font>",_startTimeText];
+[_quest, "timeoutMinutes", _timeoutMinutes] call bis_fnc_questSetData;
+
+[_quest] call bis_fnc_questParseDescription;
+[_quest] call bis_fnc_questMakeTask;
+
+if (!(_questPos isEqualTo [])) then { [_quest, _markerID, true] call bis_fnc_questAssociateSmartMarker; };
+
+//["quest [%1] %2 ASSIGNED", _currentTemplateName,_questType] call bis_fnc_logFormat;
+
+100

@@ -1,0 +1,48 @@
+class Quests
+{
+	tag = "BIS";
+	project = "arma3";
+
+	class Functions
+	{
+		file = "\A3\Missions_F_Oldman\Systems\scripts\Quests";
+		class questCreateManualy;
+		class questIsInitialized;
+		class questIsFinished;
+		class questGetTitle;
+		class questGetDescription;
+		class questGetType;
+		class questGetStartTime;
+		class questGetState;
+		class questGetData;
+		class questGetDataMultiple;
+		class questData;
+		class setDescription;
+		class questSetState;
+		class questSetData;
+		class questGetChildren;
+		class questAssociateSmartMarker;
+	};
+	class Internal
+	{
+		file = "\A3\Missions_F_Oldman\Systems\scripts\Quests\Internal";
+		class questSystemInit;
+		class questAdd;
+		class questChangeState;
+		class questMakeTask;
+		class questCheckActive;
+		class questGetTemplate;
+		class questProgress;
+		class questCreateFromPool;
+		class questStateCreate;
+		class questStateElapsed;
+		class questStateCanceled;
+		class questStateProgress;
+		class questStateAssigned;
+		class questStateFailed;
+		class questStateFinished;
+		class questTimeout;
+		class createQuestMarker;
+		class questParseDescription;
+	};
+};

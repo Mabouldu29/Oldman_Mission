@@ -1,0 +1,30 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+#include "\A3\Missions_F_Oldman\Systems\scripts\SmartMarkers\common_definitions.inc";
+STATE_UNPACK(_this);
+
+private _currentTemplateName = GVAR(_quest, "currentTemplateName");
+private _allObjects = GVAR(_quest, "allObjects");
+private _title = GVAR(_quest, "title");
+private _questType = GVAR(_quest, "questType");
+
+//["quest %1 CREATE condition fullfiled %2 %3 %4", _title, _taskStringId, _questId, _questType] call BIS_fnc_logFormat;
+
+private _questPos = [];
+ _questPos = [_allObjects, _quest] call QUEST_INIT(GVAR(_quest,  "questFunctionsType"));
+SVAR(_quest, "questPos", _questPos);
+
+private _taskIds = [_taskStringId];
+private _parentId = GVAR(_quest, "parentId");
+if (!(_parentId isEqualTo -1)) then {
+	_taskIds pushBack (QUEST_TASK_ID(_parentId));
+};
+SVAR(_quest, "taskIds", _taskIds);
+
+if (!(_allObjects isEqualTo [])) then {
+	private _questObject = _allObjects#0;
+	SVAR(_quest, "questPos", getPos _questObject);
+};	
+
+//["quest [%1] %2 CREATED %3", _currentTemplateName,_questType, _taskIds] call bis_fnc_logFormat;
+
+100

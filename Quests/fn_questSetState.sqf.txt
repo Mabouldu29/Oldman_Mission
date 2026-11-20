@@ -1,0 +1,33 @@
+/*
+Parameter(s):
+_this select 0: NUMBER - id of quest
+_this select 1: NUMBER/STRING - requested state
+
+Example:
+[_questId, QUEST_CANCELED] call bis_fnc_questSetState;
+[_questId,  6] call bis_fnc_questSetState;
+
+Return:
+TRUE if the quest state was set
+*/
+
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_idQuestOrQuery", ["_state", 0, [0,"state"] ], ["_eventData",[]] ];
+
+private _currentState = [_idQuestOrQuery, ["questState", -1]] call bis_fnc_questData;
+private _stateCode =
+if (_state isEqualType 0) then {
+	_state
+} else {
+	 QUEST_STATES_STR_GET_INDEX(_state)
+};
+
+if (_stateCode < 0 || _stateCode >= (count QUEST_STATES_STR)) throw format["Quest Error: Invalid task state (%1)!", _stateCode];
+
+//|| ([_idQuestOrQuery, _currentState] call bis_fnc_questIsFinished)
+if (_stateCode isEqualTo _currentState || ([_idQuestOrQuery, _currentState] call bis_fnc_questIsFinished)) exitWith {false};
+
+// _endState = false;
+ _endState = [_idQuestOrQuery, "questState", true, _stateCode, false, true, _eventData] call bis_fnc_questData;
+//["quest id[%1] SET_STATE QUEST_POOL UPDATED", _idQuestOrQuery] call bis_fnc_logFormat;
+_endState

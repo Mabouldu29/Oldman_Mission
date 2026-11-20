@@ -1,0 +1,46 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+
+params[
+	["_areaInfo", [], [ [] ]],
+	 "_quest"
+];
+
+private _templateName = GVAR(_quest, "currentTemplateName");	
+private _questType = GVAR(_quest, "questType");
+
+_areaInfo params["_syncObjects", "_markerParams"];
+
+private _area = _syncObjects getVariable "objectArea";
+private _apos = getPos _syncObjects;
+deleteVehicle _syncObjects;
+
+//["quest TRANSPORT INIT %1 %2", _area, _apos] call bis_fnc_logFormat;
+
+private _questNpc = GVAR(_quest, "questNPC");
+SVAR(_quest, "runFinishedStateAlways", true);
+
+[_questNpc, _templateName] spawn {
+	params["_questNpc", "_templateName"];
+	private _unit = objNull;
+	private _sector = objNull; 
+	waitUntil {sleep 0.5; _unit = (missionNamespace getVariable [_questNpc, objNull]); !isNull _unit && {_sector = (group _unit getVariable ["#sector", objNull]); !isNull _sector} };
+	[_unit, true,  compile (format["['%1', 'PROGRESSING'] call bis_fnc_questSetState; ", _templateName])] call BIS_fnc_escortAIHoldAction; 	
+	//[_unit, _sector] call BIS_fnc_om_removeFromSector;
+};
+
+private _triggerCheckCheckpoint = createTrigger ["EmptyDetector", _apos];
+_triggerCheckCheckpoint setTriggerArea _area;
+_triggerCheckCheckpoint setTriggerTimeout [0, 0, 0, true];
+_triggerCheckCheckpoint setTriggerActivation ["ANY", "PRESENT", true]; 
+SVAR(_triggerCheckCheckpoint, "_questNpc" , _questNpc);
+SVAR(_triggerCheckCheckpoint, "_templateName" , _templateName);
+
+private _formattedActivation = 
+format["_f=%1; _npc=(thisTrigger getVariable '_npc');[_npc, false] call BIS_fnc_escortAIHoldAction;[(thisTrigger getVariable '_templateName'), 'COMPLETED'] call bis_fnc_questSetState;",
+ [_templateName, [] ,_questType, [] ]];
+_triggerCheckCheckpoint setTriggerStatements [
+"_npc = missionNamespace getVariable (thisTrigger getVariable '_questNpc'); 
+ thisTrigger setVariable ['_npc', _npc];if (!(isNull _npc) && !(alive _npc)) then { [thisTrigger getVariable '_templateName', 6] call bis_fnc_questSetState; };_npc in (list thisTrigger)"
+,  _formattedActivation, ""];
+SVAR(_quest, "_triggerCheckCheckpoint", _triggerCheckCheckpoint);
+_apos	

@@ -1,0 +1,65 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+#include "\A3\Missions_F_Oldman\Systems\scripts\SmartMarkers\common_definitions.inc";
+params[ 
+	["_templateName", "", ["String"] ], 
+	["_eventData", [], [[]] ],
+	"_questType",
+	"_questObject",
+	["_delay", 0]
+];
+
+//["quest CHECK delay is %1",_delay] call bis_fnc_logFormat;
+sleep _delay;
+//["quest CHECK ACTIVE %1",_this] call bis_fnc_logFormat;
+
+private _questList = QUEST_POOL_ACTIVE();
+//["quest [%1] looping questList(%2) %3",_templateName, count _questList, _questList] call bis_fnc_logFormat;
+
+//for "_i" from (count _questList -1) to 0 step -1 do {
+for "_i" from 0 to (count _questList -1) step 1 do {
+	private _quest = _questList#_i;
+
+	private _currentTemplateName = GVAR(_quest, "currentTemplateName");
+	private _allObjects = GVAR(_quest, "allObjects");
+	private _currentProgress = GVAR(_quest, "currentProgress");
+	private _questId = GVAR(_quest, "questId");
+
+
+	//["quest templates [%1]==[%2] (current/given) i=%3", _currentTemplateName, _templateName, _i] call bis_fnc_logFormat;
+	//["quest [%1] Object %1 allObjects %2",_questObject, _allObjects] call bis_fnc_logFormat;
+	if (_currentTemplateName == _templateName && (_questObject isEqualTo [] || _questObject in _allObjects) && {!([_quest] call bis_fnc_questIsFinished)} ) then {
+	// if (_questObject in _allObjects) then {
+		private _currentProgress = [_quest, QUEST_PROGRESSING, _eventData] call bis_fnc_questChangeState; 
+		//["quest [%1] currentProgress %2", _templateName, _currentProgress] call bis_fnc_logFormat;
+		if (_currentProgress >= QUEST_CODE_FINISHED) then {
+			
+			if (!(_allObjects isEqualTo [])) then {
+				[MODE_DELETE, [GVAR(_quest, "questTemplate")]] call BIS_fnc_OM_moduleSmartMarkers; // QUEST_TASK_ID(_questId)
+			};
+			
+			//["quest [%1] FINISHED", _templateName] call bis_fnc_logFormat;
+			
+			if (_currentProgress == QUEST_CODE_CANCELED) then {
+				[_quest, QUEST_CANCELED, _eventData] call bis_fnc_questChangeState; 
+			} else {
+
+				if (_currentProgress == QUEST_CODE_FAILED) then {
+					[_quest, QUEST_FAILED, _eventData] call bis_fnc_questChangeState; 
+				} else {
+					[_quest, QUEST_COMPLETED, _eventData] call bis_fnc_questChangeState; 
+				};
+
+			};	
+			if (!GVAR(_quest, "keepInDiary")) then {
+				[QUEST_TASK_ID(_questId)] call BIS_fnc_deleteTask; 
+			};
+			//["quest [%1] questList(%2) IS %3", count _questList, _templateName, _questList] call bis_fnc_logFormat;
+		} else {
+			SVAR(_quest, "currentProgress", _currentProgress);	
+			_questList set [_i, _quest];
+		};
+	};
+}; 
+
+QUEST_POOL_ACTIVE_SET(_questList);
+//["quest [%1] QUEST_POOL UPDATED", _templateName] call bis_fnc_logFormat; 

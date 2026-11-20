@@ -1,0 +1,55 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params[
+	["_areaInfo", [], [ [] ]],
+	 "_quest"
+];
+private _allObjects = GVARS(_quest, "allObjects", [objNull]);
+private _apos = (_allObjects#0);
+
+_this spawn {
+	private _quest = _this#1;
+private _questObjectName = GVAR(_quest, "questNPC");
+
+private _questInitCode = {
+	params["_quest", ["_questObject", objNull]];
+	if (isNull _questObject) exitWith {};
+	private _templateName = GVAR(_quest, "currentTemplateName");
+	private _questType = GVAR(_quest, "questType");
+	// _templateName, _container, _itemTypes, _itemCount, GVAR(_container, "QuestType")/ Arguments passed to the scripts as _this select 3
+	private _specificProperies = (GVAR(_quest, "specificProperties"))#1;
+	_specificProperies params["_holdActionIcon", "_holdActionEndedQuestState", "_holdActionDistance", "_holdActionAdditionalCondition", "_holdActionProgressingCondition", "_holdActionCode","_holdActionOnPlayer"];
+	private _holdActionTarget = if ((call compile _holdActionOnPlayer)) then {player} else {_questObject};
+	private _holdActionCondition = format["player distance %1 < %2 && %3", _questObject, _holdActionDistance, _holdActionAdditionalCondition]; //TODO hardcoded distance + && customCondition
+	private _actionId = [
+		_holdActionTarget, // Object the action is attached to
+		GVAR(_quest, "title"),    // Title of the action
+		_holdActionIcon,           // Idleicon shown on screen
+		_holdActionIcon,       // Progress icon shown on screen
+		_holdActionCondition,
+		_holdActionProgressingCondition,  // Condition for the action to progress 
+		{},//--- when hold action starts
+		{}, //TODO make it as progressing state
+		{
+			_arguments params["_templateName", "_holdActionEndedQuestState", "_holdActionCode"];
+			[_templateName,  2] call bis_fnc_questSetState; //TODO using this to hit a progressing state
+			sleep 0.5;
+			[] call compile _holdActionCode;
+			if (_holdActionEndedQuestState != "") then {
+				[_templateName, _holdActionEndedQuestState] spawn bis_fnc_questSetState;
+			};
+		},//--- when holdaction ends
+		{},//--- when action is terminated
+		[GVAR(_quest, "currentTemplateName"), _holdActionEndedQuestState, _holdActionCode], // _templateName, _container, _itemTypes, _itemCount, GVAR(_container, "QuestType")/ Arguments passed to the scripts as _this select 3
+		1,	   // Time
+		0,	   // Priority
+		true,  // Remove on completion
+		true  // Show in unconscious statee
+	] call BIS_fnc_holdActionAdd;
+};
+
+[_quest, MGVARS(_questObjectName, objNull)] call _questInitCode;
+private _questId =  GVAR(_quest, "questId");
+private _ehId = [_questObjectName,  compile format["[([%1] call bis_fnc_questData), _this#0] call %2", _questId, _questInitCode] ] call BIS_fnc_om_spawn_addInitEventHandler;
+SVAR(_quest, "ehId" , _ehId);
+};
+_apos

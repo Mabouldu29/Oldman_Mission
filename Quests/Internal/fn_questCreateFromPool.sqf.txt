@@ -1,0 +1,56 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+// params["_questList", "_questPoolActive"];
+
+private _cfgTemplates = (["cfgQuests", "templates"] call BIS_fnc_getCfgData);
+private _cfg = missionConfigFile  >> "cfgQuests";
+// private _additionalCondition = "getNumber (_x >> 'transportSoldier') >= 10";
+private _allQuestTemplates = [];
+{ _allQuestTemplates pushBackUnique [_x, ([_cfg, _x, true] call bis_fnc_cfg_realSubClasses)]; } forEach _cfgTemplates;
+
+//add quests logics to quest stack
+QUESTS_STACK = [];
+{
+	_x params["_rootTemplate", "_rootSubQuests"];
+	{
+		private _currentTemplateName = _x;
+		NEW(_quest);
+		SVAR(_quest, "currentTemplateName", _currentTemplateName);
+		SVAR(_quest, "questTemplate", _currentTemplateName);
+		SVAR(_quest, "rootTemplate", _rootTemplate);
+		[_currentTemplateName, _quest] call bis_fnc_questGetTemplate;
+		QUESTS_STACK pushBack _quest;
+	} forEach _rootSubQuests;
+} forEach _allQuestTemplates;
+
+//gather all modules and run its quest
+//["quest CREATING_QUESTS Started"] call bis_fnc_logFormat;
+private _createdQuestsCount = 0;
+private _allModules = allMissionObjects "ModuleOmQuest_Base_F";
+{	
+	private _currentModule = _x;
+	private _currentTemplateName = GVARS(_x, "tasktemplate", "");
+	
+	if (_currentTemplateName != "") then {
+		//["quest CREATING_QUESTS ------ [%1]", _currentTemplateName] call bis_fnc_logFormat;
+		private _questTemplateIndex = QUESTS_STACK findIf {(_x getVariable ["currentTemplateName", ""]) isEqualTo _currentTemplateName};
+		if (FOUND(_questTemplateIndex)) then {
+			private _quest = QUESTS_STACK#_questTemplateIndex;
+
+			private _moduleCanBeCompletedWithoutAssigning = GVARS(_x, "CanBeCompletedWithoutAssigning", "NOT_SET");
+			private _canBeCompletedWithoutAssigning =
+			if ((_moduleCanBeCompletedWithoutAssigning isEqualType "")) then {
+				GVAR(_quest, "canBeCompletedWithoutAssigning")
+			} else {
+				 _moduleCanBeCompletedWithoutAssigning
+			};
+			if (_canBeCompletedWithoutAssigning) then {_template = GVAR(_x, "tasktemplate"); [_template, [_x], [], false] call bis_fnc_questCreateManualy; _createdQuestsCount = _createdQuestsCount+1; 
+			waitUntil {sleep 0.5; ([_template] call bis_fnc_questIsInitialized)}
+			};
+		};
+	};
+	//if (GVAR(_x, "CanBeCompletedWithoutAssigning")) then { [GVAR(_x, "tasktemplate"), [_x], [], false] call bis_fnc_questCreateManualy; _createdQuestsCount = _createdQuestsCount+1; };
+} forEach _allModules; 
+//["quest CREATING_QUESTS[%1/%2] Finished", _createdQuestsCount, count _allModules] call bis_fnc_logFormat;
+
+
+// // [1] spawn bis_fnc_questTimeout; 

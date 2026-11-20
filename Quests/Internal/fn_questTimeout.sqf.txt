@@ -1,0 +1,33 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+
+// "WAIT !TQ" call bis_fnc_logFormat;
+private _delay = 2;
+waitUntil{sleep _delay; time > _delay};
+
+// "INIT !TQ" call bis_fnc_logFormat;
+while {alive player} do {
+	private _questList = QUEST_POOL_ACTIVE();
+	// ["LoopEntering !TQ[%1]", _questList] call bis_fnc_logFormat;
+	{
+		PROFILE_INFO("bis_fnc_questTimeout","bis_fnc_questTimeout",1);
+		private _quest = _x;
+		if (!([_quest] call bis_fnc_questIsFinished) && GVAR(_quest, "type") == QUEST_TYPE_DEFEND) then { //TODO not only defend
+			private _actualTimeout =  (GVARS(_quest, "timeoutFromStartInMinutes", 1))*60;
+			private _startedDate = GVARS(_quest, "startedDate", date);
+
+			// 	//reminder check
+			// if (player distance2D (GVARS(_quest, "apos", [])) <=  QUEST_DISTANCE_REMINDER) then {
+			// };
+
+			//timeout  check
+
+			// ["CHECK !TQ %1 %2", GVARS(_quest, "startedDate", []), _quest] call bis_fnc_logFormat;
+			if (([date, _startedDate] call bis_fnc_CalculateDateTime) <= -_actualTimeout) then {  //!(_startedDate isEqualTo []) && {
+				[_quest, GVAR(_quest, "timeoutExpiredState")] spawn bis_fnc_questSetState;  //define what happends when the QUEST EXPIRED
+			};
+		};
+	} forEach _questList;
+	// ["LoopExitng !TQ[%1]", _  questList] call bis_fnc_logFormat;
+	uiSleep _delay;
+};
+// "TEE !TQ" call bis_fnc_logFormat;

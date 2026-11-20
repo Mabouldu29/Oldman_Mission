@@ -1,0 +1,85 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params ["_currentTemplateName", "_allObjects", ["_timeoutMinutess", [], [0, [] ] ], ["_assignQuest", true], ["_noInitCheck", false]];
+
+private _questTemplateIndex = QUESTS_STACK findIf {(_x getVariable ["currentTemplateName", ""]) isEqualTo _currentTemplateName};
+if (NOT_FOUND(_questTemplateIndex)) exitWith {};
+
+//This is used, so we could either create or assign quest when they are previously created
+//support is currently only quest which has reused templates which means that we can't make this check
+if (!_noInitCheck && {[_currentTemplateName] call bis_fnc_questIsInitialized} && 
+   {!(([_currentTemplateName, "type"] call bis_fnc_questGetData) in [QUEST_TYPE_SUPPORT, QUEST_TYPE_ATTACK])}
+) exitWith {
+	//["quest PPPPPPARENTPPPP |STOP|[%1] %2 %3", _currentTemplateName, _noInitCheck, ([_currentTemplateName] call bis_fnc_questIsInitialized)] call bis_fnc_logFormat;
+	// private _parentId = GVARS(_quest, "parentId", -1);
+	// if (FOUND(_parentId)) then { mmf=[_parentId, QUEST_ASSIGNED] call bis_fnc_questSetState; }; // && (GVAR(_quest, "isMandatory")) 
+	[_currentTemplateName, QUEST_ASSIGNED] call bis_fnc_questSetState;
+	([_currentTemplateName, "questId"] call bis_fnc_questGetData)
+};
+
+//["quest PPPPPPARENTPPPP GESTART[%1] %2 %3", _currentTemplateName, _noInitCheck, ([_currentTemplateName] call bis_fnc_questIsInitialized)] call bis_fnc_logFormat;
+private _questId = QUEST_INDEX_INCREMENT();
+
+[_this, _questId, _questTemplateIndex] spawn {
+	//time is either in minutes or its a date which is 5 items array
+	params[
+		"_questSetup",
+		"_questId",
+		"_questTemplateIndex"
+	];
+	_questSetup params ["_currentTemplateName", "_allObjects", ["_timeoutMinutess", [], [0, [] ] ], ["_assignQuest", true]];
+
+	private _quest = objNull;
+	COPY((QUESTS_STACK#_questTemplateIndex), _quest);
+	SVAR(_quest, "questId", _questId);
+	SVAR(_quest, "allObjects", _allObjects);
+	if (!(_allObjects isEqualTo [])) then { SVAR(_quest, "showSmartMarker",	 GVARS(_allObjects#0, "showSmartMarker", true)); };
+
+	//["quest PPPPPPARENTPPPP CurrentTemplate[%1]", _currentTemplateName] call bis_fnc_logFormat;
+	private _calculatedTimeout = [];
+	if (typename _timeoutMinutess != "array") then {
+		_calculatedTimeout = [date, _timeoutMinutess*60] call bis_fnc_CalculateDateTime;
+	} else {
+	_calculatedTimeout = _timeoutMinutess;
+	};
+
+	SVAR(_quest, "timeoutMinutes", _calculatedTimeout);
+	SVAR(_quest, "timeoutMinutesDateTime", _calculatedTimeout);
+
+	//["quest CREATE_MANUALLY[%1] TIMOUT %2 SET: %3 dATE: %4 %5",_currentTemplateName, _timeoutMinutess, _calculatedTimeout, date, _quest] call bis_fnc_logFormat;
+
+	private _questParentClass = GVARS(_quest, "questParentClass", "");
+	private _parentId = -1;
+	private _isParentFinished = false;
+	if (!(_questParentClass isEqualTo "")) then {
+		//search for parent quest with parent tempalte 
+		private _questPool =  QUEST_POOL_ACTIVE();
+		private _parentTemplateIndex = (_questPool findIf { _questParentClass isEqualTo GVAR(_x, "currentTemplateName") });
+		if (_parentTemplateIndex isEqualTo -1) then {
+			//["quest CREATE PARENT params: %1 %2", _questParentClass, _parentTemplateIndex] call BIS_fnc_logFormat; 
+			_parentId = [_questParentClass, [], [], false] call bis_fnc_questCreateManualy;
+			waitUntil {[_parentId] call BIS_fnc_questIsInitialized};
+		} else {
+			_parentId = GVAR(_questPool#_parentTemplateIndex, "questId");
+			//["quest templates [%1] ACTIVE_ISFINISH M S", _currentTemplateName] call bis_fnc_logFormat;
+			_isParentFinished = [_parentId] call bis_fnc_questIsFinished;
+			//["quest templates [%1] ACTIVE_ISFINISH M E", _currentTemplateName] call bis_fnc_logFormat;
+		};
+		//["quest PPPPPPARENTPPPP[%1] %2", _currentTemplateName, _questId] call bis_fnc_logFormat;
+		[_parentId, "subQuestsIds", _questId, true] call bis_fnc_questSetData;
+		if (!(GVAR(_quest, "isMandatory"))) then {
+			[_parentId, "subQuestsIdsOptional", _questId, true] call bis_fnc_questSetData;
+		};
+	};
+
+	//If the quest is having parent, we will throw quest creartion in case the parent is closed
+	if (!_isParentFinished) then {
+		SVAR(_quest, "parentId", _parentId);
+		private _questPoolActive = QUEST_POOL_ACTIVE(); //TODO _typeName =>_questType may be undef
+		private _created = [_quest, QUEST_CREATED] call bis_fnc_questChangeState;
+		SVAR(_quest, "arrayIndex", count _questPoolActive);
+		_questPoolActive pushBack _quest;
+		QUEST_POOL_ACTIVE_SET(_questPoolActive); 
+		if (_assignQuest) then { [_questId, QUEST_ASSIGNED] call bis_fnc_questSetState; }; //[_quest, QUEST_ASSIGNED] call bis_fnc_questChangeState; 
+	};
+};
+_questId  

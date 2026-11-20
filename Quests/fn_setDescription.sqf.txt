@@ -1,0 +1,17 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_idQuestOrQuery", ["_desc", [], [[],""]], ["_append", false]];
+if (_desc isEqualType "") then {_desc = [_desc];};
+
+private _questId = [_idQuestOrQuery, "questId"] call bis_fnc_questData; 
+private _task = ([QUEST_TASK_ID(_questId), player] call BIS_fnc_taskReal);
+private _taskNameHudDesc = taskDescription _task;
+//TODO delete obsolete descriptionArray ?!
+_desc = _desc apply { if (_x isEqualType objNull) then { [MODE_GETMARKERNAME, [_x]] call BIS_fnc_OM_moduleSmartMarkers } else {_x}; };
+private _descstr = if (_append) then { format["%1<br/><br/><font color='#797980'>%2</font>",  format _desc,  _taskNameHudDesc#0] } else { format _desc; };
+_taskNameHudDesc set [0, _descstr];
+_task setSimpleTaskDescription _taskNameHudDesc;
+
+_state = "DescriptionUpdated";
+["task" + _state  + "Icon",[[([_idQuestOrQuery, ["_icontype", "default"]] call bis_fnc_questData)] call bis_fnc_taskTypeIcon,  [_idQuestOrQuery, "title"] call bis_fnc_questGetData]] call bis_fnc_showNotification;
+
+_descstr

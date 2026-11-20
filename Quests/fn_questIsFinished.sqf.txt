@@ -1,0 +1,7 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params["_idQuestOrQuery", ["_stateIndex", -2]];
+PROFILE_INFO("fn_questIsFinished","fn_questIsFinished"+str _idQuestOrQuery,1);
+if (_stateIndex isEqualTo -2) then {
+	_stateIndex =  [_idQuestOrQuery, ["questState", -1], true] call bis_fnc_questData;
+};
+(!isNil "_stateIndex") && {_stateIndex >= QUEST_COMPLETED}

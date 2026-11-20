@@ -1,0 +1,8 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+// params[ ["_idQuest", -1, [-1,objNull]], ["_getOnlyIds", false] ];
+// private _subQuestsIds = ([_idQuest, "subQuestsIds"] call bis_fnc_questGetData); //[0,2]
+// // if (!_getOnlyIds) then { 
+// // 	GFG = [_subQuestsIds#0] call bis_fnc_questGetData;	
+// 	_subQuestsIds apply { ([_x] call bis_fnc_questGetData) };
+// // };
+// _subQuestsIds

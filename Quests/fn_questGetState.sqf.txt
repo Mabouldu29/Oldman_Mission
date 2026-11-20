@@ -1,0 +1,9 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc";
+params[ "_id", ["_humanReadable", false, [false] ] ];
+private _stateIndex = [_id, "questState", true] call bis_fnc_questGetData;
+if( !_humanReadable ) then
+{
+	 if (isNil "_stateIndex") then  { -2 } else { _stateIndex };
+}
+else
+{ if (isNil "_stateIndex") then { "" } else { QUEST_STATES_STR_FROM_INDEX(_stateIndex) } }
