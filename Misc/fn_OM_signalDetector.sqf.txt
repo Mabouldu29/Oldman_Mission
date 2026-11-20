@@ -1,0 +1,8 @@
+private _soundSource = _this select 0;
+
+while {true} do {
+private _distToSource = _soundSource distance player;
+playSound "beep";
+If (_distToSource < 5) then (sleep 0.3) else (sleep (_distToSource / 200));
+If ("_soundSource" in items player) exitWith {};
+};

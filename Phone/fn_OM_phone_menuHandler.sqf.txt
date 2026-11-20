@@ -1,0 +1,34 @@
+//---Called by buttons in the graphic menu
+#include "common_definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+params["_control"];
+_control = _control select 0;
+/* ["PHONE: _control: %1", _control] call BIS_fnc_logFormat; */
+	private _phoneMenuBox = missionNameSpace getVariable ["BIS_OM_PhoneMenuBox", []];
+private _index = _phoneMenuBox findIf {_x select 3 isEqualTo _control};
+if( _index != -1 ) then
+{
+switch (_phoneMenuBox select _index select 0) do
+	{
+	  case ("Detector"):
+	  {
+	    [_control] call BIS_fnc_OM_phone_detectorToggle;
+	  };
+		case ("Alarm"):
+		{
+		    [] call BIS_OM_restCheckTriggerAlarmCode;
+		};
+		default
+		{
+			//---do the default action: select the menu item
+			(findDisplay 12 displayCtrl IDC_DIARY_TOPIC_LIST) lnbSetCurSelRow (_phoneMenuBox select _index select 1);
+			(findDisplay 12 displayCtrl IDC_DIARY_TOPIC_LIST) ctrlEnable false;
+			/* ctrlActivate (findDisplay 12 displayCtrl 1001); */
+			/* ctrlActivate _ctrlToolboxBoxMenu;
+			_ctrlToolboxBoxMenu ctrlCommit 0; */
+			(findDisplay 12 displayCtrl IDC_DIARY_TOPIC_LIST) ctrlCommit 0;
+		};
+	};
+	/* ["PHONE: _index: %1", _index] call BIS_fnc_logFormat; */
+};

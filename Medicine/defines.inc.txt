@@ -1,0 +1,16 @@
+#define INITIAL_AMOUNT		15			// --- how much medicine the doctor has initially
+#define BOX_VALUE		20			// --- how much medicine is one box worth
+#define HOURLY_DOSE		1			// --- how much medicine one person needs each hour
+#define WARN_MILD		7			// --- medicine threshold for the first warning by the doctor
+#define WARN_CRITICAL		3			// --- medicine threshold for the second warning by the doctor
+#define REST_MULTIPLIER		0.5			// --- how much faster (or slower) medicine is spent when player rests (<1 slower, >1 faster)
+#define SURVIVAL_RANGE		[[20, 24], [80, 10]]	// --- [[youngest age, survival time (hours) w/o medicine], [oldest age, survival time (hours) w/o medicine]]
+#define WARN_DYING		6			// --- how many hours before someone dies should the doctor warn the player
+
+
+#define SURVIVAL_MIN_AGE (SURVIVAL_RANGE select 0 select 0)
+#define SURVIVAL_MAX_AGE (SURVIVAL_RANGE select 1 select 0)
+#define SURVIVAL_MIN_AGE_TIME (SURVIVAL_RANGE select 0 select 1)
+#define SURVIVAL_MAX_AGE_TIME (SURVIVAL_RANGE select 1 select 1)
+
+#define PLUGIN_DISPLAY_STAT   1 //enables the visual status in the diary

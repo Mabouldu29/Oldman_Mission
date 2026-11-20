@@ -1,0 +1,112 @@
+#define FILE_TO_LOAD_OFFSETS "a3\Missions_F_Oldman\Functions\OM_postersOffsets.hpp"
+params 	[
+					["_logic", player,[objNull] ],
+					["_fileToLoad", FILE_TO_LOAD_OFFSETS,[""] ],
+					["_center", player,[objNull] ],
+					["_range", 100, [9999] ],
+					["_existingMediaObjects", [],[[]] ],
+					["_actualProbability", 0, [999] ],
+					["_probability", 1, [999] ]	// Probabillity of creation
+				];
+/* #ifdef __DEV
+if!( diag_isTextFile _fileToLoad ) exitWith
+{
+	Hint format ["%1 not found", _fileToLoad];
+};
+private _data = diag_loadTextFile _fileToLoad;
+call compile format ["_postersOffsets = %1", _data]; */
+/* ["Setting media objects on buildings in range %1m from %2", _range, position _center] call BIS_fnc_logFormat; */
+//["With probability of %1", _probability] call BIS_fnc_logFormat;
+//(str _postersOffsets) call BIS_fnc_log;
+/* #else */
+#include "OM_postersOffsets.hpp"
+/* #endif */
+
+//private _existingMediaObjects = _logic getVariable [ "BIS_fnc_OM_moduleManHunt_mediaObjects", [] ];
+//["MediaObject %1", _existingMediaObjects] call BIS_fnc_logFormat;
+private _postersArray = [];
+/* private _postersOffsets = []; */
+
+//create array of mediapositions so we can detect if there's already a media on the position
+private _mediaPositions = [];
+if( count _existingMediaObjects > 0) then
+{
+		{	_mediaPositions pushBack (_x select 1) } forEach _existingMediaObjects;
+};
+
+//(str _mediaPositions) call BIS_fnc_log;
+
+_mediaExistsOnPosition =
+{
+	params [ ["_positionsArray", [[0,0,0]], [ [[]] ] ], ["_position", [], [ [] ] ] ];
+	private _mediaExists = false;
+	{
+		//["Vzdalenost objektu = %1", _x vectorDistance _position] call BIS_fnc_logFormat;
+		if ( _x vectorDistance _position == 0) exitWith
+		{
+			_mediaExists = true;
+		};
+	} forEach _positionsArray;
+	_mediaExists
+};
+
+private _houses = nearestObjects[ _center, ["house"], _range] + nearestTerrainObjects[_center, [], _range];
+//(str _houses) call BIS_fnc_log;
+//(str _houses) call BIS_fnc_log;
+//private _actualProbability = _logic getVariable ["BIS_fnc_OM_moduleManHunt_currentProbability", 0];
+/* ["_actualProbability %1 | _probability %2", _actualProbability, _probability] call BIS_fnc_logFormat; */
+if( _probability > 0 ) then
+{
+	/* ["_actualProbability %1 | _probability %2", _actualProbability, _probability] call BIS_fnc_logFormat; */
+	/* _probability = 1 - (_probability - _actualProbability);	//it works just in case the new probability is lower than the actual probablity (otherwise it makes no sense to call this function) */
+	/* ["probability increased or equal - creating with probability of %1", _probability] call BIS_fnc_logFormat; */
+	//["probability increased - creating with probability of %1", _probability/(1-_actualProbability)] call BIS_fnc_logFormat;
+	private "_class";
+	{
+		private _house = _x;
+		if( typeOf _x == "" ) then
+		{
+			_class = (str _x splitString " ") select 1;
+			_class = (_class splitString ".") select 0;
+		}
+		else
+		{
+			_class = typeOf _house;
+		};
+	  private _index = [ _postersOffsets, _class ] call BIS_fnc_FindInPairs;
+	  private [ "_posterName", "_posterClass", "_posterOffset", "_posterDirCos" ];
+
+	  if(_index >= 0) then
+	  {
+		  private _posterRecords = ((_postersOffsets select _index) select 1);
+		  {
+				private _rand =  random(1);
+				if( _rand <= _probability ) then
+				{
+					/* ["rand: %1 | _probability: %2", _rand, _probability] call BIS_fnc_logFormat; */
+					_posterOffset = _x select 2;
+					private _posterPosition = _house  modelToWorld _posterOffset;
+					_alreadyExists = [_mediaPositions, _posterPosition] call _mediaExistsOnPosition;
+					/* ["_alreadyExists: %1", _alreadyExists] call BIS_fnc_logFormat; */
+					if( !_alreadyExists ) then
+					{
+						_posterName = _x select 0;
+						_posterClass = _x select 1;
+						_posterDirCos = (getdir _house + (_x select 3)) % 360;
+						private _poster = _posterClass createVehicle _posterPosition;
+						_poster setPos _posterPosition;
+						_poster setDir _posterDirCos;
+						_postersArray pushBack [_poster, _posterPosition];
+					};
+		 		};
+			} forEach _posterRecords;
+	 };
+	} forEach _houses;
+};
+
+if( count _postersArray > 0) then
+{
+		_existingMediaObjects = _existingMediaObjects + _postersArray;
+};
+/* ["_existingMediaObjects: %1", _existingMediaObjects] call BIS_fnc_logFormat; */
+_existingMediaObjects

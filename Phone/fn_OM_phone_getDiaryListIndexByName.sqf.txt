@@ -1,0 +1,9 @@
+#include "common_definitions.inc"
+
+params[ "_listBox", "_key" ];
+private _ret = -1;
+for [{_iLoop = (lbSize _listbox)-1}, {_iLoop >= 0}, {_iLoop = _iLoop-1}] do
+{
+	if (_listBox lbData _iLoop isEqualTo _key) exitwith {_ret = _iLoop};
+};
+_ret;

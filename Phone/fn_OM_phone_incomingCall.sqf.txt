@@ -1,0 +1,123 @@
+params ["_contact", "_callInfo", ["_firstSentence", 0], ["_allowRing", TRUE], ["_customCode", {}]];
+
+_callProcedure = {
+	params ["_contact", "_callInfo", "_firstSentence"];
+	if (typeName _contact == typeName objNull) then {
+		_varName = vehicleVarName _contact;
+		_contactClass = "toLower getText (_x >> 'varName') == toLower _varName" configClasses (missionConfigFile >> "CfgOMPhoneContacts");
+		if (count _contactClass > 0) then {
+			_contact = configName (_contactClass # 0);
+		};
+	};
+	_name = getText (missionConfigFile >> "CfgOMPhoneContacts" >> _contact >> "name");
+	_img = getText (missionConfigFile >> "CfgOMPhoneContacts" >> _contact >> "img");
+	if (_allowRing) then {
+		_null = ["OMIncomingCall", [format ["%1<img image = '%2' size = '1.75' align = 'left' shadow = '0'>", _name, _img]]] call BIS_fnc_shownotification;
+		if (vehicle player == player) then {
+			playSound "OMPhoneRing";
+			sleep 4;
+		} else {
+			playSound "OMPhoneRingVehicle";
+			sleep 4.5;
+		};
+	};
+	_transcript = "";
+	if (typeName _callInfo == typeName {}) then {
+		[] call _callInfo;
+	} else {
+		_dummySpeaker = objNull;
+		_dummySpeakerGrp = grpNull;
+		_speaker = objNull;
+		_sentences = [];
+		if (isClass (configFile >> "CfgSentences" >> "Oldman" >> _callInfo + "_phone")) then {
+			_sentences = "TRUE" configClasses (configFile >> "CfgSentences" >> "Oldman" >> _callInfo + "_phone" >> "Sentences");
+			_speaker = player;
+		} else {
+			_sentences = "TRUE" configClasses (configFile >> "CfgSentences" >> "Oldman" >> _callInfo >> "Sentences");
+			_speaker = missionNamespace getVariable [getText ((_sentences # 0) >> "actor"), objNull];
+		};
+		reverse _sentences;
+		_sentences resize ((count _sentences) - _firstSentence);
+		reverse _sentences;
+		
+		sleep 0.15;
+
+		{
+			_text = getText (_x >> "textPlain");
+			
+			if (isNull _speaker) then {
+				_dummySpeakerGrp = createGroup sideLogic;
+				_speaker = _dummySpeakerGrp createUnit ["Logic", [100, 100, 0], [], 0, "NONE"];
+				sleep 0.1;
+				_speaker setName _name;
+				_speaker setPitch 1;
+			};
+			
+			[_callInfo, "Oldman", [configName _x, configName _x], player, nil, if (isNull _dummySpeakerGrp) then {nil} else {[_speaker]}] spawn BIS_fnc_kbTell;
+			waitUntil {_speaker call BIS_fnc_kbIsSpeaking};
+			//if (!isNull _dummySpeakerGrp) then {[_name, _text] spawn BIS_fnc_showSubtitle};
+			waitUntil {sleep 0.25; !(_speaker call BIS_fnc_kbIsSpeaking)};
+			(_forEachIndex + _firstSentence + 1) call {
+				_sentenceNr = _this;
+				call _customCode;
+			};
+			_transcript = _transcript + _text + "<br/>";
+		} forEach _sentences;
+		if !(isNull _dummySpeakerGrp) then {
+			deleteVehicle _speaker;
+			deleteGroup _dummySpeakerGrp;
+		};
+	};
+	if (_allowRing) then {
+		BIS_OM_incomingCallsPool pushBack [_contact, _name, _transcript, [date] call BIS_fnc_OM_phone_correct_time];
+	} else {
+		private _lastRecord = -1;
+		{
+			if ((_x # 0) == _contact) then {
+				_lastRecord = _forEachIndex;
+			}
+		} forEach BIS_OM_incomingCallsPool;
+		if (_lastRecord == -1) then {
+			BIS_OM_incomingCallsPool pushBack [_contact, _name, _transcript, [date] call BIS_fnc_OM_phone_correct_time];
+		} else {
+			_callArray = BIS_OM_incomingCallsPool # _lastRecord;
+			_callArray set [2, (_callArray # 2) + "<br/>" + _transcript];
+			BIS_OM_incomingCallsPool set [_lastRecord, _callArray];
+		};
+	};
+	BIS_OM_incomingCallsLog = "<br/>";
+	_pool = +BIS_OM_incomingCallsPool;
+	reverse _pool;
+	_cnt = count _pool;
+	{
+		_name = _x # 1;
+		_transcript = _x # 2;
+		_date = _x # 3;
+		_min = (_date select 4);
+		/*
+		if (_min == 0) then {_min = "00"} else {
+			if (_min < 10) then {_min = "0" + str _min};
+		};
+		*/
+		BIS_OM_incomingCallsLog = BIS_OM_incomingCallsLog + format ["%1 <font color='#878787'>(%2/%3/%4, %5:%6)</font><br/>%7%8",
+			_name,
+			_date select 0,
+			_date select 1,
+			_date select 2,
+			_date select 3,
+			_min,
+			_transcript,
+			if (_forEachIndex != (_cnt - 1)) then {"<br/><br/>"} else {""}
+		];
+	} forEach _pool;
+	player setDiaryRecordText [["Call Log", BIS_OM_phone_section_calls], ["Call Log", BIS_OM_incomingCallsLog]];
+	TRUE
+};
+
+if (canSuspend) then {
+	[_contact, _callInfo, _firstSentence, _allowRing, _customCode] call _callProcedure;
+} else {
+	[_contact, _callInfo, _firstSentence, _allowRing, _customCode] spawn _callProcedure;
+};
+
+TRUE

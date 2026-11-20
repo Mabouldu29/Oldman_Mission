@@ -1,0 +1,47 @@
+params ["_depo","_box"];
+while {true} do
+{
+    waituntil {sleep 0.5; player distance _this#0 <= 5};
+    missionnamespace setVariable ["DepoHideout",_depo];
+    missionnamespace setVariable ["DepoBox",_box];
+
+    _TranferHA =
+    [
+        player,
+        localize "STR_A3_OM_HoldAction_addDepo_Unload", // TODO: Localize;
+        "\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa",
+        "\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa",
+        "((vehicle player) != player && speed (vehicle player) == 0 && player distance (missionNamespace getvariable 'DepoHideout') < 20) || ((player distance (missionNamespace getvariable 'DepoHideout') < 20) && (cursorObject isKindOf 'Car')) && !(player getvariable 'BIS_IsShopping')",
+        "speed (vehicle player) == 0",
+        {
+            //--- when hold action starts
+            hintsilent Localize "STR_A3_OM_System_AddDepo_HintWraning"
+        },
+        {
+            //--- tick every frame (out of 24)
+        },
+        {
+            //--- when holdaction ends
+            if (vehicle player != player) then
+            {
+                [vehicle player,missionNamespace getvariable "DepoBox"] spawn BIS_fnc_OM_getCargo;
+            }
+            else
+            {
+                [cursorObject,missionNamespace getvariable "DepoBox"] spawn BIS_fnc_OM_getCargo;
+            };
+
+            player setvariable ["BIS_IsShopping",true];
+        },
+        {
+            //--- when action is terminated
+        },
+        [],
+        5,
+        nil,
+        false,
+        false
+    ] call BIS_fnc_holdActionAdd;
+    waituntil {sleep 0.5; player distance _this#0 >5};
+    [ player,_TranferHA] call BIS_fnc_holdActionRemove;
+};

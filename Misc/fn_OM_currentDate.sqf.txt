@@ -1,0 +1,64 @@
+//PRINT CURRENT DATE AND TIME ON THE SCREEN AFTER SAVE
+_curDate = format
+[
+  "%3.%2.%1",
+  date select 0,
+  (if (date select 1 < 10) then { "0" } else { "" }) + str (date select 1),
+  (if (date select 2 < 10) then { "0" } else { "" }) + str (date select 2)
+];
+
+_curTime = format
+[
+  "%1:%2",
+  (if (date select 3 < 10) then { "0" } else { "" }) + str (date select 3),
+  (if (date select 4 < 10) then { "0" } else { "" }) + str (date select 4)
+];
+
+_curLoc = format
+[
+  "%1",
+  text ((nearestLocations [player,["NameCityCapital","NameCity","NameVillage","Airport"],1000]) select 0)
+];
+
+// --- if _curLoc is just a Number, replace it by name saved in sleeping bag / sofa etc.
+if (((_curLoc splitstring "")#0) == "0") then
+{
+  _curLoc = (nearestObjects
+        [
+        player,
+          [
+            "Land_Sleeping_bag_F",
+            "Furniture_Residental_base_F",
+            "Land_Stretcher_01_base_F"
+          ],
+          // - We need higher number here, because player can move while saving process.
+          30
+          // - If there is no variable set, use the default title
+        ]#0) getVariable ["BIS_restPlace",localize "str_a3_smartmarkers_smartmarker_u_sleep_f_markertooltip0"];
+};
+
+if(isNil "_curLoc") then {_curLoc = ""};
+// --- hack the enableSaving
+if (player getvariable ["BIS_IsSleeping",false]) then
+{
+	[] call BIS_fnc_OM_saveGame;
+};
+
+sleep 0.5;
+
+//--- show location. If player just sit down and take a rest, show only date and time.
+if !(player getvariable ["BIS_IsWaiting",false]) then
+{
+  [parseText format ["<t font='PuristaBold' size='1.6' color='#f2a832'>%3</t><br /><t font='PuristaMedium' size='1.5'>%1</t><br /> <t font='PuristaMedium' size='1.0'>%2</t>",_curDate,_curTime,_curLoc], true, nil, 7, 0.7, 0] spawn BIS_fnc_textTiles;
+}
+else
+{
+  [parseText format ["<t font='PuristaMedium' size='1.5'>%1</t><br /> <t font='PuristaMedium' size='1.0'>%2</t>",_curDate,_curTime], true, nil, 7, 0.7, 0] spawn BIS_fnc_textTiles;
+};
+
+sleep 2;
+//--- player can sleep again
+player setvariable ["BIS_IsSleeping",false];
+player setvariable ["BIS_IsWaiting",false];
+
+BIS_OM_waitInProgress = FALSE;

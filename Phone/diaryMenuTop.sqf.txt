@@ -1,0 +1,168 @@
+//TODO: restore after load
+#include "common_definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+_display = findDisplay 12;
+
+//---MAIN GROUP
+private _ctrlMenuTopBackgroundPos =
+[
+	TOPICS_BACKGROUND_X,
+	TOPICS_BACKGROUND_Y,
+	TOPICS_BACKGROUND_W,
+	TOPICS_TOPMENU_H
+];
+
+CTRL_DELETE(VAR_GROUP_MAIN_BCG);
+private _ctrlMenuTopBackground = _display ctrlCreate ["RscText", IDC_MENU_TOP_BACKGROUND];
+_ctrlMenuTopBackground ctrlSetBackgroundColor MENU_COLOR_DEFAULT;
+_ctrlMenuTopBackground ctrlShow true;
+_ctrlMenuTopBackground ctrlSetPosition _ctrlMenuTopBackgroundPos;
+_ctrlMenuTopBackground ctrlCommit 0;
+CTRL_REGISTER(VAR_GROUP_MAIN_BCG, _ctrlMenuTopBackground);
+
+CTRL_DELETE(VAR_GROUP_MAIN);
+private _ctrlMenuTopGroup = _display ctrlCreate ["RscControlsGroup", IDC_MENU_TOP_GROUP_MAIN];
+_ctrlMenuTopGroup ctrlSetPosition	_ctrlMenuTopBackgroundPos;
+_ctrlMenuTopGroup ctrlCommit 0;
+CTRL_REGISTER(VAR_GROUP_MAIN, _ctrlMenuTopGroup);
+
+//---TOP BAR
+CTRL_DELETE(VAR_GROUP_TOPBAR);
+/* private _ctrlMenuTopTopBarGroup = _display ctrlcreate ["RscControlsGroupNoScrollbars", IDC_MENU_TOP_TOPBAR]; */
+private _ctrlMenuTopTopBarGroup = _display ctrlcreate ["RscControlsGroupNoScrollbars", IDC_MENU_TOP_TOPBAR, _ctrlMenuTopGroup];
+_ctrlMenuTopTopBarGroup ctrlSetBackgroundColor vec4(0.93, 0.07, 0.98, 0.95);
+_ctrlMenuTopTopBarGroup ctrlSetPosition
+[
+	0, 0, (ctrlPosition _ctrlMenuTopGroup select 2), (ctrlPosition _ctrlMenuTopGroup select 3)*TOP_BAR_H
+];
+_ctrlMenuTopTopBarGroup ctrlShow true;
+_ctrlMenuTopTopBarGroup ctrlCommit 0;
+CTRL_REGISTER(VAR_GROUP_TOPBAR, _ctrlMenuTopTopBarGroup);
+
+CTRL_DELETE(VAR_GROUP_TOPBAR_TEXT);
+private _ctrlMenuTopTopBarText = _display ctrlcreate ["RscStructuredText", IDC_MENU_TOP_TOPBAR_TEXT, _ctrlMenuTopTopBarGroup];
+_ctrlMenuTopTopBarText ctrlSetPosition [	(TOPICS_BACKGROUND_W * PADDING_COEF),0.01];
+/* _ctrlMenuTopTopBarText ctrlSetBackgroundColor vec4(0.9, 0.97, 0.1, 0.95); */
+_ctrlMenuTopTopBarText ctrlSetPositionW TOPICS_BACKGROUND_W - (TOPICS_BACKGROUND_W * PADDING_COEF)*2;
+_ctrlMenuTopTopBarText ctrlSetPositionH TOPICS_BOTTOMMENU_H*3/4;
+_ctrlMenuTopTopBarText ctrlSetStructuredText parseText "<t font='RobotoCondensedLight' shadow='0' color='#292929' size='0.7' align='left'>zozoOS v1.07</t>";
+_ctrlMenuTopTopBarText ctrlCommit 0;
+CTRL_REGISTER(VAR_GROUP_TOPBAR_TEXT, _ctrlMenuTopTopBarText);
+
+//---CLOCK
+CTRL_DELETE(VAR_GROUP_CLOCK);
+private _ctrlMenuTopClockGroup = _display ctrlcreate ["RscControlsGroup", IDC_MENU_TOP_CLOCK, _ctrlMenuTopGroup];
+_ctrlMenuTopClockGroup ctrlSetBackgroundColor vec4(0.9, 0.97, 0.1, 0.95);
+_ctrlMenuTopClockGroup ctrlSetPositionW ((ctrlPosition _ctrlMenuTopGroup select 2)*CLOCK_W);
+_ctrlMenuTopClockGroup ctrlSetPositionH (ctrlPosition _ctrlMenuTopGroup select 3)*CLOCK_H;
+_ctrlMenuTopClockGroup ctrlCommit 0;
+_ctrlMenuTopClockGroup ctrlSetPosition
+[
+	GET_CENTER_HORIZONTAL(_ctrlMenuTopGroup)-(GET_CENTER_HORIZONTAL(_ctrlMenuTopClockGroup)), GET_OFFSET_VERTICAL(_ctrlMenuTopTopBarGroup)
+];
+["PHONE: %1|%2", GET_CENTER_HORIZONTAL(_ctrlMenuTopGroup),GET_CENTER_HORIZONTAL(_ctrlMenuTopClockGroup)] call BIS_fnc_logFormat;
+_ctrlMenuTopClockGroup ctrlShow true;
+_ctrlMenuTopClockGroup ctrlCommit 0;
+CTRL_REGISTER(VAR_GROUP_CLOCK, _ctrlMenuTopClockGroup);
+
+CTRL_DELETE(VAR_GROUP_CLOCKTEXT);
+private _ctrlMenuTopClockText = _display ctrlcreate ["RscStructuredText", IDC_MENU_TOP_CLOCK_TEXT, _ctrlMenuTopClockGroup];
+_ctrlMenuTopClockText ctrlSetPosition [0, 0];
+_ctrlMenuTopClockText ctrlSetPositionW (ctrlPosition _ctrlMenuTopClockGroup select 2);
+_ctrlMenuTopClockText ctrlSetPositionH (ctrlPosition _ctrlMenuTopClockGroup select 3);
+/* _ctrlMenuTopClockText ctrlSetBackgroundColor vec4(0.8, 0.83, 0.51, 0.95); */
+/* _ctrlMenuTopClockText ctrlSetStructuredText parseText "<t font='LCD14' size='2.5' align='center'>13:30</t><t font='PuristaLight' size='1' align='center'>27.07.2019</t>"; */
+//TODO: proper formatting of date & time
+_ctrlMenuTopClockText ctrlSetStructuredText parseText format ["<t font='LCD14' color='#819651' size='2.5' align='center'>%1</t><br/><t font='PuristaLight' color='#90a269' size='0.9' align='center'>%2</t>",[daytime,"HH:MM"] call bis_fnc_timeToString,format ["%1.%2.%3", date#2,date#1,date#0]];
+_ctrlMenuTopClockText ctrlCommit 0;
+CTRL_REGISTER(VAR_GROUP_CLOCKTEXT, _ctrlMenuTopClockText);
+
+//---WEATHER
+CTRL_DELETE(VAR_GROUP_WEATHER);
+private _ctrlMenuTopWeatherGroup = _display ctrlcreate ["RscControlsGroup", IDC_MENU_TOP_WEATHER, _ctrlMenuTopGroup];
+_ctrlMenuTopWeatherGroup ctrlSetBackgroundColor vec4(0.76, 0.14, 0.44, 0.95);
+_ctrlMenuTopWeatherGroup ctrlSetPosition
+[
+	0, GET_OFFSET_VERTICAL(_ctrlMenuTopClockGroup),
+	(ctrlPosition _ctrlMenuTopGroup select 2), (ctrlPosition _ctrlMenuTopGroup select 3)*WEATHER_H
+];
+_ctrlMenuTopWeatherGroup ctrlShow true;
+_ctrlMenuTopWeatherGroup ctrlCommit 0;
+CTRL_REGISTER(VAR_GROUP_WEATHER, _ctrlMenuTopWeatherGroup);
+
+//---BOTTOM BAR
+CTRL_DELETE(VAR_GROUP_BOTTOMBAR);
+private _ctrlMenuTopBottomBarGroup = _display ctrlcreate ["RscStructuredText", IDC_MENU_TOP_BOTTOMBAR, _ctrlMenuTopGroup];
+/* _ctrlMenuTopBottomBarGroup ctrlSetBackgroundColor vec4(0.98, 0.55, 1.0, 0.95); */
+_ctrlMenuTopBottomBarGroup ctrlSetPosition
+[
+	0, GET_OFFSET_VERTICAL(_ctrlMenuTopWeatherGroup),
+	(ctrlPosition _ctrlMenuTopGroup select 2), (ctrlPosition _ctrlMenuTopGroup select 3)*BOTTOM_BAR_H
+];
+/* PHONE_DIARY_SET_ACCOUNT_STATE(); */
+_ctrlMenuTopBottomBarGroup ctrlShow true;
+_ctrlMenuTopBottomBarGroup ctrlCommit 0;
+CTRL_REGISTER(VAR_GROUP_BOTTOMBAR, _ctrlMenuTopBottomBarGroup);
+
+
+//TODO: solve the doubled variables in both uiNamespace and display 12 spaces
+//---Weather info
+{
+	CTRL_DELETE(_x)
+} forEach [VAR_GROUP_WEATHER_PIC1, VAR_GROUP_WEATHER_PIC2, VAR_GROUP_WEATHER_PIC3, VAR_GROUP_WEATHER_RAIN_PIC1, VAR_GROUP_WEATHER_RAIN_PIC2, VAR_GROUP_WEATHER_RAIN_PIC3];
+uiNamespace setVariable ["BIS_OM_weatherInfoForecastPic1_mini", 			_display ctrlCreate ["RscPictureKeepAspect", 9999101, _ctrlMenuTopWeatherGroup]];
+uiNamespace setVariable ["BIS_OM_weatherInfoForecastPic2_mini", 			_display ctrlCreate ["RscPictureKeepAspect", 9999102, _ctrlMenuTopWeatherGroup]];
+uiNamespace setVariable ["BIS_OM_weatherInfoForecastPic3_mini", 			_display ctrlCreate ["RscPictureKeepAspect", 9999103, _ctrlMenuTopWeatherGroup]];
+uiNamespace setVariable ["BIS_OM_weatherInfoForecastRainPic1_mini",		_display ctrlCreate ["RscPictureKeepAspect", 9999104, _ctrlMenuTopWeatherGroup]];
+uiNamespace setVariable ["BIS_OM_weatherInfoForecastRainPic2_mini", 	_display ctrlCreate ["RscPictureKeepAspect", 9999105, _ctrlMenuTopWeatherGroup]];
+uiNamespace setVariable ["BIS_OM_weatherInfoForecastRainPic3_mini", 	_display ctrlCreate ["RscPictureKeepAspect", 9999106, _ctrlMenuTopWeatherGroup]];
+{
+	CTRL_REGISTER(_x#0, uiNamespace getVariable _x#1)
+} forEach
+[
+	[VAR_GROUP_WEATHER_PIC1, "BIS_OM_weatherInfoForecastPic1_mini"],
+	[VAR_GROUP_WEATHER_PIC3, "BIS_OM_weatherInfoForecastPic3_mini"],
+	[VAR_GROUP_WEATHER_PIC2, "BIS_OM_weatherInfoForecastPic2_mini"],
+	[VAR_GROUP_WEATHER_RAIN_PIC1, "BIS_OM_weatherInfoForecastRainPic1"],
+	[VAR_GROUP_WEATHER_RAIN_PIC2, "BIS_OM_weatherInfoForecastRainPic2"],
+	[VAR_GROUP_WEATHER_RAIN_PIC3, "BIS_OM_weatherInfoForecastRainPic3"]
+];
+
+private _weatherInfoForecastPic1_mini = uiNamespace getVariable VAR_GROUP_WEATHER_PIC1;
+private _weatherInfoForecastPic2_mini = uiNamespace getVariable VAR_GROUP_WEATHER_PIC2;
+private _weatherInfoForecastPic3_mini = uiNamespace getVariable VAR_GROUP_WEATHER_PIC3;
+private _weatherInfoForecastRainPic1_mini = uiNamespace getVariable VAR_GROUP_WEATHER_RAIN_PIC1;
+private _weatherInfoForecastRainPic2_mini = uiNamespace getVariable VAR_GROUP_WEATHER_RAIN_PIC2;
+private _weatherInfoForecastRainPic3_mini = uiNamespace getVariable VAR_GROUP_WEATHER_RAIN_PIC3;
+
+private _weatherIconSizeV = (ctrlPosition _ctrlMenuTopWeatherGroup select 3);
+{
+	_x ctrlSetPositionW _weatherIconSizeV*0.8;
+	_x ctrlSetPositionH _weatherIconSizeV*0.8;
+	_x ctrlCommit 0;
+} forEach
+[
+	_weatherInfoForecastPic1_mini, _weatherInfoForecastPic2_mini, _weatherInfoForecastPic3_mini,
+	_weatherInfoForecastRainPic1_mini, _weatherInfoForecastRainPic2_mini, _weatherInfoForecastRainPic3_mini
+];
+private _y = 0.01;	//the offset from top of the control group
+_weatherInfoForecastPic1_mini ctrlSetPosition [(TOPICS_BACKGROUND_W * PADDING_COEF)*2, _y];
+_weatherInfoForecastPic2_mini ctrlSetPosition [GET_CENTER_HORIZONTAL(_ctrlMenuTopWeatherGroup)-GET_CENTER_HORIZONTAL(_weatherInfoForecastPic2_mini), _y];
+_weatherInfoForecastPic3_mini ctrlSetPosition [GET_OFFSET_HORIZONTAL(_ctrlMenuTopWeatherGroup)-(ctrlPosition _weatherInfoForecastRainPic3_mini select 2)-(TOPICS_BACKGROUND_W * PADDING_COEF)*2, _y];			//RIGHT BORDER - SIZE OF THE ICON - PADDING
+_weatherInfoForecastRainPic1_mini ctrlSetPosition [(TOPICS_BACKGROUND_W * PADDING_COEF)*2, _y];
+_weatherInfoForecastRainPic2_mini ctrlSetPosition [GET_CENTER_HORIZONTAL(_ctrlMenuTopWeatherGroup)-GET_CENTER_HORIZONTAL(_weatherInfoForecastRainPic2_mini), _y];
+_weatherInfoForecastRainPic3_mini ctrlSetPosition [GET_OFFSET_HORIZONTAL(_ctrlMenuTopWeatherGroup)-(ctrlPosition _weatherInfoForecastRainPic3_mini select 2)-(TOPICS_BACKGROUND_W * PADDING_COEF)*2, _y];	//RIGHT BORDER - SIZE OF THE ICON - PADDING
+
+{
+	_x ctrlShow true;
+	_x ctrlSetFade 0.4;
+	_x ctrlCommit 0;
+} forEach
+[
+_weatherInfoForecastPic1_mini, _weatherInfoForecastPic2_mini, _weatherInfoForecastPic3_mini,
+_weatherInfoForecastRainPic1_mini, _weatherInfoForecastRainPic2_mini, _weatherInfoForecastRainPic3_mini
+];
+/* _weatherInfoForecastRainPic1_mini ctrlSetPosition [_xDef + _miniBarXStart, _yDef + (_toolsPos # 1), _miniImgW, _toolsPos # 3];
+_weatherInfoForecastRainPic2_mini ctrlSetPosition [_xDef + _miniBarXStart + _miniImgW, _yDef + (_toolsPos # 1), _miniImgW, _toolsPos # 3];
+_weatherInfoForecastRainPic3_mini ctrlSetPosition [_xDef + _miniBarXStart + (_miniImgW * 2), _yDef + (_toolsPos # 1), _miniImgW, _toolsPos # 3]; */

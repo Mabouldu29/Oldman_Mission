@@ -1,0 +1,70 @@
+#include "common_definitions.inc"
+params[ ["_display", findDisplay 12, [displaynull]], ["_reinit", false, [false]] ];
+
+//---create the top diary control (clock, weather)
+#include "diaryMenuTop.sqf"
+
+//---Resize and move the diary menu
+private _ctrlDiaryBackground = _display displayctrl IDC_DIARY_TOPIC_BACKGROUND;
+private _ctrlDiaryList = _display displayctrl IDC_DIARY_TOPIC_LIST;
+
+/* _ctrlDiaryBackground ctrlSetPosition [ TOPICS_BACKGROUND_X, TOPICS_BACKGROUND_Y + TOPICS_TOPMENU_H ]; */
+//---Hide the standard menu
+
+{
+	_x ctrlSetPositionW 0;
+	_x ctrlSetPositionH 0;
+	_x ctrlSetFade 1.0;
+	_x ctrlCommit 0;
+} forEach [_ctrlDiaryList, _ctrlDiaryBackground];
+
+#include "diaryMenuBottom.sqf";
+
+//--- Create the new menu (icons)
+if(isNil {missionNameSpace getVariable "BIS_OM_PhoneMenuBox"}) then { missionNameSpace setVariable ["BIS_OM_PhoneMenuBox", DIARY_MENU_BOX] };	//do it just for the first time (array stores info about activated buttons which can change during the mission)
+CTRL_DELETE(VAR_MENU_BOX);
+_ctrlToolboxBoxMenu = (findDisplay 12) ctrlCreate ["RscToolBoxPhone", IDC_MENU_BOX];
+_ctrlToolboxBoxMenu ctrlSetPosition [0.0,0.0];
+_ctrlToolboxBoxMenu ctrlCommit 0;
+for [{_fLoop = 0}, {_fLoop < (count (missionNameSpace getVariable ["BIS_OM_PhoneMenuBox", [] ]) / DIARY_MENU_CONTROLS_AMOUNT_IN_ROW) }, {_fLoop = _fLoop + 1}] do
+{
+	ctAddHeader _ctrlToolboxBoxMenu;
+};
+
+private _newPos = ctrlPosition ((findDisplay 12) displayctrl IDC_MENU_TOP_BACKGROUND);
+_ctrlToolboxBoxMenu ctrlSetPosition [(_newPos select 0)+0.001, (_newPos select 1) + (_newPos select 3), (_newPos select 2)-0.001, TOPICS_BOTTOMMENU_H];
+_ctrlToolboxBoxMenu ctrlCommit 0;
+CTRL_REGISTER(VAR_MENU_BOX, _ctrlToolboxBoxMenu);
+
+waitUntil { !isNull ( findDisplay 12 displayCtrl IDC_DIARY_TOPIC_LIST ) };
+/* ["PHONE: listbox size: %1", (lbSize _ctrlDiaryList)] call BIS_fnc_logFormat; */
+waitUntil { (lbSize _ctrlDiaryList) != 0 };
+/* for [{_iLoop = (lbSize _ctrlDiaryList)-1}, {_iLoop >= 0}, {_iLoop = _iLoop-1}] do
+{
+	["PHONE: listbox data: %1", _ctrlDiaryList lbData _iLoop] call BIS_fnc_logFormat;
+}; */
+[] call BIS_fnc_OM_phone_menuInit;
+
+//---move the standard diary HTML content and its background
+_ctrlDiarySubtopicBackground = _display displayctrl IDC_DIARY_SUBTOPIC_BACKGROUND;
+_ctrlDiarySubtopicBackground ctrlSetPosition
+[
+	TOPICS_BACKGROUND_X + TOPICS_BACKGROUND_W + 0.003,
+	ctrlPosition _ctrlDiarySubtopicBackground select 1
+];
+_ctrlDiarySubtopicBackground ctrlCommit 0;
+
+_ctrlDiarySubtopic = _display displayctrl IDC_DIARY_TOPIC_LISTINDEX;
+_ctrlDiarySubtopic ctrlSetPosition [TOPICS_BACKGROUND_X + TOPICS_BACKGROUND_W + 0.002, ctrlPosition _ctrlDiarySubtopic select 1];
+_ctrlDiarySubtopic ctrlCommit 0;
+
+_ctrlDiaryHTMLGroup = _display displayctrl IDC_DIARY_TOPIC_HTML_GROUP;
+_ctrlDiaryHTMLGroup ctrlSetPosition [(ctrlPosition _ctrlDiarySubtopicBackground select 0) + (ctrlPosition _ctrlDiarySubtopicBackground select 2) + 0.002, ctrlPosition _ctrlDiaryHTMLGroup select 1];
+_ctrlDiaryHTMLGroup ctrlCommit 0;
+
+_ctrlDiaryHTMLContent = _display displayctrl IDC_DIARY_CONTENT_BACKGROUND;
+_ctrlDiaryHTMLContent ctrlSetPosition [(ctrlPosition _ctrlDiarySubtopicBackground select 0) + (ctrlPosition _ctrlDiarySubtopicBackground select 2) + 0.002, ctrlPosition _ctrlDiaryHTMLContent select 1];
+_ctrlDiaryHTMLContent ctrlCommit 0;
+
+//---create and reposition the new html controls and register the eventhandlers
+_null = [_display] call BIS_fnc_OM_phone_customSectionInit;

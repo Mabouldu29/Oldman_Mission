@@ -1,0 +1,15 @@
+while {true} do
+{
+    // wait for player input
+    waituntil {inputaction "sitdown" >0};
+    player setvariable ["BIS_IsWaiting",true];
+    //BIS_TimeToSkipWhileSleeping = 1/3;
+    sleep 1;
+    // create dialog
+    [] execVM "\a3\Missions_F_Oldman\Systems\UI\Sleeping\Createrestui.SQF";
+    /*waitUntil {!isnull findDisplay 666 || !(player getvariable ["BIS_IsWaiting",false])};
+    waituntil {isnull findDisplay 666};
+    player setvariable ["BIS_IsWaiting",false];*/
+    // Force player to stand when UI is closed
+    //player playaction "STAND";
+};

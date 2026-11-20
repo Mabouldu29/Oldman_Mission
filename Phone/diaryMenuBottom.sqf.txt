@@ -1,0 +1,83 @@
+#include "common_definitions.inc"
+
+/* params["_display"]; */
+_display = findDisplay 12;
+
+if (isnull _display) exitwith {["Display not found!"] call bis_fnc_error; false};
+
+private _posGroup =
+[
+	TOPICS_BACKGROUND_X,
+	/* TOPICS_BACKGROUND_Y + TOPICS_TOPMENU_H + (GET_TOPIC_LIST_POS # 3)*0.999, */
+	TOPICS_BACKGROUND_Y + TOPICS_TOPMENU_H*0.998,
+	TOPICS_BACKGROUND_W,
+	TOPICS_BOTTOMMENU_H
+];
+
+//--- Create custom controls group and its background
+ctrldelete (_display getvariable [VAR_GROUP_BOTTOM,controlnull]);
+private _ctrlGroupBackground = _display ctrlcreate ["RscText", IDC_MENU_BOTTOM];
+_ctrlGroupBackground ctrlSetPixelPrecision 2;
+_ctrlGroupBackground ctrlsetbackgroundcolor MENU_COLOR_DEFAULT;
+_ctrlGroupBackground ctrlshow true;
+_ctrlGroupBackground ctrlsetposition _posGroup;
+_ctrlGroupBackground ctrlcommit 0;
+_display setvariable [VAR_GROUP_BOTTOM,_ctrlGroupBackground];
+
+ctrldelete (_display getvariable [VAR_GROUP_BOTTOM_GROUP,controlnull]);
+private _ctrlGroup = _display ctrlcreate ["RscControlsGroupNoScrollbars",-1];
+_ctrlGroup ctrlsetbackgroundcolor vec4(0.43, 0.38, 0.62, 0.99);
+_ctrlGroup ctrlSetPixelPrecision 2;
+_ctrlGroup ctrlshow true;
+_ctrlGroup ctrlsetposition
+[
+	(_posGroup select 0) + (TOPICS_BACKGROUND_W * PADDING_COEF),
+	TOPICS_BACKGROUND_Y + TOPICS_TOPMENU_H + (GET_TOPIC_LIST_POS # 3)
+];
+_ctrlGroup ctrlSetPositionW TOPICS_BACKGROUND_W - (TOPICS_BACKGROUND_W * PADDING_COEF)*2;
+_ctrlGroup ctrlSetPositionH TOPICS_BOTTOMMENU_H*3/4;
+_ctrlGroup ctrlcommit 0;
+_display setvariable [VAR_GROUP_BOTTOM_GROUP,_ctrlGroup];
+
+
+private _controls = [];
+private _paddingCoef = 0.1;
+private _posW = ctrlposition _ctrlGroup # 2;
+private _posWMessage = _posW * 0.5;
+private _posHMessage = 0.01;
+
+//---Alarm Button
+/*
+CTRL_DELETE(VAR_GROUP_BOTTOM_ALARM);
+private _ctrlIconAlarm = _display ctrlcreate ["RscButtonAlarm",-1,_ctrlGroup];
+
+_ctrlIconAlarm ctrlsetposition
+[
+	0,
+	0
+];
+_ctrlIconAlarm ctrlSetPositionH (ctrlPosition _ctrlGroup select 3);
+_ctrlIconAlarm ctrlCommit 0;
+CTRL_REGISTER(VAR_GROUP_BOTTOM_ALARM, _ctrlIconAlarm);
+
+
+//---Cache Detector Button
+CTRL_DELETE(VAR_GROUP_BOTTOM_DETECTOR);
+private _ctrlIconDetector = _display ctrlcreate ["RscButtonDetector",-1,_ctrlGroup];
+_ctrlIconDetector ctrlSetPosition
+[
+	((ctrlPosition _ctrlIconAlarm select 0) + (ctrlPosition _ctrlIconAlarm select 2)) + (TOPICS_BACKGROUND_W*PADDING_COEF),
+	0
+];
+_ctrlIconDetector ctrlSetPositionH (ctrlPosition _ctrlGroup select 3);
+_ctrlIconDetector ctrlCommit 0;
+CTRL_REGISTER(VAR_GROUP_BOTTOM_DETECTOR, _ctrlIconDetector);
+ */
+
+
+/* [IDC_DIARY_SUBTOPIC_BACKGROUND, [IDC_DIARY_SUBTOPIC_BACKGROUND, IDC_DIARY_TOPIC_BACKGROUND,DIR_RIGHT,[0.003,-0.0]] call BIS_fnc_calculateControlPos] call BIS_fnc_repositionControl;
+[IDC_DIARY_TOPIC_LISTINDEX, [IDC_DIARY_TOPIC_LISTINDEX, IDC_DIARY_SUBTOPIC_BACKGROUND,DIR_ORIGIN,[0.003,0.03]] call BIS_fnc_calculateControlPos] call BIS_fnc_repositionControl;
+sleep 0.3;
+{
+  [_x, [_x, IDC_DIARY_SUBTOPIC_BACKGROUND,3,[0.003,-0.0]] call BIS_fnc_calculateControlPos] call BIS_fnc_repositionControl;
+} forEach [ IDC_DIARY_TOPIC_HTML_GROUP, IDC_DIARY_CONTENT_BACKGROUND ]; */

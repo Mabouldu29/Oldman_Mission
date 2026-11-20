@@ -1,0 +1,136 @@
+#define MAX_MEDIA_OBJECTS 28
+#include "OM_ModuleManHunt_Functions.sqf"
+
+_mode = param [0,"",[""]];
+_input = param [1,[],[[]]];
+private _logic = _input param [0,objNull,[objNull]]; // Module logic
+/* (str _this) call BIS_fnc_log; */
+
+BIS_fnc_OM_moduleManHunt_ComputeProbability =
+{
+	linearConversion
+	[
+		BIS_relEast getVariable "MinRating",	//minimum from
+		BIS_relEast getVariable "enemyTreshold",
+		BIS_relEast getVariable "threat",
+		0,
+		1,
+	true]
+};
+
+switch _mode do
+{
+	// Default object init
+	case "init":
+	{
+		//Called one time, on the start of the mission
+		//Add the initcode to all synchronizedObjects of the logic
+		/* "['UpdateMedia',[synchronizedObjects thisTrigger select 0,0]] call BIS_fnc_OM_moduleManHunt" */
+		{
+			_x  setTriggerStatements
+			[
+				"this",
+				"{['ActivateSystem',[synchronizedObjects thisTrigger select 0, true, false]] call BIS_fnc_OM_moduleManHunt} forEach (synchronizedObjects thisTrigger)",
+				"{['ActivateSystem',[synchronizedObjects thisTrigger select 0, false, false]] call BIS_fnc_OM_moduleManHunt} forEach (synchronizedObjects thisTrigger)"
+			]
+		} forEach synchronizedObjects _logic;
+	};
+	case "ActivateSystem":
+	{
+		if (is3DEN) exitWith {};
+		private _isActivated = _input param [1,true,[true]]; // True when the module was activated, false when it's deactivated
+		private _isCuratorPlaced = _input param [2,false,[true]]; // True if the module was placed by Zeus
+		if( _isActivated ) then
+		{
+			private _areas = synchronizedObjects _logic;
+			private _activeTrigger = nil;
+			{
+				if ( triggerActivated _x) then { _activeTrigger = _x };
+			} forEach _areas;
+
+			private _range = (triggerArea _activeTrigger) select 0;
+
+			_probability = 1.0;
+			if( (_logic getVariable "UseRelationship2") != 0 ) then
+			{
+				_probability = [] call BIS_fnc_OM_moduleManHunt_ComputeProbability; //getFriendShip from relationship module
+			};
+
+			private _updateLoopHandle = [_logic, _activeTrigger, _range] spawn _UpdateLoop;
+			_logic setVariable ["BIS_fnc_OM_moduleManHunt_updateLoopHandle", _updateLoopHandle];
+
+			_input set [1, _probability];
+			_input set [2, _activeTrigger];
+			_input set [3, _range];
+			_mode = "CreateMedia";
+		}
+		else
+		{
+			/* "DeActivated" call BIS_fnc_Log; */
+			terminate (_logic getVariable ["BIS_fnc_OM_moduleManHunt_updateLoopHandle", nil]);
+			_input set [1, 0]; //zero chance of the appeareace == 100% deleted objects
+			_mode = "DeleteMedia";
+		};
+	};
+};
+
+switch _mode do
+{
+	case "UpdateMedia":
+	{
+		private _probability = _input param [1,1,[999]];
+		private _center = _input param [2,objNull,[objNull]];
+		private _range = _input param [3,100,[999]];
+		private _actualProbability = _logic getVariable [ "BIS_fnc_OM_moduleManHunt_currentProbability", 0];
+		private _mediaObjects = _logic getVariable ["BIS_fnc_OM_moduleManHunt_mediaObjects", [] ];
+		/* "Calling OM_UpdateMediaObjects function" call BIS_ */
+		_logic setVariable
+		[ "BIS_fnc_OM_moduleManHunt_mediaObjects",
+			[
+					_logic,
+					_probability,
+					_center,
+					_range,
+					_actualProbability,
+					_mediaObjects
+			] call BIS_fnc_OM_UpdateMediaObjects
+		];
+
+		_logic setVariable ["BIS_fnc_OM_moduleManHunt_currentProbability", _probability];
+	};
+	case "CreateMedia":
+	{
+		private _probability = _input param [1,1,[999]];
+		private _center = _input param [2,objNull,[objNull]];
+		private _range = _input param [3,100,[999]];
+		private _actualProbability = _logic getVariable [ "BIS_fnc_OM_moduleManHunt_currentProbability", 0];
+		_logic setVariable
+		[ "BIS_fnc_OM_moduleManHunt_mediaObjects",
+			[
+				_logic,
+				nil,
+				_center,
+				_range,
+				_logic getVariable "BIS_fnc_OM_moduleManHunt_mediaObjects",
+				_actualProbability,
+				 ((_probability - _actualProbability) max 0 )
+			] call BIS_fnc_OM_CreateMediaObjects
+		];
+		_logic setVariable ["BIS_fnc_OM_moduleManHunt_currentProbability", _probability];
+	};
+		case "DeleteMedia":
+	{
+		private _probability = _input param [1,1,[999]];
+		private _actualProbability = _logic getVariable ["BIS_fnc_OM_moduleManHunt_currentProbability", 0];
+		_logic setVariable
+		[ "BIS_fnc_OM_moduleManHunt_mediaObjects",
+				[
+					_logic,
+					_logic getVariable "BIS_fnc_OM_moduleManHunt_mediaObjects",
+					_actualProbability,
+			 		(abs(_actualProbability - _probability)) min _actualProbability
+				] call BIS_fnc_OM_DeleteMediaObjects
+		];
+		_logic setVariable ["BIS_fnc_OM_moduleManHunt_currentProbability", _probability];
+	};
+};

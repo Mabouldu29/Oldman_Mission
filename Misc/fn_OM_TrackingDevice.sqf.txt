@@ -1,0 +1,25 @@
+_trackee = BIS_item;
+_tracker = player;
+
+while {!("MineDetector" in items player)} do
+{
+  //_dir = getdir (vehicle _tracker);
+  //_degree =  ((getpos _trackee select 0) - (getpos _tracker select 0)) atan2 ((getpos _trackee select 1) - (getpos _tracker select 1));
+  //if (_degree < 0) then {_degree = _degree + 360};
+  _vd  = player worldToModel getPosASL BIS_item;
+  _dir =	(_vd select 0) atan2 (_vd select 1);
+  if (_dir < 0) then {_dir = 360 + _dir};
+  //hintsilent format ["%1",_dir];
+
+  //_difference = _vd - _dir;
+  if (_dir > 180) then {_dir = _dir - 360};
+  if (_dir < -180) then {_dir = _dir + 360};
+  _adjusteddiff = (abs _dir);
+
+  beepfreq = ((_adjusteddiff / 50) + 0.2);
+  //hintsilent format ["%1",beepfreq];
+
+  sleep beepfreq;
+  playSound "beep";
+
+};

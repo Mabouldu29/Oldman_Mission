@@ -1,0 +1,26 @@
+
+params ["_intruder","_side"];
+
+sleep 5;
+switch (_side) do
+{
+	case independent:
+	{
+		_enemies  = ((_intruder nearEntities ["Man", 250]) select {side _x == east && alive _x && behaviour _x == "COMBAT"});
+		if (count _enemies ==0) exitWith {};
+		_intruder = selectrandom _enemies;
+	};
+	default {};
+};
+
+_alarmSloup =  nearestObjects [_intruder, ["Land_Loudspeakers_F"], 300];
+if (count _alarmSloup == 0) exitwith {};
+_alarmSloup = _alarmSloup - (_alarmSloup select {(_x getVariable ["AlarmRunning",false])});
+{_x setvariable ["AlarmRunning",true]} foreach _alarmSloup;
+for "_i" from 0 to 120 do
+{
+	_selectedPoles = _alarmSloup select {(_x getVariable "AlarmRunning")};
+	{_x say3D ["Alarm",300]} foreach _selectedPoles;
+	sleep 1;
+};
+{_x setvariable ["AlarmRunning",false]} foreach _alarmSloup;

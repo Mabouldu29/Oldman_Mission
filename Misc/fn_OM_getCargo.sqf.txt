@@ -1,0 +1,43 @@
+//#include "\a3\Missions_F_Oldman\Systems\scripts\Economy\common_definitions.inc"
+//#include "\a3\Missions_F_Oldman\Systems\scripts\Reputation\common_definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+params ["_veh","_finalCargo"];
+private _summaryPrice = 0;
+private _items = [];
+{
+    private _isVest = (_x isKindOf ["Vest_Camo_Base", configFile >> "CfgWeapons"]) || (_x isKindOf ["Vest_NoCamo_Base", configFile >> "CfgWeapons"]);
+    private _isUniform = _x isKindOf ["Uniform_base", configFile >> "CfgWeapons"];
+    if !(_isVest || _isUniform) then
+    {
+        _items pushBack _x;
+    };
+} forEach itemCargo _veh;
+
+private _mags = magazinesAmmoCargo _veh;
+private _weapons = weaponsItemsCargo _veh;
+{
+    _summaryPrice = _summaryPrice + ([9,[_x]] call BIS_fnc_OM_ModuleEconomy);
+    _finalCargo addItemCargo [_x,1];
+} foreach _items;
+
+{
+    _summaryPrice = _summaryPrice + ([9,[(_x select 0)]] call BIS_fnc_OM_ModuleEconomy);
+    _finalCargo addmagazineCargo [(_x select 0),1];
+} foreach _mags;
+
+{
+    _summaryPrice = _summaryPrice + ([9,[_x select 0]] call BIS_fnc_OM_ModuleEconomy);
+    _finalCargo addWeaponCargo [(_x select 0),1];
+} foreach _weapons;
+
+//--- clear whole cargo
+{ clearMagazineCargo _x;clearItemCargo _x;clearWeaponCargo _x } foreach [_veh];
+//--- Syndicats DPH
+_summaryPrice = _summaryPrice*3/4;
+//--- addmoney to player
+[1,[_summaryPrice]] call BIS_fnc_OM_ModuleEconomy;
+[parseText format ["<t font='PuristaBold' size='1' color='#FFA500'> +%1 $</t>",_summaryPrice], true, nil, 7, 1, 0] spawn BIS_fnc_textTiles;
+sleep 5;
+player setvariable ["BIS_IsShopping",false];
+[MODE_INCREASE_LEVEL, [_summaryPrice/(REPUTATION_POSITIVE_BONUS_SMALL/10) min REPUTATION_POSITIVE_BONUS_GREAT]] call BIS_fnc_OM_moduleReputation;

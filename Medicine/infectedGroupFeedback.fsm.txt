@@ -1,0 +1,572 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, infectedGroupFeedback">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"INIT",0,250,25.000000,-1150.000000,125.000000,-1100.000000,0.000000,"INIT"};
+item1[] = {"__st_warn",4,218,-175.000000,-750.000000,-75.000000,-700.000000,1.000000,"1st warn"};
+item2[] = {"__nd_warn",4,218,-75.000000,-750.000000,25.000000,-700.000000,2.000000,"2nd warn"};
+item3[] = {"no_medicine",4,218,25.000000,-750.000000,125.000000,-700.000000,3.000000,"no medicine"};
+item4[] = {"always",8,218,25.000000,-1075.000000,125.000000,-1025.000000,0.000000,"always"};
+item5[] = {"___nothing__",2,250,25.000000,-1000.000000,125.000000,-950.000000,0.000000,"< nothing >"};
+item6[] = {"timeout",6,250,25.000000,-925.000000,125.000000,-875.000000,0.000000,"timeout"};
+item7[] = {"check",2,250,25.000000,-850.000000,125.000000,-800.000000,0.000000,"check"};
+item8[] = {"enough_medicine",4,218,-275.000000,-750.000000,-175.000000,-700.000000,5.000000,"enough" \n "medicine"};
+item9[] = {"someone_dead",4,218,225.000000,-750.000000,325.000000,-700.000000,6.000000,"someone dead"};
+item10[] = {"all_dead",4,218,325.000000,-750.000000,425.000000,-700.000000,7.000000,"all dead"};
+item11[] = {"feedback",2,250,-175.000000,-675.000000,-75.000000,-625.000000,0.000000,"feedback"};
+item12[] = {"feedback_1",2,250,-75.000000,-675.000000,25.000000,-625.000000,0.000000,"feedback"};
+item13[] = {"feedback_2",1,250,325.000000,-675.000000,425.000000,-625.000000,0.000000,"feedback"};
+item14[] = {"feedback_3",2,250,25.000000,-675.000000,125.000000,-625.000000,0.000000,"feedback"};
+item15[] = {"feedback_4",2,250,225.000000,-675.000000,325.000000,-625.000000,0.000000,"feedback"};
+item16[] = {"reset_feedback",2,250,-275.000000,-675.000000,-175.000000,-625.000000,0.000000,"reset" \n "feedback"};
+item17[] = {"",7,210,-28.999992,-779.000000,-21.000008,-771.000000,0.000000,""};
+item18[] = {"",7,210,70.999992,-779.000000,79.000000,-771.000000,0.000000,""};
+item19[] = {"",7,210,271.000000,-779.000000,279.000000,-771.000000,0.000000,""};
+item20[] = {"",7,210,371.000000,-779.000000,379.000000,-771.000000,0.000000,""};
+item21[] = {"",7,210,-129.000000,-779.000000,-121.000008,-771.000000,0.000000,""};
+item22[] = {"",7,210,-229.000000,-779.000000,-220.999985,-771.000000,0.000000,""};
+item23[] = {"",7,210,-228.999985,-604.000000,-221.000015,-596.000000,0.000000,""};
+item24[] = {"",7,210,-129.000000,-604.000000,-121.000008,-596.000000,0.000000,""};
+item25[] = {"",7,210,-28.999992,-604.000000,-21.000008,-596.000000,0.000000,""};
+item26[] = {"",7,210,71.000000,-604.000000,79.000000,-596.000000,0.000000,""};
+item27[] = {"",7,210,271.000000,-604.000000,279.000000,-596.000000,0.000000,""};
+item28[] = {"",7,210,-328.999969,-779.000000,-321.000000,-771.000000,0.000000,""};
+item29[] = {"",7,210,-404.000000,-604.000000,-396.000000,-596.000000,0.000000,""};
+item30[] = {"",7,210,-404.000000,-1054.000000,-396.000000,-1046.000000,0.000000,""};
+item31[] = {"",7,210,-328.999969,-604.000000,-321.000031,-596.000000,0.000000,""};
+item32[] = {"___nothing___1",2,250,-375.000000,-675.000000,-275.000000,-625.000000,0.000000,"< nothing >"};
+item33[] = {"always",8,218,-375.000000,-750.000000,-275.000000,-700.000000,0.000000,"always"};
+item34[] = {"someone_dying",4,218,125.000000,-750.000000,225.000000,-700.000000,4.000000,"someone" \n "dying"};
+item35[] = {"feedback_5",2,250,125.000000,-675.000000,225.000000,-625.000000,0.000000,"feedback"};
+item36[] = {"",7,210,171.000000,-779.000000,179.000000,-771.000000,0.000000,""};
+item37[] = {"",7,210,171.000000,-604.000000,179.000000,-596.000000,0.000000,""};
+item38[] = {"doctor_dead",4,218,425.000000,-750.000000,525.000000,-700.000000,8.000000,"doctor dead"};
+item39[] = {"terminate",1,250,425.000000,-675.000000,525.000000,-625.000000,0.000000,"terminate"};
+item40[] = {"",7,210,470.999939,-779.000000,479.000092,-771.000000,0.000000,""};
+item41[] = {"array_empty",4,218,150.000000,-1000.000000,250.000000,-950.000000,100.000000,"array empty"};
+item42[] = {"___nothing___2",2,250,275.000000,-1000.000000,375.000000,-950.000000,0.000000,"< nothing >"};
+item43[] = {"timeout",6,250,275.000000,-1075.000000,375.000000,-1025.000000,0.000000,"timeout"};
+item44[] = {"___nothing___3",2,250,150.000000,-1075.000000,250.000000,-1025.000000,0.000000,"< nothing >"};
+item45[] = {"",7,210,571.000000,-779.000000,579.000000,-771.000000,0.000000,""};
+item46[] = {"outro",4,4314,525.000000,-750.000000,625.000000,-700.000000,8.000000,"outro"};
+item47[] = {"terminate_1",1,250,525.000000,-675.000000,625.000000,-625.000000,0.000000,"terminate"};
+link0[] = {0,4};
+link1[] = {1,11};
+link2[] = {2,12};
+link3[] = {3,14};
+link4[] = {4,5};
+link5[] = {5,6};
+link6[] = {5,41};
+link7[] = {6,7};
+link8[] = {7,18};
+link9[] = {8,16};
+link10[] = {9,15};
+link11[] = {10,13};
+link12[] = {11,24};
+link13[] = {12,25};
+link14[] = {14,26};
+link15[] = {15,27};
+link16[] = {16,23};
+link17[] = {17,2};
+link18[] = {17,21};
+link19[] = {18,3};
+link20[] = {18,17};
+link21[] = {18,36};
+link22[] = {19,9};
+link23[] = {19,20};
+link24[] = {20,10};
+link25[] = {20,40};
+link26[] = {21,1};
+link27[] = {21,22};
+link28[] = {22,8};
+link29[] = {22,28};
+link30[] = {23,31};
+link31[] = {24,23};
+link32[] = {25,24};
+link33[] = {26,25};
+link34[] = {27,37};
+link35[] = {28,33};
+link36[] = {29,30};
+link37[] = {30,4};
+link38[] = {31,29};
+link39[] = {32,31};
+link40[] = {33,32};
+link41[] = {34,35};
+link42[] = {35,37};
+link43[] = {36,19};
+link44[] = {36,34};
+link45[] = {37,26};
+link46[] = {38,39};
+link47[] = {40,38};
+link48[] = {40,45};
+link49[] = {41,42};
+link50[] = {42,43};
+link51[] = {43,44};
+link52[] = {44,4};
+link53[] = {45,46};
+link54[] = {46,47};
+globals[] = {0.000000,0,0,0,0,640,480,1,298,6316128,1,148.050903,748.012390,-369.866028,-1099.452881,847,1030,1};
+window[] = {2,-1,-1,-1,-1,871,104,1318,104,3,865};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "infectedGroupFeedback";
+        class States
+        {
+                /*%FSM<STATE "INIT">*/
+                class INIT
+                {
+                        name = "INIT";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"params [""_warn_mild"", ""_warn_critical"", ""_warn_dying""];" \n
+                         "" \n
+                         "_1stWarn = FALSE;" \n
+                         "_2ndWarn = FALSE;" \n
+                         "_noMedicine = FALSE;" \n
+                         "_deadMessagesDelivered = [];" \n
+                         "_dyingMessagesDelivered = [];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="___nothing__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___nothing__">*/
+                class ___nothing__
+                {
+                        name = "___nothing__";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"_tDelay = time + 3;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "array_empty">*/
+                                class array_empty
+                                {
+                                        itemno = 41;
+                                        priority = 100.000000;
+                                        to="___nothing___2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count BIS_OM_infectedGroupWorkingArr == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="check";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _tDelay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "check">*/
+                class check
+                {
+                        name = "check";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"_newDead = BIS_OM_infectedGroupWorkingArr select {(_x # 5) == 0 && !((_x # 7) in _deadMessagesDelivered)};" \n
+                         "_newDying = BIS_OM_infectedGroupWorkingArr select {(_x # 5) > 0 && (_x # 5) < _warn_dying && !((_x # 7) in _dyingMessagesDelivered)};" \n
+                         "_allDead = (BIS_OM_infectedGroupWorkingArr findIf {!((_x # 5) in [0, -3])}) == -1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "outro">*/
+                                class outro
+                                {
+                                        itemno = 46;
+                                        priority = 8.000000;
+                                        to="terminate_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_OM_Outro"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "doctor_dead">*/
+                                class doctor_dead
+                                {
+                                        itemno = 38;
+                                        priority = 8.000000;
+                                        to="terminate";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_OM_doctorKilled"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "all_dead">*/
+                                class all_dead
+                                {
+                                        itemno = 10;
+                                        priority = 7.000000;
+                                        to="feedback_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_allDead"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "someone_dead">*/
+                                class someone_dead
+                                {
+                                        itemno = 9;
+                                        priority = 6.000000;
+                                        to="feedback_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count _newDead > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "enough_medicine">*/
+                                class enough_medicine
+                                {
+                                        itemno = 8;
+                                        priority = 5.000000;
+                                        to="reset_feedback";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_OM_medicineLeft > _warn_mild"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "someone_dying">*/
+                                class someone_dying
+                                {
+                                        itemno = 34;
+                                        priority = 4.000000;
+                                        to="feedback_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count _newDying > 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_medicine">*/
+                                class no_medicine
+                                {
+                                        itemno = 3;
+                                        priority = 3.000000;
+                                        to="feedback_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!_noMedicine && BIS_OM_medicineLeft == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__nd_warn">*/
+                                class __nd_warn
+                                {
+                                        itemno = 2;
+                                        priority = 2.000000;
+                                        to="feedback_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!_2ndWarn && BIS_OM_medicineLeft <= _warn_critical"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__st_warn">*/
+                                class __st_warn
+                                {
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="feedback";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!_1stWarn && BIS_OM_medicineLeft <= _warn_mild"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="___nothing___1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "feedback">*/
+                class feedback
+                {
+                        name = "feedback";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn BIS_fnc_OM_warnMildCode;" \n
+                         "" \n
+                         "_1stWarn = TRUE;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="___nothing__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "feedback_1">*/
+                class feedback_1
+                {
+                        name = "feedback_1";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn BIS_fnc_OM_warnCriticalCode;" \n
+                         "" \n
+                         "_2ndWarn = TRUE;" \n
+                         "_1stWarn = TRUE;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="___nothing__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "feedback_2">*/
+                class feedback_2
+                {
+                        name = "feedback_2";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn BIS_fnc_OM_allInfectedDeadCode;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "feedback_3">*/
+                class feedback_3
+                {
+                        name = "feedback_3";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn BIS_fnc_OM_medicineRanOutCode;" \n
+                         "" \n
+                         "_noMedicine = TRUE;" \n
+                         "_2ndWarn = TRUE;" \n
+                         "_1stWarn = TRUE;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="___nothing__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "feedback_4">*/
+                class feedback_4
+                {
+                        name = "feedback_4";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"{[_x # 0, _x # 1] spawn (_x # 4); _deadMessagesDelivered pushBack (_x # 7); _dyingMessagesDelivered pushBackUnique (_x # 7)} forEach _newDead;" \n
+                         "_noMedicine = TRUE;" \n
+                         "_2ndWarn = TRUE;" \n
+                         "_1stWarn = TRUE;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="___nothing__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "reset_feedback">*/
+                class reset_feedback
+                {
+                        name = "reset_feedback";
+                        itemno = 16;
+                        init = /*%FSM<STATEINIT""">*/"_1stWarn = FALSE;" \n
+                         "_2ndWarn = FALSE;" \n
+                         "_noMedicine = FALSE;" \n
+                         "_dyingMessagesDelivered = [];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="___nothing__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___nothing___1">*/
+                class ___nothing___1
+                {
+                        name = "___nothing___1";
+                        itemno = 32;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="___nothing__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "feedback_5">*/
+                class feedback_5
+                {
+                        name = "feedback_5";
+                        itemno = 35;
+                        init = /*%FSM<STATEINIT""">*/"{[_x # 0, _x # 1] spawn (_x # 3); _dyingMessagesDelivered pushBackUnique (_x # 7)} forEach _newDying;" \n
+                         "_noMedicine = TRUE;" \n
+                         "_2ndWarn = TRUE;" \n
+                         "_1stWarn = TRUE;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="___nothing__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "terminate">*/
+                class terminate
+                {
+                        name = "terminate";
+                        itemno = 39;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___nothing___2">*/
+                class ___nothing___2
+                {
+                        name = "___nothing___2";
+                        itemno = 42;
+                        init = /*%FSM<STATEINIT""">*/"_tDelay = time + 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 43;
+                                        priority = 0.000000;
+                                        to="___nothing___3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _tDelay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "___nothing___3">*/
+                class ___nothing___3
+                {
+                        name = "___nothing___3";
+                        itemno = 44;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="___nothing__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "terminate_1">*/
+                class terminate_1
+                {
+                        name = "terminate_1";
+                        itemno = 47;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="INIT";
+        finalStates[] =
+        {
+                "feedback_2",
+                "terminate",
+                "terminate_1",
+        };
+};
+/*%FSM</COMPILE>*/

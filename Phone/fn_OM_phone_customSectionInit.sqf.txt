@@ -1,0 +1,150 @@
+/*
+	Author: Karel Moricky
+
+	Description:
+		Initializes custom diary section.
+
+	Parameter(s):
+		0: DISPLAY
+
+	Returns:
+		BOOL - true if initialized correctly
+*/
+
+#include "common_definitions.inc"
+
+disableserialization;
+params [
+	["_display",displaynull,[displaynull]]
+];
+
+if (isnull _display) exitwith {["Display not found!"] call bis_fnc_error; false};
+
+_topMenuPos = ctrlPosition (_display getVariable VAR_GROUP_MAIN_BCG);
+_ctrlList = _display displayctrl IDC_DIARY_TOPIC_LIST;
+_ctrlSubTopicsBackground = _display displayctrl IDC_DIARY_SUBTOPIC_BACKGROUND;
+_ctrlDiaryGroup = _display displayctrl IDC_DIARY_TOPIC_HTML_GROUP;
+/* (ctrlposition _ctrlSubTopicsBackground # 1), */
+_posGroup = [
+	(ctrlposition _ctrlSubTopicsBackground # 0),
+	_topMenuPos select 1,
+	(ctrlposition _ctrlDiaryGroup # 0) + (ctrlposition _ctrlDiaryGroup # 2) - (ctrlposition _ctrlSubTopicsBackground # 0),
+	(ctrlposition _ctrlDiaryGroup # 3)
+];
+
+//--- Create custom controls group and its background
+ctrldelete (_display getvariable [VAR_GROUP_BCG,controlnull]);
+_ctrlGroupBackground = _display ctrlcreate ["RscText",-1];
+_ctrlGroupBackground ctrlsetbackgroundcolor [0.1,0.1,0.1,0.8];
+_ctrlGroupBackground ctrlshow false;
+_ctrlGroupBackground ctrlsetposition _posGroup;
+_ctrlGroupBackground ctrlcommit 0;
+_display setvariable [VAR_GROUP_BCG,_ctrlGroupBackground];
+
+ctrldelete (_display getvariable [VAR_GROUP,controlnull]);
+_ctrlGroup = _display ctrlcreate ["RscControlsGroup",-1];
+_ctrlGroup ctrlshow false;
+_ctrlGroup ctrlsetposition _posGroup;
+_ctrlGroup ctrlcommit 0;
+_display setvariable [VAR_GROUP,_ctrlGroup];
+
+findDisplay 12 setVariable ["_ctrlList", _ctrlList];
+
+//--- Remove existinghnadler to prevent stacking on repeated call (e.g., when debugging)
+_ctrlList ctrlremoveeventhandler ["lbselchanged",_ctrlList getvariable [VAR_SEL_CHANGED,-1]];
+
+//--- Add event handler tracking when selected list item changes
+_ctrlList setvariable [
+	VAR_SEL_CHANGED,
+	_ctrlList ctrladdeventhandler [
+		"lbselchanged",
+		{
+			params ["_ctrlList","_cursel"];
+
+			_display = ctrlparent _ctrlList;
+			_ctrlGroup = _display getvariable [VAR_GROUP,controlnull];
+			_ctrlGroupBackground = _display getvariable [VAR_GROUP_BCG,controlnull];
+			_posW = ctrlposition _ctrlGroup # 2;
+
+			//--- Delete previous controls of the custom controls group
+			{ctrldelete _x;} foreach (_ctrlGroup getvariable ["controls",[]]);
+			_controls = [];
+
+			//--- Set custom controls group
+			["PHONE: _ctrlList lbdata _cursel: %1",_ctrlList lbdata _cursel] call BIS_fnc_LogFormat;
+			switch (_ctrlList lbdata _cursel) do {
+
+				case "Contacts":
+				{
+					_controls append ([_ctrlGroup,  missionnamespace getvariable ["BIS_OM_ContactsPool",[]]] call BIS_fnc_OM_phone_customSectionShow); //--- ToDo: Replace by a function
+				};
+				case "CallLog":
+				{
+					_controls append ([_ctrlGroup, missionnamespace getvariable ["BIS_OM_incomingCallsPool",[]]] call BIS_fnc_OM_phone_customSectionShow); //--- ToDo: Replace by a function
+				};
+				case "MakeaCall":
+				{
+					_controls append ([_ctrlGroup,  missionnamespace getvariable ["BIS_OM_CallsPool",[]]] call BIS_fnc_OM_phone_customSectionShow); //--- ToDo: Replace by a function
+				};
+				case "Messages":
+				{
+					_controls append ([_ctrlGroup] call BIS_fnc_OM_phone_customSectionShow); //--- ToDo: Replace by a function
+					BIS_OM_unreadMessagesCnt = 0;
+				};
+				case "Weather Forecast":
+				{
+					_controls append ([_ctrlGroup ] call BIS_fnc_OM_phone_customSectionWeatherShow); //--- ToDo: Replace by a function
+				};
+			};
+			_ctrlGroup setvariable ["controls",_controls];
+
+			//--- Default or custom controls group?
+			_isDefaultGroup = _controls isequalto [];
+
+			//--- Toggle and resize custom group
+			//TODO: align with menu height
+			_posHMax = (safezoneY + safezoneH - (ctrlposition _ctrlGroup # 1) - 0.02) min (selectmax (_controls apply {(ctrlposition _x # 1) + (ctrlposition _x # 3)}) + 0.02);
+			/* _posHMax = (0.2) min (selectmax (_controls apply {(ctrlposition _x # 1) + (ctrlposition _x # 3)}) + 0.02); */
+			{
+				_x ctrlshow !_isDefaultGroup;
+				_x ctrlsetpositionH _posHMax;
+				_x ctrlcommit 0;
+			} foreach [_ctrlGroup,_ctrlGroupBackground];
+
+			//--- Toggle default group
+			{
+				_ctrl = _display displayctrl _x;
+				_ctrl ctrlenable _isDefaultGroup;
+				_ctrl ctrlsetfade ([1,0] select _isDefaultGroup);
+				_ctrl ctrlcommit 0;
+			} foreach [
+				IDC_DIARY_SUBTOPIC_BACKGROUND,
+				IDC_DIARY_TOPIC_LISTINDEX,
+				IDC_DIARY_TOPIC_HTML_GROUP,
+				IDC_DIARY_CONTENT_BACKGROUND
+			];
+			//--- Set focus back to the list (ctrlShow steals it)
+			ctrlsetfocus _ctrlList;
+		}
+	]
+];
+/*
+//--- Restore after load
+if (isnil {missionnamespace getvariable VAR_LOADED}) then {
+	missionnamespace setvariable [
+		VAR_LOADED,
+		addmissioneventhandler [
+			"loaded",
+			{
+				[] spawn {
+					scriptname "reskinUI.sqf: Loaded";
+					waituntil {!isnull finddisplay 12};
+					["PHONE: reskinning UI", 1] call BIS_fnc_logFormat;
+					[(finddisplay 12), false] execVM "\a3\Missions_F_Oldman\Systems\Scripts\Phone\reskinUI.sqf";
+				};
+			}
+		]
+	];
+};*/ //moved to fn_OM_addLoadedEH
+
+true

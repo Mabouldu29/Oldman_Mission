@@ -1,0 +1,39 @@
+params 	[
+					[ "_logic", player, [objNull] ],
+					[ "_probability",1,[999] ],
+					[ "_center",objNull,[objNull] ],
+					[ "_range", 100,[999] ],
+					[ "_actualProbability", 0,[999] ],
+					[ "_mediaObjects", [], [[]] ]
+				];
+
+/* ["probability: %1 | _actualProbability %2", _probability, _actualProbability] call BIS_fnc_logFormat; */
+if( _probability > _actualProbability) then
+{
+		_mediaObjects =
+		[
+			_logic,
+			nil,
+			_center,
+			_range,
+			_logic getVariable "BIS_fnc_OM_moduleManHunt_mediaObjects",
+			_actualProbability,
+			 //((_probability - _actualProbability) max 0 )
+			 /* (_probability - _actualProbability)/_probability */
+			 linearConversion[_actualProbability, 1, _probability, 0, 1, true]
+		] call BIS_fnc_OM_CreateMediaObjects;
+}
+else
+{
+	if( _probability < _actualProbability) then
+	{
+				_mediaObjects =
+				[
+					_logic,
+					_logic getVariable "BIS_fnc_OM_moduleManHunt_mediaObjects",
+					_actualProbability,
+					(_actualProbability - _probability)/_actualProbability
+				] call BIS_fnc_OM_DeleteMediaObjects;
+	};
+};
+_mediaObjects

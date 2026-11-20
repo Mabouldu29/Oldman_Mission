@@ -1,0 +1,42 @@
+//--- define parameters
+params ["_center"];
+
+// FIXED PARAMS
+_source = "#particlesource" createVehicleLocal getpos _center;
+_source attachto [_center,[0,0,1]];
+_source setParticleParams [
+/*Sprite*/      ["\A3\animals_f\Mosquito.p3d", 1, 0, 1, 0], "", // File, Ntieth, Index, Count, Loop(Bool)
+/*Type*/        "spaceObject",
+/*TimmerPer*/       0.1,
+/*Lifetime*/        1,
+/*Position*/        [0, 0, 0],
+/*MoveVelocity*/    [0, 0, 0.5],
+/*Simulation*/      0, 1.31, 1, 0, //rotationVel, weight, volume, rubbing
+/*Scale*/       [0.75, 0.75, 0.75, 0],
+/*Color*/       [[1, 1, 1, 1],[1, 1, 1, 1]],
+/*AnimSpeed*/       [1.5,0.5],
+/*randDirPeriod*/   0.01,
+/*randDirIntesity*/ 0.08,
+/*onTimerScript*/   "",
+/*DestroyScript*/   "",
+/*Follow*/      ""
+];
+
+// RANDOM / TOLERANCE PARAMS
+_source setParticleRandom [
+/*LifeTime*/        1,
+/*Position*/        [2, 2, 0.3],
+/*MoveVelocity*/    [0, 0, 0],
+/*rotationVel*/     0,
+/*Scale*/       0,
+/*Color*/       [0, 0, 0, 0.1],
+/*randDirPeriod*/   0.01,
+/*randDirIntesity*/ 0.03,
+/*Angle*/       0
+];
+
+//--- spawner loop of mosquitos
+_source setDropInterval 0.005;
+waituntil {sleep 0.5; !isnil "DeleteMosquitos"};
+deletevehicle _source;
+DeleteMosquitos = nil;

@@ -1,0 +1,87 @@
+//0= _this spawn BIS_fnc_OM_fetchDog;
+_dog = createAgent ["Fin_random_F", getPos _this, [], 5, "CAN_COLLIDE"];
+// Disable animal behaviour
+_dog setVariable ["BIS_fnc_animalBehaviour_disable", true];
+DogBall hideObject true;
+CarBall hideobject true;
+
+0 = _dog spawn
+{
+    waituntil  {player distance _this > 500  && !isNil "BIS_T_SQ0_G_Charge" };
+    deletevehicle _this;
+};
+
+0 = [_dog,_this] spawn {
+    params ["_dog","_owner"];
+    hodil = true;
+    _count = 0;
+    //--- Force dog to sprint
+    _dog setdir 180;
+    waituntil {sleep 0.5; player distance _dog < 50};
+    _dog playMove "Dog_Sprint";
+    _dogWP = [13525.4,8413.9,0.157688];
+    while {isnil "LastThrow" && alive _dog} do
+    {
+        _count = _count + 1;
+
+        _owner playaction "takeflag";
+        _owner playmove "AwopPercMstpSgthWnonDnon_start";
+        _owner playmove "AwopPercMstpSgthWnonDnon_throw";
+        _owner playmove "AwopPercMstpSgthWnonDnon_end";
+        if (_count >= 5) exitwith {};
+        _dog moveTo _dogWP;
+        sleep 2;
+
+        hodil = true;
+        waituntil {hodil};
+        _dog playmove "Dog_sprint";
+        hodil = false;
+        [] spawn
+        {
+            sleep 0.8;
+            [BIS_DogThrowCurve] call BIS_fnc_timeline_play;
+            DogBall hideObject false;
+        };
+        //--- dog got a ball
+        waituntil {sleep 0.25; _dog distance _dogWP < 5};
+        DogBall hideObject true;
+        _dog playmove "Dog_Idle_Stop";
+        _dog dowatch _owner;
+        sleep 3;
+        _dog playmove "Dog_sprint";
+        _dog moveTo getpos _owner;
+        //--- dog is near the owner
+        waituntil {sleep 0.25; _dog distance _owner < 5};
+        _dog playMove "Dog_sit";
+        sleep 2.5;
+    };
+    //--- did player kill the dog?
+    if !(alive _dog) exitwith
+    {
+        _owner domove getpos _Dog;
+        waituntil {sleep 0.5; unitready _owner};
+        _owner playaction "takeflag";
+    };
+    //--- dog running to car
+    _dog moveTo [13522.4,8413.48,0.00111389];
+    sleep 2;
+    _dog playmove "Dog_sprint";
+    [] spawn
+    {
+        sleep 0.8;
+        [BIS_BrokenWindowCurve] call BIS_fnc_timeline_play;
+        CarBall hideobject false;
+        sleep 2.5;
+        autak setHitPointDamage ["HitGlass1",1];//hitRglass
+        //autak setdamage 0.8;
+        CarBall hideobject true;
+    };
+    waituntil {sleep 0.25; _dog distance [13522.4,8413.48,0.00111389] < 5};
+    _dog playMove "Dog_sit";
+    _dog dowatch [13522.5,8406.33,0.00166321];
+    _owner dowatch [13522.5,8406.33,0.00166321];
+    _owner domove [13522.4,8413.48,0.00111389];
+    _dog stop true;
+    waituntil {sleep 0.5; unitready _owner};
+    _owner playmove "Acts_CivilListening_2";
+};

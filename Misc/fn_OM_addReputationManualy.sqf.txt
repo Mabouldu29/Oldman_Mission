@@ -1,0 +1,29 @@
+// --- Adding reputation to player manualy, by using original macros
+//     ["REPUTATION_POSITIVE_BONUS_GREAT"] call BIS_fnc_OM_addReputationManualy;
+
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+params ["_value"];
+
+switch (_value) do
+{
+	case "REPUTATION_POSITIVE_BONUS_SMALL":
+	{
+		[MODE_INCREASE_LEVEL, [REPUTATION_POSITIVE_BONUS_SMALL]] call BIS_fnc_OM_moduleReputation;
+	};
+	case "REPUTATION_POSITIVE_BONUS_MEDIUM":
+	{
+		[MODE_INCREASE_LEVEL, [REPUTATION_POSITIVE_BONUS_MEDIUM]] call BIS_fnc_OM_moduleReputation;
+	};
+	case "REPUTATION_POSITIVE_BONUS_GREAT":
+	{
+		[MODE_INCREASE_LEVEL, [REPUTATION_POSITIVE_BONUS_GREAT]] call BIS_fnc_OM_moduleReputation;
+	};
+	case "REPUTATION_POSITIVE_BONUS_AWESOME":
+	{
+		[MODE_INCREASE_LEVEL, [REPUTATION_POSITIVE_BONUS_AWESOME]] call BIS_fnc_OM_moduleReputation;
+	};
+	case "REPUTATION_POSITIVE_BONUS_MEGA":
+	{
+		[MODE_INCREASE_LEVEL, [REPUTATION_POSITIVE_BONUS_MEGA]] call BIS_fnc_OM_moduleReputation;
+	};
+}

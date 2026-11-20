@@ -1,0 +1,75 @@
+BIS_Doctor = _this;
+_EHkilledIdx = _this addEventHandler ["killed", {BIS_DoctorDead = true}];
+if(!isNil "BIS_doctorDead") then {_this setDamage 1};
+BIS_Doctor setidentity "BIS_Doctor";
+
+//--- choose animation according daytime/weather?
+BIS_Doctor disableAI "ANIM";
+
+//--- define variables to default
+_defaultanim = "";
+_endAnim = "";
+_pos = [0,0,0];
+_dir = 0;
+
+//--- all states
+_animPool =  selectrandom [1,2,3,4];
+//--- night or bad weather
+if (BIS_night) then
+{
+    _animPool = selectRandom [1,2];
+};
+
+switch (_animPool) do
+{
+    case 1:
+    {
+        //--- under the shelter, checking medicine
+        _defaultanim = "Acts_AidlPercMstpSnonWnonDnon_warmup_2_loop";
+        _endAnim = "Acts_AidlPercMstpSnonWnonDnon_warmup_2_out";
+        _pos = [12163.8,9406.1,0];
+        _dir = 180;
+    };
+
+    case 2:
+    {
+        //--- next to campfire
+        _defaultanim = "Acts_AidlPercMstpSnonWnonDnon_warmup_5_loop";
+        _endAnim = "Acts_AidlPercMstpSnonWnonDnon_warmup_5_out";
+        _pos = [12162.9,9403.5,0];
+        _dir = 243;
+    };
+    case 3:
+    {
+        //--- standing near the entrance
+        _defaultanim = "Acts_AidlPercMstpSnonWnonDnon_warmup_6_loop";
+        _endAnim = "Acts_AidlPercMstpSnonWnonDnon_warmup_6_out";
+        _pos = [12153.3,9399.85,0];
+        _dir = 71;
+    };
+    case 4:
+    {
+        //--- terrase
+        _defaultanim = "Acts_AidlPercMstpSnonWnonDnon_warmup_1_loop";
+        _endAnim = "Acts_AidlPercMstpSnonWnonDnon_warmup_1_out";
+        _pos = [12145.6,9406.95,0.861618];
+        _dir = 113;
+    };
+
+    default
+    {
+        /* STATEMENT */
+    };
+};
+//--- debug
+//hint format ["%1\n%2\n%3\n%4",_defaultanim,_endAnim,_pos,_dir];
+BIS_Doctor switchmove _defaultanim;
+BIS_Doctor setpos _pos;
+BIS_Doctor setdir _dir;
+waituntil {sleep 0.5; Player distance BIS_doctor < 6};
+{
+    _x switchmove _endAnim;
+    _x enableAI "ANIM";
+    _x doTarget player;
+    _x setunitpos "UP";
+} foreach [BIS_doctor];

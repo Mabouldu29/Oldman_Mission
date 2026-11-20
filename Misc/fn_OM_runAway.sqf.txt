@@ -1,0 +1,18 @@
+//_this#0 disableAI "FSM";
+_this#0  enableAI "ANIM";
+_this#0  allowFleeing 1;
+_this#0  setspeedmode "Full";
+_this#0  setunitpos "UP";
+_pos = [(_this select 0) , 60, 150, 3, 0, 20, 0] call BIS_fnc_findSafePos;
+_pos2 = [(_this select 0) , 100, 200, 3, 0, 20, 0] call BIS_fnc_findSafePos;
+_wp0 = (group (_this select 0) ) addWaypoint  [_pos, 0];
+_wpC = (group (_this select 0) ) addWaypoint  [_pos2, 0];
+_wpC setwaypointtype "cycle";
+sleep 10 + (random 5);
+_this#0  setunitpos "AUTO";
+_t = time;
+waitUntil {time >= _t + 30};
+//_this#0  enableAI "FSM";
+
+//[_thisGuy] spawn BIS_fnc_OM_runAway;
+

@@ -1,0 +1,1 @@
+BIS_currentManPower = (BIS_currentManPower - (floor ((BIS_HowManyRecruits#1)*BIS_currentManPower))) max 0;

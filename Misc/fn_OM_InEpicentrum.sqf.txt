@@ -1,0 +1,60 @@
+//--------------------------------------------------
+//--- PP in epicentrum and damage handling
+//--------------------------------------------------
+
+params ["_myLogicObject","_size"];
+_PP_radial = ppEffectCreate ["radialBlur",100];
+_PP_chrom = ppEffectCreate ["ChromAberration",200];
+_PP_wetD = ppEffectCreate ["WetDistortion",300];
+_PP_dynamic = ppEffectCreate ["DynamicBlur",500];
+_PP_film = ppEffectCreate ["FilmGrain",2000];
+_PP_colorI = ppEffectCreate ["ColorInversion",2500];
+_kousanec = 0;
+BIS_CoughArray = ["Cough07","Cough08","Cough09","Cough10","Cough11","Cough12"];
+
+while {player distance _myLogicObject < (_size + 5)} do
+{
+  addCamShake [5, 1, 4];
+  sleep 0.2;
+  _PP_radial ppEffectEnable true;
+  _PP_radial ppEffectAdjust [0.02,0,0.14,0];
+  _PP_radial ppEffectCommit (random 1);
+  _PP_chrom ppEffectEnable true;
+  _PP_chrom ppEffectAdjust [-0.32,0.21,true];
+  _PP_chrom ppEffectCommit (random 1);
+  _PP_wetD ppEffectEnable true;
+  _PP_wetD ppEffectAdjust [2.43,0.6,0,0.79,0.79,0.79,2.84,0.01,0.01,0.02,-0.03,0.15,0.09,0.01,0.01];
+  _PP_wetD ppEffectCommit (random 1);
+  _PP_dynamic ppEffectEnable true;
+  _PP_dynamic ppEffectAdjust [0];
+  _PP_dynamic ppEffectCommit (random 1);
+  _PP_film ppEffectEnable true;
+  _PP_film ppEffectAdjust [0.18,1,2.71,0.34,0.37,true];
+  _PP_film ppEffectCommit (random 1);
+  ///*
+  _PP_colorI ppEffectEnable true;
+  _PP_colorI ppEffectAdjust [(_kousanec/4) min 0.3,0,0];
+  _PP_colorI ppEffectCommit (random 0.5);
+  //*/
+
+  if (alive player) then {Playsound selectrandom BIS_CoughArray};
+  uiSleep (1 + (random 3));
+  if (_kousanec <= 0.7) then {_kousanec = _kousanec + 0.1;} else {player setdamage (damage player) + 0.1};//1.3
+};
+_PP_radial ppEffectEnable true;
+_PP_radial ppEffectAdjust [0,0,0,0];
+_PP_radial ppEffectCommit (5 + random 10);
+_PP_wetD ppEffectEnable true;
+_PP_wetD ppEffectAdjust [2.43,0,0,0.79,0.79,0.79,2.84,0.01,0.01,0.02,-0.03,0.15,0.09,0.01,0.01];
+_PP_wetD ppEffectCommit (5 + random 10);
+_PP_dynamic ppEffectEnable true;
+_PP_dynamic ppEffectAdjust [0];
+_PP_dynamic ppEffectCommit (5 + random 10);
+_PP_chrom ppEffectAdjust [0,0,true];
+_PP_chrom ppEffectCommit (5 + random 10);
+_PP_film ppEffectEnable true;
+_PP_film ppEffectAdjust [0,0,0,0,0,false];
+_PP_film ppEffectCommit (5 + random 10);
+_PP_colorI ppEffectEnable true;
+_PP_colorI ppEffectAdjust [0,0,0];
+_PP_colorI ppEffectCommit (5 + random 10);

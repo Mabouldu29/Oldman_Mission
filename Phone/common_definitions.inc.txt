@@ -1,0 +1,148 @@
+#ifndef __PHONE_COMMON_DEFINES_H
+#define __PHONE_COMMON_DEFINES_H	1
+
+#include "\a3\Ui_f\hpp\defineResincl.inc"
+#include "\a3\Ui_f\hpp\defineCommonGrids.inc"
+
+//Miscelleanous helpers
+#define DEBUG_MENU_TOP 								1
+#define vec4(R,G,B,A)									[R,G,B,A]
+
+//IDCs of UI elements
+#define IDC_MENU_TOP_BACKGROUND				6100
+#define IDC_MENU_TOP_GROUP_MAIN 			6102
+#define IDC_MENU_TOP_TOPBAR 					6104
+#define IDC_MENU_TOP_TOPBAR_TEXT			6105
+#define IDC_MENU_TOP_CLOCK 						6106
+#define IDC_MENU_TOP_CLOCK_TEXT				6107
+#define IDC_MENU_TOP_WEATHER 					6108
+#define IDC_MENU_TOP_BOTTOMBAR 				6110
+#define IDC_MENU_BOX									6111
+#define IDC_MENU_BOTTOM								6114
+#define IDC_DIARY_WEATHER_DETAIL			6116
+
+//controls storage
+#define CTRL_DELETE(VARGROUP)							ctrldelete (_display getvariable [VARGROUP, controlnull])
+#define CTRL_REGISTER(VARGROUP,CTRL)			_display setvariable [VARGROUP, CTRL]
+#define VAR_GROUP_MAIN_BCG								"diaryInit_ctrlMenuTopBackground"
+#define VAR_GROUP_MAIN										"diaryInit_ctrlMenuTopGroup"
+#define VAR_GROUP_TOPBAR									"diaryInit_ctrlMenuTopTopBarGroup"
+#define VAR_GROUP_TOPBAR_TEXT 						"diaryInit_ctrlMenuTopTopBarText"
+#define VAR_GROUP_CLOCK										"diaryInit_ctrlMenuTopClockGroup"
+#define VAR_GROUP_WEATHER									"diaryInit_ctrlMenuTopWeatherGroup"
+#define VAR_GROUP_BOTTOMBAR								"diaryInit_ctrlMenuTopBottomBarGroup"
+#define VAR_GROUP_CLOCKTEXT								"diaryInit_ctrlMenuTopClockText"
+#define VAR_GROUP_BCG											"diaryInit_ctrlGroupBackground"
+#define VAR_GROUP													"diaryInit_ctrlGroup"
+#define VAR_MENU_BOX											"diaryInit_ctrlMenuBox"
+#define VAR_SEL_CHANGED										"diaryInit_lbSelChanged"
+#define VAR_LOADED												"diaryInit_loaded"
+#define VAR_GROUP_BOTTOM									"diaryInit_ctrlMenuBottomGroup"
+#define VAR_GROUP_BOTTOM_GROUP						"diaryInit_ctrlMenuBottomGroupGroup"
+#define VAR_GROUP_BOTTOM_ALARM						"diaryInit_ctrlMenuBottomAlarm"
+#define VAR_GROUP_BOTTOM_DETECTOR					"diaryInit_ctrlMenuBottomDetector"
+#define VAR_GROUP_WEATHER_PIC1						"BIS_OM_weatherInfoForecastPic1_mini"
+#define VAR_GROUP_WEATHER_PIC2						"BIS_OM_weatherInfoForecastPic2_mini"
+#define VAR_GROUP_WEATHER_PIC3						"BIS_OM_weatherInfoForecastPic3_mini"
+#define VAR_GROUP_WEATHER_RAIN_PIC1				"BIS_OM_weatherInfoForecastRainPic1_mini"
+#define VAR_GROUP_WEATHER_RAIN_PIC2				"BIS_OM_weatherInfoForecastRainPic2_mini"
+#define VAR_GROUP_WEATHER_RAIN_PIC3				"BIS_OM_weatherInfoForecastRainPic3_mini"
+
+//UI related params
+#define COLOR_BACKGROUND							1.0, 1.0, 1.0, 0.1
+#define COLOR_TITLE										0.6, 0.9, 0.6, 1.0
+#define MENU_COLOR_DEFAULT						vec4(0.1, 0.1, 0.1, 0.8)
+#define MARGIN_COEF 									0.1
+#define PADDING_COEF 									1/32
+#define POS_RELATIVE_LEFT(ORIGIN)			(ORIGIN)*MARGIN_COEF
+#define POS_RELATIVE_RIGHT(ORIGIN)		(ORIGIN)-(ORIGIN)*0.75-MARGIN_COEF
+#define TOPICS_BACKGROUND_X						1 * GUI_GRID_DIARY_W + GUI_GRID_DIARY_X
+#define TOPICS_BACKGROUND_Y						2 * GUI_GRID_DIARY_H + GUI_GRID_DIARY_Y
+#define TOPICS_BACKGROUND_W						11 * GUI_GRID_DIARY_W
+#define TOPICS_BACKGROUND_H						18 * GUI_GRID_DIARY_H
+#define TOPICS_LIST_X									1 * GUI_GRID_DIARY_W + GUI_GRID_DIARY_X
+#define TOPICS_LIST_Y									2.5 * GUI_GRID_DIARY_H + GUI_GRID_DIARY_Y
+#define TOPICS_LIST_W									6 * GUI_GRID_DIARY_W
+#define TOPICS_LIST_H									safezoneH - 7 * GUI_GRID_DIARY_H
+#define TOPICS_TOPMENU_H							TOPICS_BACKGROUND_H * 1/2
+#define TOPICS_BOTTOMMENU_H						TOPICS_BACKGROUND_H * 2/3
+#define TOP_BAR_H											2/16											//of the top_menu
+#define CLOCK_H												6/16											//of the top_menu
+#define WEATHER_H											6/16											//of the top_menu
+#define BOTTOM_BAR_H									TOP_BAR_H									//of the top_menu
+#define CLOCK_W 											3/4												//of the top_menu
+#define GET_OFFSET_HORIZONTAL(CTRL)		(ctrlPosition CTRL select 0) + (ctrlPosition CTRL select 2)
+#define GET_OFFSET_VERTICAL(CTRL)			(ctrlPosition CTRL select 1) + (ctrlPosition CTRL select 3)
+#define GET_CENTER_HORIZONTAL(CTRL)		(ctrlPosition CTRL select 2)/2
+#define GET_TOPIC_LIST_POS						(ctrlPosition (_display displayctrl IDC_DIARY_TOPIC_BACKGROUND))
+
+//reposition functions macros
+#define OFFSET_X        0.3
+#define OFFSET_Y        0.3
+#define DIR_TOP         0
+#define DIR_BOTTOM      1
+#define DIR_LEFT        2
+#define DIR_RIGHT       3
+#define DIR_ORIGIN      4
+
+#define PHONE_DIARY_SET_TIME() \
+((findDisplay 12) getVariable VAR_GROUP_CLOCKTEXT) ctrlSetStructuredText parseText format \
+[\
+	"<t font='LCD14' color='#819651' size='2.5' align='center'>%1</t><br/><t font='PuristaLight' color='#90a269' size='0.9' align='center'>%2</t>",\
+	[daytime,"HH:MM"] call bis_fnc_timeToString, \
+	format ["%1.%2.%3", date select 2,date select 1,date select 0] \
+]
+
+#define PHONE_DIARY_SET_ACCOUNT_STATE() \
+((findDisplay 12) getVariable VAR_GROUP_BOTTOMBAR) ctrlSetStructuredText parseText format \
+[ \
+	"<t font='PuristaLight' color='#90a269' size='1.1' align='center'>%1 $</t>", \
+	if(!isNil "BIS_fnc_OM_moduleEconomy") then {[3,[]] call BIS_fnc_OM_moduleEconomy} else {"0"} \
+]
+
+#define DIARY_MENU_CONTROLS_AMOUNT_IN_ROW 4
+#define DIARY_MENU_INDEX_NOT_EXISTS				-1
+#define DIARY_MENU_INDEX_RESERVED 				9999
+//Diary menu buttons											KEY,							INDEX, 															TEXT,																										CONTROL,				 	TOOLTIP,																								ICON																																				//ENABLED
+#define DIARY_MENU_BUTTON_MAP 						["",							DIARY_MENU_INDEX_NOT_EXISTS,				localize "STR_A3_OM_common_definitions.incPhone_24",		controlnull,			localize "STR_A3_OM_common_definitions.incPhone_25",		"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_map.paa",							true ]
+#define DIARY_MENU_BUTTON_TASKS						["Tasks" ,				DIARY_MENU_INDEX_NOT_EXISTS,				localize "STR_A3_OM_common_definitions.incPhone_26",		controlnull,			localize "STR_A3_OM_common_definitions.incPhone_27",		"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_tasks.paa",						true ]
+#define DIARY_MENU_BUTTON_INTEL						["Intel",					DIARY_MENU_INDEX_NOT_EXISTS,			 	localize "STR_A3_OM_common_definitions.incPhone_28",		controlnull,			localize "STR_A3_OM_common_definitions.incPhone_29",		"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_intel.paa",						true ]
+#define DIARY_MENU_BUTTON_CONTACTS				["Contacts",			DIARY_MENU_INDEX_NOT_EXISTS,			 	localize "STR_A3_OM_common_definitions.incPhone_30",		controlnull,			localize "STR_A3_OM_common_definitions.incPhone_31",		"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_contacts.paa",					true ]
+#define DIARY_MENU_BUTTON_MESSAGES				["Messages",			DIARY_MENU_INDEX_NOT_EXISTS,			 	localize "STR_A3_OM_common_definitions.incPhone_32",		controlnull,			localize "STR_A3_OM_common_definitions.incPhone_33",		"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_messenger.paa",				true ]
+#define DIARY_MENU_BUTTON_CALLLOG					["CallLog",				DIARY_MENU_INDEX_NOT_EXISTS,			 	localize "STR_A3_OM_common_definitions.incPhone_34",		controlnull,			localize "STR_A3_OM_common_definitions.incPhone_35",		"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_calllog.paa",					true ]
+#define DIARY_MENU_BUTTON_CALL 						["MakeaCall",			DIARY_MENU_INDEX_NOT_EXISTS,			 	localize "STR_A3_OM_common_definitions.incPhone_36",		controlnull,			localize "STR_A3_OM_common_definitions.incPhone_37",		"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_call.paa",							true ]
+#define DIARY_MENU_BUTTON_SYNDIKATINFO		["SyndikatInfo",	DIARY_MENU_INDEX_NOT_EXISTS,			 	localize "STR_A3_OM_common_definitions.incPhone_38",		controlnull,			localize "STR_A3_OM_common_definitions.incPhone_39",		"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_syndikatinfo.paa",			false]
+#define DIARY_MENU_BUTTON_ALARM						["Alarm",					DIARY_MENU_INDEX_NOT_EXISTS,				localize "STR_A3_OM_common_definitions.incPhone_40",		controlnull,			localize "STR_A3_OM_common_definitions.incPhone_41",		"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_alarm.paa",						true ]
+#define DIARY_MENU_BUTTON_DETECTOR				["Detector",			DIARY_MENU_INDEX_NOT_EXISTS,			 	localize "STR_A3_OM_common_definitions.incPhone_42",		controlnull,			localize "STR_A3_OM_common_definitions.incPhone_43",		"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_detector.paa",					false]
+#define DIARY_MENU_BUTTON_RESERVED				["Reserved",			DIARY_MENU_INDEX_RESERVED,				 	localize "STR_A3_OM_common_definitions.incPhone_44",		controlnull,			"",																											"\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_detector.paa",					true ]		
+
+#define DIARY_MENU_BUTTON_TEXT_FORMAT 		"<t font='RobotoCondensed' shadow='0' color='#b6bf81' size='0.58	' align='center'>%1</t>"
+#define DIARY_MENU_BUTTONS_EXCEPTIONS 		["DETECTOR"]
+
+//The order of the diary menu buttons can be sorted here
+#define DIARY_MENU_BOX \
+[\
+DIARY_MENU_BUTTON_MAP, 					DIARY_MENU_BUTTON_TASKS, 				DIARY_MENU_BUTTON_INTEL,				DIARY_MENU_BUTTON_RESERVED, 	\
+DIARY_MENU_BUTTON_MESSAGES,			DIARY_MENU_BUTTON_CONTACTS, 		DIARY_MENU_BUTTON_CALLLOG, 			DIARY_MENU_BUTTON_CALL,				\
+DIARY_MENU_BUTTON_ALARM,				DIARY_MENU_BUTTON_DETECTOR,			DIARY_MENU_BUTTON_SYNDIKATINFO,	DIARY_MENU_BUTTON_RESERVED		\
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#endif

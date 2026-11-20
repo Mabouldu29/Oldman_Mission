@@ -1,0 +1,157 @@
+
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#define SPEECH_DELAY 				sleep 10;
+
+params ["_actualLevel","_prevLevel"];
+
+_priority = PRIORITY_LOW; 		// \Systems\scripts\ActionQueue\common_definitions.inc
+_validity = VALIDITY_FOREVER; // \Systems\scripts\ActionQueue\common_definitions.inc
+
+_speech = {};
+_actionID = "";
+
+switch (_actualLevel) do
+{
+	case (-3):
+	{
+		//BAD
+		_speech =
+		{
+			SPEECH_DELAY
+			["eve_reputation_minus_three_neg"] call BIS_fnc_om_conversation;
+		};
+		_actionID = "SYN Rep -3";
+	};
+	case (-2):
+	{
+		if (_actualLevel < _prevLevel) then
+		{
+			//BAD
+			_speech =
+			{
+				SPEECH_DELAY
+				["eve_reputation_minus_two_neg"] call BIS_fnc_om_conversation;
+			};
+		} else {
+			//GOOD
+			_speech =
+			{
+				SPEECH_DELAY
+				["eve_reputation_minus_two_pos"] call BIS_fnc_om_conversation;
+			};
+		};
+		_actionID = "SYN Rep -2";
+	};
+	case (-1):
+	{
+		if(_actualLevel == _prevLevel) exitWith {};
+		if (_actualLevel < _prevLevel) then
+		{
+			//BAD
+			_speech =
+			{
+				SPEECH_DELAY
+				["eve_reputation_minus_one_neg"] call BIS_fnc_om_conversation;
+			};
+		} else {
+			//GOOD
+			_speech =
+			{
+				SPEECH_DELAY
+				["eve_reputation_minus_one_pos"] call BIS_fnc_om_conversation;
+			};
+		};
+		_actionID = "SYN Rep -1";
+	};
+	case (0):
+	{
+		if (_actualLevel < _prevLevel) then
+		{
+			//BAD
+			_speech =
+			{
+				SPEECH_DELAY
+				["eve_reputation_zero_neg"] call BIS_fnc_om_conversation;
+			};
+		} else {
+			//GOOD
+			_speech =
+			{
+				SPEECH_DELAY
+				["eve_reputation_zero_pos"] call BIS_fnc_om_conversation;
+			};
+		};
+		_actionID = "SYN Rep 0";
+	};
+	case (1):
+	{
+		if (_actualLevel < _prevLevel) then
+		{
+			//BAD
+			_speech =
+			{
+				SPEECH_DELAY
+				["eve_reputation_plus_one_neg"] call BIS_fnc_om_conversation;
+			};
+		} else {
+			//GOOD
+			_speech =
+			{
+				SPEECH_DELAY
+				["eve_reputation_plus_one_pos"] call BIS_fnc_om_conversation;
+			};
+		};
+		_actionID = "SYN Rep 1";
+	};
+	case (2):
+	{
+		if (_actualLevel < _prevLevel) then
+		{
+			//BAD
+			_Speech =
+			{
+				SPEECH_DELAY
+				["eve_reputation_plus_two_neg"] call BIS_fnc_om_conversation;
+			};
+		} else {
+			//GOOD
+			_speech =
+			{
+				SPEECH_DELAY
+				["eve_reputation_plus_two_pos"] call BIS_fnc_om_conversation;
+			};
+		};
+		_actionID = "SYN Rep 2";
+	};
+	case (3):
+	{
+		// GOOD
+		_speech =
+		{
+			SPEECH_DELAY
+			["eve_reputation_plus_three_pos"] call BIS_fnc_om_conversation;
+		};
+		_actionID = "SYN Rep 3";
+	};
+	default {};
+};
+
+//--- add sentence to Action Queue
+[
+	MODE_ADDTOQUEUE,
+	[
+		[
+			_speech,									//code
+			[],											//parameters for the code
+			PRIORITY_LOW,								//
+			VALIDITY_FOREVER,							//
+			{},											//onFinish callback
+			{},											//onInterrupt callback
+			ACTION_INTERRUPTIBLE,						//but just by the actions with the same or higher group ID
+			-1,											//re-enqeue priority (same as the enqueue priority)
+			ACTION_CAN_INTERRUPT_PREVIOUS,				//but just the actions with the same or higher group ID
+			_actionID,									//id string to display (debug)
+			GROUPID_HIGH1								//group ID
+		]
+	]
+] call BIS_fnc_OM_moduleActionQueue;

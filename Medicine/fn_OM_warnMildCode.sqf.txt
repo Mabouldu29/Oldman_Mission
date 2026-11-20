@@ -1,0 +1,2 @@
+BIS_SQcfsm setFSMVariable ["_medicineLow",true];
+bis_fnc_missionFlow_fsm setFSMVariable ["_runFeedback",true];

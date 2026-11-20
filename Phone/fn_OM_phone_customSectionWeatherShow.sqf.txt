@@ -1,0 +1,53 @@
+/*
+	Custom diary section for weather forecast
+*/
+
+#include "common_definitions.inc"
+#define COLOR_BACKGROUND	1.0, 1.0, 1.0, 0.1
+#define COLOR_TITLE		0.6, 0.9, 0.6, 1.0
+
+#define FORMAT_TITLE_NO_DATE			"%1 <t font='RobotoCondensedBold'>%2</t>" //--- %1 = from/to, %2 = name
+#define FORMAT_TITLE							"%1 <t font='RobotoCondensedBold'>%2</t><t align='right'>%3, %4</t>" //--- %1 = from/to, %2 = name, %3 = date, %4 = time
+#define FORMAT_MESSAGE						"<t font='RobotoCondensedBold' align='left' size='0.85' > %1 </t>" //--- %1 = message
+#define FORMAT_MESSAGE_URL				"<a href='%1'>%2</a>"
+
+params ["_ctrlGroup", ["_messages",[], [[]] ] ];
+
+private _controls = [];
+private _marginCoef = 0.02;
+private _paddingCoef = 0.1;
+private _posYMessage = _marginCoef;
+private _posW = ctrlposition _ctrlGroup # 2;
+private _posWMessage = _posW * 0.75;
+private _posHMessage = 0.4;
+
+//--- Iterate through messages (in reverse order, to place the newest ones on top)
+//--- Controls group
+	private _ctrlMessageGroup = _display ctrlcreate ["RscControlsGroupNoScrollbars",-1,_ctrlGroup];
+	_ctrlMessageGroup ctrlsetposition [
+		_posW * _marginCoef,
+		_posYMessage,
+		_posWMessage,
+		_posHMessage
+	];
+	_ctrlMessageGroup ctrlcommit 0;
+
+	//--- Background
+	private _ctrlMessageBackground = _display ctrlcreate ["RscText",IDC_DIARY_WEATHER_DETAIL,_ctrlMessageGroup];
+	_ctrlMessageBackground ctrlsetbackgroundcolor [COLOR_BACKGROUND];
+	_ctrlMessageBackground ctrlsetposition [0,0,_posWMessage,_posHMessage];
+	_ctrlMessageBackground ctrlcommit 0;
+
+
+	_ctrlMessageGroup ctrlsetpositionH (((ctrlposition _ctrlMessageText # 1) + (ctrlposition _ctrlMessageText # 3) + _posHMessage * _paddingCoef) max _posHMessage);
+	_ctrlMessageGroup ctrlcommit 0;
+
+	_ctrlMessageBackground ctrlsetpositionH (ctrlposition _ctrlMessageGroup # 3);
+	_ctrlMessageBackground ctrlcommit 0;
+
+	_posYMessage = _posYMessage + (ctrlposition _ctrlMessageGroup # 3)/*_posHMessage*/ + _marginCoef;
+
+	_controls append [_ctrlMessageGroup,_ctrlMessageBackground,_ctrlMessagePicture,_ctrllMessageTitle,_ctrlMessageText];
+
+
+_controls

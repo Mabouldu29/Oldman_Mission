@@ -1,0 +1,46 @@
+params ["_character","_characterName","_animation","_animSpeed"];
+
+//--- delete unit, if was killed in previous composition
+if (missionNameSpace getVariable [_characterName+"DeadVillage",false]) then {deleteVehicle _this};
+if (missionNameSpace getVariable [_characterName+"Dead1stHideout",false]) then {deleteVehicle _this};
+if (missionNameSpace getVariable [_characterName+"Dead2ndHideout",false]) then {deleteVehicle _this};
+
+//--- setUnit animation and add EH handling killing unit and state transition between compositions
+_character disableAI "ANIM";
+_character switchMove _animation; 
+_character setIdentity _characterName+"_sick";
+_character setVariable ["BIS_name",_characterName];
+
+_character setDamage 0.5;
+_character setAnimSpeedCoef _animSpeed;
+
+_EHkilledIdx = _character addEventHandler ["killed", {
+    params ["_unit"];
+    _unit removeEventHandler ["killed",_thisEventHandler];
+	_this spawn {
+        params ["_unit"];
+        if (!isNil "BIS_doctorfsm" && {BIS_doctorfsm getFSMVariable ["_onNewPosition",false]}) then {
+            missionNamespace setVariable [ format["%1Dead2ndHideout",_unit],true];
+        } else {
+            missionNamespace setVariable [ format["%1Dead1stHideout",_unit],true];
+        };
+        _unit switchMove "";   
+        waitUntil {player distance _unit > 100};     
+        deleteVehicle _unit;
+    };    
+}];
+
+_character addEventHandler ["HandleHeal", { 
+    _this spawn { 
+        params ["_injured","_healer"]; 
+        _damage = damage _injured; 
+        _injName = _injured getVariable ["BIS_name",""];
+        if (player == _healer) then {
+            (call compile format ["%1Injfsm",_injName]) setFSMVariable ["_playerTryHeal",true];
+            waitUntil {sleep 0.1; damage _injured != _damage}; 
+            if (damage _injured < _damage) then { 
+                _injured setDamage 0.5; 
+            }; 
+        }; 
+    }; 
+}];

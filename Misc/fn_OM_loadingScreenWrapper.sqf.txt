@@ -1,0 +1,29 @@
+params [ [ "_startLoadingScreen", true, [true] ], [ "_id", "", [""] ] ];
+
+private _nrOfScreens = missionNamespace getVariable ["BIS_fnc_loadingScreenWrapper_ids", 0];
+
+if (_startLoadingScreen) then
+{
+		//we want to start the loading screen
+    if( _nrOfScreens == 0 ) then
+    {
+			//if any loading screen hasn't been yet started, start one
+			[ _id, "", "RscDisplayLoadingOM"] call bis_fnc_startloadingscreen;
+			missionNamespace setVariable ["BIS_fnc_loadingScreenWrapper_ids", 1];
+    }
+		else
+		{
+			//if a loading screen has been already started, just increase the counter
+			missionNamespace setVariable ["BIS_fnc_loadingScreenWrapper_ids", _nrOfScreens + 1];
+		};
+}
+else
+{
+		//we want to close screen
+		_nrOfScreens = _nrOfScreens - 1;
+    missionNamespace setVariable ["BIS_fnc_loadingScreenWrapper_ids", _nrOfScreens];
+		if( _nrOfScreens == 0 ) then
+		{
+			_id call BIS_fnc_endLoadingScreen;
+		};
+};

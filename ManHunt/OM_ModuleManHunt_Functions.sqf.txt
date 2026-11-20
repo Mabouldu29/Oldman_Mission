@@ -1,0 +1,33 @@
+#define OM_UPDATE_LOOP_DELAY 3			//how often the update will be done (seconds)
+
+private _UpdateLoop =
+{
+	params [ ["_logic", player,[objNull] ],	["_center", player,[objNull] ],	["_range", 100, [9999] ] ];
+	private _actualTime = time;
+	private _probability = 1.0;
+	while {true} do
+	{
+
+		waitUntil{sleep 0.5; time >= _actualTime + OM_UPDATE_LOOP_DELAY };
+		if( (_logic getVariable "UseRelationship2") != 0 ) then
+		{
+			_probability = [] call BIS_fnc_OM_moduleManHunt_ComputeProbability;
+
+			["enemyTreshold: %1", BIS_relEast getVariable "enemyTreshold"] call BIS_fnc_logFormat;
+			["MinRating: %1", BIS_relEast getVariable "MinRating"] call BIS_fnc_logFormat;
+			["threat: %1", 	BIS_relEast getVariable "threat"] call BIS_fnc_logFormat;
+			["Computed Probability: %1", _probability] call BIS_fnc_logFormat;
+		}
+		else
+		{
+			//for debug purposes only
+			_probability = random(0.8);
+			/* ["Computed Probability: %1", _probability] call BIS_fnc_logFormat; */
+		};
+		[
+			"UpdateMedia",
+			[_logic, _probability, _center, _range]
+		] call BIS_fnc_OM_moduleManHunt;
+		_actualTime = time;
+	};
+};

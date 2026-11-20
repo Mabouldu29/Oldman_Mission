@@ -1,0 +1,56 @@
+//---Initializes the graphic menu (replacement of the standard diary list)
+#include "common_definitions.inc"
+#define PHONE_DISABLE_AND_HIDE_BUTTON() 	{	_x ctrlShow false;_x ctrlEnable false; _x ctrlCommit 0.6;} forEach [_ctrlButton, _ctrlButtonText]
+#define PHONE_DISABLE_BUTTON() 						{	_x ctrlSetFade 0.5;	_x ctrlCommit 0.6;} forEach [_ctrlButton, _ctrlButtonText]
+#define PHONE_ENABLE_BUTTON()							{	_x ctrlSetFade 0.0;	_x ctrlCommit 0.6;} forEach [_ctrlButton, _ctrlButtonText]
+
+
+private _ctrlToolboxBoxMenu = findDisplay 12 displayCtrl IDC_MENU_BOX;
+private _phoneMenuBox =  missionNameSpace getVariable ["BIS_OM_PhoneMenuBox", []];
+private _ctrlDiaryList = (findDisplay 12 displayCtrl IDC_DIARY_TOPIC_LIST);
+//TODO: do automatic refresh in case the index doesn't fit the name of the menu item
+private _counter = 0;
+{
+	//Asociate buttons (array) with diary list indexes (must be done everytime the diary list changes)
+	private _index = [_ctrlDiaryList, _x select 0] call BIS_fnc_OM_phone_getDiaryListIndexByName;
+	if(_index != -1) then { _x set [1, _index] };
+	//Asociate buttons (array) with the real button objects (controls in control table)
+	private _ctrlButton = (_ctrlToolboxBoxMenu ctHeaderControls floor (_counter/DIARY_MENU_CONTROLS_AMOUNT_IN_ROW) ) select _forEachIndex%DIARY_MENU_CONTROLS_AMOUNT_IN_ROW;
+	["PHONE: _ctrlButton: %1",_ctrlToolboxBoxMenu] call BIS_fnc_logFormat;
+	private _ctrlButtonText = (_ctrlToolboxBoxMenu ctHeaderControls floor (_counter/DIARY_MENU_CONTROLS_AMOUNT_IN_ROW) ) select (_forEachIndex%DIARY_MENU_CONTROLS_AMOUNT_IN_ROW)+DIARY_MENU_CONTROLS_AMOUNT_IN_ROW;
+	_x set [3, _ctrlButton];
+
+	_counter = _counter + 1;
+	_ctrlButton ctrlSetText (_x select 5);
+
+	if!(_x select 2 in DIARY_MENU_BUTTONS_EXCEPTIONS) then
+	{
+		if(_x select 1 == DIARY_MENU_INDEX_NOT_EXISTS) then
+		{
+			PHONE_DISABLE_BUTTON();
+		}
+		else
+		{
+			PHONE_ENABLE_BUTTON();
+		};
+		if(_x select 1 == DIARY_MENU_INDEX_RESERVED) then
+		{
+			PHONE_DISABLE_AND_HIDE_BUTTON();
+		}
+		else
+		{
+			_ctrlButtonText ctrlSetStructuredText parsetext format [DIARY_MENU_BUTTON_TEXT_FORMAT, _x select 2];
+			_ctrlButtonText ctrlCommit 0;
+		};
+	}
+	else
+	{
+		//special behavior buttons
+	};
+	if !(_x select 6) then	//if disabled
+	{
+		PHONE_DISABLE_AND_HIDE_BUTTON();
+	};
+} forEach _phoneMenuBox;
+
+missionNamespace setVariable ["BIS_OM_PhoneMenuInitialized", true];

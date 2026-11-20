@@ -1,0 +1,26 @@
+params ["_contact", ["_notify", TRUE]];
+_name = getText (missionConfigFile >> "CfgOMPhoneContacts" >> _contact >> "name");
+_text = getText (missionConfigFile >> "CfgOMPhoneContacts" >> _contact >> "text");
+if (BIS_OM_contactsPool findIf {(_x select 0) == _name} != -1) exitWith {FALSE};
+if (_notify) then {
+	_null = ["OMNewContact", [format ["%1<img image = '%2' size = '1.75' align = 'left' shadow = '0'>", _name, getText (missionConfigFile >> "CfgOMPhoneContacts" >> _contact >> "img")]]] call BIS_fnc_shownotification;
+};
+BIS_OM_contactsPool pushBack [_contact, _name, _text];
+BIS_OM_contactsLog = "<br/>";
+_pool = +BIS_OM_contactsPool;
+reverse _pool;
+_cnt = count _pool;
+{
+	_contact = _x # 0;
+	_name = _x # 1;
+	_text = _x # 2;
+	BIS_OM_contactsLog = BIS_OM_contactsLog + format
+	[	"<font size = '20'>%1</font><br/><img image = '%2'></img><br/><br/>%3%4",
+		_name,
+		getText (missionConfigFile >> "CfgOMPhoneContacts" >> _contact >> "img"),
+		_text,
+		if (_forEachIndex != (_cnt - 1)) then {"<br/><br/>"} else {""}
+	];
+} forEach _pool;
+player setDiaryRecordText [["Contacts", BIS_OM_phone_section_contacts], ["Contacts", BIS_OM_contactsLog]];
+TRUE

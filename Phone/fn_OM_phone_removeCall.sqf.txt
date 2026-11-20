@@ -1,0 +1,29 @@
+params ["_id"];
+
+_i = -1;
+{
+	if ((_x select 5 select 0) == _id) then {_i = _forEachIndex};
+} forEach BIS_OM_callsPool;
+
+if (_i == -1) exitWith {FALSE};
+
+BIS_OM_callsPool deleteAt _i;
+BIS_OM_callsList = "<br/>";
+_pool = +BIS_OM_callsPool;
+reverse _pool;
+_cnt = count _pool;
+{
+	_id = _x # 5 # 0;
+	_title = _x # 5 # 1;
+	_code = _x # 5 # 2;
+	_closeMap = _x # 5 # 3;
+	BIS_OM_callsList = BIS_OM_callsList + format ["<%1 expression = '%2'>%3</%1>%4",
+		if (_closeMap) then {"executeClose"} else {"execute"},
+		format ["_null = [] spawn (((BIS_OM_callsPool select {(_x select 0) == %1}) select 0) select 2)", _id],
+		_title,
+		if (_forEachIndex != (_cnt - 1)) then {"<br/><br/>"} else {""}
+	];
+} forEach _pool;
+if (count BIS_OM_callsPool == 0) then {BIS_OM_callsList = "<br/>" + Localize "STR_A3_OM_System_RemoveCall_emptyCall"};
+player setDiaryRecordText [["Make a Call", BIS_OM_phone_section_call], ["Make a Call", BIS_OM_callsList]];
+TRUE

@@ -1,0 +1,199 @@
+#include "defines.inc"
+#define PILLS_POOL_MAX              8
+#define ICON_PILLS                  "pill_32.paa"
+#define ICON_DOCTOR                 "doctor_64.paa"
+#define VILLAGER_PROFILE(VILLAGER)  "<img valign='top' width='56%' image='a3\Missions_F_Oldman\Data\img\PhoneContacts\" + VILLAGER + "_64.paa'/>"
+#define STATES_INFO                 [[0, 0.15, localize "STR_A3_OM_slowly_dying", ""], [0.15, 0.25, localize "STR_A3_OM_very_bad", ""], [0.25, 0.50, localize "STR_A3_OM_bad", ""], [0.50, 0.75, localize "STR_A3_OM_not_good", ""], [0.75, 1.0, localize "STR_A3_OM_good", ""], [1.0, 9999.0, localize "STR_A3_OM_fine", ""]]
+#define STATES_INFO_DYING           [[0.0, 0.01, localize "str_a3_rscdisplaydynamicgroups_deadplayer", "d0"], [0.01, 0.15, localize "STR_A3_OM_almost_dead", "d1"], [0.15, 0.50, localize "STR_A3_OM_die_in_an_hour", "d2"], [0.50, 1.0, localize "STR_A3_OM_dying_fast", "d3"]]
+/* #define STATES_INFO     [[0,"dying"], [0.15,"very bad"], [0.25,"bad"], [0.50,"not good"], [0.75,"good"], [1.0,"fine"]] */
+
+
+BIS_fnc_OM_medicine_generatePillsPool =
+{
+  params[ ["_pillsInPool",WARN_MILD,[99]] ];
+  if(_pillsInPool <= 0) exitWith {""};
+  private _pillsToShow = linearConversion [WARN_CRITICAL, WARN_MILD*2 ,_pillsInPool, 0, PILLS_POOL_MAX, true];
+
+  private _text = "";
+  for "_iLoop" from 0 to _pillsToShow-1 do
+  {
+    _text = _text + "<img align='right' width='16' image='a3\Missions_F_Oldman\Data\img\PhoneContacts\"+ ICON_PILLS + "'/>";
+  };
+  _text
+};
+
+BIS_fnc_OM_medicine_convertHealthStatus =
+{
+  params[ ["_villagerHealth",WARN_DYING, [999] ], [ "_age",20,[99] ] ];
+  if(_villagerHealth == -1) then {_villagerHealth = 9999.0};  //if he has pills
+  private _max = linearConversion [SURVIVAL_MIN_AGE, SURVIVAL_MAX_AGE, _age, SURVIVAL_MIN_AGE_TIME, SURVIVAL_MAX_AGE_TIME];
+  private "_healthState";
+  //not dying stage
+  if(_villagerHealth > WARN_DYING ) then
+  {
+    _healthState = linearConversion[ WARN_DYING, _max, _villagerHealth, 0, 1, true ];
+    _healthState = STATES_INFO select {_x select 0 <= _healthState && _healthState < _x select 1};
+  }
+  else
+  {
+    //dying stage
+    _healthState = linearConversion[ 0, WARN_DYING, _villagerHealth, 0, 1, true ];
+    _healthState = STATES_INFO_DYING select {_x select 0 <= _healthState && _healthState < _x select 1};
+  };
+
+  if(count _healthState == 0) exitWith {["n/a","n/a"]};
+  //text state, icon suffix
+  [_healthState select 0 select 2, _healthState select 0 select 3]
+};
+
+
+
+BIS_fnc_OM_medicine_generateVillagersStatus =
+{
+  params
+  [
+    [ "_villagers",
+      [
+        ["BIS_Artur","artur", 1, 40],
+        ["BIS_Villager", "villager_1", 5, 50],
+        ["Villager_2", "villager_2", 4, 20],
+        ["Villager_3", "villager_3",0, 30],
+        ["villager_4", "villager_4",1, 45]
+      ],[[]]
+    ],
+    ["_fullHealth", 5, [999]]
+  ];
+  /* ["MEDICINE: villagerstatus %1", _villagers] call BIS_fnc_logFormat; */
+  private _text = "";private _additionalInfo = "";
+  private "_villager", "_icon", "_status";
+  {
+      _status = [_x select 2, _x select 3] call BIS_fnc_OM_medicine_convertHealthStatus;
+      _iconSuffix = 1;
+      _icon = (_x select 1) + (if((_status select 1) isEqualTo "") then {""} else { "_" + (_status select 1)});
+      _villager = [_x select 0] call BIS_fnc_OM_medicine_getPersonName;
+      if(isNil "_villager") then {_villager = "Unknown"};
+      _additionalInfo = _status select 0;
+      _text = _text + VILLAGER_PROFILE(_icon);
+      _additionalInfo = "<t font color='#999999' size='40'>      " +_additionalInfo + "</t><br/><t font color='#999999' size='16'>" + _villager + "</t>";
+      /* _text = _text + "<br/>"; */
+      _text = _text + _additionalInfo;
+      /* _text = _text + "<br/>"; */
+      _text = _text + "<br/>";
+  } forEach _villagers;
+  _text
+};
+
+
+BIS_fnc_OM_medicine_generatePoolInfo =
+{
+  params[ ["_pillsInPool",WARN_MILD,[99]], "_villagers" ];
+  /* ["MEDICINE: %1", _villagers] call BIS_fnc_logFormat; */
+  private _remainingTime = [] call BIS_fnc_OM_medicine_getRemainingMedicineTime;
+  private _text = "<t font size='22' color='#d0d5e2'>" +  localize "STR_A3_OM_UITools.sqf11" + "</t><br/><br/>";
+  _text = _text + "<img width='64' image='a3\Missions_F_Oldman\Data\img\PhoneContacts\" + ICON_DOCTOR + "'/>   ";
+  _text = _text + ([_pillsInPool] call BIS_fnc_OM_medicine_generatePillsPool) + "<br/>";
+  _text = _text + "<t font size='14' color='#d0d5e2'>";
+  if( (floor (_remainingTime select 1)) > 0 ) then
+  {
+    _text = _text + format [ localize "STR_A3_OM_UITools.sqf18", floor (_remainingTime select 0), floor(_remainingTime select 1)/*, if((floor (_remainingTime select 1)) > 1) then {"s."} else {"."}*/];
+  }
+  else
+  {
+    _text = _text + format[ localize "STR_A3_OM_UITools.sqf19",1];
+  };
+  _text = _text + "</t><br/><br/>";
+  _text = _text + format["<t font size='14' color='#9cb196'>%1</t>",  localize "STR_A3_OM_UITools.sqf22"] + " ";
+  //_text = _text + format["<t font size='14' color='#9cb196'>%1</t>",  localize "STR_A3_OM_UITools.sqf24"] + " ";
+  _text = _text + format["<t font size='14' color='#d0d5e2'>%1</t>",  localize "STR_A3_OM_UITools.sqf26"] + " ";
+  _text = _text + format["<t font size='14' color='#9cb196'>%1</t><br/><br/>",  localize "STR_A3_OM_UITools.sqf28"];
+  private _villagersInfo = [_villagers] call BIS_fnc_OM_medicine_getVillagersInfo;
+  missionNameSpace setVariable ["villagersInfo", [[] call BIS_fnc_OM_medicine_getCurrentSupply, _villagersInfo]]; // save the actual status - we will compare it with future state to decide when to show notification about the changed state
+  /* ["MEDICINE:2 %1", _villagersInfo] call BIS_fnc_logFormat; */
+  _text = _text + ([_villagersInfo] call BIS_fnc_OM_medicine_generateVillagersStatus);
+  _text
+};
+
+BIS_fnc_OM_medicine_getVillagersInfo =
+{
+  params[ "_villagers" ];
+  private _villagersInfo = [];
+  {
+    private _villagerAge = [_x select 0] call BIS_fnc_OM_medicine_getPersonAge;
+    private _villagerRemainingTime = [_x select 0] call BIS_fnc_OM_medicine_getRemainingTime;
+    _villagersInfo = _villagersInfo + [ [_x select 0, _x select 1, _villagerRemainingTime, _villagerAge, [_villagerRemainingTime, _villagerAge] call BIS_fnc_OM_medicine_convertHealthStatus]];
+  } forEach _villagers;
+  _villagersInfo
+};
+
+BIS_fnc_OM_medicine_villagersStateChanged =
+{
+  params[ "_villagers" ];
+  private _res = false;
+  private _villagersPrev =  (missionNameSpace getVariable "villagersInfo");
+  ["MEDICINE: _villagersPrev %1", _villagersPrev] call BIS_fnc_logFormat;
+  if!(isNil "_villagersPrev") then
+  {
+    if(floor ([] call BIS_fnc_OM_medicine_getCurrentSupply) == floor (_villagersPrev select 0)) then
+    {
+      private _villagersInfo = [_villagers] call BIS_fnc_OM_medicine_getVillagersInfo;
+      {
+        if!(_x select 4 isEqualTo ((_villagersPrev select 1) select _forEachIndex select 4)) exitWith {["MEDICINE: Villagers %1 state changed %2", _x select 0, _x select 4] call BIS_fnc_logFormat; _res = true};
+      } forEach _villagersInfo select 1;
+    }
+    else
+    {
+      /* ["MEDICINE: Medicine decreased %1", floor ([] call BIS_fnc_OM_medicine_getCurrentSupply)] call BIS_fnc_logFormat; */
+      _res = true;
+    };
+  };
+  /* ["MEDICINE: Exiting check state with %1", _res] call BIS_fnc_logFormat; */
+  _res
+};
+
+BIS_fnc_OM_medicine_startShowingInfoInDiary =
+{
+  params
+  [
+      "_taskID",
+      [ "_villagers",
+          [
+            ["BIS_Arthur",  "artur"],
+            ["BIS_Lucas",   "villager_2"],
+            ["BIS_Howard",  "villager_3"],
+            ["BIS_John",    "villager_4"],
+            ["BIS_Renly",   "villager_5"]
+          ],
+          [[]]
+      ]
+  ];
+
+  [_villagers, _taskID] spawn
+  {
+    params["_villagers", "_taskID"];
+    private _info =
+    [
+      [] call BIS_fnc_OM_medicine_getCurrentSupply,
+      _villagers
+    ] call BIS_fnc_OM_medicine_generatePoolInfo;
+    [_taskID, _info, false] call bis_fnc_setDescription;
+
+    while{true} do
+    {
+      if (BIS_OM_Outro) exitWith {};
+      /* ["MEDICINE: Checking State", 0] call BIS_fnc_logFormat; */
+      if( [_villagers] call BIS_fnc_OM_medicine_villagersStateChanged ) then
+      {
+        /* ["MEDICINE: State changed - updating description", 0] call BIS_fnc_logFormat; */
+        _info =
+        [
+          [] call BIS_fnc_OM_medicine_getCurrentSupply,
+          _villagers
+        ] call BIS_fnc_OM_medicine_generatePoolInfo;
+        /* ["MEDICINE: _text: %1", _info] call BIS_fnc_logFormat; */
+        [_taskID, [_info], false] call bis_fnc_setDescription;
+        Sleep 2;
+      };
+      Sleep 10;
+    };
+  };
+};

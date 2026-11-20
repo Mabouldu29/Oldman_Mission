@@ -1,0 +1,125 @@
+#include "\a3\Missions_F_Oldman\Systems\Defines\commonDefines.inc"
+
+//--- remove fuel from gas station
+_fuelStation01 = nearestObjects [player, ["Land_FuelStation_02_pump_F"],50];
+_fuelStation02 = nearestObjects [player, ["Land_FuelStation_01_pump_F"],50];
+{_x setFuelCargo 0} foreach _fuelStation02;
+{_x setFuelCargo 0} foreach _fuelStation01;
+
+//--- calculate price
+_price =  parseNumber ((((1 - fuel (vehicle player))*10)*FUEL_VALUE) toFixed 0);
+player setvariable ["CarFuel",_price];
+_circlePart = -1;
+player setVariable ["HA",_circlePart];
+
+refuelHA = [
+    player,
+    format [ localize "STR_A3_OM_fn_OM_Refuel.sqf0",(player getvariable "CarFuel")], //TODO: Localize
+    "\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\refuel_ca.paa",
+    "\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\refuel_ca.paa",
+    "speed (vehicle player) < 1 && (vehicle player != player) && fuel (vehicle player) < 0.99",
+    "true",
+    {
+    //--- when hold action starts
+    },
+    {
+    //--- tick every frame (out of 24)
+       player setvariable ["HA",-1 + (_this select 4)];
+       //hint format ["%1",fuel (vehicle player) + ((fuel (vehicle player) * (player getVariable "HA"))/24)];
+    },
+    {
+    //--- when holdaction ends
+        //vehicle player setfuel 1;
+        if (([3] call BIS_fnc_OM_ModuleEconomy < (player getvariable 'CarFuel'))) exitwith
+        {
+            playsound "additemfailed";
+            [parseText  localize "STR_A3_OM_fn_OM_Refuel.sqf1", true, nil, 7, 0.7, 0] spawn BIS_fnc_textTiles;
+            player setVariable ["HA",-1];
+            player setvariable ["CarFuel",((1- fuel vehicle player)*10)*FUEL_VALUE];
+        };
+        vehicle player setfuel 1;
+        [ 10, [(player getvariable "CarFuel")]] call BIS_fnc_OM_ModuleEconomy;
+        _null = ["OMMoneyTransfer", [format ["<t color = '#cc3300' size = '1.15'>%1 $</t>", (player getvariable "CarFuel")]]] call BIS_fnc_shownotification;
+        //hint format ["utratil jsi %1", (player getVariable "Carfuel")];
+        //--- reset variables
+        player setVariable ["HA",-1];
+        player setvariable ["CarFuel",((1- fuel vehicle player)*10)*FUEL_VALUE];
+
+        [player,refuelHA] call BIS_fnc_holdActionRemove;
+        if !(isnil "repairHA") then {[player,repairHA] call BIS_fnc_holdActionRemove;};
+        [] spawn BIS_fnc_OM_Refuel;
+    },
+    {
+    //--- when action is terminated
+        _dopln = ((1-fuel vehicle player) * (player getVariable "HA"))/24;
+        //hint format ["%1 * %2 /24 = %3", (1-(fuel (vehicle player))), player getVariable "HA",_dopln];
+        if ([3] call BIS_fnc_OM_ModuleEconomy < (_dopln*10)*FUEL_VALUE) exitwith
+        {
+            playsound "additemfailed";
+            [parseText  localize "STR_A3_OM_fn_OM_Refuel.sqf3", true, nil, 7, 0.7, 0] spawn BIS_fnc_textTiles;
+        };
+        vehicle player setfuel ((fuel vehicle player) + _dopln);
+        _adjustedPrice = parseNumber (((_dopln*10)* FUEL_VALUE) toFixed 0);
+        [ 10, [ _adjustedPrice]] call BIS_fnc_OM_ModuleEconomy;
+        if (_adjustedPrice != 0) then
+        {
+            _null = ["OMMoneyTransfer", [format ["<t color = '#cc3300' size = '1.15'>-%1 $</t>",_adjustedPrice]]] call BIS_fnc_shownotification;
+        };
+
+        //--- reset variables
+        player setVariable ["HA",-1];
+        player setvariable ["CarFuel",((1- fuel vehicle player)*10)*FUEL_VALUE];
+
+        [player,refuelHA] call BIS_fnc_holdActionRemove;
+        if !(isnil "repairHA") then {[player,repairHA] call BIS_fnc_holdActionRemove;};
+        [] spawn BIS_fnc_OM_Refuel;
+    },
+    [],
+    6,
+    99,
+    false,
+    true
+] call BIS_fnc_holdActionAdd;
+
+repairHA = [
+    player,
+    format [ localize "str_a3_om_gasstation_repair",REPAIR_VALUE], //format [ localize "STR_A3_OM_fn_OM_Refuel.sqf0",(player getvariable "CarFuel")], //TODO: Localize
+    "\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\repair_ca.paa",
+    "\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\repair_ca.paa",
+    "speed (vehicle player) < 1 && (vehicle player != player) && damage (vehicle player) > 0.05",
+    format ["[3] call BIS_fnc_OM_ModuleEconomy >= %1",REPAIR_VALUE],
+    {
+        //--- when hold action starts
+    },
+    {
+        //--- tick every frame (out of 24)
+    },
+    {
+        //--- when holdaction ends
+        if (([3] call BIS_fnc_OM_ModuleEconomy < REPAIR_VALUE)) exitwith
+        {
+            playsound "additemfailed";
+            [parseText  localize "STR_A3_OM_fn_OM_Refuel.sqf1", true, nil, 7, 0.7, 0] spawn BIS_fnc_textTiles;
+        };
+        vehicle player setdamage 0;
+        [ 10, [REPAIR_VALUE]] call BIS_fnc_OM_ModuleEconomy;
+        _null = ["OMMoneyTransfer", [format ["<t color = '#cc3300' size = '1.15'> -%1 $</t>", REPAIR_VALUE]]] call BIS_fnc_shownotification;
+
+        [player,repairHA] call BIS_fnc_holdActionRemove;
+        if !(isnil "refuelHA") then {[player,refuelHA] call BIS_fnc_holdActionRemove;};
+        [] spawn BIS_fnc_OM_Refuel;
+    },
+    {
+        //--- when action is terminated
+    },
+    [],
+    6,
+    99,
+    false,
+    true
+] call BIS_fnc_holdActionAdd;
+
+
+waitUntil {!(player getVariable ["CanRefuel",false])};
+[ player,refuelHA] call BIS_fnc_holdActionRemove;
+[ player,repairHA] call BIS_fnc_holdActionRemove;

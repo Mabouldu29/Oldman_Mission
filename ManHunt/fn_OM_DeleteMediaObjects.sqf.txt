@@ -1,0 +1,32 @@
+//Deletes already created media objects taking the probablity into consideration (doesn't need to delete all of them if not needed)
+
+params [ ["_logic", player,[objNull]], ["_objectsArray", [], [[]]], ["_actualProbability", 1, [999]], ["_probability", 0, [999]] ] ;
+private _indexesOfDeletedObjects = [];
+/* (str _this) call BIS_fnc_log; */
+//(str _objectsArray) call BIS_fnc_log;
+
+private [ "_objectName", "_objectClass", "_objectOffset", "_objectDirCos" ];
+
+/* ["_actualProbability %1 | _probability %2", _actualProbability, _probability] call BIS_fnc_logFormat; */
+if( _probability > 0	) then
+{
+
+	/* ["probability decreased - deleting with probability of %1", _probability] call BIS_fnc_logFormat; */
+	{
+		_rand = random(1);
+		/* ["rand: %1 | _probability: %2", _rand, _probability] call BIS_fnc_logFormat; */
+		if( _rand <= _probability ) then
+		{
+	    _objectName = _x select 0;
+	    //_objectClass =  // Todo: in case we need to differentiate the media objects
+	    deleteVehicle  _objectName;
+			_indexesOfDeletedObjects pushBack _forEachIndex;
+			/* "Deleting" call BIS_fnc_log; */
+			//(str _indexesOfDeletedObjects) call BIS_fnc_log;
+		};
+	} forEach _objectsArray;
+
+	_objectsArray = [_objectsArray, _indexesOfDeletedObjects] call BIS_fnc_removeIndex;
+	/* ["mediaObjects: %1", _objectsArray] call BIS_fnc_logFormat; */
+};
+_objectsArray

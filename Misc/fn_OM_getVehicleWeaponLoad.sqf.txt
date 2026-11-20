@@ -1,0 +1,23 @@
+params ["_veh"];
+
+_pistolThreat = 0.1;
+_rifleThreat = 0.5;
+_launcherThreat = 1.5;
+
+_vehSize = sizeOf typeOf _veh;
+_wpns = +(weaponCargo _veh);
+
+_wpnsCfg = configFile >> "CfgWeapons";
+_magCfg = configFile >> "CfgMagazines";
+
+_pistolsCnt = count (_wpns select {_x isKindOf ["Pistol", _wpnsCfg]});
+_riflesCnt = count (_wpns select {_x isKindOf ["Rifle", _wpnsCfg]});
+_launchersCnt = count (_wpns select {_x isKindOf ["Launcher", _wpnsCfg]});
+
+_magsThreat = 0;
+{
+	_mass = getNumber (_magCfg >> _x >> "mass");
+	_magsThreat = _magsThreat + (_mass * (if (_mass <= 30) then {0.0075} else {0.0125}));
+} forEach magazineCargo _veh;
+
+(((_pistolsCnt * _pistolThreat) + (_riflesCnt * _rifleThreat) + (_launchersCnt * _launcherThreat) + _magsThreat) / _vehSize) min 1

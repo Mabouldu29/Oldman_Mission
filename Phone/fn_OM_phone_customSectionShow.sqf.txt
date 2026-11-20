@@ -1,0 +1,165 @@
+/*
+	Author: Karel Moricky, modified by ZoZo
+
+	Description:
+		Shows custom section in the diary
+
+	Parameter(s):
+		0: CONTROl - custom controls group
+		1: ARRAY - data to show in format ["contact","name","textToShow",date,true, [id, , code, closemap, removeafterCallIsDone]]
+
+	Returns:
+		ARRAY - list of created controls
+*/
+#include "common_definitions.inc"
+#define FORMAT_TITLE_NO_DATE			"%1 <t font='RobotoCondensedBold' color='#afb491' shadow='0'>%2</t>" //--- %1 = from/to, %2 = name
+#define FORMAT_TITLE							"%1 <t font='RobotoCondensedBold' color='#afb491' shadow='0'>%2</t><t align='right' color='#afb491' shadow='0'>%3, %4</t>" //--- %1 = from/to, %2 = name, %3 = date, %4 = time
+#define FORMAT_MESSAGE						"<t font='RobotoCondensed' align='left' size='0.75' shadow='0'> %1 </t>" //--- %1 = message
+#define FORMAT_MESSAGE_URL				"<a href='%1'>%2</a>"
+
+params ["_ctrlGroup", ["_messages", missionnamespace getvariable ["BIS_OM_messagesPool",[]], [[]] ] ];
+private _display = ctrlParent _ctrlGroup;
+private _controls = [];
+private _marginCoef = 0.02;
+private _paddingCoef = 0.1;
+private _posYMessage = _marginCoef;
+private _posW = ctrlposition _ctrlGroup # 2;
+private _posWMessage = _posW * 0.75;
+private _posHMessage = 0.2;
+
+//--- Process date format
+private _dateFormat = localize "str_date_format_short";
+{
+	private _id = _dateFormat find _x;
+	if (_id >= 0) then {_dateFormat = (_dateFormat select [0,_id]) + str (_foreachindex + 1) + (_dateFormat select [_id + 1])};
+} foreach ["a","b","c","d","e"];
+
+//--- Process time format
+private _timeFormat = localize "str_time_format";
+{
+	private _id = _timeFormat find _x;
+	if (_id >= 0) then {_timeFormat = (_timeFormat select [0,_id]) + str (_foreachindex + 1) + (_timeFormat select [_id + 1])};
+} foreach ["H","M"];
+
+//--- Iterate through messages (in reverse order, to place the newest ones on top)
+for "_i" from (count _messages - 1) to 0 step -1 do {
+	(_messages # _i) params ["_contact","_name","_text","_date",["_from",true,[true]],"_codeParams"];
+	_from = !_from;
+
+	//--- Controls group
+	private _ctrlMessageGroup = _display ctrlcreate ["RscControlsGroupNoScrollbars",-1,_ctrlGroup];
+	_ctrlMessageGroup ctrlsetposition [
+		[_posW * _marginCoef,_posW - _posWMessage - _marginCoef] select _from,
+		_posYMessage,
+		_posWMessage,
+		_posHMessage
+	];
+	_ctrlMessageGroup ctrlcommit 0;
+
+	//--- Background
+	private _ctrlMessageBackground = _display ctrlcreate ["RscText",-1,_ctrlMessageGroup];
+	_ctrlMessageBackground ctrlsetbackgroundcolor [COLOR_BACKGROUND];
+	_ctrlMessageBackground ctrlsetposition [0,0,_posWMessage,_posHMessage];
+	_ctrlMessageBackground ctrlcommit 0;
+
+	//--- Picture
+	private _posPictureH = _posHMessage * (1 - 2 * _paddingCoef);
+	private _posPictureW = _posPictureH * 3/4;
+	private _ctrlMessagePicture = _display ctrlcreate ["RscPicture",-1,_ctrlMessageGroup];
+	private "_img";
+	if(_from) then
+	{
+		_img = (getText (missionConfigFile >> "CfgOMPhoneContacts" >> "Oldman" >> "img"));
+	}
+	else
+	{
+		_img = (getText (missionConfigFile >> "CfgOMPhoneContacts" >> _contact >> "img"));
+	};
+
+	_ctrlMessagePicture ctrlsettext _img;
+	_ctrlMessagePicture ctrlsetposition [
+		[
+			_posHMessage * _paddingCoef * 3/4,
+			_posWMessage - _posPictureW - _posHMessage * _paddingCoef * 3/4
+		] select _from,
+		_paddingCoef * _posHMessage,
+		_posPictureW,
+		_posPictureH
+	];
+	_ctrlMessagePicture ctrlcommit 0;
+
+
+	//---Call Icon
+	if(!isNil "_codeParams") then
+	{
+		private _ctrlIconCall = _display ctrlcreate ["RscButtonCall",-1,_ctrlMessageGroup];
+		private _posIconCallH = _posPictureH*1;
+		private _posIconCallW = _posPictureW*1;
+		_ctrlIconCall ctrlsetposition
+		[
+			_posHMessage * _paddingCoef * 3/4,
+			_paddingCoef * _posHMessage,
+			_posIconCallW,
+			_posIconCallH
+		];
+		/* _ctrlIconCall ctrlSetText "\a3\Missions_F_Oldman\Data\img\PhoneCore\call.pac"; */
+		_ctrlIconCall ctrlCommit 0;
+		_ctrlIconCall setVariable ["BIS_OM_ID", 			_codeParams select 0];
+		_ctrlIconCall setVariable ["BIS_OM_code", 		_codeParams select 2];
+		_ctrlIconCall setVariable ["BIS_OM_closeMap",	_codeParams select 3];
+		_ctrlIconCall setVariable ["BIS_OM_remove", 	_codeParams select 4];
+	};
+
+	//--- Title
+	private _ctrllMessageTitle = _display ctrlcreate ["RscStructuredText",-1,_ctrlMessageGroup];
+	_ctrllMessageTitle ctrlsetstructuredtext parsetext format [
+		if(!isNil "_date") then {FORMAT_TITLE} else {FORMAT_TITLE_NO_DATE},
+		"",
+		[toupper _name, localize "STR_A3_phone_me"] select _from,		//TODO: localize
+		format [
+			_dateFormat,
+			"", //--- Day of the week, not used
+			localize (["str_january","str_february","str_march","str_april","str_may","str_june","str_july","str_august","str_september","str_october","str_november","str_december"] # ((_date # 1)-1) ),
+			"",
+			_date # 2
+		],
+		format [_timeFormat,_date # 3,_date # 4]
+	];
+	_ctrllMessageTitle ctrlsetposition [
+		[
+			_posPictureW + _posPictureW * _paddingCoef * 2,
+			_paddingCoef * _posHMessage * 3/4
+		] select _from,
+		_paddingCoef * _posHMessage,
+		_posWMessage - _posPictureW - _posPictureW * _paddingCoef * 3,
+		0.05
+	];
+	_ctrllMessageTitle ctrlsettextcolor [COLOR_TITLE];
+	_ctrllMessageTitle ctrlcommit 0;
+
+	//--- Message
+	private _ctrlMessageText = _display ctrlcreate ["RscStructuredText",-1,_ctrlMessageGroup];
+	_ctrlMessageText ctrlsetposition [
+		ctrlposition _ctrllMessageTitle # 0,
+		(ctrlposition _ctrllMessageTitle # 1) + (ctrlposition _ctrllMessageTitle # 3),
+		ctrlposition _ctrllMessageTitle # 2,
+		0.05
+	];
+	_ctrlMessageText ctrlcommit 0;
+	_ctrlMessageText ctrlsetstructuredtext parsetext format [FORMAT_MESSAGE,_text];
+	/* _ctrlMessageText ctrlsetstructuredtext parsetext format [FORMAT_MESSAGE_URL,_text, if(!isNil "_codeParams") then {_codeParams select 1} else {""}]; */
+	_ctrlMessageText ctrlsetpositionH (ctrltextheight _ctrlMessageText);
+	_ctrlMessageText ctrlcommit 0;
+
+	_ctrlMessageGroup ctrlsetpositionH (((ctrlposition _ctrlMessageText # 1) + (ctrlposition _ctrlMessageText # 3) + _posHMessage * _paddingCoef) max _posHMessage);
+	_ctrlMessageGroup ctrlcommit 0;
+
+	_ctrlMessageBackground ctrlsetpositionH (ctrlposition _ctrlMessageGroup # 3);
+	_ctrlMessageBackground ctrlcommit 0;
+
+	_posYMessage = _posYMessage + (ctrlposition _ctrlMessageGroup # 3)/*_posHMessage*/ + _marginCoef;
+
+	_controls append [_ctrlMessageGroup,_ctrlMessageBackground,_ctrlMessagePicture,_ctrllMessageTitle,_ctrlMessageText];
+};
+
+_controls

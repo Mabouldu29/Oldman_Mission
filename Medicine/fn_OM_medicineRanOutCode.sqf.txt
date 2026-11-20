@@ -1,0 +1,4 @@
+BIS_SQcfsm setFSMVariable ["_medicineRanOut",true];
+bis_fnc_missionFlow_fsm setFSMVariable ["_runFeedback",true];
+
+/* hint "dosli leky"; */

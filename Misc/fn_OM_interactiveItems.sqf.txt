@@ -1,0 +1,25 @@
+player addEventHandler
+[
+	"Take",
+	{
+		params ["_unit", "_container", "_item"];
+		private _moneyValue = 0;
+			switch (_item) do {
+			case "Money_bunch": {_moneyValue = 30 + (round (random 20))};
+			case "Money_roll": {_moneyValue = 150 + (round (random 100))};
+			case "Money_stack": {_moneyValue = 300 + (round (random 200))};
+			case "Money": {_moneyValue = 600 + (round (random 400))};
+			default {};
+		};
+
+		if (_moneyValue != 0) then {
+			[1,[_moneyValue]] call BIS_fnc_OM_ModuleEconomy;
+			//[parseText format ["<t font='PuristaBold' size='1' color='#FFA500'> +%1 $</t>",_moneyValue], true, nil, 7, 1, 0] spawn BIS_fnc_textTiles;
+			player removeitem _item;
+			_null = ["OMMoneyTransfer",[parseText format ["<t font='PuristaBold' size='1' color='#ffa500'> +%1 $</t>",_moneyValue]]] call BIS_fnc_shownotification;
+			//_moneyTitle = "<t color='#FFFFFF'  font = 'PuristaMedium' size='1' shadow='2' shadowColor='#000000' align='center'>Your money</t>";
+			//_moneyNumber  = format ["<t color='#FFA500'  font = 'PuristaMedium' size='1' shadow='2' shadowColor='#000000' align='center'><br/>%1 $</t>",([3] call BIS_fnc_OM_ModuleEconomy)];
+			//hintSilent parsetext (_moneyTitle+ _moneyNumber);
+		};
+	}
+];

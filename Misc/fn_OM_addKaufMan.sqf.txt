@@ -1,0 +1,141 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#define LOC_PREFIX 								"STR_A3_"
+
+//These items cannot be added in editor
+#define ECONOMY_EXTRA_ITEMS_TO_ADD_TO_SHOP ["Sleeping_bag_folded_01", "DroneDetector", "Antimalaricum"]
+
+params ["_kaufMan", "_box"];
+
+//Adjust the kaufman's inventory by the probabilities defined in prices_definitions.inc
+private _content = ItemCargo _box + MagazineCargo _box + WeaponCargo _box;
+
+{
+	private _extraItemToAdd = _x;
+	if
+	(
+		({_x == _extraItemToAdd} count ItemCargo _box == 0) &&
+		({_x == _extraItemToAdd} count MagazineCargo _box == 0) &&
+		({_x == _extraItemToAdd} count WeaponCargo _box == 0)
+	) then
+	{
+		 _content = _content + ([_extraItemToAdd] call BIS_fnc_OM_randomArrayOfItems);
+	};
+} forEach ECONOMY_EXTRA_ITEMS_TO_ADD_TO_SHOP;
+BIS_dbgContent = _content;
+clearWeaponCargo _box; clearMagazineCargo _box; clearItemCargo _box;
+//this must be done in spawn since we need to have pauses between the calls
+[_box, _content] spawn
+{
+	params["_box", "_content"];
+	{
+	  private _prob = [_x] call BIS_fnc_OM_ModuleEconomy_getEquipmentProbabilityFromList;
+	  if(_prob > 0) then
+	  {
+	    if(random 1 < _prob) then { _box addItemCargo [_x, 1] };
+	  };
+		Sleep 0.001;
+	  /* ["MARKET: part items: %1 | pocet: %2 ks", _class, _pieces]  call BIS_fnc_LogFormat; */
+	} forEach _content;
+};
+
+while {!isnull (_kaufMan)} do
+{
+    waituntil {sleep 0.5; player distance _kaufMan < 5 && vehicle player == player};
+    missionnamespace setvariable ["Cargo",_box];
+    _dubber = selectrandom ["VINCENT","AHMEED"];
+    _kaufman setvariable ["BIS_MerchantDubber",_dubber]; // getvariable ["BIS_MerchantDubber","VINCENT"];
+   // _kaufMan addGoggles "G_Aviator";
+    //--- talks when player near by
+    _randomTalk = selectrandom [1,2,3,4];
+    _subtitles = "";
+    switch (_randomTalk) do
+    {
+        case 1:
+        {
+            if (_dubber == "VINCENT") then
+            {
+                _randomTalk = "Civilian_MarketInvite_Merchant_A_01_Vincent";
+                _subtitles = localize "STR_A3_OM_Civilian_MarketInvite_Merchant_A_01";
+            } else {
+                _randomTalk = "Civilian_MarketInvite_Merchant_A_Ahmeed_01";
+                _subtitles = localize "STR_A3_OM_Civilian_MarketInvite_Merchant_A_01";
+            };
+        };
+        case 2:
+        {
+            if (_dubber == "VINCENT") then
+            {
+                _randomTalk = "Civilian_MarketInvite_Merchant_A_02_Vincent";
+                _subtitles = localize "STR_A3_OM_Civilian_MarketInvite_Merchant_A_02";
+            } else {
+                _randomTalk = "Civilian_MarketInvite_Merchant_A_Ahmeed_02";
+                _subtitles = localize "STR_A3_OM_Civilian_MarketInvite_Merchant_A_02";
+            };
+        };
+        case 3:
+        {
+            if (_dubber == "VINCENT") then
+            {
+                _randomTalk = "Civilian_MarketInvite_Merchant_A_04_Vincent";
+                _subtitles = localize "STR_A3_OM_Civilian_MarketInvite_Merchant_B_01";
+            } else {
+                _randomTalk = "Civilian_MarketInvite_Merchant_B_Ahmeed_01";
+                _subtitles = localize "STR_A3_OM_Civilian_MarketInvite_Merchant_B_01";
+            };
+        };
+        case 4:
+        {
+            if (_dubber == "VINCENT") then
+            {
+                _randomTalk = "Civilian_MarketInvite_Merchant_B_01_Vincent";
+                _subtitles = localize "STR_A3_OM_Civilian_MarketInvite_Merchant_B_02";
+            } else {
+                _randomTalk = "Civilian_MarketInvite_Merchant_B_Ahmeed_02";
+                _subtitles = localize "STR_A3_OM_Civilian_MarketInvite_Merchant_B_02";
+            };
+        };
+    };
+
+    if(isNil "BIS_infoSyndikat_market") then { BIS_infoSyndikat_market = player createDiaryRecord ["SyndikatInfo", ["Markets", [] call BIS_fnc_generateSyndikatsInfoText_market], taskNull, "", false] };
+    //--- play correct sound and subtitle
+    if (alive _kaufMan && behaviour _kaufMan != "COMBAT") then
+    {
+        _kaufMan say3D [_randomTalk,20,1,true];
+        [localize "str_a3_character_merchant",_subtitles] spawn BIS_fnc_showSubtitle; //TODO: Localize
+    };
+
+    _nameHoldAction = "";
+    if ((_kaufMan getVariable "BIS_Market") select [0,7] != LOC_PREFIX ) then {_nameHoldAction = _kaufMan getVariable "BIS_Market"} else {_nameHoldAction = localize (_kaufMan getVariable "BIS_Market")};
+    
+    _KaufHA =
+    [
+        _kaufMan,
+        format [ localize "STR_A3_OM_fn_OM_addKaufMan.sqf0" , _nameHoldAction], // TODO: Localize;
+        "\a3\Ui_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa",
+        "\a3\Ui_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa",
+        "alive _target && player distance _target < 3 && !(player getvariable ['BIS_IsShopping',false]) && behaviour _target != 'COMBAT'",
+        "player distance _target <3",
+        {
+            //--- when hold action starts
+        },
+        {
+            //--- tick every frame (out of 24)
+        },
+        {
+            //--- when holdaction ends
+            (missionnamespace getVariable "cargo") attachto [player,[0,0,0]];//BIS_AmmoStoreCargo
+            [_this#0] spawn BIS_fnc_OM_openMarketInventory;
+            player setVariable ["BIS_IsShopping",true];
+        },
+        {
+            //--- when action is terminated
+        },
+        [],
+        0.5,
+        nil,
+        false,
+        false
+    ] call BIS_fnc_holdActionAdd;
+    waituntil {sleep 3; player distance _kaufMan > 10};
+    [ _kaufMan,_KaufHA] call BIS_fnc_holdActionRemove;
+};

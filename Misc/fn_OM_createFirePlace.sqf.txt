@@ -1,0 +1,37 @@
+if (true) then
+{
+	// was it longer than some time
+	if (BIS_TimeToSkipWhileSleeping < 2) exitwith
+	{
+		if ( !(player getVariable ["BIS_playerSavingUsingBag", false]) ) exitWith { false };
+	};
+
+	// is terrain good enough for that?
+	if (count (position player nearObjects ["House", 10]) > 0) exitwith {};
+	if (count (nearestTerrainObjects [player, ["Tree","Bush","Rock"], 5]) > 0) exitwith {};
+	if (isonroad player || surfaceIsWater position player || surfaceType position player == "#GdtAsphalt") exitwith {};
+	if (count (allMissionObjects "Land_sofa_01_f" select {_x distance player < 50}) > 0) exitwith {};
+
+	// player in vehicle
+	if (vehicle player != player) exitwith {};
+
+	// spawn fire, sleeping mat and few props
+	_grad = [getPos player, getDir player] call BIS_fnc_terrainGradAngle;
+	_Wildfire = "Fireplace_burning_F" createVehicle position player;
+	_Wildfire hideobject true;
+	_WildBottle = selectrandom ["Land_Canteen_F","Land_BottlePlastic_V2_F"] createVehicle position player;
+	_WildFood = selectrandom ["Land_BakedBeans_F","Land_Orange_01_F","Land_TacticalBacon_F","Land_PowderedMilk_F"] createVehicle position player;
+	_wildPos = (player getrelpos [2, 0]);
+	_Wildfire setpos _wildPos;
+	if (_grad > abs 6 || !BIS_night) then {Deletevehicle _Wildfire} else {_WildFire hideobject false};
+	_Wildcutter = "Land_ClutterCutter_small_F" createVehicle position _Wildfire;
+	_WildBottle setpos (player getrelpos [1.5, 20]);
+	_WildFood setpos (player getrelpos [1.4, 10]);
+
+	[_wildPos,_Wildfire,_WildBottle,_WildFood,_Wildcutter] spawn
+	{
+		params ["_wildPos","_Wildfire","_WildBottle","_WildFood","_Wildcutter"];
+		waituntil {sleep 1; player distance _wildPos > 200 ||  player getvariable "BIS_ScreenIsBlack"};
+		{deleteVehicle _x} foreach [_Wildfire,_WildBottle,_WildFood,_Wildcutter];
+	};
+};

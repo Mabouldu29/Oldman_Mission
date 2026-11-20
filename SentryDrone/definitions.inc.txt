@@ -1,0 +1,69 @@
+#ifndef DEFINITIONS_INC
+#define DEFINITIONS_INC 1
+
+#define MINE_TYPE "Claymore_F"
+#define WORST_ACCURACY 100
+#define ACTION_RADIUS 500
+#define DRONE_CHECK_RADIUS 350
+#define DRONE_STATE_IDLE 0
+#define DRONE_STATE_HUNTING 1
+
+//WPM - WAYPOINT MANAGEMENT
+#define STATE_WPM_IDLE          0
+#define STATE_WPM_LOOP_INIT     1
+#define STATE_WPM_LOOP          2
+#define STATE_WPM_ADD_WP        3
+#define STATE_WPM_REMOVE_WP     4
+#define STATE_WPM_RETURNING     5
+#define STATE_WPM_EXPLODED      6
+
+//WPM - TRAVEL MANAGEMENT - SPEED / ALT
+#define STATE_TRAVEL_IDLE          0
+#define STATE_TRAVEL_FASTTRAVEL    1
+#define STATE_TRAVEL_FOLLOWING     2
+#define STATE_TRAVEL_RETURNING     3
+#define STATE_TRAVEL_EXPLODED      4
+
+#define UPDATE_TIME 						    0.1
+#define UPDATE_DOMOVE_TIME			    2/UPDATE_TIME
+#define UPDATE_SCAN_TIME            1/(2*UPDATE_TIME)
+
+#define NROFWAYPOINTS 12
+#define DELTA_S 3
+#define DRONE_APPROACHING_RADIUS 10
+#define WP_COMPLETION_RADIUS 1
+
+#define STATES_TEXT_FSM1 ["Idle", "Loop Init", "Loop", "Add Waypoint", "Remove Waypoint", "Returning", "Exploded"]
+#define STATES_TEXT_FSM2 ["Idle", "Fast Travel", "Following", "Returning", "Exploded"]
+
+#define SET_STATE_FSM1(UNIT, STATE) UNIT setVariable ["BIS_dronePREVState_fsm1", GET_STATE_FSM1(UNIT)]; UNIT setVariable ["BIS_droneState_fsm1", STATE]
+#define GET_STATE_FSM1(UNIT) UNIT getVariable ["BIS_droneState_fsm1", 999999]
+#define GET_PREVSTATE_FSM1(UNIT) UNIT getVariable ["BIS_dronePREVState_fsm1", 999999]
+#define GET_STATE_NAME_FSM1(INDEX) STATES_TEXT_FSM1 select INDEX
+
+#define SET_STATE_FSM2(UNIT, STATE) UNIT setVariable ["BIS_dronePREVState_fsm2", GET_STATE_FSM2(UNIT)]; UNIT setVariable ["BIS_droneState_fsm2", STATE]
+#define GET_STATE_FSM2(UNIT) UNIT getVariable ["BIS_droneState_fsm2", 999999]
+#define GET_PREVSTATE_FSM2(UNIT) UNIT getVariable ["BIS_dronePREVState_fsm2", 999999]
+#define GET_STATE_NAME_FSM2(INDEX) STATES_TEXT_FSM2 select INDEX
+
+#define DRONE_STANDARD_SPEED    10
+#define DRONE_FASTTRAVEL_SPEED  20
+#define DRONE_FOLLOWING_SPEED    5
+#define DRONE_DISTANCE_TO_ACTIVATE_MINE 9
+#define DRONE_CHECK_RELATIONSHIP BIS_relEast getVariable "aggroMode"
+/* #define DRONE_CHECK_RELATIONSHIP side _target getFriend side _drone < 0.7 */
+
+#define IS_QUEUE_FULL(UNIT) if(count waypoints group UNIT >= NROFWAYPOINTS) then {true} else {false}
+#define IS_QUEUE_EMPTY(UNIT) if(count waypoints group UNIT == 0) then {true} else {false}
+#define QUEUE_DELETE_WP(UNIT) deleteWaypoint [group UNIT, 0]
+#define QUEUE_DELETE_COMPLETED_WP(UNIT) [UNIT] spawn {params ['UNIT'];private _currentWPIndex =+ currentWaypoint group UNIT; for "_jLoop" from 0 to _currentWPIndex do { deleteWaypoint [group UNIT, 0]} };
+/* #define QUEUE_DELETE_ALLWP(UNIT) for "_iLoop" from 0 to ((count waypoints group UNIT)-1) do { [group UNIT,0] setWaypointPosition [position UNIT, 0]; deleteWaypoint [group UNIT,0] }; */
+#define QUEUE_ADD_WP(UNIT, TARGET)  if!([TARGET] call BIS_fnc_OM_ModuleSentryDrone_IsInsideBuilding) then {_wpp = group UNIT addWaypoint [position TARGET, 0]; _wpp setWaypointPosition [position TARGET, -1]; _wpp setWaypointCompletionRadius WP_COMPLETION_RADIUS; \
+_wpp setWaypointStatements ["true", "vehicle (thislist select 0) setVariable ['BIS_droneState_fsm1',4];"]}
+
+//hack hack hack
+// TODO: make it working without hacks
+#define DRONE_DISARM_MINE(UNIT) private _mine = UNIT getVariable "BIS_droneMine"; if( !isNil {UNIT getVariable "BIS_droneMine"} ) then {detach _mine; deleteVehicle _mine; UNIT setVariable ["BIS_droneMine", nil]; }
+#define DRONE_ARM_MINE(UNIT) private _mine = UNIT getVariable "BIS_droneMine"; if( isNil {UNIT getVariable "BIS_droneMine"} ) then {private _mine = createmine ["Drone_explosive", position UNIT,[], 0]; _mine attachTo [UNIT, [0,0,0], ""]; UNIT setVariable ["BIS_droneMine", _mine];}
+
+#endif

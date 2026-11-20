@@ -1,0 +1,148 @@
+#include "defines.inc"
+#ifdef PLUGIN_DISPLAY_STAT
+    #include "UITools.sqf"
+#endif
+
+// --- [var name, display name, age, code to be executed near death, code to be executed upon death (both use params [var name, display name])
+
+// --- system variables
+
+BIS_OM_medicineStartTime = time;
+BIS_OM_timeSkippedTotal = 0;
+BIS_OM_medicineLeft = INITIAL_AMOUNT;
+BIS_OM_infectedGroupWorkingArr = [];
+BIS_OM_allInfectedDead = FALSE;
+BIS_OM_doctorKilled = FALSE;
+BIS_OM_Outro = FALSE;
+
+// --- handle action to give medicine
+
+(_this # 0) spawn {
+	while {!(BIS_OM_allInfectedDead || BIS_OM_doctorKilled)} do {
+		waitUntil {sleep 2; !isNull (missionNamespace getVariable [_this, objNull])};
+		_doctor = missionNamespace getVariable [_this, objNull];
+		_doctor addEventHandler ["Killed", {BIS_OM_doctorKilled = TRUE}];
+		waitUntil {sleep 2; isNull (missionNamespace getVariable [_this, objNull]) || BIS_OM_doctorKilled};
+	};
+};
+
+// --- functions
+
+BIS_fnc_OM_medicine_getElapsedTime = {
+	time + BIS_OM_timeSkippedTotal - BIS_OM_medicineStartTime
+};
+
+BIS_fnc_OM_medicine_addInfected = {
+	_this = +_this;
+	_this append [-1, linearConversion [SURVIVAL_MIN_AGE, SURVIVAL_MAX_AGE, _this # 2, SURVIVAL_MIN_AGE_TIME, SURVIVAL_MAX_AGE_TIME], count BIS_OM_infectedGroupWorkingArr];
+	BIS_OM_infectedGroupWorkingArr pushBack _this;
+};
+
+BIS_fnc_OM_medicine_getCurrentSupply = {
+	BIS_OM_medicineLeft
+};
+
+BIS_fnc_OM_medicine_getRemainingTime = {
+	params ["_person"];
+	_ret = -2;
+	if (count BIS_OM_infectedGroupWorkingArr == 0) exitWith {_ret};
+	private _arrID = BIS_OM_infectedGroupWorkingArr findIf {(_x # 0) == _person};
+	if (_arrID == -1) exitWith {_ret};
+	(BIS_OM_infectedGroupWorkingArr # _arrID) # 5
+};
+
+BIS_fnc_OM_medicine_getPersonAge =
+{
+	params [["_person", "", [""]]];
+	_ret = -2;
+	if (count BIS_OM_infectedGroupWorkingArr == 0) exitWith {_ret};
+	private _arrID = BIS_OM_infectedGroupWorkingArr findIf {(_x # 0) == _person};
+  if (_arrID == -1) then {_ret} else {(BIS_OM_infectedGroupWorkingArr # _arrID) # 2};
+};
+
+BIS_fnc_OM_medicine_getPersonName =
+{
+	params [ ["_person", "", [""]] ];
+	_ret = "n/a";
+	if (count BIS_OM_infectedGroupWorkingArr == 0) exitWith {_ret};
+	private _arrID = BIS_OM_infectedGroupWorkingArr findIf {(_x # 0) == _person};
+  if (_arrID == -1) then {"Unknown"} else { (BIS_OM_infectedGroupWorkingArr # _arrID) # 1 };
+};
+
+BIS_fnc_OM_medicine_getRemainingMedicineTime =
+{
+  //returns estimated rane #1 = in case the time is not accelerated | #2 in case the time is accelerated
+  private _remainingTime = ([] call BIS_fnc_OM_medicine_getCurrentSupply) / ((count (BIS_OM_infectedGroupWorkingArr select {!((_x # 5) in [0, -3])})) * HOURLY_DOSE);
+  [ _remainingTime, _remainingTime / REST_MULTIPLIER ]
+};
+
+// --- loop to check for skipped time (player resting)
+
+[] spawn {
+	_skipCheckLimit = 5 / 3600;
+	while {!(BIS_OM_allInfectedDead || BIS_OM_doctorKilled)} do {
+		_daytime = daytime;
+		waitUntil {sleep 1; if (daytime > (_daytime + _skipCheckLimit) || daytime < _daytime) then {TRUE} else {_daytime = daytime; FALSE}};
+		_skipped = daytime - _daytime;
+		if (_skipped < 0) then {_skipped = 24 - _daytime + daytime};
+		_skipped = _skipped * 3600;
+		BIS_OM_timeSkippedTotal = BIS_OM_timeSkippedTotal + _skipped;
+	};
+};
+
+// --- main system loop
+
+[] spawn {
+	while {!(BIS_OM_allInfectedDead || BIS_OM_doctorKilled || BIS_OM_Outro)} do {
+		_medicineOld = BIS_OM_medicineLeft;
+		if (count BIS_OM_infectedGroupWorkingArr > 0) then {
+			_t = (call BIS_fnc_OM_medicine_getElapsedTime);
+			_tSkipped = BIS_OM_timeSkippedTotal;
+			waitUntil {sleep 1; (call BIS_fnc_OM_medicine_getElapsedTime) > (_t + 30) || BIS_OM_medicineLeft > _medicineOld};
+			if (BIS_OM_allInfectedDead || BIS_OM_doctorKilled || BIS_OM_Outro) exitWith {};
+			_timeDiffRest = BIS_OM_timeSkippedTotal - _tSkipped;
+			_timeDiffNormal = (call BIS_fnc_OM_medicine_getElapsedTime) - _t - _timeDiffRest;
+			_infectedAlive = BIS_OM_infectedGroupWorkingArr select {!((_x # 5) in [0, -3])};
+			_infectedAliveCnt = count _infectedAlive;
+			_medicineSpent = (((_timeDiffNormal + (_timeDiffRest * REST_MULTIPLIER)) * _infectedAliveCnt) / 3600) * HOURLY_DOSE;
+			_noMedicineLeft = BIS_OM_medicineLeft == 0;
+			{
+				_person = missionNamespace getVariable [_x # 0, objNull];
+				if (!isNull _person && !alive _person) then {
+					_x set [5, -3];
+					_infectedAlive set [_forEachIndex, _x];
+				};
+			} forEach _infectedAlive;
+			if (_medicineSpent > BIS_OM_medicineLeft) then {
+				BIS_OM_medicineLeft = 0;
+				_missedMedicine = _medicineSpent - BIS_OM_medicineLeft;
+				_hoursWithoutMedicine = (_missedMedicine / _infectedAliveCnt) / HOURLY_DOSE;
+				if (_noMedicineLeft && _timeDiffRest != 0) then {_hoursWithoutMedicine = _hoursWithoutMedicine / REST_MULTIPLIER};
+				{
+					_hoursUntilDeath = _x # 5;
+					if (_hoursUntilDeath == -1) then {_hoursUntilDeath = _x # 6} else {
+						if (_hoursUntilDeath != -3) then {
+							_hoursUntilDeath = (_hoursUntilDeath - _hoursWithoutMedicine) max 0;
+						};
+					};
+					_x set [5, _hoursUntilDeath];
+					_infectedAlive set [_forEachIndex, _x];
+				} forEach _infectedAlive;
+			} else {
+				BIS_OM_medicineLeft = BIS_OM_medicineLeft - _medicineSpent;
+				{
+					if !((_x # 5) in [0, -3]) then {
+						_x set [5, -1];
+						_infectedAlive set [_forEachIndex, _x];
+					};
+				} forEach _infectedAlive;
+			};
+		} else {
+			sleep 1;
+		};
+	};
+};
+
+// --- events loop
+
+BIS_OM_medicineFeedbackFSM = [WARN_MILD, WARN_CRITICAL, WARN_DYING] execFSM "\A3\Missions_F_Oldman\Systems\scripts\Medicine\infectedGroupFeedback.fsm";

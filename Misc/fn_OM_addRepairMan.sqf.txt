@@ -1,0 +1,148 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\Economy\definitions.inc"
+
+params ["_repairMan","_garageSmartmarker"];
+
+//--- Create Smartmarker if it doesnt exist
+if(isNil {_RepairMan getVariable "marker"}) then
+{
+  _RepairMan setVariable ["marker", [MODE_CREATE, [_garageSmartmarker, format ["BIS_market%1", vectorMagnitude (getpos _RepairMan) * 10], getPos _RepairMan, false, nil, false,{!isnil "BIS_CarBombServiceAvailable"}]] call BIS_fnc_OM_moduleSmartMarkers];
+};
+_RepairMan addEventHandler
+[
+    "Killed",
+    {
+        [MODE_DELETE, [(_this select 0) getVariable "marker"]] call BIS_fnc_OM_moduleSmartMarkers ;
+        //--- remove car from queue
+        _carInProgress = ((_this select 0) nearEntities ["car", 70] select {_x getvariable ["BIS_chargeInProgress",false]}) select 0;
+        _carInProgress setVariable ["BIS_chargeInProgress",false];
+    }
+];
+//--- set variable required for conversations
+BIS_mechanic = objNull;
+BIS_mechanic = _repairman;
+
+//--- setpos repairman next to car if he has some job to do
+if (count (_RepairMan nearEntities ["car", 70] select {_x getvariable "BIS_chargeInProgress"})>0) then
+{
+    _carInProgress = (_RepairMan nearEntities ["car", 70] select {_x getvariable "BIS_chargeInProgress"}) select 0;
+    _repairman setdir ((getdir _carInProgress) -90);
+    _repairman setvariable ["BIS_workingActivity",true];
+    _RepairMan disableAI "ANIM";
+    _RepairMan setpos (_carInProgress getRelPos [-2.5,-70]);
+    _RepairMan switchmove "Acts_carFixingWheel";
+    waitUntil {_carInProgress in (missionnamespace getvariable ['BIS_CarsToExplode',[]])};
+    _repairman enableAI "ALL";
+    _repairman switchmove "";
+    _repairman setunitpos "UP";
+    _repairman setvariable ["BIS_workingActivity", false];
+    if ((player distance _repairman) < 25) then
+    {
+        _ranConversation = selectrandom ["eve_mechanic_car_ready_a","eve_mechanic_car_ready_b","eve_mechanic_car_ready_c"];
+        [_ranConversation , "none", false] call BIS_fnc_om_conversation;
+    };
+};
+
+waituntil {player distance _repairMan <= 25};
+
+{
+    _x setbehaviour "CARELESS";
+    _x setspeedmode "LIMITED";
+} foreach [_repairman];
+
+//--- store variable of repairman
+missionnamespace setvariable ["BIS_bombMechanic",_repairman];
+
+//--- saying hi
+_ranConversation = selectrandom ["eve_mechanic_welcome_a","eve_mechanic_welcome_b","eve_mechanic_welcome_c"];
+[_ranConversation , "none", false] call BIS_fnc_om_conversation;
+
+//--- repairman has nothing to work on
+if (count (_RepairMan nearEntities ["car", 70] select {_x getvariable "BIS_chargeInProgress"})==0) then
+{
+    _ranConversation = selectrandom ["eve_mechanic_which_car_a","eve_mechanic_which_car_b","eve_mechanic_which_car_c"];
+    [_ranConversation , "none", false] call BIS_fnc_om_conversation;
+};
+
+//--- add holdaction
+_instalBombHA =
+[
+    player,
+    format [ localize "STR_A3_OM_fn_OM_addRepairMan.sqf1",ATTACH_BOMB_TO_CAR], // TODO: Localize;
+    "\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\repair_ca.paa",
+    "\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\repair_ca.paa",
+    "!(isnil 'BIS_CarBombServiceAvailable') && (((vehicle player != player && speed vehicle player < 1) && !(vehicle player  getvariable ['BIS_chargeInProgress',false]) && !(vehicle player in (missionNamespace getVariable ['BIS_CarsToExplode',[]]))) || ((cursorTarget isKindOf 'CAR') && vehicle player == player && !(cursortarget getVariable ['BIS_chargeInProgress',false]) && !(cursorTarget in (missionNamespace getVariable ['BIS_CarsToExplode',[]])))) && (alive BIS_bombMechanic && !(BIS_bombMechanic getVariable ['BIS_workingActivity',false]) && player distance BIS_bombMechanic < 10)",
+    format ["[3] call BIS_fnc_OM_ModuleEconomy >= %1",ATTACH_BOMB_TO_CAR],//"true",
+    {
+      //--- when hold action starts
+    },
+    {
+      //--- tick every frame (out of 24)
+    },
+    {
+        //--- when holdaction ends
+        //--- remove money from player
+        [ 10, [ATTACH_BOMB_TO_CAR]] call BIS_fnc_OM_ModuleEconomy; //TODO: Proper price
+        //--- grab correct vehicle
+        _carVar = objNull;
+        if (vehicle player != player) then
+        {
+            _carVar = vehicle player;
+            player action ["getout",vehicle player];
+        }
+            else
+        {
+            _carvar = cursorTarget;
+        };
+        [_carvar,true] spawn BIS_fnc_OM_ChargeInCar;
+        _carvar setvariable ["BIS_chargeInProgress",true];
+        _carvar lock true;
+        if !((_carvar getVariable ["#sector",objNull]) isequalto objNull) then {[_carvar,_carvar getvariable ["#sector",objNull]] spawn BIS_fnc_om_removeFromSector;};
+        _mech = (missionNamespace getvariable "BIS_bombMechanic");
+        if !(_mech getVariable ["BIS_workingActivity",false]) then
+        {
+            _mech setvariable ["BIS_workingActivity", true];
+            //--- confirm player by conv
+            _ranConversation = selectrandom ["eve_mechanic_car_select_wait_a","eve_mechanic_car_select_wait_b","eve_mechanic_car_select_wait_c"];
+            [_ranConversation , "none", false] call BIS_fnc_om_conversation;
+            //--- move to selected vehicle
+            group _mech addWaypoint [(_carVar getrelpos [-2.5,-70]), -1];
+            _mech dowatch _carvar;
+            0 = [_mech,_carvar] spawn
+            {
+                params ["_mech","_carvar"];
+                waituntil {unitready _mech};
+                _mech setunitpos "MIDDLE";
+                sleep 1;
+                _mech disableAI "ANIM";
+                _mech setdir ((getdir _carvar) -90);
+                _mech setpos (_carvar getRelPos [-2.5,-70]);
+                _mech switchmove "Acts_carFixingWheel";
+                waituntil {_carvar in (missionnamespace getvariable ['BIS_CarsToExplode',[]])};
+
+                _mech enableAI "ALL";
+                _mech switchMove "";
+                _mech setunitpos "UP";
+                _mech setvariable ["BIS_workingActivity", false];
+                if ((player distance _mech) < 25) then
+                {
+                    _ranConversation = selectrandom ["eve_mechanic_car_ready_a","eve_mechanic_car_ready_b","eve_mechanic_car_ready_c"];
+                    [_ranConversation , "none", false] call BIS_fnc_om_conversation;
+                };
+            };
+        };
+    },
+    {
+      //--- when action is terminated
+    },
+    [],
+    0.5,
+    nil,
+    false,
+    false
+] call BIS_fnc_holdActionAdd;
+
+//waituntil {player distance _repairman > 30 };
+waitUntil {(missionNamespace getvariable "BIS_bombMechanic") isEqualTo objNull};
+[ player,_instalBombHA] call BIS_fnc_holdActionRemove;
+

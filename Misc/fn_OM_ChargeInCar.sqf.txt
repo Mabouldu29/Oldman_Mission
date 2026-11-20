@@ -1,0 +1,98 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+params ["_carToExplode","_workRequired"];
+// add eventHandler if there is some colision with car
+_waitingTime = 0;
+//hint str _workRequired;
+if (_workRequired) then {_waitingTime = 2};
+
+_experiatonDate = [date, _waitingTime, "h"] call BIS_fnc_CalculateDateTime;
+waituntil {[date,_experiatonDate] call BIS_fnc_IsDateTimeNewer || !(_workRequired)};
+//hint format ["%1",_carToExplode getvariable "BIS_chargeInProgress"];
+if (!(_carToExplode getvariable ["BIS_chargeInProgress",false]) && _workRequired) exitwith {};
+
+if (_workRequired) then {["unknown contact", Localize "STR_A3_OM_SMS_bombReady"] call BIS_fnc_OM_phone_SMS;}; //TODO: Localize
+_carToExplode lock false;
+_carToExplode setvariable ["BIS_chargeInProgress",false];
+
+if (isnil "BIS_CarsToExplode") then {missionnamespace setvariable ["BIS_CarsToExplode",[]];};
+missionnamespace setvariable ["BIS_CarsToExplode",BIS_CarsToExplode + [_carToExplode]];
+
+_BlowUPEH = _carToExplode addEventHandler
+["EpeContactstart",
+	{
+		addCamShake [(_this select 4)/5, 0.5, 10];
+		if (_this select 4 > 200) then
+		{
+			_pos = getpos (_this select 0);
+			_bomb = "Bo_GBU12_LGB" createVehicle _pos;
+			(_this select 0) removeeventhandler ["EpeContactstart",_thisEventHandler];
+		};
+	}
+];
+//--- handle Car smart marker
+0 = [_carToExplode] spawn
+{
+	params ["_carToExplode"];
+
+	while {alive _carToExplode} do
+	{
+		waituntil {visiblemap};
+		if !(alive _carToExplode) exitWith {};
+		_carToExplode setVariable ["marker", [MODE_CREATE, ["SmartMarker_T_CarChargeActive_F", format ["BIS_mrk_car_%1", vectorMagnitude (getpos _carToExplode) * 10], getPos _carToExplode, false, nil, false]] call BIS_fnc_OM_moduleSmartMarkers];
+		waitUntil {!visiblemap};
+		[MODE_DELETE, [_carToExplode getVariable "marker"]] call BIS_fnc_OM_moduleSmartMarkers;
+	};
+	[MODE_DELETE, [_carToExplode getVariable "marker"]] call BIS_fnc_OM_moduleSmartMarkers;
+};
+
+if (count BIS_CarsToExplode > 1) exitwith {};
+
+//--- add phone call
+//private _carType = getText (configfile >> "CfgVehicles" >> typeof _carToExplode >> "DisplayName");
+if (count BIS_CarsToExplode == 1) then
+{
+	_callID =
+	[
+		"UNKNOWN",
+		localize "STR_A3_OM_HoldAction_bombDetonator",	//TODO:Localize
+		{//--- code
+			//_number = missionnamespace getvariable ["BIS_CarsToExplode",0];
+			player setvariable ["DetonateCall",true];
+		},
+		true,	//--- map
+		true	//--- remove
+	] call BIS_fnc_OM_phone_addCall;
+};
+
+waitUntil {player getVariable ["DetonateCall",false]};
+player setvariable ["DetonateCall",false];
+//[_callID] call BIS_fnc_OM_phone_removeCall;
+private _sectorToActivate = ([getPos _carToExplode,100] call BIS_fnc_om_sectorsInRange) select {_x getVariable "#state"== 2};
+{
+	[_x, true] call BIS_fnc_sectorSetManualControl,
+	[_x] spawn BIS_fnc_om_sectorActivate,
+} forEach _sectorToActivate;
+
+_null =
+[
+	"OMCalling",
+		[format ["%1<img image = '%2' size = '1.75' align = 'left' shadow = '0'>", localize "str_a3_om_holdaction_bombdetonator", "\a3\Missions_F_Oldman\Data\img\PhoneContacts\unknownContact.paa"]] //TODO: Localize
+] call BIS_fnc_shownotification;
+sleep 1;
+playSound "OMPhoneRingVehicle"; //TODO: proper calling sound
+sleep 4.5;
+
+{
+	private _bomb = "Bo_GBU12_LGB" createVehicle getpos _x;
+	_x removeeventhandler ["EpeContactstart",_BlowUPEH];
+	_x setDamage 1;
+	_nearestEntities = (getpos _x) nearEntities ["MAN",150];
+	{_x setbehaviour "COMBAT";_x allowfleeing 1} foreach _nearestEntities;
+} foreach  BIS_CarsToExplode;
+
+missionnamespace setvariable ["BIS_CarsToExplode",[]];
+sleep 20;
+{
+	[_x, false] call BIS_fnc_sectorSetManualControl;
+} forEach _sectorToActivate;

@@ -1,0 +1,106 @@
+BIS_gendarme = objNull;
+
+params ["_soldier","_pass","_price"];
+//--- in case player has good relation ship with syndicat he doesnt need to pay at all
+//if (true) then {_free=0};
+
+player setvariable ["RZAccess",_pass];
+player setVariable ["PassPrice",_price];
+_soldier enableSimulation true; // dont know why, but the soldier has simulation disabled after spawn
+
+waitUntil {sleep 0.5; player distance _soldier < 5};
+//--- ADD VO line here
+_text = "";
+_zone = "";
+_condition = "";
+_remove = nil;
+_icon = "";
+
+switch (_pass) do
+{
+    case "AeropurtoPass":
+    {
+        //--- Airport
+        _zone = localize "str_a3_smartmarkers_smartmarker_c_planes_f_markertooltip0";
+        BIS_notText = localize "str_a3_smartmarkers_smartmarker_c_planes_f_markertooltip0";
+    };
+    /*
+    case "DISCO":
+    {
+        _zone = "club"; //TODO: Localize
+        BIS_notText = "club";
+    };
+    case "HARBOR":
+    {
+        _zone = "harbor"; //TODO: Localize
+        BIS_notText = "harbor";
+    };
+    case "REDMINE":
+    {
+        _zone = "Red-mine"; //TODO: Localize
+        BIS_notText = "Red-mine";
+    };
+    */
+    default
+    {
+        //--- Restricted Area
+        _zone = localize "str_a3_modules_moduleomsector_f_attributes_restrictedarea0";
+        BIS_notText = localize "str_a3_modules_moduleomsector_f_attributes_restrictedarea0";
+    };
+};
+
+if (_price != 0) then
+{
+    _text = format [ localize "STR_A3_OM_fn_OM_GetRZAccess.sqf1",player getvariable ["PassPrice",3000],_zone]; //TODO: Localize
+    _condition = "(alive _target && (player distance _target < 3)) && !(player getvariable [player getVariable 'RZAccess',false]) && (behaviour _target != 'COMBAT')";
+    _remove = false;
+    _icon = "\a3\Ui_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa";
+    //--- if player has no access play conversation
+    if (if !(player getvariable ["AeropurtoPass",false]) then {if (BIS_isWearingWorkerUniform) then {false} else {true};} else {if !(BIS_isWearingWorkerUniform) then {false} else {true}}) then
+    {
+        BIS_gendarme = _soldier;
+        ["eve_gendarme_bribe" , "none", false] spawn BIS_fnc_om_conversation;
+    };
+
+} else {
+    _text = format [ localize "STR_A3_OM_fn_OM_GetRZAccess.sqf2",_zone] ;//TODO:Localize
+    _condition = "player distance _target < 3 && behaviour _target == 'COMBAT'";
+    _remove = true;
+    _icon = "a3\Ui_f\data\IGUI\Cfg\HoldActions\holdAction_search_ca.paa";
+};
+
+_passHA = [
+    _soldier,
+    _text,
+    _icon,
+    _icon,
+    _condition,
+    "player distance _target < 3 && ([3] call BIS_fnc_OM_ModuleEconomy >= (player getvariable 'PassPrice'))",
+    {
+    //--- when hold action starts
+
+    },
+    {
+    //--- tick every frame (out of 24)
+    },
+    {
+    //--- when holdaction ends
+        player setvariable [format ["%1",(player getVariable "RZAccess")],true];
+        [ 10, [(player getvariable "PassPrice")]] call BIS_fnc_OM_ModuleEconomy;
+        _null = ["OMAccessGranted",[BIS_notText]] call BIS_fnc_shownotification;
+        //--- ADD VO line here
+        if !(isnull BIS_gendarme) then {["eve_gendarme_bribe_accepted_a" , "none", false] call BIS_fnc_om_conversation;};
+    },
+    {
+    //--- when action is terminated
+    },
+    [],
+    1,
+    nil,
+    _remove,
+    false
+] call BIS_fnc_holdActionAdd;
+waitUntil {sleep 0.5; player distance _soldier >=10};
+[ _soldier,_passHA] call BIS_fnc_holdActionRemove;
+if (_price == 0) exitwith {};
+[_soldier,_pass,_price] call BIS_fnc_OM_GetRZAccess;

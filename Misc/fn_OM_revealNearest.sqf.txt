@@ -1,0 +1,13 @@
+//--- Grab nearest enemies
+_NearstEnemies = (player nearEntities ['Man', 100]) select {side _x == east};
+//--- Reveal player to them
+{_x reveal [player,4]} foreach _NearstEnemies;
+//--- select one volunteer
+_volunteer = selectrandom _NearstEnemies;
+//--- remove his waypoints
+while {(count (waypoints group _volunteer)) > 0} do
+{
+    deleteWaypoint ((waypoints group _volunteer) select 0);
+};
+//--- send him to player
+_wp0 = group _volunteer addwaypoint [getpos player,0];

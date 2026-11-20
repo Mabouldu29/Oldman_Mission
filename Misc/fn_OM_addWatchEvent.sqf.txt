@@ -1,0 +1,19 @@
+params ["_date", "_tooltip", "_icon"];
+
+if (isNil "BIS_OM_customWatchEvents") then {
+	BIS_OM_customWatchEvents = [];
+	[] spawn {
+		while {TRUE} do {
+			sleep 5;
+			_currentDate = dateToNumber date;
+			{
+				if ((dateToNumber (_x # 0)) < _currentDate) then {
+					BIS_OM_customWatchEvents set [_forEachIndex, -1];
+				};
+			} forEach BIS_OM_customWatchEvents;
+			BIS_OM_customWatchEvents = BIS_OM_customWatchEvents - [-1];
+		};
+	};
+};
+
+BIS_OM_customWatchEvents pushBack [_date, _tooltip, _icon];

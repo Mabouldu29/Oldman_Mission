@@ -1,0 +1,118 @@
+BIS_OM_ShedWeaponWall setVariable ["offsets", [
+    [-0.13,0.5,0.05],
+    [-0.13,0.15,0.05],
+    [-0.13,-0.2,0.05],
+    [-0.13,-0.55,0.05],
+    [1.15,0.35,0.05],
+    [1.15,0.0,0.05],
+    [1.15,-0.35,0.05],
+    [2.30,0.5,0.05],
+    [2.30,0.15,0.05],
+    [2.30,-0.2,0.05]
+], true];
+
+BIS_OM_ShedWeaponWall setVariable ["BIS_wallWeaponHolders", [
+    objNull,
+    objNull,
+    objNull,
+    objNull,
+    objNull,
+    objNull,
+    objNull,
+    objNull,
+    objNull,
+    objNull
+], true];
+
+BIS_addEH_takeWeapShed =
+{
+    OM_EH_take_weaponshed = player addEventHandler ["Take",
+    {
+        if ((_this select 1)  in (BIS_OM_ShedWeaponWall getVariable "BIS_wallWeaponHolders")) exitWith
+        {
+            _order = 0;
+            BIS_holder = (_this select 1);
+            {
+                if (_x isEqualTo (_this select 1)) exitwith {_order = _forEachIndex};
+            } forEach BIS_wallWeaponHolders;
+            BIS_holder attachTo [
+                BIS_OM_ShedWeaponWall,
+                (BIS_OM_ShedWeaponWall getVariable "offsets") select _order
+            ];
+            detach BIS_holder;
+            BIS_wallWeaponHolders set [_order, BIS_holder];
+            BIS_OM_ShedWeaponWall setVariable ["BIS_wallWeaponHolders", BIS_wallWeaponHolders, true];
+            closeDialog 0;
+        };
+    }];
+};
+
+BIS_fnc_OM_putWeapon =
+{
+    params ["_unit", "_weapon", "_position", ["_whType", "GroundWeaponHolder"]];
+    _unit addEventHandler ["Put",
+    {
+        _this select 0 removeEventHandler ["Put", _thisEventHandler];
+        clearItemCargo (_this select 1);
+    }];
+    isNil
+    {
+        BIS_holder = _whType createVehicle getpos player;
+        BIS_holder addItemCargo ["None", 1];
+        BIS_wallWeaponHolders = BIS_OM_ShedWeaponWall getVariable "BIS_wallWeaponHolders";
+        {
+            if (isNull _x) exitWith
+            {
+                BIS_holder attachTo [
+                    BIS_OM_ShedWeaponWall,
+                    (BIS_OM_ShedWeaponWall getVariable "offsets") select _forEachIndex
+                ];
+                detach BIS_holder;
+
+                BIS_wallWeaponHolders set [_forEachIndex, BIS_holder];
+                BIS_OM_ShedWeaponWall setVariable ["BIS_wallWeaponHolders", BIS_wallWeaponHolders, true];
+                //closeDialog 0;
+            };
+        } forEach BIS_wallWeaponHolders;
+        _unit action ["PutWeapon", BIS_holder, _weapon];
+    };
+};
+scriptname "BIS_OM_WeaponShed Script";
+
+while {true} do
+{
+    waituntil {player getvariable ["BIS_OM_InWeaponShed",false]};
+    _pinToWallHA =
+    [
+        player,
+        localize "str_a3_om_holdaction_hangweapon",
+        "\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\repair_ca.paa",
+        "\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\repair_ca.paa",
+        "player getvariable ['BIS_OM_InWeaponShed',false] && currentweapon player !='' && count ((BIS_OM_ShedWeaponWall getVariable 'BIS_wallWeaponHolders') select {_x isequalto objnull}) !=0",
+        "speed (vehicle player) == 0",
+        {
+            //--- when hold action start
+        },
+        {
+            //--- tick every frame (out of 24)
+        },
+        {
+            //--- when holdaction ends
+            [player,currentWeapon player, player getRelPos [1,0], "WeaponHolder_Single_limited_weapon_F"] call BIS_fnc_OM_putWeapon;
+        },
+        {
+            //--- when action is terminated
+        },
+        [],
+        0.2,
+        0,
+        false,
+        false
+    ] call BIS_fnc_holdActionAdd;
+
+    [] spawn BIS_addEH_takeWeapShed;
+
+    waituntil {!(player getvariable ["BIS_OM_InWeaponShed",false])};
+    [player,_pinToWallHA] call BIS_fnc_holdActionRemove;
+    player removeEventHandler ["Put", OM_EH_take_weaponshed];
+};

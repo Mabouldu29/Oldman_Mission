@@ -1,0 +1,5 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\questDefines.inc"
+
+//For the Quest type events, add more enumerators here if needed
+([["questState", 2],"", false, nil, true] call bis_fnc_questGetData) select {!([_x, "isParent"] call bis_fnc_questGetData)} 
+apply {[([_x, "timeoutMinutesDateTime"] call bis_fnc_questGetData), EVENT_TYPE_QUEST, ([_x, "type"] call bis_fnc_questGetData)]}

@@ -1,0 +1,100 @@
+//--- Falling a sleep
+/*
+"dynamicBlur" ppEffectAdjust [3];
+"dynamicBlur" ppEffectCommit 1;
+"dynamicBlur" ppEffectEnable true;
+"colorCorrections" ppEffectAdjust [1,1, 0, [0,0, 0, 0.0], [0.5, 0.5, 0.5,0],  [0.1, 0.9, 0.9, 0]];
+"colorCorrections" ppEffectCommit 1;
+"colorCorrections" ppEffectEnable true;
+*/
+
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+BIS_OM_waitInProgress = TRUE;
+
+_pp_DynBlur = ppEffectCreate ["dynamicBlur",100];
+_pp_DynBlur ppEffectAdjust [3];
+_pp_DynBlur ppEffectCommit 1;
+_pp_DynBlur ppEffectEnable true;
+
+_pp_colorC = ppEffectCreate ["ColorCorrections",1500];
+_pp_colorC ppEffectAdjust [1,1, 0, [0,0, 0, 0.0], [0.5, 0.5, 0.5,0],  [0.1, 0.9, 0.9, 0]];
+_pp_colorC ppEffectCommit 1;
+_pp_colorC ppEffectEnable true;
+
+TitleCut ["","Black out",1];
+//--- delay
+sleep 1.5;
+//--- player can't see anything now
+player setvariable ["BIS_ScreenIsBlack",true];
+//--- clear fog, because its somehow getting worse and worse
+0 setfog 0;
+
+//---if fast travel then teleport player
+if( missionNamespace getVariable ["BIS_OM_waitDialogMode", "rest"] == "travel" ) then
+{
+	[ MODE_TRAVEL, [] ] call BIS_fnc_OM_moduleFastTravel;
+	player setVariable ["paidSavePoint",false];
+};
+
+//--- skip calculated time from slider
+[BIS_TimeToSkipWhileSleeping] call BIS_fnc_om_handleTimeSkip;
+
+Skiptime BIS_TimeToSkipWhileSleeping;
+sleep 1;
+
+
+//--- player can wake up from dream, defaul true
+{
+	private _sector = _x;
+	private _canSpawn = true;
+	private _condition = GVAR(_x,"Condition");
+	if (_condition != "") then {
+		_canSpawn = call compile _condition;
+	};
+    waitUntil {sleep 0.1; ([_sector] call BIS_fnc_sectorManualControl) || !_canSpawn ||  GVARS(_sector,"#state",0) in [S_SPAWNED, S_SPAWNED_VEHICLES]};
+} forEach ([getPos player,50] call BIS_fnc_om_sectorsInRange);
+
+if (player getvariable ["BIS_IsSleeping",false]) then {
+	//--- heal player
+	player setdamage 0;
+};
+//--- reset player fatigue
+player setFatigue 0;
+//--- player can see again
+player setvariable ["BIS_ScreenIsBlack",false];
+/**/
+if (player getvariable ["BIS_IsWaiting",false]) then
+{
+	[] spawn BIS_fnc_om_createFirePlace;
+};
+if ( player getVariable ["paidSavePoint",false] ) then
+{
+	[ 10, [(missionNamespace getVariable "BedPrice")]] call BIS_fnc_OM_ModuleEconomy;
+	player setvariable ["paidSavePoint",false];
+};
+//delete the sleeping bag if depleted for the save
+private _sleepingBagIndex = ((magazines player) findif {_x in SLEEPING_BAGS});
+if ( player getVariable ["BIS_playerSavingUsingBag", false] ) then
+{
+	player removeItem ((magazines player) select _sleepingBagIndex);
+	[] spawn BIS_fnc_om_createFirePlace;
+};
+//--- Waking up
+TitleCut ["","Black in",1];
+sleep 0.5;
+_pp_DynBlur ppEffectAdjust [0];
+_pp_DynBlur ppEffectCommit 2;
+
+_pp_colorC ppEffectAdjust [1,1, 0, [0,0, 0, 0.0], [0.5, 0.5, 0.5,1],  [0.1, 0.9, 0.9, 0]];
+_pp_colorC ppEffectCommit 2;
+
+sleep 2.5;
+_pp_DynBlur ppEffectEnable false;
+_pp_colorC ppEffectEnable false;
+ppEffectDestroy [_pp_DynBlur, _pp_colorC];
+
+waituntil {!(ppEffectEnabled _pp_DynBlur) && !(ppEffectEnabled _pp_DynBlur)};
+
+//--- show location and time
+[] spawn bis_fnc_om_currentDate;

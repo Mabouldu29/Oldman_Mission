@@ -1,0 +1,108 @@
+/*
+//--- store UI positions for GUI
+mrk_title ["0.505155 * safezoneW + safezoneX","0.357 * safezoneH + safezoneY","0.128864 * safezoneW","0.022 * safezoneH"]
+mrk_text ["0.505155 * safezoneW + safezoneX","0.379 * safezoneH + safezoneY","0.128864 * safezoneW","0.187 * safezoneH"]
+
+PARMAS:
+ORIGIN - Position
+TITLE - STRING
+IMG - STRING / NIL
+DESC - STRING
+FACTION - SIDE
+
+EXAMPLE: [getMousePosition,"Title",nil,"Toto je obycejny marker a neni na nem vubec nic zvlastniho. Ani tento tooltip",INDEPENDENT] spawn BIS_fnc_OM_markerTooltip;
+*/
+
+params ["_origin","_title","_img","_desc","_faction"];
+disableSerialization;
+_display = call BIS_fnc_displayMission;
+private "_display";
+waitUntil {_display = call BIS_fnc_displayMission; !(isNull _display)};
+
+waituntil {visiblemap};
+
+//--- create and set all UI elements
+_titleBCK = _display ctrlCreate ["RscPicture", 1231];
+_textBCK = _display ctrlCreate ["RscPicture", 1232];
+_mrk_img = _display ctrlCreate ["RscPicture", 1233];
+_title2 =  _display ctrlCreate ["RscStructuredText", 1234];
+_text =  _display ctrlCreate ["RscStructuredText", 1235];
+
+//--- point of origin
+_XYPOS = _origin;
+
+_titleBCK ctrlSetPosition [_XYPOS#0,_XYPOS#1,0.128864 * safezoneW,0.022 * safezoneH];
+_title2 ctrlSetPosition [_XYPOS#0,_XYPOS#1,0.128864 * safezoneW,0.022 * safezoneH];
+//--- adjust text position according image
+_textpos = [];
+if (isnil "_img") then
+{
+    _textpos = [_XYPOS#0,_XYPOS#1 + 0.023 * safezoneH,0.128864 * safezoneW,0.187 * safezoneH]
+} else {
+    _textpos = [_XYPOS#0,_XYPOS#1 + 0.023 * safezoneH + (0.187 * safezoneH)/2,0.128864 * safezoneW,0.187 * safezoneH]
+};
+_text ctrlSetPosition _textpos;
+_textBCK ctrlSetPosition _textpos;
+
+//--- prepare position of image if is it valid
+if (!isnil "_img") then
+{
+    _mrk_img ctrlSetPosition [_XYPOS#0,_XYPOS#1 + 0.023 * safezoneH,0.128864 * safezoneW,(0.187 * safezoneH)/2];
+    _mrk_img ctrlSetText ([0.1, 0.1, 0.1, 0.6] call BIS_fnc_colorRGBAtoTexture);
+};
+
+//--- setcolor according faction
+_tilecolor = [];
+switch (_faction) do
+{
+    case WEST:
+    {
+        _tilecolor = [0,0.3,0.6,0.6] ;
+    };
+    case EAST:
+    {
+        _tilecolor = [0.5, 0, 0, 0.6];
+    };
+    case independent:
+    {
+        _tilecolor = [0,0.5,0,1] ;
+    };
+    case civilian:
+    {
+        _tilecolor = [0.7,0.6,0,0.6] ;
+    };
+    default
+    {
+        _tilecolor = [0, 0, 0, 0.6];
+    };
+};
+
+_titleBCK ctrlSetText (_tilecolor call BIS_fnc_colorRGBAtoTexture);
+//--- set text background
+_textBCK ctrlSetText "a3\Ui_f\data\GUI\Rsc\RscDisplayInventory\gradient_gs.paa"; //([0, 0.0, 0, 0.6] call BIS_fnc_colorRGBAtoTexture);
+_textBCK ctrlsettextcolor [0, 0, 0, 1];
+//--- set title text
+_title2 ctrlSetStructuredText parseText format ["<t size='0.8' >%1</t>",_title];
+//--- set description
+_text ctrlSetStructuredText parseText format ["<t size='0.8' >%1</t>",_desc];
+
+//--- load picture if it is valid
+if (!isnil "_img") then
+{
+    _mrk_img ctrlSetFade 0;
+    _mrk_img ctrlCommit 0;
+};
+
+//--- execute all changes
+{
+    _x ctrlSetFade 0;
+    _x ctrlCommit 0;
+} foreach [_titleBCK,_textBCK,_title2,_text];
+//--- condition
+sleep 5;
+//--- delete all elements
+{
+    ctrlDelete _x
+} foreach [_titleBCK,_textBCK,_title2,_text];
+
+if (!isnil "_img") then {ctrlDelete _mrk_img};

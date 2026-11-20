@@ -1,0 +1,34 @@
+params ["_contact", "_text"];
+_name = getText (missionConfigFile >> "CfgOMPhoneContacts" >> _contact >> "name");
+_img = getText (missionConfigFile >> "CfgOMPhoneContacts" >> _contact >> "img");
+_mapKeyBind = actionKeysNames "ShowMap";
+_null = ["OMSendingMessage", [_name + (if !(visibleMap) then {" " + "<t align = 'center'>[<t color = '#61af64'>" + _mapKeyBind + "</t>]" + Localize "STR_A3_OM_System_Phone_SMSRead" + "</t>"} else {""}) + format ["<img image = '%1' size = '1.75' align = 'left' shadow = '0'>", _img]]] call BIS_fnc_shownotification;
+BIS_OM_messageReceivedTime = time;
+
+BIS_OM_messagesPool pushBack [_contact, _name, _text, [date] call BIS_fnc_OM_phone_correct_time, FALSE];
+BIS_OM_messagesLog = "<br/>";
+_pool = +BIS_OM_messagesPool;
+reverse _pool;
+_cnt = count _pool;
+{
+	_name = _x # 1;
+	_text = _x # 2;
+	_date = _x # 3;
+	_from = _x # 4;
+	_min = (_date select 4);
+
+	BIS_OM_messagesLog = BIS_OM_messagesLog + format ["%9 %1 <font color='#878787'>(%2/%3/%4, %5:%6)</font><br/>%7%8",
+		_name,
+		_date select 0,
+		_date select 1,
+		_date select 2,
+		_date select 3,
+		_min,
+		_text,
+		if (_forEachIndex != (_cnt - 1)) then {"<br/><br/>"} else {""},
+		if (_from) then {"<font color = '#0acd00'>" + Localize "STR_A3_OM_System_Phone_SMSFrom" + "</font>"} else {"<font color = '#0074cd'>" + Localize "STR_A3_OM_System_Phone_SMSTo" + "</font>"}
+	];
+} forEach _pool;
+player setDiaryRecordText [["Messages", BIS_OM_phone_section_sms], ["Messages", BIS_OM_messagesLog]];
+playSound "OMPhoneSMSsend";
+TRUE

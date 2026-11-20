@@ -1,0 +1,587 @@
+#include "\a3\Missions_F_Oldman\Systems\Defines\commonDefines.inc"
+#define PLAYER_INVENTORY_CONTAINERS	[633, 619, 638]
+
+BIS_fnc_OM_priceTooltip =
+{
+    params ["_price","_color"];
+    if (isNull (uiNamespace getVariable ["BIS_OM_showItemPriceBck", controlNull])) then
+    {
+        uiNamespace setVariable ["BIS_OM_showItemPriceBck", (findDisplay 46) ctrlCreate ["RscPicture", 9999027]];
+    };
+    if (isNull (uiNamespace getVariable ["BIS_OM_showItemPrice", controlNull])) then
+    {
+        uiNamespace setVariable ["BIS_OM_showItemPrice", (findDisplay 46) ctrlCreate ["RscStructuredText", 9999028]];
+    };
+
+    0 = _this spawn
+    {
+        params ["_price","_color","_mousePos"];
+        waitUntil {!isNull (findDisplay 602)};
+        _moneyBck = uiNamespace getvariable "BIS_OM_showItemPriceBck";
+        _moneyInfo = uiNamespace getVariable "BIS_OM_showItemPrice";
+        //_moneyInfo ctrlSetPosition [((getMousePosition)select 0) - SafezoneX/30,((getMousePosition) select 1) + safezoneY/12,0.0637417 * safezoneW,0.0281882 * safezoneH];
+        //_moneyBck ctrlSetPosition [((getMousePosition)select 0) - SafezoneX/30,((getMousePosition) select 1) + safezoneY/12,0.0637417 * safezoneW,0.0281882 * safezoneH];
+        _moneyInfo ctrlSetPosition [((_mousePos)select 0) - SafezoneX/30,((_mousePos) select 1) + safezoneY/12,0.0637417 * safezoneW,0.0281882 * safezoneH];
+        _moneyBck ctrlSetPosition [((_mousePos)select 0) - SafezoneX/30,((_mousePos) select 1) + safezoneY/12,0.0637417 * safezoneW,0.0281882 * safezoneH];
+
+        _size = 1.5;
+        _moneyInfo ctrlSetStructuredText parseText format ["<t color='%2' align = 'left' size = '%3' shadow = '2'>%1 $</t>", _price,_color,(_size * (1- (getresolution select 5)/2))];
+        _moneybck ctrlSetText "\a3\Ui_f\data\IGUI\RscTitles\RscAANnews\gradient_left_gs.paa";
+        _moneyBck ctrlSetTextColor [0,0,0,0.85];
+
+        {
+            _x ctrlsetfade 0;
+            _x ctrlShow TRUE;
+            _x ctrlCommit 0;
+        }  forEach [_moneyInfo,_moneyBck];
+
+        private _script = missionNamespace getVariable ["scriptPriceTooltip",scriptNull];
+
+        if (!scriptDone _script) then {terminate _script;};
+        _script = [_moneyInfo,_moneyBck] spawn
+        {
+            params ["_moneyInfo","_moneyBck"];
+            Sleep 5;
+            {_x ctrlsetfade 1; _x ctrlCommit 3} foreach [_moneyInfo,_moneyBck];
+            sleep 3;
+        };
+        missionNamespace setvariable ["scriptPriceTooltip",_script];
+    };
+};
+
+BIS_fnc_OM_showPrice =
+{
+    _mousePos = getMousePosition;
+    params ["_itemText", "_itemClass", "_container"];
+    if(!isNil "_itemClass") then
+    {
+        //--- get the price
+        private _price = [ MODE_GET_EQUIP_PRICE,[ _itemClass, if( _container in PLAYER_INVENTORY_CONTAINERS) then {true} else {false} ] ] call BIS_fnc_OM_ModuleEconomy;
+        //hint format ["%1\n%2\n%3",_itemText,_itemClass,_container];
+        if (_price isEqualType 0) then {
+            //--- set default color
+            private _color = '#cc3300';
+            if (_price < ([3] call BIS_fnc_OM_ModuleEconomy)) then {_color = '#FFA500'};
+            //--- change to green if is it in player inventory (uniform,vest,backpack)
+            if (_container in PLAYER_INVENTORY_CONTAINERS) then {_color = '#61af64'};
+            //--- show tooltip
+
+            [_price,_color,_mousePos] spawn BIS_fnc_OM_priceTooltip;
+        };
+    };
+};
+
+BIS_fnc_OM_findClassname =
+{
+		params["_className"];
+    private "_findClassname";
+    {
+      private _cfg = _x;
+      _findClassname = "getText (_x >> 'displayName') == _className" configClasses (configFile >> _cfg);
+      if (count _findClassname > 0) exitWith {_findClassname = configName (_findClassname select 0)};
+    } forEach CFGS;
+    if(_findClassname isEqualType "") then {_findClassname} else {" "}
+    /* _findClassname = format ["Item %1 not found",_this]; */
+};
+
+BIS_fnc_RemovePrefix =
+{
+    #define PREFIXES ["ITEM", "WEAPON", "MAGAZINE"]
+    params["_string"];
+
+    private _array = _string splitString "_";
+    if(toUpper(_array select 0) in PREFIXES) then
+    {
+        _array deleteAt 0;
+        _array joinString "_"
+    }
+    else {_string};
+};
+
+BIS_fnc_OM_showPrice2=
+{
+    _mousePos = getMousePosition;
+    params ["_nameFinal", ["_itemInPlayerInventory", false, [false]] ];
+    //hint str _namefinal;
+    if!(_nameFinal isEqualTo "") then
+    {
+        _nameFinal = _nameFinal call BIS_fnc_RemovePrefix;
+        private _price = [MODE_GET_EQUIP_PRICE, [_nameFinal, _itemInPlayerInventory] ] call BIS_fnc_OM_ModuleEconomy;
+        [_price,'#61af64',_mousePos] spawn BIS_fnc_OM_priceTooltip;
+    };
+};
+
+BIS_fnc_OM_ContainerClick =
+{
+    params ["_idc", "_selectedIndex"];
+    _idc = ctrlIDC _idc;
+    private _text = format ["%1",lbText [_idc, _selectedIndex]];
+    private _w=_text call BIS_fnc_OM_findClassname;
+    [_text,_w, _idc] spawn BIS_fnc_OM_showPrice;
+    /* ["_text: %1 | _w: %2 | _idc: %3", _text, _w, _idc] call bis_fnc_logFormat; */
+    //hint format ["%1\n%2",_idc,_selectedIndex];
+    false
+};
+
+BIS_fnc_OM_InventoryDrag =
+ {
+    params ["_idc", "_selectedIndex"];
+    _idc = ctrlIDC (_this select 0);
+    private _w = (((_selectedIndex)select 0) select 0) call BIS_fnc_OM_findClassname;
+    [(_selectedIndex select 0)select 0,_w, _idc] spawn BIS_fnc_OM_showPrice;
+    //hint str _idc;
+    //hint str _W;
+    false
+};
+
+BIS_fnc_OM_Inventoryclick =
+{
+    _idc = ctrlIDC (_this select 0);
+    _selectedIndex = _this select 1;
+    private "_enter";
+   // hint format["%1",_idc];
+    switch _idc do
+    {
+        case 6331: { _enter = format ["Item_%1",uniform player];};
+        case 6381: { _enter = format ["Item_%1",vest player];    };
+        case 6191: { _enter = format ["Item_%1",backpack player];};
+        case 6240: { _enter = format ["Item_%1",headgear player];};
+        case 6216: { _enter = format ["Item_%1",goggles player]; };
+        case 6217: { _enter = format ["Item_%1",hmd player];};
+        case 6238: { _enter = format ["Item_%1",binocular player];};
+        case 6211: { if ("ItemMap" in ((getUnitLoadout player) select 9)) then {_enter = "Item_ItemMap"} else {_enter = "";};};
+        case 6215: { if ("ItemGPS" in ((getUnitLoadout player) select 9)) then {_enter = "Item_ItemGPS" } else {_enter = "";};};
+        case 6214: { if ("ItemRadio" in ((getUnitLoadout player) select 9)) then {_enter = "Item_ItemRadio" } else {_enter = "";};};
+        case 6213: { if ("ItemWatch" in ((getUnitLoadout player) select 9)) then {_enter = "Item_ItemWatch" } else {_enter = "";};};
+        case 6212: { if ("ItemCompass" in ((getUnitLoadout player) select 9)) then {_enter = "Item_ItemCompass" } else {_enter = "";};};
+        case 610:  { _enter = format ["Weapon_%1",primaryWeapon player]; };
+        case 611:  { _enter = format ["Weapon_%1",secondaryWeapon player]; };
+        case 612:  { _enter = format ["Weapon_%1",handgunWeapon player]; };
+
+        //--- WEAPON
+        //--- silencor
+        case 620:
+        {
+            if (primaryweapon player == "") exitWith {_enter = "";};
+            _enter = format ["%1",(((getUnitLoadout player)#0) # 1)];
+        };
+        //--- bipod
+        case 641:
+        {
+            if (primaryweapon player == "") exitWith {_enter = "";};
+            _enter = format ["%1",(((getUnitLoadout player)#0) # 6)];
+        };
+        //--- laser/flash
+        case 622:
+        {
+            if (primaryweapon player == "") exitWith {_enter = "";};
+            _enter = format ["%1",(((getUnitLoadout player)#0) # 2)];
+        };
+        //--- scope
+        case 621:
+        {
+            if (primaryweapon player == "") exitWith {_enter = "";};
+            _enter = format ["%1",(((getUnitLoadout player)#0) # 3)];
+        };
+        //--- grnd
+        case 644:
+        {
+            if (primaryweapon player == "") exitWith {_enter = "";};
+            if (count ((getUnitLoadout player)#0#5) == 0) exitwith {_enter = ""};
+            _enter = format ["%1",(((getUnitLoadout player)#0) # 5) # 0];
+        };
+        //--- mgz
+        case 623:
+        {
+            if (primaryweapon player == "") exitWith {_enter = "";};
+            if (count ((getUnitLoadout player)#0#4) == 0) exitwith {_enter = ""};
+            _enter = format ["%1",(((getUnitLoadout player)#0) # 4) # 0];
+        };
+
+        //--- LAUNCHER
+        //--- rocket
+        case 627:
+        {
+            if (secondaryWeapon player == "") exitwith {_enter = "";};
+            if (count ((getUnitLoadout player)#1#4) == 0) exitwith {_enter = ""};
+            _enter = format ["%1",(((getUnitLoadout player)#1) # 4) # 0];
+        };
+
+        //--- PISTOL
+        //--- mgz
+        case 631:
+        {
+            if (handgunweapon player == "") exitwith {_enter = "";};
+            if (count ((getUnitLoadout player)#2#4) == 0) exitwith {_enter = ""};
+            _enter = format ["%1",(((getUnitLoadout player)#2) # 4) # 0];
+        };
+        //--- laser
+        case 630:
+        {
+            if (handgunweapon player == "") exitwith {_enter = "";};
+            _enter = format ["%1",(((getUnitLoadout player)#2) # 2) ];
+        };
+        //--- silencer
+        case 628:
+        {
+            if (handgunweapon player == "") exitwith {_enter = "";};
+            _enter = format ["%1",(((getUnitLoadout player)#2) # 1) ];
+        };
+        //--- scope
+        case 629:
+        {
+            if (handgunweapon player == "") exitwith {_enter = "";};
+            _enter = format ["%1",(((getUnitLoadout player)#2) # 3) ];
+        };
+
+        default { _enter = "";}
+        /*
+        [
+            ["arifle_MX_GL_khk_F","","","",["30Rnd_65x39_caseless_khaki_mag",30],["3Rnd_HE_Grenade_shell",3],""],
+            ["launch_MRAWS_green_rail_F","","","",["MRAWS_HEAT_F",1],[],""],
+            ["hgun_Pistol_heavy_01_green_F","muzzle_snds_acp","","",["11Rnd_45ACP_Mag",11],[],""],
+            [],
+            [],
+            ["B_AssaultPack_cbr",[]],
+            "",
+            "",
+            [],
+            ["ItemMap","","","ItemCompass","ItemWatch",""]
+        ];
+        */
+
+    };
+    if (_enter isEqualto "") exitwith {};
+    if (_enter == "Item_") exitwith {};
+    if (_enter isEqualTo "Weapon_") exitWith {};
+    [_enter, true] spawn BIS_fnc_OM_showPrice2;
+    false
+};
+
+if (isNull (uiNamespace getVariable ["BIS_OM_marketInfo", controlNull])) then
+{
+    uiNamespace setVariable ["BIS_OM_marketInfo", (findDisplay 46) ctrlCreate ["RscStructuredText", 9999024]];
+};
+//--- Oldman's money visible in inventory carryload
+0 = [] spawn
+{
+    waitUntil {!isNull (findDisplay 602)};
+    _marketInfo = uiNamespace getVariable "BIS_OM_marketInfo";
+    _marketInfo ctrlSetPosition ctrlPosition (findDisplay 602 displayCtrl 6307);//6308
+    _marketInfo ctrlCommit 0;
+    _marketInfo ctrlShow TRUE;
+    _marketInfo ctrlSetStructuredText parseText  localize "STR_A3_OM_fn_OM_openMarketInventory.sqf23";
+};
+
+//--- talks while opening market
+_randomTalk = selectrandom [1,2,3,4];
+
+//--- make market Smart markers visible 
+if (!(bis_fnc_missionFlow_fsm getFSMVariable ["_showSavePointSM",false])) then {bis_fnc_missionFlow_fsm setFSMVariable ["_showMarketSM",true]};
+
+_subtitles = "";
+switch (_randomTalk) do
+{
+    case 1:
+    {
+        if ( _this#0 getvariable ["BIS_MerchantDubber","VINCENT"] == "VINCENT") then
+        {
+            _randomTalk = "Civilain_MarketInventory_Merchant_A_01_Vincent";
+            _subtitles = localize "STR_A3_OM_Civilain_MarketInventory_Merchant_A_01";
+        } else {
+            _randomTalk = "Civilain_MarketInventory_Merchant_A_Ahmeed_01";
+            _subtitles = localize "STR_A3_OM_Civilain_MarketInventory_Merchant_A_01";
+        };
+    };
+    case 2:
+    {
+        if ( _this#0 getvariable ["BIS_MerchantDubber","VINCENT"] == "VINCENT") then
+        {
+            _randomTalk = "Civilain_MarketInventory_Merchant_A_02_Vincent";
+            _subtitles = localize "STR_A3_OM_Civilain_MarketInventory_Merchant_A_02";
+        } else {
+            _randomTalk = "Civilain_MarketInventory_Merchant_A_Ahmeed_02";
+            _subtitles = localize "STR_A3_OM_Civilain_MarketInventory_Merchant_A_02";
+        };
+    };
+    case 3:
+    {
+        if ( _this#0 getvariable ["BIS_MerchantDubber","VINCENT"] == "VINCENT") then
+        {
+            _randomTalk = "Civilain_MarketInventory_Merchant_B_01_Vincent";
+            _subtitles = localize "STR_A3_OM_Civilain_MarketInventory_Merchant_B_01";
+        } else {
+            _randomTalk = "Civilian_MarketInvite_Merchant_A_Ahmeed_01";
+            _subtitles = localize "STR_A3_OM_Civilian_MarketInvite_Merchant_A_01";
+        };
+    };
+    case 4:
+    {
+        if ( _this#0 getvariable ["BIS_MerchantDubber","VINCENT"] == "VINCENT") then
+        {
+            _randomTalk = "Civilain_MarketInventory_Merchant_B_02_B_Vincent";
+            _subtitles = localize "STR_A3_OM_Civilain_MarketInventory_Merchant_B_02_A"; //TODO:LOCALIZE
+        } else {
+            _randomTalk = "Civilain_MarketInventory_Merchant_B_Ahmeed_02_B";
+            _subtitles = localize "STR_A3_OM_Civilain_MarketInventory_Merchant_B_02_A";     //TODO:LOCALIZE
+        };
+    };
+};
+//--- play correct sound and subtitle
+_this#0 say3D [_randomTalk,20,1,true];
+[localize "str_a3_character_merchant",_subtitles] spawn BIS_fnc_showSubtitle; //TODO: Localize
+
+_this spawn
+{
+    BIS_prevLoadout = getUnitLoadout player;
+    BIS_shopSupplies = itemcargo (Missionnamespace getVariable "cargo") + magazinecargo (Missionnamespace getVariable "cargo") + weaponcargo (Missionnamespace getVariable "cargo");
+    _kaufAction = player addEventHandler
+    ["Take",
+        {
+
+            params ["_unit", "_container", "_item"];
+            [_container,_item] spawn
+            {
+                params ["_container", "_item"];
+                if (_container != (missionnamespace getVariable "cargo")) exitwith {};
+                if (([MODE_GET_STATUS] call BIS_fnc_OM_ModuleEconomy) < ([MODE_GET_EQUIP_PRICE,[_item]] call BIS_fnc_OM_ModuleEconomy)) exitwith
+                {
+                    /* ["_item: %1 nelze koupit, nakupni cena je %2",_item, [MODE_GET_EQUIP_PRICE,[_item]] call BIS_fnc_OM_ModuleEconomy] call BIS_fnc_LogFormat; */
+                    if (_item iskindof ["Launcher_base_f", configFile >> "CfgWeapons"]) then
+                    {
+                        _container addWeaponCargo [_item,1];
+                    };
+                    if (_item iskindof ["Rifle", configFile >> "CfgWeapons"]) then
+                    {
+                        _container addWeaponCargo [_item,1];
+                    };
+                    if (_item iskindof ["PistolCore", configFile >> "CfgWeapons"]) then
+                    {
+                        _container addWeaponCargo [_item,1];
+                    };
+                    if (_item iskindof ["CA_magazine", configFile >> "CfgMagazines"]) then {_container addMagazineCargo [_item,1];};
+                    if (_item iskindof ["Item_Base_F", configFile >> "CfgVehicles"]) then {_container addItemCargo [_item,1];};
+                    if (_item iskindof ["DetectorCore", configFile >> "CfgWeapons"]) then {_container addItemCargo [_item,1];};
+                    if (_item iskindof ["ItemCore", configFile >> "CfgWeapons"]) then {_container addItemCargo [_item,1];};
+                    if (_item iskindof ["Binocular", configFile >> "CfgWeapons"]) then {_container addWeaponCargo [_item,1];};
+                    if (_item iskindof "Bag_Base") then {_container addBackpackCargo [_item,1];};
+                    //No money, no love notification
+                    [parseText  localize "STR_A3_OM_fn_OM_openMarketInventory.sqf24", true, nil, 7, 1, 0] spawn BIS_fnc_textTiles;
+                    Playsound "AddItemFailed";
+                    player setUnitLoadout BIS_prevLoadout;
+                    //--- hacky solution how to enable vest and backpack container
+                    player additem "OM_Magazine";
+                    player removeItem "OM_Magazine";
+                };
+
+                [MODE_BUY_EQUIP, [_item]] call BIS_fnc_OM_ModuleEconomy;
+                //_null = ["OMMoneyTransfer", [parseText format ["<t font='PuristaBold' size='1' color='#cc3300'> -%1 $</t>",[9, [_item]] call BIS_fnc_OM_ModuleEconomy]]] call BIS_fnc_shownotification;
+                playsound "hint";
+
+                BIS_prevLoadout = getUnitLoadout player;
+            };
+        }
+    ];
+
+    _sellAction = player addEventHandler
+    [
+        "Put",
+        {
+            params ["_unit", "_container", "_item"];
+            [_container,_item] spawn
+            {
+                params ["_container", "_item"];
+                if (true) then
+                {
+                    if (_container != (missionnamespace getVariable "cargo")) exitWith
+                    {
+                        //[parseText "<t font='PuristaBold' size='1' color='#cc3300'>You didn't sell the item, it is lying on the ground</t>", true, nil, 7, 0.7, 0] spawn BIS_fnc_textTiles; //TODO: Localize
+                    };
+                    //--- Sell equip
+                    [MODE_INCREASE_MONEY, [([9,[_item,true]] call BIS_fnc_OM_ModuleEconomy)]] call BIS_fnc_OM_ModuleEconomy;
+                    //_null = ["OMMoneyTransfer", [parseText format ["<t font='PuristaBold' size='1' color='#ffa500'> +%1 $</t>",[MODE_GET_EQUIP_PRICE,[_item,true]] call BIS_fnc_OM_ModuleEconomy]]] call BIS_fnc_shownotification;
+                    Playsound "AddItemOK";
+                    BIS_prevLoadout = getUnitLoadout player;
+                };
+                if (isnil "BIS_SQcResearchItemSold" && _item == "Files_researchNotes") then {BIS_SQcResearchItemSold = TRUE};
+            };
+        }
+    ];
+    waitUntil {player getVariable "BIS_IsShopping"};
+	(_this # 0) spawn {
+		params ["_shopkeeper"];
+		_shopCrate = missionNamespace getVariable "cargo";
+		while {player getVariable "BIS_IsShopping"} do {
+			_shopInventoryOld = +((magazineCargo _shopCrate) + (weaponCargo _shopCrate) + (itemCargo _shopCrate) + (backpackCargo _shopCrate));
+			_playerInventoryOld = +((magazines player) + (weapons player) + (items player) + [backpack player]);
+			_stuffOnGroundOld = [];
+			{
+				_magazineCargo = +(magazineCargo _x);
+				_weaponCargo = +(weaponCargo _x);
+				_itemCargo = +(itemCargo _x);
+				_backpackCargo = +(backpackCargo _x);
+				_x setVariable ["BIS_OM_magazineCargo", _magazineCargo];
+				_x setVariable ["BIS_OM_weaponCargo", _weaponCargo];
+				_x setVariable ["BIS_OM_itemCargo", _itemCargo];
+				_x setVariable ["BIS_OM_backpackCargo", _backpackCargo];
+				_holderInventory = _magazineCargo + _weaponCargo + _itemCargo + _backpackCargo;
+				_x setVariable ["BIS_OM_inventorySizeOld", count _holderInventory];
+				_stuffOnGroundOld append _holderInventory;
+			} forEach ((_shopkeeper nearObjects ["GroundWeaponHolder", 5]) + (_shopkeeper nearObjects ["WeaponHolderSimulated", 5]));
+    			sleep 0.25;
+    			_shopInventoryNew = +((magazineCargo _shopCrate) + (weaponCargo _shopCrate) + (itemCargo _shopCrate) + (backpackCargo _shopCrate));
+    			_playerInventoryNew = +((magazines player) + (weapons player) + (items player) + [backpack player]);
+    			_stuffOnGroundNew = [];
+    			_holdersNew = (_shopkeeper nearObjects ["GroundWeaponHolder", 5]) + (_shopkeeper nearObjects ["WeaponHolderSimulated", 5]);
+			{
+				_holderInventory = +((magazineCargo _x) + (weaponCargo _x) + (itemCargo _x) + (backpackCargo _x));
+				_x setVariable ["BIS_OM_inventorySizeNew", count _holderInventory];
+				_stuffOnGroundNew append _holderInventory;
+			} forEach _holdersNew;
+
+			if (count _holdersNew > 0) then {
+	    			if (count _shopInventoryNew < count _shopInventoryOld) then {
+	    				_item = "";
+	    				{
+	    					if (_x != (_shopInventoryNew # _forEachIndex)) exitWith {
+	    						_item = _x;
+	    					};
+	    				} forEach _shopInventoryOld;
+	    				if (_item == "") then {_item = _shopInventoryOld # ((count _shopInventoryOld) - 1)};
+	    				if (({_x == _item} count _playerInventoryOld) <= ({_x == _item} count _playerInventoryNew)) then {
+	    					_holderID = _holdersNew findIf {(_x getVariable ["BIS_OM_inventorySizeNew", 0]) > (_x getVariable ["BIS_OM_inventorySizeOld", 0])};
+	    					if (_holderID != -1) then {
+	    						playSound "AddItemFailed";
+	    						_holder = _holdersNew # _holderID;
+	    						if (_item isKindOf ["Launcher_base_f", configFile >> "CfgWeapons"]) exitWith {
+								clearWeaponCargo _holder;
+								{_holder addWeaponCargo [_x, 1]} forEach (_holder getVariable ["BIS_OM_weaponCargo", []]);
+								_shopCrate addWeaponCargo [_item, 1];
+							};
+							if (_item isKindOf ["Rifle", configFile >> "CfgWeapons"]) exitWith {
+								clearWeaponCargo _holder;
+								{_holder addWeaponCargo [_x, 1]} forEach (_holder getVariable ["BIS_OM_weaponCargo", []]);
+								_shopCrate addWeaponCargo [_item, 1];
+							};
+							if (_item isKindOf ["PistolCore", configFile >> "CfgWeapons"]) exitWith {
+								clearWeaponCargo _holder;
+								{_holder addWeaponCargo [_x, 1]} forEach (_holder getVariable ["BIS_OM_weaponCargo", []]);
+								_shopCrate addWeaponCargo [_item, 1];
+							};
+							if (_item isKindOf ["CA_magazine", configFile >> "CfgMagazines"]) exitWith {
+								clearMagazineCargo _holder;
+								{_holder addMagazineCargo [_x, 1]} forEach (_holder getVariable ["BIS_OM_magazineCargo", []]);
+								_shopCrate addMagazineCargo [_item, 1]
+							};;
+							if (_item isKindOf "Item_Base_F") exitWith {
+								clearItemCargo _holder;
+								{_holder addItemCargo [_x, 1]} forEach (_holder getVariable ["BIS_OM_itemCargo", []]);
+								_shopCrate addItemCargo [_item, 1];
+							};
+							if (_item isKindOf ["DetectorCore", configFile >> "CfgWeapons"]) exitWith {
+								clearItemCargo _holder;
+								{_holder addItemCargo [_x, 1]} forEach (_holder getVariable ["BIS_OM_itemCargo", []]);
+								_shopCrate addItemCargo [_item, 1];
+							};
+							if (_item isKindOf ["ItemCore", configFile >> "CfgWeapons"]) exitWith {
+								clearItemCargo _holder;
+								{_holder addItemCargo [_x, 1]} forEach (_holder getVariable ["BIS_OM_itemCargo", []]);
+								_shopCrate addItemCargo [_item, 1];
+							};
+							if (_item isKindOf ["Binocular", configFile >> "CfgWeapons"]) exitWith {
+								clearItemCargo _holder;
+								{_holder addWeaponCargo [_x, 1]} forEach (_holder getVariable ["BIS_OM_itemCargo", []]);
+								_shopCrate addWeaponCargo [_item, 1];
+							};
+							if (_item isKindOf "Bag_Base") exitWith {
+								clearBackpackCargo _holder;
+								{_holder addBackpackCargo [_x, 1]} forEach (_holder getVariable ["BIS_OM_backpackCargo", []]);
+								_shopCrate addBackpackCargo [_item, 1];
+							};
+	    					};
+	    				};
+	    			};
+	    		};
+		};
+	};
+    while {player getVariable "BIS_IsShopping"} do
+    {
+       waituntil {!(isnull (finddisplay 602))};
+        /*_initShop0  = "<t color='#FFA500'  font = 'PuristaMedium' size='0.85' shadow='2' shadowColor='#000000' align='center'><br/>SELECT ITEM TO PREVIEW PRICE</t>";
+        _initShop1 = "<t color='#FFFFFF'  font = 'PuristaMedium' size='1' shadow='2' shadowColor='#000000' align='center'><br/>YOUR MONEY</t>";
+        _initShop2  = format ["<t color='#FFA500'  font = 'PuristaMedium' size='2' shadow='2' shadowColor='#000000' align='center'><br/>%1 $</t>",[3] call BIS_fnc_OM_ModuleEconomy];
+        _click = "<t color='#FFA500'  font = 'PuristaMedium' size='1' shadow='2' shadowColor='#000000' align='left'><br/><br/><br/>[LMB]</t>";
+        _Preview = "<t color='#FFFFFF'  font = 'PuristaMedium' size='1' shadow='2' shadowColor='#000000' align='left'> - CHECK PRICE</t>";
+        _drag = "<t color='#FFA500'  font = 'PuristaMedium' size='1' shadow='2' shadowColor='#000000' align='left'><br/>[DRAG]</t>";
+        _dragInfo = "<t color='#FFFFFF'  font = 'PuristaMedium' size='1' shadow='2' shadowColor='#000000' align='left'> - BUY, SELL</t>";
+        _warning  = "<t color='#FFA500'  font = 'PuristaMedium' size='0.85' shadow='2' shadowColor='#000000' align='center'><br/><br/>WARNING: DONT SWAP ITEMS! SELL YOUR ITEM FIRST OR YOU WILL LOOSE MONEY (WIP)</t>";
+        hintSilent parsetext (_initShop0+_initShop1+_initShop2+_click+_Preview+_drag+_dragInfo +_warning);*/
+       //hint format ["%1",(findDisplay 602) displayCtrl 633];
+        {((findDisplay 602) displayCtrl _x) ctrlSetEventHandler ["LBSelChanged", "_this call BIS_fnc_OM_ContainerClick"];} foreach [633,619,638,640,610];
+        {((findDisplay 602) displayCtrl _x) ctrlSetEventHandler ["LBDrag", "_this call BIS_fnc_OM_InventoryDrag"];} count [633,619,638,640,610,611,612,602,6211,6212,6213,6214,6215,6216,6217,6238,6239,6240,620,621,622,623,624,625,626,627,628,629,630,631,632,6554,6385,6325,6405,638,633,619,6381,6382,6331,6332,6191,6192,6401,6402,6321,6322,634,635,636,637];
+        {((findDisplay 602) displayCtrl _x) ctrlSetEventHandler ["ButtonDown", "_this call BIS_fnc_OM_Inventoryclick"];} count [633,619,638,640,610,611,612,602,6211,6212,6213,6214,6215,6216,6217,6238,6239,6240,620,621,622,623,624,625,626,627,628,629,630,631,632,6554,6385,6325,6405,638,633,619,6381,6382,6331,6332,6191,6192,6401,6402,6321,6322,634,635,636,637];
+       waituntil {isnull (finddisplay 602)};
+       player setVariable ["BIS_IsShopping",false];
+       player removeEventHandler ["Take", _kaufAction];
+       player removeEventHandler ["Put", _sellAction];
+       detach (Missionnamespace getVariable "cargo");
+       //hintsilent "";
+    };
+};
+Player action ["Gear",(Missionnamespace getVariable "cargo")];
+waituntil {!(player getVariable ["BIS_IsShopping",false])};
+//--- hide market info UI
+(uiNamespace getVariable "BIS_OM_marketInfo") ctrlShow FALSE;
+(uiNamespace getVariable "BIS_OM_showItemPriceBck") ctrlShow FALSE;
+(uiNamespace getVariable "BIS_OM_showItemPrice") ctrlShow FALSE;
+
+//--- talks when closing market
+//if (!(bis_fnc_missionFlow_fsm getFSMVariable ["_showSavePointSM",false])) then {_randomTalk = "firstTime"} else {
+    _randomTalk = selectrandom [1,2,3];
+//};
+_subtitles = "";
+switch (_randomTalk) do
+{
+    /*case "firstTime":
+    {
+        _randomTalk = "Market_bye_A"; //Todo: Add correct voice acting
+        _subtitles = "If you need something else, try someone else.";     //TODO: Localize
+        
+    };*/
+    case 1:
+    {
+        if ( _this#0 getvariable ["BIS_MerchantDubber","VINCENT"] == "VINCENT") then
+        {
+            _randomTalk = "Civilain_MarketExit_Merchant_A_01_Vincent";
+            _subtitles = localize "STR_A3_OM_Syndikat_MarketExit_Merchant_A_01";
+        } else {
+            _randomTalk = "Civilain_MarketExit_Merchant_A_Ahmeed_01";
+            _subtitles = localize "STR_A3_OM_Syndikat_MarketExit_Merchant_A_01";
+        };
+    };
+    case 2:
+    {
+        if ( _this#0 getvariable ["BIS_MerchantDubber","VINCENT"] == "VINCENT") then
+        {
+            _randomTalk = "Civilian_MarketExit_Merchant_A_02_Vincent";
+            _subtitles = localize "STR_A3_OM_Syndikat_MarketExit_Merchant_A_02_02";
+        } else {
+            _randomTalk = "Civilian_MarketExit_Merchant_A_Ahmeed_02";
+            _subtitles = localize "STR_A3_OM_Syndikat_MarketExit_Merchant_A_02_02";
+        };
+    };
+    case 3:
+    {
+        if ( _this#0 getvariable ["BIS_MerchantDubber","VINCENT"] == "VINCENT") then
+        {
+            _randomTalk = "Civilian_MarketExit_Merchant_B_02_Vincent";
+            _subtitles = localize "STR_A3_OM_Syndikat_MarketExit_Merchant_B_02";
+        } else {
+            _randomTalk = "Civilian_MarketExit_Merchant_B_Ahmeed_02";
+            _subtitles = localize "STR_A3_OM_Syndikat_MarketExit_Merchant_B_02";
+        };
+    };
+};
+//--- play correct sound and subtitle
+_this#0 say3D [_randomTalk,20,1,true];
+[localize "str_a3_character_merchant",_subtitles] spawn BIS_fnc_showSubtitle; //TODO: Localize

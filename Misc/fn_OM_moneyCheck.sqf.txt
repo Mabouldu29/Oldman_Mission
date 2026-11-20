@@ -1,0 +1,170 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+player addEventHandler
+[
+    "InventoryOpened",
+    {
+    	player setvariable ["InInventory",true];
+    	params ["_unit","_container"];
+        //--- Create control if doesnt exist
+        if (isNull (uiNamespace getVariable ["BIS_InventoryItemsInfo", controlNull])) then
+        {
+			uiNamespace setVariable ["BIS_InventoryItemsInfo", (findDisplay 46) ctrlCreate ["RscStructuredText", 9989025]]; //9999014
+            uiNamespace setVariable ["BIS_InventoryUniform", (findDisplay 46) ctrlCreate ["RscStructuredText", 9999026]];
+            uiNamespace setVariable ["BIS_InventoryVest", (findDisplay 46) ctrlCreate ["RscStructuredText", 9999027]];
+            uiNamespace setVariable ["BIS_InventoryHeadgear", (findDisplay 46) ctrlCreate ["RscStructuredText", 9999028]];
+            uiNamespace setVariable ["BIS_InventoryGoggles", (findDisplay 46) ctrlCreate ["RscStructuredText", 9991029]];
+		};
+		//--- Oldman's money visible in inventory carryload
+        0 = [] spawn
+        {
+			waitUntil {!isNull (findDisplay 602)};
+            //{((findDisplay 602) displayCtrl _x) ctrlSetEventHandler ["LBSelChanged", "hint format ['%1',_this]"];} foreach [633,619,638];
+			_moneyInfo = uiNamespace getVariable "BIS_InventoryItemsInfo";
+			_moneyInfo ctrlSetPosition ctrlPosition (findDisplay 602 displayCtrl 1020);//6308
+			_moneyInfo ctrlCommit 0;
+			_moneyInfo ctrlShow TRUE;
+			_moneyInfo ctrlSetStructuredText parseText format ["<t align = 'center'>" + Localize "STR_A3_OM_System_MoneyCheck_info" + "</t><t align = 'center' color = '#61af64'> %1 $</t>", ([3] call BIS_fnc_OM_ModuleEconomy)];
+
+            _inventoryUniform = uiNamespace getVariable "BIS_InventoryUniform";
+            _inventoryUniform ctrlSetPosition ctrlPosition (findDisplay 602 displayCtrl 6331);
+
+            _inventoryVest = uiNamespace getVariable "BIS_InventoryVest";
+            _inventoryVest ctrlSetPosition ctrlPosition (findDisplay 602 displayCtrl 6381);
+
+            _inventoryHeadGear = uiNamespace getVariable "BIS_InventoryHeadgear";
+            _inventoryHeadGear ctrlSetPosition ctrlPosition (findDisplay 602 displayCtrl 6240);
+
+            _inventoryGoggles = uiNamespace getVariable "BIS_InventoryGoggles";
+            _inventoryGoggles ctrlSetPosition ctrlPosition (findDisplay 602 displayCtrl 6216);
+
+            //_color = '#61af64';
+
+			//--- update additional UI elements
+			while {ctrlShown _moneyInfo} do
+            //while {!isNull (findDisplay 602)} do
+			{
+				sleep 0.2;
+				_moneyInfo ctrlSetStructuredText parseText format ["<t align = 'center'>" + Localize "STR_A3_OM_System_MoneyCheck_info" + "</t><t align = 'center' color = '#61af64'> %1 $</t>", ([3] call BIS_fnc_OM_ModuleEconomy)];
+                _color = '#CB0000';
+                _size = '1';
+                _text = "!";
+                if (BIS_isWearingCSATHelmet || BIS_isWearingSuspiciousHeadgear) then
+                {
+                    if !(ctrlShown _moneyInfo) exitwith {};
+                    if (BIS_isWearingCompleteUniform) then
+                    {
+                        _color = '#FFC300';_size = '0.7';
+                        if (BIS_iswearingUndercoverFacewear) then
+                        {
+                            _color = '#39AC39';_text = "?";
+                        };
+                    };
+                     if (isNull findDisplay 602) exitwith {};
+                    _inventoryHeadGear ctrlCommit 0;
+                    _inventoryHeadGear ctrlShow TRUE;
+                    _inventoryHeadGear ctrlSetStructuredText parseText format ["<t size = '%2' align = 'Right' color = '%1' >%3</t>",_color,_size,_text]; //\a3\Ui_f\data\IGUI\Cfg\CommandBar\combatMode_textureMStealth_ca.paa
+                } else {
+                    (uiNamespace getVariable "BIS_InventoryHeadgear") ctrlShow FALSE;
+                };
+
+                if (BIS_isWearingSuspiciousVest) then
+                {
+                    if !(ctrlShown _moneyInfo) exitwith {};
+                    if (BIS_isWearingCompleteUniform) then
+                    {
+                        _color = '#FFC300';_size = '0.7';
+                        if (BIS_iswearingUndercoverFacewear) then
+                        {
+                            _color = '#39AC39';_text = "?";
+                        };
+                    };
+                     if (isNull findDisplay 602) exitwith {};
+                    _inventoryVest ctrlCommit 0;
+                    _inventoryVest ctrlShow TRUE;
+                    _inventoryVest ctrlSetStructuredText parseText format ["<t size = '%2' align = 'Right' color = '%1' >%3</t>",_color,_size,_text];
+                } else {
+                    (uiNamespace getVariable "BIS_InventoryVest") ctrlShow FALSE;
+                };
+
+                if (BIS_isWearingCSATUniform || !BIS_isWearingNeutralUniform) then
+                {
+                    if !(ctrlShown _moneyInfo) exitwith {};
+                    if (BIS_isWearingCompleteUniform) then
+                    {
+                        _color = '#FFC300';_size = '0.7';
+                        if (BIS_iswearingUndercoverFacewear) then
+                        {
+                            _color = '#39AC39';_text = "?";
+                        };
+                    };
+                     if (isNull findDisplay 602) exitwith {};
+                    _inventoryUniform ctrlCommit 0;
+                    _inventoryUniform ctrlShow TRUE;
+                    _inventoryUniform ctrlSetStructuredText parseText format ["<t size = '%2' align = 'Right' color = '%1' >%3</t>",_color,_size,_text];
+                } else {
+                    (uiNamespace getVariable "BIS_InventoryUniform") ctrlShow FALSE;
+                };
+
+                if (BIS_iswearingUndercoverFacewear && (BIS_isWearingCompleteUniform || BIS_isWearingWorkerUniform || BIS_isWearingIDAPUniform)) then
+                {
+                    _color = '#39AC39';_text = "?";_size = '0.7';
+                    if ((BIS_isWearingWorkerUniform || BIS_isWearingIDAPUniform) && (BIS_isWearingSuspiciousHeadgear || BIS_isWearingSuspiciousVest)) then
+                    {
+                        _color = '#FFC300';_text = "!";_size = '1';
+                    };
+                     if (isNull findDisplay 602) exitwith {};
+                    _inventoryGoggles ctrlCommit 0;
+                    _inventoryGoggles ctrlShow TRUE;
+                    _inventoryGoggles ctrlSetStructuredText parseText format ["<t size = '%2' align = 'Right' color = '%1' >%3</t>",_color,_size,_text];
+                } else {
+                    (uiNamespace getVariable "BIS_InventoryGoggles") ctrlShow FALSE;
+                };
+
+                if (BIS_isWearingWorkerUniform || BIS_isWearingIDAPUniform && !(BIS_isWearingCSATUniform)) then
+                {
+                    if (isNull findDisplay 602) exitwith {};
+                    _color = '#FFC300';_text = "!";_size = '0.7';
+                    if (BIS_iswearingUndercoverFacewear) then {_color = '#39AC39';_text = "?";_size = '0.7';};
+                    _inventoryUniform ctrlCommit 0;
+                    _inventoryUniform ctrlShow TRUE;
+                    _inventoryUniform ctrlSetStructuredText parseText format ["<t size = '%2' align = 'Right' color = '%1' >%3</t>",_color,_size,_text];
+                } else {
+                    if !(BIS_isWearingCSATUniform || !BIS_isWearingNeutralUniform) then {(uiNamespace getVariable "BIS_InventoryUniform") ctrlShow FALSE;}
+                };
+			};
+		};
+		//--- player is looting dead body
+        //if (typeof _container  == "GroundWeaponHolder") exitWith {};
+        if ( _container iskindof "MAN" && !alive _container) then
+        {
+        	0 = [] spawn
+        	{
+        		//--- raise threat values
+        		while {player getVariable ["InInventory",false]} do
+        		{
+        			BIS_relEast setVariable ["finalRange", RELATION_RANGE_LOOTING_DEAD_BODY];
+        			BIS_relEast setVariable ["finalRate", RELATION_RATE_LOOTING_DEAD_BODY];
+					sleep 1;
+        		};
+        	};
+        };
+    }
+];
+
+player addEventHandler
+[
+    "InventoryClosed",
+    {
+		player setvariable ["InInventory",false];
+		//--- hide Oldman's money info
+		(uiNamespace getVariable "BIS_InventoryItemsInfo") ctrlShow FALSE;
+        (uiNamespace getVariable "BIS_InventoryHeadgear") ctrlShow FALSE;
+        (uiNamespace getVariable "BIS_InventoryUniform") ctrlShow FALSE;
+        (uiNamespace getVariable "BIS_InventoryVest") ctrlShow FALSE;
+        (uiNamespace getVariable "BIS_InventoryGoggles") ctrlShow FALSE;
+		//--- reset threat values
+		BIS_relEast setVariable ["finalRange", RELATION_DEFAULT_RANGE_FOR_UNARMED_PLAYER];
+		BIS_relEast setVariable ["finalRate", RELATION_DEFAULT_RATE_FOR_UNARMED_PLAYER];
+	}
+];

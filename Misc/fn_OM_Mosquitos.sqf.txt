@@ -1,0 +1,172 @@
+/*
+current example: [[13528.652,8411.605,0],10,60] spawn BIS_fnc_OM_Mosquitos; //[date, 10, "h"] call BIS_fnc_CalculateDateTime
+
+PARAMS:
+CENTER - Position
+LIFETIME - DATE!
+SIZE - Radius/Distance (meters)
+
+*/
+
+//--- define parameters
+params ["_center","_lifetime","_size"];
+_lifetime = [date, _lifetime, "h"] call BIS_fnc_CalculateDateTime;
+waituntil {sleep 0.5; (vehicle player) distance _center < (_size + 250)};
+//--- Create Center Logic
+_logicCenter = createCenter sideLogic;
+_logicGroup = createGroup _logicCenter;
+_myLogicObject = _logicGroup createUnit ["Logic",_center, [], 0, "NONE"];
+
+//--- Create Moving Logic
+_logicMoving = createCenter sideLogic;
+_logicGroup2 = createGroup _logicMoving;
+_myMovingLogic = _logicGroup2 createUnit ["Logic", _center, [], 0, "NONE"];
+
+// FIXED PARAMS
+_source = "#particlesource" createVehicleLocal getpos _myLogicObject;
+//_source attachto [_myLogicObject,[0,0,1]];
+_source attachto [_myMovingLogic,[0,0,1]];
+_source setParticleParams [
+/*Sprite*/		["\A3\animals_f\Mosquito.p3d", 1, 0, 1, 0], "", // File, Ntieth, Index, Count, Loop(Bool)
+/*Type*/ 		"spaceObject",
+/*TimmerPer*/ 		0.1,
+/*Lifetime*/ 		10, //4
+/*Position*/		[0, 0, 0],
+/*MoveVelocity*/	[0, 0, 0.5],
+/*Simulation*/		0, 1.31, 1, 0, //rotationVel, weight, volume, rubbing
+/*Scale*/		[0.75, 0.75, 0.75, 0],
+/*Color*/		[[1, 1, 1, 1],[1, 1, 1, 1]],
+/*AnimSpeed*/		[1.5,0.5],
+/*randDirPeriod*/	0.01,
+/*randDirIntesity*/	0.08,
+/*onTimerScript*/ 	"",
+/*DestroyScript*/ 	"",
+/*Follow*/ 		""
+];
+
+// RANDOM / TOLERANCE PARAMS
+_source setParticleRandom [
+/*LifeTime*/ 		5, //2
+/*Position*/		[10, 10, 2 ],
+/*MoveVelocity*/	[0, 0, 0],
+/*rotationVel*/ 	0,
+/*Scale*/		0,
+/*Color*/		[0, 0, 0, 0.1],
+/*randDirPeriod*/	0.01,
+/*randDirIntesity*/	0.03,
+/*Angle*/ 		0
+];
+
+//--- spawner loop of mosquitos
+_source setDropInterval 0.0025;
+
+//--------------------------------------------------
+//--- move particle on the edge of the epicentrum
+//--------------------------------------------------
+//---- moving sound
+_soundHandler = [_source,_size] spawn
+{
+  params ["_myMovingLogic","_size"];
+  while {true} do
+  {
+    _myMovingLogic say3d ["OMMosquitos",50];
+    sleep 4;
+  };
+};
+//--- moving logic itself
+_mosquitosHandler = [_myLogicObject,_size,_source,_myMovingLogic] spawn
+{
+  params ["_myLogicObject","_size","_source","_myMovingLogic"];
+  while {true} do
+  {
+    //--- start counting if player is close enogh
+    waituntil
+    {
+      sleep 0.5;
+      (player distance _myLogicObject > _size + 5)
+      &&
+      (player distance _myLogicObject < _size + 250)
+    };
+    //--- calculate edge of the epicentrum
+    vecEnd = (getpos _myLogicObject vectorAdd ((getpos _myLogicObject vectorFromTo getpos player) vectorMultiply _size));
+    //--- move mosquitos to the closest position from player in epicentrum
+    _myMovingLogic setpos vecEnd;
+    sleep 1;
+  };
+};
+//--------------------------------------------------
+//--- detect when player enters epicentrum
+//--------------------------------------------------
+_inMosquitosDetector = [_myLogicObject,_size,_source,_myMovingLogic] spawn
+{
+  scriptname "Player in epicentrum check";
+  params ["_myLogicObject","_size","_source","_myMovingLogic"];
+  while {!isnull _myLogicObject} do
+  {
+    //--- Player is in chimera
+    waituntil
+    {
+      sleep 0.5;
+      player distance _myLogicObject < _size//(_size + 10)
+    };
+    //--- debug notification
+    //hint "In epicentrum";
+
+    //--- run post proces and handle damage
+    //[_myLogicObject,_size] spawn BIS_fnc_om_InEpicentrum;
+    detach _source;
+    _actualVehicle = vehicle player;
+    _source attachto [_actualVehicle,[0,0,1]];
+
+    //--- store TRUE variable
+    player setvariable ["BIS_InEpicentrum",true];
+
+    //--- Player managed to escape or change/leave vehicle
+    waituntil
+    {
+      sleep 0.5;
+      player distance _myLogicObject >= (_size + 5)
+      ||
+      vehicle player != _actualVehicle
+    };
+    detach _source;
+    _source attachto [_myMovingLogic,[0,0,1]];
+    //--- debug notification
+    //hint "Out of epicentrum";
+
+    //--- store FALSE variable
+    player setvariable ["BIS_InEpicentrum",false];
+  };
+};
+
+//--------------------------------------------------
+//--- calculate when epicentrum die
+//--------------------------------------------------
+//---actual time when epicentrum showed up
+
+//_mosquitoEnd = [date, _lifetime, "h"] call BIS_fnc_CalculateDateTime;
+//hint str _mosquitoEnd;
+//--- wait for end
+waituntil
+{
+  sleep 0.5;
+  [date,_lifetime] call BIS_fnc_IsDateTimeNewer
+  ||
+  player distance _center >= (_size + 250)
+};
+//hint "Mosquitos despawned";
+//--- Delete particles
+{deletevehicle _x} foreach [_myLogicObject,_source,_myMovingLogic];
+{deleteGroup _x} foreach [_logicGroup,_logicGroup2];
+{deletecenter _x} foreach [_logicCenter,_logicMoving];
+//--- Execute script again, if area is still infected
+{terminate _x} foreach [_inMosquitosDetector,_soundHandler,_mosquitosHandler];
+
+if !([date,_lifetime] call BIS_fnc_IsDateTimeNewer) then
+{
+  _newExpirationdate = [date, _lifetime, "h"] call BIS_fnc_CalculateDateTime;
+  //hint str _newExpirationdate;
+  [_center,_newExpirationdate,_size] spawn BIS_fnc_OM_Mosquitos;
+  //hint str _newExpirationdate;
+};
+

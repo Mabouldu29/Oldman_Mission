@@ -1,0 +1,136 @@
+
+BIS_fnc_OM_ModuleSentryDrone_FSM2 =
+{
+  params ["_drone", "_target", "_queue"];
+  private _originalDronePosition = getPosATL _drone;
+  private ["_lastTargetPosition"];
+  SET_STATE_FSM2(_drone, STATE_TRAVEL_IDLE);
+  private _prevState = 99999; private _actualState = 99999999;
+  private _nrOfTicks = 0;
+  private _mine = (_drone getVariable "BIS_droneMine");
+
+  while{alive _drone} do
+  {
+    if(GET_STATE_FSM2(_drone) != _prevState) then
+    {
+      _prevState = GET_STATE_FSM2(_drone);
+      ["%1: TRAVEL FSM2: %2", _drone, GET_STATE_NAME_FSM2(_prevState)] call BIS_fnc_logFormat;
+    };
+
+    switch (GET_STATE_FSM2(_drone)) do
+    {
+        case (STATE_TRAVEL_IDLE):
+        {
+          _drone limitSpeed (DRONE_STANDARD_SPEED);
+          _drone setBehaviour "CARELESS";
+          if(GET_STATE_FSM1(_drone) >= STATE_WPM_LOOP) then
+          {
+            SET_STATE_FSM2(_drone, STATE_TRAVEL_FASTTRAVEL);
+          };
+        };
+        case (STATE_TRAVEL_FASTTRAVEL):
+        {
+          private _currentWP = [_drone] call BIS_fnc_OM_ModuleSentryDrone_GetCurrentWP;
+          private _distanceToWP = 0;
+          if(!isNil "_currentWP") then
+          {
+            _distanceToWP = (_drone distance2D waypointPosition _currentWP);
+          };
+          private _speed = 200;
+          private _alt = getPosATL _drone select 2;
+          switch true do
+          {
+            case (_distanceToWP > 100):
+            {
+              _speed = 300;
+              _alt = 40;
+            };
+            case (_distanceToWP < 100 && _distanceToWP > 50):
+            {
+              _speed = 200;
+              _alt = 40;
+            };
+            case (_distanceToWP < 50 && _distanceToWP > 20):
+            {
+              _speed = 100;
+              _alt = 30;
+            };
+            case (_distanceToWP < 20 && _distanceToWP > 10):
+            {
+              _speed = 15;
+              _alt = 20;
+            };
+            case (_distanceToWP < 10 && _distanceToWP > 5):
+            {
+              _speed = 7;
+              _alt = 8;
+            };
+            case (_distanceToWP < 5 ):
+            {
+              _speed = 3;
+              _alt = 5;
+            };
+          };
+          /* ["%1 limiting speed to: %2", _drone, _speed] call BIS_fnc_logFormat; */
+          _drone limitSpeed _speed;
+          _drone flyInHeight _alt;
+          if(!isNil "_currentWP") then
+          {
+            if(_drone distance2D _target > DRONE_DISTANCE_TO_ACTIVATE_MINE) then
+            { DRONE_DISARM_MINE(_drone) }
+            else
+            { DRONE_ARM_MINE(_drone) };
+
+            if((position _drone distance2D waypointPosition _currentWP) <= DRONE_APPROACHING_RADIUS ) then
+            { SET_STATE_FSM2(_drone, STATE_TRAVEL_FOLLOWING) };
+          };
+        };
+        case (STATE_TRAVEL_FOLLOWING):
+        {
+          _drone limitSpeed DRONE_FOLLOWING_SPEED;
+          _nrOfTicks = _nrOfTicks + 1;
+          if(_nrOfTicks >= UPDATE_SCAN_TIME) then
+          {
+            [_drone] call BIS_fnc_OM_ModuleSentryDrone_MoveInSafeHeight2;
+            _nrOfTicks = 0;
+          };
+          private _currentWP = [_drone] call BIS_fnc_OM_ModuleSentryDrone_GetCurrentWP;
+          if(!isNil "_currentWP") then
+          {
+            if(_drone distance2D waypointPosition _currentWP > DRONE_APPROACHING_RADIUS*3) then
+            {
+              SET_STATE_FSM2(_drone, STATE_TRAVEL_FASTTRAVEL);
+            };
+          }
+          else
+          {
+            SET_STATE_FSM1(_drone, STATE_WPM_ADD_WP);
+          };
+          if(_drone distance2D _target > DRONE_DISTANCE_TO_ACTIVATE_MINE) then
+          {
+            DRONE_DISARM_MINE(_drone);
+          }
+          else
+          {
+            DRONE_ARM_MINE(_drone);
+          };
+        };
+        case (STATE_TRAVEL_RETURNING):
+        {
+          _drone limitSpeed DRONE_FASTTRAVEL_SPEED;
+          _drone flyInHeight 20;
+          SET_STATE_FSM2(_drone, STATE_TRAVEL_IDLE);
+        };
+        case (STATE_TRAVEL_EXPLODED):
+        {
+        };
+    };
+
+    private _actualState = GET_STATE_FSM2(_drone);
+    if(_actualState != _prevState) then
+    {
+      ["%1: TRAVEL FSM State %2 ==> %3", _drone, GET_STATE_NAME_FSM2(_prevState), GET_STATE_NAME_FSM2(_actualState)] call BIS_fnc_logFormat;
+    };
+    Sleep UPDATE_TIME;
+  };
+};

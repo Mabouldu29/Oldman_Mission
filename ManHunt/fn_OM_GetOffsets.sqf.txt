@@ -1,0 +1,60 @@
+#define FILE_TO_SAVE_OFFSETS "a3\Missions_F_Oldman\Functions\OM_postersOffsets2.hpp"
+#define MAX_POSTERS_PER_OBJECT 10
+
+params [ ["_logic", player,[objNull]], ["_fileToSave", FILE_TO_SAVE_OFFSETS,[""]], ["_range", 2000, [9999]] ] ;
+
+_houseArray = (nearestObjects[_logic, ["house"], _range]) + nearestTerrainObjects[_logic, [], _range];
+str _houseArray call BIS_fnc_log;
+private _resultPosterPositions = [];
+private _houseTypes = [];
+private "_prefix";
+
+{
+	if( typeOf _x == "" ) then
+	{
+		(str _x) call BIS_fnc_log;
+		_prefix = (str _x splitString " ") select 1;
+		_prefix = (_prefix splitString ".") select 0;
+	}
+	else
+	{
+		_prefix = typeOf _x;
+	};
+
+
+	private _tmpPoster = [];
+
+	if!( _prefix in _houseTypes ) then
+	{
+
+		//(str _houseTypes) call BIS_fnc_logFormat;
+		_tmpPoster pushBack _prefix;
+		_tmpPoster pushBack [];
+
+		private _iLoop = 0;
+		private _poster = nil;
+
+		for "_iLoop" from 0 to MAX_POSTERS_PER_OBJECT do
+		{
+			if( !isNil {call compile format [ "%1_%2", _prefix, _iLoop ]}) then
+			{
+				call compile format [ "_poster = %1_%2", _prefix, _iLoop ];
+				//(_tmpPoster select 1) pushBack [ "", typeOf _poster, _x worldToModel (getpos _poster), (vectorDir _x vectorCos vectorDir _poster) ];
+				(_tmpPoster select 1) pushBack [ "", typeOf _poster, _x worldToModel (getpos _poster), (getdir _poster - getdir _x) ];
+				//(str _tmpPoster) call BIS_fnc_logFormat;
+			}
+		};
+		if((count (_tmpPoster select 1)) > 0) then
+		{
+			_houseTypes pushBack _prefix;
+			_resultPosterPositions pushBack _tmpPoster;
+		};
+		//(str _resultPosterPositions) call BIS_fnc_logFormat;
+	};
+} forEach _houseArray;
+
+CopyToClipboard (str _resultPosterPositions);
+#ifdef __DEV
+private _fileHandle = diag_saveTextFile [_fileToSave, str 	_resultPosterPositions, 2];
+Hint format["Offsets copied to clipboard and saved to %1", _fileToSave];
+#endif

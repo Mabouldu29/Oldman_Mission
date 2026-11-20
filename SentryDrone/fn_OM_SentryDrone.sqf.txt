@@ -1,0 +1,56 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+#include "SentryDrone_common.sqf"
+#include "SentryDrone_FSM_WPManagement.sqf"
+#include "SentryDrone_FSM_Travel.sqf"
+
+params["_drone"];
+
+"Sentry Drone Initiated" call BIS_fnc_Log;
+
+WaitUntil{!isNil 'BIS_missionInitDone'};
+/* "OM_SentryDrones" call bis_fnc_startloadingscreen; */
+private _droneMineDummy = createmine ["Drone_explosive_dummy", [0,0,0],[], 0];
+_droneMineDummy attachTo [_drone, [0,0,0], ""];
+	/* _drone setVariable ["BIS_droneMine", _droneMine]; */
+_drone setVariable ["BIS_droneMineDummy", _droneMineDummy];
+_drone allowFleeing 0;
+
+_drone setVariable ["BIS_hndlDamage", _drone addEventHandler ["HandleDamage",
+{
+	params ["_unit", "_selection", "_damage", "_source", "_projectile", "_hitIndex", "_instigator", "_hitPoint"];
+	["Unit: %1 | _source: %2 | _instigator: %3 | _hitPoint = %4 | _selection = %5" , _unit, _source, _instigator, _hitPoint, _selection] call BIS_fnc_logFormat;
+
+	if(_instigator != vehicle player) then
+	{
+		private _hits = _unit getVariable ["howManyHits", 1];
+		if(_hits > 20 || !isNil {_unit getVariable "BIS_droneMine"} ) exitWith
+		{
+				{_x setDamage 1} forEach (attachedObjects _unit);
+				_unit setVariable ["BIS_droneState_fsm1", 6]; _unit setVariable ["BIS_droneState_fsm2", 4];
+				_unit removeEventHandler ["HandleDamage", _unit getVariable "BIS_hndlDamage"];
+				1
+		};
+		_unit setVariable ["howManyHits", _hits+1];
+		0
+	};
+	/* else
+	{
+		DRONE_ARM_MINE(_unit);
+		if(!alive _unit) then { [_unit] spawn {params ["_unit"]; private _unitHndl = (_unit getVariable "BIS_droneMine"); Sleep 3; _unitHndl setDamage 1;} };
+	} */
+}]];
+
+_drone setVariable ["BIS_hndlKill", _drone addEventHandler ["Killed",
+{
+	params ["_unit", "_killer", "_instigator", "_useEffects"];
+	DRONE_ARM_MINE(_unit);
+	(_unit getVariable "BIS_droneMine") setDamage 1;
+	_unit removeEventHandler ["Killed", _unit getVariable "BIS_hndlKill"];
+}]];
+
+private _queueWP = [NROFWAYPOINTS] call BIS_fnc_PriorityQueue_Init;
+_drone setVariable ["BIS_wpQueue", _queueWP];
+/* "OM_SentryDrones" call bis_fnc_endloadingscreen; */
+private _FSM1 = [_drone, player, _queueWP] spawn BIS_fnc_OM_ModuleSentryDrone_FSM1;
+private _FSM2 = [_drone, player, _queueWP] spawn BIS_fnc_OM_ModuleSentryDrone_FSM2;

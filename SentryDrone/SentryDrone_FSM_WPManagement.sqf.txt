@@ -1,0 +1,81 @@
+
+BIS_fnc_OM_ModuleSentryDrone_FSM1 =
+{
+  params ["_drone", "_target", "_queue"];
+  private _originalDronePosition = getPosATL _drone;
+  private ["_lastTargetPosition", "_wp"];
+  SET_STATE_FSM1(_drone, STATE_WPM_IDLE);
+  private _prevState = 99999; private _actualState = 99999999;
+  private _nrOfTicks = 0; private _checked = false;
+  while{alive _drone} do
+  {
+    if(GET_STATE_FSM1(_drone) != _prevState) then
+    {
+      _prevState = GET_STATE_FSM1(_drone);
+      /* ["WPM FSM1: %1", GET_STATE_NAME_FSM1(_prevState)] call BIS_fnc_logFormat; */
+    };
+    switch (GET_STATE_FSM1(_drone)) do
+    {
+        case (STATE_WPM_IDLE):
+        {
+          if(DRONE_CHECK_RELATIONSHIP == M_AGRESSIVE &&  _drone distance2D _target < DRONE_CHECK_RADIUS ) then
+          {
+            _lastTargetPosition = getPosATL _target;
+            SET_STATE_FSM1(_drone, STATE_WPM_LOOP_INIT);
+          };
+        };
+        case (STATE_WPM_LOOP_INIT):
+        {
+          [_drone, nil, false] call BIS_fnc_OM_ModuleSentryDrone_MoveActualWaypointSet;
+          Sleep 5;
+          SET_STATE_FSM1(_drone, STATE_WPM_ADD_WP);
+        };
+        case (STATE_WPM_LOOP):
+        {
+            if(_target distance2D _lastTargetPosition >= DELTA_S) then
+            {
+              _lastTargetPosition = getPosATL _target;
+              _checked = false;
+              SET_STATE_FSM1(_drone, STATE_WPM_ADD_WP);
+            };
+            if(!(DRONE_CHECK_RELATIONSHIP in [M_AGRESSIVE, M_PREPARE])  ||  _drone distance2D _target > DRONE_CHECK_RADIUS*1.2 ) then
+            {
+              SET_STATE_FSM1(_drone, STATE_WPM_RETURNING);
+              SET_STATE_FSM2(_drone, STATE_TRAVEL_RETURNING);
+            };
+        };
+        case (STATE_WPM_ADD_WP):
+        {
+          if( IS_QUEUE_FULL(_drone) ) then
+          {
+            QUEUE_DELETE_COMPLETED_WP(_drone);
+          };
+          QUEUE_ADD_WP(_drone, _target);
+          _checked = false;
+
+          SET_STATE_FSM1(_drone, STATE_WPM_LOOP);
+        };
+        case (STATE_WPM_REMOVE_WP):
+        {
+          QUEUE_DELETE_COMPLETED_WP(_drone);
+          _checked = false;
+          SET_STATE_FSM1(_drone, STATE_WPM_LOOP);
+        };
+        case (STATE_WPM_RETURNING):
+        {
+          [_drone getVariable "BIS_WPStorage", _drone, true] call BIS_fnc_OM_ModuleSentryDrone_MoveActualWaypointSet;
+          SET_STATE_FSM1(_drone, STATE_WPM_IDLE);
+        };
+        case (STATE_WPM_EXPLODED):
+        {
+        };
+    };
+
+    _actualState = GET_STATE_FSM1(_drone);
+    if(_actualState != _prevState) then
+    {
+      /* ["WPM State %1 ==> %2", GET_STATE_NAME_FSM1(_prevState), GET_STATE_NAME_FSM1(_actualState)] call BIS_fnc_logFormat; */
+    };
+    Sleep UPDATE_TIME;
+  };
+};

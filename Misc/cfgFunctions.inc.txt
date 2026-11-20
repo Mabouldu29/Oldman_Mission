@@ -1,0 +1,47 @@
+class Misc
+{
+	tag = "BIS";
+	project = "arma3";
+
+	class Functions
+	{
+		file = "\A3\Missions_F_Oldman\Systems\scripts\Misc";
+		class OM_Alarm;
+		class OM_CurrentDate;
+		class OM_GoSleep;
+		class OM_NewSafeHouse;
+		class OM_RevealNearest;
+		class OM_Mosquitos;
+		class OM_InEpicentrum;
+		class OM_SignalDetector;
+		class OM_TrackingDevice;
+		class OM_PH_AddSyndicats;
+		class OM_runAway;
+		class OM_createFirePlace;
+		class OM_GetActiveEventsTimes;
+		class OM_openMarketInventory;
+		class OM_addKaufMan;
+		class OM_addRepairMan;
+		class OM_GetCargo;
+		class OM_addDepo;
+		class OM_wait;
+		class OM_setInjuredCivil;
+		class OM_moneyCheck;
+		class OM_interactiveItems;
+		class OM_ambientMosquitos;
+		class OM_smartMarker;
+		class OM_addReputationManualy;
+		class OM_repNotification;
+		class OM_fetchDog;
+		class OM_GetRZAccess;
+		class OM_generateHash;
+		class OM_getVehicleWeaponLoad;
+		class OM_Doctor;
+		class OM_Refuel;
+		class OM_ChargeInCar;
+		class OM_AddWatchEvent;
+		class OM_loadingScreenWrapper;
+		class OM_weaponShed;
+		class OM_questNews;
+	};
+};

@@ -1,0 +1,407 @@
+BIS_fnc_OM_ModuleSentryDrone_MarkNodes =
+{
+    private _nearRoads = player nearRoads 1000;
+    {
+      private _segment = _x;
+      private _connectedSegments = roadsConnectedTo _segment;
+      if(count _connectedSegments > 2) then
+      {
+        [ "hd_destroy", [], position _x, false ] call BIS_fnc_markerCreate;
+        {
+          [ "mil_box", [], position _x, false ] call BIS_fnc_markerCreate;
+        } forEach _connectedSegments;
+      };
+    } forEach _nearRoads;
+};
+
+
+BIS_fnc_OM_ModuleSentryDrone_showGeometry =
+{
+  addMissionEventHandler ["Draw3D",
+  {
+    private _bbox = boundingBoxReal BIS_object;
+    private _pos1 = BIS_object modelToWorld _bbox#0;
+    private _pos2 = BIS_object modelToWorld _bbox#1;
+    drawLine3D  [_pos1, _pos2, [1,0,0,1]];
+  }];
+};
+
+
+BIS_fnc_OM_ModuleSentryDrone_ShowVector =
+{
+  params [ [ "_object", objNull, [objNull,[]]], ["_targetPos", [0,0,0], [[]] ] ];
+
+  missionNamespace setVariable ["object1", _object];
+  missionNamespace setVariable ["targetPos", _targetPos];
+  if(isNil "BIS_eventHndlDraw3D") then
+  {
+		BIS_eventHndlDraw3D =
+		addMissionEventHandler ["Draw3D",
+    {
+        private _object = missionNamespace getVariable "object1";
+        private _targetPos = missionNamespace getVariable "targetPos";
+        if(typeName _object == "OBJECT") then
+        {
+          _object = getPosATLVisual _object;
+        };
+        drawLine3D  [_object, _targetPos, [1,0,0,1]];
+    }];
+  };
+};
+
+BIS_fnc_OM_ModuleSentryDrone_HideVector =
+{
+	params [ [ "_object", objNull, [objNull,[]]] ];
+	if(!isNil "BIS_eventHndlDraw3D") then
+  {
+    removeMissionEventHandler ["Draw3D", BIS_eventHndlDraw3D];
+		BIS_eventHndlDraw3D = nil;
+	};
+};
+
+
+BIS_fnc_OM_ModuleSentryDrone_GetSafeHeightATL =
+{
+  params["_object"];
+  private _bbox = boundingBoxReal _object;
+  private _pos1 = _bbox#0;
+  private _pos2 = _bbox#1;
+  private _height = abs ( (_pos1 select 2) - (_pos2 select 2) );
+  /* ["Object: %1", _object] call BIS_fnc_logFormat;
+  ["altitude: %1", (_object modelToWorldVisual [0,0,_height]) select 2] call BIS_fnc_logFormat; */
+  //_model = "Sign_Sphere200cm_F" createVehicle (BIS_object modelToWorld [0,0,_height]);
+  (_object modelToWorldVisual [0,0,_height]) select 2;
+};
+
+
+BIS_fnc_OM_ModuleSentryDrone_IntersectInDirection =
+{
+  //relative to object's direction
+  params ["_object", ["_scanAngle", [0,0,0], [[]]], "_scanDistance", [ "_axis", 1, [99] ] ];
+  private _objectDirVector = _object vectorWorldToModel (vectordir _object);
+  private _vectorRotated = _objectDirVector;
+  for "_axis" from 0 to 2 do
+  {
+      if(_scanAngle#_axis != 0) then
+      {
+        _vectorRotated = [_vectorRotated,_scanAngle#_axis,_axis] call BIS_fnc_rotateVector3D;
+      };
+  };
+  _vectorRotated = _vectorRotated vectorMultiply _scanDistance;
+
+  private _targetPos = (_object vectorModelToWorld _vectorRotated) vectorAdd (getPosATLVisual _object);
+  [_object, _targetPos] call BIS_fnc_OM_ModuleSentryDrone_ShowVector;
+    //(lineIntersectsWith [getPosATLVisual _object, _targetPos, _object, objNull, true])
+    lineIntersectsObjs [getPosATLVisual _object, _targetPos, objNull, objNull, false, 16];
+};
+
+BIS_fnc_OM_ModuleSentryDrone_ScanArea =
+{
+  params ["_object", "_from", "_to", "_step", ["_distance", 15, [999]], ["_axis", 0, [9] ] ];
+  private _nearestObject = objNull;
+  private _realNearestObject = [0,0,0];
+  for "_iLoop" from _from to _to step _step do
+  {
+    _nearestObject = [_object, [_iLoop,0,0], _distance, _axis] call BIS_fnc_OM_ModuleSentryDrone_IntersectInDirection;
+    _nrOfObjects = count _nearestObject;
+    if( _nrOfObjects  > 0 ) then
+    {
+      _nearestObject = _nearestObject select (_nrOfObjects - 1);
+      if(_nearestObject distance2D _object < _realNearestObject distance2D _object) then
+      {
+        _realNearestObject = _nearestObject;
+      };
+    };
+    Sleep 0.1;
+  };
+  if(typeName _realNearestObject == "ARRAY") then
+  {
+    [_realNearestObject, -1]
+  }
+  else
+  {
+    [_realNearestObject, [_realNearestObject] call BIS_fnc_OM_ModuleSentryDrone_GetSafeHeightATL]
+  };
+};
+
+BIS_fnc_OM_ModuleSentryDrone_ScanAreaCone =
+{
+  params["_object", ["_distance", 15, [999]], ["_direction", 1, [9]] ];
+  private _scannedObjects = [];
+  private _nearestObject = objNull;
+  private _realNearestObject = [0,0,0];
+  private _startZ = 45; private _endZ =  -45; private _stepZ = -5; private _iZ = _startZ;
+  private _startX = 90; private _endX =  0; private _stepX = 1*_stepZ; private _iX = _startX;
+	private _iX2 = 9;
+  while {_iZ > 0} do
+  {
+		_iX = 40.961*ln _iX2;
+		_nearestObject = [_object, [_iX,0,_iZ], _distance] call BIS_fnc_OM_ModuleSentryDrone_IntersectInDirection;
+    _iZ = _iZ + _stepZ;
+		_iX2 = _iX2 - 1;
+	   _scannedObjects pushBack _nearestObject;
+    Sleep 0.2;
+  };
+  _iZ = 0; _iX = 0;_iX2 = 1;
+
+  while {_iZ >= _endZ} do
+  {
+		_iX = 40.961*ln _iX2;
+		_nearestObject = [_object, [_iX,0,_iZ], _distance] call BIS_fnc_OM_ModuleSentryDrone_IntersectInDirection;
+    _iZ = _iZ + _stepZ;
+		_iX2 = _iX2 + 1;
+    _scannedObjects pushBack _nearestObject;
+    Sleep 0.2;
+  };
+  private _lastDistance = 99999;
+  {
+    private _arr = _x;
+    private _sizeOfArray = count _arr;
+    if(_sizeOfArray > 0) then
+    {
+      private _nearestObjectActual = _arr select (_sizeOfArray - 1);
+      //["_nearestObjectActual: %1"] call BIS_fnc_logFormat;
+      private _actualDistance = _nearestObjectActual distance2D _object;
+      if(_actualDistance < _lastDistance) then
+      {
+
+        _realNearestObject = _nearestObjectActual;
+        //["_realNearestObject: %1"] call BIS_fnc_logFormat;
+        _lastDistance = _actualDistance;
+      };
+    };
+  } forEach _scannedObjects;
+  if(typeName _realNearestObject == "ARRAY") then
+  { [_realNearestObject, -1] } else { [_realNearestObject, [_realNearestObject] call BIS_fnc_OM_ModuleSentryDrone_GetSafeHeightATL] }
+};
+
+BIS_fnc_OM_ModuleSentryDrone_MoveInSafeHeight2 =
+{
+  params [ ["_sourceObject", objNull, [objNull]] ];
+  //missionNameSpace setVariable ["sourceObject", _sourceObject];
+  _sourceObject setVariable ["BIS_flyInSafeHeight", true];
+
+  [_sourceObject] spawn
+  {
+    params ["_sourceObject"];
+    private _obstacle = [_sourceObject, 8] call BIS_fnc_OM_ModuleSentryDrone_ScanAreaCone;
+    /* str _obstacle call BIS_fnc_Log; */
+    private _safeAltitude = _obstacle select 1;
+
+    if(_safeAltitude == -1) then {_safeAltitude = 5};
+
+    _sourceObject setVariable ["nearestObstacle", _obstacle select 0];
+    _sourceObject setVariable ["nearestObstacleDistance", (_obstacle select 0) distance2D _sourceObject];
+    _sourceObject setVariable ["safeHeight", _safeAltitude];
+    _sourceObject flyInHeight _safeAltitude;
+  };
+};
+
+BIS_fnc_OM_ModuleSentryDrone_MoveInSafeHeight =
+{
+  params [ ["_sourceObject", objNull, [objNull]] ];
+  missionNameSpace setVariable ["sourceObject", _sourceObject];
+  _sourceObject setVariable ["BIS_flyInSafeHeight", true];
+
+  while {alive _sourceObject && _sourceObject getVariable "BIS_flyInSafeHeight"} do
+  {
+    if((_sourceObject distance2D (waypointPosition (waypoints _sourceObject select (currentWaypoint group _sourceObject)))) < 20) then
+    {
+      [_sourceObject] spawn
+      {
+        params ["_sourceObject"];
+        /* private _obstacle = [_sourceObject, 0,-90,-10,50] call BIS_scanArea; */
+        private _obstacle = [_sourceObject, 8] call BIS_fnc_OM_ModuleSentryDrone_ScanAreaCone;
+        /* private _obstacle = [_sourceObject, 80, 90, 10, 15] call BIS_fnc_OM_ModuleSentryDrone_ScanArea; */
+        str _obstacle call BIS_fnc_Log;
+        private _safeAltitude = _obstacle select 1;
+
+        if(_safeAltitude == -1) then {_safeAltitude = 5};
+
+        _sourceObject setVariable ["nearestObstacle", _obstacle select 0];
+        _sourceObject setVariable ["nearestObstacleDistance", (_obstacle select 0) distance2D _sourceObject];
+        _sourceObject setVariable ["safeHeight" , _safeAltitude];
+        _sourceObject limitSpeed 12;
+        _sourceObject flyInHeight _safeAltitude;
+      };
+    }
+    else
+    {
+      _sourceObject flyInHeight 16;
+      _sourceObject limitSpeed 350;
+			[_sourceObject] call BIS_fnc_OM_ModuleSentryDrone_HideVector;
+    };
+  Sleep 1.5;
+  };
+};
+
+
+BIS_fnc_OM_ModuleSentryDrone_ShowInfo =
+{
+	params ["_sourceObject"];
+	while{alive _sourceObject} do
+	{
+
+	  _textToPrint =
+	  [
+	      lineBreak,
+	      lineBreak,
+	      lineBreak,
+	      lineBreak,
+	      lineBreak,
+	      lineBreak,
+	      lineBreak,
+	      lineBreak,
+	      format ["Actual Altitude: %1 ", getposATLVisual _sourceObject select 2],
+	      lineBreak,
+	      format ["Wanted Altitude: %1", (missionNameSpace getVariable "sourceObject") getVariable "safeHeight"],
+	      lineBreak,
+	      format ["Nearest Obstacle: %1", (missionNameSpace getVariable "sourceObject") getVariable "nearestObstacle"],
+	      lineBreak,
+	      format ["Distance Obstacle: %1", (missionNameSpace getVariable "sourceObject") getVariable "nearestObstacleDistance"],
+	      lineBreak
+	  ];
+	  hint composeText _textToPrint;
+	  Sleep 1;
+	};
+};
+
+
+private _addWP =
+{
+  wp = group _drone addWaypoint [position player,0];
+  wp setWaypointType "MOVE";
+  wp setWaypointStatements ["false", "hint 'wp done'"];
+  wp waypointAttachVehicle vehicle player;
+};
+
+BIS_fnc_OM_ModuleSentryDrone_MoveActualWaypointSet =
+{
+  params ["_groupFrom", "_groupTo", ["_restore", false, [false]] ];
+
+  if(isNil "_groupTo") then
+  {
+    private _group = createGroup [CIVILIAN, true];
+    _groupTo = _group createUnit ["Logic", [0,0,100], [], 0, "FORM"]
+  };
+  private _groupWPs = waypoints group _groupFrom;
+  group _groupTo copyWaypoints group _groupFrom;
+
+  if(_restore) then
+  {
+    _groupFrom = _groupTo getVariable "BIS_WPStorage";
+    group _groupTo setCurrentWaypoint (_groupFrom getVariable "BIS_lastCurrentWP");
+    deleteVehicle _groupFrom;
+  }
+  else
+  {
+    _groupFrom setVariable ["BIS_WPStorage", _groupTo];
+    if(group _groupFrom != grpNull && {count _groupWPs != 0}) then
+    { _groupTo setVariable ["BIS_lastCurrentWP", _groupWPs select (currentWaypoint group _groupFrom)] };
+  };
+
+  deleteWaypoint [group _groupFrom, (waypoints _groupFrom findif {waypointType _x == "CYCLE"})];
+  private _nrOfWPs = count _groupWPs;
+
+  for "_iLoop" from 0 to _nrOfWPs do
+  {
+    [group _groupFrom,0] setWaypointPosition [position _groupFrom, 0];
+    deleteWaypoint [group _groupFrom,0]
+  };
+
+};
+
+/* BIS_fnc_OM_ModuleSentryDrone_PopAndPushWP =
+{
+  params ["_drone", "_hunted"];
+  private _markersArray = _drone  getVariable ["BIS_WPmarkers", []];
+  private _newWP = group _drone addWaypoint [getposATL _hunted, 0.01];
+  _markersArray pushBack ( [ "hd_dot", [], getposATL _hunted, false ] call BIS_fnc_markerCreate );
+  _drone setVariable ["BIS_WPmarkers", _markersArray];
+    //_newWP waypointAttachVehicle vehicle _hunted;
+  _newWP setWaypointCompletionRadius DRONE_APPROACHING_RADIUS;
+  if(count waypoints _drone == 6) then
+  {
+    deleteWaypoint [group _drone,0];
+    deleteMarker (_markersArray select 0);
+    _markersArray  deleteAt 0;
+    _drone setVariable ["BIS_WPmarkers", _markersArray];
+  };
+}; */
+
+BIS_fnc_OM_ModuleSentryDrone_ReturnDrone =
+{
+  params ["_wp", "_originalWp", "_drone", "_target", "_originalDronePosition", "_originalAltitude", "_message"];
+  if(GVAR(_drone, "droneState") == DRONE_STATE_HUNTING) then
+  {
+    [_drone getVariable "BIS_WPStorage", _drone, true] call BIS_fnc_OM_ModuleSentryDrone_MoveActualWaypointSet;
+    _drone forgetTarget _target;
+    _drone flyInHeight _originalAltitude;
+    _message call BIS_fnc_log;
+    SVAR(_drone "droneState", DRONE_STATE_IDLE);
+  };
+};
+
+BIS_fnc_OM_ModuleSentryDrone_PopAndPushWP =
+{
+  /* PRIORITY_QUEUE_DEBUG = true; */
+  params ["_drone", "_hunted"];
+  private _wpQueue = _drone getVariable "BIS_wpQueue";
+  private _markersArray = _drone  getVariable ["BIS_WPmarkers", []];
+  if([_wpQueue] call BIS_fnc_PriorityQueue_IsFull) then
+  {
+    [_wpQueue, _drone, _markersArray] call BIS_fnc_OM_ModuleSentryDrone_DeleteWP;
+  };
+  [_wpQueue, _drone, _hunted, _markersArray] call BIS_fnc_OM_ModuleSentryDrone_AddWP;
+};
+
+BIS_fnc_OM_ModuleSentryDrone_AddWP =
+{
+  params ["_wpQueue","_drone", "_target", "_markersArray"];
+  private "_center";
+  if(typeName _target == "OBJECT") then
+  { _center = getpos _target };
+  private _newWP = createTrigger ["EmptyDetector", _center];
+  _newWP setTriggerArea [4, 4, 0, false];
+  _newWP setTriggerActivation ["EAST", "PRESENT", true];
+  _newWP setTriggerStatements ["this", "(thislist select 0) setVariable ['BIS_activatedTrigger', thisTrigger]; (thislist select 0) setVariable ['BIS_droneState_fsm1',4]", ""];
+
+  private _prio = 0;
+  if!([_wpQueue] call BIS_fnc_PriorityQueue_IsEmpty) then
+  {
+    _prio = [_wpQueue] call BIS_fnc_PriorityQueue_GetLowestPriority;
+  };
+  [_wpQueue, _newWP, _prio-1] call BIS_fnc_PriorityQueue_PushItem;
+  //_markersArray pushBack ( [ "hd_dot", [], _center, false ] call BIS_fnc_markerCreate );
+  //_drone setVariable ["BIS_WPmarkers", _markersArray];
+  _newWP
+};
+
+BIS_fnc_OM_ModuleSentryDrone_DeleteWP =
+{
+  params ["_wpQueue", "_drone", "_markersArray"];
+  if(isNil "_wpQueue") then {_wpQueue = _drone getVariable "BIS_wpQueue"};
+  private _trigger = [_wpQueue] call BIS_fnc_PriorityQueue_PopItem;
+  if(typeName _trigger == "ARRAY") exitWith {};
+  deleteVehicle _trigger;
+  //deleteMarker (_markersArray select 0);
+  //_markersArray  deleteAt 0;
+  //_drone setVariable ["BIS_WPmarkers", _markersArray];
+  private _nextWP = [_wpQueue, true] call BIS_fnc_PriorityQueue_PopItem;
+  _drone setVariable ["BIS_nextWP", _nextWP];
+};
+
+BIS_fnc_OM_ModuleSentryDrone_GetCurrentWP =
+{
+  params ["_drone"];
+  //[_drone getVariable "BIS_wpQueue", true] call BIS_fnc_PriorityQueue_PopItem
+  //waypoints group _drone select (currentWaypoint group _drone)
+  waypoints group _drone select 0
+};
+
+BIS_fnc_OM_ModuleSentryDrone_IsInsideBuilding =
+{
+  params ["_object"];
+  if( count (lineIntersectsWith [[getpos _object select 0, getpos _object select 1, 100],[getPos _object select 0, getPos _object select 1, 4] , objNull, objNull, false]) > 0) then
+  {true} else {false};
+};

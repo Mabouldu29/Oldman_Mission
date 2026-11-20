@@ -1,0 +1,27 @@
+params ["_contact", "_title", "_code", ["_closeMap", FALSE], ["_remove", FALSE]];		//TODO: change the parameters order in the functions calling this function
+
+_null = ["OMNewCallAvailable", [_title]] call BIS_fnc_shownotification;
+_name = getText (missionConfigFile >> "CfgOMPhoneContacts" >> _contact >> "name");
+
+BIS_OM_callsList = "<br/>";
+_ret = BIS_OM_callID;
+BIS_OM_callsPool pushBack [_contact, _name, _title, nil, true, [_ret, _title, _code, _closeMap, _remove]];
+BIS_OM_callID = BIS_OM_callID + 1;
+_pool = +BIS_OM_callsPool;
+reverse _pool;
+_cnt = count _pool;
+{
+	_id = _x # 5 # 0;
+	_title = _x # 5 # 1;
+	_code = _x # 5 # 2;
+	_closeMap = _x # 5 # 3;
+	_remove = _x # 5 # 4;
+	BIS_OM_callsList = BIS_OM_callsList + format ["<%1 expression = '%2'>%3</%1>%4",
+		if (_closeMap) then {"executeClose"} else {"execute"},
+		format ["_null = [] spawn (((BIS_OM_callsPool select {(_x select 5 select 0) == %1}) select 0) select 5 select 2); if (%2) then {[%1] call BIS_fnc_OM_phone_removeCall}", _id, _remove],
+		_title,
+		if (_forEachIndex != (_cnt - 1)) then {"<br/><br/>"} else {""}
+	];
+} forEach _pool;
+player setDiaryRecordText [["MakeaCall", BIS_OM_phone_section_call], ["Make a Call", BIS_OM_callsList]];
+_ret

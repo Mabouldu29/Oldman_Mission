@@ -1,0 +1,23 @@
+#define MODE_ADD     1
+#define MODE_REMOVE  2
+
+params [ ["_mode", ["", 999]], ["_news", ["", ""] ], ["_ammount", 1, [999]]];
+
+if (isNil "BIS_OM_radioNewsPoolCustom") then {BIS_OM_radioNewsPoolCustom = []};
+
+switch _mode do
+{
+	case MODE_ADD:
+	{
+		for "_i" from 1 to _ammount do {  
+			_ind = BIS_OM_radioNewsPoolCustom pushBack _news;    
+		};
+		[3, ["Radio_Tanoa_News",[_news,128]]] call BIS_fnc_OM_moduleRadio;
+	};
+	case MODE_REMOVE:
+	{
+		BIS_OM_radioNewsPoolCustom = BIS_OM_radioNewsPoolCustom - [_news];
+	};
+};
+
+

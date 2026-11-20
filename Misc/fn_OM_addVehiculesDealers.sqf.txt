@@ -1,0 +1,41 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#define LOC_PREFIX 								"STR_A3_"
+
+
+params ["_dealer"];
+
+private _vehicles = [
+    ["C_Offroad_01_F", "Offroad"],
+    ["C_SUV_01_F", "SUV"],
+    ["C_Van_01_transport_F", "Van"],
+    ["B_G_Offroad_01_armed_F", "Armed Offroad"]
+];
+
+_dealer addAction [
+    "Acheter un véhicule",
+    {
+        params ["_target", "_caller"];
+        private _displayText = "";
+        {
+            _displayText = _displayText + format ["%1 - %2\n", _forEachIndex + 1, _x select 1];
+        } forEach _vehicles;
+
+        private _index = parseNumber (inputText ["Véhicules disponibles:\n" + _displayText + "\nEntrez le numéro:", ""]);
+
+        if (_index >= 1 && _index <= count _vehicles) then {
+            private _vehClass = _vehicles select (_index - 1) select 0;
+            private _veh = createVehicle [_vehClass, position _caller, [], 5, "NONE"];
+            _veh setDir (getDir _caller);
+            hint format ["%1 acheté et livré à proximité !", _vehicles select (_index - 1) select 1];
+        } else {
+            hint "Choix invalide.";
+        };
+    },
+    nil,
+    1.5,
+    true,
+    true,
+    "",
+    "true",
+    3
+];
