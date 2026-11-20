@@ -1,0 +1,12 @@
+waituntil {!isNil "BIS_missionInitDone"};
+#ifndef OM_MAIN_MISSION
+#include "\a3\Missions_F_Oldman\Campaign\Missions\Oldman.tanoa\init_systemExec.sqf"
+BIS_visitedBala = true;
+
+BIS_StartMissionDate = date;
+
+#else
+
+
+
+#endif

@@ -1,0 +1,35 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Offroad_01_F","",[11186.7,13118.6,0.0184026],[[0.979875,0.198343,0.0224823],[-0.0266986,0.018609,0.99947]],0,1,[],["a3\soft_f\offroad_01\data\offroad_01_ext_co.paa","a3\soft_f\offroad_01\data\offroad_01_ext_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_sport_2_F_tanoan","BIS_OM_ambientConvo_d7qep75fn44b9fk",[11177.5,13102.5,0.0014925],355.566,0.5,0,"Up",[[],[],[],["U_C_man_sport_2_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[["#init",[" [ [""BIS_OM_ambientConvo_n187znnf6a7g4em"",""BIS_OM_ambientConvo_d7qep75fn44b9fk""], false] spawn BIS_fnc_OM_createConversation "]],["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilListening_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM""; 
+ _this switchmove """"; 
+ _this playAction ""Stand"" 
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_p_fugitive_F_afro","",[11180.3,13102,0.00148344],359.707,0.5,0,"Up",[[],[],[],["U_C_Poor_1",[]],[],[],"H_Cap_grn_BI","G_Aviator",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn   
+{_this disableAI ""ANIM"";  
+ _this playAction ""SitDown""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";  
+ _this playAction ""Stand"" 
+};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_1_F_afro","",[11184.8,13112.4,0.00150967],243.207,0.5,0,"Up",[[],[],[],["U_C_Man_casual_1_F",[]],[],[],"","G_Sport_Greenblack",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_5_F_tanoan","BIS_OM_ambientConvo_n187znnf6a7g4em",[11177.5,13103.7,0.00138474],174.831,0.5,0,"Up",[[],[],[],["U_C_Man_casual_5_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilTalking_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM""; 
+ _this switchmove """"; 
+ _this playAction ""Stand"" 
+};"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Matches_F",[11183.3,13111.7,0.864938],[[0,0.999872,-0.016004],[-0.0186565,0.0160012,0.999698]],0,"",false,false,[],true,-1],["Land_Campfire_F",[11179.5,13103.1,-6.38962e-005],[[0,0.999712,-0.0239937],[-0.00533768,0.0239934,0.999698]],0,"",true,false,[["#init",["if (bis_night) exitwith {deletevehicle _this}"]]],false,2],["Campfire_burning_F",[11179.5,13103.1,-4.43459e-005],[[0,0.999712,-0.0239937],[-0.00533768,0.0239934,0.999698]],0,"",true,false,[["#init",["if !(bis_night) exitwith {deletevehicle _this}"]]],false,2],["Land_PaperBox_01_small_closed_brown_F",[11184,13111.3,0.866816],[[-0.543921,0.838805,-0.0235748],[-0.0186628,0.0159949,0.999698]],0,"",false,false,[],true,1],["Land_PaperBox_01_small_open_brown_IDAP_F",[11196.8,13100.4,0.974877],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PaperBox_01_small_closed_brown_food_F",[11196.5,13100.4,0.57532],[[-0.999746,0.0225248,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_PaperBox_01_small_closed_white_med_F",[11197.1,13100.2,0.554655],[[-0.96867,-0.248351,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_ChairPlastic_F",[11183.1,13112.5,0.00868845],[[0.651309,0.758813,1.81003e-005],[-0.0186628,0.0159949,0.999698]],0,"",false,false,[],true,-1],["Land_ChairWood_F",[11183.3,13110.9,-0.000667095],[[-0.599058,-0.800704,0.00162758],[-0.0186628,0.0159949,0.999698]],0,"",false,false,[],true,-1],["Land_Pillow_grey_F",[11184.2,13111.3,0.0303254],[[0,0.999872,-0.0159977],[-0.0186628,0.0159949,0.999698]],0,"",false,false,[],true,-1],["Land_Tableware_01_cup_F",[11184,13111.7,0.865089],[[0,0.999872,-0.016004],[-0.0186565,0.0160012,0.999698]],0,"",false,false,[],true,-1],["Land_Tableware_01_cup_F",[11184,13111.8,0.865114],[[0,0.999872,-0.016004],[-0.0186565,0.0160012,0.999698]],0,"",false,false,[],true,-1],["Land_Sink_F",[11177.7,13114.5,-0.00114346],[[-0.989395,-0.145181,-0.00443415],[-0.0080009,0.0239929,0.99968]],0,"",false,false,[],true,-1],["WaterSpill_01_Small_New_F",[11177.8,13114.5,2.38419e-006],[[0,0.999712,-0.0239937],[-0.0080009,0.0239929,0.99968]],0,"",false,false,[],false,2],["Land_WaterTank_03_F",[11177.9,13112.9,4.76837e-007],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Land_WaterTank_04_F",[11190.2,13092,0],[[0.0988145,-0.995106,0],[0,0,1]],0,"",true,false,[],false,2],["Land_WoodenTable_small_F",[11183.7,13111.5,0.00528193],[[-0.591905,0.805652,-0.0239401],[-0.0186628,0.0159949,0.999698]],0,"",false,false,[],true,-1],["Land_WorkStand_F",[11175.1,13095,0.0109916],[[0.33439,-0.941045,0.05116],[0.00906766,0.057495,0.998305]],0,"",true,false,[],false,2],["Land_Decal_ScorchMark_01_small_F",[11179.6,13103.2,0],[[0,0.999712,-0.023996],[-0.00534068,0.0239956,0.999698]],0,"",true,false,[],false,2],["Item_Antimalaricum",[11181.5,13094.7,0.539],[[-0.84295,0.537992,0],[0,0,1]],0,"",false,true,[],false,1],["Item_Antimalaricum",[11178.3,13103.7,3.52859e-005],[[-0.84295,0.537992,0],[0,0,1]],0,"",false,true,[],false,1]]
+		,
+		//--- #size
+		43.157
+]

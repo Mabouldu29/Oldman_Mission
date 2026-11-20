@@ -1,0 +1,2 @@
+
+["sc_n_roadmarket","sc_bavillage","sc_ovauvillage","bis_penelo_e","bis_penelo_s","bis_penelo_n","bis_saintpaul","bis_momea","bis_larochelle_graveyard","bis_savu","sc_savucivstorage"]

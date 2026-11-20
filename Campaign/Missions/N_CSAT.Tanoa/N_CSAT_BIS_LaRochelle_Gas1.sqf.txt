@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Van_01_box_F","",[9962.89,13489.2,0.0160949],[[-0.999364,0.0331879,-0.0130054],[-0.012963,0.00149377,0.999915]],0,1,[],["a3\soft_f_gamma\van_01\data\van_01_ext_black_co.paa","a3\soft_f_gamma\van_01\data\van_01_adds_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Bulldozer_01_wreck_F",[9933.08,13480.7,0.000629425],[[0.508808,-0.860787,-0.0126397],[0.0293173,0.00265176,0.999567]],0,"",false,false,[],false,3],["Land_Wreck_Truck_dropside_F",[10003.7,13469.6,-0.00696278],[[0.68308,0.730265,0.0106709],[-0.0213263,0.00533947,0.999758]],0,"",false,false,[],false,3]]
+		,
+		//--- #size
+		44.419
+]

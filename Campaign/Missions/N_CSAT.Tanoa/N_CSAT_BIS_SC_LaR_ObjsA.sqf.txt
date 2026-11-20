@@ -1,0 +1,29 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["O_T_MRAP_02_ghex_F","",[9536.79,13547.9,0.00783086],[[-0.333613,-0.942663,0.00940583],[0.00399586,0.00856334,0.999955]],0,1,[],["a3\soft_f_exp\mrap_02\data\mrap_02_ext_01_ghex_co.paa","a3\soft_f_exp\mrap_02\data\mrap_02_ext_02_ghex_co.paa","a3\data_f_exp\vehicles\turret_ghex_co.paa"],false,[["#init",["if (bis_night) exitwith {deletevehicle _this}"]]],[true,false]]]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_T_Soldier_M_F","",[9544.23,13549.5,0.00147533],285.81,0.5,0,"Auto",[["srifle_DMR_07_blk_DMS_F","","","optic_DMS",["20Rnd_650x39_Cased_Mag_F",20],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_T_Soldier_F",[["FirstAidKit",1],["20Rnd_650x39_Cased_Mag_F",3,20],["SmokeShell",1,1]]],["V_TacVest_oli",[["20Rnd_650x39_Cased_Mag_F",6,20],["16Rnd_9x21_Mag",2,16],["HandGrenade",2,1],["SmokeShellRed",1,1],["Chemlight_red",2,1]]],[],"H_HelmetO_ghex_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","O_NVGoggles_ghex_F"]],"",false,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilListening_2""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM""; 
+ _this switchmove """"; 
+ _this playAction ""Stand"" 
+};"]]]],["O_T_Soldier_TL_F","",[9542.47,13550.3,0.0014708],359.872,0.5,0,"Auto",[["arifle_CTAR_GL_blk_ARCO_Pointer_F","","acc_pointer_IR","optic_Arco_blk_F",["30Rnd_580x42_Mag_F",30],["1Rnd_HE_Grenade_shell",1],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_T_Soldier_F",[["FirstAidKit",1],["30Rnd_580x42_Mag_F",3,30]]],["V_HarnessOGL_ghex_F",[["30Rnd_580x42_Mag_Tracer_F",2,30],["16Rnd_9x21_Mag",2,16],["MiniGrenade",2,1],["1Rnd_HE_Grenade_shell",5,1],["SmokeShell",1,1],["SmokeShellRed",1,1],["SmokeShellOrange",1,1],["SmokeShellYellow",1,1],["Chemlight_red",2,1],["1Rnd_Smoke_Grenade_shell",2,1],["1Rnd_SmokeRed_Grenade_shell",1,1],["1Rnd_SmokeOrange_Grenade_shell",1,1],["1Rnd_SmokeYellow_Grenade_shell",1,1]]],[],"H_HelmetLeaderO_ghex_F","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch","O_NVGoggles_ghex_F"]],"",false,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilTalking_2""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM""; 
+ _this switchmove """"; 
+ _this playAction ""Stand"" 
+};"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_CncBarrierMedium4_F",[9524.79,13571.1,-0.0440156],[[0.047488,0.998872,0],[0,0,1]],0,"",false,false,[],false,3],["Land_CncBarrierMedium4_F",[9532.18,13570.7,-0.0195863],[[-0.0645371,-0.997915,0],[0,0,1]],0,"",false,false,[],false,3],["Land_CncBarrierMedium_F",[9536.85,13570.4,-0.00574875],[[-0.119471,-0.992838,0],[0,0,1]],0,"",false,false,[],false,2],["Land_CncBarrierMedium_F",[9546.19,13569.4,-2.38419e-007],[[-0.119471,-0.992838,0],[0,0,1]],0,"",false,false,[],false,2],["Land_CncBarrierMedium_F",[9548.03,13569.3,0.120407],[[-0.119471,-0.992838,0],[0,0,1]],0,"",false,false,[],false,2],["Land_CncBarrierMedium_F",[9549.87,13569,0.108543],[[-0.119471,-0.992838,0],[0,0,1]],0,"",false,false,[],false,2],["Land_Razorwire_F",[9530.8,13574.1,-0.0404305],[[-0.0726719,-0.995461,0.0614425],[0.00532655,0.0612171,0.99811]],0,"",true,false,[],false,3],["Land_Razorwire_F",[9522.34,13574.7,0.00986195],[[-0.0713972,-0.992097,0.103178],[0,0.103442,0.994636]],0,"",true,false,[],false,3],["Land_CncBarrierMedium4_F",[9541.52,13569.9,-0.0148969],[[-0.0878163,-0.996137,0],[0,0,1]],0,"",false,false,[],false,3],["Land_CncBarrierMedium_F",[9520.49,13571.1,-0.00417042],[[-0.995403,0.0957726,0],[0,0,1]],0,"",false,false,[],false,2],["Land_CncBarrierMedium_F",[9551.38,13568.7,-0.00452924],[[-0.993587,0.113068,0],[0,0,1]],0,"",false,false,[],false,2],["Land_Razorwire_F",[9547.57,13572.9,0.0785398],[[-0.0726719,-0.995461,0.0614425],[0.00532655,0.0612171,0.99811]],0,"",true,false,[],false,3],["Land_Razorwire_F",[9539.15,13573.6,0.00562501],[[-0.0726719,-0.995461,0.0614425],[0.00532655,0.0612171,0.99811]],0,"",true,false,[],false,3]]
+		,
+		//--- #size
+		50
+]

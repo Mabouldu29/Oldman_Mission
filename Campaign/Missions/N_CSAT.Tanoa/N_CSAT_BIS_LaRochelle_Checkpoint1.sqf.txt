@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_T_Soldier_F","",[9895.36,13509.5,0.00133634],88.1774,0.5,0,"Auto",[["arifle_CTAR_blk_ACO_Pointer_F","","acc_pointer_IR","optic_ACO_grn",["30Rnd_580x42_Mag_F",30],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_T_Soldier_F",[["FirstAidKit",1],["30Rnd_580x42_Mag_F",3,30]]],["V_HarnessO_ghex_F",[["30Rnd_580x42_Mag_F",6,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",2,1],["SmokeShell",1,1],["SmokeShellRed",1,1],["Chemlight_red",2,1]]],[],"H_HelmetO_ghex_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","O_NVGoggles_ghex_F"]],"",true,[]]]]]
+		,
+		//--- #objectData
+		[["Land_CncBarrierMedium_F",[9889.72,13512.8,-1.3113e-005],[[0.0935725,-0.995612,0],[0,0,1]],0,"",false,false,[],false,2],["Land_CncBarrier_F",[9896.97,13508.9,0.000154972],[[-0.999955,0.0049617,-0.00807375],[-0.00799344,0.0159972,0.99984]],0,"",true,false,[],false,2],["Land_PortableLight_single_F",[9895.97,13512,0],[[-0.906132,0.422996,0],[0,0,1]],0,"",true,false,[],false,2],["Land_CncBarrierMedium_F",[9891.63,13513,3.17097e-005],[[-0.137373,0.990519,0],[0,0,1]],0,"",false,false,[],false,2]]
+		,
+		//--- #size
+		10
+]
