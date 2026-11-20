@@ -1,0 +1,7 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+
+params["_searchPos", "_vehicleType", "_activatedBySide"];
+["QRF CHOSE params %1", _this] call bis_fnc_logFormat;
+
+
+_qrfToSendInfo

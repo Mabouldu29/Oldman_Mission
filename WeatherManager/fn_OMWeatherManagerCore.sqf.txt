@@ -1,0 +1,263 @@
+#include "weather_defines.inc"
+
+BIS_OM_timeSkipped_weather_loop = FALSE;
+BIS_OM_timeSkipped_rain_loop = FALSE;
+BIS_OM_timeSkipped_fog_loop = FALSE;
+BIS_OM_forecastLimitChanged = FALSE;
+BIS_OM_forceWeatherUIRecalc = FALSE;
+BIS_OM_forecastLimit = [-1, [-1, -1]];
+
+// --- forecast UI
+
+/*addMissionEventHandler ["Loaded", {
+	[] call BIS_fnc_OMWeatherUICalc;
+	BIS_OM_forceWeatherUIRecalc = TRUE;
+}];*/
+
+[] spawn {
+	scriptName "WeatherManagerCore/spawn1";
+	waitUntil {!isNil "BIS_OM_weatherQueue" && !isNull ((findDisplay 12) displayCtrl 51)};
+	waitUntil {count BIS_OM_weatherQueue == 3};
+	BIS_OM_weatherForecast = [];
+	_nextRecalc = dateToNumber date;
+	_oldQueue = +BIS_OM_weatherQueue;
+	[] call BIS_fnc_OMWeatherUICalc;
+	while {TRUE} do {
+		if ((dateToNumber date) >= _nextRecalc || !(BIS_OM_weatherQueue isEqualTo _oldQueue) || BIS_OM_forceWeatherUIRecalc) then {
+			sleep 1;
+			_oldQueue = +BIS_OM_weatherQueue;
+			_nextRecalc = (dateToNumber date) + (WEATHER_HOUR_IN_YEAR_RATIO * WEATHER_FORECAST_UPDATE_FREQUENCY);
+			if (BIS_OM_forceWeatherUIRecalc) then {BIS_OM_forceWeatherUIRecalc = FALSE};
+			{
+				_overcast = _x;
+				_rainProb = if (_x < WEATHER_OVERCAST_LIMIT_RAIN) then {
+					0
+				} else {
+					0.4 + random 0.5
+				};
+				_stormProb = if (_x < WEATHER_OVERCAST_LIMIT_LIGHTNINGS) then {
+					0
+				} else {
+					0.4 + random 0.5
+				};
+				_correctTime = (daytime + (WEATHER_DURATION * _forEachIndex)) % 24;
+				_fogProb = if ((_correctTime < WEATHER_SUNSET_TIME && _correctTime > WEATHER_SUNRISE_TIME) && _overcast < WEATHER_FOG_OVERCAST_LIMIT) then {
+					0
+				} else {
+					if (_rainProb > 0) then {
+						0.3 + random 0.3
+					} else {
+						0
+					};
+				};
+				_temperature = if (_correctTime >= WEATHER_SUNRISE_TIME && _correctTime < WEATHER_SUNSET_TIME) then {
+					if (_correctTime > 12) then {
+						round (25 + random 10 - (_overcast * 10) - (_rainProb * 5))
+					} else {
+						round (20 + random 10 - (_overcast * 10) - (_rainProb * 5))
+					};
+				} else {
+					round (20 + random 10 - (_overcast * 5) - (_rainProb * 5))
+				};
+				BIS_OM_weatherForecast set [_forEachIndex, [_overcast, _rainProb, _stormProb, _fogProb, _temperature]];
+			} forEach [BIS_OM_weatherQueue select 0, BIS_OM_weatherQueue select 1, BIS_OM_weatherQueue select 2];
+			_startTime = (daytime - (daytime % WEATHER_DURATION));
+			_fontSize = (0.65 call BIS_fnc_WLSubroutine_purchaseMenuGetUIScale);
+			_weatherInfoBox = uiNamespace getVariable "BIS_OM_weatherInfoBox";
+			_weatherInfoForecastPic1 = uiNamespace getVariable "BIS_OM_weatherInfoForecastPic1";
+			_weatherInfoForecastPic2 = uiNamespace getVariable "BIS_OM_weatherInfoForecastPic2";
+			_weatherInfoForecastPic3 = uiNamespace getVariable "BIS_OM_weatherInfoForecastPic3";
+			_weatherInfoForecastRainPic1 = uiNamespace getVariable "BIS_OM_weatherInfoForecastRainPic1";
+			_weatherInfoForecastRainPic2 = uiNamespace getVariable "BIS_OM_weatherInfoForecastRainPic2";
+			_weatherInfoForecastRainPic3 = uiNamespace getVariable "BIS_OM_weatherInfoForecastRainPic3";
+			_weatherInfoForecastTime1 = uiNamespace getVariable "BIS_OM_weatherInfoForecastTime1";
+			_weatherInfoForecastTime2 = uiNamespace getVariable "BIS_OM_weatherInfoForecastTime2";
+			_weatherInfoForecastTime3 = uiNamespace getVariable "BIS_OM_weatherInfoForecastTime3";
+			_weatherInfoForecastDetails1 = uiNamespace getVariable "BIS_OM_weatherInfoForecastDetails1";
+			_weatherInfoForecastDetails2 = uiNamespace getVariable "BIS_OM_weatherInfoForecastDetails2";
+			_weatherInfoForecastDetails3 = uiNamespace getVariable "BIS_OM_weatherInfoForecastDetails3";
+			_weatherInfoForecastPic1_mini = uiNamespace getVariable "BIS_OM_weatherInfoForecastPic1_mini";
+			_weatherInfoForecastPic2_mini = uiNamespace getVariable "BIS_OM_weatherInfoForecastPic2_mini";
+			_weatherInfoForecastPic3_mini = uiNamespace getVariable "BIS_OM_weatherInfoForecastPic3_mini";
+			_weatherInfoForecastRainPic1_mini = uiNamespace getVariable "BIS_OM_weatherInfoForecastRainPic1_mini";
+			_weatherInfoForecastRainPic2_mini = uiNamespace getVariable "BIS_OM_weatherInfoForecastRainPic2_mini";
+			_weatherInfoForecastRainPic3_mini = uiNamespace getVariable "BIS_OM_weatherInfoForecastRainPic3_mini";
+
+			_weatherInfoForecastPic1 ctrlSetText format ["A3\Missions_F_Oldman\Data\img\WeatherManager\weather_%2_%1_ca.paa", ((BIS_OM_weatherForecast select 0) select 0) * 4, if (_startTime >= WEATHER_SUNRISE_TIME && _startTime < WEATHER_SUNSET_TIME) then {"day"} else {"night"}];
+			_weatherInfoForecastPic2 ctrlSetText format ["A3\Missions_F_Oldman\Data\img\WeatherManager\weather_%2_%1_ca.paa", ((BIS_OM_weatherForecast select 1) select 0) * 4, if (((_startTime + WEATHER_DURATION) % 24) >= WEATHER_SUNRISE_TIME && ((_startTime + WEATHER_DURATION) % 24) < WEATHER_SUNSET_TIME) then {"day"} else {"night"}];
+			_weatherInfoForecastPic3 ctrlSetText format ["A3\Missions_F_Oldman\Data\img\WeatherManager\weather_%2_%1_ca.paa", ((BIS_OM_weatherForecast select 2) select 0) * 4, if (((_startTime + (WEATHER_DURATION * 2)) % 24) >= WEATHER_SUNRISE_TIME && ((_startTime + (WEATHER_DURATION * 2)) % 24) < WEATHER_SUNSET_TIME) then {"day"} else {"night"}];
+
+			if(!isNil "_weatherInfoForecastPic1_mini") then {_weatherInfoForecastPic1_mini ctrlSetText format ["A3\Missions_F_Oldman\Data\img\WeatherManager\weather_%2_%1_ca.paa", ((BIS_OM_weatherForecast select 0) select 0) * 4, if (_startTime >= WEATHER_SUNRISE_TIME && _startTime < WEATHER_SUNSET_TIME) then {"day"} else {"night"}];};
+			if(!isNil "_weatherInfoForecastPic2_mini") then {_weatherInfoForecastPic2_mini ctrlSetText format ["A3\Missions_F_Oldman\Data\img\WeatherManager\weather_%2_%1_ca.paa", ((BIS_OM_weatherForecast select 1) select 0) * 4, if (((_startTime + WEATHER_DURATION) % 24) >= WEATHER_SUNRISE_TIME && ((_startTime + WEATHER_DURATION) % 24) < WEATHER_SUNSET_TIME) then {"day"} else {"night"}];};
+			if(!isNil "_weatherInfoForecastPic3_mini") then {_weatherInfoForecastPic3_mini ctrlSetText format ["A3\Missions_F_Oldman\Data\img\WeatherManager\weather_%2_%1_ca.paa", ((BIS_OM_weatherForecast select 2) select 0) * 4, if (((_startTime + (WEATHER_DURATION * 2)) % 24) >= WEATHER_SUNRISE_TIME && ((_startTime + (WEATHER_DURATION * 2)) % 24) < WEATHER_SUNSET_TIME) then {"day"} else {"night"}];};
+
+			_rainForecast1 = round linearConversion [0, 1, (BIS_OM_weatherForecast select 0) select 1, 0, 100];
+			_rainForecast2 = round linearConversion [0, 1, (BIS_OM_weatherForecast select 1) select 1, 0, 100];
+			_rainForecast3 = round linearConversion [0, 1, (BIS_OM_weatherForecast select 2) select 1, 0, 100];
+			_stormForecast1 = round linearConversion [0, 1, (BIS_OM_weatherForecast select 0) select 2, 0, 100];
+			_stormForecast2 = round linearConversion [0, 1, (BIS_OM_weatherForecast select 1) select 2, 0, 100];
+			_stormForecast3 = round linearConversion [0, 1, (BIS_OM_weatherForecast select 2) select 2, 0, 100];
+			_fogForecast1 = round linearConversion [0, 1, (BIS_OM_weatherForecast select 0) select 3, 0, 100];
+			_fogForecast2 = round linearConversion [0, 1, (BIS_OM_weatherForecast select 1) select 3, 0, 100];
+			_fogForecast3 = round linearConversion [0, 1, (BIS_OM_weatherForecast select 2) select 3, 0, 100];
+			_weatherInfoForecastRainPic1 ctrlSetText (if (_rainForecast1 < (WEATHER_RAIN_UI_REPRESENT_THRESHOLD * 100)) then {""} else {"A3\Missions_F_Oldman\Data\img\WeatherManager\weather_rain_ca.paa"});
+			_weatherInfoForecastRainPic2 ctrlSetText (if (_rainForecast2 < (WEATHER_RAIN_UI_REPRESENT_THRESHOLD * 100)) then {""} else {"A3\Missions_F_Oldman\Data\img\WeatherManager\weather_rain_ca.paa"});
+			_weatherInfoForecastRainPic3 ctrlSetText (if (_rainForecast3 < (WEATHER_RAIN_UI_REPRESENT_THRESHOLD * 100)) then {""} else {"A3\Missions_F_Oldman\Data\img\WeatherManager\weather_rain_ca.paa"});
+
+			if(!isNil "_weatherInfoForecastRainPic1_mini") then {_weatherInfoForecastRainPic1_mini ctrlSetText (if (_rainForecast1 < (WEATHER_RAIN_UI_REPRESENT_THRESHOLD * 100)) then {""} else {"A3\Missions_F_Oldman\Data\img\WeatherManager\weather_rain_ca.paa"});};
+			if(!isNil "_weatherInfoForecastRainPic2_mini") then {_weatherInfoForecastRainPic2_mini ctrlSetText (if (_rainForecast2 < (WEATHER_RAIN_UI_REPRESENT_THRESHOLD * 100)) then {""} else {"A3\Missions_F_Oldman\Data\img\WeatherManager\weather_rain_ca.paa"});};
+			if(!isNil "_weatherInfoForecastRainPic3_mini") then {_weatherInfoForecastRainPic3_mini ctrlSetText (if (_rainForecast3 < (WEATHER_RAIN_UI_REPRESENT_THRESHOLD * 100)) then {""} else {"A3\Missions_F_Oldman\Data\img\WeatherManager\weather_rain_ca.paa"});};
+			_weatherInfoForecastTime1 ctrlSetStructuredText parseText format ["<t align = 'center' size = '%3'>%1:00 - %2:00</t>", _startTime, (_startTime + WEATHER_DURATION) % 24, _fontSize];
+			_weatherInfoForecastTime2 ctrlSetStructuredText parseText format ["<t align = 'center' size = '%3'>%1:00 - %2:00</t>", (_startTime + WEATHER_DURATION) % 24, (_startTime + (WEATHER_DURATION * 2)) % 24, _fontSize];
+			_weatherInfoForecastTime3 ctrlSetStructuredText parseText format ["<t align = 'center' size = '%3'>%1:00 - %2:00</t>", (_startTime + (WEATHER_DURATION * 2)) % 24, (_startTime + (WEATHER_DURATION * 3)) % 24, _fontSize];
+			{
+				_string = format ["<t size = '%1'>", _fontSize];
+				_rainForecast = [_rainForecast1, _rainForecast2, _rainForecast3] select _forEachIndex;
+				if (_rainForecast >= (WEATHER_MISC_TEXT_THRESHOLD * 100)) then {
+					_string = _string + format ["<t align = 'left'>Rain:</t><t align = 'right'>%1%2</t><br/>", _rainForecast, "%"];
+				};
+				_fogForecast = [_fogForecast1, _fogForecast2, _fogForecast3] select _forEachIndex;
+				if (_fogForecast >= (WEATHER_MISC_TEXT_THRESHOLD * 100)) then {
+					_string = _string + format ["<t align = 'left'>Fog:</t><t align = 'right'>%1%2</t><br/>", _fogForecast, "%"];
+				};
+				_stormForecast = [_stormForecast1, _stormForecast2, _stormForecast3] select _forEachIndex;
+				if (_stormForecast >= (WEATHER_MISC_TEXT_THRESHOLD * 100)) then {
+					_string = _string + format ["<t align = 'left'>Storm:</t><t align = 'right'>%1%2</t>", _stormForecast, "%"];
+				};
+				_string = _string + "</t>";
+				_x ctrlSetStructuredText parseText _string;
+			} forEach [_weatherInfoForecastDetails1, _weatherInfoForecastDetails2, _weatherInfoForecastDetails3];
+		};
+		sleep 1;
+	};
+};
+
+// --- detect timeskip to force weather change
+
+[] spawn {
+	while {TRUE} do {
+		scriptName "WeatherManagerCore/detectTimeskip";
+		_daytimeOld = daytime;
+		sleep 0.025;
+		if (abs (daytime - _daytimeOld) >= 1) then {
+			BIS_OM_timeSkipped_weather_loop = TRUE;
+			BIS_OM_timeSkipped_rain_loop = TRUE;
+			BIS_OM_timeSkipped_fog_loop = TRUE;
+		};
+	};
+};
+
+[] spawn {
+	_t = time + 1;
+	waitUntil {time > _t || (BIS_OM_forecastLimit select 0) >= 0};
+
+	// --- main weather loop
+
+	BIS_OM_weather_handle_main = [
+		WEATHER_START,
+		WEATHER_DURATION,
+		WEATHER_CHANGE_STEP,
+		WEATHER_CHANGE_DURATION_MIN,
+		WEATHER_CHANGE_DURATION_MAX,
+		WEATHER_HOUR_IN_YEAR_RATIO
+	] call BIS_fnc_OMWeatherManagerMain;
+
+	// --- rain loop
+
+	BIS_OM_weather_handle_rain = [
+		WEATHER_OVERCAST_LIMIT_RAIN,
+		WEATHER_RAIN_PROBABILITY,
+		WEATHER_RAIN_DURATION_MAX,
+		WEATHER_RAIN_DURATION_MIN,
+		WEATHER_HOUR_IN_YEAR_RATIO,
+		WEATHER_RAIN_MIN,
+		WEATHER_RAIN_MAX
+	] call BIS_fnc_OMWeatherManagerRain;
+
+	// --- storm loop
+
+	[] spawn {
+		scriptName "WeatherManagerCore/storm";
+		while {TRUE} do {
+			waitUntil {overcast >= WEATHER_OVERCAST_LIMIT_LIGHTNINGS};
+			if (random 1 <= WEATHER_LIGHTNINGS_PROBABILITY) then {
+				while {overcast >= WEATHER_OVERCAST_LIMIT_LIGHTNINGS} do {
+					0 setLightnings linearConversion [0, 1, overcast, WEATHER_LIGHTNINGS_MIN, WEATHER_LIGHTNINGS_MAX];
+					sleep 10;
+				};
+				0 setLightnings 0;
+			};
+			_nextStormCheckStart = (dateToNumber date) + (0.25 * WEATHER_HOUR_IN_YEAR_RATIO);
+			waitUntil {sleep 2; (dateToNumber date) > _nextStormCheckStart};
+		};
+	};
+
+	// --- fog loop
+
+	[] spawn {
+		scriptName "WeatherManagerCore/fog";
+		_dissolving = FALSE;
+		while {TRUE} do {
+			_tStart = time;
+			while {rain <= 0.1 && !BIS_OM_timeSkipped_fog_loop} do {
+				sleep 0.5;
+				if (fog > 0 && (!_dissolving || time > (_tStart + 1200))) then {
+					_dissolving = FALSE;
+					0 setFog 0;
+				};
+			};
+			if (rain > 0.1) then {
+				while {rain <= 0.1 && !BIS_OM_timeSkipped_fog_loop} do {
+					sleep 0.5;
+					if (fog > 0) then {
+						0 setFog 0;
+					};
+				};
+				if (rain < 0.1) then {
+					_fogFormationLimit = (dateToNumber date) + (3 * WEATHER_HOUR_IN_YEAR_RATIO);
+					_fogCanForm = FALSE;
+					while {!_fogCanForm && (dateToNumber date) < _fogFormationLimit} do {
+						_t = time + 10;
+						10 setFog 0;
+						waitUntil {time > _t || BIS_OM_timeSkipped_fog_loop};
+						if (overcast >= WEATHER_FOG_OVERCAST_LIMIT || (daytime > WEATHER_SUNSET_TIME && daytime < WEATHER_SUNRISE_TIME)) then {
+							_fogCanForm = TRUE;
+						} else {
+							BIS_OM_timeSkipped_fog_loop = FALSE;
+						};
+					};
+					if (_fogCanForm) then {
+						_dissolving = FALSE;
+						if (BIS_OM_timeSkipped_fog_loop) then {
+							0 setFog WEATHER_FOG_PRESET;
+							BIS_OM_timeSkipped_fog_loop = FALSE;
+						} else {
+							(WEATHER_FOG_FORMATION_TIME * 3600) setFog WEATHER_FOG_PRESET;
+						};
+						_fogDuration = (random WEATHER_FOG_DURATION_MAX) max WEATHER_FOG_DURATION_MIN;
+						_fogEndTime = (dateToNumber date) + (_fogDuration * WEATHER_HOUR_IN_YEAR_RATIO);
+						_dissolveNow = FALSE;
+						while {(dateToNumber date) < _fogEndTime && rain < 0.1} do {
+							_dissolveNow = FALSE;
+							_t = time + 10;
+							waitUntil {time > _t || BIS_OM_timeSkipped_fog_loop};
+							if (BIS_OM_timeSkipped_fog_loop) then {BIS_OM_timeSkipped_fog_loop = FALSE; _dissolveNow = TRUE};
+						};
+						if (_dissolveNow) then {
+							0 setFog 0;
+						} else {
+							_dissolving = TRUE;
+							(WEATHER_FOG_FORMATION_TIME * 3600) setFog 0;
+						};
+					} else {
+						BIS_OM_timeSkipped_fog_loop = FALSE;
+					};
+				} else {
+					BIS_OM_timeSkipped_fog_loop = FALSE;
+				};
+			} else {
+				BIS_OM_timeSkipped_fog_loop = FALSE;
+			};
+		};
+	};
+};

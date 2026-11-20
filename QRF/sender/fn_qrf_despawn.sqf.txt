@@ -1,0 +1,35 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params ["_vehicles","_groups", "_qrfType", ["_ownedObjectsArray", []] ];
+["QRF DESPAWN STARTED %1", _ownedObjectsArray] call BIS_fnc_logFormat;
+
+private _despawnDistance = QRF_DESPAWN_DISTANCE;
+if (_qrfType == "Air") then {
+	_despawnDistance = QRF_DESPAWN_DISTANCE_AIR;	
+};
+
+private _lastVehicle = "";
+if (!( _vehicles isEqualTo [])) then { _lastVehicle = typeOf (_vehicles#((count _vehicles) - 1)); };
+
+// Slowly despawn all QRF
+private _vehiclesAndUnits = [];
+{_vehiclesAndUnits append (units _x)} forEach _groups;
+_vehiclesAndUnits append _vehicles;
+private _indexPlaceholder = 0;
+while {count _vehiclesAndUnits > 0} do {
+	QRF_CHECK_OWNAGE(_vehicles, _ownedObjectsArray, _indexPlaceholder);
+	if (!(_ownedObjectsArray isEqualTo [])) then {
+		_vehiclesAndUnits = _vehiclesAndUnits - _ownedObjectsArray; 
+		_ownedObjectsArray = [];
+	};
+	
+	{
+		[["QRF DESPAWN Player become vehicle owner %1", _ownedObjectsArray], "systemChat"] call bis_fnc_qrf_debugLogRadio;	
+		if (_x distance player > _despawnDistance && {(_x nearEntities _despawnDistance) findIf {side _x == RESISTANCE} == - 1}) then {
+			[_x] spawn BIS_fnc_om_despawn;
+		};
+		sleep 0.3;
+	} forEach _vehiclesAndUnits;
+	sleep 1;
+	_vehiclesAndUnits = _vehiclesAndUnits - [objNull];
+};
+[["QRF %1 despawned!", _lastVehicle], "systemChat"] call bis_fnc_qrf_debugLogRadio;

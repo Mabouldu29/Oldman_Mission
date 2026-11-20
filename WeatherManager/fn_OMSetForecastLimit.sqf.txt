@@ -1,0 +1,8 @@
+#include "weather_defines.inc"
+
+params ["_duration", "_limit"];
+BIS_OM_forecastLimit = [(dateToNumber date) + (_duration * WEATHER_HOUR_IN_YEAR_RATIO), _limit];
+BIS_OM_forecastLimitChanged = TRUE;
+BIS_OM_timeSkipped_weather_loop = TRUE;
+BIS_OM_timeSkipped_rain_loop = TRUE;
+BIS_OM_timeSkipped_fog_loop = TRUE;

@@ -1,0 +1,14 @@
+#include "definitions.inc"
+#include "Reputation_Common.sqf"
+
+/* PROFILE_START("SM_Create"); */
+params [ "_logic", "_callBack" ];
+
+if(_callBack isEqualType {}) then
+{
+                //code    //OnLevelReached    //OnLevelLeft     //persistent
+  _callBack = [ _callBack,  LEVEL_UNDEFINED,  LEVEL_UNDEFINED,  false]
+};
+private _arrCallBacks = _logic getVariable REPUTATION_CALLBACKS;
+_arrCallBacks append [ _callBack apply { if(isNil "_x") then {-LEVEL_UNDEFINED} else {_x} } ];
+true

@@ -1,0 +1,19 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_trackedAreaIndex", ["_areaPos",[] ] ];
+if (_areaPos isEqualTo []) then {private _trackedAreas = GVAR(QRF, "trackedAreas");_areaPos = (_trackedAreas#_trackedAreaIndex)#0; };
+
+sleep 4;
+[["QRF for Area[%1] reached max level,removing from tracked areas", POS_TO_ID(_areaPos)], "systemChat"] call bis_fnc_qrf_debugLogRadio;
+
+private _allArrayEntries = ["trackedAreas", "trackedAreasUnitCount", "trackedAreasLevelIndex", "lastQrfWave", "canSendNext", "areaTimeout", "lastCooldownTime", "areaDefenseLimit"];
+{
+	PROFILE_INFO("bis_fnc_qrf_stopAreaMonitoring","bis_fnc_qrf_stopAreaMonitoring",1);
+	private _currentArray = GVAR(QRF, _x);
+	_currentArray deleteAt _trackedAreaIndex;
+	SVAR(QRF, _x, _currentArray);
+	["QRF deleting and setting %1 = %2", _x, _currentArray] call BIS_fnc_qrf_debugLogUnique;
+} forEach _allArrayEntries;
+
+if (DEBUG_MODE) then { deleteMarkerLocal ("QRF_searchArea"+str POS_TO_ID(_areaPos)); deleteMarkerLocal ("QRF_playerArea"+str POS_TO_ID(_areaPos)); };
+
+[["QRF for Area[%1] ENDED RESETING TIMEOUT", POS_TO_ID(_areaPos)]] call bis_fnc_qrf_debugLogRadio;

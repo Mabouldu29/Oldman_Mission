@@ -1,0 +1,456 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Weather (rain)">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"INIT",0,250,-50.000000,-950.000000,50.000000,-900.000000,0.000000,"INIT"};
+item1[] = {"overcast_enough",4,218,-50.000000,-875.000000,50.000000,-825.000000,1.000000,"overcast" \n "enough"};
+item2[] = {"timeskip",4,218,75.000000,-875.000000,175.000000,-825.000000,1.000000,"timeskip"};
+item3[] = {"set_random_seed",2,250,-50.000000,-800.000000,50.000000,-750.000000,0.000000,"set random seed"};
+item4[] = {"reset_variable",2,250,75.000000,-800.000000,175.000000,-750.000000,0.000000,"reset variable"};
+item5[] = {"rain_can_start",4,218,-175.000000,-800.000000,-75.000000,-750.000000,1.000000,"rain can start"};
+item6[] = {"no_rain",4,218,-50.000000,-725.000000,50.000000,-675.000000,0.000000,"no rain"};
+item7[] = {"set_up_rain",2,250,-175.000000,-725.000000,-75.000000,-675.000000,0.000000,"set up rain"};
+item8[] = {"rain_can_continu",4,218,-175.000000,-650.000000,-75.000000,-600.000000,1.000000,"rain can" \n "continue"};
+item9[] = {"start_rain",2,250,-175.000000,-575.000000,-75.000000,-525.000000,0.000000,"start rain"};
+item10[] = {"timeout",6,250,-175.000000,-500.000000,-75.000000,-450.000000,0.000000,"timeout"};
+item11[] = {"timeskip",4,218,-50.000000,-575.000000,50.000000,-525.000000,0.000000,"timeskip"};
+item12[] = {"keep_rain",2,250,-175.000000,-425.000000,-75.000000,-375.000000,0.000000,"keep rain"};
+item13[] = {"reset_variable_1",2,250,-50.000000,-500.000000,50.000000,-450.000000,0.000000,"reset variable"};
+item14[] = {"always",8,218,-50.000000,-425.000000,50.000000,-375.000000,0.000000,"always"};
+item15[] = {"stop_rain",2,4346,75.000000,-425.000000,175.000000,-375.000000,0.000000,"stop rain"};
+item16[] = {"",7,210,-203.999985,-404.000000,-196.000015,-396.000000,0.000000,""};
+item17[] = {"",7,210,-204.000000,-629.000000,-196.000000,-621.000000,0.000000,""};
+item18[] = {"set_up_next_rain",2,250,-50.000000,-650.000000,50.000000,-600.000000,0.000000,"set up next" \n "rain check"};
+item19[] = {"always",8,218,75.000000,-575.000000,175.000000,-525.000000,0.000000,"always"};
+item20[] = {"timeout",6,250,200.000000,-725.000000,300.000000,-675.000000,0.000000,"timeout"};
+item21[] = {"nothing",2,250,200.000000,-650.000000,300.000000,-600.000000,0.000000,"nothing"};
+item22[] = {"next_rain_check",4,218,200.000000,-575.000000,300.000000,-525.000000,1.000000,"next rain check"};
+item23[] = {"nothing_1",2,250,200.000000,-375.000000,300.000000,-325.000000,0.000000,"nothing"};
+item24[] = {"",7,210,-229.000000,-354.000000,-221.000000,-346.000000,0.000000,""};
+item25[] = {"",7,210,321.000000,-354.000000,329.000000,-346.000000,0.000000,""};
+item26[] = {"",7,210,-229.000000,-854.000000,-221.000015,-846.000000,0.000000,""};
+item27[] = {"",7,210,321.000000,-854.000000,329.000000,-846.000000,0.000000,""};
+item28[] = {"always",8,218,75.000000,-650.000000,175.000000,-600.000000,0.000000,"always"};
+item29[] = {"set_timeout",2,250,75.000000,-725.000000,175.000000,-675.000000,0.000000,"set timeout"};
+link0[] = {0,1};
+link1[] = {0,2};
+link2[] = {1,3};
+link3[] = {2,4};
+link4[] = {3,2};
+link5[] = {3,5};
+link6[] = {3,6};
+link7[] = {4,1};
+link8[] = {4,2};
+link9[] = {5,7};
+link10[] = {6,18};
+link11[] = {7,8};
+link12[] = {8,9};
+link13[] = {9,10};
+link14[] = {9,11};
+link15[] = {10,12};
+link16[] = {11,13};
+link17[] = {12,14};
+link18[] = {12,16};
+link19[] = {13,14};
+link20[] = {14,15};
+link21[] = {15,19};
+link22[] = {16,17};
+link23[] = {17,8};
+link24[] = {18,28};
+link25[] = {19,18};
+link26[] = {20,21};
+link27[] = {21,22};
+link28[] = {21,28};
+link29[] = {22,23};
+link30[] = {23,24};
+link31[] = {23,25};
+link32[] = {24,26};
+link33[] = {25,27};
+link34[] = {26,1};
+link35[] = {27,2};
+link36[] = {28,29};
+link37[] = {29,20};
+globals[] = {0.000000,0,0,0,0,640,480,1,325,6316128,1,-305.911865,343.842651,-254.240479,-1026.258057,845,1004,1};
+window[] = {2,-1,-1,-1,-1,923,2076,3290,156,3,863};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "Weather (rain)";
+        class States
+        {
+                /*%FSM<STATE "INIT">*/
+                class INIT
+                {
+                        name = "INIT";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"params [""_weather_overcast_limit_rain"", ""_weather_rain_probability"", ""_weather_rain_duration_max"", ""_weather_rain_duration_min"", ""_weather_hour_in_year_ratio"", ""_weather_rain_min"", ""_weather_rain_max""];" \n
+                         "_skipped = FALSE;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timeskip">*/
+                                class timeskip
+                                {
+                                        itemno = 2;
+                                        priority = 1.000000;
+                                        to="reset_variable";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_OM_timeSkipped_rain_loop"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "overcast_enough">*/
+                                class overcast_enough
+                                {
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="set_random_seed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"overcast >= _weather_overcast_limit_rain"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_random_seed">*/
+                class set_random_seed
+                {
+                        name = "set_random_seed";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"_rnd = random 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "rain_can_start">*/
+                                class rain_can_start
+                                {
+                                        itemno = 5;
+                                        priority = 1.000000;
+                                        to="set_up_rain";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_rnd <= _weather_rain_probability"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeskip">*/
+                                class timeskip
+                                {
+                                        itemno = 2;
+                                        priority = 1.000000;
+                                        to="reset_variable";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_OM_timeSkipped_rain_loop"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_rain">*/
+                                class no_rain
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="set_up_next_rain";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "reset_variable">*/
+                class reset_variable
+                {
+                        name = "reset_variable";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"BIS_OM_timeSkipped_rain_loop = FALSE;" \n
+                         "_skipped = TRUE;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timeskip">*/
+                                class timeskip
+                                {
+                                        itemno = 2;
+                                        priority = 1.000000;
+                                        to="reset_variable";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_OM_timeSkipped_rain_loop"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "overcast_enough">*/
+                                class overcast_enough
+                                {
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="set_random_seed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"overcast >= _weather_overcast_limit_rain"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_up_rain">*/
+                class set_up_rain
+                {
+                        name = "set_up_rain";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"_rainEnd = (dateToNumber date) + (((random _weather_rain_duration_max) max _weather_rain_duration_min) * _weather_hour_in_year_ratio);"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "rain_can_continu">*/
+                                class rain_can_continu
+                                {
+                                        itemno = 8;
+                                        priority = 1.000000;
+                                        to="start_rain";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"overcast >= _weather_overcast_limit_rain && (dateToNumber date) < _rainEnd"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "start_rain">*/
+                class start_rain
+                {
+                        name = "start_rain";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"(if (_skipped) then {0} else {30}) setRain linearConversion [0, 1, overcast, _weather_rain_min, _weather_rain_max];" \n
+                         "_t = time + 30;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timeskip">*/
+                                class timeskip
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="reset_variable_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_OM_timeSkipped_rain_loop"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="keep_rain";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _t"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "keep_rain">*/
+                class keep_rain
+                {
+                        name = "keep_rain";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"1000 setRain rain;" \n
+                         "_rainFade = 30;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "rain_can_continu">*/
+                                class rain_can_continu
+                                {
+                                        itemno = 8;
+                                        priority = 1.000000;
+                                        to="start_rain";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"overcast >= _weather_overcast_limit_rain && (dateToNumber date) < _rainEnd"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="stop_rain";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "reset_variable_1">*/
+                class reset_variable_1
+                {
+                        name = "reset_variable_1";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"BIS_OM_timeSkipped_rain_loop = FALSE;" \n
+                         "_rainFade = 0;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="stop_rain";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "stop_rain">*/
+                class stop_rain
+                {
+                        name = "stop_rain";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"_rainFade setRain 0;" \n
+                         "_skipped = FALSE;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="set_up_next_rain";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_up_next_rain">*/
+                class set_up_next_rain
+                {
+                        name = "set_up_next_rain";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"_nextRainCheckStart = (dateToNumber date) + (((random _weather_rain_duration_max) max _weather_rain_duration_min) * _weather_hour_in_year_ratio);"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_timeout";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "nothing">*/
+                class nothing
+                {
+                        name = "nothing";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "next_rain_check">*/
+                                class next_rain_check
+                                {
+                                        itemno = 22;
+                                        priority = 1.000000;
+                                        to="nothing_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(dateToNumber date) > _nextRainCheckStart"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_timeout";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "nothing_1">*/
+                class nothing_1
+                {
+                        name = "nothing_1";
+                        itemno = 23;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timeskip">*/
+                                class timeskip
+                                {
+                                        itemno = 2;
+                                        priority = 1.000000;
+                                        to="reset_variable";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_OM_timeSkipped_rain_loop"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "overcast_enough">*/
+                                class overcast_enough
+                                {
+                                        itemno = 1;
+                                        priority = 1.000000;
+                                        to="set_random_seed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"overcast >= _weather_overcast_limit_rain"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_timeout">*/
+                class set_timeout
+                {
+                        name = "set_timeout";
+                        itemno = 29;
+                        init = /*%FSM<STATEINIT""">*/"_t = time + 2;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="nothing";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _t"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="INIT";
+        finalStates[] =
+        {
+        };
+};
+/*%FSM</COMPILE>*/

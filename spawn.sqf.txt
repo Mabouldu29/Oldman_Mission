@@ -1,0 +1,626 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\Radio\definitions.inc"
+
+#define ORIG_INDEX 10
+#define SPAWN_TIMEOUT 0.1
+#define DESPAWN_TIMEOUT 0.02
+
+BIS_canSpawn = true;
+BIS_canDelete = true;
+DEBUG_INFO("BIS_canSpawn");
+DEBUG_INFO("BIS_canDelete");
+
+
+BIS_fnc_om_spawnFromData = {
+	PROFILE_INFO("BIS_fnc_om_spawnFromData","BIS_fnc_om_spawnFromData",1);
+	params ["_data",["_customPos",[]],["_dynamicSimulation",false],["_autoManageSimulation",true]];
+	_data params ["_vehicleData","_groupData"];
+	private _groups = [];
+	private _vehicles = [];
+	waitUntil {sleep 0.1;BIS_canSpawn};
+	BIS_canSpawn = false;
+
+	{
+		_vehicles pushBack ([_x,_customPos,_dynamicSimulation,_autoManageSimulation] call BIS_fnc_om_spawnVehicle);
+	} forEach _vehicleData;
+
+	{
+		_groups pushBack ([_x,_customPos,_dynamicSimulation,_autoManageSimulation] call BIS_fnc_om_spawnGroup);
+	} forEach _groupData;
+	BIS_canSpawn = true;
+	[_vehicles,_groups]
+};
+
+BIS_fnc_om_despawn = 
+{
+	PROFILE_INFO("BIS_fnc_om_despawn","BIS_fnc_om_despawn",1);
+	isNil 
+	{
+		params ["_objects"];
+		if (_objects isEqualType objNull) then {_objects = [_objects]};
+
+		//waitUntil {sleep 0.1;BIS_canDelete};
+		//BIS_canDelete = false;
+
+		// Figure if it's vehicle, unit or group, and delete it with all units inside
+		{
+			if (_x isEqualType grpNull) then 
+			{
+				{ deleteVehicle _x } forEach units _x;
+				deleteGroup _x;
+			} 
+			else 
+			{
+				private _veh = _x;
+				if (count crew _veh > 0) then { { _veh deleteVehicleCrew _x } forEach crew _veh };
+				deleteVehicle _veh;
+			}
+		} 
+		forEach _objects;
+	};
+	// sleep DESPAWN_TIMEOUT;
+	//BIS_canDelete = true;
+};
+
+BIS_fnc_om_spawnComposition = {
+	params ["_data", "_sector"];
+	waitUntil {sleep 0.1;BIS_canSpawn};
+	BIS_canSpawn = false;
+	PROFILE_INFO("BIS_fnc_om_spawnComposition","BIS_fnc_om_spawnComposition",1);
+	private _objects = [];
+	private _objectsRef = [];
+	isNil { _objectsRef resize count (_sector getVariable ["#objectData", []]); _objectsRef = _objectsRef apply { objNull }; _sector setVariable ["#objectsRef", _objectsRef] };
+	{
+		_x params ["_type","_pos","_vector","_damage","_varName","_sim","_dynSim","_special","_simpleObject"];
+		private _t = time;
+
+		if!(_type isEqualTo "") then
+		{
+			private _object = if (_simpleObject) then {
+				PROFILE_INFO("BIS_fnc_om_spawnComposition1","BIS_fnc_om_spawnComposition1",1);
+				createSimpleObject [_type,[100,100,100]]
+			} else {
+				PROFILE_INFO("BIS_fnc_om_spawnComposition2","BIS_fnc_om_spawnComposition2",1);
+				createVehicle [_type,[100,100,100],[],0,"CAN_COLLIDE"]
+			};
+			
+			_objectsRef set [_x select ORIG_INDEX, _object];
+			_object setVariable ["#sector", _sector];
+			_object enableSimulation false;
+
+	#ifdef DEBUG_SECTOR_MARKERS
+	    if ((time - _t) * 1000 > 3) then {["SECTOR: >>> CreateVehicle %1 took %2 ms!", _type, (time - _t) * 1000] call BIS_fnc_LogFormat};
+	#endif
+
+			if !(_varName isEqualTo "") then {
+				_object setVehicleVarName _varName;
+				missionNamespace setVariable [_varName,_object];
+			};
+
+			if ((_type in BIS_assets_intel_prio_medium) || (_type in BIS_assets_intel_prio_high)) then {
+				_object spawn BIS_fnc_om_handleIntelSource;
+			};
+
+
+			_object setVectorDirAndUp _vector;
+			_object setPosATL _pos;
+			_objects pushBack _object;
+
+			private _cntSpec = count _special;
+
+			if (_cntSpec > 0) then {
+				[_object,_special] call BIS_fnc_om_handleSpecialParams;
+			};
+			//fire spawn scripted eventHandler
+			/* if(isNull _object) then
+			{
+				["SECTOR: NULLOVY OBJECT! _object: %1 | %2 | %3 | %4 | simple object: %5 | _special: %6 ",_type, _vector, _pos, _varName, _simpleObject, _special] call BIS_fnc_LogFormat;
+				["_sector: %1 | _data: %2",_sector,_data] call BIS_fnc_LogFormat;
+			}; */
+			if (!_simpleObject && _cntSpec > 0) then { [_object] spawn BIS_fnc_om_spawn_callInitEventHandler; };
+		};
+		sleep 0.00002;
+	} forEach _data;
+
+	 {
+		// Simulation turned on = dynamic simulation is on
+		if (_data#_forEachIndex#5) then {
+			_x enableSimulation true;
+			_x enableDynamicSimulation true;
+			sleep 0.001;
+		};
+	} forEach _objects;
+
+	BIS_canSpawn = true;
+	_objects
+};
+
+BIS_fnc_OM_getVehicleCargo = 
+{
+	params ["_vehicle"];
+	private _cargo = [];
+	{
+		{
+			_cargo append _x;
+		}
+		forEach [weaponCargo _x, magazineCargo _x, itemCargo _x, backPackCargo _x];
+	}
+	forEach ([_vehicle] + everyBackpack _vehicle);
+	_cargo
+};
+
+BIS_fnc_om_spawnVehicle = {
+	PROFILE_INFO("BIS_fnc_om_spawnVehicle","BIS_fnc_om_spawnVehicle",1);
+	params ["_data","_customPos","_dynamicSimulation",["_autoManageSimulation",true]];
+	_data params ["_type","_varName","_pos","_dir","_damage","_fuel","_inventory",["_textures",[]],"_night","_special",["_simulation",[true,true]]];
+
+	/* ["SPAWN: spawnVehicle: %1", _data] call BIS_fnc_logFormat; */
+	/* [
+		"SPAWN: _type: %1,_varName: %2, _pos: %3, _dir: %4, _damage: %5, _fuel: %6, _inventory: %7,_textures: %8, _night: %9, _special: %10, _simulation: %11",
+		_type, _varName, _pos, _dir, _damage, _fuel, _inventory, _textures, _night, _special, _simulation
+	] call BIS_fnc_logFormat; */
+
+	private _mode = "CAN_COLLIDE";
+	if (_pos#2 > 10) then {_mode = "FLY"};
+
+	private _t = time;
+	private _vehicle = createVehicle [_type,[100,100,100],[],0,_mode];
+	if (_varName != "") then {
+		_vehicle setVehicleVarName _varName;
+		missionNamespace setVariable [_varName,_vehicle];
+	};
+	
+	private _channels = RADIO_MODULE_LOGIC getVariable ["BIS_channels", []];
+	VEHICLE_ADD_ALL_CHANNELS_ACTION(_channels,_vehicle);
+	VEHICLE_CHANNEL_TOGGLE_ACTION(_vehicle);
+	
+	_vehicle addEventHandler ["ContainerOpened", 
+	{ 
+		params ["_vehicle"];
+		if (_vehicle in BIS_playerVehicles) exitWith {};
+		_vehicle setVariable ["#cargoTemp", _vehicle call BIS_fnc_OM_getVehicleCargo];
+	}];
+	
+	_vehicle addEventHandler ["ContainerClosed", 
+	{ 
+		params ["_vehicle", "_unit"];
+		if (_vehicle in BIS_playerVehicles) exitWith {};
+		// check if cargo of the vehicle was changed
+		if !((_vehicle getVariable ["#cargoTemp", []]) isEqualTo (_vehicle call BIS_fnc_OM_getVehicleCargo)) then { [_unit, "", _vehicle] call BIS_fnc_om_handleGetIn };
+		_vehicle setVariable ["#cargoTemp", nil];
+	}];
+
+	// Save simulation status for sector to handle
+	SVAR(_vehicle,"#sim",_simulation);
+
+	private _dMs = (time - _t) * 1000;
+	if (_dMs > 3) then {
+		debugLog format [">>> CreateVehicle %1 took %2 ms!", _type, _dMs];
+		if (!isNil "BIS_repro") then {
+			if (DEBUG_MODE) then { systemChat format ["CreateVehicle %1 took %2 ms", _type, _dMs]; };
+		};
+	};
+
+	_vehicle enableSimulation false;
+	_vehicle setVectorDirAndUp _dir;
+
+	if (count _customPos > 0) then {
+		if (_mode == "FLY") then {
+			_vehicle setPosATL _customPos;
+
+			// If vehicle is ship, make sure it's on surface
+			if (_type isKindOf "Ship") then {
+				_vehicle setPosASLW [(getPos _vehicle)#0,(getPos _vehicle)#1,0];
+			};
+		} else {
+			// Find suitable position on custom location
+			_vehicle setVehiclePosition [_customPos,[],0,"NONE"];
+		};
+	} else {
+		_vehicle setPosATL _pos;
+	};
+
+	{
+		_vehicle setObjectTexture [_forEachIndex, _x];
+	} forEach _textures;
+
+	_vehicle setDamage _damage;
+	_vehicle setFuel _fuel;
+
+	// Handle special functionality of the unit
+	private _cntSpec = count _special;
+	if (_cntSpec > 0) then {
+		[_vehicle,_special] call BIS_fnc_om_handleSpecialParams;
+	};
+
+	if (_autoManageSimulation) then {
+		if (_dynamicSimulation) then {
+			_vehicle enableDynamicSimulation true;
+		} else {
+			_vehicle enableSimulation true;
+		};
+	};
+	//fire spawn scripted eventHandler
+	if(_cntSpec > 0) then
+	{
+		[_vehicle] spawn BIS_fnc_om_spawn_callInitEventHandler;
+	};
+
+	sleep SPAWN_TIMEOUT;
+	_vehicle
+};
+
+BIS_fnc_om_spawnGroup = {
+	PROFILE_INFO("BIS_fnc_om_spawnGroup","BIS_fnc_om_spawnGroup",1);
+	params ["_data",["_customPos",[]]];
+	_data params ["_side","_behaviour","_waypoints","_soldierArray"];
+	private _group = createGroup _side;
+	private _nCustomPos = count _customPos;
+	_group deleteGroupWhenEmpty true;
+	deleteWaypoint [_group,0];
+
+	private _effectiveCommanderAssigned = false;
+	{
+		// Create unit
+		_x params ["_type","_varName","_pos","_dir","_skill","_damage","_unitPos","_inventory","_inVehicle","_nightPresence","_special"];
+
+		private _t = time;
+		private _unit = _group createUnit [_type,[100,100,100],[],0,"CAN_COLLIDE"];
+
+		if (toLower _type in ["o_officer_f", "o_t_officer_f"]) then {
+			_unit addEventHandler ["Killed", {
+				_actionID = [
+					(_this # 0),
+					Localize "STR_A3_OM_System_Spawn_GetIntelHoldAction",
+					"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
+					"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
+					"player distance _target < 3",
+					"player distance _target <3",
+					{
+					//--- when hold action starts
+					playSound selectRandom ["OMIntelGrabBody_01", "OMIntelGrabBody_02", "OMIntelGrabBody_03"];
+					},
+					{
+					//--- tick every frame (out of 24)
+					},
+					{
+					//--- when holdaction ends
+					["", 0] call BIS_fnc_om_addIntel;
+					},
+					{
+					//--- when action is terminated
+					},
+					[],
+					1,
+					nil,
+					TRUE,
+					FALSE
+				] call BIS_fnc_holdActionAdd;
+			}];
+		};
+
+		if (_varName != "") then {
+			_unit setVehicleVarName _varName;
+			missionNamespace setVariable [_varName,_unit];
+		};
+
+		private _dMs = (time - _t) * 1000;
+		if (_dMs > 3) then {
+			debugLog format [">>> createUnit %1 took %2 ms!", _type, _dMs];
+			if (!isNil "BIS_repro") then {
+				if (DEBUG_MODE) then { systemChat format ["createUnit %1 took %2 ms", _type, _dMs];  };
+			};
+		};
+		_unit enableSimulation false;
+
+		if (_nCustomPos == 0) then {
+			_unit setPosATL _pos;
+
+			// Move to closest vehicle of correct type
+			private _closestVehicles = (_pos nearEntities 10) select {typeOf _x == _inVehicle};
+			if (count _closestVehicles > 0) then {
+				if (_unit == leader group _unit) then {
+					// Leader of group needs to attempt to get into commander position, if there is any
+					_unit moveInCommander _closestVehicles#0;
+					if (isNull (objectParent _unit)) then {
+						_unit moveInAny _closestVehicles#0;
+					};
+				} else {
+					_unit moveInAny _closestVehicles#0;
+				};
+			};
+		} else {
+			// Find suitable position on custom location
+			if (DEBUG_MODE) then { systemChat str [_nCustomPos,_customPos]; };
+			_unit setVehiclePosition [_customPos,[],0,"FORM"];
+
+			// Distribute units to vehicles according to type only
+			if (_inVehicle != "") then {
+				private _possibleVehicles = _vehicles select {typeOf _x == _inVehicle};
+				if (count _possibleVehicles > 0) then {
+					_possibleVehicles = [_possibleVehicles,[],{count crew _x},"ASCEND"] call BIS_fnc_sortBy;
+					{
+						if (_unit moveInAny _x) exitWith {};
+					} forEach _possibleVehicles;
+				};
+			};
+		};
+
+		// First unit (leader) should set up formation direction
+		if (_forEachIndex == 0) then {_unit setFormDir _dir};
+		_unit setDir _dir;
+		_unit setSkill _skill;
+		_unit setDamage _damage;
+		_unit setUnitLoadout _inventory;
+		if (_unitPos != "UP") then {_unit setUnitPos _unitPos};
+
+		private _cntSpec = count _special;
+		if (_cntSpec > 0) then {
+			[_unit,_special] call BIS_fnc_om_handleSpecialParams;
+		};
+
+		// Handle vehicle commanding
+		private _leader = leader _group;
+		private _vehicle = objectParent _leader;
+		if (!isNull _vehicle && {_leader != effectiveCommander _vehicle} && {!_effectiveCommanderAssigned}) then {
+			_group selectLeader effectiveCommander _vehicle;
+			_effectiveCommanderAssigned = true;
+		};
+		if (_cntSpec > 0) then
+		{
+			[_unit] spawn BIS_fnc_om_spawn_callInitEventHandler;  //fire spawn scripted eventHandler
+		};
+		sleep SPAWN_TIMEOUT;
+	} forEach _soldierArray;
+
+	// Re-create behaviour
+	_behaviour params ["_beh","_speed","_form"];
+	_group setBehaviour _beh;
+	_group setSpeedMode _speed;
+	_group setFormation _form;
+
+	// Create all waypoints
+	{
+		_x params ["_pos","_type","_beh","_speed","_form","_combatMode","_timeout","_cr"];
+		private _wp = _group addWaypoint [_pos,_forEachIndex];
+		_wp setWaypointType _type;
+		_wp setWaypointBehaviour _beh;
+		_wp setWaypointSpeed _speed;
+		_wp setWaypointFormation _form;
+		_wp setWaypointCombatMode _combatMode;
+		_wp setWaypointTimeout _timeout;
+		_wp setWaypointCompletionRadius _cr;
+	} forEach _waypoints;
+
+	// Skill modifier
+	private _modifier = 1;
+	if (_side == RESISTANCE) then {_modifier = GVARS(BIS_gameModule,"SyndikatAiming",1)};
+	if (_side == EAST) then {_modifier = GVARS(BIS_gameModule,"CsatAiming",1)};
+	if (_modifier != 1) then {
+		{
+			_x setSkill ["AimingAccuracy",(_x skill "AimingAccuracy") * _modifier];
+		} forEach (units _group);
+	};
+
+	// Re-enable simulation
+	{
+		_x enableSimulation true;
+	} forEach (units _group);
+
+	if (_dynamicSimulation) then {
+		_group enableDynamicSimulation true;
+	};
+	sleep SPAWN_TIMEOUT;
+
+	_group
+};
+
+// Find out all groups and vehicles
+BIS_fnc_om_scanAndDelete = {
+	PROFILE_INFO("BIS_fnc_om_scanAndDelete","BIS_fnc_om_scanAndDelete",1);
+	params ["_unitArray"];
+	if (_unitArray isEqualType objNull) then {_unitArray = [_unitArray]};
+	// Filter out entities that cannot be handled
+	_unitArray = _unitArray select {side _x != sideLogic && {side _x != sideAmbientLife}};
+	private _occupiedVehicles = _unitArray select {count crew _x > 0 && {(crew _x)#0 != _x}};
+
+	{
+		{_unitArray pushBackUnique _x} forEach crew _x;
+	} forEach _occupiedVehicles;
+
+	private _vehiclesInfo = [];
+	private _groupsInfo = [];
+	private _objectsInfo = [];
+	private _groups = [];
+
+	{
+		if!(isNull _x || typeOf _x isEqualTo "") then
+		{
+			if (_x isKindOf "Man") then {
+				_groups pushBackUnique group _x;
+			} else {
+				if (_x isKindOf "Allvehicles" && !isSimpleObject _x) then {
+					private _inventory = [];
+					// Save datalink info if it was changed
+					private _dataLinkState = [vehicleReportRemoteTargets _x, vehicleReceiveRemoteTargets _x, vehicleReportOwnPosition _x];
+					if (_dataLinkState find true > -1) then {
+						private _spc = GVARS(_x,"#spc",[]);
+						_spc pushBack ["#datalink",_dataLinkState];
+						SVAR(_x,"#spc",_spc);
+					};
+					_vehiclesInfo pushBack [
+						typeOf _x,
+						vehicleVarName _x,
+						getPosATL _x,
+						[vectorDir _x, vectorUp _x],
+						damage _x,
+						fuel _x,
+						_inventory,
+						getObjectTextures _x,
+						GVARS(_x,"night",false),
+						GVARS(_x,"#spc",[]),
+						[simulationEnabled _x, dynamicSimulationEnabled _x]
+					];
+				} else {
+					_varName = vehicleVarName _x;
+					if (_varName == "" && (((typeOf _x) in BIS_assets_intel_prio_medium) || ((typeOf _x) in BIS_assets_intel_prio_high))) then {
+						_varName = ("BIS_OM_" + (call BIS_fnc_OM_generateHash));
+					};
+						_objectsInfo pushBack [
+						typeOf _x,
+						getPosATL _x,
+						[vectorDir _x, vectorUp _x],
+						damage _x,
+						_varName,
+						simulationEnabled _x,
+						dynamicSimulationEnabled _x,
+						GVARS(_x,"#spc",[]),
+						isSimpleObject _x,
+						switch (true) do
+						{
+							case (0.0 < (sizeof typeOf _x) 	&& (sizeof typeOf _x) < 0.3):		{	ENTITY_SIZE_TINY 		};
+							case (0.3 <= (sizeof typeOf _x) && (sizeof typeOf _x) < 1.6): 	{ ENTITY_SIZE_SMALL		};
+							case (1.6 <= (sizeof typeOf _x) && (sizeof typeOf _x) < 5.0): 	{ ENTITY_SIZE_MEDIUM	};
+							case ((sizeof typeOf _x) >= 5.0): 															{	ENTITY_SIZE_LARGE		};
+							default {	ENTITY_SIZE_UNKNOWN };
+						}
+					];
+				};
+			};
+		};
+	} forEach _unitArray;
+
+	{
+		private _waypoints = [];
+		private _units = [];
+		private _behaviour = [behaviour leader _x, speedMode _x, formation _x, combatMode _x];
+		{
+			if (_forEachIndex > 0) then { // Skip WP 0 which is on character's coordinates
+				_waypoints pushBack [
+					getWPPos _x,
+					waypointType _x,
+					waypointBehaviour _x,
+					waypointSpeed _x,
+					waypointFormation _x,
+					waypointCombatMode _x,
+					waypointTimeout _x,
+					waypointCompletionRadius _x
+				];
+			};
+		} forEach (waypoints _x);
+		{
+			_units pushBack [
+				typeOf _x,
+				vehicleVarName _x,
+				getPosATL _x,
+				getDir _x,
+				skill _x,
+				damage _x,
+				unitPos _x,
+				getUnitLoadout _x,
+				typeOf (objectParent _x),
+				GVARS(_x,"night",false),
+				_x getVariable ["#spc",[]]
+			];
+		} forEach (units _x);
+		_groupsInfo pushBack [side _x, _behaviour, _waypoints, _units];
+	} forEach _groups;
+
+	// Delete all units
+	{
+		private _entity = _x;
+		{_entity deleteVehicleCrew _x} forEach crew _x;
+		deleteVehicle _x;
+	} forEach _unitArray;
+	{deleteGroup _x} forEach _groups;
+
+	// return vehicleData and GroupsData
+	[_vehiclesInfo,_groupsInfo,_objectsInfo]
+};
+
+BIS_fnc_om_handleSpecialParams = {
+	PROFILE_INFO("BIS_fnc_om_handleSpecialParams","BIS_fnc_om_handleSpecialParams",1);
+	params ["_unit","_params"];
+	{
+		_x params ["_type","_data"];
+
+		switch (_type) do {
+			case "#init": {
+				// Execute init
+				_unit call (compile (_data#0));
+			};
+			case "#steal": {
+				_unit setVariable ["#steal",_data];
+			};
+			case "#datalink": {
+				_data params ["_send","_recieve","_pos"];
+				_unit setVehicleReportRemoteTargets _send;
+				_unit setVehicleReceiveRemoteTargets _recieve;
+				_unit setVehicleReportOwnPosition _pos;
+			};
+		};
+	} forEach _params;
+};
+
+BIS_OM_initHandlerArr = [];
+
+BIS_fnc_om_spawn_addInitEventHandler = {
+	if (isNil "BIS_OM_initHandlerArr") then {};
+	params[["_vehicleVarName", "", [""]], "_code"];
+	if (_vehicleVarName isEqualTo "") exitWith {}; // prevent from accidentally overloading
+	([missionNamespace, "spawnedObjectInit_"+_vehicleVarName, _code] call BIS_fnc_addScriptedEventHandler);
+	BIS_OM_initHandlerArr pushBackUnique _vehicleVarName;
+};
+BIS_fnc_om_spawn_removeInitEventHandler = {
+	params[["_vehicleVarName", "", [""]], "_eventHandlerId"];
+	if (_vehicleVarName isEqualTo "") exitWith {};
+	([missionNamespace, "spawnedObjectInit_"+_vehicleVarName, _eventHandlerId] call BIS_fnc_removeScriptedEventHandler);
+	BIS_OM_initHandlerArr = BIS_OM_initHandlerArr - [_vehicleVarName];
+};
+BIS_fnc_om_spawn_callInitEventHandler = {
+	params[["_object", objNull, [objNull]]];
+	PROFILE_INFO("BIS_fnc_om_spawn_callInitEventHandler","BIS_fnc_om_spawn_callInitEventHandler"+str _object,1);
+	if!(isNull _object) then
+	{
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_object: %1 | trying to call init event handler", _object] call BIS_fnc_LogFormat;
+	#endif
+		{ //we want to fire the handler for any reference to the spawned object
+		#ifdef DEBUG_SECTOR_MARKERS
+				["SECTOR: 			_object: %1 | Executing init script", _object] call BIS_fnc_LogFormat;
+		#endif
+			[missionNamespace, "spawnedObjectInit_"+_x, [_object, _x]] call BIS_fnc_callScriptedEventHandler;
+		} forEach (BIS_OM_initHandlerArr select { (missionNamespace getVariable _x) isEqualTo _object } );
+	};
+};
+
+#ifdef INTERNAL_VERSION
+	BIS_fnc_OM_ExportSectorDataToFile =
+	{
+		params ["_sector"];
+		private _fileToSaveBase = "a3\Missions_F_Oldman\Campaign\Missions\_exported_missions\";
+		//private _dataTypes = [ "#civModules", "#groupData", "#vehicleData", "#objectData", "#groups", "#vehicles", "#size", "#state", "#lights" ];
+		private _dataTypes = [ "#vehicleData", "#groupData", "#objectData", "#size" ];
+		private _fileToSave = "";
+		if( (_sector getVariable "layer") == "" ) exitWith {["EXPORTER: _sector: %1 doesn't have layer", _sector] call BIS_fnc_logFormat;};
+		_fileToSave = COMPOSE_FILE_NAME_SECTOR( "", missionName, ( _sector getVariable "layer" ) );
+		["EXPORTER: _fileToSave: %1", _fileToSave] call BIS_fnc_logFormat;
+		private _fileHandle = diag_saveTextFile [ _fileToSave, "#define CIV\tCIVILIAN\n#define GUER\tRESISTANCE\n[\n",		FILE_CREATE_OR_REWRITE ];
+		["EXPORTER: Sector: %1", _sector] call BIS_fnc_logFormat;
+		private _dashFirstTime = true;
+
+		{
+				// ["EXPORTER: Saving to %1 | type: %2", _fileToSave, _x] call BIS_fnc_logFormat;
+				if ( !_dashFirstTime ) then
+				{
+					_fileHandle = diag_saveTextFile [ _fileToSave, "\n\t\t,\n",	FILE_CREATE_OR_APPEND, true ];
+				};
+				_dashFirstTime = false;
+				_fileHandle = diag_saveTextFile [ _fileToSave, "\t\t" + format["//--- %1\n", _x], 	FILE_CREATE_OR_APPEND, true ];
+				_fileHandle = diag_saveTextFile [ _fileToSave, "\t\t", 	FILE_CREATE_OR_APPEND, true ];
+				_fileHandle = diag_saveTextFile [ _fileToSave, str (_sector getVariable _x), 	FILE_CREATE_OR_APPEND, false ];
+
+		} forEach _dataTypes;
+		_fileHandle = diag_saveTextFile [ _fileToSave, "\n]\n",	FILE_CREATE_OR_APPEND ];
+	};
+#endif

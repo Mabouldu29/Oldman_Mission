@@ -1,0 +1,23 @@
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+
+params [ "_logic", "_id" ];
+private _smartMarkers = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE;       //pointer to the array
+private _indexToDelete = -1;
+
+if(_id isEqualType "") then
+{ _indexToDelete = _smartMarkers findIf {vehicleVarName _x isEqualTo _id} }
+else
+{ _indexToDelete = _smartMarkers find _id };
+
+if( _indexToDelete != -1 ) then
+{
+  private _smartMarker = _smartMarkers select _indexToDelete;
+  {
+    if( (_x select 1) isEqualType "" ) then
+    { deleteMarker (_x select 1) };
+  } forEach (_smartMarker getVariable SMARTMARKER_SECTIONS);
+  deleteVehicle _smartMarker;
+  _smartMarkers deleteAt _indexToDelete;
+};
+true

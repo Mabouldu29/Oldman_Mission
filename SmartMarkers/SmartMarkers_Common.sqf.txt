@@ -1,0 +1,648 @@
+#include "definitions.inc"
+
+BIS_fnc_OM_moduleSmartMarkers_IsHidden =
+{
+	params [ "_smartMarkerBase" ];
+	private _smartMarkersHidden = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE_HIDDEN;
+	if(_smartMarkerBase isEqualType "") then
+	{ _smartMarkersHidden findIf {vehicleVarName _x isEqualTo _smartMarkerBase} != -1 }
+	else
+	{ (_smartMarkersHidden find _smartMarkerBase) != -1 }
+};
+
+BIS_fnc_OM_moduleSmartMarkers_CFGgetProperty =
+{
+  params["_class", "_subclass", "_property", [ "_lod",0,[9] ] ];
+  private _property = SMARTMARKERS_CONFIG(_class >> _subclass, _property);
+  _property
+};
+
+BIS_fnc_OM_moduleSmartMarkers_CFGgetClassProperties =
+{
+    params ["_class", ["_sections", "Sections", [""] ] ];
+    private _result = [];
+    private _smartmarker_sections = configProperties [CFG_SMARTMARKERS >> _class >> _sections, "isClass _x"];
+    {
+      private _section = _x;
+      private _sectionName = configName _x;
+
+      private _subclass = [];
+      private _attributes = configProperties [CFG_SMARTMARKERS >> _class >> _sections >> _sectionName];
+      private ["_attributeValue"];
+      {
+
+        if(!isNil "_x") then
+        {
+          private _attribute = _x;
+          private _attributeName = configName _attribute;
+          _attributeValue = [ _attributeName, [CFG_SMARTMARKERS >> _class >> _sections >> _sectionName, _attributeName] call BIS_fnc_returnConfigEntry ];
+        }
+        else
+        {
+          _attributeValue = [ _attributeName, nil ];
+        };
+        _subclass pushBack _attributeValue;
+      } forEach _attributes;
+      _result pushBack [_sectionName, _subclass];
+
+    } forEach _smartmarker_sections;
+    _result
+};
+BIS_fnc_OM_moduleSmartMarkers_CFGTransformClassesNamesToIDs =
+{
+  private _smartMarkerCfg = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_CFG_STORAGE;
+  {
+    ATTRIBUTE_ASSIGNS;
+
+    private _sections = _x select 1;
+    /* (str _sections) call BIS_fnc_Log; */
+    {
+      _section = _x select 1;
+      {
+        private _sectionName = _x select 0;
+        _x set [0, call compile format ["_%1", _sectionName] ];
+      } forEach _section;
+      _x set [0, call compile format ["_%1", (_x select 0)] ];
+    } forEach _sections;
+
+    private _lods = _x select 2;
+    if(!isNil "_lods") then
+    {
+      /* str _lods call BIS_fnc_LogFormat; */
+      {
+        private _lod = _x;
+        {
+          _lod set [_forEachIndex, call compile format ["_%1" ,_x ] ];
+        } forEach _lod;
+      } forEach _lods;
+    };
+
+  } forEach _smartMarkerCfg;
+};
+
+BIS_fnc_OM_moduleSmartMarkers_CFGgetSmartMarkersClasses =
+{
+  private _result = [];
+  private _classes = configProperties [CFG_SMARTMARKERS, "isClass _x && {(configName _x) isKindOf 'SmartMarker_Base_F'}"];  //not possible to use macro CFG_SMARTMARKER_BASE in string (?)
+  {
+    //["%1, %2, %3", parseText toUpper (configName _x), [CFG_SMARTMARKERS >> configName _x >> "Sections", "LODs"] call BIS_fnc_returnConfigEntry, [configName _x] call BIS_fnc_OM_moduleSmartMarkers_CFGgetTooltipAttributes] call BIS_fnc_LogFormat;
+    _result pushBack
+    [
+      configName _x,
+      nil,
+      [CFG_SMARTMARKERS >> configName _x >> "Sections", "LODs"] call BIS_fnc_returnConfigEntry,
+      [configName _x] call BIS_fnc_OM_moduleSmartMarkers_CFGgetTooltipAttributes
+    ];
+  } forEach _classes;
+  _result
+};
+BIS_fnc_OM_moduleSmartMarkers_CFGgetTooltipAttributes =
+{
+  params ["_class"];
+  private _result = [];
+  {
+    _result pushBack [ configName _x, [_x] call BIS_fnc_returnConfigEntry];
+  } forEach (configProperties [(CFG_SMARTMARKERS) >> _class >> SMARTMARKER_TOOLTIP_SECTION]);
+  _result
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetRootAttributes =
+{
+  params["_class"];
+  private _result = [];
+  {
+    _result pushBack [(configName _x), [configFile >> "cfgVehicles" >> "SmartMarker_Default_F" >> configName _x] call BIS_fnc_returnConfigEntry ];
+  } forEach (configProperties [CFG_SMARTMARKERS >> _class, "!isClass _x", false]);
+  _result
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetSectionsNamesInLOD =
+{
+  PROFILE_START_INFO("SM_GetSectionsNamesInLOD","_class", _this select 1);
+  params ["_smartMarkersArrayCfg", "_class", [ "_lod", 0, [9] ] ];
+  private "_result";
+  {
+    if(_x select STRUCT_SMARTMARKER_NAME_INDEX == _class) exitWith {_result = _x select STRUCT_SMARTMARKER_LODS_INDEX select _lod};
+  } forEach _smartMarkersArrayCfg;			//TODO: optimize it using [] select {code}
+  PROFILE_STOP("SM_GetSectionsNamesInLOD");
+  _result;
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetRecordAddress =
+{//TODO: optimize it using [] select {code}
+	params ["_smartMarkersArrayCfg", "_class", "_section", "_attribute"];
+	private _result = [];
+	{
+
+		if(_x select STRUCT_SMARTMARKER_NAME_INDEX == _class) then
+		{
+				_result pushBack _forEachIndex;
+				private _smartMarkerData = _x select STRUCT_SMARTMARKER_DATA_INDEX;
+				_result pushBack STRUCT_SMARTMARKER_DATA_INDEX;
+				if(!isNil "_section") then
+				{
+					{
+						if(_x select STRUCT_SMARTMARKER_SECTION_NAME_INDEX == _section) then
+						{
+							_result pushBack _forEachIndex;
+							_result pushBack STRUCT_SMARTMARKER_SECTION_ATTRIBUTES_INDEX;
+							private _smartMarkerSection = _x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTES_INDEX;
+							if(!isNil "_attribute") then
+							{
+								{
+									if(_x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTE_NAME_INDEX == _attribute) then
+									{
+										_result pushBack _forEachIndex;
+										_result pushBack STRUCT_SMARTMARKER_SECTION_ATTRIBUTE_VALUE_INDEX;
+									};
+								} forEach _smartMarkerSection;
+							};
+						};
+					} forEach _smartMarkerData;
+				};
+		};
+	} forEach _smartMarkersArrayCfg;
+	_result;
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetRecordValueClass =
+{
+  PROFILE_START("GetRecordValueClass");
+  params ["_smartMarkersArrayCfg", "_class"];
+  {
+    if(_x select STRUCT_SMARTMARKER_NAME_INDEX isEqualTo _class) exitWith {   PROFILE_STOP("GetRecordValueClass"); _x select STRUCT_SMARTMARKER_DATA_INDEX };
+  } forEach _smartMarkersArrayCfg; //TODO: optimize it using [] select {code}
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetRecordValueSection =
+{
+  PROFILE_START("GetRecordValueSection");
+  params ["_smartMarkersArrayCfg", "_class", "_section"];
+  private "_smartMarkerData";
+  {
+    if(_x select STRUCT_SMARTMARKER_NAME_INDEX isEqualTo _class) exitWith
+    {
+      _smartMarkerData =  _x select STRUCT_SMARTMARKER_DATA_INDEX;
+      {
+        if(_x select STRUCT_SMARTMARKER_SECTION_NAME_INDEX isEqualTo _section) exitWith { PROFILE_STOP("GetRecordValueSection");_x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTES_INDEX};
+      } forEach _smartMarkerData;
+    };
+  } forEach _smartMarkersArrayCfg; //TODO: optimize it using [] select {code}
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetRecordValueAttribute =
+{
+  PROFILE_START("GetRecordValueAttribute");
+  params ["_smartMarkersArrayCfg", "_class", "_section", "_attribute"];
+  private ["_smartMarkerData", "_smartMarkerAttributes"];
+  {
+    if(_x select STRUCT_SMARTMARKER_NAME_INDEX isEqualTo _class) exitWith
+    {
+      _smartMarkerData =  _x select STRUCT_SMARTMARKER_DATA_INDEX;
+      {
+        if(_x select STRUCT_SMARTMARKER_SECTION_NAME_INDEX isEqualTo _section) exitWith
+        {
+          _smartMarkerAttributes = _x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTES_INDEX;
+          {
+            if(_x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTE_NAME_INDEX isEqualTo _attribute) exitWith
+            {
+              PROFILE_STOP("GetRecordValueAttribute");
+              _x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTE_VALUE_INDEX;
+            };
+          } forEach _smartMarkerAttributes;
+        };
+      } forEach _smartMarkerData;
+    };
+  } forEach _smartMarkersArrayCfg;
+};
+
+
+BIS_fnc_OM_moduleSmartMarkers_GetRecordValue =
+{
+	PROFILE_START("GetRecordValueOld");
+	params ["_smartMarkersArrayCfg", "_class", "_section", "_attribute"];
+	private _result = "";
+  private ["_smartMarkerData"];
+	{
+    if(_x select STRUCT_SMARTMARKER_NAME_INDEX isEqualTo _class) then
+		{
+			_smartMarkerData = _x select STRUCT_SMARTMARKER_DATA_INDEX;
+      /* ["_smartMarkerData = %1", _smartMarkerData] call BIS_fnc_LogFormat; */
+			if(isNil "_section") exitWith {_result = _smartMarkerData};
+			{
+				if(_x select STRUCT_SMARTMARKER_SECTION_NAME_INDEX isEqualTo _section) then
+				{
+          _smartMarkerSection = _x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTES_INDEX;
+					if(isNil "_attribute") exitWith {_result = _smartMarkerSection};
+					{
+						if(_x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTE_NAME_INDEX isEqualTo _attribute) exitWith
+						{
+							_result = _x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTE_VALUE_INDEX;
+						};
+					} forEach _smartMarkerSection;
+				};
+			} forEach _smartMarkerData;
+		};
+	} forEach _smartMarkersArrayCfg;
+	PROFILE_STOP("GetRecordValueOld");
+	_result;
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetSectionNames =
+{
+	PROFILE_START("GetSectionNames");
+  params["_class"];
+  private _result = [];
+  private _sections = [SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_CFG_STORAGE, _class] call BIS_fnc_OM_moduleSmartMarkers_GetRecordValueClass;
+  if(!isNil "_sections") then
+  {
+    {
+      _result pushBack [ [_x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTES_INDEX, LAYER] call BIS_fnc_OM_moduleSmartMarkers_GetAttributeValueFromSection, (_x select STRUCT_SMARTMARKER_SECTION_NAME_INDEX) ];
+    } forEach _sections;
+  	_result sort true;
+  }
+  else {"Error: No sections found or marker class doesn't exist"};
+	PROFILE_STOP("GetSectionNames");
+  _result;
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetAttributeNames =
+{
+  params["_class", "_section"];
+  private _result = [];
+  private _attributes = [SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_CFG_STORAGE, _class, _section] call BIS_fnc_OM_moduleSmartMarkers_GetRecordValueSection;
+  {
+    _result pushBack (_x select STRUCT_SMARTMARKER_SECTION_ATTRIBUTE_NAME_INDEX);
+  } forEach _attributes;
+  _result;
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetAttributeValue =
+{
+	PROFILE_START("GetAttributeValue");
+	params ["_class", "_section", "_attribute", "_lod"];
+  private _attribute = [SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_CFG_STORAGE, _class,	_section, _attribute] call BIS_fnc_OM_moduleSmartMarkers_GetRecordValueAttribute;
+  if ( _attribute isEqualType [] ) then
+  {
+    if( _lod < (count _attribute) ) then { PROFILE_STOP("GetAttributeValue"); _attribute select _lod } else { PROFILE_STOP("GetAttributeValue"); _attribute select (count _attribute - 1)}
+  } else { PROFILE_STOP("GetAttributeValue"); _attribute };
+};
+
+	BIS_fnc_OM_moduleSmartMarkers_GetAttributeValueFromSection =
+{
+	params["_section", "_attribute"];
+	{
+		if(_x isEqualType []) then
+		{
+			_index = _attribute in _x;
+			if(_index) exitWith {_x select 1};
+		};
+	} forEach _section; //TODO: optimize it using [] select {code}
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetParentSmartMarker =
+{
+  params["_marker"];
+  private "_result";
+  private _smartMarkers = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE;
+  {
+    private _smartMarker = _x;
+    if ((_smartMarker getVariable "BIS_OM_underlyingMarker") == _marker) exitWith {_smartMarker};
+    {
+      if(_x select 1 == _marker) exitWith { _result = _smartMarker };
+    } forEach (_smartMarker getVariable SMARTMARKER_SECTIONS);
+    if(!isNil "_result") exitWith {_result};
+  } forEach _smartMarkers; //TODO: optimize it using [] select {code}
+};
+
+BIS_fnc_OM_moduleSmartMarkers_GetTooltipValue =
+{
+  params ["_smartMarkerBase", "_attributeName"];
+  private _result = -1;
+  private _customData = _smartMarkerBase getVariable SMARTMARKER_CUSTOMDATA;
+  private _customAttrIndex = [_customData, _attributeName] call BIS_fnc_findInPairs;
+  if(_customAttrIndex == -1 ) then
+  {
+    {
+      if(_x select STRUCT_SMARTMARKER_NAME_INDEX isEqualTo (typeOf _smartMarkerBase) ) then
+      {
+        private _smartMarkerTooltipData = _x select STRUCT_SMARTMARKER_TOOLTIP_INDEX;
+        private _index = [_smartMarkerTooltipData, _attributeName] call BIS_fnc_findInPairs;
+        if(_index != -1) then
+        {
+            _result = _smartMarkerTooltipData select _index select 1;
+        };
+      };
+    } forEach (SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_CFG_STORAGE);
+  }
+  else
+  {
+    _result = _customData select _customAttrIndex select 1;
+  };
+  _result
+};
+
+BIS_fnc_OM_moduleSmartMarkers_TransformColor =
+{
+	params ["_colorName"];
+	private _colorArr = ( getArray (configFile >> "CfgMarkerColors" >> _colorName >> "color") );
+	if(_colorArr isEqualTypeArray ["","","",""]) then
+	{
+		{
+			_colorArr set [_forEachIndex, (call compile _x)];
+		} forEach _colorArr;
+	};
+	_colorArr
+};
+
+
+BIS_fnc_OM_moduleSmartMarkers_SetMarkerVisibility =
+{
+	/* private _scr = format ["scr_%1", time*1000]; */
+  params ["_marker", "_finalAlpha", "_duration", "_actualAlpha"];
+
+	_finalAlpha = ROUND(_finalAlpha);
+	_duration = ROUND(_duration);
+
+  private _effectsInProgress = (missionNameSpace getVariable ["BIS_OM_SmartMarkers_mrkHndl", []]);
+
+  if({_x isEqualTo _marker} count _effectsInProgress >= 2) exitWith {true};
+  _effectsInProgress pushBack _marker;
+	private _t = time;
+  WaitUntil { {_x isEqualTo _marker} count _effectsInProgress == 1 || time > _t + MARKER_INTERRUPT_DELAY};
+
+  private _startAlpha = ROUND(markerAlpha _marker);
+  private _alpha = _startAlpha;
+	private _difference = _startAlpha - _finalAlpha;
+	if(_difference != 0) then
+	{
+		/* ["difference: %1", _difference] call BIS_fnc_logFormat; */
+		private _nrOfSteps = abs (round linearConversion[0,1,_difference,1,MARKER_ANIMATION_FRAMES]);
+		/* ["nrOfSteps: %1", _nrOfSteps] call BIS_fnc_logFormat; */
+		if(_nrOfSteps == 0) then {_nrOfSteps = 1};
+	  private _step = _difference/_nrOfSteps;
+		/* ["_step: %1", _step] call BIS_fnc_logFormat; */
+	  private _dt = abs( _duration / _nrOfSteps );
+		/* ["_dt: %1", _dt] call BIS_fnc_logFormat; */
+
+	  while { OP(_alpha,_finalAlpha) && ({_x isEqualTo _marker} count _effectsInProgress == 1)} do
+	  {
+			_alpha = ROUND(_alpha - (_step));
+	    _marker setMarkerAlpha _alpha;
+	    /* ["%2 _alpha = %1", _alpha, _scr] call BIS_fnc_LogFormat; */
+	    if({_x isEqualTo _marker} count _effectsInProgress > 1) exitWith {false};
+	    sleep _dt;
+	  };
+	};
+  _effectsInProgress deleteAt ( _effectsInProgress findIf {_x isEqualTo _marker} );
+};
+
+//----------------------- MARKER FUNCTIONS -------------------------------------
+
+BIS_fnc_OM_moduleSmartMarkers_CreateMarkerIcon =
+{
+  params[ "_position", "_parameters", [ "_lod", 0, [9] ] ];
+	/* ["Icon: %1 | %2 ", _position, _parameters ] call BIS_fnc_LogFormat; */
+	private _marker = createMarker [MARKER_NAME_UNIQUE(MARKER_PREFIX_ICON), _position];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType (_parameters select TYPE);
+	_marker setMarkerSize (_parameters select SIZE);
+  _marker setMarkerColor (_parameters select COLOR);
+	_marker setMarkerAlpha (_parameters select ALPHA);
+	_marker
+};
+
+//TODO: do it better - this is almost doubling of functions (polymorf it)
+BIS_fnc_OM_moduleSmartMarkers_CreateMarkerIconBackground =
+{
+  params[ "_position", "_parameters", [ "_lod", 0, [9] ] ];
+	private _marker = createMarker [MARKER_NAME_UNIQUE(MARKER_PREFIX_ICONBACKGROUND), _position];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType (_parameters select TYPE);
+	_marker setMarkerSize (_parameters select SIZE);
+  _marker setMarkerColor (_parameters select COLOR);
+	_marker setMarkerAlpha (_parameters select ALPHA);
+	_marker
+};
+
+BIS_fnc_OM_moduleSmartMarkers_CreateMarkerArea =
+{
+  params[ "_position", "_parameters", [ "_lod", 0, [9] ] ];
+  private _marker = createMarker [MARKER_NAME_UNIQUE(MARKER_PREFIX_AREA), _position];
+  _marker setMarkerShape (_parameters select SHAPE);
+	_marker setMarkerBrush (_parameters select BRUSH);
+	_marker setMarkerSize (_parameters select SIZE);
+  _marker setMarkerColor (_parameters select COLOR);
+	_marker setMarkerAlpha (_parameters select ALPHA);
+
+	_marker
+};
+
+BIS_fnc_OM_moduleSmartMarkers_CreateMarkerText =
+{
+  params[ "_position", "_parameters", [ "_lod", 0, [9] ] ];
+	private _marker = createMarker [MARKER_NAME_UNIQUE(MARKER_PREFIX_TEXT), _position];
+  _marker setMarkerShape "ICON";
+	_marker setMarkerType "mil_box";
+	_marker setMarkerSize MARKER_SIZE_SINGULAR;
+	_marker setMarkerAlpha (_parameters select ALPHA);
+  _marker setMarkerColor (_parameters select COLOR);
+  _marker setMarkerText MARKER_TEXT_OFFSET_FAKE + (_parameters select TEXT);
+  _marker
+};
+
+// UPDATING
+BIS_fnc_OM_moduleSmartMarkers_UpdateMarkerIcon =
+{
+  params[ "_marker", "_parameters", [ "_lod", 0, [9] ] ];
+  if(!isNil "_position") then {_marker setMarkerPos _position};
+	_marker setMarkerType (_parameters select TYPE);
+	_marker setMarkerSize (_parameters select SIZE);
+  _marker setMarkerColor (_parameters select COLOR);
+	_marker setMarkerAlpha (_parameters select ALPHA);
+};
+
+BIS_fnc_OM_moduleSmartMarkers_UpdateMarkerIconBackground = BIS_fnc_OM_moduleSmartMarkers_UpdateMarkerIcon;
+
+BIS_fnc_OM_moduleSmartMarkers_UpdateMarkerArea =
+{
+  params[ "_marker", "_parameters", [ "_lod", 0, [9] ] ];
+  if(!isNil "_position") then {_marker setMarkerPos _position};
+	_marker setMarkerShape (_parameters select SHAPE);
+	_marker setMarkerBrush (_parameters select BRUSH);
+	_marker setMarkerSize (_parameters select SIZE);
+  _marker setMarkerColor (_parameters select COLOR);
+	_marker setMarkerAlpha (_parameters select ALPHA);
+};
+
+BIS_fnc_OM_moduleSmartMarkers_UpdateMarkerText =
+{
+  params[ "_marker", "_parameters", [ "_lod", 0, [9] ] ];
+  if(!isNil "_position") then {_marker setMarkerPos _position};
+	_marker setMarkerAlpha (_parameters select ALPHA);
+  _marker setMarkerColor (_parameters select COLOR);
+  _marker setMarkerText MARKER_TEXT_OFFSET_FAKE + (_parameters select TEXT);
+	/* [_marker, _alpha, MARKER_SHOW_SPEED] spawn BIS_fnc_OM_moduleSmartMarkers_SetMarkerVisibility; */
+};
+
+BIS_fnc_OM_moduleSmartMarkers_HighlightMarker =
+{
+  /* params ["_smartMarkerBase"];
+  if(SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE find _smartMarkerBase == -1) exitWith {["SMARTMARKERS: %1 is hidden, cannot be highlighted", _smartMarkerBase] call BIS_fnc_LogFormat};
+  private _map = (uiNameSpace getVariable "map");
+  _smartMarkerBase setVariable [SMARTMARKER_HIGHLIGHTED, true];
+	private _smartMarkerIcon = GET_MARKER_SECTION_BY_TYPE(_smartMarkerBase getVariable SMARTMARKER_SECTIONS, MARKERICON);
+  [_map, _smartMarkerBase, [typeOf _smartMarkerBase, MARKERICON, COLOR, 3] call BIS_fnc_OM_moduleSmartMarkers_GetAttributeValue] spawn BIS_fnc_OM_moduleSmartMarkers_SetLocatorPosition;
+
+  while {_smartMarkerBase getVariable SMARTMARKER_HIGHLIGHTED} do
+  {
+    if(visibleMap) then   //&& in the map range
+    {
+      _smartMarkerIcon setMarkerAlpha 0.3;
+			if (_smartMarkerBase getVariable ["outside", false]) then
+			{
+				(_smartMarkerBase getVariable "markerLocator") setMarkerAlpha 0.1;
+			};
+      uiSleep 0.5;
+      _smartMarkerIcon setMarkerAlpha 1.0;
+			if (_smartMarkerBase getVariable ["outside", false]) then
+			{
+				(_smartMarkerBase getVariable "markerLocator") setMarkerAlpha 0.9;
+			};
+      uiSleep 0.5;
+      if( [ MAP_CENTER, [ MAP_MARK_AS_READ_AREA_X*(ctrlMapScale _map),MAP_MARK_AS_READ_AREA_Y*(ctrlMapScale _map) ], position _smartMarkerBase] call BIS_fnc_IsInsideArea ) then
+      {
+        private _nrOfBlinks = _smartMarkerBase getVariable ["nrOfBlinks", 0];
+        _nrOfBlinks = _nrOfBlinks + 1;
+        if(_nrOfBlinks < MAP_NR_OF_BLINKS_TO_MARK_AS_READ) then
+        {
+          _smartMarkerBase setVariable ["nrOfBlinks", _nrOfBlinks];
+        }
+        else
+        {
+          _smartMarkerBase setVariable [SMARTMARKER_HIGHLIGHTED, false];
+        };
+      };
+    };
+  }; */
+};
+
+BIS_fnc_OM_moduleSmartMarkers_SetLocatorPosition =
+{
+  params["_map", "_smartMarkerBase", "_color"];
+  private _marker = createMarker [MARKER_NAME_UNIQUE("LOCATOR"), [0,0,0]];
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType LOCATOR_MARKER;
+	_marker setMarkerSize LOCATOR_MARKER_SIZE;
+	_marker setMarkerColor _color;
+	_smartMarkerBase setVariable ["markerLocator", _marker];
+  private _alpha = 0.0;
+  while{_smartMarkerBase getVariable SMARTMARKER_HIGHLIGHTED} do
+  {
+    if(visibleMap) then   //&& in the map range
+    {
+      private _smartMarkerBaseScreenPos = _map posWorldToScreen position _smartMarkerBase;
+      private _angle = 90;
+      private _x = _smartMarkerBaseScreenPos select 0;
+      private _y = _smartMarkerBaseScreenPos select 1;
+
+      if!(IS_IN_SAFEZONE_X( _smartMarkerBaseScreenPos select 0)) then
+      {
+        _smartMarkerBase setVariable ["outside", true];
+        if(_smartMarkerBaseScreenPos select 0 > (safezoneX + safezoneW)) then
+        {
+          _x = (safezoneX + safezoneW)-0.027;
+        }
+        else
+        {
+          _x = safezoneX+0.027;
+          _angle = 270;
+        };
+        _marker setMarkerPos (_map posScreenToWorld [_x, _y]);
+        _marker setMarkerDir _angle;
+      };
+      if!(IS_IN_SAFEZONE_Y( _smartMarkerBaseScreenPos select 1)) then
+      {
+        _smartMarkerBase setVariable ["outside", true];
+        if(_smartMarkerBaseScreenPos select 1 > (safezoneY + safezoneH)) then
+        {
+          _y = (safezoneY + safezoneH)-0.027;
+          _angle = 180;
+        }
+        else
+        {
+          _y = safezoneY+0.10;
+          _angle = 0;
+        };
+        _marker setMarkerPos (_map posScreenToWorld [_x, _y]);
+        _marker setMarkerDir _angle;
+      };
+      if( (IS_IN_SAFEZONE_X( _smartMarkerBaseScreenPos select 0)) && (IS_IN_SAFEZONE_Y( _smartMarkerBaseScreenPos select 1)) ) then
+      { _alpha = 0.0; _smartMarkerBase setVariable ["outside", false]; _marker setMarkerAlpha _alpha;};
+
+    };
+    Sleep 0.02;
+  };
+  deleteMarker _marker;
+};
+
+
+//BIS_OM_OnMouseOverCallbacks
+BIS_fnc_OM_moduleSmartMarkers_RegisterOnMouseOverCallback =
+{
+	params ["_code", "_removeAfterExec"];
+	private _callbacks = SMARTMARKERS_MODULE_LOGIC getVariable "BIS_OM_OnMouseOverCallbacks";
+	private _callBackIndex = SMARTMARKERS_MODULE_LOGIC getVariable [ "BIS_OM_CallbackIndex", 0 ];
+	_callBackIndex = _callBackIndex + 1;
+	_callbacks pushBack [ _callBackIndex, _code, _removeAfterExec];
+	SMARTMARKERS_MODULE_LOGIC setVariable [ "BIS_OM_CallbackIndex", _callBackIndex ];
+	_callBackIndex
+};
+
+BIS_fnc_OM_moduleSmartMarkers_UnRegisterOnMouseOverCallback =
+{
+	params ["_codeID"];
+	if( isNil "_codeID" ) exitWith {};
+	private _callbacks = SMARTMARKERS_MODULE_LOGIC getVariable "BIS_OM_OnMouseOverCallbacks";
+	private _index = _callbacks findIf {_x select 0 == _codeID};
+	if( _index != -1 ) then
+	{
+		_callbacks deleteAt _index;
+	};
+};
+
+//misc
+BIS_fnc_OM_moduleSmartMarkers_ComposeDescriptionText =
+{
+	params[ "_smartMarker" ];
+	private _tooltipDescription = [_smartMarker, SM_TOOLTIP_DESCR] call BIS_fnc_OM_moduleSmartMarkers_GetTooltipValue;
+	{
+	  _tooltipDescription = _tooltipDescription + (_x select 2);
+	} forEach (_smartmarker getVariable SMARTMARKER_EXTRADATA);
+	_tooltipDescription;
+};
+
+BIS_fnc_OM_moduleSmartMarkers_AddExtraDescription =
+{
+	params ["_smartMarker", "_system", "_descr"];
+	private _descriptions = _smartMarker getVariable [ SMARTMARKER_EXTRADATA, [] ];
+	_descriptions pushBack [count _descriptions, _system, _descr];
+};
+
+BIS_fnc_OM_moduleSmartMarkers_RemoveExtraDescription =
+{
+	params ["_smartMarker", "_descrID"];
+	private _descriptions = _smartMarker getVariable [ SMARTMARKER_EXTRADATA, [] ];
+	private _index = _descriptions findIf {_x select 0 == _descrID};
+	if( _index != -1 ) then
+	{
+		_descriptions deleteAt _index;
+	};
+};
+
+BIS_fnc_OM_moduleSmartMarkers_RemoveExtraDescriptionBySystemID =
+{
+	params ["_smartMarker", "_systemID"];
+	private _descriptions = _smartMarker getVariable [ SMARTMARKER_EXTRADATA, [] ];
+	_smartMarker setVariable [ SMARTMARKER_EXTRADATA, _descriptions select { (_x select 1) != _systemID } ];
+};

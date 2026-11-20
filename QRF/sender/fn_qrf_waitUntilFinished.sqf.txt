@@ -1,0 +1,44 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params ["_groups","_vehicles", "_qrfType", "_posId"];
+
+//TODO addTosettings
+private _areaClearedDistance = QRF_DESPAWN_DISTANCE;
+if (_qrfType == "Air") then {
+	_areaClearedDistance = QRF_DESPAWN_DISTANCE_AIR;	
+};
+
+// ["QRF WAIT_FOR_FINISH[%1] pausing till checking the result..", _posId] call BIS_fnc_logFormat;
+private _searchTimeout = QRF_SEARCH_TIMEOUT;
+// sleep (_searchTimeout*60); 
+
+private _ownedObjectsArray = [];
+private _lastTimeT = time;
+private _indexPlaceholder = 0;
+waitUntil {sleep 0.5; QRF_CHECK_OWNAGE(_vehicles, _ownedObjectsArray, _indexPlaceholder); QRF_IS_TIMEOUT(_lastTimeT, _searchTimeout*60) };
+
+["QRF WAIT_FOR_FINISH[%1] Type:%3 AreaClearedDistance:%3",_posId, _qrfType, _areaClearedDistance] call BIS_fnc_logFormat;
+// wait till no enemies of the QRF are nearby
+private _despawnFailsafeTimeout = QRF_DESPAWN_FAILSAFE_TIMEOUT;
+private _lastTime = time;
+
+waitUntil {
+	//if (!_playerBecomeOwner) then { _playerBecomeOwner = (vehicle player in _vehicles); [["QRF WAIT_FOR_FINISH Player become vehicle owner"], "systemChat"] call bis_fnc_qrf_debugLogRadio;	};
+	QRF_CHECK_OWNAGE(_vehicles, _ownedObjectsArray, _indexPlaceholder);
+	sleep 5;
+	if (_groups findIf {{!(alive _x)} count (units _x) isEqualTo 0} isEqualTo -1) exitWith {
+		[QRF_STATE_ALL_UNITS_KIA] call bis_fnc_qrf_reportStatus;
+		true
+	};
+	if (
+		(_groups findIf {player distance leader _x < QRF_DESPAWN_DISTANCE} == -1
+		&& {
+			_groups findIf {
+			(leader _x nearEntities _areaClearedDistance) findIf {side _x == WEST || side _x == RESISTANCE} > -1
+		} == -1}) || QRF_IS_TIMEOUT(_lastTime, _despawnFailsafeTimeout*60)
+		) exitWith {
+		[QRF_STATE_SEARCH_FINISHED] call bis_fnc_qrf_reportStatus;
+		true
+	};
+	false
+};
+_ownedObjectsArray

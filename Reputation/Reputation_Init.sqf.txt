@@ -1,0 +1,106 @@
+params ["_logic"];
+[_logic] spawn
+{
+		scriptName "Reputation_Init";
+    params ["_logic"];
+    /* "OM_Reputation" call bis_fnc_startloadingscreen; */
+    "BOOT: Reputation init" call BIS_fnc_Log;
+    #include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+    #include "definitions.inc"
+    #include "Reputation_Common.sqf"
+
+
+    SET_REPUTATION_LEVEL(_logic getVariable REPUTATION_LEVELSTART);
+    SET_REPUTATION_LEVELPREVIOUS(_logic getVariable REPUTATION_LEVELSTART);
+    SET_REPUTATION_VALUE(0);
+    _logic setVariable [REPUTATION_CALLBACKS, []];
+
+    BIS_dbgReputationLevel = GET_REPUTATION_LEVEL(); BIS_dbgReputationLevelPrev = GET_REPUTATION_LEVELPREVIOUS();BIS_dbgReputationValue = GET_REPUTATION_VALUE();
+    DEBUG_INFO("BIS_dbgReputationLevel"); DEBUG_INFO("BIS_dbgReputationLevelPrev");DEBUG_INFO("BIS_dbgReputationValue");
+
+    //get parameters from the sync RelationShip module
+    private _arrRelationshipLogics = synchronizedObjects _logic;
+    if(count _arrRelationshipLogics > 0) then
+    {
+      _logic setVariable [RELATIONSHIP_LOGIC, _arrRelationshipLogics select 0];
+      private _dThreatLevel = 0;
+      private _prevThreatLevel = GET_THREAT_LEVEL();
+      private _level = GET_REPUTATION_LEVEL();
+      private "_reputationValue";
+      SET_REPUTATION_VALUE( GET_REPUTATION_LEVEL() * REPUTATION_LEVEL_WIDTH );
+      ["Reputation: Starting on Level %1 | Actual reputation value: %2 | The level width is: %3", _level, GET_REPUTATION_VALUE(), REPUTATION_LEVEL_WIDTH] call BIS_fnc_logFormat;
+      ["Reputation: MAX level: %1 | MIN level: %2", GET_REPUTATION_MAX_LEVEL(), GET_REPUTATION_MIN_LEVEL()] call BIS_fnc_logFormat;
+      REPUTATION_SET_INITIALIZED();
+      /* "OM_Reputation" call bis_fnc_endloadingscreen; */
+      "BOOT: Reputation init end" call BIS_fnc_Log;
+      while{true} do
+      {
+
+        _reputationValue = GET_REPUTATION_VALUE();
+        /* ["_reputationValue: %1", _reputationValue] call BIS_fnc_logFormat; */
+        private _negativePoints = AGGRO_MODE_VALUE_ALLY;
+
+        switch (GET_AGGRO_MODE()) do
+        {
+          case (M_ALLIED):    { _negativePoints = AGGRO_MODE_VALUE_ALLY };
+          case (M_CALM):      { _negativePoints = AGGRO_MODE_VALUE_CALM };
+          case (M_PREPARE):   { _negativePoints = AGGRO_MODE_VALUE_PREPARE };
+          case (M_AGRESSIVE): { _negativePoints = AGGRO_MODE_VALUE_AGGRESIVE };
+        };
+
+        //diff of threats
+        _dThreatLevel = GET_THREAT_LEVEL() - _prevThreatLevel ;
+        _prevThreatLevel = GET_THREAT_LEVEL();
+        /* ["REPUTATION: _dThreatLevel: %1", _dThreatLevel] call BIS_fnc_logFormat; */
+        //do not decrease the level in case the threatlevel is being stabilized
+        //there's negative difference and there's still a space to lower the level
+        if( !(_dThreatLevel < 0) && {_level > GET_REPUTATION_MIN_LEVEL()} ) then
+        {
+          /* ["REPUTATION: Decreasing: %1", _reputationValue] call BIS_fnc_logFormat; */
+          /* _reputationValue = _reputationValue - _negativePoints; */
+          ADD_VALUE_TO_BUFFER(_negativePoints);
+        };
+        /* ["REPUTATION: ActualValue: %3, PrevLevelValue: %1, NextLevelValue: %2", GET_PREV_LEVEL_VALUE(), GET_NEXT_LEVEL_VALUE(), _reputationValue] call BIS_fnc_logFormat; */
+        //there's something in the buffer
+        if(_logic getVariable BONUS_BUFFER > 0) then
+        {
+          private _differenceToHigherLevel = if( (GET_NEXT_LEVEL_VALUE() - _reputationValue) >= GET_BUFFER() ) then {GET_BUFFER()} else {(GET_NEXT_LEVEL_VALUE() - _reputationValue)} ;
+          /* ["Value needed to the next level (%2): %1", _differenceToHigherLevel, GET_NEXT_LEVEL_VALUE()/REPUTATION_LEVEL_WIDTH] call BIS_fnc_logFormat; */
+          _reputationValue = _reputationValue + _differenceToHigherLevel;
+          DECREASE_BUFFER(_differenceToHigherLevel);
+        };
+        if(_logic getVariable BONUS_BUFFER < 0) then
+        {
+          private _differenceToLowerLevel = if( (GET_PREV_LEVEL_VALUE() - _reputationValue) <= GET_BUFFER() ) then {GET_BUFFER()} else {(GET_PREV_LEVEL_VALUE() - _reputationValue)};
+          /* ["REPUTATION: Value needed to the prev level (%2): %1", _differenceToLowerLevel, GET_PREV_LEVEL_VALUE()/REPUTATION_LEVEL_WIDTH] call BIS_fnc_logFormat; */
+          _reputationValue = _reputationValue + _differenceToLowerLevel;
+          DECREASE_BUFFER(_differenceToLowerLevel);
+        };
+
+
+        CLAMP( _reputationValue, GET_REPUTATION_MIN_LEVEL() * REPUTATION_LEVEL_WIDTH, GET_REPUTATION_MAX_LEVEL() * REPUTATION_LEVEL_WIDTH );
+        _level = if(_reputationValue > 0) then {floor (_reputationValue / REPUTATION_LEVEL_WIDTH)} else {ceil (_reputationValue / REPUTATION_LEVEL_WIDTH)};
+
+        if( GET_REPUTATION_LEVEL() != _level ) then
+        {
+            SET_REPUTATION_LEVELPREVIOUS( GET_REPUTATION_LEVEL() );
+            SET_REPUTATION_LEVEL(_level);
+            [] call BIS_fnc_OM_moduleReputation_OnLevelChanged;
+            ["REPUTATION: Level changed to level %1 | Actual reputation value: %2 | The level width is: %3", _level, _reputationValue + GET_BUFFER(), REPUTATION_LEVEL_WIDTH] call BIS_fnc_logFormat;
+        };
+        SET_REPUTATION_VALUE(_reputationValue);
+        if(
+            GET_BUFFER() != 0 &&
+            {
+              (GET_REPUTATION_LEVEL() == GET_REPUTATION_MAX_LEVEL() || GET_REPUTATION_LEVEL() == GET_REPUTATION_MIN_LEVEL())
+            }
+          ) then {_logic setVariable [BONUS_BUFFER, 0]};
+        BIS_dbgReputationLevel = GET_REPUTATION_LEVEL(); BIS_dbgReputationLevelPrev = GET_REPUTATION_LEVELPREVIOUS();BIS_dbgReputationValue = GET_REPUTATION_VALUE();
+        Sleep UPDATE_DELAY;
+      };
+    }
+    else
+    {
+      "REPUTATION: Error, synchronize the Reputation module with a Relationship module first" call BIS_fnc_Log;
+    };
+};

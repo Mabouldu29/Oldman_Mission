@@ -1,0 +1,337 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, Weather (main)">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"INIT",0,250,-75.000000,-950.000000,25.000000,-900.000000,0.000000,"INIT"};
+item1[] = {"always",8,218,-75.000000,-875.000000,25.000000,-825.000000,0.000000,"always"};
+item2[] = {"set_initial_weat",2,250,-75.000000,-800.000000,25.000000,-750.000000,0.000000,"set initial" \n "weather"};
+item3[] = {"timeout",6,250,-75.000000,-700.000000,25.000000,-650.000000,0.000000,"timeout"};
+item4[] = {"check_date",2,250,-75.000000,-625.000000,25.000000,-575.000000,0.000000,"check date"};
+item5[] = {"weather_changed",4,218,-200.000000,-625.000000,-100.000000,-575.000000,0.000000,"weather" \n "changed"};
+item6[] = {"keep_weather_set",2,250,-200.000000,-700.000000,-100.000000,-650.000000,0.000000,"keep weather" \n "setting"};
+item7[] = {"change_weather",4,218,-75.000000,-550.000000,25.000000,-500.000000,0.000000,"change" \n "weather"};
+item8[] = {"forecast__weather",2,250,-75.000000,-475.000000,25.000000,-425.000000,0.000000,"forecast," \n "weather change"};
+item9[] = {"timeskip",4,218,50.000000,-700.000000,150.000000,-650.000000,0.000000,"timeskip"};
+item10[] = {"reset_variable",2,4346,50.000000,-625.000000,150.000000,-575.000000,0.000000,"reset variable"};
+item11[] = {"always",8,218,50.000000,-550.000000,150.000000,-500.000000,0.000000,"always"};
+item12[] = {"",7,210,-28.999992,-729.000000,-21.000008,-721.000000,0.000000,""};
+item13[] = {"",7,210,171.000000,-454.000000,179.000000,-446.000000,0.000000,""};
+item14[] = {"",7,210,171.000000,-729.000000,179.000000,-721.000000,0.000000,""};
+item15[] = {"immediate_weather",2,250,-75.000000,-325.000000,25.000000,-275.000000,0.000000,"immediate" \n "weather change"};
+item16[] = {"long_timeskip",4,218,-75.000000,-400.000000,25.000000,-350.000000,1.000000,"long" \n "timeskip"};
+item17[] = {"",7,210,171.000000,-304.000000,179.000000,-296.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,12};
+link3[] = {3,4};
+link4[] = {4,3};
+link5[] = {4,5};
+link6[] = {4,7};
+link7[] = {4,9};
+link8[] = {5,6};
+link9[] = {6,3};
+link10[] = {7,8};
+link11[] = {8,13};
+link12[] = {8,16};
+link13[] = {9,10};
+link14[] = {10,11};
+link15[] = {11,4};
+link16[] = {12,3};
+link17[] = {13,14};
+link18[] = {14,12};
+link19[] = {15,17};
+link20[] = {16,15};
+link21[] = {17,13};
+globals[] = {0.000000,0,0,0,0,640,480,1,292,6316128,1,-345.242371,307.895813,-231.274658,-1007.310974,845,1004,1};
+window[] = {2,-1,-1,-1,-1,1001,234,1448,234,3,863};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "Weather (main)";
+        class States
+        {
+                /*%FSM<STATE "INIT">*/
+                class INIT
+                {
+                        name = "INIT";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"params [""_weather_start"", ""_weather_duration"", ""_weather_change_step"", ""_weather_change_duration_min"", ""_weather_change_duration_max"", ""_weather_hour_in_year_ratio""];" \n
+                         "" \n
+                         "BIS_OM_weatherQueue = [_weather_start];" \n
+                         "_weatherChangeDone = FALSE;" \n
+                         "_weatherPresets = [];" \n
+                         "for [{_i = 0}, {_i <= 1}, {_i = _i + _weather_change_step}] do {" \n
+                         "	_weatherPresets pushBack _i;" \n
+                         "};" \n
+                         "" \n
+                         "_lastWeatherChange = dateToNumber [date select 0, date select 1, date select 2, dayTime - (dayTime % _weather_duration), 0];" \n
+                         "_nextWeatherChange = _lastWeatherChange + (_weather_duration * _weather_hour_in_year_ratio);" \n
+                         "" \n
+                         "_updateQueue = {" \n
+                         "	_hoursDiff = round (((dateToNumber date) - _lastWeatherChange) * 8760);" \n
+                         "	_presetsSkipped = floor (_hoursDiff / _weather_duration);" \n
+                         "	BIS_OM_weatherQueue deleteRange [0, _presetsSkipped];" \n
+                         "	while {count BIS_OM_weatherQueue < 3} do {" \n
+                         "		_prevWeather = 0.5;" \n
+                         "		if (count BIS_OM_weatherQueue > 0) then {" \n
+                         "			_prevWeather = BIS_OM_weatherQueue select ((count BIS_OM_weatherQueue) -1);" \n
+                         "		};" \n
+                         "		_forecast = switch (_prevWeather) do {" \n
+                         "			case 0: {_weather_change_step};" \n
+                         "			case 1: {1 - _weather_change_step};" \n
+                         "			default {_prevWeather + selectRandom [_weather_change_step, -_weather_change_step]};" \n
+                         "		};" \n
+                         "		_timestamp = (dateToNumber date) + ((count BIS_OM_weatherQueue) * _weather_duration * _weather_hour_in_year_ratio);" \n
+                         "		_limitTimestamp = BIS_OM_forecastLimit select 0;" \n
+                         "		_limitMin = (BIS_OM_forecastLimit select 1) select 0;" \n
+                         "		_limitMax = (BIS_OM_forecastLimit select 1) select 1;" \n
+                         "		if (_timestamp < _limitTimestamp) then {_forecast = (_forecast max _limitMin) min _limitMax};" \n
+                         "		BIS_OM_weatherQueue pushBack _forecast;" \n
+                         "	};" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="set_initial_weat";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_initial_weat">*/
+                class set_initial_weat
+                {
+                        name = "set_initial_weat";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"0 setOvercast _weather_start;" \n
+                         "forceWeatherChange;" \n
+                         "0 setFog 0;" \n
+                         "10e10 setFog 0;" \n
+                         "" \n
+                         "call _updateQueue;" \n
+                         "" \n
+                         "_t = time;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="check_date";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _t"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "check_date">*/
+                class check_date
+                {
+                        name = "check_date";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"_dateNumber = dateToNumber date;" \n
+                         "" \n
+                         "_t = time + 10;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "weather_changed">*/
+                                class weather_changed
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="keep_weather_set";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"if !(_weatherChangeDone) then {abs (overcast - (BIS_OM_weatherQueue select 0)) < 0.01} else {FALSE}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "change_weather">*/
+                                class change_weather
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="forecast__weather";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_dateNumber >= _nextWeatherChange"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeskip">*/
+                                class timeskip
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="reset_variable";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_OM_timeSkipped_weather_loop"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="check_date";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _t"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "keep_weather_set">*/
+                class keep_weather_set
+                {
+                        name = "keep_weather_set";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"_weatherChangeDone = TRUE;" \n
+                         """Weather change done"" call BIS_fnc_logFormat;" \n
+                         "0 setOvercast (BIS_OM_weatherQueue select 0);" \n
+                         "forceWeatherChange;" \n
+                         "10e10 setOvercast (BIS_OM_weatherQueue select 0);" \n
+                         "" \n
+                         "_t = time;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="check_date";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _t"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "forecast__weather">*/
+                class forecast__weather
+                {
+                        name = "forecast__weather";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"_forceWeatherChange = FALSE;" \n
+                         "if (_dateNumber >= (_nextWeatherChange + _weather_hour_in_year_ratio)) then {_forceWeatherChange = TRUE};" \n
+                         "" \n
+                         "call _updateQueue;" \n
+                         "" \n
+                         "_lastWeatherChange = dateToNumber [date select 0, date select 1, date select 2, dayTime - (dayTime % _weather_duration), 0];" \n
+                         "_nextWeatherChange = _lastWeatherChange + (_weather_duration * _weather_hour_in_year_ratio);" \n
+                         "_nextWeatherSetting = BIS_OM_weatherQueue select 0;" \n
+                         "_weatherTransitionTime = (_weather_change_duration_min + random (_weather_change_duration_max - _weather_change_duration_min)) * 3600;" \n
+                         "_weatherTransitionTime setOvercast _nextWeatherSetting;" \n
+                         "_weatherTransitionDoneTime = (dateToNumber date) + ((_weatherTransitionTime / 3600) * _weather_hour_in_year_ratio);" \n
+                         "" \n
+                         "(format [""Weather foreacast: %1"", _nextWeatherSetting]) call BIS_fnc_logFormat;" \n
+                         "(format [""Weather transition end: %1"", numberToDate [2035, _weatherTransitionDoneTime]]) call BIS_fnc_logFormat;" \n
+                         "(format [""Next weather change: %1"", numberToDate [2035, _nextWeatherChange]]) call BIS_fnc_logFormat;" \n
+                         "" \n
+                         "_weatherChangeDone = FALSE;" \n
+                         "" \n
+                         "_t = time;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "long_timeskip">*/
+                                class long_timeskip
+                                {
+                                        itemno = 16;
+                                        priority = 1.000000;
+                                        to="immediate_weather";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_forceWeatherChange"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="check_date";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _t"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "reset_variable">*/
+                class reset_variable
+                {
+                        name = "reset_variable";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/"BIS_OM_timeSkipped_weather_loop = FALSE;" \n
+                         "" \n
+                         "if (BIS_OM_forecastLimitChanged) then {" \n
+                         "	BIS_OM_forecastLimitChanged = FALSE;" \n
+                         "	BIS_OM_weatherQueue = [BIS_OM_weatherQueue select 0];" \n
+                         "	call _updateQueue;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "always">*/
+                                class always
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="check_date";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"TRUE"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "immediate_weather">*/
+                class immediate_weather
+                {
+                        name = "immediate_weather";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"""Weather setting forced"" call BIS_fnc_logFormat;" \n
+                         "0 setoverCast _nextWeatherSetting;" \n
+                         "forceWeatherChange;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="check_date";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _t"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="INIT";
+        finalStates[] =
+        {
+        };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,224 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+BIS_fnc_OM_handleTouchOffs = {
+	inGameUISetEventHandler ["Action", "
+		if ((_this # 3) == 'TouchOffMines') then {
+			BIS_OM_recentTouchOff = TRUE;
+			_null = [] spawn {
+				sleep 0.5;
+				BIS_OM_recentTouchOff = FALSE
+			};
+		};
+		if ((_this # 3) == 'StartTimer') then {
+			_nearestExplosive = (position player) nearestObject 'TimeBombCore';
+			_i = BIS_OM_placedExplosives find _nearestExplosive;
+			if (_i != -1) then {
+				BIS_OM_placedExplosives set [_i + 1, time + 40];
+			};
+		};
+		if ((_this # 3) == 'SetTimer') then {
+			_nearestExplosive = (position player) nearestObject 'TimeBombCore';
+			_i = BIS_OM_placedExplosives find _nearestExplosive;
+			if (_i != -1) then {
+				BIS_OM_placedExplosives set [_i + 1, (BIS_OM_placedExplosives # (_i + 1)) + 40];
+			};
+		};
+		FALSE
+	"];
+};
+
+BIS_fnc_om_initThreatEvents = {
+	scriptName "BIS_fnc_om_initThreatEvents";
+	// Register all eventhandlers
+
+	// --- make sure touching off explosives or setting a timer doesn't alert enemies
+	BIS_OM_recentTouchOff = FALSE;
+	BIS_OM_placedExplosives = [];
+	player addEventHandler ["Fired", {
+		if ((_this # 1) == "Put") then {
+			if (toLower getText (configFile >> "CfgAmmo" >> (_this # 4) >> "mineTrigger") == "remotetrigger") then {
+				BIS_OM_placedExplosives append [_this # 6, 0];
+			};
+		};
+	}];
+	
+	call BIS_fnc_OM_handleTouchOffs;
+	//addMissionEventHandler ["Loaded", {call BIS_fnc_OM_handleTouchOffs}]; // moved to fn_OM_addLoadedEH 
+
+	_null = [] spawn {
+		scriptName "threatEvents";
+		while {TRUE} do {
+			waitUntil {PROFILE_INFO("threatEvents","threatEvents",str date);sleep 10; count BIS_OM_placedExplosives > 0};
+			while {count BIS_OM_placedExplosives > 0} do {
+				sleep 0.5;
+				{
+					PROFILE_INFO("threatEvents2","threatEvents2",str date);
+					if (typeName _x == typeName objNull) then {
+						if (isNull _x) then {
+							BIS_OM_placedExplosives set [_forEachIndex, -1];
+							BIS_OM_placedExplosives set [_forEachIndex + 1, -1];
+						} else {
+							_detonationTime = BIS_OM_placedExplosives # (_forEachIndex + 1);
+							if (_detonationTime > 0 && time >= (_detonationTime - 1)) then {
+								BIS_OM_recentTouchOff = TRUE;
+								sleep 2;
+								BIS_OM_recentTouchOff = FALSE;
+							};
+						};
+					};
+				} forEach BIS_OM_placedExplosives;
+				BIS_OM_placedExplosives = BIS_OM_placedExplosives - [-1];
+			};
+		};
+	};
+
+	addMissionEventHandler ["EntityKilled",{
+		scriptName "BIS_fnc_om_initThreatEvents/EntityKilled";
+		PROFILE_INFO("BIS_fnc_om_initThreatEvents/EntityKilled","BIS_fnc_om_initThreatEvents/EntityKilled",str date);
+		params ["_killed", "_killer", "_instigator"];
+		_this call BIS_fnc_om_handleKilled;
+		if (!BIS_OM_recentTouchOff && (_killer == player || {_instigator == player})) then {
+			_this call BIS_fnc_om_relationsKilled;
+		};
+
+		// Make sure that group which got his member killed has allowed firing
+		private _group = group _killed;
+		if (side _group == EAST && combatMode _group == "BLUE") then {
+			_group setCombatMode "YELLOW";
+		};
+	}];
+
+	player addEventHandler ["GetInMan",{
+		scriptName "BIS_fnc_om_initThreatEvents/GetInMan";
+		PROFILE_INFO("BIS_fnc_om_initThreatEvents/GetInMan","BIS_fnc_om_initThreatEvents/GetInMan",str date);
+		_this call BIS_fnc_om_handleGetIn;
+		_this call BIS_fnc_handleStolenVehicle;
+	}];
+
+	player addEventHandler ["HandleRating",{
+		scriptName "BIS_fnc_om_initThreatEvents/HandleRating";
+		PROFILE_INFO("BIS_fnc_om_initThreatEvents/HandleRating","BIS_fnc_om_initThreatEvents/HandleRating",str date);
+		params ["_unit","_rating"];
+		if (_rating < 0) then {_rating = 0};
+		_rating
+	}];
+	player addEventHandler ["FiredMan",{PROFILE_INFO("BIS_fnc_om_initThreatEvents/FiredMan","BIS_fnc_om_initThreatEvents/FiredMan",str date);scriptName "BIS_fnc_om_initThreatEvents/FiredMan";_this call BIS_fnc_om_fired}];
+
+	// Player put bomb/mine somewhere
+	BIS_explosiveTypes = ["SatchelCharge_Remote_Ammo","APERSBoundingMine_Range_Ammo","APERSTripMine_Wire_Ammo",
+		"APERSMine_Range_Ammo","DemoCharge_Remote_Ammo", "ClaymoreDirectionalMine_Remote_Ammo"
+	];
+	player addEventHandler ["Fired",{
+		PROFILE_INFO("BIS_fnc_om_initThreatEvents/Fired","BIS_fnc_om_initThreatEvents/Fired",str date);
+		scriptName "threatEvents/Fired";
+		private _ammo = param [4];
+
+		if (count ([east, 100] call BIS_fnc_om_awareEnemies) == 0)  exitWith {};
+		private _isExplosive = BIS_explosiveTypes find _ammo > -1;
+
+		if (_isExplosive) then {
+			if (DEBUG_MODE) then {systemChat "Player planted explosive"};
+			[east,120] call BIS_fnc_om_raiseThreat;
+		};
+	}];
+
+	// Player took something from east car inventory
+	player addEventHandler ["Take", {
+		scriptName "ThreatEvents/Take";
+		PROFILE_INFO("BIS_fnc_om_initThreatEvents/Take","BIS_fnc_om_initThreatEvents/Take",str date);
+		params ["_unit", "_container", "_item"];
+
+		if (count ([east, 100] call BIS_fnc_om_awareEnemies) == 0)  exitWith {};
+
+		if (_container isKindOf "Car") then {
+			if ((((typeOf _container) splitString "_")#0 == "O") || (((typeOf _container) splitString "_")#1 == "GEN") || (typename (_container getVariable ["#steal",false]) == "array")) then {
+				if (DEBUG_MODE) then {systemChat "Player caught stealing from car"};
+				if (_item isKindOf ["Rifle", configFile >> "CfgWeapons"]) then {
+					[east,120] call BIS_fnc_om_raiseThreat;
+				} else {
+					[east,40] call BIS_fnc_om_raiseThreat;
+				};
+			};
+		};
+	}];
+};
+
+BIS_fnc_om_fired = {
+	scriptName "BIS_fnc_om_fired";
+	PROFILE_INFO("BIS_fnc_om_fired","BIS_fnc_om_fired",str date);
+	params ["_unit", "_weapon"];
+	// Worsen relations with other sides if there are units nearby
+	{
+		if (GVAR(_x,"aggroMode") != M_ALLIED && {[GVAR(_x,"side")] call BIS_fnc_om_isPlayerDetected}) then {
+				RAISE_THREAT(_x,100);
+		};
+	} forEach BIS_relModules;
+};
+
+BIS_fnc_om_relationsKilled = {
+	scriptName "BIS_fnc_om_relationsKilled";
+	PROFILE_INFO("BIS_fnc_om_relationsKilled","BIS_fnc_om_relationsKilled",str date);
+	// Handle effect of relationship on killed
+	params ["_killed"];
+	private _side = side group _killed;
+
+	if (_side == resistance && {[resistance] call BIS_fnc_om_isPlayerDetected}) then {
+		RAISE_THREAT(BIS_relInd,300);
+	};
+	if (_side == east && {[east] call BIS_fnc_om_isPlayerDetected}) then {
+		RAISE_THREAT(BIS_relEast,300);
+	};
+	if (_side == civilian && {[civilian] call BIS_fnc_om_isPlayerDetected}) then {
+		RAISE_THREAT(BIS_relEast,100);
+	};
+};
+
+// Raise threat needs to work with sides and modules
+BIS_fnc_handleStolenVehicle = {
+	PROFILE_INFO("BIS_fnc_handleStolenVehicle","BIS_fnc_handleStolenVehicle",str date);
+	params ["_unit","_role","_vehicle"];
+	if (_unit != player || _vehicle getVariable ["stolen",false]) exitWith {};
+
+	private _type = typeOf _vehicle;
+	private _side = getNumber (configfile >> "CfgVehicles" >> _type >> "side");
+	_side = [_side] call BIS_fnc_numberToSide;
+
+	// Handle stolen car handled with module:
+	private _data = GVARS(_vehicle,"#steal",[]);
+	if (count _data > 0) then {
+		_data params ["_side","_rating"];
+		private _isDetected = [_side] call BIS_fnc_om_isPlayerDetected;
+		switch (_side) do {
+			case EAST: {
+				if (_isDetected && {GVARS(BIS_relEast,"aggroMode",-2) != M_ALLIED}) then {
+					RAISE_THREAT(BIS_relEast,_rating);
+				};
+			};
+			case resistance: {
+				if (_isDetected && {GVARS(BIS_relInd,"aggroMode",-2) != M_ALLIED}) then {
+					RAISE_THREAT(BIS_relInd,_rating);
+				};
+			};
+			case civilian: {
+				if (_isDetected && {GVARS(BIS_relEast,"aggroMode",-2) != M_ALLIED}) then {
+					RAISE_THREAT(BIS_relEast,_rating);
+				};
+			};
+		};
+	} else {
+		if (_side == east && {[east] call BIS_fnc_om_isPlayerDetected}) then {
+			if (!isNull BIS_relEast && {GVAR(BIS_relEast,"aggroMode") != M_ALLIED}) then {
+				RAISE_THREAT(BIS_relEast,100);
+				//debugLog str ["Player stole car from EAST",_type];
+			};
+		};
+		if (_side == resistance && {[resistance] call BIS_fnc_om_isPlayerDetected}) then {
+			if (!isNull BIS_relInd && {GVAR(BIS_relInd,"aggroMode") != M_ALLIED}) then {
+				RAISE_THREAT(BIS_relInd,100);
+				//debugLog str ["Player stole car from INDEP",_type];
+			};
+		};
+	};
+
+	_vehicle setVariable ["stolen",true];
+};

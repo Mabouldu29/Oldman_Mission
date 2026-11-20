@@ -1,0 +1,31 @@
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+
+params["_logic", "_smartMarkerBase", "_customData"];
+
+private _smartMarkerCustomData = _smartMarkerBase getVariable SMARTMARKER_CUSTOMDATA;
+
+{
+  private _attrib = _x select 0;
+  private _index = [_smartMarkerCustomData, _attrib] call BIS_fnc_FindInPairs;
+  if(_index == -1) then
+  {
+    _smartMarkerCustomData pushBack _x;
+  }
+  else
+  {
+    (_smartMarkerCustomData select _index) set [1, _x select 1];
+  };
+
+  if(_attrib isEqualTo SM_NAME) then
+  { _smartMarkerBase setVariable [SMARTMARKER_CUSTOMNAME, _x select 1] };
+
+} forEach _customData;
+
+//change the lod only in case the markers is not hidden
+if( (SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE) findIf {_x == _smartMarkerBase} != -1 ) then
+{
+  [nil, _logic getVariable SMARTMARKERS_VAR_LOD, _smartMarkerBase] call BIS_fnc_OM_moduleSmartMarkers_ChangeLOD;
+};
+
+true

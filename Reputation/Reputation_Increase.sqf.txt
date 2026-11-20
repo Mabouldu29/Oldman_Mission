@@ -1,0 +1,10 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+#include "Reputation_Common.sqf"
+
+params [ "_logic", ["_bonus", REPUTATION_POSITIVE_BONUS_MEDIUM, [999] ] ];
+
+ADD_VALUE_TO_BUFFER( _bonus );
+["Reputation: Added %1 bonus points", _bonus] call BIS_fnc_logFormat;
+/* SET_REPUTATION_VALUE( GET_REPUTATION_VALUE() + _bonus ); */
+true

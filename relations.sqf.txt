@@ -1,0 +1,1424 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+BIS_restrictedAreas = [];
+BIS_relModules = [];
+
+BIS_fnc_om_initRelationSystem = {
+	scriptName "BIS_fnc_om_initRelationSystem";
+	BIS_restrictedAreas = BIS_allSectors + (entities "ModuleOmRestrictedArea_F");
+	BIS_relModules = entities "ModuleOmRelationship_F";
+	{
+		private _side = [GVAR(_x,"side")] call BIS_fnc_numberToSide;
+		SVAR(_x,"side",_side);
+	} forEach (BIS_restrictedAreas + BIS_relModules);
+	{SVAR(_x,"#area",[getPos _x] + GVAR(_x,"objectArea"))} forEach BIS_restrictedAreas;
+
+	// Set relation modules:
+	BIS_relEast = objNull;
+	BIS_relInd = objNull;
+
+	private _i = BIS_relModules findIf {GVAR(_x,"side") == east};
+	if (_i > -1) then {BIS_relEast = BIS_relModules#_i};
+	private _i = BIS_relModules findIf {GVAR(_x,"side") == resistance};
+	if (_i > -1) then {BIS_relInd = BIS_relModules#_i};
+
+	// Run all relations agents
+	{
+		[_x] spawn BIS_fnc_om_relationsAgent;
+	} forEach BIS_relModules;
+
+	BIS_isWearingCSATHelmet = FALSE;
+	BIS_isWearingCSATUniform = FALSE;
+	BIS_isWearingNeutralUniform = TRUE;
+	BIS_isWearingSuspiciousVest = FALSE;
+	BIS_isWearingIDAPUniform = FALSE;
+	BIS_isWearingWorkerUniform = FALSE;
+	BIS_iswearingUndercoverFacewear = FALSE;
+	BIS_isWearingCompleteUniform = FALSE;
+	BIS_isWearingSuspiciousHeadgear = FALSE;
+
+	[] spawn {
+		scriptName "relations.sqf/uniforms";
+		_factionHeadgearCSAT = [
+			"h_helmeto_ocamo",
+			"h_helmetleadero_ocamo",
+			"h_pilothelmetheli_o",
+			"h_helmetcrew_o",
+			"h_pilothelmetfighter_o",
+			"h_crewhelmetheli_o",
+			"h_helmetspeco_ocamo",
+			"h_helmetspeco_blk",
+			"h_helmeto_oucamo",
+			"h_helmetleadero_oucamo",
+			"h_helmeto_ghex_f",
+			"h_helmetcrew_o_ghex_f",
+			"h_helmetleadero_ghex_f",
+			"h_helmetspeco_ghex_f",
+			"h_helmeto_vipersp_hex_f",
+			"h_helmeto_vipersp_ghex_f",
+			"h_cap_brn_specops",
+			"h_pasgt_basic_blue_f",
+			"h_beret_gen_f",
+			"h_milcap_gen_f",
+			"h_beret_csat_01_f",
+			"h_pasgt_basic_black_f"
+		];
+		_factionUniformsCSAT = [
+			"u_o_combatuniform_ocamo",
+			"u_o_ghilliesuit",
+			"u_o_pilotcoveralls",
+			"u_o_wetsuit",
+			"u_o_combatuniform_oucamo",
+			"u_o_specopsuniform_ocamo",
+			"u_o_specopsuniform_blk",
+			"u_o_officeruniform_ocamo",
+			"u_o_fullghillie_lsh",
+			"u_o_fullghillie_sard",
+			"u_o_fullghillie_ard",
+			"u_o_t_soldier_f",
+			"u_o_t_officer_f",
+			"u_o_t_sniper_f",
+			"u_o_t_fullghillie_tna_f",
+			"u_o_v_soldier_viper_f",
+			"u_o_v_soldier_viper_hex_f",
+			"u_o_officer_noinsignia_hex_f",
+			"u_b_gen_soldier_f",
+			"u_o_gen_commander_f",
+			"u_b_gen_commander_f",
+			"u_o_gen_soldier_f"
+		];
+		_factionUniformsCIV = [
+			"u_c_poloshirt_blue",
+			"u_c_poloshirt_burgundy",
+			"u_c_poloshirt_stripped",
+			"u_c_poloshirt_tricolour",
+			"u_c_poloshirt_salmon",
+			"u_c_poloshirt_redwhite",
+			"u_c_commoner1_1",
+			"u_c_commoner1_2",
+			"u_c_commoner1_3",
+			"u_ig_guerilla1_1",
+			"u_ig_guerilla2_1",
+			"u_ig_guerilla2_2",
+			"u_ig_guerilla2_3",
+			"u_ig_guerilla3_1",
+			"u_ig_guerilla3_2",
+			"u_ig_leader",
+			"u_bg_guerilla1_1",
+			"u_bg_guerilla2_1",
+			"u_bg_guerilla2_2",
+			"u_bg_guerilla2_3",
+			"u_bg_guerilla3_1",
+			"u_bg_guerilla3_2",
+			"u_bg_leader",
+			"u_og_guerilla1_1",
+			"u_og_guerilla2_1",
+			"u_og_guerilla2_2",
+			"u_og_guerilla2_3",
+			"u_og_guerilla3_1",
+			"u_og_guerilla3_2",
+			"u_og_leader",
+			"u_c_poor_1",
+			"u_c_poor_2",
+			"u_c_workercoveralls",
+			"u_c_hunterbody_grn",
+			"u_c_poor_shorts_1",
+			"u_c_commoner_shorts",
+			"u_c_shirtsurfer_shorts",
+			"u_c_teesurfer_shorts_1",
+			"u_c_teesurfer_shorts_2",
+			"u_i_g_story_protagonist_f",
+			"u_i_g_resistanceleader_f",
+			"u_c_journalist",
+			"u_c_scientist",
+			"u_nikosagedbody",
+			"u_ig_guerrilla_6_1",
+			"u_bg_guerrilla_6_1",
+			"u_og_guerrilla_6_1",
+			"u_c_driver_1",
+			"u_c_driver_2",
+			"u_c_driver_3",
+			"u_c_driver_4",
+			"u_marshal",
+			"u_c_driver_1_black",
+			"u_c_driver_1_blue",
+			"u_c_driver_1_green",
+			"u_c_driver_1_red",
+			"u_c_driver_1_white",
+			"u_c_driver_1_yellow",
+			"u_c_driver_1_orange",
+			"u_i_c_soldier_para_1_f",
+			"u_i_c_soldier_para_2_f",
+			"u_i_c_soldier_para_3_f",
+			"u_i_c_soldier_para_4_f",
+			"u_i_c_soldier_para_5_f",
+			"u_i_c_soldier_bandit_1_f",
+			"u_i_c_soldier_bandit_2_f",
+			"u_i_c_soldier_bandit_3_f",
+			"u_i_c_soldier_bandit_4_f",
+			"u_i_c_soldier_bandit_5_f",
+			"u_i_c_soldier_camo_f",
+			"u_c_man_sport_1_f",
+			"u_c_man_sport_2_f",
+			"u_c_man_sport_3_f",
+			"u_c_man_casual_1_f",
+			"u_c_man_casual_2_f",
+			"u_c_man_casual_3_f",
+			"u_c_man_casual_4_f",
+			"u_c_man_casual_5_f",
+			"u_c_man_casual_6_f",
+			"u_b_g_captain_ivan_f",
+			"u_c_idap_man_shorts_f",
+			"u_c_idap_man_casual_f",
+			"u_c_idap_man_cargo_f",
+			"u_c_idap_man_tee_f",
+			"u_c_idap_man_jeans_f",
+			"u_c_idap_man_teeshorts_f",
+			"u_c_paramedic_01_f",
+			"u_c_mechanic_01_f",
+			"u_bg_guerilla1_2_f",
+			"u_c_constructioncoverall_red_f",
+			"u_c_constructioncoverall_vrana_f",
+			"u_c_constructioncoverall_black_f",
+			"u_c_constructioncoverall_blue_f",
+			"u_c_uniform_farmer_01_f",
+			"u_c_e_looterjacket_01_f",
+			"u_c_uniform_scientist_01_f",
+			"u_c_uniform_scientist_01_formal_f",
+			"u_c_uniform_scientist_02_f",
+			"u_c_uniform_scientist_02_formal_f",
+			"u_competitor",
+			""
+		];
+
+		_undercoverFacewear = [
+			"g_balaclava_ti_blk_f",
+			"g_Balaclava_ti_g_blk_f",
+			"g_tegulatormask_f",
+			"g_bandanna_tan",
+			"g_bandanna_sport",
+			"g_bandanna_shades",
+			"g_bandanna_oli",
+			"g_bandanna_khk",
+			"g_bandanna_blk",
+			"g_bandanna_beast",
+			"g_bandanna_aviator",
+			"g_balaclava_lowprofile",
+			"g_balaclava_oli",
+			"g_balaclava_combat",
+			"g_balaclava_blk",
+			"g_airpurifyingrespirator_02_black_f",
+			"g_airpurifyingrespirator_02_olive_f",
+			"g_airpurifyingrespirator_02_sand_f",
+			"g_airpurifyingrespirator_01_f"
+		];
+		_suspiciousHelmets = [
+			"h_helmetb",
+			"h_helmeto_ocamo",
+			"h_helmetleadero_ocamo",
+			"h_pilothelmetheli_o",
+			"h_helmetcrew_o",
+			"h_pilothelmetfighter_o",
+			"h_crewhelmetheli_o",
+			"h_helmetspeco_ocamo",
+			"h_helmetspeco_blk",
+			"h_helmeto_oucamo",
+			"h_helmetleadero_oucamo",
+			"h_helmeto_ghex_f",
+			"h_helmetcrew_o_ghex_f",
+			"h_helmetleadero_ghex_f",
+			"h_helmetspeco_ghex_f",
+			"h_helmeto_vipersp_hex_f",
+			"h_helmeto_vipersp_ghex_f",
+			"h_cap_brn_specops",
+			"h_pasgt_basic_blue_f",
+			"h_beret_gen_f",
+			"h_milcap_gen_f",
+			"h_beret_csat_01_f",
+			"h_pasgt_basic_black_f",
+			"h_shemag_olive",
+			"h_shemag_olive_hs",
+			"h_shemagopen_tan",
+			"h_shemagopen_khk",
+			"h_helmetb_ti_tna_f",
+			"h_milcap_tna_f",
+			"h_helmetia",
+			"h_helmetb_light_wdl",
+			"h_helmetb_light_tna_f",
+			"h_helmetb_light_snakeskin",
+			"h_helmetb_light_sand",
+			"h_helmetb_light_grass",
+			"h_helmetb_light_desert",
+			"h_helmetb_light_black",
+			"h_helmetb_light",
+			"h_helmetspecb_wdl",
+			"h_helmetb_enh_tna_f",
+			"h_helmetspecb_snakeskin",
+			"h_helmetspecb_sand",
+			"h_helmetspecb_grass",
+			"h_helmetspecb_desert",
+			"h_helmetspecb_blk",
+			"h_helmetspecb",
+			"h_helmetb_tna_f",
+			"h_helmetb_plain_wdl",
+			"h_booniehat_tna_f",
+			"h_helmetagressor_f",
+			"h_helmetagressor_cover_f",
+			"h_helmetagressor_cover_taiga_f",
+			"h_helmethbk_f",
+			"h_helmethbk_ear_f",
+			"h_helmethbk_chops_f",
+			"h_helmethbk_headset_f"
+		];
+
+		_suspiciousVests = [
+			"",
+			"v_deckcrew_blue_f",
+			"v_deckcrew_brown_f",
+			"v_deckcrew_green_f",
+			"v_deckcrew_red_f",
+			"v_deckcrew_violet_f",
+			"v_deckcrew_white_f",
+			"v_deckcrew_yellow_f",
+			"v_eod_blue_f",
+			"v_eod_idap_blue_f",
+			"v_eod_coyote_f",
+			"v_eod_olive_f",
+			"v_plain_crystal_f",
+			"v_plain_medical_f",
+			"v_legstrapbag_black_f",
+			"v_legstrapbag_coyote_f",
+			"v_legstrapbag_olive_f",
+			"v_carrierrigkbt_01_eaf_f",
+			"v_carrierrigkbt_01_olive_f",
+			"v_pocketed_black_f",
+			"v_pocketed_coyote_F",
+			"v_pocketed_olive_f",
+			"v_rebreatheria",
+			"v_rebreatherB",
+			"v_safety_blue_f",
+			"v_safety_orange_f",
+			"v_safety_yellow_f",
+			"v_press_f"
+		];
+
+		_factionUniformsGEN = ["u_b_gen_commander_f","u_o_gen_commander_f","u_o_gen_soldier_f","u_b_gen_soldier_f"];
+		_factionHeadgearGEN = ["h_pasgt_basic_blue_f","h_beret_gen_f","h_milcap_gen_f","h_helmet_skate"];
+
+		_factionGENitems = _factionUniformsGEN + _factionHeadgearGEN;
+
+		_idapUniforms =
+		[
+			"u_c_idap_man_shorts_f",
+			"u_c_idap_man_casual_f",
+			"u_c_idap_man_cargo_f",
+			"u_c_idap_man_tee_f",
+			"u_c_idap_man_jeans_f",
+			"u_c_idap_man_teeshorts_f",
+			"u_c_paramedic_01_f"
+		];
+
+		_workerClothes =
+		[
+			"u_c_constructioncoverall_red_f",
+			"u_c_constructioncoverall_vrana_f",
+			"u_c_constructioncoverall_black_f",
+			"u_c_constructioncoverall_blue_f"
+		];
+
+		_workerGear =
+		[
+			"h_construction_basic_black_f",
+			"h_construction_earprot_black_f",
+			"h_construction_headset_black_f",
+			"h_construction_basic_orange_f",
+			"h_construction_earprot_orange_f",
+			"h_construction_headset_orange_f",
+			"h_construction_basic_red_f",
+			"h_construction_earprot_red_f",
+			"h_construction_headset_red_f",
+			"h_construction_basic_vrana_f",
+			"h_construction_earprot_vrana_f",
+			"h_construction_headset_vrana_f",
+			"h_construction_basic_white_f",
+			"h_construction_earprot_white_f",
+			"h_construction_headset_white_f",
+			"h_construction_basic_yellow_f",
+			"h_construction_earprot_yellow_f",
+			"h_construction_headset_yellow_f"
+		];
+
+		_previousApparel = [];
+		while {TRUE} do {
+			waitUntil {PROFILE_INFO("BIS_fnc_om_relationsAgentUniforms","BIS_fnc_om_relationsAgentUniforms",1); sleep 1; !([headgear player, vest player, uniform player,goggles player] isEqualTo _previousApparel)};
+			/* PROFILE_START("BIS_fnc_om_initRelationSystemSpawn"); */
+			_previousApparel = [headgear player, vest player, uniform player,goggles player];
+			if ((toLower headgear player) in _factionHeadgearCSAT) then {BIS_isWearingCSATHelmet = TRUE} else {BIS_isWearingCSATHelmet = FALSE};
+			if ((toLower uniform player) in _idapUniforms) then {BIS_isWearingIDAPUniform = TRUE} else {BIS_isWearingIDAPUniform = FALSE};
+			if ((toLower uniform player) in _workerClothes && ((toLower headgear player) in _workerGear)) then {BIS_isWearingWorkerUniform = TRUE} else {BIS_isWearingWorkerUniform = FALSE};
+			if ((toLower uniform player) in _factionUniformsCSAT) then {BIS_isWearingCSATUniform = TRUE} else {BIS_isWearingCSATUniform = FALSE};
+			if ((toLower uniform player) in _factionUniformsCIV) then {BIS_isWearingNeutralUniform = TRUE} else {BIS_isWearingNeutralUniform = FALSE};
+			if !((toLower vest player) in _suspiciousVests) then {BIS_isWearingSuspiciousVest = TRUE} else {BIS_isWearingSuspiciousVest = FALSE};
+			if ((toLower goggles player) in _undercoverFacewear) then {BIS_iswearingUndercoverFacewear = TRUE} else {BIS_iswearingUndercoverFacewear = FALSE};
+			if ((toLower headgear player) in _suspiciousHelmets) then {BIS_isWearingSuspiciousHeadgear = TRUE} else {BIS_isWearingSuspiciousHeadgear = FALSE};
+			//if ((toLower uniform player) in _factionUniformsGEN && ((toLower headgear player) in _factionHeadgearGEN)) then {BIS_isWearingGENDARMEUniform = TRUE} else {BIS_isWearingGENDARMEUniform = FALSE};
+			if
+			(((tolower uniform player) in _factionUniformsCSAT) && ((tolower headgear player) in _factionHeadgearCSAT)) then
+			{
+				_result = ({_x == (tolower uniform player)} count _factionGENitems) + ({_x == (tolower headgear player)} count _factionGENitems);
+				if (_result == 0 || _result >= 2) then {BIS_isWearingCompleteUniform = TRUE} else {BIS_isWearingCompleteUniform = FALSE};
+			}
+				else
+			{
+				BIS_isWearingCompleteUniform = FALSE;
+			};
+			/* PROFILE_STOP("BIS_fnc_om_initRelationSystemSpawn"); */
+		};
+	};
+};
+
+BIS_fnc_om_threatCalculation = {
+	scriptName "BIS_fnc_om_threatCalculation";
+	/* PROFILE_START("BIS_fnc_om_threatCalculation"); */
+	params["_module", "_side"];
+	PROFILE_START_INFO("BIS_fnc_om_threatCalculation","BIS_fnc_om_threatCalculation"+STR _side,1);
+	private _vehicle = objectParent player;
+	private _weapon = currentWeapon player;
+	private	_finalRange = _module getVariable ["finalRange", RELATION_DEFAULT_RANGE_FOR_UNARMED_PLAYER];	// Default value for unarmed player
+	private _finalRate = _module getVariable ["finalRate", RELATION_DEFAULT_RATE_FOR_UNARMED_PLAYER]; 		// Default value for unarmed player
+
+	_processPlayerOnFoot = {
+		private _typesAndCosts = [
+			["PistolCore",50,4],
+			["RifleCore",90,10],
+			["MGunCore",110,15],
+			["LauncherCore",120,20],
+			["CannonCore",120,20]
+		];
+		{
+			_x params ["_type","_range","_rate"];
+			if (!(_weapon isEqualTo "") && {_weapon isKindOf [_type, configFile >> "CfgWeapons"]}) exitWith {
+				_finalRange = _range;
+				_finalRate = _rate;
+			};
+		} forEach _typesAndCosts;
+	};
+
+	if (_side == EAST && isNull _vehicle) then
+	{
+		call _processPlayerOnFoot;
+		if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform) then
+		{
+			if (BIS_iswearingUndercoverFacewear) then {_finalRange = 6} else {_finalRange = 18};
+			_finalRate = (_finalRate * 2) max 4;
+		}
+		else
+		{
+			if (BIS_isWearingCSATUniform) then
+			{
+				_finalRange = 30 max _finalRange;
+				_finalRate = (_finalRate * 2) max 2.5;
+			}
+			else
+			{
+				if (!BIS_isWearingNeutralUniform) then
+				{
+					_finalRange = 150 max _finalRange;
+					_finalRate = (_finalRate * 3) max 4;
+				}
+				else
+				{
+					if (BIS_isWearingSuspiciousVest) then
+					{
+						_finalRange = 40 max _finalRange;
+						_finalRate = (_finalRate * 1.5) max 2;
+					}
+					else
+					{
+						if (BIS_isWearingSuspiciousHeadgear) then
+						{
+							_finalRange = 40 max _finalRange;
+							_finalRate = (_finalRate * 2) max 2;
+						}
+						else
+						{
+							if (BIS_isWearingWorkerUniform || BIS_isWearingIDAPUniform) then
+							{
+								if (BIS_iswearingUndercoverFacewear) then {_finalRange = 6 max _finalrange/1.6} else {_finalRange};
+								_finalRate = (_finalRate * 2) max 2;
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+	if (isNull _vehicle) then {
+		if (_side != EAST) then {
+			call _processPlayerOnFoot;
+
+		};
+	} else {
+		private _vehicleSide = getNumber (configfile >> "CfgVehicles" >> typeOf _vehicle >> "side");
+		if (_vehicleSide == 0 || _vehicleSide == 1 || _vehicleSide == 2) then {
+			private _typesAndCosts = [
+				["Car_F",50,5],
+				["Tank",100,10],
+				["Helicopter",200,20],
+				["Plane",250,20]
+			];
+			{
+			_x params ["_type","_range","_rate"];
+				if (_vehicle isKindOf _type) exitWith {
+					// Car driving outside road will generate +50% higher threat
+					if (_forEachIndex <= 1 && speed _vehicle > 5) then {
+						_range = _range * 1.5;
+						_rate = _rate * 1.5;
+					};
+					_finalRange = _range;
+					_finalRate = _rate;
+				};
+			} forEach _typesAndCosts;
+		};
+	};
+	//debuglog str [_finalRange,_finalRate];
+	PROFILE_STOP("BIS_fnc_om_threatCalculation");
+	[_finalRange,_finalRate]
+};
+
+BIS_fnc_om_relationsAgent = {
+	scriptName "BIS_fnc_om_relationsAgent";
+	params ["_module"];
+
+	private _side = GVAR(_module,"side");
+
+	SVAR(_module,"threat",GVAR(_module,"DefaultRating"));
+	SVAR(_module,"aggroMode",M_CALM);
+	Sleep ( random [0.3, 0.5, 0.8] );	//run multiple instances in another periods (preven ticking all instance at the same time)
+	while {true} do {
+		PROFILE_INFO("BIS_fnc_om_relationsAgent","BIS_fnc_om_relationsAgent_"+str _side,1);
+		sleep TICK_TIME;
+		// Calculate default threat, which is modified by other events
+		([_module, _side] call BIS_fnc_om_threatCalculation) params ["_threatRange","_threatRate"];
+		private _threatLevel = GVAR(_module,"threat");
+		private _aggroMode = GVAR(_module,"aggroMode");
+
+		// If player is aiming at anyone, he's much more threatening
+
+		if (side group cursorTarget == _side && !visiblemap) then {
+			_threatRange = _threatRange * 3;
+			_threatRate = _threatRate * 3;
+		};
+
+
+		// Find out if player is in restricted area
+		private _areas = [player,_side] call BIS_fnc_om_inRestrictedAreas;
+		if (count _areas > 0) then {
+			private _addedRanges = (_areas apply {_x getVariable "ThreatRange"});
+			private _addedThreats = (_areas apply {_x getVariable "ThreatRate"});
+			_addedRanges sort false;
+			_addedThreats sort false;
+			if (_side == EAST) then
+			{
+				_threatRange = _threatRange + ((_addedRanges#0) * (if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform ) then {0.0} else {1}));
+				_threatRate = _threatRate + ((_addedThreats#0) * (if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform ) then {0.0} else {1}));
+			} else {
+				_threatRange = _threatRange + ((_addedRanges#0) * (if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform) then {1} else {1}));
+				_threatRate = _threatRate + ((_addedThreats#0) * (if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform) then {3} else {1}));
+			};
+
+		};
+
+		// Test if enemy is in Aggro range
+		private _inRestrictedZone = count _areas > 0 && !GVAR(_module,"IgnoreRestrictedZones");
+		if ( ( GVAR(_module,"AggroMode") != M_ALLIED || _inRestrictedZone ) && { [_side,_threatRange] call BIS_fnc_om_isPlayerDetected} ) then {
+			_threatLevel = _threatLevel + _threatRate;
+		} else {
+			// Stabilization of the score
+			private _defaultThreat = GVAR(_module,"DefaultRating");
+			if (_threatLevel > _defaultThreat) then {
+				_threatLevel = _threatLevel - GVAR(_module,"Stabilization");
+				_threatLevel = _threatLevel max _defaultThreat;
+			};
+			if (_threatLevel < _defaultThreat) then {
+				_threatLevel = _threatLevel + GVAR(_module,"Stabilization");
+				_threatLevel = _threatLevel min _defaultThreat;
+			};
+		};
+
+		CLAMP(_threatLevel,GVAR(_module,"MinRating"),GVAR(_module,"MaxRating"));
+		SVAR(_module,"threat",_threatLevel);
+		SVAR(_module,"threatRange",_threatRange);
+		SVAR(_module,"threatRate",_threatRate);
+
+		// Switch aggro mode
+		private _ally = GVAR(_module,"allyTreshold");
+		private _threatened = GVAR(_module,"threatTreshold");
+		private _agressive = GVAR(_module,"enemyTreshold");
+		switch (true) do {
+			case (_threatLevel >= _agressive && _aggroMode != M_AGRESSIVE): {[_module] call BIS_fnc_om_attackPlayer};
+			case (_threatLevel >= _threatened && _threatLevel < _agressive && _aggroMode != M_PREPARE): {[_module] call BIS_fnc_om_prepareToAttack};
+			case (_threatLevel > _ally && _threatLevel < _threatened && _aggroMode != M_CALM): {[_module] call BIS_fnc_om_goCalm};
+			case (_threatLevel <= _ally && _aggroMode != M_ALLIED): {[_module] call BIS_fnc_om_goAllied};
+		};
+	};
+};
+
+BIS_fnc_om_inRestrictedAreas = {
+	params ["_unit","_side"];
+	PROFILE_START_INFO("BIS_fnc_om_inRestrictedAreas","BIS_fnc_om_inRestrictedAreas"+(if!(isNil "_side") then {str _side} else {""}), 1);
+	private _areas = [];
+
+	if (isNil "_side") then {
+		_areas = BIS_restrictedAreas select {_x getVariable "RestrictedArea" == 1 && {_unit inArea GVAR(_x,"#area")}};
+	} else {
+		_areas = BIS_restrictedAreas select {_x getVariable "RestrictedArea" == 1 && {_x getVariable "side" == _side} && {_unit inArea GVAR(_x,"#area")}};
+	};
+	PROFILE_STOP("BIS_fnc_om_inRestrictedAreas");
+
+	// Filter out areas that does not fulfill their condition
+	{
+		private _condStr = _x getVariable ["condition",""];
+		if ((_condStr != "" && {!(call (compile _condStr))}) || _x getVariable ["#state",S_SPAWNED] == S_DESPAWNED) then {
+			_areas = _areas - [_x];
+		};
+		Sleep 0.1;
+	} forEach _areas;
+	_areas
+};
+
+BIS_fnc_om_raiseThreat = {
+	params ["_side","_amount"];
+	PROFILE_INFO("BIS_fnc_om_raiseThreat","BIS_fnc_om_raiseThreat"+str _side,1);
+	private _module = BIS_relEast;
+	if (_side == resistance) then {
+		_module = BIS_relInd;
+	};
+	private _result = GVARS(_module,"threat",0) + _amount;
+	SVAR(_module,"threat", _result);
+	_result
+};
+
+BIS_fnc_om_lowerThreat = {
+	params ["_side","_amount"];
+	PROFILE_INFO("BIS_fnc_om_lowerThreat","BIS_fnc_om_lowerThreat"+str _side,1);
+	private _module = MGVARS("BIS_relEast",objNull);
+	if (_side == resistance) then {
+		_module = MGVARS("BIS_relInd",objNull);
+	};
+	private _result = GVARS(_module,"threat",0) - _amount;
+	SVAR(_module,"threat", _result);
+	_result
+};
+
+BIS_fnc_om_threat = {
+	params ["_side"];
+	PROFILE_INFO("BIS_fnc_om_threat","BIS_fnc_om_threat"+str _side,1);
+	private _module = MGVARS("BIS_relEast",objNull);
+	if (_side == resistance) then {
+		_module = MGVARS("BIS_relInd",objNull);
+	};
+	(_module getVariable ["threat",0])
+};
+
+BIS_fnc_om_aggroMode = {
+	params ["_side"];
+	PROFILE_INFO("BIS_fnc_om_aggroMode","BIS_fnc_om_aggroMode"+str _side,1);
+	private _module = MGVARS("BIS_relEast",objNull);
+	if (_side == resistance) then {
+		_module = MGVARS("BIS_relInd",objNull);
+	};
+	(_module getVariable ["aggroMode",0])
+};
+
+// GET THREAT STATUS: (missionNamespace getVariable "BIS_relEast") getVariable "ThreatRate";
+
+
+BIS_fnc_om_goAllied = {
+	scriptName "BIS_fnc_om_goAllied";
+	params ["_module"];
+	private _side = GVAR(_module,"side");
+	PROFILE_INFO("BIS_fnc_om_goAllied", "BIS_fnc_om_goAllied"+STR _side, 1);
+	if (DEBUG_MODE) then {systemChat format ["REL: %1 is allied",_side]};
+
+	BIS_playerSide setFriend [_side,1];
+	_side setFriend [BIS_playerSide,1];
+	SVAR(_module,"aggroMode",M_ALLIED);
+};
+
+BIS_fnc_om_prepareToAttack = {
+	scriptName "BIS_fnc_om_prepareToAttack";
+	params ["_module"];
+	/* [_module] call BIS_fnc_om_showAwarenessUI; */
+	private _side = GVAR(_module,"side");
+	PROFILE_INFO("BIS_fnc_om_prepareToAttack", "BIS_fnc_om_prepareToAttack"+STR _side, 1);
+	SVAR(_module,"aggroMode",M_PREPARE);
+
+	[_module] spawn BIS_fnc_om_worriedModeAgent;
+
+	//if (DEBUG_MODE) then {systemChat format ["REL: %1 is threatened",_side]};
+
+	[_side] spawn {
+		params ["_side"];
+		sleep 1;
+
+		// Play intruder message
+		private _inRestrictedArea = count ([player] call BIS_fnc_om_inRestrictedAreas) > 0;
+		private _enemies = [_side,200] call BIS_fnc_om_awareEnemies;
+		[_enemies, _inRestrictedArea] call BIS_fnc_om_intruderMessage;
+
+		// Set enemy soldiers around to aware or combat
+		{
+			(group _x) setBehaviour "AWARE";
+		} forEach _enemies;
+	};
+
+	{_x setCombatMode "BLUE"} forEach (allGroups select {side _x == _side});
+	BIS_playerSide setFriend [_side,0];
+	_side setFriend [BIS_playerSide,0];
+};
+
+BIS_fnc_om_worriedModeAgent = {
+	scriptName "BIS_fnc_om_worriedModeAgent";
+	params ["_module"];
+	private _side = GVAR(_module,"side");
+
+	while {GVAR(_module,"aggroMode") == M_PREPARE} do {
+		{
+			PROFILE_INFO("BIS_fnc_om_worriedModeAgent","BIS_fnc_om_worriedModeAgent",1);
+			_x setCombatMode "BLUE";
+		} forEach (allGroups select {side _x == _side && {combatMode _x != "BLUE"}});
+		sleep 1;
+	};
+
+	// Worried state ended: Change combat mode back to yellow
+	{
+		_x setCombatMode "YELLOW";
+	} forEach (allGroups select {side _x == _side});
+};
+
+#define MAX_MESSAGE_RANGE 50
+
+BIS_fnc_om_attackPlayer = {
+	scriptName "BIS_fnc_om_attackPlayer";
+	params ["_module"];
+	private _side = GVAR(_module,"side");
+	PROFILE_INFO("BIS_fnc_om_attackPlayer", "BIS_fnc_om_attackPlayer"+STR _side, 1);
+	if (DEBUG_MODE) then {systemChat format ["REL: %1 is hostile",_side]};
+	/* [_module] call BIS_fnc_om_showAwarenessUI; */
+	SVAR(_module,"aggroMode",M_AGRESSIVE);
+
+	BIS_playerSide setFriend [_side,0];
+	_side setFriend [BIS_playerSide,0];
+	//attack message
+	////////////////////////////////////
+	private _inRestrictedArea = count ([player] call BIS_fnc_om_inRestrictedAreas) > 0;
+	private _enemies = [_side,200] call BIS_fnc_om_awareEnemies;
+	private _nearestEnemy = objNull;
+	private _sortedEnemies = [_enemies,[],{player distance _x},"ASCEND"] call BIS_fnc_sortBy;
+
+	//hint format ["%1\n%2\n%3",_side,_protocol,_speaker];
+	if (count _sortedEnemies > 0) then
+	{
+		_nearestEnemy = _sortedEnemies#0;
+		[_nearestEnemy,west] spawn BIS_fnc_OM_Alarm
+	} else {
+		[player,west] spawn BIS_fnc_OM_Alarm
+	};
+
+	private _protocol = 0;
+	private _speaker = "";
+	switch _side do
+	{
+		case east:
+		{
+			//TODO: CHANGE CONDITION
+			if (_nearestenemy isKindOf "B_GEN_Commander_F" || _nearestenemy isKindOf "B_GEN_Soldier_F") exitwith {_protocol = 1;_speaker = "Gendarmerie"};
+			//if (uniform _nearestEnemy in ["U_O_GEN_Soldier_F","U_O_GEN_Commander_F"]) exitwith {_protocol = 1;_speaker = "Gendarmerie"};
+			_protocol = 0;
+			_speaker = "Soldier";
+		};
+
+		case independent:
+		{
+			_protocol = 2;
+			_speaker = "Syndikat";
+		};
+	};
+
+	if (_nearestEnemy distance player > MAX_MESSAGE_RANGE) exitWith {debugLog "BIS_fnc_om_intruderMessage: Nearest enemy too far from player"};
+
+	private _selectedMessage = [];
+	// Player was revealed in Restricted zone
+	if (_inRestrictedArea) then
+	{
+		// player in vehicle
+		if (vehicle player != player) exitwith {_selectedMessage = selectRandom (BIS_om_VehicleAttackMessages select _protocol)};
+		if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform)  exitwith {_selectedMessage = selectRandom (BIS_om_AttackMessagesCSATuniform select _protocol)};
+		_selectedMessage = selectRandom (BIS_om_RestrictedZoneAttack select _protocol);
+	}
+	else
+	{
+		if (vehicle player != player) then
+		// player in vehicle
+		{_selectedMessage = selectRandom (BIS_om_VehicleAttackMessages select _protocol)} else
+		// player is infantry
+		{
+			if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform)  exitwith {_selectedMessage = selectRandom (BIS_om_AttackMessagesCSATuniform select _protocol)};
+			_selectedMessage = selectRandom (BIS_om_AttackMessages select _protocol)
+		};
+	};
+
+	// Select message to be played
+	_selectedMessage params ["_sound","_message"];
+	//debugLog str [_nearestEnemy, player distance _nearestEnemy, _sound, _message];
+
+	[_nearestEnemy, player] say3D [_sound, 300, 1,true];
+	[_speaker,_message] call BIS_fnc_showSubtitle;
+	///////////////////////////////////////
+	private _enemyGroups = allGroups select {leader _x distance2D player < SPAWN_RANGE};
+	{
+		_x setCombatMode "RED";
+	} forEach _enemyGroups;
+};
+
+// TODO: Placeholder
+BIS_om_defaultWarningMessages =
+[
+	//CSAT PROTOCOL
+	[
+		["CSAT_EnemyWarning_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_01"],
+		["CSAT_EnemyWarning_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_01"],
+		["CSAT_EnemyWarning_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_01"],
+		["CSAT_EnemyWarning_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_01"],
+		["CSAT_EnemyWarning_Soldier_A_02_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_02"],
+		["CSAT_EnemyWarning_Soldier_A_02_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_02"],
+		["CSAT_EnemyWarning_Soldier_A_02_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_02"],
+		["CSAT_EnemyWarning_Soldier_A_02_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_02"],
+		["CSAT_EnemyWarning_Soldier_A_03_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_03"],
+		["CSAT_EnemyWarning_Soldier_A_03_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_03"],
+		["CSAT_EnemyWarning_Soldier_A_03_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_03"],
+		["CSAT_EnemyWarning_Soldier_A_03_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_03"],
+		["CSAT_EnemyWarning_Soldier_A_04_01_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_04_01"],
+		["CSAT_EnemyWarning_Soldier_A_04_01_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_04_01"],
+		["CSAT_EnemyWarning_Soldier_A_04_01_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_04_01"],
+		["CSAT_EnemyWarning_Soldier_A_04_01_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_04_01"],
+		["CSAT_EnemyWarning_Soldier_A_04_02_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_04_02"],
+		["CSAT_EnemyWarning_Soldier_A_04_02_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_04_02"],
+		["CSAT_EnemyWarning_Soldier_A_04_02_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_04_02"],
+		["CSAT_EnemyWarning_Soldier_A_04_02_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_04_02"],
+		["CSAT_EnemyWarning_Soldier_B_01_01_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_01_01"],
+		["CSAT_EnemyWarning_Soldier_B_01_01_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_01_01"],
+		["CSAT_EnemyWarning_Soldier_B_01_01_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_01_01"],
+		["CSAT_EnemyWarning_Soldier_B_01_01_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_01_01"],
+		["CSAT_EnemyWarning_Soldier_B_01_02_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_01_02"],
+		["CSAT_EnemyWarning_Soldier_B_01_02_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_01_02"],
+		["CSAT_EnemyWarning_Soldier_B_01_02_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_01_02"],
+		["CSAT_EnemyWarning_Soldier_B_01_02_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_01_02"],
+		["CSAT_EnemyWarning_Soldier_B_02_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_02"],
+		["CSAT_EnemyWarning_Soldier_B_02_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_02"],
+		["CSAT_EnemyWarning_Soldier_B_02_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_02"],
+		["CSAT_EnemyWarning_Soldier_B_02_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_02"],
+		["CSAT_EnemyWarning_Soldier_B_03_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_03"],
+		["CSAT_EnemyWarning_Soldier_B_03_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_03"],
+		["CSAT_EnemyWarning_Soldier_B_03_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_03"],
+		["CSAT_EnemyWarning_Soldier_B_03_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_03"],
+		["CSAT_EnemyWarning_Soldier_B_04_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_04"],
+		["CSAT_EnemyWarning_Soldier_B_04_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_04"],
+		["CSAT_EnemyWarning_Soldier_B_04_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_04"],
+		["CSAT_EnemyWarning_Soldier_B_04_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_04"]
+	],
+	// GENDARMERIE PROTOCOL
+	[
+
+		["Gendarmerie_EnemyWarning_Gendarme_A_01_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_01"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_02_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_02"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_03_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_03"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_04_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_04"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_01"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_02_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_02"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_03_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_03"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_04_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_04"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_01",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_01"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_02",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_02"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_03",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_03"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_04",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_04"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_01"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_02",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_02"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_03",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_03"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_04",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_04"]
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_EnemyWarning_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_01"],
+		["Syndikat_EnemyWarning_Soldier_A_02_01_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_02_01"],
+		["Syndikat_EnemyWarning_Soldier_A_02_02_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_02_02"],
+		["Syndikat_EnemyWarning_Soldier_A_02_Ahmeed_01",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_02_01"],
+		["Syndikat_EnemyWarning_Soldier_A_02_Ahmeed_02",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_02_02"],
+		["Syndikat_EnemyWarning_Soldier_A_03_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_03"],
+		["Syndikat_EnemyWarning_Soldier_A_04_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_04"],
+		["Syndikat_EnemyWarning_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_01"],
+		["Syndikat_EnemyWarning_Soldier_A_Ahmeed_03",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_03"],
+		["Syndikat_EnemyWarning_Soldier_A_Ahmeed_04",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_04"],
+		["Syndikat_EnemyWarning_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_01"],
+		["Syndikat_EnemyWarning_Soldier_B_02_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_02"],
+		["Syndikat_EnemyWarning_Soldier_B_03_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_03"],
+		["Syndikat_EnemyWarning_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_01"],
+		["Syndikat_EnemyWarning_Soldier_B_Ahmeed_02",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_02"],
+		["Syndikat_EnemyWarning_Soldier_B_Ahmeed_03",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_03"],
+		["Syndikat_EnemyWarning_Soldier_B_Ahmeed_04",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_04"]
+	]
+];
+
+BIS_om_defaultWarningMessagesCSATuniform =
+[
+	//CSAT PROTOCOL
+	[
+		["CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Spy_Soldier_A_01"],
+		["CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Spy_Soldier_A_01"],
+		["CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Spy_Soldier_A_01"],
+		["CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Spy_Soldier_A_01"],
+		["CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Spy_Soldier_B_01"],
+		["CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Spy_Soldier_B_01"],
+		["CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Spy_Soldier_B_01"],
+		["CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Spy_Soldier_B_01"]
+
+	],
+	// GENDARMERIE PROTOCOL
+	[
+		["Gendarmerie_EnemyWarning_Spy_Gendarme_A_01_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Spy_Gendarme_A_01"],
+		["Gendarmerie_EnemyWarning_Spy_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Spy_Gendarme_B_01"],
+		["Gendarmerie_EnemyWarning_Spy_Gendarme_A_Ahmeed_01",localize "str_a3_om_Gendarmerie_EnemyWarning_Spy_Gendarme_A_01"],
+		["Gendarmerie_EnemyWarning_Spy_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_EnemyWarning_Spy_Gendarme_B_01"]
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_EnemyWarining_Spy_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_EnemyWarining_Spy_Soldier_A_01"],
+		["Syndikat_EnemyWarining_Spy_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_EnemyWarining_Spy_Soldier_A_01"],
+		["Syndikat_EnemyWarining_Spy_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_EnemyWarining_Spy_Soldier_B_01"],
+		["Syndikat_EnemyWarining_Spy_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_EnemyWarining_Spy_Soldier_B_01"]
+	]
+];
+
+BIS_om_WeaponRevealedMessages =
+[
+	[
+		["CSAT_PlayerWeapon_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_PlayerWeapon_Soldier_A_01"],
+		["CSAT_PlayerWeapon_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_PlayerWeapon_Soldier_A_01"],
+		["CSAT_PlayerWeapon_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_PlayerWeapon_Soldier_A_01"],
+		["CSAT_PlayerWeapon_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_PlayerWeapon_Soldier_A_01"],
+		["CSAT_PlayerWeapon_Soldier_B_01_Chinese01",localize "str_a3_om_CSAT_PlayerWeapon_Soldier_B_01"],
+		["CSAT_PlayerWeapon_Soldier_B_01_Chinese02",localize "str_a3_om_CSAT_PlayerWeapon_Soldier_B_01"],
+		["CSAT_PlayerWeapon_Soldier_B_01_Chinese03",localize "str_a3_om_CSAT_PlayerWeapon_Soldier_B_01"],
+		["CSAT_PlayerWeapon_Soldier_B_01_Chinese04",localize "str_a3_om_CSAT_PlayerWeapon_Soldier_B_01"]
+	],
+	// GENDARMERIE PROTOCOL
+	[
+		["Gendarmerie_PlayerWeapon_Gendarme_A_01_Vincent",localize "str_a3_om_Gendarmerie_PlayerWeapon_Gendarme_A_01"],
+		["Gendarmerie_PlayerWeapon_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_PlayerWeapon_Gendarme_B_01"],
+		["Gendarmerie_PlayerWeapon_Gendarme_A_Ahmeed_01",localize "str_a3_om_Gendarmerie_PlayerWeapon_Gendarme_A_01"],
+		["Gendarmerie_PlayerWeapon_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_PlayerWeapon_Gendarme_B_01"]
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_PlayerWeapon_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_PlayerWeapon_Soldier_A_01"],
+		["Syndikat_PlayerWeapon_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_PlayerWeapon_Soldier_A_01"],
+		["Syndikat_PlayerWeapon_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_PlayerWeapon_Soldier_B_01"],
+		["Syndikat_PlayerWeapon_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_PlayerWeapon_Soldier_B_01"]
+	]
+];
+BIS_om_AttackMessages =
+[
+	[
+		["CSAT_AttackWarning_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_AttackWarning_Soldier_A_01"],
+		["CSAT_AttackWarning_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_AttackWarning_Soldier_A_01"],
+		["CSAT_AttackWarning_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_AttackWarning_Soldier_A_01"],
+		["CSAT_AttackWarning_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_AttackWarning_Soldier_A_01"],
+		["CSAT_AttackWarning_Soldier_A_02_Chinese01",localize "str_a3_om_CSAT_AttackWarning_Soldier_A_02"],
+		["CSAT_AttackWarning_Soldier_A_02_Chinese02",localize "str_a3_om_CSAT_AttackWarning_Soldier_A_02"],
+		["CSAT_AttackWarning_Soldier_A_02_Chinese03",localize "str_a3_om_CSAT_AttackWarning_Soldier_A_02"],
+		["CSAT_AttackWarning_Soldier_A_02_Chinese04",localize "str_a3_om_CSAT_AttackWarning_Soldier_A_02"],
+		["CSAT_AttackWarning_Soldier_B_01_Chinese01",localize "str_a3_om_CSAT_AttackWarning_Soldier_B_01"],
+		["CSAT_AttackWarning_Soldier_B_01_Chinese02",localize "str_a3_om_CSAT_AttackWarning_Soldier_B_01"],
+		["CSAT_AttackWarning_Soldier_B_01_Chinese03",localize "str_a3_om_CSAT_AttackWarning_Soldier_B_01"],
+		["CSAT_AttackWarning_Soldier_B_01_Chinese04",localize "str_a3_om_CSAT_AttackWarning_Soldier_B_01"],
+		["CSAT_AttackWarning_Soldier_B_02_Chinese01",localize "str_a3_om_CSAT_AttackWarning_Soldier_B_01"],
+		["CSAT_AttackWarning_Soldier_B_02_Chinese02",localize "str_a3_om_CSAT_AttackWarning_Soldier_B_01"],
+		["CSAT_AttackWarning_Soldier_B_02_Chinese03",localize "str_a3_om_CSAT_AttackWarning_Soldier_B_01"],
+		["CSAT_AttackWarning_Soldier_B_02_Chinese04",localize "str_a3_om_CSAT_AttackWarning_Soldier_B_01"]
+	],
+		// GENDARMERIE PROTOCOL
+	[
+		["Gendarmerie_AttackWarning_Gendarme_A_01_Vincent",localize "str_a3_om_Gendarmerie_AttackWarning_Gendarme_A_01"],
+		["Gendarmerie_AttackWarning_Gendarme_A_02_Vincent",localize "str_a3_om_Gendarmerie_AttackWarning_Gendarme_A_02"],
+		["Gendarmerie_AttackWarning_Gendarme_A_Ahmeed_01",localize "str_a3_om_Gendarmerie_AttackWarning_Gendarme_A_01"],
+		["Gendarmerie_AttackWarning_Gendarme_A_Ahmeed_02",localize "str_a3_om_Gendarmerie_AttackWarning_Gendarme_A_02"],
+		["Gendarmerie_AttackWarning_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_AttackWarning_Gendarme_B_01"],
+		["Gendarmerie_AttackWarning_Gendarme_B_02_Vincent",localize "str_a3_om_Gendarmerie_AttackWarning_Gendarme_B_02"],
+		["Gendarmerie_AttackWarning_Gendarme_B_03_Vincent",localize "str_a3_om_Gendarmerie_AttackWarning_Gendarme_B_03"],
+		["Gendarmerie_AttackWarning_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_AttackWarning_Gendarme_B_01"],
+		["Gendarmerie_AttackWarning_Gendarme_B_Ahmeed_02",localize "str_a3_om_Gendarmerie_AttackWarning_Gendarme_B_02"],
+		["Gendarmerie_AttackWarning_Gendarme_B_Ahmeed_03",localize "str_a3_om_Gendarmerie_AttackWarning_Gendarme_B_03"]
+
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_AttackWarning_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_AttackWarning_Soldier_A_01"],
+		["Syndikat_AttackWarning_Soldier_A_02_Vincent",localize "str_a3_om_Syndikat_AttackWarning_Soldier_A_02"],
+		["Syndikat_AttackWarning_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_AttackWarning_Soldier_A_01"],
+		["Syndikat_AttackWarning_Soldier_A_Ahmeed_02",localize "str_a3_om_Syndikat_AttackWarning_Soldier_A_02"],
+		["Syndikat_AttackWarning_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_AttackWarning_Soldier_B_01"],
+		["Syndikat_AttackWarning_Soldier_B_02_Vincent",localize "str_a3_om_Syndikat_AttackWarning_Soldier_B_02"],
+		["Syndikat_AttackWarning_Soldier_B_03_Vincent",localize "str_a3_om_Syndikat_AttackWarning_Soldier_B_03"],
+		["Syndikat_AttackWarning_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_AttackWarning_Soldier_B_01"],
+		["Syndikat_AttackWarning_Soldier_B_Ahmeed_02",localize "str_a3_om_Syndikat_AttackWarning_Soldier_B_02"],
+		["Syndikat_AttackWarning_Soldier_B_Ahmeed_03",localize "str_a3_om_Syndikat_AttackWarning_Soldier_B_03"]
+	]
+];
+
+BIS_om_AttackMessagesCSATuniform =
+[
+	// CSAT PROTOCOL
+	[
+		["CSAT_AttackWarning_Spy_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_AttackWarning_Spy_Soldier_A_01"],
+		["CSAT_AttackWarning_Spy_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_AttackWarning_Spy_Soldier_A_01"],
+		["CSAT_AttackWarning_Spy_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_AttackWarning_Spy_Soldier_A_01"],
+		["CSAT_AttackWarning_Spy_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_AttackWarning_Spy_Soldier_A_01"],
+		["CSAT_AttackWarning_Spy_Soldier_B_01_Chinese01",localize "str_a3_om_CSAT_AttackWarning_Spy_Soldier_B_01"],
+		["CSAT_AttackWarning_Spy_Soldier_B_01_Chinese02",localize "str_a3_om_CSAT_AttackWarning_Spy_Soldier_B_01"],
+		["CSAT_AttackWarning_Spy_Soldier_B_01_Chinese03",localize "str_a3_om_CSAT_AttackWarning_Spy_Soldier_B_01"],
+		["CSAT_AttackWarning_Spy_Soldier_B_01_Chinese04",localize "str_a3_om_CSAT_AttackWarning_Spy_Soldier_B_01"]
+	],
+		// GENDARMERIE PROTOCOL
+	[
+		["Gendarmerie_AttackWarning_Spy_Gendarme_A_01_Vincent",localize "str_a3_om_Gendarmerie_AttackWarning_Spy_Gendarme_A_01"],
+		["Gendarmerie_AttackWarning_Spy_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_AttackWarning_Spy_Gendarme_B_01"],
+		["Gendarmerie_AttackWarning_Spy_Gendarme_A_Ahmeed_01",localize "str_a3_om_Gendarmerie_AttackWarning_Spy_Gendarme_A_01"],
+		["Gendarmerie_AttackWarning_Spy_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_AttackWarning_Spy_Gendarme_B_01"]
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_AttackWarning_Spy_Sodlier_A_01_Vincent",localize "str_a3_om_Syndikat_AttackWarning_Spy_Sodlier_A_01"],
+		["Syndikat_AttackWarning_Spy_Sodlier_A_Ahmeed_01",localize "str_a3_om_Syndikat_AttackWarning_Spy_Sodlier_A_01"],
+		["Syndikat_AttackWarning_Spy_Sodlier_B_01_Vincent",localize "str_a3_om_Syndikat_AttackWarning_Spy_Sodlier_B_01"],
+		["Syndikat_AttackWarning_Spy_Sodlier_B_Ahmeed_01",localize "str_a3_om_Syndikat_AttackWarning_Spy_Sodlier_B_01"]
+	]
+];
+
+BIS_om_VehicleWarningMessages =
+[
+	[
+		["CSAT_EnemyWarning_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_01"],
+		["CSAT_EnemyWarning_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_01"],
+		["CSAT_EnemyWarning_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_01"],
+		["CSAT_EnemyWarning_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_01"],
+		["CSAT_EnemyWarning_Soldier_A_02_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_02"],
+		["CSAT_EnemyWarning_Soldier_A_02_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_02"],
+		["CSAT_EnemyWarning_Soldier_A_02_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_02"],
+		["CSAT_EnemyWarning_Soldier_A_02_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_02"],
+		["CSAT_EnemyWarning_Soldier_A_03_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_03"],
+		["CSAT_EnemyWarning_Soldier_A_03_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_03"],
+		["CSAT_EnemyWarning_Soldier_A_03_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_03"],
+		["CSAT_EnemyWarning_Soldier_A_03_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_A_03"],
+		["CSAT_EnemyWarning_Soldier_B_02_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_02"],
+		["CSAT_EnemyWarning_Soldier_B_02_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_02"],
+		["CSAT_EnemyWarning_Soldier_B_02_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_02"],
+		["CSAT_EnemyWarning_Soldier_B_02_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_02"],
+		["CSAT_EnemyWarning_Soldier_B_03_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_03"],
+		["CSAT_EnemyWarning_Soldier_B_03_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_03"],
+		["CSAT_EnemyWarning_Soldier_B_03_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_03"],
+		["CSAT_EnemyWarning_Soldier_B_03_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_03"],
+		["CSAT_EnemyWarning_Soldier_B_04_Chinese01",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_04"],
+		["CSAT_EnemyWarning_Soldier_B_04_Chinese02",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_04"],
+		["CSAT_EnemyWarning_Soldier_B_04_Chinese03",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_04"],
+		["CSAT_EnemyWarning_Soldier_B_04_Chinese04",localize "str_a3_om_CSAT_EnemyWarning_Soldier_B_04"]
+		// GET OUT OF THE VEHICLE LINES (CANT BE USED)!
+		/*["CSAT_VehicleWarning_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_VehicleWarning_Soldier_A_01"],
+		["CSAT_VehicleWarning_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_VehicleWarning_Soldier_A_01"],
+		["CSAT_VehicleWarning_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_VehicleWarning_Soldier_A_01"],
+		["CSAT_VehicleWarning_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_VehicleWarning_Soldier_A_01"],
+		["CSAT_VehicleWarning_Soldier_B_01_Chinese01",localize "str_a3_om_CSAT_VehicleWarning_Soldier_B_01"],
+		["CSAT_VehicleWarning_Soldier_B_01_Chinese02",localize "str_a3_om_CSAT_VehicleWarning_Soldier_B_01"],
+		["CSAT_VehicleWarning_Soldier_B_01_Chinese03",localize "str_a3_om_CSAT_VehicleWarning_Soldier_B_01"],
+		["CSAT_VehicleWarning_Soldier_B_01_Chinese04",localize "str_a3_om_CSAT_VehicleWarning_Soldier_B_01"]*/
+	],
+	// GENDARMERIE PROTOCOL
+	[
+		["Gendarmerie_EnemyWarning_Gendarme_A_01_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_01"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_02_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_02"],
+		//["Gendarmerie_EnemyWarning_Gendarme_A_03_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_03"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_04_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_04"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_01"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_02_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_02"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_03_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_03"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_04_Vincent",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_04"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_01",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_01"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_02",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_02"],
+		//["Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_03",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_03"],
+		["Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_04",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_A_04"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_01"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_02",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_02"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_03",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_03"],
+		["Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_04",localize "str_a3_om_Gendarmerie_EnemyWarning_Gendarme_B_04"]
+		/*["Gendarmerie_VehicleWarning_Gendarme_A_01_01_Vincent",localize "str_a3_om_Gendarmerie_VehicleWarning_Gendarme_A_01_01"],
+		["Gendarmerie_VehicleWarning_Gendarme_A_01_02_Vincent",localize "str_a3_om_Gendarmerie_VehicleWarning_Gendarme_A_01_02"],
+		["Gendarmerie_VehicleWarning_Gendarme_A_01_Ahmeed_01",localize "str_a3_om_Gendarmerie_VehicleWarning_Gendarme_A_01_01"],
+		["Gendarmerie_VehicleWarning_Gendarme_A_01_Ahmeed_02",localize "str_a3_om_Gendarmerie_VehicleWarning_Gendarme_A_01_02"],
+		["Gendarmerie_VehicleWarning_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_VehicleWarning_Gendarme_B_01"],
+		["Gendarmerie_VehicleWarning_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_VehicleWarning_Gendarme_B_01"]*/
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_EnemyWarning_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_01"],
+		// Hey! Get outta here!
+		["Syndikat_EnemyWarning_Soldier_A_02_01_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_02_01"],
+		// This ain't no place for you, mec...
+		["Syndikat_EnemyWarning_Soldier_A_02_02_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_02_02"],
+		// Hey! Get outta here!
+		["Syndikat_EnemyWarning_Soldier_A_02_Ahmeed_01",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_02_01"],
+		// This ain't no place for you, mec...
+		["Syndikat_EnemyWarning_Soldier_A_02_Ahmeed_02",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_02_02"],
+		["Syndikat_EnemyWarning_Soldier_A_03_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_03"],
+		["Syndikat_EnemyWarning_Soldier_A_04_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_04"],
+		["Syndikat_EnemyWarning_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_01"],
+		["Syndikat_EnemyWarning_Soldier_A_Ahmeed_03",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_03"],
+		["Syndikat_EnemyWarning_Soldier_A_Ahmeed_04",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_A_04"],
+		["Syndikat_EnemyWarning_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_01"],
+		["Syndikat_EnemyWarning_Soldier_B_02_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_02"],
+		["Syndikat_EnemyWarning_Soldier_B_03_Vincent",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_03"],
+		["Syndikat_EnemyWarning_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_01"],
+		["Syndikat_EnemyWarning_Soldier_B_Ahmeed_02",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_02"],
+		["Syndikat_EnemyWarning_Soldier_B_Ahmeed_03",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_03"],
+		["Syndikat_EnemyWarning_Soldier_B_Ahmeed_04",localize "str_a3_om_Syndikat_EnemyWarning_Soldier_B_04"]
+		/*["Syndikat_VehicleWarning_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_VehicleWarning_Soldier_A_01"],
+		["Syndikat_VehicleWarning_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_VehicleWarning_Soldier_A_01"],
+		["Syndikat_VehicleWarning_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_VehicleWarning_Soldier_B_01"],
+		["Syndikat_VehicleWarning_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_VehicleWarning_Soldier_B_01"]*/
+	]
+];
+BIS_om_VehicleAttackMessages =
+[
+	[
+		["CSAT_VehicleAttack_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_VehicleAttack_Soldier_A_01"],
+		["CSAT_VehicleAttack_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_VehicleAttack_Soldier_A_01"],
+		["CSAT_VehicleAttack_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_VehicleAttack_Soldier_A_01"],
+		["CSAT_VehicleAttack_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_VehicleAttack_Soldier_A_01"],
+		["CSAT_VehicleAttack_Soldier_B_01_Chinese01",localize "str_a3_om_CSAT_VehicleAttack_Soldier_B_01"],
+		["CSAT_VehicleAttack_Soldier_B_01_Chinese02",localize "str_a3_om_CSAT_VehicleAttack_Soldier_B_01"],
+		["CSAT_VehicleAttack_Soldier_B_01_Chinese03",localize "str_a3_om_CSAT_VehicleAttack_Soldier_B_01"],
+		["CSAT_VehicleAttack_Soldier_B_01_Chinese04",localize "str_a3_om_CSAT_VehicleAttack_Soldier_B_01"]
+	],
+	// GENDARMERIE PROTOCOL
+	[
+		["Gendarmerie_VehicleAttack_Gendarme_A_01_Vincent",localize "str_a3_om_Gendarmerie_VehicleAttack_Gendarme_A_01"],
+		["Gendarmerie_VehicleAttack_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_VehicleAttack_Gendarme_B_01"],
+		["Gendarmerie_VehicleAttack_Gendarme_A_Ahmeed_01",localize "str_a3_om_Gendarmerie_VehicleAttack_Gendarme_A_01"],
+		["Gendarmerie_VehicleAttack_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_VehicleAttack_Gendarme_B_01"]
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_VehicleAttack_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_VehicleAttack_Soldier_A_01"],
+		["Syndikat_VehicleAttack_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_VehicleAttack_Soldier_A_01"],
+		["Syndikat_VehicleAttack_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_VehicleAttack_Soldier_B_01"],
+		["Syndikat_VehicleAttack_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_VehicleAttack_Soldier_B_01"]
+	]
+];
+
+BIS_om_RestrictedZoneWarning =
+[
+	[
+		["CSAT_RestrictedArea_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_RestrictedArea_Soldier_A_01"],
+		["CSAT_RestrictedArea_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_RestrictedArea_Soldier_A_01"],
+		["CSAT_RestrictedArea_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_RestrictedArea_Soldier_A_01"],
+		["CSAT_RestrictedArea_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_RestrictedArea_Soldier_A_01"],
+		["CSAT_RestrictedArea_Soldier_A_02_Chinese01",localize "str_a3_om_CSAT_RestrictedArea_Soldier_A_02"],
+		["CSAT_RestrictedArea_Soldier_A_02_Chinese02",localize "str_a3_om_CSAT_RestrictedArea_Soldier_A_02"],
+		["CSAT_RestrictedArea_Soldier_A_02_Chinese03",localize "str_a3_om_CSAT_RestrictedArea_Soldier_A_02"],
+		["CSAT_RestrictedArea_Soldier_A_02_Chinese04",localize "str_a3_om_CSAT_RestrictedArea_Soldier_A_02"],
+		["CSAT_RestrictedArea_Soldier_B_01_Chinese01",localize "str_a3_om_CSAT_RestrictedArea_Soldier_B_01"],
+		["CSAT_RestrictedArea_Soldier_B_01_Chinese02",localize "str_a3_om_CSAT_RestrictedArea_Soldier_B_01"],
+		["CSAT_RestrictedArea_Soldier_B_01_Chinese03",localize "str_a3_om_CSAT_RestrictedArea_Soldier_B_01"],
+		["CSAT_RestrictedArea_Soldier_B_01_Chinese04",localize "str_a3_om_CSAT_RestrictedArea_Soldier_B_01"]
+	],
+	// GENDARMERIE PROTOCOL
+	[
+		["Gendarmerie_RestrictedArea_Gendarme_A_01_01_Vincent",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_A_01_01"],
+		["Gendarmerie_RestrictedArea_Gendarme_A_01_02_Vincent",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_A_01_02"],
+		["Gendarmerie_RestrictedArea_Gendarme_A_02_01_Vincent",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_A_02_01"],
+		["Gendarmerie_RestrictedArea_Gendarme_A_02_02_Vincent",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_A_02_02"],
+		["Gendarmerie_RestrictedArea_Gendarme_A_01_Ahmeed_01",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_A_01_01"],
+		["Gendarmerie_RestrictedArea_Gendarme_A_01_Ahmeed_02",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_A_01_02"],
+		["Gendarmerie_RestrictedArea_Gendarme_A_02_Ahmeed_01",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_A_02_01"],
+		["Gendarmerie_RestrictedArea_Gendarme_A_02_Ahmeed_02",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_A_02_02"],
+		// "Oh, arrĂŞte!
+		//["Gendarmerie_RestrictedArea_Gendarme_B_01_01_Vincent",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_B_01_01"],
+		// Vous devez quitter la zone - you are not supposed to be here!"
+		["Gendarmerie_RestrictedArea_Gendarme_B_01_02_Vincent",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_B_01_01"],
+		// "Oh, arrĂŞte!
+		//["Gendarmerie_RestrictedArea_Gendarme_B_01_Ahmeed_01",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_B_01_01"],
+		// Vous devez quitter la zone - you are not supposed to be here!"
+		["Gendarmerie_RestrictedArea_Gendarme_B_01_Ahmeed_02",localize "str_a3_om_Gendarmerie_RestrictedArea_Gendarme_B_01_01"]
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_RestrictedArea_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_RestrictedArea_Soldier_A_01"],
+		["Syndikat_RestrictedArea_Soldier_A_02_Vincent",localize "str_a3_om_Syndikat_RestrictedArea_Soldier_A_02"],
+		["Syndikat_RestrictedArea_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_RestrictedArea_Soldier_A_01"],
+		["Syndikat_RestrictedArea_Soldier_A_Ahmeed_02",localize "str_a3_om_Syndikat_RestrictedArea_Soldier_A_02"],
+		["Syndikat_RestrictedArea_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_RestrictedArea_Soldier_B_01"],
+		["Syndikat_RestrictedArea_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_RestrictedArea_Soldier_B_01"]
+	]
+
+];
+//BIS_om_RestrictedZoneVehicleWarning = [];
+BIS_om_RestrictedZoneAttack =
+[
+	[
+		["CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_A_01"],
+		["CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_A_01"],
+		["CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_A_01"],
+		["CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_A_01"],
+		["CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese01",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_A_02"],
+		["CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese02",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_A_02"],
+		["CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese03",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_A_02"],
+		["CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese04",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_A_02"],
+		["CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese01",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_B_01"],
+		["CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese02",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_B_01"],
+		["CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese03",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_B_01"],
+		["CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese04",localize "str_a3_om_CSAT_RestrictedAreaAlarm_Soldier_B_01"]
+	],
+	// GENDARMERIE PROTOCOL
+	[
+		["Gendarmerie_RestrictedAreaAlarm_Gendarme_A_01_Vincent",localize "str_a3_om_Gendarmerie_RestrictedAreaAlarm_Gendarme_A_01"],
+		["Gendarmerie_RestrictedAreaAlarm_Gendarme_A_02_Vincent",localize "str_a3_om_Gendarmerie_RestrictedAreaAlarm_Gendarme_A_02"],
+		["Gendarmerie_RestrictedAreaAlarm_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_RestrictedAreaAlarm_Gendarme_B_01"],
+		["Gendarmerie_RestrictedAreaAlarm_Gendarme_A_Ahmeed_01",localize "str_a3_om_Gendarmerie_RestrictedAreaAlarm_Gendarme_A_01"],
+		["Gendarmerie_RestrictedAreaAlarm_Gendarme_A_Ahmeed_02",localize "str_a3_om_Gendarmerie_RestrictedAreaAlarm_Gendarme_A_02"],
+		["Gendarmerie_RestrictedAreaAlarm_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_RestrictedAreaAlarm_Gendarme_B_01"]
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_RestrictedAreaAlarm_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_RestrictedAreaAlarm_Soldier_A_01"],
+		["Syndikat_RestrictedAreaAlarm_Soldier_A_02_Vincent",localize "str_a3_om_Syndikat_RestrictedAreaAlarm_Soldier_A_02"],
+		["Syndikat_RestrictedAreaAlarm_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_RestrictedAreaAlarm_Soldier_A_01"],
+		["Syndikat_RestrictedAreaAlarm_Soldier_A_Ahmeed_02",localize "str_a3_om_Syndikat_RestrictedAreaAlarm_Soldier_A_02"],
+		["Syndikat_RestrictedAreaAlarm_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_RestrictedAreaAlarm_Soldier_B_01"],
+		["Syndikat_RestrictedAreaAlarm_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_RestrictedAreaAlarm_Soldier_B_01"]
+	]
+	//["RestrictedMessage_02","What are you doing here? Alam, intruder!"]
+];
+BIS_om_RestrictedNightMessage =
+[
+	[
+		["CSAT_RestrictedAreaNight_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_RestrictedAreaNight_Soldier_A_01"],
+		["CSAT_RestrictedAreaNight_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_RestrictedAreaNight_Soldier_A_01"],
+		["CSAT_RestrictedAreaNight_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_RestrictedAreaNight_Soldier_A_01"],
+		["CSAT_RestrictedAreaNight_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_RestrictedAreaNight_Soldier_A_01"],
+		["CSAT_RestrictedAreaNight_Soldier_B_01_Chinese01",localize "str_a3_om_CSAT_RestrictedAreaNight_Soldier_B_01"],
+		["CSAT_RestrictedAreaNight_Soldier_B_01_Chinese02",localize "str_a3_om_CSAT_RestrictedAreaNight_Soldier_B_01"],
+		["CSAT_RestrictedAreaNight_Soldier_B_01_Chinese03",localize "str_a3_om_CSAT_RestrictedAreaNight_Soldier_B_01"],
+		["CSAT_RestrictedAreaNight_Soldier_B_01_Chinese04",localize "str_a3_om_CSAT_RestrictedAreaNight_Soldier_B_01"]
+	],
+		// GENDARMERIE PROTOCOL
+	[
+		["Gendarmerie_RestrictedAreaNight_Gendarme_A_01_Vincent",localize "str_a3_om_Gendarmerie_RestrictedAreaNight_Gendarme_A_01"],
+		["Gendarmerie_RestrictedAreaNight_Gendarme_A_Ahmeed_01",localize "str_a3_om_Gendarmerie_RestrictedAreaNight_Gendarme_A_01"],
+		["Gendarmerie_RestrictedAreaNight_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_RestrictedAreaNight_Gendarme_B_01"],
+		["Gendarmerie_RestrictedAreaNight_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_RestrictedAreaNight_Gendarme_B_01"]
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_RestrictedAreaNight_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_RestrictedAreaNight_Soldier_A_01"],
+		["Syndikat_RestrictedAreaNight_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_RestrictedAreaNight_Soldier_A_01"],
+		["Syndikat_RestrictedAreaNight_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_RestrictedAreaNight_Soldier_A_02"],
+		["Syndikat_RestrictedAreaNight_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_RestrictedAreaNight_Soldier_A_02"]
+	]
+];
+
+BIS_om_RestrictedNightVehicleMessage = 	//TODO: Write better warning messages!
+[
+	// CSAT PROTOCOL
+	[
+		["CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese01",localize "str_a3_om_CSAT_RestrictedAreaNightVehicle_Soldier_A_01"],
+		["CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese02",localize "str_a3_om_CSAT_RestrictedAreaNightVehicle_Soldier_A_01"],
+		["CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese03",localize "str_a3_om_CSAT_RestrictedAreaNightVehicle_Soldier_A_01"],
+		["CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese04",localize "str_a3_om_CSAT_RestrictedAreaNightVehicle_Soldier_A_01"],
+		["CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese01",localize "str_a3_om_CSAT_RestrictedAreaNightVehicle_Soldier_B_01"],
+		["CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese02",localize "str_a3_om_CSAT_RestrictedAreaNightVehicle_Soldier_B_01"],
+		["CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese03",localize "str_a3_om_CSAT_RestrictedAreaNightVehicle_Soldier_B_01"],
+		["CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese04",localize "str_a3_om_CSAT_RestrictedAreaNightVehicle_Soldier_B_01"]
+	],
+	// GENDARMERIE PROTOCOL
+	[
+		["Gendarmerie_RestrictedAreaNightVehicle_Gendarme_A_01_Vincent",localize "str_a3_om_Gendarmerie_RestrictedAreaNightVehicle_Gendarme_A_01"],
+		["Gendarmerie_RestrictedAreaNightVehicle_Gendarme_A_Ahmeed_01",localize "str_a3_om_Gendarmerie_RestrictedAreaNightVehicle_Gendarme_A_01"],
+		["Gendarmerie_RestrictedAreaNightVehicle_Gendarme_B_01_Vincent",localize "str_a3_om_Gendarmerie_RestrictedAreaNightVehicle_Gendarme_B_01"],
+		["Gendarmerie_RestrictedAreaNightVehicle_Gendarme_B_Ahmeed_01",localize "str_a3_om_Gendarmerie_RestrictedAreaNightVehicle_Gendarme_B_01"]
+	],
+	// SYNDICAT PROTOCOL
+	[
+		["Syndikat_RestrictedAreaNightVehicle_Soldier_A_01_Vincent",localize "str_a3_om_Syndikat_RestrictedAreaNightVehicle_Soldier_A_01"],
+		["Syndikat_RestrictedAreaNightVehicle_Soldier_A_Ahmeed_01",localize "str_a3_om_Syndikat_RestrictedAreaNightVehicle_Soldier_A_01"],
+		["Syndikat_RestrictedAreaNightVehicle_Soldier_B_01_Vincent",localize "str_a3_om_Syndikat_RestrictedAreaNightVehicle_Soldier_B_01"],
+		["Syndikat_RestrictedAreaNightVehicle_Soldier_B_Ahmeed_01",localize "str_a3_om_Syndikat_RestrictedAreaNightVehicle_Soldier_B_01"]
+	]
+];
+
+BIS_fnc_om_intruderMessage = {
+	params ["_enemies","_restrictedArea"];
+	PROFILE_INFO("BIS_fnc_om_intruderMessage","BIS_fnc_om_intruderMessage",1);
+	// Select nearest enemy
+	private _nearestEnemy = objNull;
+	private _sortedEnemies = [_enemies,[],{player distance _x},"ASCEND"] call BIS_fnc_sortBy;
+
+	if (count _sortedEnemies > 0) then {
+		_nearestEnemy = _sortedEnemies#0;
+	};
+
+	private _protocol = 0;
+	private _speaker = "";
+
+	switch (side group _nearestEnemy) do
+	{
+		case east:
+		{
+			//TODO: CHANGE CONDITION
+			if (_nearestenemy isKindOf "B_GEN_Commander_F" || _nearestenemy isKindOf "B_GEN_Soldier_F") exitwith {_protocol = 1;_speaker = localize "str_a3_cfgfactionclasses_blu_gen_f0"}; // TODO: Localize
+			//if (uniform _nearestEnemy in ["U_O_GEN_Soldier_F","U_O_GEN_Commander_F"]) exitwith {_protocol = 1;_speaker = "Gendarmerie"};
+			_protocol = 0;
+			_speaker = localize "str_a3_character_soldier";	//TODO: Localize
+		};
+
+		case independent:
+		{
+			_protocol = 2;
+			_speaker = localize "str_a3_character_insurgent"; 	//TODO: Localize
+		};
+	};
+
+	if (_nearestEnemy distance player > MAX_MESSAGE_RANGE) exitWith {debugLog "BIS_fnc_om_intruderMessage: Nearest enemy too far from player"};
+
+	private _selectedMessage = [];
+	if (_restrictedArea) then {
+		//Night
+		if (BIS_night) exitwith
+		{
+			if (vehicle player != player) then
+			{
+				// vehicle
+				_selectedMessage = selectRandom (BIS_om_RestrictedNightVehicleMessage select _protocol);
+			} else {
+				// infantry
+				if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform)  exitwith {_selectedMessage = selectRandom (BIS_om_AttackMessagesCSATuniform select _protocol)};
+				_selectedMessage = selectRandom (BIS_om_RestrictedNightMessage select _protocol);
+			};
+		};
+		//vehicle
+		if (vehicle player != player) exitwith
+		{
+			//if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform)  exitwith {};
+			_selectedMessage = selectRandom (BIS_om_RestrictedZoneWarning select _protocol);
+		};
+		//infantry
+		if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform)  exitwith {_selectedMessage = selectRandom (BIS_om_AttackMessagesCSATuniform select _protocol)};
+		_selectedMessage = selectRandom (BIS_om_RestrictedZoneWarning select _protocol);
+	} else {
+		//vehicle
+		if (vehicle player != player) exitwith {_selectedMessage = selectRandom (BIS_om_VehicleWarningMessages select _protocol);};
+		// infantry unarmed
+		if (currentweapon player != "") exitwith
+		{
+			if (BIS_isWearingCSATHelmet && BIS_isWearingCSATUniform)  exitwith {_selectedMessage = selectRandom (BIS_om_defaultWarningMessagesCSATuniform select _protocol)};
+			_selectedMessage = selectRandom (BIS_om_WeaponRevealedMessages select _protocol);
+		};
+		_selectedMessage = selectRandom (BIS_om_defaultWarningMessages select _protocol);//BIS_om_WeaponRevealedMessages
+	};
+
+	// Select message to be played
+	_selectedMessage params ["_sound","_message"];
+	debugLog str [_nearestEnemy, player distance _nearestEnemy, _sound, _message];
+
+	[_nearestEnemy, player] say3D [_sound, 300, 1,true];
+	[_speaker,_message] call BIS_fnc_showSubtitle;
+};
+
+
+BIS_fnc_om_goCalm = {
+	scriptName "BIS_fnc_om_goCalm";
+	params ["_module"];
+	private _side = GVAR(_module,"side");
+	if (DEBUG_MODE) then {systemChat format ["REL: %1 is friendly again",_side]};
+	/* [_module, false] call BIS_fnc_om_showAwarenessUI; */
+	SVAR(_module,"aggroMode",M_CALM);
+	BIS_playerSide setFriend [_side,1];
+	_side setFriend [BIS_playerSide,1];
+};
+
+// Select aware enemies
+BIS_fnc_om_awareEnemies = {
+	scriptName "BIS_fnc_om_awareEnemies";
+	PROFILE_INFO("BIS_fnc_om_awareEnemies","BIS_fnc_om_awareEnemies",1);
+	params ["_side",["_range",200]];
+	private _enemies = (player nearEntities [["Man", "AllVehicles"],_range]) select {
+		side group _x == _side && {(_x targetKnowledge vehicle player)#2 >= time - AWARE_TIMEOUT}
+	};
+	_enemies
+};
+
+// Find if player is detected by someone at the moment. Faster version of BIS_fnc_om_awareEnemies, returning only bool
+BIS_fnc_om_isPlayerDetected = {
+	scriptName "BIS_fnc_om_isPlayerDetected";
+	params ["_side",["_range",200]];
+	PROFILE_INFO("BIS_fnc_om_awareEnemies","BIS_fnc_om_isPlayerDetected",1);
+	private _detected = false;
+
+	private _i = (player nearEntities [["Man", "AllVehicles"],_range]) findIf {
+		side group _x == _side && {(_x targetKnowledge vehicle player)#2 >= time - AWARE_TIMEOUT}
+	};
+	if (_i > -1) then {
+		_detected = true;
+	};
+	_detected
+};
+
+//Shows Red circle around the player if the awarness is high
+BIS_fnc_om_showAwarenessUI = {
+	scriptName "BIS_fnc_om_showAwarenessUI";
+	params ["_module", ["_show", true, [true]]];
+	private _awarenessUIEventHandlers = GVARS(_module, "awarenessUIEventHandlers", []);
+	//get displays.If they are hidden, EHs aren't executed.For GPS we have to loop over all corresponding IDDs to cover both displays
+	private _map_andGpsDisplays = ((uiNamespace getVariable "igui_displays") select {ctrlIDD _x == 311}) apply {_x displayCtrl 101};
+	_map_andGpsDisplays pushBack (findDisplay 12 displayCtrl 51);
+	// from last to first, for removing array elements
+	for "_i" from (count _map_andGpsDisplays -1) to 0 step -1 do {
+		private _ctrl = _map_andGpsDisplays#_i;
+		if (_show) then {
+			//addDrawingIcon on eh
+			SVAR((_ctrl), "module", _module);
+			private _idEh = _ctrl ctrlAddEventHandler ["Draw", {
+				scriptName "BIS_fnc_om_showAwarenessUI/Draw";
+				params["_gpsDisplay"];
+				//get alpha level
+				private _awarenessAlpha = (GVARS(GVARS(_gpsDisplay, "module", objNull), "threat", 0)) / 150;
+				_gpsDisplay drawIcon
+				[
+					"\A3\Ui_f\data\Map\Markers\Military\circle_CA.paa",
+					[0.9, 0, 0, _awarenessAlpha], //RED
+					getPosATL player, //getPosATL is bit faster then getPos, and we don't care about z anyway
+					32,
+					32,
+					0
+				]
+			}];
+			//remember eh
+			_awarenessUIEventHandlers pushBack _idEh;
+		} else {
+			//remove eh, and its membered index
+			//TODO: fix the issue with removing wrong eventhandlers
+			_ctrl ctrlRemoveEventHandler ["Draw", (_awarenessUIEventHandlers#_i)];
+			SVAR(_ctrl, "module", nil);
+			_awarenessUIEventHandlers deleteAt _i;
+		};
+	};
+	SVAR(_module, "awarenessUIEventHandlers", _awarenessUIEventHandlers);
+};

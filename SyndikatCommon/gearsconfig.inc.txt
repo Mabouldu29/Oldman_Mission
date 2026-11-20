@@ -1,0 +1,295 @@
+class SyndikatGear
+{
+  vests[] =
+  {
+    //level 0 ("class", probability)
+    {
+        {"V_BandollierB_blk", 0.8},
+        {"V_BandollierB_rgr",0.5},
+        {"V_LegStrapBag_black_F", 0.8},
+        {"V_TacChestrig_oli_F",0.95},
+        {"V_TacChestrig_grn_F",0.5},
+        {"V_TacVest_camo",0.2},
+        {"V_TacVest_oli",0.2},
+        {"V_TacVestIR_blk", 0.2 },
+        {"V_Chestrig_blk", 0.2},
+        {"V_Chestrig_oli", 0.2},
+        {"V_Rangemaster_belt",0.1}
+    },
+    //level 1
+    {
+        {"V_BandollierB_blk", 0.8},
+        {"V_BandollierB_rgr",0.5},
+        {"V_LegStrapBag_black_F", 0.8},
+        {"V_TacChestrig_oli_F",0.8},
+        {"V_TacChestrig_grn_F",0.5},
+        {"V_TacVest_camo",0.2},
+        {"V_TacVest_oli",1},
+        {"V_TacVestIR_blk", 0.2 },
+        {"V_Chestrig_blk", 0.2},
+        {"V_Chestrig_oli", 0.2},
+        {"V_Rangemaster_belt",0.1},
+        {"V_TacVest_gen_F", 0.2},
+        {"V_PlateCarrierIAGL_oli", 0.15}
+    },
+    //level 2
+    {
+        {"V_TacVest_blk", 1},
+        {"V_TacVest_blk_POLICE", 0.6},
+        {"V_PlateCarrierIAGL_oli", 0.8},
+        {"V_PlateCarrier1_rgr_noflag_F",0.3},
+        {"V_PlateCarrier2_rgr_noflag_F",0.3},
+        {"V_EOD_olive_F",0.2},
+        {"V_PlateCarrierIAGL_oli",0.2},
+        {"V_SmershVest_01_F",0.2},
+        {"V_HarnessOGL_brn",0.2},
+        {"V_HarnessO_ghex_F",0.2},
+        {"V_CarrierRigKBT_01_heavy_Olive_F",0.1},
+        {"V_CarrierRigKBT_01_light_Olive_F",0.1},
+        {"V_CarrierRigKBT_01_Olive_F",0.3},
+        {"V_TacVestIR_blk",0.1}
+    }
+    //more levels define here
+  };
+
+  bags[] =
+  {
+    //level 0
+    {},
+    //level 1
+    {
+        {"B_AssaultPack_eaf_F",0.35},
+        {"B_AssaultPack_rgr",0.65},
+        {"B_AssaultPack_khk",0.5},
+        {"B_Carryall_green_F",0.1},
+        {"B_Carryall_oli",0.1},
+        {"B_Kitbag_rgr",0.1},
+        {"B_Kitbag_sgg",0.1},
+        {"B_TacticalPack_blk",0.2},
+        {"B_TacticalPack_oli",0.1}
+    },
+    //level 2
+    {
+        {"B_AssaultPack_eaf_F",0.3},
+        {"B_AssaultPack_rgr",0.8},
+        {"B_AssaultPack_khk",0.7},
+        {"B_Carryall_green_F",0.1},
+        {"B_Carryall_oli",0.5},
+        {"B_Kitbag_rgr",0.4},
+        {"B_Kitbag_sgg",0.3},
+        {"B_TacticalPack_blk",0.2},
+        {"B_TacticalPack_oli",0.1}
+    }
+  };
+
+goggles[] =
+  {
+    //level 0
+    {},
+    //level 1
+    {
+        {"G_Bandanna_aviator",0.2},
+        {"G_Bandanna_beast",0.65},
+        {"G_Bandanna_oli",1},
+        {"G_Bandanna_tan",0.5}
+    },
+    //level 2
+    {
+        {"G_Tactical_Black",0.3},
+        {"G_Bandanna_aviator",0.35},
+        {"G_Bandanna_beast",0.65},
+        {"G_Bandanna_oli",1},
+        {"G_Bandanna_tan",0.5}
+    }
+  };
+
+  helmets[] =
+  {
+    //level 0 ("class", probability)
+    {
+        {"H_Bandanna_khk"           ,0.8},
+        {"H_Bandanna_surfer_blk"    ,0.9},
+        {"H_Shemag_olv_hs"          ,0.2},
+        {"H_Bandanna_camo"          ,0.1},
+        {"H_Watchcap_camo"          ,0.6},
+        {"H_Booniehat_mgrn"         ,0.5},
+        {"H_Booniehat_oli"          ,0.4},
+        {"H_Cap_blk"                ,0.4},
+        {"H_Cap_grn"                ,0.4},
+        {"H_Cap_oli"                ,0.5},
+        {"H_Shemag_olive"           ,0.2},
+        {"H_EarProtectors_black_F"  ,0.2},
+        {"H_Beret_blk"              ,0.3},
+        {"H_Hat_Safari_olive_F"     ,0.1},
+        {""                         ,1}
+    },
+    //level 1
+    {
+        {"H_Helmet_skate"           ,0.1},
+        {"H_Bandanna_khk"           ,1},
+        {"H_PASGT_basic_black_F"    ,0.1},
+        {"H_Bandanna_surfer_blk"    ,0.1},
+        {"H_Shemag_olv_hs"          ,0.6},
+        {"H_Bandanna_camo"          ,0.4},
+        {"H_Watchcap_camo"          ,0.3},
+        {"H_Booniehat_mgrn"         ,0.6},
+        {"H_Booniehat_oli"          ,0.5},
+        {"H_Cap_blk"                ,0.1},
+        {"H_Cap_grn"                ,0.4},
+        {"H_Cap_oli"                ,0.4},
+        {"H_Shemag_olive"           ,0.4},
+        {"H_EarProtectors_black_F"  ,0.3},
+        {""                         ,0.3}
+    },
+    //level 2
+    {
+        {"H_Bandanna_khk"           ,1},
+        {"H_PASGT_basic_olive_F"    ,0.5},
+        {"H_Helmet_skate"           ,0.2},
+        {"H_HelmetO_ghex_F"         ,0.3},
+        {"H_PASGT_basic_black_F"    ,0.3},
+        {"H_Shemag_olive_hs"        ,0.6},
+        {"H_Cap_headphones"         ,0.6},
+        {"H_MilCap_grn"             ,0.9},
+        {"H_HeadSet_black_F"        ,0.3},
+        {"H_HeadBandage_bloody_F"   ,0.2},
+        {"H_HeadBandage_stained_F"  ,0.3},
+        {"H_Booniehat_khk_hs"       ,0.6},
+        {"H_Watchcap_khk"           ,0.3},
+        {"H_Watchcap_camo"          ,0.3},
+        {"H_EarProtectors_black_F"  ,0.3}
+     }
+    //more levels define here
+  };
+
+  primaryWeapons[] =
+  {
+    //level 0 ("class", probability)
+    {
+        {"arifle_AKS_F", 1},
+        {"SMG_05_F", 0.7},
+        {"SMG_03C_TR_black", 0.5},
+        {"arifle_AKM_F", 0.7},
+        {"sgun_HunterShotgun_01_F",1},
+        {"sgun_HunterShotgun_01_sawedoff_F",0.2},
+        {"srifle_DMR_06_hunter_F",0.6},
+        {"arifle_SPAR_01_blk_F",0.2},
+        {"arifle_AK12_F",0.2},
+        {"SMG_02_F",0.2},
+        {"SMG_01_F",0.2},
+        {"srifle_DMR_07_blk_F",0.4},
+        {"srifle_DMR_01_F", 0.3},
+        {"LMG_03_F",0.3}
+    },
+    //level 1
+    {
+        {"arifle_AKM_F", 1},
+        {"arifle_AKS_F", 1},
+        {"arifle_CTAR_blk_F", 0.5},
+        {"sgun_HunterShotgun_01_F",0.5},
+        {"sgun_HunterShotgun_01_sawedoff_F",0.1},
+        {"srifle_DMR_07_blk_F", 0.5},
+        {"arifle_SPAR_01_blk_F",0.3},
+        {"LMG_03_F", 0.4},
+        {"SMG_03_TR_black",0.2},
+        {"arifle_AK12_F",0.3},
+        {"arifle_AK12_GL_F",0.3},
+        {"arifle_CTARS_blk_F",0.3},
+        {"arifle_CTAR_GL_blk_F",0.2},
+        {"srifle_DMR_07_blk_F",0.2},
+        {"arifle_Katiba_F",0.2},
+        {"srifle_DMR_06_olive_F",0.2},
+        {"arifle_RPK12_F",0.1},
+        {"LMG_Zafir_F",0.1},
+        {"srifle_EBR_F",0.2}
+    },
+    //level 2
+    {
+        {"arifle_AKM_F", 0.7},
+        {"arifle_AKS_F", 0.3},
+        {"arifle_CTAR_blk_F", 0.6},
+        {"sgun_HunterShotgun_01_F",0.1},
+        {"srifle_DMR_07_blk_F", 0.5},
+        {"srifle_DMR_07_ghex_F",0.6},
+        {"arifle_SPAR_01_blk_F",0.6},
+        {"LMG_03_F", 0.4},
+        {"SMG_03_TR_black",0.2},
+        {"arifle_AK12_F",1},
+        {"arifle_AK12_lush_F",0.1},
+        {"arifle_AK12_GL_F",0.2},
+        {"arifle_AK12_GL_lush_F",0.2},
+        {"arifle_CTARS_blk_F",0.2},
+        {"arifle_CTAR_GL_blk_F",0.2},
+        {"srifle_DMR_07_blk_F",0.2},
+        {"arifle_Katiba_F",0.3},
+        {"srifle_DMR_06_olive_F",0.2},
+        {"arifle_RPK12_F",0.4},
+        {"LMG_Zafir_F",0.3},
+        {"srifle_EBR_F",0.3},
+        {"arifle_AK12U_F",0.5},
+        {"arifle_AK12U_lush_F",0.5},
+        {"arifle_CTARS_ghex_F",0.5},
+        {"arifle_CTAR_ghex_F",0.4},
+        {"arifle_CTAR_GL_ghex_F",0.4},
+        {"arifle_CTAR_GL_blk_F",0.4},
+        {"srifle_DMR_05_blk_F",0.3},
+        {"srifle_GM6_F",0.2},
+        {"srifle_DMR_02_F",0.1},
+        {"srifle_DMR_03_khaki_F",0.2},
+        {"srifle_DMR_06_camo_F",0.3},
+        {"srifle_DMR_06_olive_F", 0.2},
+        {"LMG_Mk200_black_F",0.2},
+        {"arifle_RPK12_lush_F",0.3},
+        {"arifle_SPAR_01_GL_blk_F",0.2},
+        {"arifle_SPAR_02_blk_F",0.3},
+        {"arifle_SPAR_03_blk_F",0.3},
+        {"arifle_MSBS65_Mark_black_F", 0.2},
+        {"arifle_MSBS65_GL_black_F", 0.2},
+        {"MMG_01_tan_F" , 0.2},
+        {"arifle_ARX_blk_F",0.3}
+    }
+    //more levels define here
+  };
+
+  secondaryWeapons[] =
+  {
+    //level 0 ("class", probability)
+    { {"launch_RPG7_F", 0.1} },
+    //level 1
+    { {"launch_RPG7_F", 0.2} },
+    //level 2
+    { {"launch_RPG7_F", 0.2}, {"launch_RPG32_ghex_F", 0.2}  }
+    //more levels define here
+  };
+
+  attachementsOptics[] =
+  {
+    //level 0 ("class", probability)
+    { {"optic_aco", 0.2} },
+    //level 1
+    { {"optic_aco", 0.9}, {"optic_ERCO_blk_F", 0.3} },
+    //level 2
+    { {"optic_aco", 1.0}, {"optic_ERCO_blk_F", 0.8}, {"optic_ARCO_blk_F", 0.6} }
+    //more levels define here
+  };
+
+  NVGs[] =
+  {
+    //level 0 ("class", probability)
+    {},
+    //level 1
+    { {"O_NVGoggles_grn_F", 0.2} },
+    //level 2
+    { {"O_NVGoggles_grn_F", 0.5} }
+  };
+
+  skills[] =
+  {
+    //level 0
+    { 0.1, 0.3, 0.5 },
+    //level 1
+    { 0.5, 0.6, 0.8 },
+    //level 2
+    { 0.8, 0.9, 1.0 }
+  };
+};

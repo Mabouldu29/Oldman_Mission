@@ -1,0 +1,1 @@
+//#define DEV_FOLDER_NOT_PACKED   1

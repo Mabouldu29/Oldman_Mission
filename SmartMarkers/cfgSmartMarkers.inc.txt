@@ -1,0 +1,60 @@
+class SmartMarkers
+{
+  numberOfLODs = 3;
+
+  class SmartMarker_Default
+  {
+    class Icon
+    {
+      type[] = {loc_search, loc_search, loc_tree};
+      size[] = {{1,1}};
+      color[] = {ColorUNKNOWN};
+      alpha[] = {1};
+      shownInLODs[] = {0,1,2};
+    };
+    class IconBackground
+    {
+      type[] = {n_unknown, n_unknown, n_unknown};
+      size[] = {{1,1}};
+      color[] = {ColorUNKNOWN};
+      alpha[] = {1};
+      shownInLODs[] = {0,1,2};
+    };
+    class Area
+    {
+      brush[] = {FDiagonal};
+      size[] = {{80, 80}, {40,40}};
+      color[] = {ColorUNKNOWN};
+      alpha[] = {1, 0.5};
+      shownInLODs[] = {0,1};
+    };
+    class Text
+    {
+      text = "DEFAULT MARKER";
+      font = "RobotoCondensed";
+      size[] = {1,0.5,0.3};
+      shownInLODs[] = {0};
+    };
+    LODs[] =                            \
+    {                                         \
+      {Icon, IconBackground, Area, Text},     \
+      {Icon, IconBackground, Text},           \
+      {Icon, IconBackground}                  \
+    };
+
+  };
+
+  class SmartMarker_Default2: SmartMarker_Default
+  {
+    class Area
+    {
+    };
+    LODs[] =                            \
+    {                                         \
+      {Icon, IconBackground, Text},     \
+      {Icon, IconBackground, Text},           \
+      {Icon, IconBackground}                  \
+    };
+  };
+
+};

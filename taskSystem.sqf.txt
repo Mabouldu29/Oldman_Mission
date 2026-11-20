@@ -1,0 +1,108 @@
+#define TASK_CREATED 		1
+#define TASK_SUCCESSFULL 	2
+#define TASK_FAILED     	3
+#define TASK_CANCELED 		4
+
+#define TASK_STATES_FINISHED TASK_SUCCESSFULL
+
+private _scripts = [
+	"taskSystem_deliver"
+];
+{
+	private _handle = [] execVM ("\a3\Missions_F_Oldman\Systems\scripts\" + _x + ".sqf");
+	waitUntil {sleep 0.5; scriptDone _handle};
+} forEach _scripts;
+
+BIS_fnc_questSystem_taskCreate = {
+	params[
+		"_taskOwner", "_taskName", "_tasDescription", "_taskType", "_taskPos",
+		"_conditionsArray",
+		"_effectsArray"
+	];
+	_conditionsArray params ["_createCondition", "_completitionCondition", ["_cancelationCondition", {false}], ["_failCondition", {false}]];
+	_effectsArray params ["_createEffect", "_completitionEffect"];
+
+	/* ["Task %1 INITIALIZED.", _taskName] call BIS_fnc_logFormat;  */
+	PROFILE_INFO("BIS_fnc_questSystem_taskCreate","BIS_fnc_questSystem_taskCreate",1);
+
+	waitUntil {sleep 0.5; ([] call _createCondition)};
+
+	["Task %1 Create condition fullfiled %2", _taskName, _createCondition] call BIS_fnc_logFormat;
+
+	private _taskList = _taskOwner getVariable ["taskList", []];
+	_taskId = _taskList pushBack _taskName;
+	_taskOwner setVariable ["taskList", _taskList];
+	private _taskStringId = format["taskNo%1", _taskId];
+
+	/* ["Task %1 params: %2 %3 %4 %5 %6 %7 %8", _taskName,_taskOwner,_taskStringId,_tasDescription,_taskName,_taskPos,_taskType] call BIS_fnc_logFormat; */
+
+	[
+		_taskOwner,
+		_taskStringId,
+		[_tasDescription, _taskName],
+		_taskPos,
+		true,
+		nil,
+		true,
+		_taskType,
+		false
+	] call BIS_fnc_taskCreate;
+	[_taskStringId, "ASSIGNED"] call BIS_fnc_taskSetState;
+
+	[_taskStringId, _taskName, _tasDescription, _taskType, _taskPos,
+	 _createCondition, _completitionCondition,_cancelationCondition, _failCondition,
+	 _createEffect, _completitionEffect
+	] spawn BIS_fnc_questSystem_taskRunning;
+	_taskId
+};
+
+BIS_fnc_questSystem_taskRunning = {
+	params[
+		"_taskStringId", "_taskName", "_tasDescription", "_taskType", "_taskPos",
+		"_createCondition", "_completitionCondition","_cancelationCondition", "_failCondition",
+		"_createEffect", "_completitionEffect"
+	];
+	/* ["Task %1 CREATED.", _taskName] call BIS_fnc_logFormat; */
+
+	private _taskState = TASK_CREATED;
+	private _taskCheckDelay = 1;
+	[] call _createEffect;
+
+	/* ["Task CompletitionCondition  %1", _completitionCondition] call BIS_fnc_logFormat; */
+	_cancelationCondition = _cancelationCondition + "PROFILE_INFO('_cancelationCondition','_cancelationCondition',1);";
+	_failCondition = _failCondition + "PROFILE_INFO('_failCondition','_failCondition',1);";
+	private _completitionConditionCode = compile ("PROFILE_INFO('_completitionConditionCode','_completitionConditionCode',1);" + _completitionCondition);
+
+	while {_taskState < TASK_STATES_FINISHED} do {
+		PROFILE_INFO("BIS_fnc_questSystem_taskRunning","BIS_fnc_questSystem_taskRunning",1);
+		if ([] call _completitionConditionCode) then {
+				_taskState = TASK_SUCCESSFULL;
+			} else {if ([] call _failCondition) then {
+				_taskState = TASK_FAILED;
+			};
+			if ([] call _cancelationCondition) then { //I can cancel anytime
+				_taskState = TASK_CANCELED;
+			};
+		};
+		sleep _taskCheckDelay;
+	};
+	switch (_taskState) do {
+		case TASK_SUCCESSFULL: {
+			[_taskStringId, "SUCCEEDED"] call BIS_fnc_taskSetState;
+			/* ["Task %1 SUCCESSFULL.", _taskName] call BIS_fnc_logFormat; */
+		};
+		case TASK_FAILED: {
+			[_taskStringId, "FAILED"] call BIS_fnc_taskSetState;
+			/* ["Task %1 FAILED.", _taskName] call BIS_fnc_logFormat; */
+		};
+		case TASK_CANCELED: {
+			[_taskStringId, "CANCELED"] call BIS_fnc_taskSetState;
+			/* ["Task %1 CANCELED.", _taskName] call BIS_fnc_logFormat; */
+		};
+		default {
+			/* ["Task %1 Error: invalid task state %3", _taskName, _taskState] call BIS_fnc_logFormat; */
+			//throw: "Task system Error: invalid task state " + str  _taskState;
+		};
+	};
+	[] call _completitionEffect;
+};

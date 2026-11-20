@@ -1,0 +1,647 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc";
+
+//GROUP DUMP DEFINES
+#define PADDING_CHAR 						" "
+#define TEXT_LENGTH							30
+#define INDEX_SIDE							0
+#define INDEX_BEHAVIOR 					1
+#define INDEX_WAYPOINTS 				2
+#define INDEX_UNITS							3
+#define DUMP_FILE 							"a3\Missions_F_Oldman\Systems\scripts\SyndikatTeam\SyndikatTeam_group_dump.txt"
+#define FILE_OVERWRITE_WITH_NEW 2
+#define FILE_APPEND 						1
+
+BIS_fnc_numberToSide = {
+	scriptName "BIS_fnc_numberToSide";
+	params["_number"];
+	private _side = sideUnknown;
+	if (_number isEqualType sideUnknown) exitWith {_number};
+	private _sides = [EAST,WEST,RESISTANCE,CIVILIAN,sideUnknown,sideEnemy,sideFriendly,sideLogic,sideEmpty,sideAmbientLife];
+	if (_number > -1 && _number < count _sides) then {
+		_side = _sides#_number;
+	};
+	_side
+};
+
+BIS_fnc_sideToNumber = {
+	scriptName "BIS_fnc_sideToNumber";
+	params["_side"];
+	private _number = 4;
+	switch (_side) do {
+		case EAST			: {_number = 0 };
+		case WEST			: {_number = 1 };
+		case RESISTANCE		: {_number = 2 };
+		case CIVILIAN		: {_number = 3 };
+		case sideUnknown	: {_number = 4 };
+		case sideEnemy		: {_number = 5 };
+		case sideFriendly	: {_number = 6 };
+		case sideLogic		: {_number = 7 };
+		case sideEmpty		: {_number = 8 };
+		case sideAmbientLife: {_number = 9 };
+	};
+	_number
+};
+
+BIS_fnc_om_debugInfoAgent = {
+	scriptName "BIS_fnc_om_debugInfoAgent";
+	while {true} do {
+		sleep 0.35;
+		//if (DEBUG_MODE && visibleMap) then {
+		if (visibleMap) then {
+			private _string = "<t size='1.25' align='center'>DEBUG INFO<br /><br /></t>";
+
+			// Relationship info
+			{
+				_string = _string + format ["<t size='0.9' color='#7c7c87' align='left'>%1 threatLevel:</t><t align='right' color='#7c7c87'>%2</t> \
+				<t align='left' color='#7c7c87'><br />%1 threatRange:</t><t align='right' color='#7c7c87'>%3</t>
+				<t align='left' color='#7c7c87'><br />%1 threatRate:</t><t align='right' color='#7c7c87'>%4<br /><br /></t>",
+					_x getVariable "side",
+					_x getVariable "threat",
+					_x getVariable "ThreatRange",
+					_x getVariable "ThreatRate"
+				];
+			} forEach BIS_relModules;
+
+			{
+				_string = _string + format
+				["<t size='0.9' align='left'%3%1:</t><t align='right'><t size='0.9' align='right'%3%2<br /></t>",_x, MGVAR(_x),
+				if(_forEachIndex % 2 == 0) then {" color='#808080'>"} else {" color='#f6f6f6'>"}];
+			} forEach BIS_debugArray;
+			_string = _string + "<t size='0.75' color='#535360' shadow='1'shadowColor='#000000'><br />BIS_SyndikatPool_Debug = true</t><br /><t size='0.75' color='#3a3c59'>will show the debug screen</t>";
+			hintSilent parseText _string;
+		};
+	};
+};
+
+BIS_fnc_allConnectedUnits = {
+	scriptName "BIS_fnc_allConnectedUnits";
+	params ["_unit"];
+	private _entities = [];
+ 	{
+		_entities pushBackUnique _x;
+		_entities pushBackUnique (vehicle _x);
+		{_entities pushBackUnique _x} forEach (crew vehicle _x);
+	} forEach units group _unit;
+	_entities
+};
+
+// Find out type of group from data
+BIS_fnc_om_groupDataType = {
+	scriptName "BIS_fnc_om_groupDataType";
+	params [["_data",[]]];
+	// TODO: Dirty hack, case of missing data has to be handled properly
+	if (count _data == 0) exitWith {"Infantry"};
+	_data params ["_vehicles","_groups"];
+
+	//debugLog str _data;
+	//debugLog str _vehicles;
+	private _type = "Infantry";
+	{
+		switch (true) do {
+			case (_x#0 isKindOf "Air"): {_type = "Air"};
+			case (_x#0 isKindOf "LandVehicle"): {_type = "Motorized"};
+			case (_x#0 isKindOf "Ship"): {_type = "Ship"};
+		};
+	} forEach _vehicles;
+	_type
+};
+
+BIS_fnc_om_randomPosCode = {
+	scriptName "BIS_fnc_om_randomPosCode";
+	params ["_area",["_code",{true}],["_maxRepeats",40]];
+	_area params ["_pos","_px","_py"];
+	_pos params ["_posX","_posY"];
+	private _range = _px max _py;
+	private _resultPos = [];
+	private _positions = [];
+
+	// Prepare random locations
+	for "_i" from 0 to 19 do {
+		_positions pushBack [(_range * random 2) - _range + _posX,(_range * random 2) - _range + _posY];
+	};
+	// Filter out only positions in area
+	_positions = _positions inAreaArray _area;
+
+	// Check code
+	private _i = _positions findIf _code;
+	if (_i > -1) exitWith {
+		(_positions#_i) pushBack 0;
+		(_positions#_i)
+	};
+
+	// Repeat version
+	for "_j" from 0 to ceil (_maxRepeats / 20) do {
+		private _positions = [];
+		for "_i" from 0 to 19 do {
+			_positions pushBack [(_range * random 2) - _range + _posX,(_range * random 2) - _range + _posY];
+		};
+		// Filter out only positions in area
+		_positions = _positions inAreaArray _area;
+
+		// Check code
+		private _i = _positions findIf _code;
+		if (_i > -1) exitWith {_resultPos = _positions#_i};
+	};
+	_resultPos pushBack 0;
+	if (count _resultPos != 3) then {_resultPos = [_pos # 0, _pos # 1, 0]};
+	_resultPos
+};
+
+// Handle all cases of skipped time
+BIS_fnc_om_handleTimeSkip = {
+	scriptName "BIS_fnc_om_handleTimeSkip";
+	params ["_time"];
+	private _threatToDelete = _time * 25;
+
+	// Handle relationship decrease
+	private _threat = [east] call BIS_fnc_om_threat;
+	[east, _threatToDelete min _threat] call BIS_fnc_om_lowerThreat; // Lower threat by seconds resting, or to 0
+
+	// Day/night change
+	private _changed = false;
+	private _wakeUpTime = daytime + _time;
+
+	if (_wakeUpTime >= 24) then {_wakeUpTime = _wakeUpTime - 24};
+	(date call BIS_fnc_sunriseSunsetTime) params ["_dawn","_dusk"];
+	if (_wakeUpTime > _dawn && _wakeUpTime < _dusk) then {
+		if (BIS_night) then {
+			BIS_night = false;
+			_changed = true;
+		};
+	} else {
+		if (!BIS_night) then {
+			BIS_night = true;
+			_changed = true;
+		};
+	};
+
+	if (_changed) then {
+		// Despawn all automatically handled sectors, they will respawn on their own
+		[] spawn {
+			scriptName "utility/despawnSector";
+			sleep 0.1;
+			private _playerSector = [getPos player] call BIS_fnc_om_inSector;
+			if (!isNull _playerSector) then {
+				[_playerSector,true] spawn BIS_fnc_om_sectorDeactivate;
+			};
+			{
+				if (_x != _playerSector) then {
+					[_x,true] spawn BIS_fnc_om_sectorDeactivate;
+				};
+			} forEach (BIS_allSectors select {GVAR(_x,"#state" >= 2) && !GVARS(_x,"#manual",false)});
+		};
+	};
+};
+
+//HELPER FOR FORMATTING
+BIS_fnc_OM_PadTextWithSpace =
+{
+	scriptName "BIS_fnc_OM_PadTextWithSpace";
+	params["_text", ["_paddingChar", PADDING_CHAR, [""]], ["_nr", TEXT_LENGTH, [999]] ];
+	private _spaces = "";
+	private _nrOfSpaces = _nr - count _text;
+	for "iLoop" from 1 to _nrOfSpaces do
+	{ _spaces = _spaces + _paddingChar; };
+	/* ["Adding %1 spaces", _nrOfSpaces] call BIS_fnc_LogFormat; */
+	_text + _spaces
+};
+
+
+/* #ifdef INTERNAL_VERSION
+//DUMP SECTOR GROUPS TO A FILE
+//EXAMPLE: [entities "ModuleOmSector_F" select 0 getVariable "#groupdata"] call BIS_fnc_OM_dumpGroups
+BIS_fnc_OM_DumpGroups =
+{
+	scriptName "BIS_fnc_OM_DumpGroups";
+	#define LENGTH_TABLE 			180
+	#define LENGTH_SEPARATOR 	190
+	params[ ["_sectorData", [[],[]], [[[],[]]]], [ "_file", DUMP_FILE,[""] ] ];
+
+	private _totalGroups = 0;
+	private _totalUnits = 0;
+
+	diag_saveTextFile[_file, "SECTOR GROUPS DUMP \n", FILE_OVERWRITE_WITH_NEW ];
+	diag_saveTextFile[_file, format["%1\n",["","-", 180] call BIS_fnc_OM_PadTextWithSpace], FILE_APPEND ];
+	//groups
+	{
+		private _group = _x;
+		diag_saveTextFile[_file, format["Group: %1\n", _forEachIndex], FILE_APPEND ];
+		diag_saveTextFile[_file, format["\tSide: %1\n", _group select INDEX_SIDE], FILE_APPEND ];
+		diag_saveTextFile[_file, format["\tBehavior: %1\n", _group select INDEX_BEHAVIOR], FILE_APPEND ];
+		diag_saveTextFile[_file, format["\tWaypoints: %1\n", _group select INDEX_WAYPOINTS], FILE_APPEND ];
+		diag_saveTextFile[_file, "\tUnits:\n", FILE_APPEND ];
+		diag_saveTextFile
+		[
+			_file,
+			format
+			[
+				"\t\t%1%2%3%4%5%6\n",
+				["TYPE"] call BIS_fnc_OM_PadTextWithSpace,
+				["VARNAME"] call BIS_fnc_OM_PadTextWithSpace,
+				["SKILL"] call BIS_fnc_OM_PadTextWithSpace,
+				["DAMAGE"] call BIS_fnc_OM_PadTextWithSpace,
+				["POSITION"] call BIS_fnc_OM_PadTextWithSpace,
+				["DIR"] call BIS_fnc_OM_PadTextWithSpace
+			],
+			FILE_APPEND ];
+			diag_saveTextFile[_file, format["\t\t%1\n",["","-", LENGTH_TABLE] call BIS_fnc_OM_PadTextWithSpace], FILE_APPEND ];
+		private "_nrOfUnits";
+		{
+			diag_saveTextFile
+			[
+				_file,
+				format
+				[
+					"\t\t%1%2%3%4%5%6\n",
+					[_x select 0] call BIS_fnc_OM_PadTextWithSpace,
+					[_x select 1] call BIS_fnc_OM_PadTextWithSpace,
+					[str(_x select 4)] call BIS_fnc_OM_PadTextWithSpace,
+					[str(_x select 5)] call BIS_fnc_OM_PadTextWithSpace,
+					[str(_x select 2)] call BIS_fnc_OM_PadTextWithSpace,
+					[str(_x select 3)] call BIS_fnc_OM_PadTextWithSpace
+				],
+			 	FILE_APPEND
+			];
+			_nrOfUnits = _forEachIndex;
+		} forEach (_group select INDEX_UNITS);
+		_nrOfUnits = _nrOfUnits + 1;
+		diag_saveTextFile[_file, format["\t\t%1\n",["","-", LENGTH_TABLE] call BIS_fnc_OM_PadTextWithSpace], FILE_APPEND ];
+		diag_saveTextFile
+		[
+			_file,
+			format["\n\t\tNumber of UNITS:%1\n\n",(_nrOfUnits)],
+			FILE_APPEND
+		];
+		_totalUnits = _totalUnits + _nrOfUnits;
+		diag_saveTextFile[_file, format["%1\n",["","-", LENGTH_SEPARATOR] call BIS_fnc_OM_PadTextWithSpace], FILE_APPEND ];
+		_totalGroups = _totalGroups + 1;
+	} forEach (_sectorData);
+	diag_saveTextFile[_file, format["%1\n",["","-", LENGTH_SEPARATOR] call BIS_fnc_OM_PadTextWithSpace], FILE_APPEND ];
+	diag_saveTextFile[_file, format["Total Groups: %1\nTotal Units: %2 \n", _totalGroups, _totalUnits], FILE_APPEND ];
+};
+
+
+BIS_fnc_OM_CreateAreaMarker =
+{
+	scriptName "BIS_fnc_OM_CreateAreaMarker";
+	params[ "_name", "_center", "_sizeX", "_sizeY", "_rot", "_rect", "_brush", "_color", "_alpha" ];
+
+	private _mrk = createMarker [ _name, _center];
+	//["SECTOR: _sizeX: %1, _sizeY: %2, _brush: %3, _color:%4", _sizeX, _sizeY, _brush, _color] call BIS_fnc_LogFormat;
+	_mrk setMarkerShape (if(_rect) then {"RECTANGLE"} else {"ELLIPSE"});
+	_mrk setMarkerBrush _brush;
+	_mrk setMarkerSize [_sizeX, _sizeY];
+	_mrk setMarkerDir _rot;
+	_mrk setMarkerColor _color;
+	_mrk setMarkerAlpha _alpha;
+
+	_mrk
+};
+#ifdef DEBUG_SECTOR_MARKERS
+	BIS_fnc_OM_CreateDebugSectorMarker =
+	{
+		scriptName "BIS_fnc_OM_CreateDebugSectorMarker";
+		params ["_sector"];
+		(_sector getVariable "#area") params ["_center", "_areaSizeX", "_areaSizeY", "_rot", "_rect" ];
+		(_sector getVariable "#areaPlusSpawnDistance") params ["_center", "_areaSpawnSizeX", "_areaSpawnSizeY" ];
+		(_sector getVariable "#areaPlusVehicleSpawnDistance") params ["_center", "_areaVehicleSpawnSizeX", "_areaVehicleSpawnSizeY" ];
+		(_sector getVariable "#areaPlusVehicleDespawnDistance") params ["_center", "_areaVehicleDespawnSizeX", "_areaVehicleDespawnSizeY" ];
+		(_sector getVariable "#airSpawnDistance") params ["_center", "_areaAirSpawnSizeX", "_areaAirSpawnSizeY" ];
+		(_sector getVariable "#areaPlusDespawnDistance") params ["_center", "_areaDespawnSizeX", "_areaDespawnSizeY" ];
+
+		private _sectorDebugMarkers = [];
+		_sectorDebugMarkers pushBack ([format ["%1_%2", _sector, "area"], _center, _areaSizeX, _areaSizeY, _rot, _rect, MARKER_AREA_BRUSH, MARKER_AREA_COLOR, 0] call BIS_fnc_OM_CreateAreaMarker);
+		_sectorDebugMarkers pushBack ([format ["%1_%2", _sector, "spawnDist"], _center, _areaSpawnSizeX, _areaSpawnSizeY, _rot, _rect, MARKER_SPAWN_DISTANCE_BRUSH, MARKER_SPAWN_DISTANCE_COLOR, 0] call BIS_fnc_OM_CreateAreaMarker);
+		_sectorDebugMarkers pushBack ([format ["%1_%2", _sector, "despawnDist"], _center, _areaDespawnSizeX, _areaDespawnSizeY, _rot, _rect, MARKER_DESPAWN_DISTANCE_BRUSH, MARKER_DESPAWN_DISTANCE_COLOR, 0] call BIS_fnc_OM_CreateAreaMarker);
+		_sectorDebugMarkers pushBack ([format ["%1_%2", _sector, "spawnDistVeh"], _center, _areaVehicleSpawnSizeX, _areaVehicleSpawnSizeY, _rot, _rect, MARKER_SPAWN_VEHICLE_DISTANCE_BRUSH, MARKER_SPAWN_VEHICLE_DISTANCE_COLOR, 0] call BIS_fnc_OM_CreateAreaMarker);
+		_sectorDebugMarkers pushBack ([format ["%1_%2", _sector, "despawnDistVeh"], _center, _areaVehicleDespawnSizeX, _areaVehicleDespawnSizeY, _rot, _rect, MARKER_DESPAWN_DISTANCE_ACTIVE_BRUSH, MARKER_DESPAWN_VEHICLE_DISTANCE_COLOR, 0] call BIS_fnc_OM_CreateAreaMarker);
+		_sector setVariable ["sectorDebugMarkers", _sectorDebugMarkers];
+	};
+
+	BIS_fnc_OM_SetDebugSectorMarkerActive =
+	{
+		scriptName "BIS_fnc_OM_SetDebugSectorMarkerActive";
+		params[ "_name", "_full", ["_type", 0, [9] ] ];
+		switch (_type) do
+		{
+		    case (0):
+		    {
+					if(_full) then
+					{
+						_name setMarkerBrush MARKER_AREA_ACTIVE_FULL_BRUSH;
+						_name setMarkerColor MARKER_AREA_ACTIVE_FULL_COLOR;
+						_name setMarkerAlpha MARKER_AREA_ACTIVE_FULL_ALPHA;
+					}
+					else
+					{
+						_name setMarkerBrush MARKER_AREA_ACTIVE_PART_BRUSH;
+						_name setMarkerColor MARKER_AREA_ACTIVE_PART_COLOR;
+						_name setMarkerAlpha MARKER_AREA_ACTIVE_PART_ALPHA;
+					};
+		    };
+				case (1):
+				{
+					_name setMarkerBrush MARKER_SPAWN_DISTANCE_ACTIVE_BRUSH;
+					_name setMarkerColor MARKER_SPAWN_DISTANCE_ACTIVE_COLOR;
+					_name setMarkerAlpha MARKER_SPAWN_DISTANCE_ACTIVE_ALPHA;
+				};
+				case (2):
+				{
+					_name setMarkerBrush MARKER_DESPAWN_DISTANCE_ACTIVE_BRUSH;
+					_name setMarkerColor MARKER_DESPAWN_DISTANCE_ACTIVE_COLOR;
+					_name setMarkerAlpha MARKER_DESPAWN_DISTANCE_ACTIVE_ALPHA;
+				};
+				case (3):
+				{
+					_name setMarkerBrush MARKER_SPAWN_VEHICLE_DISTANCE_ACTIVE_BRUSH;
+					_name setMarkerColor MARKER_SPAWN_VEHICLE_DISTANCE_ACTIVE_COLOR;
+					_name setMarkerAlpha MARKER_SPAWN_VEHICLE_DISTANCE_ACTIVE_ALPHA;
+				};
+				case (4):
+				{
+					_name setMarkerBrush MARKER_DESPAWN_VEHICLE_DISTANCE_ACTIVE_BRUSH;
+					_name setMarkerColor MARKER_DESPAWN_VEHICLE_DISTANCE_ACTIVE_COLOR;
+					_name setMarkerAlpha MARKER_DESPAWN_VEHICLE_DISTANCE_ACTIVE_ALPHA;
+				};
+		};
+	};
+
+	BIS_fnc_OM_SetDebugSectorMarkerInActive =
+	{
+		scriptName "BIS_fnc_OM_SetDebugSectorMarkerActive";
+		params[ "_name", ["_type", 0, [9] ] ];
+		switch (_type) do
+		{
+				case (0):
+				{
+					_name setMarkerBrush MARKER_AREA_BRUSH;
+					_name setMarkerColor MARKER_AREA_COLOR;
+					_name setMarkerAlpha MARKER_AREA_ALPHA;
+				};
+				case (1):
+				{
+					_name setMarkerBrush MARKER_SPAWN_DISTANCE_BRUSH;
+					_name setMarkerColor MARKER_SPAWN_DISTANCE_COLOR;
+					_name setMarkerAlpha MARKER_SPAWN_DISTANCE_ALPHA;
+				};
+				case (2):
+				{
+					_name setMarkerBrush MARKER_DESPAWN_DISTANCE_BRUSH;
+					_name setMarkerColor MARKER_DESPAWN_DISTANCE_COLOR;
+					_name setMarkerAlpha MARKER_DESPAWN_DISTANCE_ALPHA;
+				};
+				case (3):
+				{
+					_name setMarkerBrush MARKER_SPAWN_VEHICLE_DISTANCE_BRUSH;
+					_name setMarkerColor MARKER_SPAWN_VEHICLE_DISTANCE_COLOR;
+					_name setMarkerAlpha MARKER_SPAWN_VEHICLE_DISTANCE_ALPHA;
+				};
+				case (4):
+				{
+					_name setMarkerBrush MARKER_DESPAWN_VEHICLE_DISTANCE_BRUSH;
+					_name setMarkerColor MARKER_DESPAWN_VEHICLE_DISTANCE_COLOR;
+					_name setMarkerAlpha MARKER_DESPAWN_VEHICLE_DISTANCE_ALPHA;
+				};
+		};
+	};
+
+	BIS_fnc_ShowStateGUI =
+	{
+		scriptName "BIS_fnc_OM_SetDebugSectorMarkerActive";
+		params ["_object", ["_text",["test"],[[]]], ["_format", ["<t size='0.4'> %1 </t>"], [[]]] ];
+		private ["_UIlayer", "_display", "_control"];
+		if(isNil {_object getVariable "control"}) then
+		{
+			_UIlayer = floor random 1000 ;
+			_object setVariable ["UIlayer", _UIlayer];
+			_UIlayer cutrsc ["rscDynamicText","plain"];
+			_display = uinamespace getvariable "BIS_dynamicText";
+			_control = _display displayctrl 9999;
+			_object setVariable ["control", _control];
+		}
+		else
+		{
+			_control = _object getVariable "control";
+			_UIlayer = _object getVariable "UIlayer";
+		};
+		private "_unitpos";
+		if(!isNull _object) then
+		{
+			if(visiblemap) then
+			{
+				if(_object distance player > DISTANCE_TO_SHOW_SECTORS_INFO) then {(_object getVariable "control") ctrlShow false} else {(_object getVariable "control") ctrlShow true};
+				(_object getVariable "control") ctrlCommit 0;
+				_unitpos = (findDisplay 12 displayCtrl 51) ctrlMapWorldToScreen getpos _object;
+			}
+			else
+			{
+				if(_object distance player > DISTANCE_TO_SHOW_SECTORS_INFO_3D) then {(_object getVariable "control") ctrlShow false} else {(_object getVariable "control") ctrlShow true};
+				(_object getVariable "control") ctrlCommit 0;
+				_unitpos = worldToScreen (getpos _object);
+			};
+			private _textAll = "";
+
+			{
+				_textAll = composeText [_textAll, (parseText format[_format select _forEachIndex, _x])];
+			} forEach _text;
+			if!(_unitpos isEqualTo []) then
+			{
+				_control ctrlsetstructuredtext _textAll;
+				_control ctrlSetPosition [(_unitpos select 0) - DYNTEXT_OFFSET_X, (_unitpos select 1)];
+				_control ctrlcommit 0;
+			};
+		};
+	};
+
+
+	BIS_fnc_OM_ShowDebugMarker =
+	{
+		scriptName "BIS_fnc_OM_ShowDebugMarker";
+		params["_sector"];
+		switch (_sector getVariable "#state") do
+		{
+		    case (S_DESPAWNED):
+		    {
+		      {
+		         [_x, _forEachIndex] call BIS_fnc_OM_SetDebugSectorMarkerInActive;
+		      } forEach (_sector getVariable ["sectorDebugMarkers", []]);
+		    };
+				default
+				{
+					{
+						[_x, if( _sector getVariable "#state" == S_SPAWNED ) then {true} else {false}, _forEachIndex] call BIS_fnc_OM_SetDebugSectorMarkerActive;
+					} forEach (_sector getVariable ["sectorDebugMarkers", []]);
+				};
+		};
+	};
+
+	BIS_fnc_OM_HideDebugMarker =
+	{
+		scriptName "BIS_fnc_OM_HideDebugMarker";
+		params ["_sector"];
+		{
+			if( markerAlpha _x > 0) then { _x setMarkerAlpha 0.0 };
+		} forEach (_sector getVariable ["sectorDebugMarkers", []]);
+
+	};
+
+	BIS_dbgShowSectorMarkers = true;
+
+	BIS_dbgShowSectorMarkersInfoLevel = 1;
+	[] spawn
+	{
+		scriptName "utility.sqf/BIS_dbgShowSectorMarkers";
+
+		while{BIS_dbgShowSectorMarkers} do
+		{
+			PROFILE_START("BIS_dbgShowSectorMarkers");
+			if(BIS_dbgShowSectorMarkersInfoLevel > 0) then
+			{
+				missionNamespace setVariable ["dbgDeleteOnce", false];
+				BIS_sectorsToShow = BIS_allSectors select {_x distance player <= 2000 && _x getVariable "#state" == S_DESPAWNED };
+				BIS_sectorsToNotShow = BIS_allSectors select {_x distance player > 2000 && _x getVariable "#state" == S_DESPAWNED};
+
+				if(visibleMap) then
+				{
+					BIS_sectorsToShow_text = BIS_allSectors select { (_x distance player <= 1000) || (_x getVariable "#state" != 0) };
+					BIS_sectorsToNotShow_text = BIS_allSectors select { !isNil {_x getVariable "control"} && ( _x getVariable "#state" == 0) && (_x distance player > 1000) };
+				}
+				else
+				{
+					BIS_sectorsToShow_text = BIS_allSectors select { _x distance player <= 600 };
+					BIS_sectorsToNotShow_text = BIS_allSectors select { _x distance player > 600 && ctrlShown (_x getVariable "control") };
+				};
+			}
+			else
+			{
+				if!(missionNamespace getVariable ["dbgDeleteOnce", false]) then
+				{
+					BIS_sectorsToShow = [];
+					BIS_sectorsToNotShow = BIS_allSectors;
+					BIS_sectorsToShow_text = [];
+					BIS_sectorsToNotShow_text = BIS_allSectors;
+					missionNamespace setVariable ["dbgDeleteOnce", true];
+				};
+			};
+
+
+			{
+				if(visibleMap || BIS_dbgShowSectorMarkersInfoLevel == 0) then
+				{
+					[_x] call BIS_fnc_OM_HideDebugMarker;
+				};
+			} foreach BIS_sectorsToNotShow;
+			{
+				if(visibleMap || BIS_dbgShowSectorMarkersInfoLevel > 0) then
+				{
+					[_x] call BIS_fnc_OM_ShowDebugMarker;
+				};
+			} foreach BIS_sectorsToShow;
+			PROFILE_STOP("BIS_dbgShowSectorMarkers");
+			sleep 0.5;
+		};
+	};
+
+	[] spawn
+	{
+		scriptName "BIS_dbgShowSectorMarkersInfoLevel";
+		BIS_dbgShowSectorMarkersInfoLevel = 1;
+
+		waitUntil{!isnil "BIS_missionInitDone"};
+		BIS_dbgShowSectorMarkersInfoLevel = 0;
+		onEachFrame
+		{
+			if(BIS_dbgShowSectorMarkers) then
+			{
+				if(BIS_dbgShowSectorMarkersInfoLevel > 0) then
+				{
+					{
+					   private _objects = count (_x getVariable "#objects");
+					   private _units = [_x] call BIS_fnc_OM_getSectorPower;
+					   private _vehicles= count (_x getVariable "#vehicles");
+						 private _dbgTextColor = '#f1e104';
+						 private _state = switch (_x getVariable "#state") do
+					   {
+					    	case (0): { "DESPAWNED" };
+					    	case (1): { "BUSY" };
+					    	case (2): { "SPAWNED" };
+					    	case (3): { "SPAWNED VEHICLES" };
+					    	default 	{ "unknown" };
+					   };
+
+					   [
+					     _x,
+					     [_state, _x, _x getVariable "Layer", _objects, _vehicles, _units, _x getVariable "spawnTime",
+							 (_x getVariable "#areaPlusSpawnDistance" select 1) max (_x getVariable "#areaPlusSpawnDistance" select 2),
+							 (_x getVariable "#areaPlusVehicleSpawnDistance" select 1) max (_x getVariable "#areaPlusVehicleSpawnDistance" select 2),
+							 (_x getVariable "#areaPlusDespawnDistance" select 1) max (_x getVariable "#areaPlusDespawnDistance" select 2),
+							 (_x getVariable "#areaPlusVehicleDespawnDistance" select 1) max (_x getVariable "#areaPlusVehicleDespawnDistance" select 2),
+							 player distance2D _x],
+					     if(_x getVariable "#state" >= 2) then
+					     {
+								if(_x getVariable "spawnTime" > 5) then {_dbgTextColor = '#f15904'};
+					      [
+								 "<t size='0.32' color='#f1e104'> %1 </t>",
+					       "<br/><t size='0.32' color='#f1e104'> %1 | </t>", "<t size='0.32' color='#f1e104'>%1 </t>",
+					       "<br/><t size='0.32' color='#f1e104'> O/V/U: %1 /</t>","<t size='0.32' color='#f1e104'> %1 /</t>","<t size='0.32' color='#f1e104'> %1</t>",
+								 format ["<br/><t size='0.32' color='%1'> spawn took: %2 secs /</t>", _dbgTextColor, "%1"],
+								 "<br/><t size='0.32' color='#f1e104'> F/V/Desp/V-Desp:</t><t size='0.32' color='#004c99'> %1 /</t>", "<t size='0.32' color='#0000ff'> %1 /</t>", "<t size='0.32' color='#000000'> %1 /</t>", "<t size='0.32' color='#803f00'> %1</t>",
+					       "<br/><t size='0.32' color='#f1e104'> Distance: %1m </t>"
+					      ]
+					     }
+					     else
+					     {
+								_dbgTextColor = '#7e7e7e';
+					      [
+					       	"<t size='0.32' color='#7e7e7e'> %1 | ","<t size='0.32' color='#7e7e7e'> %1 </t>","","","",
+									format ["<br/><t size='0.32' color='%1'> despawn took: %2 secs /</t>", _dbgTextColor, "%1"],"",
+									"","","","",
+								 	"<br/><t size='0.32' color='#7e7e7e'> Distance: %1m </t>"
+					      ]
+					     }
+					    ] call BIS_fnc_ShowStateGUI;
+				 	} forEach BIS_sectorsToShow_text;
+				};
+
+				{
+		//			ctrlDelete (_x getVariable "control");
+					(_x getVariable "control") ctrlShow false;
+					(_x getVariable "control") ctrlCommit 0;
+				} forEach BIS_sectorsToNotShow_text;
+			};
+		};
+		if(!isnil {uiNamespace getVariable "BIS_keyDbgSectorHndl"} ) then
+		{
+				["SECTOR: HandlerExists: %1 | removing", uiNamespace getVariable "BIS_keyDbgSectorHndl"] call BIS_fnc_LogFormat;
+				(findDisplay 46) displayRemoveEventHandler ["KeyDown", uiNamespace getVariable "BIS_keyDbgSectorHndl"];
+				BIS_keyDbgSectorHndl = nil;
+		};
+
+		Sleep 2;
+		["SECTOR: Adding handler: %1 | removing", uiNamespace getVariable "BIS_keyDbgSectorHndl"] call BIS_fnc_LogFormat;
+		uiNamespace setVariable
+		["BIS_keyDbgSectorHndl", (findDisplay 46) displayAddEventHandler
+			[ "KeyDown",
+			  {
+					scriptName "KeyDown";
+			    params ["","_key","_shifState","_ctrlState"];
+			//    hint str (_key);
+			//    private _retvalue = false;
+
+			    if(_ctrlState && _shifState) then
+			    {
+			    	switch (_key) do
+			    	{
+			        case KEY_SHOWMARKERS:
+			        {
+			          BIS_dbgShowSectorMarkersInfoLevel = (BIS_dbgShowSectorMarkersInfoLevel + 1) % 2;
+			        };
+						};
+			  	};
+				}
+			]
+		];
+
+	};
+#endif //DEBUG_SECTOR_MARKERS
+#endif */

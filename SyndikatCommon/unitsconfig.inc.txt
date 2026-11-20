@@ -1,0 +1,107 @@
+class SyndikatPoolUnits
+{
+  classes[] =
+  {
+    "SyndikatSoldier_Rifleman",
+    "SyndikatSyndikatSoldier_RiflemanLight",
+    "SyndikatSoldier_MG",
+    "SyndikatSoldier_MGLight",
+    "SyndikatSoldier_Grenadier",
+    "SyndikatSoldier_GrenadierLight",
+    "SyndikatSoldier_ExplosiveSpecialist",
+    "SyndikatSoldier_ExplosiveSpecialistLight",
+    "SyndikatSoldier_AT",
+    "SyndikatSoldier_ATLight",
+    "SyndikatSoldier_Sniper",
+    "SyndikatSoldier_Medic",
+    "SyndikatSoldier_MedicLight"
+  };
+  weights[] = { 5, 4, 1, 1, 0.8, 0.4, 1, 0.2, 0.7, 0.5, 0.4, 0.8, 0.2 };
+
+  class SyndikatSoldier
+  {
+    skill = 0.6;
+    power = 0.5;
+    positions[] = {{0,0,0},{1,1,1}};
+  };
+
+  class SyndikatSoldier_Rifleman: SyndikatSoldier
+  {
+    types[] = {"I_C_Soldier_Para_1_F", "I_C_Soldier_Para_2_F", "I_C_Soldier_Para_7_F"};
+  };
+
+  class SyndikatSyndikatSoldier_RiflemanLight: SyndikatSoldier
+  {
+    types[] = {"I_C_Soldier_Bandit_4_F", "I_C_Soldier_Bandit_5_F", "I_C_Soldier_Bandit_7_F"};
+  };
+
+  class SyndikatSoldier_MG: SyndikatSoldier
+  {
+    types[] = {"I_C_Soldier_Para_4_F"};
+  };
+
+  class SyndikatSoldier_MGLight: SyndikatSoldier_MG
+  {
+    types[] = {"I_C_Soldier_Bandit_3_F"};
+  };
+
+  class SyndikatSoldier_Sniper: SyndikatSoldier
+  {
+    types[] = {"I_C_Soldier_Para_9_F"};
+  };
+
+  class SyndikatSoldier_Grenadier: SyndikatSoldier
+  {
+    types[] = {"I_C_Soldier_Para_6_F"};
+  };
+
+  class SyndikatSoldier_GrenadierLight: SyndikatSoldier_Grenadier
+  {
+    types[] = {"I_C_Soldier_Bandit_6_F"};
+  };
+
+  class SyndikatSoldier_ExplosiveSpecialist: SyndikatSoldier
+  {
+    types[] = {"I_C_Soldier_Para_8_F"};
+  };
+
+  class SyndikatSoldier_ExplosiveSpecialistLight: SyndikatSoldier_ExplosiveSpecialist
+  {
+    types[] = {"I_C_Soldier_Bandit_8_F"};
+  };
+
+  class SyndikatSoldier_AT: SyndikatSoldier
+  {
+    types[] = {"I_C_Soldier_Para_5_F"};
+  };
+
+  class SyndikatSoldier_ATLight: SyndikatSoldier_AT
+  {
+    types[] = {"I_C_Soldier_Bandit_2_F"};
+  };
+
+  class SyndikatSoldier_AA: SyndikatSoldier {};
+
+  class SyndikatSoldier_Medic: SyndikatSoldier
+  {
+    types[] = {"I_C_Soldier_Para_3_F"};
+  }
+  class SyndikatSoldier_MedicLight: SyndikatSoldier_Medic
+  {
+    types[] = {"I_C_Soldier_Bandit_1_F"};
+  };
+
+};
+
+/* class PrimaryWeaponDefault{};
+class PrimaryWeaponRifle: PrimaryWeaponDefault {};
+class PrimaryWeaponMachineGunHeavy: PrimaryWeaponDefault {};
+class PrimaryWeaponMachineGunLight: PrimaryWeaponDefault {};
+class PrimaryWeaponSniper: PrimaryWeaponDefault {};
+class PrimaryWeaponMisc: PrimaryWeaponDefault {};
+
+class SecondaryWeaponDefault{};
+class SecondaryWeaponAT: SecondaryWeaponDefault {};
+class SecondaryWeaponAA: SecondaryWeaponDefault {};
+
+class HandWeaponDefault{}; */

@@ -1,0 +1,23 @@
+#define MODE_INIT         		"init"
+#define MODE_CREATE       		0
+#define MODE_DELETE       		1
+#define MODE_GETMARKERNAME		2
+#define MODE_SHOW							3
+#define MODE_HIDE							4
+#define MODE_ASSOCIATETASK		5
+#define MODE_ENABLE						6
+#define MODE_DISABLE					7
+#define MODE_CHANGEATTRIBUTES	8
+#define MODE_ERROR						9
+
+#define SMARTMARKERS_MODULE_LOGIC       (missionNameSpace getVariable "BIS_OM_SmartMarkers_logic")
+
+#define SM_NAME                   		"name"
+#define SM_TOOLTIP_TITLE          		"title"
+#define SM_TOOLTIP_DESCR          		"description"
+#define SM_TOOLTIP_IMAGE          		"img"
+
+
+#define IS_MARKER_DISABLED(MARKER)      MARKER getVariable [SMARTMARKER_DISABLED, false]
+#define SWITCH_TO_TARGESEL_MODE()       SMARTMARKERS_MODULE_LOGIC setVariable ["TargetSelectionMode", true];
+#define SWITCH_TO_STANDARD_MODE()       SMARTMARKERS_MODULE_LOGIC setVariable ["TargetSelectionMode", false];

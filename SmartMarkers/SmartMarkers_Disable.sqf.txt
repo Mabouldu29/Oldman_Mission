@@ -1,0 +1,22 @@
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+
+/* PROFILE_START("SM_Create"); */
+params [ "_logic", "_smartMarkerBase"];
+
+private _smartMarkers = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE;       							//pointer to the array
+
+private "_index";
+if(_smartMarkerBase isEqualType "") then
+{ _index = _smartMarkers findIf {vehicleVarName _x isEqualTo _smartMarkerBase} }
+else
+{ _index = _smartMarkers find _smartMarkerBase };
+
+
+if(_index != -1) then
+{
+	(_smartMarkers select _index) setVariable [SMARTMARKER_DISABLED, true];
+	[nil, _logic getVariable SMARTMARKERS_VAR_LOD, (_smartMarkers select _index)] call BIS_fnc_OM_moduleSmartMarkers_ChangeLOD;
+};
+
+true

@@ -1,0 +1,19 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_varName", "_index", "_val", ["_logMessage", true] ];
+PROFILE_INFO("qrf_areaParam","qrf_areaParam",1);
+private _qrfqrf_areaParam = GVARS(QRF, _varName, []);
+if (isNil "_index") exitWith {
+	_qrfqrf_areaParam
+};
+private _v = FALSE;
+if ((count _qrfqrf_areaParam) > _index) then {
+	_v = _qrfqrf_areaParam#_index;
+};
+if (isNil "_val") then {
+	//if (_logMessage) then { ["QRF qrf_areaParam GET[%2] %1 = %3", _varName, _index, _v] call BIS_fnc_qrf_debugLogUnique; };
+	_v
+} else {
+	//if (_logMessage) then { ["QRF qrf_areaParam SET[%2] %1 = %3", _varName, _index, _val] call BIS_fnc_qrf_debugLogUnique; };
+	_qrfqrf_areaParam set [_index, _val];
+	SVAR(QRF, _qrfqrf_areaParam);
+};

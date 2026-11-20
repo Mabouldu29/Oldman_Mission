@@ -1,0 +1,6 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+
+params["_lastTime", "_cooldownSec"];
+private _delaySinceLast =  (time  -  _lastTime); 
+["QRF TIMEOUT lastTime:%1 delaySinceLast%3 > cooldownSec:%2 ", _lastTime ,_cooldownSec, _delaySinceLast] call bis_fnc_logFormat;
+(_delaySinceLast >= _cooldownSec)

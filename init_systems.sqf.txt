@@ -1,0 +1,332 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+params ["_module"];
+if (!isNil "BIS_running") exitWith {["Prevented multiple initialization of Oldman mission" call BIS_fnc_log]};
+
+// Set up saving type
+if(missionName == "Oldman") then
+{
+	while {isNull findDisplay -1 && isNil "BIS_specialSaving"} do {
+		_null = (findDisplay 46) createDisplay "RscDisplayOMsavingsetting";
+		sleep 0.1;
+	};
+};
+
+"black" cutText ["","BLACK FADED",0]; // If loadin screen fails, use
+
+// Set up dynamic simulation system
+enableDynamicSimulationSystem true;
+"Group" setDynamicSimulationDistance 350;
+"vehicle" setDynamicSimulationDistance 550;
+"EmptyVehicle" setDynamicSimulationDistance 50;
+"IsMoving" setDynamicSimulationDistanceCoef 3;
+
+// Init default variables
+BIS_running = true;
+BIS_debugArray = [];
+BIS_playerSide = side group player;
+BIS_flying = false;
+BIS_night = false;
+BIS_gameModule = _module;
+if (isNil "DEBUG_MODE") then {DEBUG_MODE = false;};
+
+private _scripts = [
+	"spawn",
+	"sector",
+	"utility",
+	"patrol",
+	"relations",
+	"miscAgents",
+	"taskSystem",
+	"intel",
+	"threatEvents",
+	"trackingDevice"
+];
+
+{
+	[] call (compile (preprocessFile ("\a3\Missions_F_Oldman\Systems\scripts\" + _x + ".sqf")));
+} forEach _scripts;
+/* ["oldman_init", "RscDisplayLoadingOM"] call bis_fnc_startloadingscreen; */
+missionNamespace setVariable ["BIS_fnc_moduleSiteInit_useLoadingScreen", false];
+[true, ""] call BIS_fnc_OM_loadingScreenWrapper;
+// Functions themselves are guarded against double initialization
+private _initMissionLayer = {
+	//--- is it included mission or mission itself (standard execution)
+	params [ [ "_includedMissionName", missionName, [""] ] ];
+	[] call BIS_fnc_om_preScan;
+	{
+		[_x] call BIS_fnc_om_nightModuleInit;
+	} forEach entities "ModuleOmNight_F";
+	{
+		[_x, _includedMissionName] call BIS_fnc_om_sectorInit;
+	} forEach (entities "ModuleOmSector_F" select {GVARS(_x,"#size",-1) == -1});
+	{
+		[_x] call BIS_fnc_initPatrolArea;
+	} forEach (entities "ModulePatrolArea_F" select {isNil {GVAR(_x,"#spawned")}});
+};
+[] call _initMissionLayer;
+
+// Init loaded modules as they are being loaded into the mission:
+if (count (entities "ModuleOmInit_F") > 0) then {
+	/* private _pathX = _module getVariable "Path"; */
+
+	private _missionsArray = _module getVariable "Missions";
+	if !(_missionsArray isEqualType "") then {
+		_missionsArray = str _missionsArray;
+	};
+
+	private _scripts = call compile _missionsArray;
+	BIS_includedMissions = _scripts;
+	private _nrOfScripts = count _scripts;
+	if( _nrOfScripts == 0 ) then { _nrOfScripts = 1 };
+
+
+	if (_scripts isEqualType []) then
+	{
+		private _dProgressBar = 0.5/_nrOfScripts;
+		private _progressBarValue = _dProgressBar;
+		private _patrolAreas = [];
+		private _sectors = [];
+		{
+			//can't use macro, the script is not compiled
+			private _missionScript = (_module getVariable "Path") + _x + '.' + worldName + "\" + _x + ".sqf";
+			private _layerBlacklist = (_module getVariable "Path") + _x + '.' + worldName + "\" + _x + "_layerBlacklist.sqf";
+			/* #ifdef INTERNAL_VERSION
+				if ( diag_loadTextFile _missionScript == "" ) exitWith { ["Mission file %1 not found! Reexport the sector data!", _missionScript ] call BIS_fnc_error };
+				if ( diag_loadTextFile _layerBlacklist == "" ) exitWith { ["Layer blacklist file %1 not found! Reexport the sector data!", _layerBlacklist ] call BIS_fnc_error };
+			#endif */
+			["BOOT: loading file: %1", _missionScript ] call BIS_fnc_logFormat;
+			private _blacklistedArray = ( call ( compile ( preprocessFile _layerBlacklist ) ) );
+			if( isNil "_blacklistedArray" ) then
+			{
+				_blacklistedArray = ["noexport"];
+			}
+			else
+			{
+				_blacklistedArray = ["noexport"] + _blacklistedArray;
+			};
+
+			private _hndl = [[], _blacklistedArray ] execVM _missionScript;
+			uiSleep 0.3;
+			["BOOT: Waiting for the file being processed: %1", _missionScript ] call BIS_fnc_logFormat;
+			if(!isNil "_hndl") then { waitUntil { scriptDone _hndl } };
+			["BOOT: file: %1 done", _missionScript ] call BIS_fnc_logFormat;
+			/* [[], _blacklistedArray ] call ( compile ( preprocessFile _missionScript ) ); */
+			["BOOT: Initializing mission layer: %1", _missionScript ] call BIS_fnc_logFormat;
+			[_x] call _initMissionLayer;
+			["BOOT: Initializing mission layer: %1 DONE", _missionScript ] call BIS_fnc_logFormat;
+			 _progressBarValue call bis_fnc_progressloadingscreen;
+			_progressBarValue = _progressBarValue + _dProgressBar;
+			["BOOT: ---------------------------------------------------------------------------------------", _missionScript ] call BIS_fnc_logFormat;
+		} forEach _scripts;
+	};
+
+
+	//--- variable telling if we want to export the mission (should happen only from editor's menu)
+	/* ["EXPORTER: disabling the UI variable %1", uiNamespace getVariable [ "BIS_OM_3DEN_exportMission", false ] ] call BIS_fnc_logFormat; */
+	uiNamespace setVariable [ "BIS_OM_3DEN_exportMission", false ];
+	// Convert values in all sectors and restricted areas
+	BIS_allSectors = entities "ModuleOmSector_F";
+ 	BIS_patrolAreas = entities "ModulePatrolArea_F";
+};
+
+
+{
+	[_x] call BIS_fnc_om_initIntelRecord;
+} forEach entities "ModuleOmIntel_F";
+
+// Make sure no civilian presence areas are not spawned from start
+{
+	["init",[_x,false]] call bis_fnc_moduleCivilianPresence;
+} forEach entities "ModuleCivilianPresence_F";
+0.5 call bis_fnc_progressloadingscreen;
+
+// Hide debug message if leaving the map
+
+	#ifdef DEV_FOLDER_NOT_PACKED
+		addMissionEventHandler ["Map", {hint "";}];
+	#endif
+
+
+// Mission init is done, mission scripts can run on their own
+"black" cutText ["","BLACK FADED",0];
+[] spawn {
+	uiSleep 4;
+	"BOOT: Mission init done" call BIS_fnc_Log;
+	BIS_missionInitDone = true;
+};
+
+{
+	_x enableDynamicSimulation true;
+} forEach ((allMissionObjects "") select {simulationEnabled _x});
+uiSleep 2;
+/* endLoadingScreen;
+"black" cutText ["","BLACK IN",1]; */
+
+// Make sure sides are friendly at start
+civilian setFriend [east,1];
+civilian setFriend [resistance,1];
+//player setCaptive false;
+west setFriend [east,1];
+west setFriend [resistance,1];
+east setFriend [west,1];
+resistance setFriend [west,1];
+CalculatePlayerVisibilityByFriendly true;
+0.6 call bis_fnc_progressloadingscreen;
+// Run these agents before anything else
+ [] spawn BIS_fnc_om_dayNightAgent;
+
+uiSleep 0.1;
+[] spawn BIS_fnc_om_sectorAgent;
+
+// Wait until intro part of the mission is over
+
+
+[] call BIS_fnc_om_initThreatEvents;
+
+
+// Init all agents and loops
+
+uiSleep 1;
+[] spawn BIS_fnc_om_initRelationSystem;
+uiSleep 0.1;
+
+[] spawn BIS_fnc_patrolAreaAgent;
+
+uiSleep 0.1;
+
+	#ifdef DEV_FOLDER_NOT_PACKED
+		[] spawn BIS_fnc_om_mapDebug;
+		uiSleep 0.1;
+		[] spawn BIS_fnc_om_debugInfoAgent;
+		uiSleep 0.1;
+	#endif
+
+[] spawn BIS_fnc_qrf_moduleAgent;
+uiSleep 0.1;
+
+[] spawn BIS_fnc_questSystem_Deliver_ModuleInit;
+uiSleep 0.1;
+[] spawn bis_fnc_questSystemInit;
+uiSleep 0.1;
+
+[] spawn BIS_fnc_om_weaponHolderAgent; // Agent handling weapons dropped by dead soldier
+uiSleep 0.1;
+0.7 call bis_fnc_progressloadingscreen;
+[] call BIS_fnc_om_initTrackers;
+
+uiSleep 0.1;
+[] spawn BIS_fnc_om_trackerAgent;
+uiSleep 0.1;
+[] spawn BIS_fnc_om_airAgent;
+uiSleep 0.1;
+[] spawn BIS_fnc_om_AAAgent;
+uiSleep 0.1;
+[] spawn BIS_fnc_om_fuelAgent;
+uiSleep 0.1;
+[] spawn BIS_fnc_om_inCombatAgent;
+uiSleep 0.1;
+
+0.8 call bis_fnc_progressloadingscreen;
+
+"BOOT: All systems initialized" call BIS_fnc_Log;
+
+// Make sure no civilian presence areas are not spawned from start
+{
+	["init",[_x,false]] call bis_fnc_moduleCivilianPresence;
+} forEach entities "ModuleCivilianPresence_F";
+
+// Enable dynamic simulation for all simulated entities in the world
+{_x enableDynamicSimulation true} forEach allGroups;
+{_x enableSimulation false} forEach (entities "Module_F");
+{deleteGroup _x} forEach (allGroups select {count units _x == 0});
+{
+	//uiSleep 0.001;
+	_x enableDynamicSimulation true;
+} forEach ((allMissionObjects "") select {simulationEnabled _x});
+	0.9 call bis_fnc_progressloadingscreen;
+{
+	[_x, _x getVariable ["BIS_OM_getIntelActionID", -1]] call BIS_fnc_holdActionRemove;
+	_x spawn BIS_fnc_om_handleIntelSource;
+} forEach ((allMissionObjects "") select {(typeOf _x) in BIS_assets_intel_prio_high || (typeOf _x) in BIS_assets_intel_prio_medium});
+
+
+/*addMissionEventHandler
+["Loaded",
+	{
+		scriptName "addMissionEventHandler/Loaded(loadingScreen)";
+		uiNamespace setVariable ["BIS_RscDisplayLoadingScreen_fromLoad", true];			//tell the loadingscreen the LOAD event has happened, therefore we need to use the another method for animations;
+		endLoadingScreen;
+		startLoadingScreen ["","RscDisplayLoadingOM"];
+		[] spawn
+		{
+			BIS_OM_preloadHandler = addMissionEventHandler
+			["PreloadFinished",
+				{
+					scriptName "addMissionEventHandler/PreloadFinished(loadingScreen)";
+					["LOADINGSCREEN:  setting to false %1", 1] call BIS_fnc_logFormat;
+					uiNamespace setVariable ["BIS_RscDisplayLoadingScreen_fromLoad", false];
+					uiNamespace setVariable ["BIS_RscDisplayLoadingScreen_fromLoaded", false];
+					removeMissionEventHandler ["PreloadFinished", BIS_OM_preloadHandler];
+					endLoadingScreen;
+				}
+			];
+		};
+	}
+];*/ //moved to fn_om_addLoadedEH
+
+[] call BIS_fnc_OM_addLoadedEH;
+
+//initialize keyframe animations
+[] call BIS_fnc_timeline_init;
+
+"BOOT: Dynamic simulation enabled globally" call BIS_fnc_Log;
+
+[false, ""] call BIS_fnc_OM_loadingScreenWrapper;
+WaitUntil {(missionnamespace getvariable ["BIS_fnc_loadingScreenWrapper_ids",0]) == 0 };
+"black" cutText ["","BLACK IN",1];
+"BOOT: Closing loading screen" call BIS_fnc_Log;
+
+#ifdef INTERNAL_VERSION
+if(missionName == "CONCEPT_Intro2") then
+{
+	execVM "\a3\Missions_F_Oldman\Campaign\Missions\OldMan.tanoa\intro.sqf";
+	waitUntil{!(missionNamespace getVariable ["BIS_fnc_eventTimeline_playing", true]);};
+};
+#endif
+
+if(missionName == "Oldman") then
+{
+	execVM "\a3\Missions_F_Oldman\Campaign\Missions\OldMan.tanoa\intro.sqf";
+	waitUntil{!(missionNamespace getVariable ["BIS_fnc_eventTimeline_playing", true]);};
+};
+
+[] spawn bis_fnc_questTimeout;
+execVM "\A3\Missions_F_Oldman\Systems\Scripts\Phone\reskinUI.sqf";
+
+
+// EH to remove picked items from composition.
+[] spawn 
+{
+	waitUntil {!isNull player};
+	player addEventHandler ["Take",
+	{
+		params ["_unit", "_container"];
+		private _sector = _container getVariable ["#sector", objNull];
+		if (!isNull _sector) then
+		{
+			private _objectsRef = _sector getVariable ["#objectsRef", []];
+			private _index = _objectsRef find _container;
+			if (_index >= 0) then
+			{
+				// remove picked item from composition
+				private _objectData = _sector getVariable ["#objectData", []];
+				private _item = _objectData select _index;
+				_item set [0, ""];
+				assert (count _objectsRef == count _objectData);
+			};
+		};
+	}];
+};
+
+waitUntil {player getVariable ["BIS_OM_ShowCenterDot",false]};
+execVM "\A3\Missions_F_Oldman\Systems\UI\CenterDot\initCenterDot.sqf";

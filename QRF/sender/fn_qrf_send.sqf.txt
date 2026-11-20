@@ -1,0 +1,111 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_searchPos", "_trackedAreaIndex", "_levelIndex", "_specificUnitIndex", "_unitCounts"]; // "_positionsBlocked"
+["lastQrfWave", _trackedAreaIndex, []] call bis_fnc_qrf_areaParam;
+
+["QRF ACTIVATION_CHECK Area[%1] INDEX OIST %2", POS_TO_ID(_searchPos), _trackedAreaIndex] call bis_fnc_logFormat;
+
+waitUntil {sleep 0.5;  (["elapsed", _trackedAreaIndex] call bis_fnc_qrf_areaParam) };
+
+["elapsed", _trackedAreaIndex, false] call bis_fnc_qrf_areaParam;
+["lastCooldownTime", _trackedAreaIndex, -1] call bis_fnc_qrf_areaParam;
+
+// TODO shoud we check whether units arent spawned in sector owned by Resistance {[_spawnPos] call BIS_fnc_om_inSectorArea}
+
+private _searchPosId = POS_TO_ID(_searchPos);
+["QRF SEND[%2] fnc params %1", _this, _searchPosId] call bis_fnc_logFormat;
+
+private _units = GVAR(QRF, "units");
+
+//find random group TODO add two groups for more levele
+private _qrfUnits = (_units#_levelIndex)#_specificUnitIndex;
+private _qrfType = [_qrfUnits] call BIS_fnc_om_groupDataType;
+
+//find my pos 
+private _spawnAndDestPos = [_qrfType, _searchPos] call BIS_fnc_qrf_findSuitableSpawnPos;
+_spawnAndDestPos params["_suitablePos", "_vehicleDestPos"];
+
+private _vehicles = [];
+private _groups = [];
+for "_i" from 0 to (_unitCounts-1) do {
+	// _suitablePos = [ _suitablePos, 0, 20, 0] call BIS_fnc_findSafePos;
+	["QRF SEND[%1] SuitablePosVehicleDesPos %2 %3",  _searchPosId, _suitablePos, _vehicleDestPos] call BIS_fnc_logFormat;
+
+	//suitable vehDistance notFound
+	if (_vehicleDestPos isEqualTo [] || _vehicleDestPos isEqualTo [0, 0, 0]) then {
+		["QRF SEND[%1] Units can't be sent, reverting to infatry units",  _searchPosId] call BIS_fnc_logFormat;
+		private _backupUnits = GVAR(QRF, "backupUnits");
+		private _backupNumbers = GVAR(QRF, "backupNumbers");		
+		private _randomIndex = _backupNumbers call BIS_fnc_randomIndex;	
+
+		private _areaCurrentUnitCount = _backupNumbers#_randomIndex; 
+		
+		private _trackedAreas = GVAR(QRF, "trackedAreas");
+		_trackedAreas set [_trackedAreaIndex, [(_trackedAreas#_trackedAreaIndex)#0, _areaCurrentUnitCount]];
+		SVAR(QRF, "trackedAreas", _trackedAreas);
+		private _trackedAreasUnitCount = GVAR(QRF, "trackedAreasUnitCount");	
+		_trackedAreasUnitCount set[_trackedAreaIndex, _areaCurrentUnitCount];		
+		SVAR(QRF, "trackedAreasUnitCount", _trackedAreasUnitCount);
+
+		_qrfUnits = _backupUnits#_randomIndex;
+		_qrfType = [_qrfUnits] call BIS_fnc_om_groupDataType;
+		_spawnAndDestPos = [_qrfType, _searchPos] call BIS_fnc_qrf_findSuitableSpawnPos;
+		
+		_suitablePos = _spawnAndDestPos#0;
+	 	// _suitablePos set [2, (_suitablePos#2) + 1];
+		_vehicleDestPos = _spawnAndDestPos#1;
+	};
+
+	["QRF SEND[%1] Units Spawning %2", _searchPosId, _qrfUnits] call BIS_fnc_logFormat;
+
+	private _vehiclesAndGroups = [_qrfUnits, _suitablePos] call BIS_fnc_om_spawnFromData; 
+	_vehicles append (_vehiclesAndGroups#0);
+	_groups append (_vehiclesAndGroups#1);
+
+	//(crew (_vehicles#(count _vehicles-1)))#1 switchCamera "External";
+	sleep 3;
+};
+
+
+
+["QRF SEND[%1] Units Spawned AAAA %2", _searchPosId, _groups] call BIS_fnc_logFormat;
+//TEST drive
+// (crew (_vehicles#(count _vehicles-1)))#1 switchCamera "External";
+
+["lastQrfWave", _trackedAreaIndex, _groups] call bis_fnc_qrf_areaParam;
+["QRF SEND[%4] Units Spawned at %1 - %2 NewIndex %3", _suitablePos, _searchPos, _levelIndex, _searchPosId] call BIS_fnc_logFormat;
+
+[_searchPos, "QRF_SEARCH", "mil_warning"] call BIS_fnc_qrf_debugMarker;[_suitablePos, "QRF_SPAWN", "mil_arrow", _suitablePos getDir _searchPos] call BIS_fnc_qrf_debugMarker;
+if (!(_vehicleDestPos isEqualTo [])) then { [_vehicleDestPos, "QRF_VEHPOS", "mil_warning"] call BIS_fnc_qrf_debugMarker; };
+
+[_searchPos, true] call bis_fnc_throwSmokeOrFlare;
+[QRF_STATE_SENT, [_qrfType, mapGridPosition _searchPos]] call bis_fnc_qrf_reportStatus;
+
+// ["QRF Unit %1", _qrfUnits] call BIS_fnc_qrf_debugLogRadio; 
+[["QRF vehePos %1", _vehicleDestPos], "sideChat"] call BIS_fnc_qrf_debugLogRadio;
+private _skipToDespawn = [[_searchPos, _vehicleDestPos, _suitablePos], _vehicles, _groups, _qrfType, _trackedAreaIndex] call bis_fnc_qrf_move;
+
+["QRF SEND[%1] MOVE finished", _searchPosId] call BIS_fnc_logFormat;
+
+["QRF SEND Player become vehicle"] call BIS_fnc_logFormat;
+private _ownedObjectsArray = [];
+if (!_skipToDespawn) then {
+	private _indexPlaceholder = 0;
+	QRF_CHECK_OWNAGE(_vehicles, _ownedObjectsArray, _indexPlaceholder);
+	_ownedObjectsArray = [_groups, _vehicles, _qrfType, _searchPosId] call bis_fnc_qrf_waitUntilFinished;	
+	["QRF SEND Player become vehicle %1", _ownedObjectsArray] call BIS_fnc_logFormat;
+	["QRF SEND[%1] WAIT is finished -  proceeding with DESPAWN", _searchPosId] call BIS_fnc_logFormat;
+};
+
+// check that no new way came alive units ?!
+// + another var that is supposed to hold that particular info, and area is reseted only AFTER despawn of the untis  //[_trackedAreaIndex] call bis_fnc_qrf_stopAreaMonitoring;
+[_vehicles, _groups, _qrfType, _ownedObjectsArray] call bis_fnc_qrf_despawn;
+
+if ( (["canSendNext", _trackedAreaIndex] call bis_fnc_qrf_areaParam) ) then {
+	[["QRF MOVE[%1] ENDED RESETING TIMEOUT", _searchPosId]] call bis_fnc_qrf_debugLogRadio;
+
+	["areaTimeout", _trackedAreaIndex, true] call bis_fnc_qrf_areaParam;
+	["elapsed", _trackedAreaIndex, false] call bis_fnc_qrf_areaParam;
+	["lastCooldownTime", _trackedAreaIndex, date] call bis_fnc_qrf_areaParam;
+};
+
+["QRF SEND[%1] DESPAWN FINISHED, exiting", _searchPosId] call BIS_fnc_logFormat; 

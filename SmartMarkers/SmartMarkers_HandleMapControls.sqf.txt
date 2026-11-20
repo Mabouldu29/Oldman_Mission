@@ -1,0 +1,177 @@
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+
+/* params [ "_logic", "_class", "_vehicleName", [ "_position", position player, [[]] ] ]; */
+params ["_eventType", ["_eventData", ["","","",""], [[]] ] ];
+_eventData params ["_map","_mouseButton", "_cursorPosX", "_cursorPosY", "_mouseOver"];
+
+switch (_eventType) do
+{
+	case EVENT_INIT:
+	{
+		uiNameSpace setvariable ["map", findDisplay 12 displayCtrl 51];
+    uiNameSpace setvariable ["lastKnownScale", ctrlMapScale (findDisplay 12 displayCtrl 51)];
+		uiNameSpace setVariable ["_mouseSquareSelection", [[0,0],[0,0]] ];
+		uiNamespace setVariable ["BIS_OM_SmartMarkers_lastTimeCheck", 0];
+		private _xHandle = nil;
+	};
+  case EVENT_DRAW:
+  {
+		/* PROFILE_START("EVENT_DRAW"); */
+    private _mapScale = ctrlMapScale _map;
+	  if(_mapScale != uiNameSpace getVariable "lastKnownScale") then
+    {
+			if( time > ((uiNameSpace getVariable "BIS_OM_SmartMarkers_lastTime") + UI_DELAY) ) then
+			{
+				/* ["BIS_OM_SmartMarkers_lastTime: %1", (uiNameSpace getVariable "BIS_OM_SmartMarkers_lastTime")] call BIS_fnc_logFormat; */
+				private _lod = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_LOD;
+	      switch (true) do
+	      {
+	        case (_mapScale >= MAP_LOD_0_MIN && _mapScale < MAP_LOD_0_MAX): { _lod = 0 };
+	        case (_mapScale >= MAP_LOD_1_MIN && _mapScale < MAP_LOD_1_MAX): { _lod = 1 };
+	        case (_mapScale >= MAP_LOD_2_MIN && _mapScale < MAP_LOD_2_MAX): { _lod = 2 };
+	      };
+				/* ["MapScale = %1 | switching to LOD %2", _mapScale, _lod ] call BIS_fnc_logFormat; */
+	      /* private _lod = floor (linearConversion [MAP_SCALE_MIN, MAP_SCALE_MAX, _mapScale, MAP_LOD_MIN, MAP_LOD_MAX, true]); */
+				if( _lod != SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_LOD ) then
+				{
+	      	[nil, _lod] call BIS_fnc_OM_moduleSmartMarkers_ChangeLOD;
+					SMARTMARKERS_MODULE_LOGIC setVariable [SMARTMARKERS_VAR_LOD, _lod];
+				};
+	      uiNameSpace setvariable ["lastKnownScale", ctrlMapScale _map];
+				[EVENT_MOUSE_OVER, [_map]] call BIS_fnc_OM_moduleSmartMarkers_HandleMapControls;	//UPDATE OTHER MARKER EFFECTS (TOOLTIP, CURSOR, ETC)
+			};
+    }
+		else
+		{
+			uiNameSpace setVariable ["BIS_OM_SmartMarkers_lastTime", time];
+			//--- Conditionally show or hide markers
+			if( time > (( uiNamespace getVariable "BIS_OM_SmartMarkers_lastTimeCheck" ) + CHECK_CONDITION_DELAY) ) then
+			{
+				uiNamespace setVariable ["BIS_OM_SmartMarkers_lastTimeCheck", time];
+				private _smartMarkers = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE;
+				private _smartMarkersHidden = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE_HIDDEN;
+				{
+					{
+						(_x select 1) setMarkerAlpha 0;
+					} forEach (_x getVariable SMARTMARKER_SECTIONS);
+					_smartMarkersHidden append [_x];
+					_smartMarkers deleteAt (_smartMarkers find _x);
+				} forEach ( _smartMarkers select {(_x getVariable "smartMarkerCondShow") isEqualType {} && { !call (_x getVariable "smartMarkerCondShow") }} );
+				{
+					[SMARTMARKERS_MODULE_LOGIC, SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_LOD, _x] call BIS_fnc_OM_moduleSmartMarkers_ChangeLOD;
+					_smartMarkers append [_x];
+					_smartMarkersHidden deleteAt (_smartMarkersHidden find _x);
+				} forEach ( _smartMarkersHidden select {(_x getVariable "smartMarkerCondShow") isEqualType {} && { call (_x getVariable "smartMarkerCondShow") }} );
+
+				/* ["SMARTMARKERS: EVENT_DRAW %1", 1] call BIS_fnc_logFormat; */
+			};
+		};
+
+		/* PROFILE_STOP("EVENT_DRAW"); */
+  };
+  case EVENT_MOUSE_OVER:
+  {
+    /* PROFILE_START("EVENT_MOUSE_OVER"); */
+    private _controlUnderMouseArr = ctrlMapMouseOver _map;
+		if( MARKER_UNDER_MOUSE_CURSOR(_controlUnderMouseArr) ) then
+    {
+
+      /* if (_markerName select [0,8] isEqualTo "BIS_smrk") then */ //TODO: will it make the performance better (checking short string instead of going through the arrays) ?
+      private _smartMarker = [_controlUnderMouseArr select 1] call BIS_fnc_OM_moduleSmartMarkers_GetParentSmartMarker;
+			private _sectionsInLOD = 	count ( [SMARTMARKERS_MODULE_LOGIC getvariable SMARTMARKERS_VAR_CFG_STORAGE,typeOf _smartMarker,SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_LOD] call BIS_fnc_OM_moduleSmartMarkers_GetSectionsNamesInLOD);
+			if( !isNil "_smartMarker" && {_sectionsInLOD > 0}) then
+      {
+				if!(SMARTMARKERS_MODULE_LOGIC getVariable ["tooltipShown", false]) then
+        {
+					private [ "_cursorType", "_tooltipValue_title", "_tooltipValue_image", "_tooltipValue_descr", "_colorName" ];
+
+					SMARTMARKERS_MODULE_LOGIC setVariable ["tooltipShown", true];
+
+					//calling custom registered callbacks
+					{
+					  [ _smartMarker ] call (_x select 1);
+						if( _x select 2 ) then
+						{
+							[ _x select 0 ] call BIS_fnc_OM_moduleSmartMarkers_UnRegisterOnMouseOverCallback;
+						}
+					} forEach ( SMARTMARKERS_MODULE_LOGIC getVariable [ "BIS_OM_OnMouseOverCallbacks", [] ] );
+
+					if!( SMARTMARKERS_MODULE_LOGIC getVariable ["TargetSelectionMode", false] ) then
+					{
+						_cursorType = ["Track", "3DENSelectWidgetZ"];
+						_tooltipValue_title = [_smartMarker, SM_TOOLTIP_TITLE] call BIS_fnc_OM_moduleSmartMarkers_GetTooltipValue;
+						_tooltipValue_image = [_smartMarker, SM_TOOLTIP_IMAGE] call BIS_fnc_OM_moduleSmartMarkers_GetTooltipValue;
+						_tooltipValue_descr = [_smartMarker] call BIS_fnc_OM_moduleSmartMarkers_ComposeDescriptionText;
+						_colorName = [_smartMarker, "color"] call BIS_fnc_OM_moduleSmartMarkers_GetTooltipValue;
+
+						_map ctrlMapCursor _cursorType;
+						[
+							_map posWorldToScreen position _smartMarker,
+							_tooltipValue_title, _tooltipValue_image, _tooltipValue_descr, [_colorName] call BIS_fnc_OM_moduleSmartMarkers_TransformColor
+						] call BIS_fnc_OM_moduleSmartMarkers_ShowTooltip;
+					}
+					else
+					{
+						private _parentClass = configname  (inheritsFrom (configFile >> "CfgVehicles" >> typeof _smartMarker));
+						if( typeof _smartMarker == "SmartMarker_O_CSAT_F" || _parentClass == "SmartMarker_O_CSAT_F" ) then
+						{
+							_cursorType = TARGETSEL_CURSOR;
+							_tooltipValue_title = TARGETSEL_TITLE;
+							_tooltipValue_image = TARGETSEL_IMG;
+							_tooltipValue_descr = TARGETSEL_DESCRIPTION;
+							_colorName = [_smartMarker, "color"] call BIS_fnc_OM_moduleSmartMarkers_GetTooltipValue;
+
+							_map ctrlMapCursor _cursorType;
+							[
+								_map posWorldToScreen position _smartMarker,
+								_tooltipValue_title, _tooltipValue_image, _tooltipValue_descr, [_colorName] call BIS_fnc_OM_moduleSmartMarkers_TransformColor
+							] call BIS_fnc_OM_moduleSmartMarkers_ShowTooltip;
+						};
+					};
+					_smartMarker setVariable [SMARTMARKER_HIGHLIGHTED, false];
+				}
+      }
+			else
+			{
+				ON_HIDE_MARKER;
+			};
+    }
+    else
+    {
+			ON_HIDE_MARKER;
+    };
+		/* PROFILE_STOP("EVENT_MOUSE_OVER"); */
+  };
+	case EVENT_MAP:
+	{
+		if(!_map) then
+		{
+			TERMINATE_RUNNING_SCRIPTS;
+			ON_HIDE_MARKER;
+		};
+	};
+	case EVENT_MOUSE_BUTTON_UP:
+  {
+		/* ["MOUSE BUTTON PRESSED: %1", _this] call BIS_fnc_logFormat; */
+		if(_mouseButton == CTRL_LMB) then
+		{
+			private _controlUnderMouseArr = ctrlMapMouseOver _map;
+			if( MARKER_UNDER_MOUSE_CURSOR(_controlUnderMouseArr) ) then
+			{
+				/* if (_markerName select [0,8] isEqualTo "BIS_smrk") then */ //TODO: will it make the performance better (checking short string instead of going through the arrays) ?
+				private _smartMarker = [_controlUnderMouseArr select 1] call BIS_fnc_OM_moduleSmartMarkers_GetParentSmartMarker;
+				if( !isNil "_smartMarker" ) then
+				{
+					private _associatedTask = _smartMarker getVariable ["smartMarkerTask", -1];
+					if!(_associatedTask isEqualTo -1) then
+					{
+						processDiaryLink createDiaryLink [TASK_CATEGORY, _associatedTask, ""];
+					};
+					_smartMarker setVariable [SMARTMARKER_HIGHLIGHTED, false];
+				};
+			};
+		};
+	};
+};
+(uiNameSpace getvariable "map")

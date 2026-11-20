@@ -1,0 +1,8 @@
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+
+{
+    ctrlDelete _x
+} foreach (SMARTMARKERS_MODULE_LOGIC getVariable "componentHandlers");
+
+/* if (!isnil "_img") then {ctrlDelete _mrk_img}; */

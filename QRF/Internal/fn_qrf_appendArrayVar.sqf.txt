@@ -1,0 +1,6 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_varName", "_value"];
+private  _a = GVAR(QRF, _varName);
+_a pushBack _value;
+SVAR(QRF, _varName, _a);
+["QRF AppendVar name:%1,%2 %3",_varName, _value, _a] call bis_fnc_logFormat;

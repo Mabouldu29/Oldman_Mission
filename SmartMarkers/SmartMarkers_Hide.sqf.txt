@@ -1,0 +1,38 @@
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+
+/* PROFILE_START("SM_Create"); */
+/* if (canSuspend) then
+{
+ 	WaitUntil{!(_logic getVariable ["criticalSectionActive_HIDE", false])};
+	_logic setVariable ["criticalSectionActive_HIDE", true];
+}; */
+params [ "_logic", "_smartMarkerBase"];
+private _smartMarkers = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE;       //pointer to the array
+private _smartMarkersHidden = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE_HIDDEN;       //pointer to the array
+
+private "_index";
+if(_smartMarkerBase isEqualType "") then
+{ _index = _smartMarkers findIf {vehicleVarName _x isEqualTo _smartMarkerBase} }
+else
+{ _index = _smartMarkers find _smartMarkerBase };
+
+
+if(_index != -1) then
+{
+	private _markerSections = (_smartMarkers select _index) getVariable SMARTMARKER_SECTIONS;
+	{
+		(_x select 1) setMarkerAlpha 0;
+	} forEach _markerSections;
+	_smartMarkersHidden append [_smartMarkers select _index];
+	_smartMarkers deleteAt _index;
+	/* _smartMarkers set [_index, objNull]; */
+	/* _logic setVariable ["criticalSectionActive_HIDE", false]; */
+	TRUE
+}
+else
+{
+	["Error: %1 not found in the shown marker set", _smartMarkerBase] call BIS_fnc_logFormat;
+	/* _logic setVariable ["criticalSectionActive_HIDE", false]; */
+	FALSE
+};

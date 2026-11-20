@@ -1,0 +1,13 @@
+#include "common_definitions.inc"
+
+//MODULE SYSTEMS
+#define FUNCTIONS_PATH    "\a3\Missions_F_Oldman\Systems\Scripts\Reputation\"
+#define FUNCTIONS_NAMES   [\
+ 														"Reputation_Init", \
+														"Reputation_Register", \
+                            "Reputation_Increase" \
+												  ]
+
+#define FUNCTIONS_PREFIX  "BIS_fnc_OM_module"
+
+//object variables (accessible via get/set variable commands)

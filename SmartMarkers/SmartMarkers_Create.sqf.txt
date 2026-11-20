@@ -1,0 +1,83 @@
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+
+params [ "_logic", "_class", "_vehicleName", [ "_position", position player, [[]] ], ["_hidden", false, [false] ], ["_customData",[], [ [] ] ], ["_highlight",true,[true]], ["_condShow", -1, [0,{}] ] ];
+/* PROFILE_START("SM_Create"); */
+
+/* ["SMARTMARKERS: %1, %2, %3, %4, %5, %6", _logic, _class, _vehicleName, _position, _hidden, _customData] call BIS_fnc_logFormat; */
+private _smartMarkers = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE;       //pointer to the array
+private _actualLOD = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_LOD;
+private _existingIndex = _smartMarkers findIf {vehicleVarname _x == _vehicleName};
+if ( _existingIndex != -1 ) exitWith {_smartMarkers select _existingIndex };              //if SmartMarker already exists
+_existingIndex = nil;
+private _smartMarkerBase = (_class createVehicle _position);
+private _markersOnSpawnPosition = allMapMarkers select {markerPos _x isEqualTo _position};
+if (count _markersOnSpawnPosition != 0) then {_smartMarkerBase setVariable ["BIS_OM_underlyingMarker", _markersOnSpawnPosition select 0]};
+_smartMarkerBase setVehicleVarName _vehicleName;
+_smartMarkerBase setVariable [SMARTMARKER_CUSTOMDATA, _customData];
+_smartMarkerBase setVariable [ SMARTMARKER_EXTRADATA, [] ];
+_smartMarkerBase setVariable [ SMARTMARKER_CONDSHOW, _condShow ];
+private _customNameIndex = [_customData, SM_NAME] call BIS_fnc_findInPairs;
+if(_customNameIndex != -1 ) then {_smartMarkerBase setVariable [SMARTMARKER_CUSTOMNAME, _customData select _customNameIndex select 1]};
+
+private _smartMarkerSections = [];
+private _markerSections = [_class] call BIS_fnc_OM_moduleSmartMarkers_GetSectionNames;
+private "_fnc";
+{
+  private _section = _x select 1;
+  _sectionAttributes = [_class, _section] call BIS_fnc_OM_moduleSmartMarkers_GetAttributeNames;
+	_sectionAttributes sort false;
+  if(count _sectionAttributes != 0) then
+  {
+		PROFILE_WATCH("_sectionAttributes",0);
+    private _parametersForCreate = ARR_PARAMS;
+    {
+			_parametersForCreate set
+			[
+				_x,
+				(
+					switch (true) do
+					{
+						case ( _hidden && {_x == ALPHA} ): {0};
+						case ( _x == TEXT): {_smartMarkerBase getVariable [SMARTMARKER_CUSTOMNAME, [_class, _section, _x, _actualLOD] call BIS_fnc_OM_moduleSmartMarkers_GetAttributeValue]};
+						default { [_class, _section, _x, _actualLOD] call BIS_fnc_OM_moduleSmartMarkers_GetAttributeValue };
+					}
+				)
+			];
+    } forEach _sectionAttributes;
+		_parametersForCreate = [ _position, _parametersForCreate ];
+		switch (_section) do
+		{
+		    	case 0: { _fnc = BIS_fnc_OM_moduleSmartMarkers_CreateMarkerIcon };
+					case 1: { _fnc = BIS_fnc_OM_moduleSmartMarkers_CreateMarkerIconBackground };
+					case 2: { _fnc = BIS_fnc_OM_moduleSmartMarkers_CreateMarkerArea };
+					case 3: { _fnc = BIS_fnc_OM_moduleSmartMarkers_CreateMarkerText };
+		};
+		_smartMarkerSections pushBack ([_section, _parametersForCreate call _fnc]);
+
+  };
+} forEach _markerSections;
+_smartMarkerBase setVariable [SMARTMARKER_SECTIONS, _smartMarkerSections];
+if(_hidden) then
+{
+	(SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE_HIDDEN) pushBack _smartMarkerBase;
+}
+else
+{
+  _smartMarkers pushBack _smartMarkerBase;
+	[nil, _actualLOD, _smartMarkerBase] call BIS_fnc_OM_moduleSmartMarkers_ChangeLOD;
+  if(_highlight) then
+	{
+		[_smartMarkerBase] spawn BIS_fnc_OM_moduleSmartMarkers_HighlightMarker
+		/* _smartMarkerBase spawn
+		{
+			waitUntil {sleep 3; player distance2D _this < 100 || isNull _this};
+			if !(isNull _this) then
+			{
+				_this setVariable [SMARTMARKER_HIGHLIGHTED, FALSE];
+			};
+		}; */
+	};  //highlight it as new
+};
+//PROFILE_STOP("SM_Create");
+_smartMarkerBase;

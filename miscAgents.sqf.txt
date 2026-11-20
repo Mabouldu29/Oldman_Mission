@@ -1,0 +1,185 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+/*
+	Various functions checked in a loop
+
+*/
+
+// Debug info
+BIS_fnc_om_mapDebug = {
+	scriptName "BIS_fnc_om_mapDebug";
+	DEBUG_INFO("BIS_simulatedEntities");
+	DEBUG_INFO("BIS_inactiveEntities");
+	DEBUG_INFO("BIS_nSpawnedSectorsVehicle");
+	DEBUG_INFO("BIS_nSpawnedSectorsFull");
+	while {BIS_running} do {
+		sleep 0.1;
+		if (shownMap) then {
+			BIS_nSpawnedSectorsVehicle = {_x getVariable "#state" == S_SPAWNED_VEHICLES} count BIS_activeSectors;
+			BIS_nSpawnedSectorsFull = {_x getVariable "#state" == S_SPAWNED} count BIS_activeSectors;
+			BIS_simulatedEntities = {simulationEnabled _x} count entities [["AllVehicles"],[],true,true];
+			BIS_inactiveEntities = {!simulationEnabled _x} count entities [["AllVehicles"],[],true,true];
+		};
+	};
+};
+
+BIS_fnc_om_dayNightAgent = {
+	scriptName "BIS_fnc_om_dayNightAgent";
+	BIS_night = false;
+	DEBUG_INFO("BIS_night");
+	while {true} do {
+		PROFILE_INFO("BIS_fnc_om_dayNightAgent","BIS_fnc_om_dayNightAgent",str date);
+		(date call BIS_fnc_sunriseSunsetTime) params ["_dawn","_dusk"];
+
+		/* PROFILE_START("BIS_fnc_om_dayNightAgent"); */
+		if (daytime > _dawn && daytime < _dusk) then {
+			BIS_night = false;
+		} else {
+			BIS_night = true;
+		};
+		/* PROFILE_STOP("BIS_fnc_om_dayNightAgent"); */
+		PROFILE_INFO("BIS_fnc_om_dayNightAgent","BIS_fnc_om_dayNightAgent",str date);
+		sleep 10;
+	};
+};
+
+BIS_fnc_om_airAgent = {
+	scriptName "BIS_fnc_om_airAgent";
+	BIS_flying = false;
+	DEBUG_INFO("BIS_flying");
+	private _landingTime = -1;
+	private _flyingTime = -1;
+	while {true} do {
+		PROFILE_INFO("BIS_fnc_om_airAgent","BIS_fnc_om_airAgent",1);
+		(date call BIS_fnc_sunriseSunsetTime) params ["_dawn","_dusk"];
+		if (daytime > _dawn && daytime < _dusk) then {
+			BIS_night = false;
+		} else {
+			BIS_night = true;
+		};
+
+		// Set flying variable and handle spawning of air sectors
+		//if (!isNull objectParent player && (getPos vehicle player)#2 > 5) then {
+		if (objectParent player iskindOf "Air") then {
+			_landingTime = -1;
+			if (!BIS_flying) then {
+				BIS_flying = true;
+				_flyingTime = time;
+			};
+
+			if (_flyingTime != -1 && time > _flyingTime + 5) then {
+				_flyingTime = -1;
+				[true] spawn BIS_fnc_om_activateAA;
+				objectParent player enableDynamicSimulation false;
+				if (DEBUG_MODE) then {systemChat "Air sectors activated"};
+			};
+		} else {
+			if ((getPos player)#2 < 5) then {
+				_flyingTime = -1;
+				if (BIS_flying) then {
+					_landingTime = time;
+					BIS_flying = false;
+				};
+
+				// Add 5 sec timeout before undeploying units
+				if (_landingTime != -1 && time > _landingTime + 5) then {
+					[false] spawn BIS_fnc_om_activateAA;
+					_landingTime = -1;
+					if (DEBUG_MODE) then {systemChat "Air sectors deactivated"};
+				};
+			};
+		};
+		sleep 2;
+	};
+};
+
+BIS_fnc_om_AAAgent = {
+	scriptName "BIS_fnc_om_AAAgent";
+	while {true} do {
+		PROFILE_INFO("BIS_fnc_om_AAAgent","BIS_fnc_om_AAAgent",1);
+		private _allAA = entities [["APC_Tracked_02_base_F","SAM_System_04_base_F","Radar_System_02_base_F","AA_01_base_F","Air"],[]];
+		if (BIS_flying) then {
+			{_x enableDynamicSimulation false} forEach (_allAA select {dynamicSimulationEnabled _x});
+		} else {
+			{_x enableDynamicSimulation true; _x enableSimulation true} forEach (_allAA select {!dynamicSimulationEnabled _x});
+		};
+		sleep 5;
+	};
+};
+
+// Manage weaponholders
+#define TIME_TO_COLLECTION 600
+BIS_fnc_om_weaponHolderAgent = {
+	scriptName "BIS_fnc_om_weaponHolderAgent";
+	private _persistentHolders = entities "WeaponHolderSimulated";
+	_holders = [];
+	private _timeStamps = [];
+
+	while {true} do {
+		sleep 10;
+		// Add new holders
+		{
+			PROFILE_INFO("BIS_fnc_om_weaponHolderAgent","BIS_fnc_om_weaponHolderAgent",1);
+			_x enableDynamicSimulation true;
+			_holders pushBack _x;
+			_timeStamps pushBack (time + TIME_TO_COLLECTION);
+		} forEach (entities "WeaponHolderSimulated" select {
+			private _holder = _x;
+			(_persistentHolders + _holders) findIf {_x == _holder} == -1
+		});
+
+		// Delete only one weapon holder at one time
+		if (count _timeStamps > 0 && {time > _timeStamps#0} && {(_holders#0) distance player > 200}) then {
+			deleteVehicle (_holders#0);
+			_holders deleteAt 0;
+			_timeStamps deleteAt 0;
+		};
+	};
+};
+
+BIS_fnc_om_fuelAgent = {
+	scriptName "BIS_fnc_om_fuelAgent";
+	private _lastFuel = 1;
+	private _currentFuel = 1;
+	private _delta = 0;
+	while {true} do {
+		sleep 1;
+		PROFILE_INFO("BIS_fnc_om_fuelAgent","BIS_fnc_om_fuelAgent",1);
+		private _vehicle = objectParent player;
+		if (!isNull _vehicle && isEngineOn _vehicle && !(_vehicle isKindOf "ship")) then {
+			_currentFuel = fuel _vehicle;
+			_delta = _lastFuel - _currentFuel;
+			if (_delta > 0 && _delta < 0.05) then {
+				_vehicle setFuel _currentFuel - (_delta * 3);
+				_lastFuel = fuel _vehicle;
+			};
+		};
+	};
+};
+
+BIS_inCombat = false;
+DEBUG_INFO("BIS_inCombat");
+BIS_fnc_om_inCombatAgent = {
+	scriptName "BIS_fnc_om_inCombatAgent";
+	sleep 5;
+	if (isNil "BIS_relEast") exitWith {};
+	while {true} do {
+		sleep 1;
+		private _rel = GVARS(BIS_relEast,"aggroMode",M_ALLIED);
+		PROFILE_INFO("BIS_fnc_om_inCombatAgent","BIS_fnc_om_inCombatAgent",1);
+		if (_rel == M_PREPARE || _rel == M_AGRESSIVE) then {
+			PROFILE_INFO("BIS_fnc_om_inCombatAgentFindif","BIS_fnc_om_inCombatAgentFindif",1);
+			private _i = ((player nearEntities [["Man","LandVehicle","Air","Ship"],300]) findIf {
+				side _x == EAST &&
+				{time - (_x targetKnowledge player)#2  < 20}
+			});
+			if (_i > -1) then {
+				BIS_inCombat = true;
+			} else {
+				BIS_inCombat = false;
+			};
+		} else {
+			BIS_inCombat = false;
+		};
+	};
+};

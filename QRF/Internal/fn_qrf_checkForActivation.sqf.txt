@@ -1,0 +1,201 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_instigator", "_killed"];
+
+private _killedGroup = group _killed;
+private _qrfSideActivated = side _killedGroup; 
+
+private _exiting = false;
+
+if (_qrfSideActivated == sideUnknown) then {
+	private _unitCfg = configFile >> "CfgVehicles" >> typeOf _killed;
+	private _sideNumber = getNumber (_unitCfg >> "side");
+	_qrfSideActivated = [_sideNumber] call BIS_fnc_numberToSide;
+	["QRF ACTIVATION_CHECK Side Activated %1", _qrfSideActivated] call bis_fnc_logFormat;
+};	
+
+if ( (_qrfSideActivated in (GVAR(QRF, "qrfSides"))) ) then {
+	["QRF ACTIVATION_CHECK Instigator=%1|Killed=%2   ------------------------------ START", _instigator, _killed] call bis_fnc_logFormat;
+
+	private _checkedAreaSize = GVAR(QRF, "areaSize"); //checkedAreaSize
+	private _killedPos = getPos _killed;
+
+	//Area variables
+	private _area = [];
+	private _areaCurrentUnitCount = 0;
+	  
+	private _areaPos = [];
+	private _areaUnitCount = 0;
+
+	private _qrCanProceed = false;
+	private _qrfKilledInWave = true; //TODO different var
+
+	private _trackedAreas = GVAR(QRF, "trackedAreas");
+	private _trackedAreasUnitCount = GVAR(QRF, "trackedAreasUnitCount");
+	private _trackedAreasLevelIndex = GVAR(QRF, "trackedAreasLevelIndex");
+	_vicinityDistance = QRF_INSTIGATOR_VICINITY_DISTANCE; 
+	
+	private _sector = objNull;
+	private _qrfEnabled = true;
+
+	{
+		_sector = ([_x] call BIS_fnc_om_inSector); if (!(_sector isEqualTo objNull)) exitWith {_qrfEnabled = GVARS(_sector, "QRFEnabled", true); true}; false
+	} forEach [_killedPos, getPos _instigator];
+
+	if (!_qrfEnabled) exitWith {false};
+
+	// private _trackedAreasBlacklist = GVAR(QRF, "trackedAreasBlacklist");
+	// private _blacklistedIndex = _trackedAreasBlacklist findIf {_areaPos=_x#0;player inArea [_areaPos, _checkedAreaSize+_vicinityDistance, _checkedAreaSize+_vicinityDistance, 0, false]};	
+	// if (FOUND(_blacklistedIndex)) exitWith {["QRF ACTIVATION_CHECK EXITING because player is in the blacklisted area"] call bis_fnc_logFormat; };
+
+	private _trackedAreaIndex = _trackedAreas findIf {_areaPos=_x#0;_killedPos inArea [_areaPos, _checkedAreaSize, _checkedAreaSize, 0, false]};	
+	private _playerNearAreaIndex = _trackedAreas findIf {_areaPos=_x#0;_instigator inArea [_areaPos, _checkedAreaSize+_vicinityDistance, _checkedAreaSize+_vicinityDistance, 0, false]};	
+
+ 	//this is "first" kif (NOT_FOUND(_trackedAreaIndex) && NOT_FOUND(_playerNearAreaIndex)) then {  //this is "first" kill or we are attacking in new area, setting up area
+	private _areasNotFound = false;
+	if (NOT_FOUND(_trackedAreaIndex)) then {
+		_areasNotFound = NOT_FOUND(_playerNearAreaIndex);
+		if (!_areasNotFound) then { //player area found
+			_trackedAreaIndex = _playerNearAreaIndex;
+			SVAR(QRF, "trackedAreaIndex", _trackedAreaIndex);
+		} else {
+			private _killedGroupIndex = (["lastQrfWave"] call bis_fnc_qrf_areaParam) findIf {_killedGroup in _x};
+			_areasNotFound = NOT_FOUND(_killedGroupIndex);
+			if (!_areasNotFound) then {
+				["QRF ACTIVATION_CHECK Unit not in area, but the killed unit belongs to QRF"] call BIS_fnc_logFormat;	
+				_trackedAreaIndex = _killedGroupIndex;
+			};
+		};
+	};	
+
+	if (_areasNotFound) then { 
+		["QRF ACTIVATION_CHECK SETTING_AREA"] call BIS_fnc_logFormat; //EnemyInArea:%1 Player near area(+%2):%3", _areaCondition,_vicinityDistance,  _playerCondition
+		//mockup for area checking
+		_areaPos = _killedPos;
+		
+		[_areaPos, "QRF_searchArea"+str POS_TO_ID(_areaPos), "Select", 0, _checkedAreaSize, false] call BIS_fnc_qrf_debugMarker;
+		[_areaPos, "QRF_playerArea"+str POS_TO_ID(_areaPos), "Select", 0, _checkedAreaSize+_vicinityDistance, false, "Border", "ColorBlack"] call BIS_fnc_qrf_debugMarker;
+		private _allEnemyUnitsInArea = (_areaPos nearObjects ["Man", _checkedAreaSize]) select {side group _x isEqualTo _qrfSideActivated};
+		if (_allEnemyUnitsInArea isEqualTo []) exitWith {["QRF ACTIVATION_CHECK Area Exiting: No remaining units in the area!"] call bis_fnc_logFormat;_exiting = true;};
+		
+		_areaUnitCount = count _allEnemyUnitsInArea;
+		_areaCurrentUnitCount = _areaUnitCount;
+		
+		_area = [_areaPos, _areaUnitCount];
+		_trackedAreaIndex = _trackedAreas pushBack _area;
+		SVAR(QRF, "trackedAreas", _trackedAreas);
+	
+		_trackedAreasUnitCount pushBack _areaCurrentUnitCount;
+		SVAR(QRF, "trackedAreasUnitCount", _trackedAreasUnitCount);	  	
+		_trackedAreasLevelIndex pushBack 0;
+		SVAR(QRF, "trackedAreasLevelIndex", _trackedAreasLevelIndex);  //set default levelIndex
+		
+		["elapsed", true] call bis_fnc_qrf_appendArrayVar;
+		["areaTimeout", false] call bis_fnc_qrf_appendArrayVar;
+		["lastQrfWave", []] call bis_fnc_qrf_appendArrayVar;
+		["areaDefenseLimit", GVAR(QRF, "areaDefenseLimitPercentage")] call bis_fnc_qrf_appendArrayVar;
+		["canSendNext", true] call bis_fnc_qrf_appendArrayVar;
+		["lastCooldownTime", -1] call bis_fnc_qrf_appendArrayVar;
+		SVAR(QRF, "qrfCooldown",  GVAR(QRF, "qrfCooldownStarting") );
+		//["qrfCooldown",  _trackedAreaIndex, GVAR(QRF, "qrfCooldownStarting")] call bis_fnc_qrf_areaParam;
+		["QRF ACTIVATION_CHECK Area[%1] SETTING_AREA Checking area size:%1  pos:%2  areaUnitCount:%2", POS_TO_ID(_areaPos),_areaPos,  _checkedAreaSize, _areaUnitCount] call bis_fnc_logFormat;
+	} else {
+		["QRF ACTIVATION_CHECK AREA_SET GETTING PARAMS Level:%1 %2", (_trackedAreasLevelIndex#_trackedAreaIndex), _trackedAreasLevelIndex, _trackedAreaIndex] call bis_fnc_logFormat;
+		_area = _trackedAreas#_trackedAreaIndex;
+		_areaPos = _area#0;
+		_areaUnitCount = _area#1;
+
+		_areaCurrentUnitCount = _trackedAreasUnitCount#_trackedAreaIndex;
+		
+		if ((_trackedAreasLevelIndex#_trackedAreaIndex) > 0) then {   // first qrf already came, we no longer need data from the area.... TODO _trackedAreasLevelIndex#_trackedAreaIndex > QRF>unitIndex
+			// private _currentQrfUnits = (GVAR(QRF, "units")#_trackedAreaIndex);
+			// _areaCurrentUnitCount = count _currentQrfUnits;
+			_qrfKilledInWave = _killedGroup in (["lastQrfWave", _trackedAreaIndex] call bis_fnc_qrf_areaParam);
+			["QRF ACTIVATION_CHECK Area count == QRF count isKILLEDQRF %1 killedGroup:%2", _qrfKilledInWave, _killedGroup] call bis_fnc_logFormat;
+		};
+
+		["QRF ACTIVATION_CHECK QRF trackedAreaIndex: %1 qrfLevel:%2", _trackedAreaIndex, _trackedAreasLevelIndex#_trackedAreaIndex] call bis_fnc_logFormat;
+		["QRF ACTIVATION_CHECK QRF unit count: %1", _areaCurrentUnitCount] call bis_fnc_logFormat;
+	};
+	
+	if (_exiting) exitWith {};
+	if (["areaTimeout", _trackedAreaIndex] call bis_fnc_qrf_areaParam) then {
+		if (!(["elapsed", _trackedAreaIndex] call bis_fnc_qrf_areaParam)) then {
+			_exiting = true;
+			["QRF ACTIVATION_CHECK Area Exiting: AreaTimeout is in progress!"] call bis_fnc_logFormat;
+		} else {
+			SVAR(QRF, "qrfCooldown",  GVAR(QRF, "qrfCooldownStarting") );	
+
+			["areaTimeout",  _trackedAreaIndex, false] call bis_fnc_qrf_areaParam;
+			["qrfCooldown",  _trackedAreaIndex, GVAR(QRF, "qrfCooldownStarting")] call bis_fnc_qrf_areaParam;
+			["lastCooldownTime",  _trackedAreaIndex, -1] call bis_fnc_qrf_areaParam;
+		};
+	};	
+
+	if (!(["canSendNext", _trackedAreaIndex] call bis_fnc_qrf_areaParam) ) exitWith { ["QRF ACTIVATION_CHECK Area Exiting: canSendNext is FALSE!"] call bis_fnc_logFormat; _exiting = true;};
+	if (!_qrfKilledInWave) exitWith {["QRF ACTIVATION_CHECK EXITING because of QRF_KILLED_INWAVE false"] call bis_fnc_logFormat; };
+	["QRF ACTIVATION_CHECK KILLED UNIT IN AREA currentAreaUnitCount:%1  areaUnitCount:%2", _areaCurrentUnitCount, _areaUnitCount] call bis_fnc_logFormat;
+	if (_areaUnitCount isEqualTo 0) throw "QRF Error: Area units count is 0. Something went wrong";
+	
+	_areaCurrentUnitCount = _areaCurrentUnitCount - 1;
+	private _currentAreaDefensePercentage = (_areaCurrentUnitCount/_areaUnitCount)*100;
+	 _qrCanProceed = _currentAreaDefensePercentage <= (["areaDefenseLimit", _trackedAreaIndex] call bis_fnc_qrf_areaParam); 
+	
+	if (_currentAreaDefensePercentage >= 0) then {[["QRF Area[%2] Defenses are %3%1", "%",  POS_TO_ID(_areaPos), round _currentAreaDefensePercentage], "systemChat"] call bis_fnc_qrf_debugLogRadio; };
+	if (_qrCanProceed) then {
+		if ( !(["elapsed", _trackedAreaIndex] call bis_fnc_qrf_areaParam) &&  ( (["lastCooldownTime", _trackedAreaIndex] call bis_fnc_qrf_areaParam) isEqualTo -1)  ) then { ["lastCooldownTime", _trackedAreaIndex, date] call bis_fnc_qrf_areaParam; };
+		// ["QRF SENDING CHECK! Checking area size:%2   count:%3   defenseLimit:%4%1<=%5%1", "%", _checkedAreaSize, _areaUnitCount, _areaDefenseLimitPercentage, _currentAreaDefensePercentage] call bis_fnc_logFormat;
+		//["QRF Area[%2] Defenses breached", "", POS_TO_ID(_areaPos), "systemChat"] call bis_fnc_qrf_debugLogRadio; 
+		
+		//fn_qrf_incrementedUnitIndex 
+		private _areaLevelIndex = _trackedAreasLevelIndex#_trackedAreaIndex;
+		if (_areaLevelIndex <= (GVAR(QRF, "maxLevel") -1)) then {
+			["canSendNext", _trackedAreaIndex, false] call bis_fnc_qrf_areaParam;
+			["QRF Area[%1] calling sent %2 %3", POS_TO_ID(_areaPos), _areaLevelIndex,  _trackedAreasLevelIndex] call bis_fnc_logFormat;
+			// [["Enemy QRF wave %1 sending to: %2",_areaLevelIndex, _areaPos]] call bis_fnc_qrf_debugLogRadio;
+			
+			private _unitNumbers = GVAR(QRF, "unitNumbers"); //private _unitNumbers = ["unitNumbers", _trackedAreaIndex] call bis_fnc_qrf_areaParam;
+			private _currentLevelunitNumbers = (_unitNumbers#_areaLevelIndex);
+			
+			private _randomIndex = _currentLevelunitNumbers call BIS_fnc_randomIndex;
+			private _currentLevelChosenUnitNumbers = _currentLevelunitNumbers#_randomIndex;
+			
+			//TODO should this condition be extracted - QRFUnitMultiplier
+			private _unitCounts = 1;
+			if (!((GVAR(QRF, "unitMultiplierLevelThreshold")) isEqualTo -1) && _levelIndex >= (GVAR(QRF, "unitMultiplierLevelThreshold"))) then {
+				_unitCounts = GVAR(QRF, "unitMultiplier");
+				_currentLevelChosenUnitNumbers = _currentLevelChosenUnitNumbers*_unitCounts;
+			};
+			["QRF ACTIVATION_CHECK Area[%1] Should Sent randomIndex:%2 currentLevelChosenUnit:%3", POS_TO_ID(_areaPos), _randomIndex, _currentLevelChosenUnitNumbers] call bis_fnc_logFormat;
+
+			[QRF_RADIO_BROADCAST_DELAY, QRF_RADIO_BROADCAST_DELAY_RANDOM_OFFSET] spawn bis_fnc_nearbyDeadUnitsRadioBroadcast;
+			[getPos _instigator, _trackedAreaIndex, _areaLevelIndex, _randomIndex, _unitCounts] spawn BIS_fnc_qrf_send;
+			
+			_areaLevelIndex = _areaLevelIndex + 1;
+			_trackedAreasLevelIndex set[_trackedAreaIndex, _areaLevelIndex];
+			SVAR(QRF, "trackedAreasLevelIndex", _trackedAreasLevelIndex);
+			[["QRF Area[%1] icrementing level index %2 %3",POS_TO_ID(_areaPos), _areaLevelIndex,  _trackedAreasLevelIndex], "systemChat"] call bis_fnc_qrf_debugLogRadio;
+
+			// we dont care about base units
+			_areaCurrentUnitCount = _currentLevelChosenUnitNumbers; // count (GVAR(QRF, "units")#_trackedAreaIndex)
+			["areaDefenseLimit", _trackedAreaIndex, GVAR(QRF, "waveDefenseLimitPercentage")] call bis_fnc_qrf_areaParam;
+			// we now need to reset even area data		
+			[["QRF for Area[%1] QRF sent, updating areaArray %2 %3 %4", POS_TO_ID(_areaPos), _areaCurrentUnitCount , _trackedAreaIndex, _trackedAreas ], "systemChat"] call bis_fnc_qrf_debugLogRadio;
+			_trackedAreas set [_trackedAreaIndex, [_areaPos, _areaCurrentUnitCount]];
+			SVAR(QRF, "trackedAreas", _trackedAreas);
+		} else { //we hit last QRF wave we will be sending
+			//[["QRF for Area[%1] reached max level,removing from tracked areas", POS_TO_ID(_areaPos)], "systemChat"] call bis_fnc_qrf_debugLogRadio;
+			
+			[["QRF for Area[%1] ENDED RESETING TIMEOUT", POS_TO_ID(_areaPos)]] call bis_fnc_qrf_debugLogRadio;
+			
+			["areaTimeout", _trackedAreaIndex, true] call bis_fnc_qrf_areaParam;
+			["elapsed", _trackedAreaIndex, false] call bis_fnc_qrf_areaParam;
+			["lastCooldownTime", _trackedAreaIndex, date] call bis_fnc_qrf_areaParam;
+		}; 
+	};
+	if (_exiting) exitWith {};
+	["QRF ACTIVATION_CHECK SET[%1, %2] of %3", _trackedAreaIndex, _areaCurrentUnitCount, _trackedAreasUnitCount] call bis_fnc_logFormat;
+	_trackedAreasUnitCount set[_trackedAreaIndex, _areaCurrentUnitCount];		
+	SVAR(QRF, "trackedAreasUnitCount", _trackedAreasUnitCount);
+
+	["QRF ACTIVATION_CHECK ----------------------------------------------------------------------------------------- END"] call bis_fnc_logFormat;
+};  

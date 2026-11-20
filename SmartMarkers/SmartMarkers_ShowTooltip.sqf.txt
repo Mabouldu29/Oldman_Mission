@@ -1,0 +1,87 @@
+/*
+//--- store UI positions for GUI
+mrk_title ["0.505155 * safezoneW + safezoneX","0.357 * safezoneH + safezoneY","0.128864 * safezoneW","0.022 * safezoneH"]
+mrk_text ["0.505155 * safezoneW + safezoneX","0.379 * safezoneH + safezoneY","0.128864 * safezoneW","0.187 * safezoneH"]
+
+PARAMS:
+ORIGIN - Position
+TITLE - STRING
+IMG - STRING / NIL
+DESC - STRING
+FACTION - SIDE
+
+EXAMPLE: [getMousePosition,"Title",nil,"Toto je obycejny marker a neni na nem vubec nic zvlastniho. Ani tento tooltip",INDEPENDENT] spawn BIS_fnc_OM_markerTooltip;
+*/
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+/* PROFILE_START("SM_ShowTooltip"); */
+params ["_origin","_title","_img","_desc","_tilecolor"];
+disableSerialization;
+_display = call BIS_fnc_displayMission;
+private "_display";
+waitUntil {_display = call BIS_fnc_displayMission; !(isNull _display)};
+
+private _componentHandlers = [];
+
+//--- create and set all UI elements
+_titleBCK = _display ctrlCreate ["RscPicture", 1231];
+_textBCK = _display ctrlCreate ["RscPicture", 1232];
+_mrk_img = _display ctrlCreate ["RscPicture", 1233];
+_title2 =  _display ctrlCreate ["RscStructuredText", 1234];
+_text =  _display ctrlCreate ["RscStructuredText", 1235];
+{ _componentHandlers pushBack _x } forEach [_titleBCK,_textBCK,_title2, _text, _mrk_img];
+SMARTMARKERS_MODULE_LOGIC setVariable ["componentHandlers", _componentHandlers];
+
+
+//--- point of origin
+_XYPOS = _origin;
+
+_titleBCK ctrlSetPosition [_XYPOS#0,_XYPOS#1,0.128864 * safezoneW,0.022 * safezoneH];
+_title2 ctrlSetPosition [_XYPOS#0,_XYPOS#1,0.128864 * safezoneW,0.022 * safezoneH];
+//--- adjust text position according image
+_textpos = [];
+switch (count _img) do
+{
+	case 0:
+	{
+		_textpos = [_XYPOS#0,_XYPOS#1 + 0.023 * safezoneH,0.128864 * safezoneW,0.187 * safezoneH]
+	};
+
+	default
+	{
+		_textpos = [_XYPOS#0,_XYPOS#1 + 0.023 * safezoneH + (0.187 * safezoneH)/1.6,0.128864 * safezoneW,0.187 * safezoneH]
+	};
+};
+
+_text ctrlSetPosition _textpos;
+_textBCK ctrlSetPosition _textpos;
+
+//--- prepare position of image if is it valid
+if (count "_img" > 0) then
+{
+    _mrk_img ctrlSetPosition [_XYPOS#0,_XYPOS#1 + 0.023 * safezoneH,0.128864 * safezoneW,(0.187 * safezoneH)/1.6];
+    _mrk_img ctrlSetText _img;
+};
+
+_titleBCK ctrlSetText (_tilecolor call BIS_fnc_colorRGBAtoTexture);
+//--- set text background
+_textBCK ctrlSetText "a3\Ui_f\data\GUI\Rsc\RscDisplayInventory\gradient_gs.paa"; //([0, 0.0, 0, 0.6] call BIS_fnc_colorRGBAtoTexture);
+_textBCK ctrlsettextcolor [0, 0, 0, 0.6];
+//--- set title text
+_title2 ctrlSetStructuredText parseText format ["<t font='RobotoCondensed' shadow='1' color='#f7fae3' size='0.8' >%1</t>",_title];
+//--- set description
+_text ctrlSetStructuredText parseText format ["<t font='RobotoCondensed' shadow='0' color='#d0d2c4' size='0.58' >%1</t><br/>",_desc];
+
+//--- load picture if it is valid
+if (count "_img" > 0) then
+{
+    _mrk_img ctrlSetFade 0;
+    _mrk_img ctrlCommit 0;
+};
+
+//--- execute all changes
+{
+    _x ctrlSetFade 0;
+    _x ctrlCommit 0;
+} foreach [_titleBCK,_textBCK,_title2,_text];
+/* PROFILE_STOP("SM_ShowTooltip"); */

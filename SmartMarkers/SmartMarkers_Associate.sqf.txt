@@ -1,0 +1,37 @@
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+
+/* PROFILE_START("SM_Create"); */
+params [ "_logic", "_smartMarkerBase", "_taskID"];
+
+if(isNil "_taskID") exitWith
+{
+	["Error: Task doesn't exist", 0] call BIS_fnc_logFormat;
+	false
+};
+
+if(isNil "_smartMarkerBase") exitWith
+{
+	["Error: Smartmarker doesn't exist", 0] call BIS_fnc_logFormat;
+	false
+};
+
+private _smartMarkers = +(SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE);       //pointer to the array
+_smartMarkers append (SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE_HIDDEN);
+
+private "_index";
+if(_smartMarkerBase isEqualType "") then
+{ _index = _smartMarkers findIf {vehicleVarName _x isEqualTo _smartMarkerBase} }
+else
+{ _index = _smartMarkers find _smartMarkerBase };
+
+if(_index != -1) then
+{
+	(_smartMarkers select _index) setVariable ["smartMarkerTask", _taskID];
+	true
+}
+else
+{
+	["Error: %1 not found in the shown marker set", _smartMarkerBase] call BIS_fnc_logFormat;
+	false
+};

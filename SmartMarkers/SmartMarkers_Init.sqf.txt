@@ -1,0 +1,72 @@
+/*
+SmartMarkersCfg item structure:
+
+[
+	[
+		"SmartMarker_Default",
+		[
+			[Icon ,						[type, 	[]],	[size, []],	[color,[]],	[alpha,[]] 	]
+			[IconBackground,	[type, 	[]],	[size, []],	[color,[]],	[alpha,[]] 	]
+			[Area,						[brush, []],	[size, []],	[color,[]],	[alpha,[]] 	]
+			[Text,						[text, 	[]],	[font, []],	[size,[]] 							]
+		]
+	]
+]
+*/
+
+
+[] spawn
+{
+/* ["OM_SmartMarkers","RscDisplayLoadingOM"] call bis_fnc_startloadingscreen; */
+[true, ""] call BIS_fnc_OM_loadingScreenWrapper;
+"BOOT: SmartMarkers init " call BIS_fnc_Log;
+  #include "definitions.inc"
+  #include "SmartMarkers_Common.sqf"
+  params ["_logic"];
+
+  waitUntil {!isNull ([] call BIS_fnc_displayMission)};
+
+  SMARTMARKERS_MODULE_LOGIC setVariable [SMARTMARKERS_VAR_CFG_STORAGE, []];            	    //storage for config of all smartmarkers
+  SMARTMARKERS_MODULE_LOGIC setVariable [SMARTMARKERS_VAR_STORAGE, []];  		           	    //register of all smartMarkers
+  SMARTMARKERS_MODULE_LOGIC setVariable [SMARTMARKERS_VAR_STORAGE_HIDDEN, []];              //register of all hidden smartMarkers (separate array == better performance)
+  SMARTMARKERS_MODULE_LOGIC setVariable [SMARTMARKERS_VAR_LOD, 0];                          //which LOD is actually active\
+  SMARTMARKERS_MODULE_LOGIC setVariable [SMARTMARKERS_VAR_SCRIPT_STORAGE, []];							//where to store script handlers (spawned)
+	SMARTMARKERS_MODULE_LOGIC setVariable ["BIS_OM_OnMouseOverCallbacks", [] ];							//array of callbacks which will be called before the tooltip is shown
+
+  private _smartmarkersClasses = [] call BIS_fnc_OM_moduleSmartMarkers_CFGgetSmartMarkersClasses;
+  {
+    _x set [1, [_x select 0] call BIS_fnc_OM_moduleSmartMarkers_CFGgetClassProperties];
+  } forEach _smartmarkersClasses;
+  SMARTMARKERS_MODULE_LOGIC setVariable [SMARTMARKERS_VAR_CFG_STORAGE, _smartmarkersClasses];
+  [] call BIS_fnc_OM_moduleSmartMarkers_CFGTransformClassesNamesToIDs;
+
+  BIS_fnc_OM_moduleSmartMarkers_RegisterEventhandlers =
+  {
+	private _ctrl = uiNameSpace getvariable ["map", controlNull];
+	//["removing eventhandlers", 1] call BIS_fnc_logFormat;
+	{ _ctrl ctrlRemoveEventHandler [_x select 0, _x select 1] } forEach (uiNameSpace getVariable [ "BIS_eventHandlers", [] ]);
+    
+    private _eventHandlers = [];
+    private _map = [ EVENT_INIT, [_this select 0] ] call BIS_fnc_OM_moduleSmartMarkers_HandleMapControls;
+    _eventHandlers pushBack ["Draw", (_map ctrlAddEventHandler ["Draw",{[EVENT_DRAW, _this] call BIS_fnc_OM_moduleSmartMarkers_HandleMapControls}])];
+    _eventHandlers pushBack ["MouseMoving", (_map ctrlAddEventHandler ["MouseMoving",{[EVENT_MOUSE_OVER, [_this select 0, nil, _this select 1, _this select 2, _this select 3]] call BIS_fnc_OM_moduleSmartMarkers_HandleMapControls}])];
+  	/* _eventHandlers pushBack ["MouseButtonDown", (_map ctrlAddEventHandler ["MouseButtonDown",{["LMB: %1", _this] call BIS_fnc_logFormat;}])]; */
+  	_eventHandlers pushBack ["MouseButtonUp", (_map ctrlAddEventHandler ["MouseButtonUp",{[EVENT_MOUSE_BUTTON_UP, [_this select 0, _this select 1, _this select 2, _this select 3]] call BIS_fnc_OM_moduleSmartMarkers_HandleMapControls}])];
+    uiNameSpace setVariable ["BIS_eventHandlers", _eventHandlers];
+  };
+  
+  uiNameSpace setVariable ["BIS_OM_SmartMarkers_lastTime", time];
+  missionNamespace setVariable ["BIS_OM_SmartMarkers_mrkHndl", []]; // for terminating hide/show scripts
+  /* _eventHandlers pushBack ["MouseHolding", (_map ctrlAddEventHandler ["MouseHolding",{[EVENT_MOUSE_OVER, [_this select 0, nil, _this select 1, _this select 2]] call BIS_fnc_OM_moduleSmartMarkers_HandleMapControls}])]; */
+
+  //addMissionEventHandler ["Loaded", {	params ["_saveType"]; [] call BIS_fnc_OM_moduleSmartMarkers_RegisterEventhandlers}]; //workaround, autosave doesn't serialize the map display ID
+  //moved to fn_om_addLoadedEH
+  [] call BIS_fnc_OM_moduleSmartMarkers_RegisterEventhandlers;
+  addMissionEventHandler ["Map", {	[EVENT_MAP, _this] call BIS_fnc_OM_moduleSmartMarkers_HandleMapControls} ];
+
+  SMARTMARKERS_MODULE_LOGIC setVariable ["TargetSelectionMode", false];  //it tells what tooltip and cursor should be displayed in the Syndikat Camp when choosing the target
+  "SMARTMARKERS INIT DONE" call BIS_fnc_Log;
+  [false, ""] call BIS_fnc_OM_loadingScreenWrapper;
+  /* "OM_SmartMarkers" call bis_fnc_endloadingscreen; */
+  "BOOT: SmartMarkers init end" call BIS_fnc_Log;
+};

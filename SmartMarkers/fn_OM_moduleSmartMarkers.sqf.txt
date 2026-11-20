@@ -1,0 +1,104 @@
+//TODO: optimize: [[2,"BIS_smrk_A136183"],[1,"BIS_smrk_B136183"],[0,"BIS_smrk_I136183"],[3,"BIS_smrk_T136183"]] -> sort sections, index in the 2nd array dim is not needed then
+
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+
+params [ ["_mode", "init", ["", 999]], ["_input", [], [[]] ] ];
+
+_input params
+[
+	"_param1",
+	["_param2", nil,	[999, objNull, [], "", true, taskNull]],
+	["_param3", position player, [999, objNull, [], "", true, taskNull]],
+	["_param4", false, [999, objNull, [], "", true, taskNull] ],
+	["_param5", [], [999, objNull, [], "", true, taskNull] ],
+	["_param6", true, [999, objNull, [], "", true, taskNull] ],
+	["_param7", -1, [999, objNull, [], "", true, taskNull,{}] ]
+];
+
+private ["_logic"];
+private "_ret";
+
+if(typename _mode == "STRING" && {_mode == MODE_INIT}) then
+{
+	_logic = _param1;
+	missionNamespace setVariable ["BIS_OM_SmartMarkers_logic", _logic];
+}
+else
+{
+	_logic = missionNamespace getVariable  "BIS_OM_SmartMarkers_logic";
+	if(isNil "_logic") then {_mode = MODE_ERROR};
+};
+
+//allow only one process at a time to prevent wrong array indexing in case multiple processes operate over the array of markers
+if (canSuspend) then
+{
+	_logic setVariable ["criticalSectionActiveFrom", time];
+	WaitUntil
+	{
+		!(_logic getVariable ["criticalSectionActive", false])
+		||
+		time > ((_logic getVariable "criticalSectionActiveFrom") + 10);
+	};
+	/* if(time > ((_logic getVariable "criticalSectionActiveFrom") + 10)) then
+	{
+		["SMARTMARKERS: Interrupting critical section, becouse of a timeout: %1 > %2", time,(_logic getVariable "criticalSectionActiveFrom") + 10 ] call BIS_fnc_logFormat;
+	}; */
+	_logic setVariable ["criticalSectionActive", true];
+};
+
+
+switch _mode do
+{
+	case MODE_INIT:
+	{
+		WaitUntil{!isNil "BIS_missionInitDone"};
+		[FUNCTIONS_PATH, FUNCTIONS_PREFIX, FUNCTIONS_NAMES] call BIS_fnc_LoadFunctions;
+		[_logic] spawn BIS_fnc_OM_moduleSmartMarkers_Init;
+		_ret = true;
+	};
+	case MODE_CREATE:
+	{
+	 	_ret = [_logic, _param1, _param2, _param3, _param4, _param5, _param6, _param7] call BIS_fnc_OM_moduleSmartMarkers_Create;
+	};
+	case MODE_DELETE:
+	{
+		_ret = [_logic, _param1] call BIS_fnc_OM_moduleSmartMarkers_Delete;
+	};
+	case MODE_GETMARKERNAME:
+	{
+		_ret = [_logic, _param1] call BIS_fnc_OM_moduleSmartMarkers_GetMarkerName;
+	};
+	case MODE_SHOW:
+	{
+		_ret = [_logic, _param1] call BIS_fnc_OM_moduleSmartMarkers_Show;
+	};
+	case MODE_HIDE:
+	{
+		_ret = [_logic, _param1] call BIS_fnc_OM_moduleSmartMarkers_Hide;
+	};
+	case MODE_ASSOCIATETASK:
+	{
+		_ret = [_logic, _param1, _param2] call BIS_fnc_OM_moduleSmartMarkers_Associate;
+	};
+	case MODE_ENABLE:
+	{
+		_ret = [_logic, _param1] call BIS_fnc_OM_moduleSmartMarkers_Enable;
+	};
+	case MODE_DISABLE:
+	{
+		_ret = [_logic, _param1] call BIS_fnc_OM_moduleSmartMarkers_Disable;
+	};
+	case MODE_CHANGEATTRIBUTES:
+	{
+		_ret = [_logic, _param1, _param2] call BIS_fnc_OM_moduleSmartMarkers_ChangeAttributes;
+	};
+	case MODE_ERROR:
+	{
+		["Error: SmartMarker system has not been yet initialized.", 0] call BIS_fnc_logFormat;
+		_ret = false;
+	};
+};
+_logic setVariable ["criticalSectionActive", false];
+_logic setVariable ["criticalSectionActiveFrom", time];
+_ret

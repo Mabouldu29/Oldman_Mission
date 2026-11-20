@@ -1,0 +1,358 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#define LOC_PREFIX 								"STR_A3_"
+
+BIS_intel = [];
+BIS_assets_intel_prio_high = ["Land_PCSet_Intel_01_F", "Land_PCSet_Intel_02_F"];
+BIS_assets_intel_prio_medium = ["Land_Laptop_Intel_01_F", "Land_Laptop_Intel_02_F"];
+BIS_assets_intel_prio_laptop = ["Land_Laptop_Intel_Oldman_F"];
+BIS_linkedIntel = [];
+BIS_assetsCheckedForIntel = [];
+BIS_OM_intelAdded = [];
+BIS_OM_intelAvailable = [];
+BIS_OM_intelQueued = [];
+BIS_OM_intelGroups = [];
+BIS_OM_intelGroupTempRecords = [];
+
+BIS_fnc_om_initIntelRecord = {
+        scriptName "BIS_fnc_om_initIntelRecord";
+	params ["_module"];
+	PROFILE_INFO("BIS_Intel","BIS_fnc_om_initIntelRecord",1);
+	// Read and delete the module
+	private _markers = GVAR(_module,"Markers");
+	if (_markers == "") then {_markers = "[]"};
+	_markers = call compile _markers;
+	private _data = [];
+
+	{
+		_x params ["_type","_name",["_var",false],["_markerData",[]]];
+		_markerData params [["_mrkText",["",""]],["_headerText",["",""]],["_tooltipText",["",""]],["_tooltipPic",["",""]]];
+
+		_data pushBack [_type,_name,getMarkerPos _name,_var,[_mrkText,_headerText,_tooltipText,_tooltipPic]];
+	} forEach _markers;
+
+	_probability = GVAR(_module,"Probability");
+	_condString = GVARS(_module,"GatherCondition","TRUE");
+	if (_condString == "") then {_condString = "TRUE"};
+	_cond = compile _condString;
+	_source = call compile GVARS(_module,"Source","[]");
+	_children = call compile GVARS(_module,"Children","[]");
+	//_revealData = call compile GVARS(_module,"RevealData","[position _module, 100]");
+	_revealData = call compile (_module getVariable ["RevealData", "[position _module, 100]"]);
+	if (count _source > 0) then {_probability = 0};
+	private _params =
+	[
+		if( GVAR(_module,"Title") select [0,7] != LOC_PREFIX ) then { GVAR(_module, "Title") } else {localize (GVAR(_module, "Title")) },
+		if( GVAR(_module,"text") select [0,7] != LOC_PREFIX ) then { GVAR(_module, "text") } else {localize (GVAR(_module, "text")) },
+		_data,_probability,GVARS(_module,"OnFindCode",""),GVARS(_module,"Priority",0),_source,GVAR(_module,"ID")];
+
+	if ((_params # 7) != "") then {
+		if (count _children > 0) then {
+			BIS_OM_intelGroups pushBack [(_params # 7), _children];
+		} else {
+			if ((_revealData # 1) > 0) then {
+				private _allSectors = entities "ModuleOmSector_F";
+				_allSectorsSort = _allSectors apply {[_x distance2D (_revealData # 0), _x]};
+				_allSectorsSort sort TRUE;
+				private _nearestSector = _allSectorsSort # 0 # 1;
+				private _savedRevealData = _nearestSector getVariable ["BIS_intelRevealData", []];
+				_savedRevealData pushBack [_params # 7, _revealData # 0, _revealData # 1];
+				_nearestSector setVariable ["BIS_intelRevealData", _savedRevealData];
+			};
+		};
+
+		if (toLower _condString == "true") then {
+			BIS_intel pushBack _params;
+			if (count _source > 0) then {
+				BIS_linkedIntel pushBack [(_params # 7), _source];
+				{
+					[_x, _params] spawn {
+						params ["_var", "_params"];
+						PROFILE_INFO("BIS_Intel","BIS_fnc_om_initIntelRecordSpawn1",1);
+						while {([_params # 7] call BIS_fnc_OM_getIntelStatus) != "added"} do {
+							waitUntil {sleep 1; !isNull (missionNamespace getVariable [_var, objNull])};
+							_spawnedAsset = missionNamespace getVariable [_var, objNull];
+							[_spawnedAsset, _spawnedAsset getVariable ["BIS_OM_getIntelActionID", -1]] call BIS_fnc_holdActionRemove;
+							if (([_params # 7] call BIS_fnc_OM_getIntelStatus) != "added") then {
+								[_spawnedAsset, _params # 7] call BIS_fnc_OM_hackIntel;
+							};
+							waitUntil {sleep 1; isNull (missionNamespace getVariable _var)};
+						};
+					};
+				} forEach _source;
+			};
+			BIS_OM_intelAvailable pushBackUnique (_params # 7);
+		} else {
+			[_cond, _params, _source] spawn {
+				params ["_cond", "_params", "_source"];
+				while {([_params # 7] call BIS_fnc_OM_getIntelStatus) != "added"} do {
+					BIS_OM_intelQueued pushBackUnique (_params # 7);
+					waitUntil {sleep 1; PROFILE_INFO("BIS_Intel","BIS_fnc_om_initIntelRecordCond1",1); call _cond};
+
+					BIS_OM_intelQueued = BIS_OM_intelQueued - [_params # 7];
+					BIS_intel pushBack _params;
+					BIS_OM_intelAvailable pushBackUnique (_params # 7);
+					if (count _source > 0) then {
+						BIS_linkedIntel pushBack [(_params # 7), _source];
+						{
+							[_x, _params, _cond] spawn {
+								params ["_var", "_params", "_cond"];
+								while {([_params # 7] call BIS_fnc_OM_getIntelStatus) != "added" && call _cond} do {
+									waitUntil {sleep 1; PROFILE_INFO("BIS_Intel","BIS_fnc_om_initIntelRecordCond2",1);!isNull (missionNamespace getVariable [_var, objNull]) || ([_params # 7] call BIS_fnc_OM_getIntelStatus) == "added" || !call _cond};
+									if (([_params # 7] call BIS_fnc_OM_getIntelStatus) != "added" && call _cond) then {
+										_spawnedAsset = missionNamespace getVariable [_var, objNull];
+										[_spawnedAsset, _spawnedAsset getVariable ["BIS_OM_getIntelActionID", -1]] call BIS_fnc_holdActionRemove;
+										if (([_params # 7] call BIS_fnc_OM_getIntelStatus) != "added") then {
+											[_spawnedAsset, _params # 7] call BIS_fnc_OM_hackIntel;
+										};
+										waitUntil {sleep 1; isNull _spawnedAsset || ([_params # 7] call BIS_fnc_OM_getIntelStatus) == "added" || !call _cond};
+										if (!call _cond && !isNull _spawnedAsset) then {
+											[_spawnedAsset, _spawnedAsset getVariable ["BIS_OM_getIntelActionID", -1]] call BIS_fnc_holdActionRemove;
+											_spawnedAsset spawn BIS_fnc_om_handleIntelSource;
+										};
+									};
+								};
+							};
+						} forEach _source;
+					};
+
+					waitUntil {PROFILE_INFO("BIS_Intel","BIS_fnc_om_initIntelRecordCond3",1);sleep 1; !call _cond || ([_params # 7] call BIS_fnc_OM_getIntelStatus) == "added"};
+
+					if (([_params # 7] call BIS_fnc_OM_getIntelStatus) != "added") then {
+						[_params # 7] call BIS_fnc_om_removeIntel;
+						BIS_OM_intelAvailable = BIS_OM_intelAvailable - [_params # 7];
+						_i = BIS_linkedIntel findIf {_x isEqualTo [(_params # 7), _source]};
+						if (_i != -1) then {
+							BIS_linkedIntel deleteAt _i;
+						};
+					};
+				};
+			};
+		};
+		deleteVehicle _module;
+	} else {
+		[format ["Error: Intel module %1 has no ID defined.", _module]] call BIS_fnc_error;
+	};
+};
+
+BIS_fnc_om_addIntel = {
+	params [["_id",""], ["_prio",0]];
+	if (count BIS_intel == 0) exitWith {["Intel: No intel available"] call BIS_fnc_log};
+	// Find / select intel
+	private _found = false;
+	private _intel = [];
+	private _i = -1;
+	if (_id == "") then {
+		_j = 0;
+		_intelProperPrio = [];
+		while {(_prio - _j) >= 0 && count _intelProperPrio == 0} do {
+			_intelProperPrio = BIS_intel select {(_x # 5) == (_prio - _j)};
+			_j = _j + 1;
+		};
+		// Select random intel
+		private _weights = [];
+		{_weights pushBack (_x#3)} forEach _intelProperPrio;
+
+		_intel = _intelProperPrio selectRandomWeighted _weights;
+	} else {
+		_i = BIS_intel findIf {_x#7 == _id};
+		if (_i > -1) then {
+			_intel = BIS_intel#_i;
+			_found = true;
+		};
+	};
+	if (isNil "_intel") exitWith {["Intel: intel array is empty, or all the weights are 0"] call BIS_fnc_log};
+	if (count _intel == 0) exitWith {["Intel: selected invalid intel"] call BIS_fnc_log};
+
+	_intel params ["_title","_text","_data", "_probability", "_code", "_prio", "_source", "_id"];
+	_groupID = BIS_OM_intelGroups findIf {_id == (_x # 0) || _id in (_x # 1)};
+
+	if (_groupID != -1) then {
+		_group = BIS_OM_intelGroups # _groupID;
+		_parent = _group # 0;
+		_children = _group # 1;
+		_tempRecordsID = BIS_OM_intelGroupTempRecords findIf {(_x # 0) == _parent};
+		_tempRecords = +(if (_tempRecordsID == -1) then {[]} else {(BIS_OM_intelGroupTempRecords # _tempRecordsID) # 1});
+		if (_id == _parent) then {
+			{
+				player removeDiaryRecord ["Intel", _x];
+			} forEach _tempRecords;
+			{
+				_childTitle = _x;
+				if (([_childTitle] call BIS_fnc_OM_getIntelStatus) == "available") then {
+					_childID = BIS_intel findIf {(_x # 7) == _childTitle};
+					if (_childID != -1) then {
+						_childCode = (BIS_intel # _childID) # 4;
+						if (_childCode != "") then {
+							[] call (compile _childCode);
+						};
+					};
+				};
+				[_childTitle] call BIS_fnc_om_removeIntel;
+			} forEach _children;
+			if (_tempRecordsID != -1) then {
+				BIS_OM_intelGroupTempRecords deleteAt _tempRecordsID;
+			};
+			[_id] spawn BIS_fnc_om_addIntelFinal;
+		} else {
+			if (count _tempRecords == ((count _children) - 1)) then {
+				[_parent] call BIS_fnc_om_addIntel;
+			} else {
+				[_id] spawn BIS_fnc_om_addIntelFinal;
+			};
+		};
+	} else {
+		[_id] spawn BIS_fnc_om_addIntelFinal;
+	};
+
+	if (_code != "") then {
+		[] call (compile _code);
+	};
+	_found
+};
+
+BIS_fnc_om_addIntelFinal = {
+	scriptName "BIS_fnc_om_addIntelFinal";
+	params["_id"];
+	PROFILE_INFO("BIS_Intel","BIS_fnc_om_addIntelFinal"+str _id,1);
+	_intel = BIS_intel # (BIS_intel findIf {(_x # 7) == _id});
+	// Find intel index and delete it
+	[_id] call BIS_fnc_om_removeIntel;
+	_intel params ["_title","_text","_data", "_probability", "_code", "_prio", "_source", "_id"];
+	private _formattedText = [_text];
+	{
+		private _markerID = [0, _x] call BIS_fnc_OM_moduleSmartMarkers;
+		sleep 0.5; //TODO FIX we need this since we dont know whether the marker is created or not
+		_formattedText pushBack ([2, [_markerID]] call BIS_fnc_OM_moduleSmartMarkers);
+	} forEach _data;
+	//add category if needed
+	if (!(player diarySubjectExists "Intel")) then {
+		player createDiarySubject ["Intel","Intel"];
+	};
+	// Add diary title
+	_record = player createDiaryRecord ["Intel",[_title,format _formattedText]];
+	_groupID = BIS_OM_intelGroups findIf {_id == (_x # 0) || _id in (_x # 1)};
+	if (_groupID != -1) then {
+		_group = BIS_OM_intelGroups # _groupID;
+		_parent = _group # 0;
+		if (_id != _parent) then {
+			_tempRecordsID = BIS_OM_intelGroupTempRecords findIf {(_x # 0) == _parent};
+			_tempRecords = +(if (_tempRecordsID == -1) then {[]} else {(BIS_OM_intelGroupTempRecords # _tempRecordsID) # 1});
+			_tempRecords pushBack _record;
+			if (_tempRecordsID == -1) then {
+				BIS_OM_intelGroupTempRecords pushBack [_parent, _tempRecords]
+			} else {
+				BIS_OM_intelGroupTempRecords set [_tempRecordsID, [_parent, _tempRecords]];
+			};
+		};
+	};
+	// Show notification
+	[parseText format ["<t font='PuristaBold' size='1.0' color='#f2a832'>%3</t><br /><t font='PuristaMedium' size='1.25'>%1</t><br /><t font='PuristaMedium' size='0.85'>%2</t>",_title, Localize "STR_A3_OM_System_Intel_DiaryUpdateNotification", Localize "STR_A3_OM_System_Intel_DiaryUpdateTitle"], true, nil, 7, 0.7, 0] spawn BIS_fnc_textTiles;
+	playSound "Beep_Target";
+	BIS_OM_intelAdded pushBackUnique _id;
+};
+
+BIS_fnc_om_removeIntel = {
+	scriptName "BIS_fnc_om_removeIntel";
+	params ["_id"];
+	PROFILE_INFO("BIS_Intel","BIS_fnc_om_removeIntel"+str _id,1);
+	private _i = BIS_intel findIf {_x#7 == _id};
+	if (_i > -1) exitWith {
+		BIS_intel deleteAt _i;
+		true
+	};
+	false
+};
+
+BIS_fnc_om_handleIntelSource = {
+	scriptName "BIS_fnc_om_handleIntelSource";
+	PROFILE_INFO("BIS_Intel","BIS_fnc_om_handleIntelSource",1);
+	_class = typeOf _this;
+	_varName = vehicleVarName _this;
+	_prio = 2;
+	if (_class in BIS_assets_intel_prio_medium) then {_prio = 1};
+	_intel = "";
+	{
+		if (_varName in (_x # 1)) then {_intel = _x # 0};
+	} forEach BIS_linkedIntel;
+	if (_intel != "" || !(_varName in BIS_assetsCheckedForIntel)) then {
+		[_this, _intel] call BIS_fnc_OM_hackIntel;
+	};
+};
+
+BIS_fnc_OM_hackIntel = {
+	scriptName "BIS_fnc_OM_hackIntel";
+	params ["_source", "_intel"];
+	PROFILE_INFO("BIS_Intel","BIS_fnc_OM_hackIntel",1);
+	params ["_source", "_intel"];
+	_prio = 0;
+	if ((typeOf _source) in BIS_assets_intel_prio_high) then {_prio = 2};
+	if ((typeOf _source) in BIS_assets_intel_prio_medium) then {_prio = 1};
+	if ((typeOf _source) in BIS_assets_intel_prio_laptop) then {_prio = 3};
+	_actionID = [
+		_source,
+		Localize "STR_A3_OM_HoldAction_intel_getIntel", //--- ToDo: Localize
+		"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
+		"\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa",
+		"player distance _target < 3",
+		"player distance _target <3",
+		{
+		//--- when hold action starts
+		_prio = (_this # 3) # 1;
+		switch (_prio) do {
+			case 0: {};
+			case 1: {playSound selectRandom ["OMIntelGrabLaptop_01", "OMIntelGrabLaptop_02", "OMIntelGrabLaptop_03"]};
+			case 2: {playSound selectRandom ["OMIntelGrabPC_01", "OMIntelGrabPC_02", "OMIntelGrabPC_03"]};
+			case 3: {playSound selectRandom ["OMIntelGrabLaptop_01", "OMIntelGrabLaptop_02", "OMIntelGrabLaptop_03"]};
+			};
+		},
+		{
+		//--- tick every frame (out of 24)
+		},
+		{
+			//--- when holdaction ends
+			_asset = (_this # 3) # 2;
+			BIS_assetsCheckedForIntel pushBackUnique vehicleVarName _asset;
+			_asset setVariable ["BIS_OM_getIntelActionID", -1];
+			{
+				if ((vehicleVarName _asset) in (_x # 1)) then {
+					_iToRemove = _forEachIndex;
+					_otherAssets = ((_x # 1) - [vehicleVarName _asset]);
+					{
+						_anotherSpawnedAsset = missionNamespace getVariable [_x, objNull];
+						if !(isNull _anotherSpawnedAsset) then {
+							[_anotherSpawnedAsset, _anotherSpawnedAsset getVariable ["BIS_OM_getIntelActionID", -1]] call BIS_fnc_holdActionRemove;
+							if !(_x in BIS_assetsCheckedForIntel) then {
+								[_anotherSpawnedAsset, ""] call BIS_fnc_OM_hackIntel;
+							};
+						};
+					} forEach _otherAssets;
+					BIS_linkedIntel set [_iToRemove, -1];
+				};
+			} forEach BIS_linkedIntel;
+			BIS_linkedIntel = BIS_linkedIntel - [-1];
+			(_this # 3) call BIS_fnc_om_addIntel;
+		},
+		{
+		//--- when action is terminated
+		},
+		[_intel, _prio, _source],
+		1,
+		nil,
+		TRUE,
+		FALSE
+	] call BIS_fnc_holdActionAdd;
+	_source setVariable ["BIS_OM_getIntelActionID", _actionID];
+};
+
+BIS_fnc_OM_getIntelStatus = {
+	scriptName "BIS_fnc_OM_getIntelStatus";
+	PROFILE_INFO("BIS_Intel","BIS_fnc_OM_getIntelStatus",1);
+	private _intel = _this # 0;
+	private _status = "unknown";
+	if (_intel in BIS_OM_intelAdded) then {_status = "added"} else {
+		if (_intel in BIS_OM_intelAvailable) then {_status = "available"} else {
+			if (_intel in BIS_OM_intelQueued) then {_status = "queued"};
+		};
+	};
+	_status
+};

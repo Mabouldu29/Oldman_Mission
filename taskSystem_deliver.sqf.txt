@@ -1,0 +1,44 @@
+BIS_fnc_questSystem_Deliver_ModuleInit = {
+	private _allModules = entities "ModuleOmTask_F";
+	{
+		//[_x, synchronizedObjects _x] call BIS_fnc_questSystemModuleCreate;
+	} forEach _allModules;
+};
+
+BIS_fnc_questSystem_Deliver_ModuleCreate = {
+	params["_module", "_synced"];
+	PROFILE_INFO("BIS_fnc_questSystem_Deliver_ModuleCreate","BIS_fnc_questSystem_Deliver_ModuleCreate",1)
+	/* {
+		["TASK syced %1", typeOf _x] call bis_fnc_logFormat;
+	} forEach _synced; */
+
+	private _taskOwner = player;
+
+	private _itemType = _module getVariable "#ItemType";
+	private _itemCount = _module getVariable "#ItemCount";
+	private _cargoToCheck = _module getVariable "#CargoToCheck";
+
+	private _variableNameToCheck = _module getVariable "#TaskCreateConditionVar";
+	private _variableIsTrue = _module getVariable "#TaskVarIsTrue";
+
+	[_itemType, _itemCount, _cargoToCheck, _variableNameToCheck, _variableIsTrue] call BIS_fnc_questSystem_Deliver_Create;
+};
+
+BIS_fnc_questSystem_Deliver_Create = {
+	PROFILE_INFO("BIS_fnc_questSystem_Deliver_Create","BIS_fnc_questSystem_Deliver_Create",1)
+	params["_itemType", "_itemCount", "_cargoToCheck", "_variableNameToCheck", "_variableIsTrue"];
+
+	private _moduleCondition = { if (!isNil "_variableNameToCheck") then {(_variableNameToCheck == _variableValue)} else {!(_variableValue)};};
+	/* ["Task condition %1", _moduleCondition] call BIS_fnc_logFormat; */
+	_deliverTaskCondition = format ["{""%1"" == _x} count (itemCargo %2) == %3}", _itemType, _cargoToCheck, _itemCount];
+	private _type = "box";
+	[
+		_taskOwner,
+		_module getVariable "#TaskName",
+		_module getVariable "#TaskDescription",
+		_type,
+		objNull,
+		[_moduleCondition, _deliverTaskCondition],
+		[{},{}]
+	] call BIS_fnc_questSystem_taskCreate;
+};

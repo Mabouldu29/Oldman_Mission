@@ -1,0 +1,28 @@
+
+//MISC STRUCTURED TEXT HELPER MACROS
+#define H1_FONT_SIZE            25
+#define PAR_FONT_SIZE           13
+#define H1_COLOR                "#999999"
+#define PAR_COLOR               "#6a6a6a"
+#define PAR_COLOR_HIGHLIGHT_1   "#999999"
+#define H1(TEXT)                "<font color='" + H1_COLOR + "' size='" + str H1_FONT_SIZE + "'>" + TEXT + "</font>"
+#define PAR(TEXT, COLOR)        "<font color='" + COLOR + "' size='" + str PAR_FONT_SIZE + "'>" + TEXT + "</font>"
+#define ENDL                    "<br/>"
+#define EMPTY_SPACE                   " "
+#define LI                      "   <img align='left' height='" + str PAR_FONT_SIZE + "' image='a3\Missions_F_Oldman\Data\img\point2.paa'/> "
+#define ICON(PATH)              "<img align='left' height='" + str (H1_FONT_SIZE + 5) + "' image='" + PATH + "'/> "
+#define ICON_SMALL(PATH)        "<img align='left' height='16' image='" + PATH + "'/> "
+
+
+
+//DIARY INFO MACROS ABOUT SYNDIKAT'S BENEFITS
+#define SYNDIKAT_UPDATE_INFO_ASSAULT()    \
+if(!isNil "BIS_infoSyndikat_SyndikatAssault") then { player setDiaryRecordText [ ["SyndikatInfo", BIS_infoSyndikat_SyndikatAssault], [Localize "str_a3_om_syndikatCommon_SyndikatAssault",  [] call BIS_fnc_generateSyndikatsInfoText_SyndikatAssault] ] }
+#define SYNDIKAT_UPDATE_INFO_TEAM() 		  \
+if(!isNil "BIS_infoSyndikat_SyndikatTeam") then { player setDiaryRecordText [ ["SyndikatInfo", BIS_infoSyndikat_SyndikatTeam], [Localize "str_a3_om_syndikatCommon_SyndiaktTeam",  [] call BIS_fnc_generateSyndikatsInfoText_SyndikatTeam] ] }
+#define SYNDIKAT_UPDATE_INFO_STASH()      \
+if(!isNil "BIS_infoSyndikat_DropOffPoint") then { player setDiaryRecordText [ ["SyndikatInfo", BIS_infoSyndikat_DropOffPoint], [Localize "str_a3_om_syndikatCommon_Stashes",  [] call BIS_fnc_generateSyndikatsInfoText_DropOffPoints] ] }
+#define SYNDIKAT_UPDATE_INFO_MARKETS()    \
+if(!isNil "BIS_infoSyndikat_market") then { player setDiaryRecordText [ ["SyndikatInfo", BIS_infoSyndikat_market], [Localize "str_a3_om_syndikatCommon_Markets",  [] call BIS_fnc_generateSyndikatsInfoText_market] ] }
+#define SYNDIKAT_UPDATE_INFO_SAFEHOUSE()  \
+if(!isNil "BIS_infoSyndikat_safehouse") then { player setDiaryRecordText [ ["SyndikatInfo", BIS_infoSyndikat_safehouse], [Localize "str_a3_om_syndikatCommon_Safehouses",  [] call BIS_fnc_generateSyndikatsInfoText_safehouse] ] }

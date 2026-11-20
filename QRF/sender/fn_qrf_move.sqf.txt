@@ -1,0 +1,226 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_searchAndVehicleDestPos", "_vehicles", "_groups", "_qrfType", "_trackedAreaIndex"];
+_searchAndVehicleDestPos params["_searchPos", "_vehicleDestPos", "_suitablePos"];
+private _airAltitude = QRF_AIR_ALTITUDE;
+
+private _searchPosId = POS_TO_ID(_searchPos);
+private _speed = GVAR(QRF, "qrfVehicleSpeed");
+
+private _vehicleDestDistanceVehicle = QRF_VEHICLE_POS_RADIUS;
+private _playerVehicleDistance = QRF_DISTANCE_TO_PLAYER;
+
+if (_qrfType == "Air") then {
+	_speed =  GVAR(QRF,  "qrfAirSpeed");
+	{ _x flyInHeight _airAltitude; } forEach _vehicles;
+	
+	_vehicleDestDistanceVehicle = QRF_AIR_POS_RADIUS;
+	_playerVehicleDistance = QRF_AIR_DISTANCE_TO_PLAYER;
+};
+
+if (_qrfType != "Infantry") then {
+	if (_qrfType == "Motorized") then {
+		//setting lights/beacons
+		private _beaconsSelections = ["lights_em_hide", "BeaconsStart"];
+		{_v=_x; _v setPilotLight true; {_v animate [_x, 1];} forEach _beaconsSelections;} forEach _vehicles;
+
+	};
+	sleep 2;
+};
+
+private _vehicle = "";
+private _vehicleObj = objNull;
+[["Enemy QRF incomming: %1 to %2",_vehicle, _searchPos]] call bis_fnc_qrf_debugLogRadio;
+
+{_x setBehaviour "SAFE"} forEach _groups;
+{_x limitSpeed _speed; _vehicle = typeOf _x;   _vehicleObj = _x; } forEach _vehicles;
+["QRF MOVE[%1] limitSpeed...", _searchPosId] call BIS_fnc_logFormat;
+  
+//TEST DRIVE
+// (crew (_vehicles#(count _vehicles-1)))#1 switchCamera "External";
+
+//TODO ADD positions blocked are new moves. 
+// private _positionsBlockedCount = count _positionsBlocked; TODO ADD
+	// for "_i" from 0 to  (_positionsBlockedCount-1) do {
+	//  	private _wp = _unit addWaypoint [_positionsBlocked#_i, 10, _i];
+	// 	_wp setWaypointType "MOVE";
+	// };  
+
+// Find out if vehicle has turret
+// @TODO: If vehicle has turret, dismount all crewmen
+
+
+// if (count _vehicles > 0) then {_allDismount = false; }; // && {_vehicles findIf {!isNull gunner _x} > -1}
+
+//make some noise If the vehicle has siren, use it(eq. police van)
+//TODO blowHorn only for police {[_x, true, -1] spawn bis_fnc_blowHornOrSiren;} forEach _vehicles;
+
+//TODO FIX MOVE vs waypoints
+
+["QRF MOVE[%1] GroupsAll %2",_searchPosId, _groups] call bis_fnc_logFormat;
+
+if (_qrfType == "Air") then { //Air QRF will try to shoot the player first
+	["QRF AIR hunt the player first"] call bis_fnc_logFormat;
+	private _heliHuntTimeout = QRF_AIR_HUNT_TIMEOUT;
+	private _heliHuntAltitude = 10;
+	{ 
+		if ((allTurrets _x) isEqualTo []) exitWith {}; //Do we have something to shoot with ?
+		_x flyInHeight _heliHuntAltitude; //Set the height for hunting the player
+		private _wp1 = (group _x) addWaypoint [_searchPos, 100];
+		_wp1 setWaypointType "SAD";
+		_wp1 setWaypointBehaviour "COMBAT";
+		_wp1 setWaypointCombatMode "RED";
+		_wp1 setWaypointStatements ["TRUE", ""]; //TODO use waypoint timeout ?! _wp1 setWaypointTimeout [_heliHuntTimeout, _heliHuntTimeout, _heliHuntTimeout];
+		_wp1 setWaypointTimeout [_heliHuntTimeout, _heliHuntTimeout, _heliHuntTimeout];
+	} forEach _vehicles;  
+	
+	//TODO hardcoded sides vs registeredSides
+	private _heliTime = time;
+	private _areaPos = ((GVAR(QRF, "trackedAreas")#_trackedAreaIndex)#0);
+	private _areaSize = GVAR(QRF, "areaSize");
+	
+	while {	!(QRF_TIMEOUT_TIME(QRF_ELAPSED_TIME(_heliTime), _heliHuntTimeout*60)) } do {
+		sleep 10; 
+		{ 
+			private _heli = _x; 
+			if (_heli distance2D _areaPos <= _areaSize) then {
+				{_heli reveal [_x, 4];} forEach ((_areaPos nearEntities _areaSize) select {side _x == WEST || side _x == RESISTANCE});
+			};
+		} forEach _vehicles;  
+	};
+	["QRF AIR stopped hunting lets land"] call bis_fnc_logFormat; 
+	{_x flyInHeight _airAltitude; deleteWaypoint [group _x, currentWaypoint group _x];HHE =_x;} forEach _vehicles;  
+};
+
+{_x move _vehicleDestPos} forEach _groups;
+["canSendNext", _trackedAreaIndex, true] call bis_fnc_qrf_areaParam;
+
+// sleep 15;
+sleep 1;  
+["QRF MOVE[%1] GroupsAll %2",_searchPosId, _groups] call bis_fnc_logFormat;
+
+["QRF MOVE[%1] Waiting till the group gets to the players vicinity. Checking Pos:%2 Dest:%3 Groups:%4", _searchPosId, _vehicleDestPos,_vehicleDestDistanceVehicle,  _groups] call BIS_fnc_logFormat;
+private _skipToDespawn = false;
+private _arrivalFailsafeTimeout = GVAR(QRF,  "arivalFailSafeTimeout");  //TODO override ?
+private _lastTime = time;
+private _elapsedTime = 0;
+waitUntil {
+	sleep 1; 
+	_elapsedTime = QRF_ELAPSED_TIME(_lastTime);
+	if (QRF_TIMEOUT_TIME(_elapsedTime, _arrivalFailsafeTimeout*60)) exitWith {
+		[QRF_STATE_FAILED_TO_REACH_DESTINATION] call bis_fnc_qrf_reportStatus;
+		//TODO should we despawn, or should we give em chance, by sending em on foot ?
+
+		_skipToDespawn = true;
+		_skipToDespawn
+	}; 
+	if (_groups findIf {{!(alive _x)} count (units _x) isEqualTo 0} isEqualTo -1) exitWith {
+		[QRF_STATE_ALL_UNITS_MIA] call bis_fnc_qrf_reportStatus;
+		_skipToDespawn = true;
+		_skipToDespawn
+	};
+
+	[["QRF MOVE[%1] %2 %3 %4 %5 %6",
+	_searchPosId, _vehicleDestDistanceVehicle, _playerVehicleDistance, _groups findIf {!(_x isEqualType [])}, _groups findIf {leader _x distance2D _vehicleDestPos < _vehicleDestDistanceVehicle}, _groups findIf {leader _x distance2D player < _playerVehicleDistance} 
+	]] call bis_fnc_qrf_debugLogRadio;
+	_groups findIf {!(_x isEqualType []) && {leader _x distance2D _vehicleDestPos < _vehicleDestDistanceVehicle || leader _x distance2D player < _playerVehicleDistance} } > -1
+	//_groups findIf {(_x isEqualType []) || {leader _x distance2D _veh icleDestPos > _vehicleDestDistanceVehicle || leader _x distance2D player > _playerVehicleDistance} } isEqualTo -1
+};
+
+// ["QRF MOVE[%1] GroupsAll %2",_searchPosId, _groups] call bis_fnc_logFormat;
+
+if (_skipToDespawn) exitWith { ["QRF MOVE[%1] Skipping to DESPAWN(%1s)", _elapsedTime] call BIS_fnc_logFormat; _skipToDespawn}; 
+["QRF MOVE[%1] Destination reached (%2s). Waiting for units to leave the vehicle...", _searchPosId, _elapsedTime] call BIS_fnc_logFormat;
+
+sleep 2;
+private _allLeavingGroups = [];
+private _groupPilot = grpNull;
+
+private _isNotWeaponized = false;
+if (_qrfType == "Air") then {
+	["QRF MOVE[%1] AIR started"] call BIS_fnc_logFormat;
+	private _helipad = "Land_HelipadEmpty_F" createVehicle _vehicleDestPos;	
+	{ _x land "GET OUT"; } forEach _vehicles;
+	private _minHeight = QRF_AIR_UNITS_GETOUT_MIN_HEIGHT;
+	{
+		private _vehicle = _x;
+		(driver _x) setSkill  ["general", 1];
+		(driver _x) setSkill  ["commanding", 1];
+
+		["QRF AIR Landing wait started"] call bis_fnc_logFormat;
+		waitUntil {sleep 0.5; (getPos (_x)#2) <= _minHeight};
+
+		private _groupPilot = group driver _x;   
+		private _canMove = canMove _vehicle;
+		private _leavingGroup = [];
+		if (_canMove) then { _leavingGroup = _groups - [_groupPilot];  } else {_leavingGroup = _groups; ["QRF MOVE AIR can't move, pilot joins crew"] call BIS_fnc_logFormat; };
+		
+		waitUntil {sleep 0.5;  unitReady (driver _x); }; 
+		_allLeavingGroups append _leavingGroup; 
+		{ { unassignVehicle _x; unassignTeam _x;} forEach units _x; units _x allowGetIn false; } forEach _leavingGroup;
+		{(units _x) orderGetIn false;} forEach _leavingGroup;  
+		if (_canMove) then {
+			sleep 10;
+			["QRF MOVE AIR landed, moving out"] call BIS_fnc_logFormat;
+			_groupPilot move [0, 0, 0];	
+		};
+	} forEach _vehicles;
+	deleteVehicle _helipad;
+} else {
+	if (_qrfType == "Motorized") then {
+		private _allLeavingUnits = [];
+		{
+			private _vehicleObj = _x;
+			_isNotWeaponized = count (allTurrets _vehicleObj) isEqualTo 0;
+			_groupPilot = group driver _x; 
+			private _leavingUnits = [];
+			private _leavingGroup = [];
+			if (!_isNotWeaponized) then { _leavingGroup = _groups - [_groupPilot]; _leavingUnits =  (crew _x - [driver _x, gunner _x, commander _x]);  } else {_leavingGroup = _groups;_leavingUnits = crew _x; ["QRF MOVE AIR can't move, pilot joins crew"] call BIS_fnc_logFormat; };
+			["QRF MOVE[%1] Allunitss s %2",_searchPosId ,driver _x in _leavingUnits] call bis_fnc_logFormat;
+			
+			["QRF MOVE[%1] GroupsAll %2",_searchPosId, _groups] call bis_fnc_logFormat;
+			// private _leavingGroup = _groups - [_groupPilot];
+			["QRF MOVE[%1] GroupsAll AFGTER %2",_searchPosId, _groups] call bis_fnc_logFormat;
+			_allLeavingGroups append _leavingGroup; 
+			_allLeavingUnits append _leavingUnits;
+			sleep 0.2;
+			{ unassignVehicle _x; unassignTeam _x; } forEach _leavingUnits;
+			["QRF MOVE[%1] AllLeavingGRoups %2 %3 %4",_searchPosId, _leavingGroup, _groups, [_groupPilot]] call bis_fnc_logFormat;
+			{ _x leaveVehicle _vehicleObj; } forEach _leavingGroup;
+			[["QRF MOVE[%1] Leave finished, waitUntil..",_searchPosId]] call bis_fnc_qrf_debugLogRadio;
+			 
+		} forEach _vehicles;
+	} else {
+		_allLeavingGroups = _groups;
+	};
+};
+
+{_x setBehaviour "AWARE"; _x setCombatMode "RED";} forEach _allLeavingGroups;
+{_x move getPos leader _x} forEach _allLeavingGroups;
+
+["QRF MOVE[%1] Units dismounted....", _searchPosId] call BIS_fnc_logFormat;
+
+sleep 0.3;
+{ // Use Guard WP on the target location
+	private _wp = _x addWaypoint [_searchPos, GVAR(QRF, "waypointRadius"), 0];
+	_wp setWaypointType "SAD";
+} forEach _allLeavingGroups;
+
+if (_qrfType isEqualTo "Motorized") then {
+	if (!_isNotWeaponized) then {
+		[["QRF MOVE[%1] VEHICLE GUARD %2",_searchPosId, _suitablePos]] call bis_fnc_qrf_debugLogRadio;
+		// _stalking = [_groupPilot, group player] spawn BIS_fnc_stalk;
+		private _wp = _groupPilot addWaypoint [_searchPos, GVAR(QRF, "waypointRadius"), 1];
+		_wp setWaypointType "SAD";
+	};
+};
+
+["QRF MOVE[%1] Units are searching the area...", _searchPosId] call BIS_fnc_logFormat;
+
+//sleep 2; //sleep can be short, as in this point of time the units should be out of the vehicle
+//For peformance sake, units will be simulated only when the player is nearby 
+// enabling dynamic simulation
+// {_x enableDynamicSimulation true} forEach (_groups + _vehicles);
+sleep 2; //sleep shorten again
+
+// ["QRF MOVE[%1] Dynamic simulation set, done", _searchPosId] call BIS_fnc_logFormat;
+_skipToDespawn

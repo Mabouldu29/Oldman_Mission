@@ -1,0 +1,48 @@
+// Local hostilitiy functions
+
+#define PROPAGATION_TIMEOUT 10
+#define HOSTILITY_RANGE 400
+
+BIS_hostilityAreas = [];
+BIS_logicGroup = createGroup sideLogic;
+
+BIS_fnc_om_handleHostility = {};
+
+/*
+BIS_fnc_om_handleHostility = {
+	params ["_module","_side"];
+
+	private _threatLogic = BIS_logicGroup createUnit ["Logic", getPos player, [], 0, ""];
+
+	sleep PROPAGATION_TIMEOUT;
+
+	if ([_side,_threatLogic,HOSTILITY_RANGE] call BIS_fnc_om_awareEnemiesAlive) then {
+		// Propagate local hostility to global hostility
+	};
+};
+
+
+BIS_fnc_om_awareEnemiesAlive = {
+	params ["_side","_pos","_range"];
+	private _result = false;
+
+	private _i = (player nearEntities [["Man", "AllVehicles"],_range]) findIf {
+		side _x == _side
+		&& {alive _x}
+		&& {_x targetKnowledge vehicle player) select 2 >= time - AWARE_TIMEOUT}
+	};
+
+	if (_i > -1) then {
+		_result = true;
+	};
+	_result
+};
+
+
+BIS_fnc_om_relationshipTick = {
+
+
+};
+*/
+
+

@@ -1,0 +1,157 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+BIS_fnc_generateSyndikatsInfoText_market =
+{
+	scriptName "BIS_fnc_generateSyndikatsInfoText_market";
+  private _text = "";
+  /* _text = _text + ICON("\a3\Ui_f\data\Map\MapControl\tourism_CA.paa"); */
+  _text = _text + ICON("\a3\ui_f\data\igui\cfg\simpletasks\types\rifle_ca.paa");
+  _text = _text + H1(localize "STR_A3_SyndikatsInfo.sqf3") + ENDL + ENDL;
+  _text = _text + PAR(localize "STR_A3_SyndikatsInfo.sqf0", PAR_COLOR) + EMPTY_SPACE +
+	PAR(localize "STR_A3_SyndikatsInfo.sqf1", PAR_COLOR_HIGHLIGHT_1) + ENDL + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf2", PAR_COLOR);
+  private _paramText = format["%1%3 / %2%3", ECONOMY_GET_ITEM_EXTRACHARGE_COST, ECONOMY_GET_ITEM_EXTRACHARGE_PURCHASE, "%"];
+  _text = _text + EMPTY_SPACE + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text
+};
+BIS_fnc_generateSyndikatsInfoText_DropOffPoints =
+{
+	scriptName "BIS_fnc_generateSyndikatsInfoText_DropOffPoints";
+  private _text = "";
+  _text = _text + ICON("\a3\ui_f\data\igui\cfg\simpletasks\types\Use_ca.paa");
+  _text = _text + H1(localize "STR_A3_SyndikatsInfo.sqf7_0") + ENDL + ENDL;
+  _text = _text + PAR(localize "STR_A3_SyndikatsInfo.sqf4", PAR_COLOR) + ENDL + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf5", PAR_COLOR) + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf6", PAR_COLOR) + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf7", PAR_COLOR) + ENDL;
+  _text
+};
+
+BIS_fnc_generateSyndikatsInfoText_safehouse =
+{
+	scriptName "BIS_fnc_generateSyndikatsInfoText_safehouse";
+  private _text = "";
+  _text = _text + ICON("\a3\Ui_f\data\Map\MapControl\tourism_CA.paa");
+  _text = _text + H1(localize "STR_A3_SyndikatsInfo.sqf10_0") + ENDL + ENDL;
+  _text = _text + PAR(localize "STR_A3_SyndikatsInfo.sqf8", PAR_COLOR) + ENDL + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf9", PAR_COLOR);
+  private _paramText = format["%1", if(missionNamespace getvariable ["BedPriceSyndikat",99999] > 9999) then {localize "STR_A3_SyndikatsInfo.sqf15_0"} else {missionNamespace getvariable "BedPriceSyndikat"} ];
+  _text = _text + EMPTY_SPACE + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text
+};
+
+BIS_fnc_generateSyndikatsInfoText_SyndikatAssault =
+{
+	scriptName "BIS_fnc_generateSyndikatsInfoText_SyndikatAssault";
+  private _text = "";
+  _text = _text + ICON("\a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa");
+  _text = _text + H1(localize "STR_A3_SyndikatsInfo.sqf13_0") + ENDL + ENDL;
+  _text = _text + PAR(localize "STR_A3_SyndikatsInfo.sqf10", PAR_COLOR) + ENDL + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf11", PAR_COLOR);
+  private _paramText = format
+  [
+    Localize "STR_A3_SyndikatsInfo.sqf12",
+    if(SYNDIKAT_AGENT_LOGIC getVariable "enableSystem") then
+    {SYNDIKAT_AGENT_LOGIC getVariable "poolMax"} else {localize "STR_A3_SyndikatsInfo.sqf15_0"}
+  ];
+  _text = _text + EMPTY_SPACE + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text = _text + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf13", PAR_COLOR);
+  private _paramText = format
+  [
+    " %1 / %2 <br/>",
+    if(SYNDIKAT_AGENT_LOGIC getVariable "enableSystem") then
+    {SYNDIKAT_AGENT_LOGIC getVariable "actualLevel"} else {localize "STR_A3_SyndikatsInfo.sqf15_0"},
+    if(SYNDIKAT_AGENT_LOGIC getVariable "enableSystem") then
+    {(SYNDIKAT_AGENT_LOGIC getVariable "levels")-1} else {localize "STR_A3_SyndikatsInfo.sqf15_0"}
+  ];
+  _text = _text + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text = _text + ENDL;
+  _text = _text + PAR(localize "STR_A3_SyndikatsInfo.sqf15", PAR_COLOR) + ENDL + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf16", PAR_COLOR);
+  private _paramText = format
+  [
+    Localize "STR_A3_SyndikatsInfo.sqf17",
+    if(SYNDIKAT_AGENT_LOGIC getVariable "enableSystem") then
+    {([] call BIS_fnc_OM_ModuleSyndikatAgent_getEquipNeededToNextLevel) select 1} else {localize "STR_A3_SyndikatsInfo.sqf15_0"}
+  ];
+  _text = _text + EMPTY_SPACE + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text = _text + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf18", PAR_COLOR);
+  private _paramText = format
+  [
+    " %1 $",
+    if(SYNDIKAT_AGENT_LOGIC getVariable "enableSystem") then
+    {([] call BIS_fnc_OM_ModuleSyndikatAgent_getEquipNeededToNextLevel) select 2} else {localize "STR_A3_SyndikatsInfo.sqf17_0"}
+  ];
+  _text = _text + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text = _text + ENDL;
+  _text = _text + PAR(localize "STR_A3_SyndikatsInfo.sqf20", PAR_COLOR) + ENDL + ENDL;
+  _text
+};
+
+BIS_fnc_generateSyndikatsInfoText_SyndikatTeam =
+{
+	scriptName "BIS_fnc_generateSyndikatsInfoText_SyndikatTeam";
+  private _text = "";
+  _text = _text + ICON("\a3\ui_f\data\igui\cfg\simpletasks\types\destroy_ca.paa");
+  _text = _text + H1(localize "STR_A3_SyndikatsInfo.sqf20_0") + ENDL + ENDL;
+  _text = _text + PAR(localize "STR_A3_SyndikatsInfo.sqf21", PAR_COLOR) + ENDL;
+  _text = _text + PAR(localize "STR_A3_SyndikatsInfo.sqf22", PAR_COLOR) + ENDL + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf23", PAR_COLOR);
+  private _paramText = format
+  [
+    " %1",
+    if(SYNDIKATTEAM_IS_FLAG_ENABLED(DIRECT_ACTIVATION_ENABLED)) then
+    {localize "STR_A3_SyndikatsInfo.Yes"} else {localize "STR_A3_SyndikatsInfo.sqf15_0"}
+  ];
+  _text = _text + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text = _text + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf25", PAR_COLOR);
+  private _paramText = format
+  [
+    " %1",
+    if(SYNDIKATTEAM_IS_FLAG_ENABLED(INDIRECT_ACTIVATION_ENABLED)) then
+    {localize "STR_A3_SyndikatsInfo.Yes"} else {localize "STR_A3_SyndikatsInfo.sqf15_0"}
+  ];
+  _text = _text + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text = _text + ENDL + ENDL;
+
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf27", PAR_COLOR);
+  private _paramText = format
+  [
+     Localize "STR_A3_SyndikatsInfo.sqf12",
+    if(SYNDIKATTEAM_IS_FLAG_ENABLED(INDIRECT_ACTIVATION_ENABLED)) then
+    {str(SYNDIKAT_TEAM_LOGIC getVariable "poolNumber")} else {localize "STR_A3_SyndikatsInfo.sqf15_0"}
+  ];
+  _text = _text + EMPTY_SPACE + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text = _text + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf29", PAR_COLOR);
+  private _paramText = format
+  [
+    " %1 / %2",
+    if(SYNDIKAT_AGENT_LOGIC getVariable "enableSystem" && SYNDIKATTEAM_IS_FLAG_ENABLED(INDIRECT_ACTIVATION_ENABLED)) then
+    {SYNDIKAT_AGENT_LOGIC getVariable "actualLevel"} else {localize "STR_A3_SyndikatsInfo.sqf15_0"},
+    if(SYNDIKAT_AGENT_LOGIC getVariable "enableSystem" && SYNDIKATTEAM_IS_FLAG_ENABLED(INDIRECT_ACTIVATION_ENABLED)) then
+    {(SYNDIKAT_AGENT_LOGIC getVariable "levels")-1} else {localize "STR_A3_SyndikatsInfo.sqf15_0"}
+  ];
+  _text = _text + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text = _text + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf31", PAR_COLOR);
+  private _paramText = format
+  [
+    " %1 $",
+    if(SYNDIKATTEAM_IS_FLAG_ENABLED(INDIRECT_ACTIVATION_ENABLED)) then
+    {(["I_G_Soldier_AR_F"] call BIS_fnc_OM_ModuleEconomy_getEquipmentPrice) * 0.2} else {localize "STR_A3_SyndikatsInfo.sqf15_0"}
+  ];
+  _text = _text + PAR( _paramText, PAR_COLOR_HIGHLIGHT_1 );
+  _text = _text + ENDL + ENDL;
+  _text = _text + PAR(localize "STR_A3_SyndikatsInfo.sqf33", PAR_COLOR) + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf34", PAR_COLOR) + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf35", PAR_COLOR) + ENDL;
+  _text = _text + LI + PAR(localize "STR_A3_SyndikatsInfo.sqf36", PAR_COLOR) + ENDL + ENDL;
+  _text = _text + PAR(localize "STR_A3_SyndikatsInfo.sqf37", PAR_COLOR) + ENDL;
+  _text
+};
+
+private _i = player createDiarySubject ["SyndikatInfo",localize "STR_A3_SyndikatsInfo.SyndikatInfo"];

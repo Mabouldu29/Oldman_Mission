@@ -1,0 +1,23 @@
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+
+params [ "_logic", "_smartMarkerBase" ];
+private _smartMarkers = +(SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE);       //pointer to the array
+_smartMarkers append (SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE_HIDDEN);
+private _ret = "";
+private _index = -1;
+
+if(_smartMarkerBase isEqualType "") then
+{ _index = _smartMarkers findIf {vehicleVarName _x isEqualTo _smartMarkerBase} }
+else
+{ _index = _smartMarkers find _smartMarkerBase };
+
+if( _index != -1 ) then
+{
+  private _smartMarker = _smartMarkers select _index;
+  {
+    if( (_x select 1) isEqualType "" ) exitWith {_ret = _x select 1};
+  } forEach (_smartMarker getVariable SMARTMARKER_SECTIONS);
+};
+_smartMarkers = nil;
+_ret

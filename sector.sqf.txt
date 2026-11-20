@@ -1,0 +1,1158 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc";
+#define ORIG_INDEX 10
+	
+BIS_allSectors = entities "ModuleOmSector_F";
+BIS_activeSectors = [];
+BIS_inactiveSectors = [];
+BIS_playerVehicles = []; // This is array for garbage collecting cars used by player
+
+BIS_fnc_om_sectorInit = {
+	scriptName "BIS_fnc_om_sectorInit";
+	//PROFILE_START_INFO("block_BIS_fnc_om_sectorInit", "BIS_fnc_om_sectorInit", "1");
+	params ["_sector", "_includedMissionName"];
+	/* ["SECTOR: %1 | typeOf _x: %2 | _layer: %3 ", _sector, typeOf _sector, _sector getVariable "layer" ] call BIS_fnc_logFormat; */
+	if (GVARS(_sector,"#size",-1) != -1) exitWith { "SECTOR: Sector already initialized" call BIS_fnc_Log};
+	private _pos = getPosWorld _sector;
+	_pos set [2,0]; // Make sure sector in on ground
+	_sector setPos _pos;
+	private _area = _sector getVariable ["objectArea",[100,100,false,-1]];
+	_area params ["_sx","_sy"];
+	private _size = _sx max _sy;
+
+	private _area = [getPos _sector] + GVAR(_sector,"objectArea");
+	SVAR(_sector,"#area",_area);
+	_areaPlusSpawnDistance = +_area;
+	_areaPlusSpawnDistance set [1, (_areaPlusSpawnDistance select 1) + (_sector getVariable ["SpawnDistance", 0])];
+	_areaPlusSpawnDistance set [2, (_areaPlusSpawnDistance select 2) + (_sector getVariable ["SpawnDistance", 0])];
+	SVAR(_sector,"#areaPlusSpawnDistance",_areaPlusSpawnDistance);
+	_areaPlusVehicleSpawnDistance = +_area;
+	_areaPlusVehicleSpawnDistance set [1, (_areaPlusVehicleSpawnDistance select 1) + (_sector getVariable ["VehicleSpawnDistance", 0])];
+	_areaPlusVehicleSpawnDistance set [2, (_areaPlusVehicleSpawnDistance select 2) + (_sector getVariable ["VehicleSpawnDistance", 0])];
+	SVAR(_sector,"#areaPlusVehicleSpawnDistance",_areaPlusVehicleSpawnDistance);
+	_areaPlusDespawnDistance = +_area;
+	_areaPlusDespawnDistance set [1, (_areaPlusDespawnDistance select 1) + ((_sector getVariable ["SpawnDistance", 0]) * 1.5)];
+	_areaPlusDespawnDistance set [2, (_areaPlusDespawnDistance select 2) + ((_sector getVariable ["SpawnDistance", 0]) * 1.5)];
+	SVAR(_sector,"#areaPlusDespawnDistance",_areaPlusDespawnDistance);
+	_areaPlusVehicleDespawnDistance = +_area;
+	_areaPlusVehicleDespawnDistance set [1, (_areaPlusVehicleDespawnDistance select 1) + ((_sector getVariable ["VehicleSpawnDistance", 0]) * 1.5)];
+	_areaPlusVehicleDespawnDistance set [2, (_areaPlusVehicleDespawnDistance select 2) + ((_sector getVariable ["VehicleSpawnDistance", 0]) * 1.5)];
+	SVAR(_sector,"#areaPlusVehicleDespawnDistance",_areaPlusVehicleDespawnDistance);
+
+	// For aircraft
+	private _airSpawnDistance = +_area;
+	_airSpawnDistance set [1, (_airSpawnDistance select 1) + (_sector getVariable ["AirSpawnDistance", 500])];
+	_airSpawnDistance set [2, (_airSpawnDistance select 2) + (_sector getVariable ["AirSpawnDistance", 500])];
+	SVAR(_sector,"#airSpawnDistance",_airSpawnDistance);
+
+	// For aircraft
+	private _airDespawnDistance = +_area;
+	_airDespawnDistance set [1, (_airDespawnDistance select 1) + (_sector getVariable ["AirSpawnDistance", 500]) * 1.5];
+	_airDespawnDistance set [2, (_airDespawnDistance select 2) + (_sector getVariable ["AirSpawnDistance", 500]) * 1.5];
+	SVAR(_sector,"#airDespawnDistance",_airDespawnDistance);
+
+	// Scan: All groups and vehicles, grab most of their params
+	private _layer = GVARS(_sector,"Layer","");
+	private _allEntities = [];
+
+	if (_layer != "") then {
+		// Use layers instead of area
+		private _layerEntities = getMissionLayerEntities _layer;
+		if (count _layerEntities > 0) then {
+			_allEntities = _layerEntities#0;
+		} else {
+			// Search for correct variable which contains exported layer
+			private _layerName = "";
+			{
+				_layerName = format ["%1_%2",_x,_layer];
+				if (!isNil {missionNamespace getVariable _layerName}) exitWith {};
+			} forEach MGVARS("BIS_includedMissions",[]);
+
+			if (_layerName != "") then {
+				_allEntities = (missionNamespace getVariable [_layerName,[[],[]]])#0;
+			};
+		};
+	} else {
+		_allEntities = (_sector nearEntities [["Man","Air","LandVehicle","Ship"],_size*2]);
+		_allEntities = _allEntities inAreaArray _area;
+	};
+
+	private _fTravelModules = (synchronizedObjects _sector) select { toLower typeOf _x isEqualTo "moduleomfasttravelpos_f" };
+	private _fTravelPoints = [];
+	{
+		_fTravelPoints = _fTravelPoints + [[position _x, direction _x, _x getVariable "TravelCondition"]];
+	} forEach _fTravelModules;
+	_sector setVariable ["BIS_OM_fTravelPoints", _fTravelPoints];
+	{ deleteVehicle _x } forEach _fTravelModules; _fTravelModules = nil;
+
+
+	// Make sure player is not part of the sector
+	private _playerIndex = _allEntities findIf {isPlayer _x};
+	_allEntities deleteAt _playerIndex;
+
+	/* ["EXPORTER: _includedMissionName: %1 | missionName: %2", _includedMissionName, missionName] call BIS_fnc_logFormat; */
+	(
+		if( ( _includedMissionName isEqualTo missionName ) || ( (_sector getVariable "layer") == "" ) ) then
+		{
+			/* ["EXPORTER: mission is not included | scanning and deleting | %1", missionName] call BIS_fnc_logFormat; */
+			[_allEntities] call BIS_fnc_om_scanAndDelete
+		}
+		else
+		{
+			//--- load the dynamic data exported from sectorInit function
+			/* ["EXPORTER: mission is included | loading data from file | _sector: %1", _sector] call BIS_fnc_logFormat; */
+			private _sectorDataFile = "";
+			if( (_sector getVariable "layer") != "" ) then
+			{
+				/* ["EXPORTER: _path: %1 | _includedMissionName: %2 | _layer: %1", _layer, _includedMissionName, (_sector getVariable "layer")] call BIS_fnc_logFormat; */
+				_sectorDataFile =  "a3\Missions_F_Oldman\Campaign\Missions\" + _includedMissionName + '.' + worldName + "\" + _includedMissionName + "_" + _layer + ".sqf";
+				/* ["EXPORTER: trying to load _file: %1", _sectorDataFile] call BIS_fnc_logFormat; */
+				(call compile preprocessFile _sectorDataFile)
+			}
+		}
+	) params ["_vehiclesInfo","_groupsInfo","_objectsInfo"];
+	
+	isNil { { _x set [ORIG_INDEX, _forEachIndex] } forEach _objectsInfo }; // patch in original index
+	
+	/* ["EXPORTER: _vehiclesInfo: %1, _groupsInfo: %2 , _objectsInfo %3", _vehiclesInfo, _groupsInfo , _objectsInfo] call BIS_fnc_logFormat; */
+
+	// Handle civilian presence modules
+	private _civModules = _sector nearEntities ["ModuleCivilianPresence_F",_size];
+	_civModules = _civModules inAreaArray _area;
+
+	// Handle light sources
+	private _lightSources = nearestObjects [_sector,["Land_Campfire_F","Land_FirePlace_F"],_size];
+	_lightSources = _lightSources inAreaArray _area;
+
+	SVAR(_sector,"#civModules",_civModules);
+	SVAR(_sector,"#groupData",_groupsInfo);
+	SVAR(_sector,"#vehicleData",_vehiclesInfo);
+	SVAR(_sector,"#objectData",_objectsInfo);
+	SVAR(_sector,"#groups",[]);
+	SVAR(_sector,"#vehicles",[]);
+	SVAR(_sector,"#size",_size);
+	SVAR(_sector,"#state",S_DESPAWNED);
+	SVAR(_sector,"#lights",_lightSources);
+
+	// Original data that should not be modified, they serve for sector resetting:
+	SVAR(_sector,"#GroupDataO",+_groupsInfo);
+	SVAR(_sector,"#vehicleDataO",+_vehiclesInfo);
+
+	#ifdef INTERNAL_VERSION
+		if( uiNamespace getVariable [ "BIS_OM_3DEN_exportMission", false ] ) then
+		{
+			if( _includedMissionName == missionName ) then
+			{
+				// export just data from the actual mission (sqm)
+				[_sector] call BIS_fnc_OM_ExportSectorDataToFile;
+			};
+		};
+	#endif
+
+	{
+		["init",[_x,false]] call bis_fnc_moduleCivilianPresence;
+	} forEach _civModules;
+
+#ifdef DEBUG_SECTOR_MARKERS
+	[_sector] call BIS_fnc_OM_CreateDebugSectorMarker;
+	_sector setVariable ["sectorDebugMarkersShown", false];
+#endif
+//PROFILE_STOP("block_BIS_fnc_om_sectorInit");
+};
+
+BIS_fnc_om_sectorDelete = {
+	scriptName "BIS_fnc_om_sectorDelete";
+	//PROFILE_START_INFO("block_BIS_fnc_om_sectorDelete", "BIS_fnc_om_sectorDelete", "1");
+	params ["_sector"];
+	BIS_allSectors = BIS_allSectors - [_sector];
+	BIS_activeSectors = BIS_activeSectors - [_sector];
+	//PROFILE_STOP("block_BIS_fnc_om_sectorDelete");
+	deleteVehicle _sector;
+};
+
+// Handle sector simulation
+BIS_fnc_om_sectorAgent = {
+	scriptName "BIS_fnc_om_sectorAgent";
+	/*
+	[] spawn {
+		while {BIS_running} do {
+			sleep 0.2;
+			[] call BIS_fnc_om_checkSpawn;
+		};
+	};
+	[] spawn {
+		while {BIS_running} do {
+			sleep 0.2;
+			[] call BIS_fnc_om_checkDespawn;
+		};
+	};
+	*/
+
+	while {BIS_running} do {
+		sleep 0.5;
+		/* PROFILE_START("BIS_fnc_om_sectorAgent"); */
+		PROFILE_INFO("BIS_fnc_om_sectorAgent","BIS_fnc_om_sectorAgent",str date);
+		[] call BIS_fnc_om_sectorSpawnCheck;
+		/* PROFILE_STOP("BIS_fnc_om_sectorAgent"); */
+	};
+};
+
+// Spawn and despawn air sectors
+BIS_fnc_om_sectorSpawnCheck = {
+	scriptName "BIS_fnc_om_sectorSpawnCheck";
+	PROFILE_START("BIS_fnc_om_sectorSpawnCheck");
+
+	private _vehicleSpawnRange = 1000;
+	if (BIS_flying) then {
+		_vehicleSpawnRange = 2000;
+	};
+	private _vehicleDespawnRange = _vehicleSpawnRange * 1.5;
+	private _nearSectors = player nearEntities ["ModuleOmSector_F",_vehicleSpawnRange];
+	PROFILE_STOP("BIS_fnc_om_sectorSpawnCheck");
+	// Find sector to fully spawn
+	PROFILE_START("BIS_fnc_om_sectorSpawnCheckPart2");
+	private _i = _nearSectors findIf {player inArea (_x getVariable "#areaPlusSpawnDistance")
+		&& {GVAR(_x,"#state" == S_DESPAWNED) || GVAR(_x,"#state" == S_SPAWNED_VEHICLES)}
+		&& {!GVARS(_x,"#manual",false)}
+		&& {GVAR(_x,"Condition") == "" || {call compile GVAR(_x,"Condition")}}
+	};
+	PROFILE_STOP("BIS_fnc_om_sectorSpawnCheckPart2");
+
+
+	if (_i > -1) then {
+		[_nearSectors#_i,true] spawn BIS_fnc_om_sectorActivate;
+	};
+
+	// Find full sector to change to vehicle only spawn
+	PROFILE_START("BIS_fnc_om_sectorSpawnCheckPart3");
+	_i = BIS_activeSectors findIf {
+		//player distance _x > (GVAR(_x,"#size") + GVAR(_x,"SpawnDistance")) * 1.5
+		!(player inArea (_x getVariable "#areaPlusDespawnDistance"))
+		&& {GVAR(_x,"#state" == S_SPAWNED)}
+		&& {!GVARS(_x,"#manual",false)}
+	};
+	PROFILE_STOP("BIS_fnc_om_sectorSpawnCheckPart3");
+
+	if (_i > -1) then {
+		[BIS_activeSectors#_i,false] spawn BIS_fnc_om_sectorDeactivate;
+	};
+
+	// Spawn vehicle only sector
+	PROFILE_START("BIS_fnc_om_sectorSpawnCheckPart4");
+	_i = _nearSectors findIf {_x getVariable "#state" == S_DESPAWNED
+		//&& {player distance  _x <= ([GVARS(_x,"VehicleSpawnDistance",1000),2000] select BIS_flying)}
+		&& (if (BIS_flying) then {(player inArea (_x getVariable ["#airSpawnDistance", 1500]))} else {player inArea (_x getVariable ["#areaPlusVehicleSpawnDistance", 1000])})
+		&& {!GVARS(_x,"#manual",false)}
+		&& {GVAR(_x,"Condition") == "" || {call compile GVAR(_x,"Condition")}}
+	};
+	PROFILE_STOP("BIS_fnc_om_sectorSpawnCheckPart4");
+	if (_i > -1) then {
+		[_nearSectors#_i,false] spawn BIS_fnc_om_sectorActivate;
+	};
+
+	// Fully despawn sector
+	PROFILE_START("BIS_fnc_om_sectorSpawnCheckPart5");
+	_i = BIS_activeSectors findIf {GVAR(_x,"#state") == S_SPAWNED_VEHICLES
+		&& {!GVARS(_x,"#manual",false)}
+		&& (if (BIS_flying) then {!(player inArea (_x getVariable ["#airDespawnDistance", 1500]))} else {!(player inArea (_x getVariable ["#areaPlusVehicleDespawnDistance", 1500]))})
+		//&& {player distance  _x > ([GVARS(_x,"VehicleSpawnDistance",1000),2000] select BIS_flying) * 1.5}
+	};
+	PROFILE_STOP("BIS_fnc_om_sectorSpawnCheckPart5");
+	if (_i > -1) then {
+		[BIS_activeSectors#_i,true] spawn BIS_fnc_om_sectorDeactivate;
+	};
+	/* PROFILE_STOP("block_BIS_fnc_om_sectorSpawnCheck"); */
+};
+
+BIS_fnc_om_checkSpawn = {
+	scriptName "BIS_fnc_om_checkSpawn";
+	waitUntil{BIS_canSpawn};
+	//PROFILE_START_INFO("block_BIS_fnc_om_checkSpawn", "BIS_fnc_om_checkSpawn", "1");
+	private _vehicleSpawnRange = 1000;
+	if (BIS_flying) then {
+		_vehicleSpawnRange = 2000;
+	};
+	private _nearSectors = player nearEntities ["ModuleOmSector_F",_vehicleSpawnRange];
+
+	// Find sector to fully spawn
+	private _i = _nearSectors findIf {player inArea (_x getVariable "#areaPlusSpawnDistance")
+		&& {GVAR(_x,"#state" == S_DESPAWNED) || GVAR(_x,"#state" == S_SPAWNED_VEHICLES)}
+		&& {!GVARS(_x,"#manual",false)}
+		&& {GVAR(_x,"Condition") == "" || {call compile GVAR(_x,"Condition")}}
+	};
+
+	if (_i > -1) exitWith {
+		systemChat str ["Full Spawn: ",_nearSectors#_i];
+		[_nearSectors#_i,true] call BIS_fnc_om_sectorActivate;
+	};
+
+	// Spawn vehicle only sector
+	_i = _nearSectors findIf {_x getVariable "#state" == S_DESPAWNED
+		&& (if (BIS_flying) then {!(player inArea (_x getVariable ["#airSpawnDistance", 1500]))} else {player inArea (_x getVariable ["#areaPlusVehicleSpawnDistance", 1000])})
+		&& {!GVARS(_x,"#manual",false)}
+		&& {GVAR(_x,"Condition") == "" || {call compile GVAR(_x,"Condition")}}
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_checkSpawn");
+	if (_i > -1) then {
+		systemChat str ["Vehicle Spawn: ",_nearSectors#_i];
+		[_nearSectors#_i,false] call BIS_fnc_om_sectorActivate;
+		Hint "Spawn to vehicles";
+	};
+};
+
+BIS_fnc_om_checkDespawn = {
+	scriptName "BIS_fnc_om_checkSpawn";
+	waitUntil{BIS_canDelete};
+	//PROFILE_START_INFO("block_BIS_fnc_om_checkDespawn", "BIS_fnc_om_checkDespawn", "1");
+
+	// Fully despawn sector
+	private _i = BIS_activeSectors findIf {GVAR(_x,"#state") == S_SPAWNED_VEHICLES
+		&& {!GVARS(_x,"#manual",false)}
+		&& (if (BIS_flying) then {!(player inArea (_x getVariable ["#airDespawnDistance", 1500]))} else {!(player inArea (_x getVariable ["#areaPlusVehicleDespawnDistance", 1500]))})
+	};
+	if (_i > -1) exitWith {
+		systemChat str ["FullDespawn: ",BIS_activeSectors#_i];
+		[BIS_activeSectors#_i,true] call BIS_fnc_om_sectorDeactivate;
+	};
+
+	// Find full sector to change to vehicle only spawn
+	_i = BIS_activeSectors findIf {
+		!(player inArea (_x getVariable "#areaPlusDespawnDistance"))
+		&& {GVAR(_x,"#state" == S_SPAWNED)}
+		&& {!GVARS(_x,"#manual",false)}
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_checkDespawn");
+	if (_i > -1) then {
+		systemChat str ["DespawnToVehicle: ",BIS_activeSectors#_i];
+		[BIS_activeSectors#_i,false] call BIS_fnc_om_sectorDeactivate;
+		systemChat "Despawn to vehicles";
+	};
+};
+
+
+BIS_fnc_om_sectorActivate =
+{
+	scriptName "BIS_fnc_om_sectorActivate";
+	if(isNil "BIS_dbgSectorActivates") then {BIS_dbgSectorActivates = 0};
+	if( BIS_dbgSectorActivates == 0) then {PROFILE_START("BIS_fnc_om_sectorActivate")};
+	BIS_dbgSectorActivates = BIS_dbgSectorActivates + 1;
+	// Full / to vehicles only // Night
+	params ["_sector",["_fullSpawn",true],"_nightSpawn"];
+
+	if !(_sector getVariable ["BIS_OM_firstTimeSpawnDone", FALSE]) then {
+		_sector setVariable ["BIS_OM_firstTimeSpawnDone", TRUE];
+		{
+			_x spawn {
+				params ["_id", "_center", "_range"];
+				_timeout = 1 + random 2;
+				_intelID = -1;
+				waitUntil {sleep _timeout; BIS_intel findIf {_x # 7 == _id} != -1};
+				waitUntil {sleep _timeout; _intelID = BIS_intel findIf {_x # 7 == _id}; ((player distance2D _center) <= _range) || _intelID == -1};
+				if (_intelID != -1) then {
+					[_id] call BIS_fnc_om_addIntel;
+				};
+			};
+		} forEach (_sector getVariable ["BIS_intelRevealData", []])
+	};
+
+	#ifdef DEBUG_SECTOR_MARKERS
+		_sector setVariable ["spawnTime", time];
+		if(_fullspawn) then
+		{
+			["SECTOR: 	---===   SECTOR SPAWN INITIATED: %1 ===---", _sector] call BIS_fnc_LogFormat;
+			["SECTOR: 			Fullspawn _sector: %1 started spawning (night: %2)",_sector, if(!isnil "_nightSpawn") then {_nightSpawn} else {false}] call BIS_fnc_LogFormat;
+		}
+		else
+		{
+			["SECTOR: 			VehicleSpawn _sector: %1 started spawning (night: %2)",_sector, if(!isnil "_nightSpawn") then {_nightSpawn} else {false}] call BIS_fnc_LogFormat;
+		};
+	#endif
+	private _state = _sector getVariable "#state";
+	PROFILE_STOP("BIS_fnc_om_sectorActivate");
+	if (isNull _sector || {_state == S_BUSY} || {_state == S_SPAWNED} || {!_fullSpawn && _state == S_SPAWNED_VEHICLES}) exitWith
+	{
+		#ifdef DEBUG_SECTOR_MARKERS
+			["SECTOR: 			_sector: %1 cannot be spawned. Exiting", _sector] call BIS_fnc_LogFormat;
+		#endif
+		BIS_dbgSectorActivates = BIS_dbgSectorActivates - 1;
+		if(BIS_dbgSectorActivates == 0) then {PROFILE_STOP("BIS_fnc_om_sectorActivate")};
+
+		[[],[]]
+	};
+	_sector setVariable ["#state",S_BUSY];
+	// Execute OnStateChange code
+	if ((_sector getVariable ["OnStateChangeCode", ""]) != "") then
+	{
+		#ifdef DEBUG_SECTOR_MARKERS
+			 ["SECTOR: 			_sector: %1 | executing OnStateChangeCode", _sector] call BIS_fnc_LogFormat;
+		#endif
+		[_sector, S_BUSY] call compile GVARS(_sector,"OnStateChangeCode","");
+		#ifdef DEBUG_SECTOR_MARKERS
+			 ["SECTOR: 			_sector: %1 | OnStateChangeCode done", _sector] call BIS_fnc_LogFormat;
+		#endif
+	};
+	private _night = BIS_night;
+	if (!isNil "_nightSpawn") then {_night = _nightSpawn}; // This enables autoNight, false and true
+
+	private _groupData = [];
+	private _vehicleData = [];
+	private _objectData = [];
+
+	private _spawnState = S_SPAWNED;
+	if (_fullSpawn) then
+	{
+		if (_state == S_DESPAWNED) then
+		{
+			// Full spawn
+			_groupData = GVAR(_sector,"#groupData");
+			_vehicleData = GVAR(_sector,"#vehicleData");
+			_objectData = GVAR(_sector,"#objectData");
+		}
+		else
+		{
+			// Spawn rest of vehicle-spawned sector
+			#ifdef DEBUG_SECTOR_MARKERS
+				["SECTOR: 			_sector: %1 | spawning the rest of the sector", _sector] call BIS_fnc_LogFormat;
+			#endif
+			_objectData = GVAR(_sector,"#objectData") select {_x#9 < ENTITY_SIZE_MEDIUM};
+			_groupData = GVAR(_sector,"#groupData") select {count (_x#3) > 0 && {_x#3#0#8 == ""}};
+		};
+	}
+	else
+	{
+		// Vehicle only spawn - select vehicles and groups inside vehicles
+		#ifdef DEBUG_SECTOR_MARKERS
+				["SECTOR: 			_sector: %1 | Vehicle only spawn - select vehicles and groups inside vehicles", _sector] call BIS_fnc_LogFormat;
+		#endif
+		_groupData = GVAR(_sector,"#groupData") select {_x#3#0#8 != ""};
+		_vehicleData = GVAR(_sector,"#vehicleData");
+		_objectData = GVAR(_sector,"#objectData") select {_x#9 >= ENTITY_SIZE_MEDIUM};
+
+		_spawnState = S_SPAWNED_VEHICLES;
+
+	// Make sure that no vehicles are spawned
+		#ifdef DEBUG_SECTOR_MARKERS
+				["SECTOR: 			_sector: %1 | Starting sector collision avoidance", _sector] call BIS_fnc_LogFormat;
+		#endif
+				[_sector] call BIS_fnc_om_sectorCollisionAvoidance;
+		#ifdef DEBUG_SECTOR_MARKERS
+				["SECTOR: 			_sector: %1 | Sector collision avoidance done", _sector] call BIS_fnc_LogFormat;
+		#endif
+	};
+
+	// Night settings pass
+	private _flashlights = "ForceOff";
+	private _civilians = _fullSpawn;
+	private _fireplaces = false;
+	private _nightSettings = GVAR(_sector,"nightSettings");
+	if (_night && !isNil "_nightSettings") then
+	{
+		#ifdef DEBUG_SECTOR_MARKERS
+			["SECTOR: 			_sector: %1 | Spawning night version", _sector] call BIS_fnc_LogFormat;
+		#endif
+		_nightSettings params ["_fireOn","_flashlightOn","_civOn","_deleteGroups","_deleteVehicles"];
+		_fireplaces = _fireOn;
+		if (_flashlightOn) then {_flashlights = "ForceOn"};
+
+		if (_fullSpawn) then {
+			_civilians = _civOn;
+		};
+
+		// Change data for the night
+		if (_deleteVehicles) then {
+			_vehicleData = _vehicleData select {_x#8};
+			if (!_deleteGroups) then {
+				// Delete vehicle crews
+				_groupData = _groupData select {_x#3#0#8 == ""};
+			};
+		}; //Night param is on
+		if (_deleteGroups) then {
+			if (_deleteVehicles) then {
+				_groupData = _groupData select {_x#3#0#9};
+			} else {
+				// Keep crews
+				_groupData = _groupData select {_x#3#0#9 || _x#3#0#8 != ""};
+			};
+		};
+	 	#ifdef DEBUG_SECTOR_MARKERS
+			["SECTOR:			 _sector: %1 | Night sector spawn DONE", _sector] call BIS_fnc_LogFormat;
+		#endif
+	};
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | Starting Civilian Presence", _sector] call BIS_fnc_LogFormat;
+	#endif
+	{
+		["init",[_x,_civilians]] call bis_fnc_moduleCivilianPresence;
+	} forEach GVARS(_sector,"#civModules",[]);
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | Civilian Presence DONE", _sector] call BIS_fnc_LogFormat;
+	#endif
+	#ifdef DEBUG_SECTOR_MARKERS
+	["SECTOR: 			_sector: %1 | Spawning compositions", _sector] call BIS_fnc_LogFormat;
+	private _dbgSpawnCompositionTime = time;
+	#endif
+	private _objects = [_objectData, _sector] call BIS_fnc_om_spawnComposition;
+	#ifdef DEBUG_SECTOR_MARKERS
+	["SECTOR: 			_sector: %1 | Spawning compositions DONE. Took: %2", _sector, time-_dbgSpawnCompositionTime] call BIS_fnc_LogFormat;
+	#endif
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | Spawning VEHICLES", _sector] call BIS_fnc_LogFormat;
+		private _dbgSpawnCompositionTime = time;
+	#endif
+	([[_vehicleData,_groupData],nil,true,false] call BIS_fnc_om_spawnFromData) params ["_vehicles","_groups"];
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | Spawning VEHICLES DONE. Took: %2", _sector, time-_dbgSpawnCompositionTime] call BIS_fnc_LogFormat;
+	#endif
+	// Handle all vehicle simulation at once:
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | Enabling simulations", _sector] call BIS_fnc_LogFormat;
+	#endif
+	{
+		GVARS(_x,"#sim",[]) params [["_sim",true],["_dynSim",true]];
+		_x enableSimulation _sim;
+		_x enableDynamicSimulation _dynSim;
+	} forEach _vehicles;
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | Simulations enabled", _sector] call BIS_fnc_LogFormat;
+	#endif
+	// After spawn setup:
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | After spawn setup (fireplaces, flashlights, etc)", _sector] call BIS_fnc_LogFormat;
+	#endif
+	{_x inflame _fireplaces} forEach GVARS(_sector,"#lights",[]);
+
+	// Turn on flashlights of soldiers
+	{
+		{_x enableGunLights _flashlights} forEach units _x;
+	} forEach _groups;
+
+	// Append to current data!
+	{SVAR(_x,"#sector",_sector)} forEach (_groups + _vehicles);
+
+	private _allGroups = GVARS(_sector,"#groups",[]) - [grpNull];
+	_allGroups append _groups;
+	private _allVehicles = GVARS(_sector,"#vehicles",[]) - [objNull];
+	_allVehicles append _vehicles;
+
+	BIS_activeSectors pushBackUnique _sector;
+	_sector setVariable ["#groups",_allGroups];
+	_sector setVariable ["#vehicles",_allVehicles];
+	/* if (count (_sector getVariable ["#objects", []]) == 0) then { */
+	_objects = _objects + (_sector getVariable ["#objects", []]);
+		_sector setVariable ["#objects",_objects];
+	/* }; */
+	_sector setVariable ["#state",_spawnState];
+
+	// Execute OnStateChange code
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | Execution OnStateChangeCode", _sector] call BIS_fnc_LogFormat;
+	#endif
+	if ((_sector getVariable ["OnStateChangeCode", ""]) != "") then {
+		[_sector, _spawnState] call compile GVARS(_sector,"OnStateChangeCode","");
+	};
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | OnStateChangeCode DONE", _sector] call BIS_fnc_LogFormat;
+	#endif
+
+	if (count GVAR(_sector,"#objects") != count _objectData) then {
+		if (count _objectData > 0) then {
+			debugLog str ["######## Object data not saved properly!",count GVAR(_sector,"#objects"),count _objectData];
+		};
+	} else {
+		debugLog str [_sector,count GVAR(_sector,"#objects"),_objectData];
+	};
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | Starting sectors INIT", _sector] call BIS_fnc_LogFormat;
+	#endif
+	private _init = GVAR(_sector,"#init");
+	if (_fullSpawn && {!isNil {_init}}) then {
+		_sector call compile _init;
+	};
+
+	#ifdef DEBUG_SECTOR_MARKERS
+		["SECTOR: 			_sector: %1 | Sector INIT DONE", _sector] call BIS_fnc_LogFormat;
+	#endif
+	#ifdef DEBUG_SECTOR_MARKERS
+	    _sector setVariable ["spawnTime", time-(_sector getVariable "spawnTime")];
+			["SECTOR: 			_sector: %1 | Sector finished SPAWNING. It took %2s", _sector, _sector getVariable "spawnTime"] call BIS_fnc_LogFormat;
+			["SECTOR: _sector: %1 DONE------------------- ", _sector, _sector getVariable "spawnTime"] call BIS_fnc_LogFormat;
+	#endif
+	#ifdef DEBUG_SECTOR_MARKERS
+		if(BIS_dbgShowSectorMarkersInfoLevel > 0) then
+		{
+			if(isNil {_sector getVariable "sectorDebugMarkersShown"}) then
+			{
+				[_sector] call BIS_fnc_OM_CreateDebugSectorMarker;
+				_sector setVariable ["sectorDebugMarkersShown", false];
+			};
+			[_sector] call BIS_fnc_OM_ShowDebugMarker;
+				/* [(_sector getVariable "sectorDebugMarkers" select 2), if(_fullSpawn) then {true} else {false}] call BIS_fnc_OM_SetDebugSectorMarkerActive; */
+		};
+	#endif
+	//---setting up radios (saving the sector name for the future (un)registration
+	private _radios = _objects select {typeOf _x in EMITOR_CLASSES};
+	{
+		_x setVariable ["BIS_OM_RadioSector", _sector];
+	} forEach _radios;
+	_radios = nil;
+
+	BIS_dbgSectorActivates = BIS_dbgSectorActivates - 1;
+	if(BIS_dbgSectorActivates == 0) then {PROFILE_STOP("BIS_fnc_om_sectorActivate")};
+	[_allVehicles,_allGroups]
+};
+
+BIS_fnc_om_sectorDeactivate = {
+	scriptName "BIS_fnc_om_sectorDeactivate";
+	//PROFILE_START_INFO("block_BIS_fnc_om_sectorDeactivate", "BIS_fnc_om_sectorDeactivate", "1");
+
+	params ["_sector",["_fullDespawn",true]];
+	#ifdef DEBUG_SECTOR_MARKERS
+	    _sector setVariable ["spawnTime", time];
+	#endif
+	private _state = GVAR(_sector,"#state");
+	if (isNull _sector || {_state == S_BUSY} || {_state == S_DESPAWNED} || {!_fullDespawn && _state == S_SPAWNED_VEHICLES}) exitWith {};
+	SVAR(_sector,"#state",S_BUSY);
+
+	// Execute OnStateChange code
+	if ((_sector getVariable ["OnStateChangeCode", ""]) != "") then {
+		[_sector, S_BUSY] call compile GVARS(_sector,"OnStateChangeCode","");
+	};
+
+	// Execute onDeactivate code
+	if (_fullDespawn && {GVARS(_sector,"OnDespawnCode","") != ""}) then {
+		call compile GVARS(_sector,"OnDespawnCode","");
+	};
+
+	{
+		["init",[_x,false]] call bis_fnc_moduleCivilianPresence;
+	} forEach GVARS(_sector,"#civModules",[]);
+
+	private _objectsToDelete = [];
+	private _despawnState = S_DESPAWNED;
+	if (_fullDespawn) then {
+		_objectsToDelete = GVARS(_sector,"#groups",[]) + GVARS(_sector,"#vehicles",[]) + GVARS(_sector,"#objects",[]);
+		private _i = BIS_activeSectors findIf {_x == _sector};
+		BIS_activeSectors deleteAt _i;
+	} else {
+		// Rescan only when moving away from fully spawned sector
+		[_sector] call BIS_fnc_om_rescanSector;
+
+		_despawnState = S_SPAWNED_VEHICLES;
+		private _preselectedData = (_sector getVariable "#objectData") select {_x#9 < ENTITY_SIZE_MEDIUM};
+		private _tmpObjectsToDelete = [];
+		{
+			private _object = _x;
+			{
+				if(_x#0 isEqualTo (typeOf _object)) exitWith { _tmpObjectsToDelete pushBack _object };
+			} forEach _preselectedData;
+		} forEach (_sector getVariable "#objects");
+		_objectsToDelete = (GVARS(_sector,"#groups",[]) select {(units _x) findIf {!isNull objectParent _x} == -1}) + _tmpObjectsToDelete;
+	};
+
+	private _groups = GVARS(_sector,"#groups",[]) - [grpNull];
+	private _vehicles = GVARS(_sector,"#vehicles",[]) - [objNull];
+	private _objects = GVARS(_sector,"#objects",[]) - [objNull];
+
+	["SPAWN: _objectsToDelete: %1", _objectsToDelete] call BIS_fnc_logFormat;
+	[_objectsToDelete] call BIS_fnc_om_despawn;
+
+	private _groups = GVARS(_sector,"#groups",[]) - [grpNull];
+	private _vehicles = GVARS(_sector,"#vehicles",[]) - [objNull];
+	private _objects = GVARS(_sector,"#objects",[]) - [objNull];
+
+	SVAR(_sector,"#groups",_groups);
+	SVAR(_sector,"#vehicles",_vehicles);
+	SVAR(_sector,"#state",_despawnState);
+	SVAR(_sector,"#objects",_objects);
+#ifdef DEBUG_SECTOR_MARKERS
+		_sector setVariable ["spawnTime", time-(_sector getVariable "spawnTime")];
+#endif
+#ifdef DEBUG_SECTOR_MARKERS
+	[_sector] call BIS_fnc_OM_ShowDebugMarker;
+	/* {
+		 [_x, _forEachIndex] call BIS_fnc_OM_SetDebugSectorMarkerInActive;
+	} forEach (_sector getVariable ["sectorDebugMarkers", []]); */
+#endif
+	// Execute OnStateChange code
+	if ((_sector getVariable ["OnStateChangeCode", ""]) != "") then {
+		[_sector, _despawnState] call compile GVARS(_sector,"OnStateChangeCode","");
+	};
+		//PROFILE_STOP("block_BIS_fnc_om_sectorDeactivate");
+};
+
+BIS_fnc_om_sectorReset = {
+	scriptName "BIS_fnc_om_sectorReset";
+	//PROFILE_START_INFO("block_BIS_fnc_om_sectorReset", "BIS_fnc_om_sectorReset", "1");
+	params ["_sector",["_soldiers",true],["_vehicles",false]];
+	if (_soldiers) then {
+		private _originalGroups = GVAR(_sector,"#GroupDataO");
+		SVAR(_sector,"#GroupData",+_originalGroups);
+	};
+	if (_vehicles) then {
+		private _originalVehicles = GVAR(_sector,"#vehicleDataO");
+		SVAR(_sector,"#vehicleData",+_originalVehicles);
+	};
+
+	// @TODO: Maybe include corpses and wrecks cleanup in the area?
+	//PROFILE_STOP("block_BIS_fnc_om_sectorReset");
+};
+
+BIS_fnc_om_sectorCollisionAvoidance = {
+	scriptName "BIS_fnc_om_sectorReset";
+	//PROFILE_START_INFO("block_BIS_fnc_om_sectorCollisionAvoidance", "BIS_fnc_om_sectorCollisionAvoidance", "1");
+	params ["_sector"];
+	if (GVAR(_sector,"#state") == S_SPAWNED) exitWith {
+		"SECTOR: BIS_fnc_om_sectorCollisionAvoidance cannot be used on spawned sectors" call BIS_fnc_Log;
+	};
+	private _size = GVARS(_sector,"#size",-1);
+
+	// Take all modified objects in sector, which does not have #sector
+	private _modifiedObjects = (nearestObjects [_sector,["AllVehicles"],_size]) select {GVARS(_x,"#sector",objNull) == objNull && {_x != objectParent player}};
+	_modifiedObjects = _modifiedObjects - [objectParent player] - [player];
+	private _fallenTrees = (nearestTerrainObjects [_sector, ["TREE", "SMALL TREE"], _size]) select {damage _x == 1};
+	{_x hideObject true; _x enableSimulation false} forEach _fallenTrees;
+
+	// Move vehicle
+	{
+		_x enableSimulation false;
+		_x hideObject true;
+		private _pos = getPos _x;
+		_pos set [2, (_pos#2) + 1000];
+		_x setPos _pos;
+	} forEach _modifiedObjects;
+
+	[_sector,_modifiedObjects] spawn {
+		scriptName "sector.sqf/spawnedState";
+		params ["_sector","_modifiedObjects"];
+		waitUntil {sleep 1; GVAR(_sector,"#state") == S_SPAWNED};
+		sleep 1;
+		// Move vehicles back
+		{
+			private _pos = getPos _x;
+			_pos set [2, (_pos#2) - 1000];
+			_x setVehiclePosition [_pos,[],0,"NONE"];
+			_x enableSimulation true;
+			_x hideObject false;
+		} forEach _modifiedObjects;
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_sectorCollisionAvoidance");
+};
+
+BIS_fnc_sectorSetManualControl = {
+	scriptName "BIS_fnc_sectorSetManualControl";
+
+	params ["_sector","_isManual"];
+	SVAR(_sector,"#manual",_isManual);
+};
+
+BIS_fnc_sectorManualControl = {
+        scriptName "BIS_fnc_sectorManualControl";
+	params ["_sector"];
+	GVARS(_sector,"#manual",false)
+};
+
+// Sector EHs
+// 1. Stolen car - will not despawn
+// 2. Killed unit
+BIS_fnc_om_handleKilled = {
+	scriptName "BIS_fnc_om_handleKilled";
+	params["_killed","_killer","_instigator"];
+	private _sector = GVARS(_killed,"#sector",GVARS(group _killed,"#sector",objNull));
+	//debugLog str ["BIS_fnc_om_handleKilled", typeOf _killed,_sector];
+
+	if (!isNull _sector) then {
+		[_killed,_sector] call BIS_fnc_om_removeFromSector;
+	};
+};
+
+BIS_fnc_om_handleGetIn = {
+	scriptName "BIS_fnc_om_handleGetIn";
+	//PROFILE_START_INFO("block_BIS_fnc_om_handleGetIn", "BIS_fnc_om_handleGetIn", "1");
+	params ["_player","_role","_vehicle"];
+
+	debugLog str [_player,_role,_vehicle,canMove _vehicle];
+	// If it's vehicle, not static thingy... How to detect it?
+	if (canMove _vehicle) then {
+		private _sector = GVARS(_vehicle,"#sector",objNull);
+		if (!isNull _sector) then {
+			[_vehicle, _sector] call BIS_fnc_om_removeFromSector;
+			["Sector: Player boarded vehicle: %1",typeOf _vehicle] call BIS_fnc_logFormat;
+			BIS_playerVehicles pushBack _vehicle;
+			_vehicle enableDynamicSimulation true;
+		};
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_handleGetIn");
+};
+
+BIS_fnc_om_removeFromSector = {
+	scriptName "BIS_fnc_om_removeFromSector";
+	//PROFILE_START_INFO("block_BIS_fnc_om_removeFromSector", "BIS_fnc_om_removeFromSector", "1");
+	params ["_object","_sector"];
+
+	if(_object getVariable ["doNotRemove", false]) exitWith {["Unit %1, won't be removed. doNotRemove == true",_object] call BIS_fnc_logFormat};
+
+	private _type = typeOf _object;
+	private _sectorGroups = GVAR(_sector,"#groups");
+
+	// Vehicle or object?
+	if (_object isKindOf "Man") then {
+		// Find correct group, and find the correct enemy type to clear
+		private _groupIndex = _sectorGroups findIf {group _object == _x};
+		debugLog str ["BIS_fnc_om_removeFromSector: Soldier removed from sector, index:",_groupIndex];
+		if (_groupIndex > -1) then {
+			// Delete first type of soldier in data
+			private _groupData = GVAR(_sector,"#groupData");
+			private _unitsList = (_groupData#_groupIndex)#3;
+			private _i = _unitsList findIf {_x#0 == _type}; // Is there the unit of the same type?
+			if (_i > -1) then {
+				_unitsList deleteAt _i;
+			} else {
+				debugLog str ["BIS_fnc_om_removeFromSector: No group data removed!"];
+			};
+			if (count _unitsList == 0) then {
+				// Delete group and remove it from sector
+				deleteGroup (_sectorGroups#_groupIndex);
+				_groupData deleteAt _groupIndex;
+				_sectorGroups deleteAt _groupIndex;
+				SVAR(_sector,"#groups",_sectorGroups);
+				SVAR(_sector,"#groupData",_groupData);
+				debugLog str ["BIS_fnc_om_removeFromSector: Group removed from sector"];
+			};
+		};
+	} else {
+		//TODO: Find vehicle according to object position
+		private _vehicles = GVAR(_sector,"#vehicles");
+		private _objectIndex = _vehicles findIf {_object == _x};
+		private _vehiclePos = getPosWorld _object;
+		if (_objectIndex > -1) then {
+			_vehicles deleteAt _objectIndex;
+			SVAR(_sector,"#vehicles",_vehicles);
+		};
+
+		private _vehicleArray = GVAR(_sector,"#vehicleData");
+		private _i = _vehicleArray findIf {_object distance _x#2 < 5 && {_x#0 == _type}};
+		if (_i == -1) then {
+			_i = _vehicleArray findIf {_x#0 == _type};
+		};
+
+		if (_i > -1) then {
+			_vehicleArray deleteAt _i;
+			SVAR(_sector,"#vehicleData",_vehicleArray);
+		};
+		//debugLog str ["Removed vehicles: ", count GVAR(_sector,"#vehicles"), count GVAR(_sector,"#vehicleData")];
+	};
+	SVAR(_object,"#sector",nil);
+	/* ["Sector: Removed entity from sector: %1", _type] call BIS_fnc_logFormat; */
+	//PROFILE_STOP("block_BIS_fnc_om_removeFromSector");
+};
+
+// Every night module has to be inited before sector init
+BIS_fnc_om_nightModuleInit = {
+	scriptName "BIS_fnc_om_nightModuleInit";
+	//PROFILE_START_INFO("block_BIS_fnc_om_nightModuleInit", "BIS_fnc_om_nightModuleInit", "1");
+	params ["_module"];
+	private _nightMen = (synchronizedObjects _module) select {_x isKindOf "Man"};
+	private _nightVehicles = (synchronizedObjects _module) select {_x isKindOf "LandVehicle" || {_x isKindOf "Ship"} || {_x isKindOf "Air"}};
+
+	// Convert to numbers if needed
+	private _nightValues = [];
+	{
+		private _val = GVARS(_module,_x,false);
+		if (_val isEqualType 0) then {
+			if (_val == 0) then {
+				_val = false;
+			} else {
+				_val = true;
+			};
+		};
+		_nightValues pushBack _val;
+	} forEach ["Fireplaces","Flashlights","AmbientCivilians","DeleteGroups","DeleteVehicles"];
+
+	// Find sector you are part of
+	// Set night flags to the sector
+	private _sector = objNull;
+	private _sectors = nearestObjects [_module, ["ModuleOmSector_F"], 2000];
+	if (count _sectors > 0) then {_sector = _sectors#0};
+
+	SVAR(_sector,"nightSettings",_nightValues);
+
+	// Scan all units and give all of them a flag.
+	if (_nightValues#3) then {
+		{
+			SVAR(_x,"night",true);
+		} forEach _nightMen;
+	};
+	if (_nightValues#4) then {
+		{
+			SVAR(_x,"night",true);
+			{
+				SVAR(_x,"night",true);
+			} forEach crew _x;
+		} forEach _nightVehicles;
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_nightModuleInit");
+	deleteVehicle _module;
+};
+
+BIS_fnc_om_activateAA = {
+	scriptName "BIS_fnc_om_activateAA";
+	//PROFILE_START_INFO("block_BIS_fnc_om_activateAA", "BIS_fnc_om_activateAA", "1");
+	params ["_activate"];
+	private _sectors = (entities "ModuleOmSector_F") select {_x getVariable "AASector"};
+	{SVAR(_x,"#manual",_activate)} forEach _sectors;
+	if (_activate) then {
+		private _aaGroups = [];
+		{
+			private _vehAndGroups = [_x,true] call BIS_fnc_om_sectorActivate;
+			_vehAndGroups params ["_vehicles","_groups"];
+			{_x enableDynamicSimulation false} forEach (_vehicles + _groups);
+		} forEach _sectors;
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_activateAA");
+};
+
+BIS_fnc_om_inSectorArea = {
+	scriptName "BIS_fnc_om_inSectorArea";
+	//PROFILE_START_INFO("block_BIS_fnc_om_inSectorArea", "BIS_fnc_om_inSectorArea", "1");
+	params ["_pos"];
+	private _inArea = false;
+
+	private _nearSectors = _pos nearEntities ["ModuleOmSector_F",800];
+
+	if (_nearSectors findIf {_pos inArea GVAR(_x,"#area")} > -1) then {
+		_inArea = true;
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_inSectorArea");
+	_inArea
+};
+
+BIS_fnc_om_inSector = {
+	scriptName "BIS_fnc_om_inSector";
+	//PROFILE_START_INFO("block_BIS_fnc_om_inSector", "BIS_fnc_om_inSector", "1");
+	params ["_pos"];
+	if (_pos isEqualType objNull) then {_pos = getPos _pos};
+	private _sector = objNull;
+	private _nearSectors = _pos nearEntities ["ModuleOmSector_F",800];
+	private _sectorIndex = _nearSectors findIf {_pos inArea GVAR(_x,"#area")};
+
+	if (_sectorIndex > -1) then {
+		_sector = _nearSectors#_sectorIndex;
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_inSector");
+	_sector
+};
+
+// Sectors that have their area in selected range
+BIS_fnc_om_sectorsInRange = {
+	scriptName "BIS_fnc_om_sectorsInRange";
+	//PROFILE_START_INFO("block_BIS_fnc_om_sectorsInRange", "BIS_fnc_om_sectorsInRange", "1");
+	params ["_pos",["_range",0]];
+	if (_pos isEqualType objNull) then {_pos = getPos _pos};
+
+	private _nearSectors = _pos nearEntities ["ModuleOmSector_F",800 + _range];
+	private _sectors = _nearSectors select {
+		private _area = +GVAR(_x,"#area");
+		_area set [1,_area#1 + _range];
+		_area set [2,_area#2 + _range];
+		_pos inArea _area
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_sectorsInRange");
+	_sectors
+};
+
+
+BIS_fnc_om_getSectorPower = {
+	scriptName "BIS_fnc_om_getSectorPower";
+	//PROFILE_START_INFO("block_BIS_fnc_om_getSectorPower", "BIS_fnc_om_getSectorPower", "1");
+	params ["_sector"];
+	private _power = 0;
+
+	{
+		_power = _power + count (_x#3);
+	} forEach (GVARS(_sector,"#groupData",[]) select {_x#0 == OPFOR});
+	//PROFILE_STOP("block_BIS_fnc_om_getSectorPower");
+	_power
+};
+
+BIS_fnc_om_getPowerFromData = {
+	scriptName "BIS_fnc_om_getPowerFromData";
+	//PROFILE_START_INFO("block_BIS_fnc_om_getPowerFromData", "BIS_fnc_om_getPowerFromData", "1");
+	params ["_data"];
+	private _power = 0;
+
+	{
+		_power = _power + count (_x#3);
+	} forEach (_data#1);
+	//PROFILE_STOP("BIS_fnc_om_getPowerFromData");
+	_power
+};
+
+// Actually the same functionality as BIS_fnc_om_getPowerFromData, but later on, the Power will be computed differently
+BIS_fnc_om_getNumberFromData = {
+	scriptName "BIS_fnc_om_getNumberFromData";
+	//PROFILE_START_INFO("block_BIS_fnc_om_getNumberFromData", "BIS_fnc_om_getNumberFromData", "1");
+	params ["_data"];
+	private _power = 0;
+	{
+		_power = _power + count (_x#3);
+	} forEach (_data#1);
+	//PROFILE_STOP("block_BIS_fnc_om_getNumberFromData");
+	_power
+};
+
+BIS_fnc_om_isSectorModified = {
+	scriptName "BIS_fnc_om_isSectorModified";
+	//PROFILE_START_INFO("block_BIS_fnc_om_isSectorModified", "BIS_fnc_om_isSectorModified", "1");
+	params ["_sector"];
+	private _modified = true;
+	if (GVAR(_sector,"#groupData") isEqualTo GVAR(_sector,"#groupDataO")
+		&& {GVAR(_sector,"#vehicleData") isEqualTo GVAR(_sector,"#vehicleDataO")}
+	) then {
+		_modified = false;
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_isSectorModified");
+	_modified
+};
+
+// Add either data or objects to sector
+BIS_fnc_om_addToSector = {
+	scriptName "BIS_fnc_om_addToSector";
+	//PROFILE_START_INFO("block_BIS_fnc_om_addToSector", "BIS_fnc_om_addToSector", "1");
+	params ["_data","_sector","_customPos"];
+
+	// If there are not data, but objects, do scan and delete instead
+	if (count _data > 0 && {_data#0 isEqualType objNull}) then {
+		_data = [_data] call BIS_fnc_om_scanAndDelete;
+	};
+
+	_data params ["_vehicles","_groups"];
+
+	if (count _vehicles > 0) then {
+		private _vehicleData = GVAR(_sector,"#vehicleData");
+		if (!isNil "_customPos") then {
+			{
+				_x set [1,_customPos];
+			} forEach _vehicles;
+		};
+		_vehicleData append _vehicles;
+		SVAR(_sector,"#vehicleData",_vehicleData);
+	};
+
+	if (count _groups > 0) then {
+		private _groupData = GVAR(_sector,"#groupData");
+		if (!isNil "_customPos") then {
+			{
+				{
+					_x set [1,_customPos];
+				} forEach _x#3;
+			} forEach _groups;
+		};
+		_groupData append _groups;
+		SVAR(_sector,"#groupData",_groupData);
+	};
+	//PROFILE_STOP("block_BIS_fnc_om_addToSector");
+};
+
+// Rescan and save condition of vehicles in sector
+BIS_fnc_om_rescanSector = {
+	scriptName "BIS_fnc_om_rescanSector";
+	//PROFILE_START_INFO("block_BIS_fnc_om_rescanSector", "BIS_fnc_om_rescanSector", "1");
+	params ["_sector"];
+	private _vehicles = GVAR(_sector,"#vehicles");
+	private _vehicleData = +GVAR(_sector,"#vehicleData");
+
+	{
+		private _data = _vehicleData#_forEachIndex;
+		private _inventory = [getWeaponCargo _x, getMagazineCargo _x, getItemCargo _x, getBackpackCargo _x];
+		_data set [4, damage _x];
+		_data set [6, _inventory];
+	} forEach _vehicles;
+	SVAR(_sector,"#vehicleData",_vehicleData);
+	//PROFILE_STOP("block_BIS_fnc_om_rescanSector");
+};
+
+// Save special attributes given by modules to units
+BIS_fnc_om_preScan = {
+	scriptName "BIS_fnc_om_preScan";
+	//PROFILE_START_INFO("block_BIS_fnc_om_preScan", "BIS_fnc_om_preScan", "1");
+	{
+		private _module = _x;
+		{
+			private _special = _x getVariable ["#spc",[]];
+			_special pushBack ["#steal",[[_module getVariable "side"] call BIS_fnc_numberToSide, _module getVariable "Penalty"]];
+			SVAR(_x,"#spc",_special);
+		} forEach synchronizedObjects _x;
+	} forEach entities "ModuleOmProtectedVehicle_F";
+
+	//it is done only in case it is not the included mission (logics don't exist in the exported sqf)
+	{
+		private _module = _x;
+		/* ["AMBIENTCONVO: %1", _savedSpeakers] call BIS_fnc_logFormat; */
+		private _mainSpeaker = objNull;
+		private _savedSpeakers = [];
+		{
+			_mainSpeaker = _x;
+			_savedSpeakers pushBackUnique ( vehicleVarName _mainSpeaker );
+		} forEach synchronizedObjects _module;
+
+		private _special = _mainSpeaker getVariable ["#spc",[]];
+		private _code = format[" [ %1, %2] spawn BIS_fnc_OM_createConversation ", _savedSpeakers, _module getVariable "useAnims"];
+		_special pushBack ["#init",[_code]];
+		_mainSpeaker setVariable ["#spc",_special];
+	} forEach entities "ModuleOMRandomConversation_F";
+
+	{
+		private _module = _x;
+		{
+			private _special = _x getVariable ["#spc",[]];
+			if (typeOf _x == "ModuleOmSector_F") then {
+				SVAR(_x,"#init",GVAR(_module,"code"));
+			} else {
+				_special pushBack ["#init",[_module getVariable "code"]];
+				_x setVariable ["#spc",_special];
+			};
+		} forEach synchronizedObjects _x;
+	} forEach entities "ModuleOmInitScript_F";
+
+
+
+	// Delete modules, they are not needed
+	{
+		deleteVehicle _x;
+	} forEach (entities "ModuleOmInitScript_F" + entities "ModuleOmProtectedVehicle_F" + entities "ModuleOMRandomConversation_F");
+
+	// Init camp positions
+	{
+		private _sync = (synchronizedObjects _x) select {_x isKindOf "Man"};
+		if(count _sync > 0) then
+		{
+			private _soldier = _sync#0;
+
+			SVAR(_x,"#spc",GVARS(_soldier,"#spc",[]));
+			private _data = [_soldier] call BIS_fnc_om_scanAndDelete;
+
+			// Take data of the group
+			(_data#1#0) params ["_side","_beh","_wps","_units"];
+			_units#0 params ["_type","_varName","_pos","_dir"];
+
+			// Save important data to module
+			_x setPosWorld _pos;
+			_x setDir _dir;
+			SVAR(_x,"beh",_beh);
+			SVAR(_x,"wps",_wps);
+			_soldier setPosWorld [200,200,200];
+		} else {
+			//TODO: Solve this warning. Module camp pos is now synchronized also with the sector it belongs to.
+			["No unit synchronized with Syndikat Camp Pos"] call BIS_fnc_error;
+		};
+	} forEach (entities "ModuleOMSyndikatCampPos" select {count GVARS(_x,"beh",[]) == 0});
+	//PROFILE_STOP("block_BIS_fnc_om_preScan");
+};
+
+BIS_fnc_om_removeSector = {
+	scriptName "BIS_fnc_om_removeSector";
+	//PROFILE_START_INFO("block_BIS_fnc_om_removeSector", "BIS_fnc_om_removeSector", "1");
+	params ["_sector"];
+	BIS_allSectors = BIS_allSectors - [_sector];
+	//PROFILE_STOP("block_BIS_fnc_om_removeSector");
+	deleteVehicle _sector;
+};

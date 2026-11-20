@@ -1,0 +1,142 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+["QRF INIT START"] call bis_fnc_logFormat;
+
+_fn_qrf_getModule = {
+	params["_moduleType"];
+
+	private _allQrfModules = entities _moduleType;
+	private _qrfModulesCount = count _allQrfModules;
+	if (_qrfModulesCount == 0) exitWith {objNull};
+	if (_qrfModulesCount > 1)
+		throw "QRF INIT Error: only one QRF module of each type is allowed in the mission!";
+	(_allQrfModules select 0)
+};
+
+private _qrfModule = ["ModuleOmQRF_F"] call _fn_qrf_getModule;
+if (isNull _qrfModule) exitWith {};
+
+
+NEW(QRF);
+
+private _qrfSides = [];
+private _qrfUnitInfo = [];
+
+["QRF INIT 2"] call bis_fnc_logFormat;
+private _getQRFUnits = {
+	scriptName "_getQRFUnits";
+	PROFILE_INFO("_getQRFUnits","_getQRFUnits",1);
+	params["_qrfModule", "_stringType"];
+	private _unitInfo = [];
+
+	private _qrfUnits = [];
+	private _qrfUnitNumbers = [];
+	private _allQRFEditorUnits = synchronizedObjects _qrfModule;
+	//["QRF INIT qrfUnits ============ %1 ==============", _stringType] call bis_fnc_logFormat;
+	{
+		private _qrfUnit = _x;
+		private _qrfSide = side _qrfUnit;
+		_qrfSides pushBackUnique _qrfSide;
+		private _units = ([[_qrfUnit] call BIS_fnc_allConnectedUnits] call BIS_fnc_om_scanAndDelete);
+
+		private _unitsCount = 0;
+		{ _unitsCount =_unitsCount + count (_x#3); } forEach (_units#1);
+
+		//["QRF INIT qrfUnits[%1] %2", _unitsCount, _units#0#0#0] call bis_fnc_logFormat;
+
+		_qrfUnitNumbers pushBack _unitsCount;
+		_qrfUnits pushBack _units;
+	} forEach _allQRFEditorUnits;
+
+	// We have all module data that we need, so we can delete it.
+	deleteVehicle _qrfModule;
+	[_qrfUnits, _qrfUnitNumbers]
+};
+
+
+private _qrfLevelsNames = ["First", "Second", "Third"];
+private _qrfLevels = [];
+private _qrfNumbers = [];
+{
+	private _unitsAndCounts = [[format["ModuleOmQRF_F_%1",  _x]] call _fn_qrf_getModule, _x] call _getQRFUnits;
+	_qrfLevels pushBack (_unitsAndCounts#0);
+	_qrfNumbers pushBack (_unitsAndCounts#1);
+} forEach _qrfLevelsNames;
+["QRF INIT 3"] call bis_fnc_logFormat;
+//get  all module params
+{SVAR(QRF, _x, GVAR(_qrfModule, _x));
+} forEach ["spawnRange", "qrfCooldown", "areaCooldown" , "areaSize", "areaDefenseLimitPercentage", "waveDefenseLimitPercentage" , "qrfVehicleSpeed", "qrfAirSpeed",
+"arivalFailSafeTimeout", "waypointRadius", "airLandingFindPosRadius", "airLandingNearestObjectDistance", "unitMultiplierLevelThreshold", "unitMultiplier"];
+
+SVAR(QRF, "qrfCooldownStarting",  GVAR(QRF, "qrfCooldown") );
+
+SVAR(QRF, "maxLevel", count _qrfLevelsNames);
+SVAR(QRF, "units", _qrfLevels);
+SVAR(QRF, "unitNumbers", _qrfNumbers);
+SVAR(QRF, "qrfSides", _qrfSides);
+
+//this variables are set per area
+SVAR(QRF, "elapsed", []);
+SVAR(QRF, "lastQrfWave", []);
+SVAR(QRF, "canSendNext", []);
+SVAR(QRF, "areaTimeout", []);
+SVAR(QRF, "lastCooldownTime", []);
+SVAR(QRF, "areaDefenseLimit", []);
+
+SVAR(QRF, "trackedAreas", []);
+
+SVAR(QRF, "trackedAreasBlacklist", []);
+SVAR(QRF, "trackedAreasUnitCount", []);
+SVAR(QRF, "trackedAreasLevelIndex", []);
+SVAR(QRF, "trackedAreaIndex", -1);
+
+//Note that this will also delete QRF module
+private _backupUnitsAndCounts = [["ModuleOmQRF_F"] call _fn_qrf_getModule, "BackupInfantry"] call _getQRFUnits;
+SVAR(QRF, "backupUnits", _backupUnitsAndCounts#0);
+SVAR(QRF, "backupNumbers", _backupUnitsAndCounts#1);
+
+/* ["QRF INIT 4"] call bis_fnc_logFormat; */
+// We have all module data that we need, so we can delete it.
+// deleteVehicle _qrfModule;
+
+//Add event handler
+addMissionEventHandler ["EntityKilled",
+{
+	if ((GVAR(QRF, "manualActivation"))) exitWith {["QRF EnitityKilled:  Manual activation is enabled, exiting..."] call BIS_fnc_qrf_debugLogUnique;};
+	params ["_killed", "_killer", "_instigator"];
+	if (isNull _instigator) then {_instigator = UAVControl vehicle _killer select 0}; // UAV/UGV player operated road kill
+	if (isNull _instigator) then {_instigator = _killer}; // player driven vehicle road kill
+	if (isNull _instigator) then {_instigator = _killed};
+	INST1 = _instigator;
+	if (isNull _instigator) exitWith {["QRF EnitityKilled: INSTIGATOR IS_NULL"] call BIS_fnc_qrf_debugLogUnique;};
+	[_instigator, _killed] call BIS_fnc_qrf_checkForActivation;
+}];
+
+/* ["QRF INIT 5"] call bis_fnc_logFormat; */
+//Prepare cooldown timers
+[] spawn {
+	scriptName "qrf_moduleAgent";
+	private _timeoutDelay = QRF_TIMEOUT_CHECK_DELAY;
+	/* private _timeoutDelay = 1; */
+	while {alive player} do {
+		for "_i" from (count (["lastCooldownTime"] call bis_fnc_qrf_areaParam) -1) to 0 step -1 do {
+			PROFILE_INFO("qrf_moduleAgentSpawn1","qrf_moduleAgentSpawn1",1);
+			if ( !(["elapsed", _i, nil, false] call bis_fnc_qrf_areaParam)  && !( (["lastCooldownTime", _i, nil, false] call bis_fnc_qrf_areaParam) isEqualTo -1)  ) then {
+				private _lastCooldownDate = ["lastCooldownTime", _i, nil, false] call bis_fnc_qrf_areaParam;
+				private _elapsedTime = [(["lastCooldownTime", _i, nil, false] call bis_fnc_qrf_areaParam), date, "m"] call bis_fnc_CalculateDateTime;  // QRF_ELAPSED_TIME(_lastCooldownTime);
+				private _qrfCooldown = if ( (["areaTimeout", _i, nil, false] call bis_fnc_qrf_areaParam) ) then { (GVAR(QRF, "areaCooldown")) } else { (GVAR(QRF, "qrfCooldown")) };
+				private _timeoutTime = _elapsedTime >= _qrfCooldown; //QRF_TIMEOUT_TIME(_elapsedTime, _qrfCooldown);
+				//[["QRF Checking cooldown[%1] %2 >= %3 ELAPSED: %4", _i, _elapsedTime, _qrfCooldown, _timeoutTime], "systemChat"] call bis_fnc_qrf_debugLogRadio;
+				if (_timeoutTime) then {
+					// [["QRF TIMEOUT ELAPSED"]] call bis_fnc_qrf_debugLogRadio;
+					["elapsed", _i, true] call bis_fnc_qrf_areaParam;
+					if ( (["areaTimeout", _i, nil, false] call bis_fnc_qrf_areaParam)) then {[_i] call bis_fnc_qrf_stopAreaMonitoring;}
+				};
+			};
+		};
+		sleep _timeoutDelay;
+		/* sleep 1; */
+	};
+};
+["QRF INIT 6"] call bis_fnc_logFormat;
+// DEBUG_INFO("QRF_Activated");
+["QRF INIT END"] call bis_fnc_logFormat;

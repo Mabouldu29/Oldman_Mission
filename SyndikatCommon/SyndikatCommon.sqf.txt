@@ -1,0 +1,214 @@
+BIS_fnc_OM_ModuleSyndikatTeam_selectEquipWithProbability =
+{
+	scriptName "BIS_selectEquipWithProbability";
+  params [ "_equipType", "_level", [ "_probability", 1, [1] ], [ "_equips", [], [[]] ] ];
+  if(count _equips == 0) then
+  {
+    _equips = (getArray (configFile >> "SyndikatGear" >> _equipType)) select _level;        //get array for the given level from config (index == level)
+    _equips = _equips select { ((_x select 1) >= (1-_probability)) };                       //select all objects with the _probability
+  };
+  private _arr = [];                                                                        //preapre the array's structure for the weighted selection
+  {
+    _arr pushBack (_x select 0);
+    _arr pushBack (1 / (_x select 1));                                                      //if the object(s) with the less probability passed the 1st test, then select from these less probable objects
+  } forEach _equips;                                                                        //TODO: perhaps better could be to select a set of objects with the lowest probability
+  selectRandomWeighted _arr;  //can return null if anything found
+};
+
+BIS_fnc_OM_ModuleSyndikatTeam_loadoutWeapon =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatTeam_loadoutWeapon";
+  //TODO: secondary magazines (grenades, etc)
+  params [ "_weapon", ["_silencer", "", [""] ], ["_pointer", "", [""] ], ["_optic", "", [""] ], ["_magazinePrimary", "" , [[],""] ], ["_magazineSecondary", "" , [[],""] ], ["_bipod", "", [""] ], ["_secondaryWeapon", false, [false]] ];
+  if(_magazinePrimary isEqualTo "") then
+  {
+    _magazinePrimary = [GET_MAGAZINE_TYPES(_weapon) select 0, if(!_secondaryWeapon) then {30} else {2}];    //TODO: number of ammo should be based on the randomization
+  };
+  [_weapon,_silencer,_pointer,_optic,_magazinePrimary,[_magazineSecondary,3],_bipod]
+};
+
+BIS_fnc_OM_ModuleSyndikatTeam_loadoutVest =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatTeam_loadoutVest";
+  params [ ["_vest", "", [""] ], [ "_itemType", "", [""] ], [ "_count", 0, [9] ] ];
+  private _arrVest = [];
+  if!( _vest isEqualTo "" && _itemType isEqualTo "" ) then
+  {
+    for "_iLoop" from 1 to _count do
+    { _arrVest pushBack [_itemType, 30] };
+  };
+  [_vest, _arrVest]
+};
+
+BIS_fnc_OM_ModuleSyndikatTeam_isItemCompatible =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatTeam_isItemCompatible";
+  params ["_weapon", "_item"];
+  /* ["SYNDIKATAGENT: weapon: %1, _item: %2", _weapon, _item] call BIS_fnc_LogFormat; */
+  _item in ([_weapon] call BIS_fnc_compatibleItems)
+};
+
+BIS_fnc_OM_ModuleSyndikatTeam_selectCompatibleItemsWithWeapon =
+{
+	scriptName "BIS__selectCompatibleItemsWithWeapon";
+  params ["_weapon", "_equipType", "_level"];
+  /* ["SYNDIKATAGENT: weapon: %1, _equipType: %2, _level:%3", _weapon, _equipType, _level] call BIS_fnc_LogFormat; */
+  ((getArray (configfile >> "SyndikatGear" >> _equipType)) select _level ) select {[_weapon, _x select 0] call BIS_fnc_OM_ModuleSyndikatTeam_isItemCompatible}
+};
+
+BIS_fnc_OM_ModuleSyndikatTeam_getSkill =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatTeam_getSkill";
+  params["_level"];
+  random ((getArray (configfile >> "SyndikatGear" >> "skills")) select _level)
+};
+
+
+BIS_fnc_OM_ModuleSyndikatAgent_setGear =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatAgent_setGear";
+  params["_level", "_selectedClass"];
+
+  private _unitLoadout = getUnitLoadout _selectedClass;
+
+  //PRIMARY WEAPON
+  private _weapon = ["primaryWeapons", _level , random 1 ] call BIS_fnc_OM_ModuleSyndikatTeam_selectEquipWithProbability;
+  private _optics = [_weapon, "attachementsOptics", _level] call BIS_fnc_OM_ModuleSyndikatTeam_selectCompatibleItemsWithWeapon;
+  private _arrPrimaryWeapon =
+  [
+    _weapon,
+    "",
+    "",
+    if( count _optics > 0) then
+    { [nil, nil, random 1, _optics] call BIS_fnc_OM_ModuleSyndikatTeam_selectEquipWithProbability } else {""}
+  ] call BIS_fnc_OM_ModuleSyndikatTeam_loadoutWeapon;
+
+  //SECONDARY WEAPON
+  private _arrSecondaryWeapon = [];
+  private _secondaryWeapon = ["secondaryWeapons", _level , random 1 ] call BIS_fnc_OM_ModuleSyndikatTeam_selectEquipWithProbability;
+  if(!isNil "_secondaryWeapon") then
+  {
+    _arrSecondaryWeapon =
+    [
+      _secondaryWeapon,
+      "", "", "", "", "", "",
+      true
+    ] call BIS_fnc_OM_ModuleSyndikatTeam_loadoutWeapon;
+  };
+
+  //VEST
+  private _vest = ["vests", _level , random 1 ] call BIS_fnc_OM_ModuleSyndikatTeam_selectEquipWithProbability;
+  if(isNil "_vest") then {_vest = ""};
+  private _arrVest = [ _vest, GET_MAGAZINE_TYPES(_weapon) select 0, 2] call BIS_fnc_OM_ModuleSyndikatTeam_loadoutVest;
+
+  //HELMET
+  private _helmet = ["helmets",_level,random 1] call BIS_fnc_OM_ModuleSyndikatTeam_selectEquipWithProbability;
+  if(isNil "_helmet") then {_helmet = ""};
+
+
+  _unitLoadout set [INDEX_PRIMARY_WEAPON, _arrPrimaryWeapon];
+  _unitLoadout set [INDEX_SECONDARY_WEAPON, _arrSecondaryWeapon];
+  _unitLoadout set [INDEX_VEST, _arrVest];
+  _unitLoadout set [INDEX_ITEMS, _helmet];
+  _unitLoadout
+};
+
+BIS_fnc_OM_ModuleSyndikatAgent_setLevel =
+{
+	scriptName "BIS_fnc_OM_ModuleSyndikatAgent_setLevel";
+  params [ ["_win",0,[9]], ["_price",0,[99999]] ];
+  private _actualLevel = SYNDIKAT_AGENT_LOGIC getVariable "actualLevel";            //we will use the same leveling for team and support
+  if( _actualLevel == ((SYNDIKAT_AGENT_LOGIC getVariable "levels")-1) ) exitWith {["SYNDIKATAGENT: Max level: %1 already reached. Cannot go higher.", _actualLevel] call BIS_fnc_LogFormat; false};
+  private _nrOfWins = SYNDIKAT_AGENT_LOGIC getVariable ["nrOfWins", 0];
+  private _equipPriceSum = SYNDIKAT_AGENT_LOGIC getVariable ["equipPriceSum", 0];
+
+  _nrOfWins = _nrOfWins + _win;
+  _equipPriceSum = _equipPriceSum + _price;
+
+  private ["_actualLevelWins", "_actualLevelPrice", "_nextLevelWins", "_nextLevelPrice", "_result"];
+
+  switch (_actualLevel) do
+  {
+      case (0):
+      {
+        _actualLevelWins = LEVEL_0_WINS;
+        _actualLevelPrice = LEVEL_0_EQUIPS;
+        _nextLevelWins = LEVEL_1_WINS;
+        _nextLevelPrice = LEVEL_1_EQUIPS;
+      };
+      case (1):
+      {
+        _actualLevelWins = LEVEL_1_WINS;
+        _actualLevelPrice = LEVEL_1_EQUIPS;
+        _nextLevelWins = LEVEL_2_WINS;
+        _nextLevelPrice = LEVEL_2_EQUIPS;
+      };
+      case (2):
+      {
+        _actualLevelWins = LEVEL_2_WINS;
+        _actualLevelPrice = LEVEL_2_EQUIPS;
+        _nextLevelWins = 99999999999;
+        _nextLevelPrice = 999999999999;
+      };
+  };
+  ["SYNDIKATAGENT: actualLevel: %1", _actualLevel] call BIS_fnc_LogFormat;
+  _result = linearConversion[_actualLevelWins, _nextLevelWins, _nrOfWins, 0, 1];
+  ["SYNDIKATAGENT: actualLevelWins: %1 | nextLevelWins: %2", _actualLevelWins, _nextLevelWins] call BIS_fnc_LogFormat;
+  _result = _result + linearConversion[_actualLevelPrice, _nextLevelPrice, _equipPriceSum, 0, 1];
+  ["SYNDIKATAGENT: _actualLevelPrice: %1 | nextLevelPrice: %2 | _equipPriceSum: %3", _actualLevelPrice, _nextLevelPrice, _equipPriceSum] call BIS_fnc_LogFormat;
+  if(_result >= 1) then
+  {
+      _result = (floor _result) min 2;
+      _nrOfWins = _nextLevelWins;
+      _equipPriceSum = _nextLevelPrice;
+      for "_iLoop" from 1 to (_result) do
+      {
+        ["SYNDIKATAGENT: LevelUp: %1x ", _result] call BIS_fnc_LogFormat;
+
+        [MODE_LEVEL_UP] spawn BIS_fnc_OM_ModuleSyndikatTeam;
+        ["LevelUp"] spawn BIS_fnc_OM_ModuleSyndikatAgent;
+        waitUntil{sleep 0.5;  _actualLevel != (SYNDIKAT_AGENT_LOGIC getVariable "actualLevel") };
+        /* Sleep 1; */
+      };
+      _result = 0;
+  };
+
+  SYNDIKAT_AGENT_LOGIC setVariable ["result", _result ];
+  SYNDIKAT_AGENT_LOGIC setVariable ["nrOfWins", _nrOfWins];
+  SYNDIKAT_AGENT_LOGIC setVariable ["equipPriceSum", _equipPriceSum];
+
+};
+
+BIS_fnc_OM_ModuleSyndikatAgent_getEquipNeededToNextLevel =
+{
+	scriptName "BIS__getEquipNeededToNextLevel";
+  private _actualLevel = SYNDIKAT_AGENT_LOGIC getVariable ["actualLevel",0];
+  private ["_actualLevelWins", "_actualLevelPrice", "_nextLevelWins", "_nextLevelPrice", "_result"];
+  switch (_actualLevel) do
+  {
+      case 0:
+      {
+        _actualLevelWins = LEVEL_0_WINS;
+        _actualLevelPrice = LEVEL_0_EQUIPS;
+        _nextLevelWins = LEVEL_1_WINS;
+        _nextLevelPrice = LEVEL_1_EQUIPS;
+      };
+      case 1:
+      {
+        _actualLevelWins = LEVEL_1_WINS;
+        _actualLevelPrice = LEVEL_1_EQUIPS;
+        _nextLevelWins = LEVEL_2_WINS;
+        _nextLevelPrice = LEVEL_2_EQUIPS;
+      };
+      case 2:
+      {
+        _actualLevelWins = LEVEL_2_WINS;
+        _actualLevelPrice = LEVEL_2_EQUIPS;
+        _nextLevelWins = 99999999999;
+        _nextLevelPrice = 999999999999;
+      };
+  };
+  _result = SYNDIKAT_AGENT_LOGIC getVariable ["result",0];
+  //mixed value (wins + price) | wins | price
+  [_result, ceil (_nextLevelWins-linearConversion[0, 1, _result, _actualLevelWins, _nextLevelwins, true]), _nextLevelPrice-linearConversion[0, 1, _result, _actualLevelPrice, _nextLevelPrice, true]]
+};

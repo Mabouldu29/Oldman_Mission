@@ -1,0 +1,10 @@
+
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_status_defines.inc";
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_status", ["_messageVariables", [] ]];
+
+private _statusMessage = [QRF_STATE_MESSAGE(_status)];
+_statusMessage append _messageVariables;
+
+_statusMessage call bis_fnc_logFormat;
+if (QRF_DEBUG) then { [playerSide, "PAPA_BEAR"] commandChat format _statusMessage; };

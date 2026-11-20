@@ -1,0 +1,3 @@
+params[ ["_qrfVehicleName", "", [""]], ["_startPos", []]];
+
+([getPos player, "Car",east, side group player, _qrfVehicleName, _startPos] spawn BIS_fnc_qrf_onDemand);

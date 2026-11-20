@@ -1,0 +1,47 @@
+class QRF
+{
+	tag = "BIS";
+	project = "arma3";
+
+	class Functions
+	{
+		file = "\A3\Missions_F_Oldman\Systems\scripts\QRF";
+		//agent
+		class qrf_moduleAgent;
+		class qrf_sendManually;
+		class qrf_manualActivation;
+		class qrf_resetTimout;
+	};
+
+	class Sender
+	{
+		file = "\A3\Missions_F_Oldman\Systems\scripts\QRF\sender";
+		class qrf_send;
+		class qrf_getQRfUnit;
+		class qrf_findSuitableSpawnPos;
+		class qrf_move;
+		class qrf_waitUntilFinished;
+		class qrf_despawn;
+	};
+
+	class Internal
+	{
+		file = "\A3\Missions_F_Oldman\Systems\scripts\QRF\Internal";
+		class qrf_appendArrayVar;
+		class qrf_checkForActivation;
+		class qrf_timeoutElapsed;
+		class qrf_reportStatus;
+		class qrf_areaParam;
+		class qrf_stopAreaMonitoring;
+	};
+
+	class flares_apex
+	{
+		file = "\A3\Missions_F_Exp\Campaign\Missions\EXP_m04.Tanoa\functions\flares";
+
+		class EXP_m04_flareCreate	{};
+		class EXP_m04_flareInit		{preInit = 1;};
+		class EXP_m04_flareLight	{};
+		class EXP_m04_flareSound	{};
+	};
+};

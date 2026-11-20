@@ -1,0 +1,73 @@
+#include "definitions.inc"
+#include "SmartMarkers_Common.sqf"
+
+PROFILE_START("SM_CHANGELOD");
+params [ "_logic", "_lod", ["_singleSmartMarker", false, [false, objNull, ""]] ];
+private _smartMarkerCfg = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_CFG_STORAGE;
+private "_smartMarkers";
+if(_singleSmartMarker isEqualTo false) then
+{ _smartMarkers = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_STORAGE }
+else
+{_smartMarkers = [_singleSmartMarker]};
+/* TERMINATE_RUNNING_SCRIPTS; */
+private ["_smartMarkerBase", "_markerSections", "_sectionsInCurrentLOD"];
+{
+  _smartMarkerBase = _x;
+  _markerSections = _smartMarkerBase getVariable SMARTMARKER_SECTIONS;
+  /* PROFILE_START("SM_GetSectionsNamesInLOD "); */
+  _sectionsInCurrentLOD = [_smartMarkerCfg, typeOf _smartMarkerBase, _lod] call BIS_fnc_OM_moduleSmartMarkers_GetSectionsNamesInLOD;
+  /* PROFILE_STOP("SM_GetSectionsNamesInLOD "); */
+  private ["_section", "_marker"];
+  {
+    _section = _x select 0;
+    _marker = _x select 1;
+    if(_section in _sectionsInCurrentLOD) then  //if section exists in the current LOD then just set different values, otherwise hide it
+    {
+      _sectionAttributes = [typeOf _smartMarkerBase, _section] call BIS_fnc_OM_moduleSmartMarkers_GetAttributeNames;
+      _sectionAttributes sort true;
+      if(count _sectionAttributes != 0) then
+      {
+        private _parametersForCreate = ARR_PARAMS;
+        {
+          private _attribute = _x;
+          _parametersForCreate set
+          [
+						_x,
+            if( _attribute == TEXT) then
+            {
+              _smartMarkerBase getVariable [SMARTMARKER_CUSTOMNAME, [typeOf _smartMarkerBase, _section, _attribute, _lod] call BIS_fnc_OM_moduleSmartMarkers_GetAttributeValue]
+            }
+            else
+            {
+              //TODO: this is perhaps not needed anymore - solved by the default parameter returned in the 1st branch (above)
+              [typeOf _smartMarkerBase, _section, _attribute, _lod] call BIS_fnc_OM_moduleSmartMarkers_GetAttributeValue
+            }
+          ];
+        } forEach _sectionAttributes;
+
+				if( IS_MARKER_DISABLED(_smartMarkerBase) ) then
+				{
+					_parametersForCreate set [COLOR, _parametersForCreate select COLOR_DISABLED];
+					_parametersForCreate set [ALPHA, _parametersForCreate select ALPHA_DISABLED];
+				};
+
+        /* str _parametersForCreate call BIS_fnc_Log; */
+        private _fnc = {};
+        switch (_section) do
+        {
+              case 0: { _fnc = BIS_fnc_OM_moduleSmartMarkers_UpdateMarkerIcon };
+              case 1: { _fnc = BIS_fnc_OM_moduleSmartMarkers_UpdateMarkerIconBackground };
+              case 2: { _fnc = BIS_fnc_OM_moduleSmartMarkers_UpdateMarkerArea };
+              case 3: { _fnc = BIS_fnc_OM_moduleSmartMarkers_UpdateMarkerText };
+        };
+        [_marker, _parametersForCreate, _fnc] spawn {[_this select 0, _this select 1] call (_this select 2)};
+      };
+    }
+    else
+    {
+      _marker setMarkerAlpha 0;
+			/* if(!isnil "_marker") then {	[_marker, 0, MARKER_SHOW_SPEED] spawn BIS_fnc_OM_moduleSmartMarkers_SetMarkerVisibility;}; */
+    };
+  } forEach _markerSections;
+} forEach _smartMarkers;
+PROFILE_STOP("SM_CHANGELOD");

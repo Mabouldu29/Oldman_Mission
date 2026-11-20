@@ -1,0 +1,62 @@
+#define MODE_INIT               "init"
+#define MODE_REGISTER           2
+#define MODE_INCREASE_LEVEL     4
+#define MODE_ERROR              9
+
+#define REPUTATION_MODULE_LOGIC			            (missionNameSpace getVariable 'BIS_OM_Reputation_logic')
+
+#define REPUTATION_LEVEL_WIDTH                  (REPUTATION_MODULE_LOGIC getVariable 'ReputationLevelWidth')
+
+//POSITIVE POINTS
+#define REPUTATION_POSITIVE_BONUS_SMALL         REPUTATION_LEVEL_WIDTH / 4
+#define REPUTATION_POSITIVE_BONUS_MEDIUM        REPUTATION_LEVEL_WIDTH / 2
+#define REPUTATION_POSITIVE_BONUS_GREAT         REPUTATION_LEVEL_WIDTH
+#define REPUTATION_POSITIVE_BONUS_AWESOME       REPUTATION_LEVEL_WIDTH * 1.5
+#define REPUTATION_POSITIVE_BONUS_MEGA          REPUTATION_LEVEL_WIDTH * 2
+
+/* #define ADD_REPUTATION_POINTS(POINTS)           [MODE_INCREASE_LEVEL, [POINTS]] call BIS_fnc_OM_moduleReputation; */
+#define ADD_REPUTATION_POINTS(POINTS) \
+  if(!isNil {(missionNameSpace getVariable 'BIS_OM_Reputation_logic')}) then {[MODE_INCREASE_LEVEL, [POINTS]] call BIS_fnc_OM_moduleReputation};
+
+
+//NEGATIVE POINTS
+#define AGGRO_MODE_VALUE_ALLY                    0
+#define AGGRO_MODE_VALUE_CALM                    0
+#define AGGRO_MODE_VALUE_PREPARE                (-1*( floor (REPUTATION_LEVEL_WIDTH/(REPUTATION_LEVEL_WIDTH*10))))
+#define AGGRO_MODE_VALUE_AGGRESIVE              (-1*( floor (REPUTATION_LEVEL_WIDTH/(REPUTATION_LEVEL_WIDTH*0.03))))
+
+#define REPUTATION_IS_INITIALIZED()             (REPUTATION_MODULE_LOGIC getVariable ["ReputationInitialized", false])
+#define REPUTATION_SET_INITIALIZED()            (REPUTATION_MODULE_LOGIC setVariable ["ReputationInitialized", true])
+
+
+#define REPUTATION_LEVEL            			    "ReputationLevel"
+#define REPUTATION_VALUE            			    "ReputationValue"
+#define REPUTATION_CALLBACKS         			    "ReputationCallBacks"
+#define REPUTATION_LEVELPREVIOUS    			    "ReputationLevelPrevious"
+#define REPUTATION_LEVELSTART       			    "ReputationLevelStart"
+#define RELATIONSHIP_LOGIC          			    "RelationshipLogic"
+#define BONUS_BUFFER                          "ReputationBonus"
+
+
+#define GET_REPUTATION_LEVEL() 								(REPUTATION_MODULE_LOGIC getVariable REPUTATION_LEVEL)
+#define SET_REPUTATION_LEVEL(LEVEL) 					(REPUTATION_MODULE_LOGIC setVariable [REPUTATION_LEVEL, LEVEL])
+#define GET_REPUTATION_LEVELPREVIOUS()				(REPUTATION_MODULE_LOGIC getVariable REPUTATION_LEVELPREVIOUS)
+#define SET_REPUTATION_LEVELPREVIOUS(LEVEL)		(REPUTATION_MODULE_LOGIC setVariable [REPUTATION_LEVELPREVIOUS, LEVEL])
+#define GET_REPUTATION_MIN_LEVEL()			      (REPUTATION_MODULE_LOGIC getVariable "ReputationLevelMin")
+#define GET_REPUTATION_MAX_LEVEL()			      (REPUTATION_MODULE_LOGIC getVariable "ReputationLevelMax")
+#define GET_NEXT_LEVEL_VALUE()                (GET_REPUTATION_LEVEL()*REPUTATION_LEVEL_WIDTH + REPUTATION_LEVEL_WIDTH)
+#define GET_PREV_LEVEL_VALUE()                (GET_REPUTATION_LEVEL()*REPUTATION_LEVEL_WIDTH - REPUTATION_LEVEL_WIDTH)
+#define GET_BUFFER()                          (REPUTATION_MODULE_LOGIC getVariable [BONUS_BUFFER,0])
+#define DECREASE_BUFFER(VALUE)                (REPUTATION_MODULE_LOGIC setVariable [BONUS_BUFFER, (GET_BUFFER() - VALUE)])
+#define ADD_VALUE_TO_BUFFER(VALUE)            (REPUTATION_MODULE_LOGIC setVariable [BONUS_BUFFER, (GET_BUFFER() + VALUE)])
+
+
+#define GET_REPUTATION_VALUE() 								(REPUTATION_MODULE_LOGIC getVariable REPUTATION_VALUE)
+#define SET_REPUTATION_VALUE(VALUE) 					(REPUTATION_MODULE_LOGIC setVariable [REPUTATION_VALUE, VALUE])
+
+#define GET_THREAT_LEVEL()                    ((REPUTATION_MODULE_LOGIC getVariable RELATIONSHIP_LOGIC) getVariable ["threat", 0])
+#define GET_ALLY_THRESHOLD()                  ((REPUTATION_MODULE_LOGIC getVariable RELATIONSHIP_LOGIC) getVariable ["allyTreshold",0])
+#define GET_AGGRO_MODE()                      ((REPUTATION_MODULE_LOGIC getVariable RELATIONSHIP_LOGIC) getVariable ["AggroMode",M_ALLIED])
+
+#define UPDATE_DELAY 1
+#define LEVEL_UNDEFINED                   -9999999

@@ -1,0 +1,181 @@
+#include "common_definitions.inc"
+
+//MODULE SYSTEMS
+#define FUNCTIONS_PATH    "\a3\Missions_F_Oldman\Systems\Scripts\SmartMarkers\"
+#define FUNCTIONS_NAMES  [\
+ 														"SmartMarkers_Init", \
+														"SmartMarkers_Create", \
+														"SmartMarkers_Delete", \
+														"SmartMarkers_ChangeLOD", \
+														"SmartMarkers_HandleMapControls",\
+														"SmartMarkers_ShowTooltip",\
+														"SmartMarkers_HideTooltip",\
+														"SmartMarkers_GetMarkerName", \
+														"SmartMarkers_Show", \
+														"SmartMarkers_Hide", \
+                            "SmartMarkers_Associate", \
+														"SmartMarkers_Enable", \
+														"SmartMarkers_Disable", \
+                            "SmartMarkers_ChangeAttributes" \
+													]
+
+#define FUNCTIONS_PREFIX  "BIS_fnc_OM_module"
+
+//object variables (accessible via get/set variable commands)
+#define SMARTMARKERS_VAR_STORAGE            "smartMarkers"
+#define SMARTMARKERS_VAR_STORAGE_HIDDEN			"smartMarkersHidden"
+#define SMARTMARKERS_VAR_CFG_STORAGE        "smartMarkersCfg"
+#define SMARTMARKERS_VAR_LOD                "LODS"
+#define SMARTMARKERS_VAR_SCRIPT_STORAGE 		"smartmarkersScripts"
+#define SMARTMARKER_SECTIONS                "smartMarkerSections"
+#define SMARTMARKER_CUSTOMDATA              "smartMarkerCustom"
+#define SMARTMARKER_CUSTOMNAME              "smartMarkerCustomName"
+#define SMARTMARKER_DISABLED								"smartMarkerDisabled"
+#define SMARTMARKER_HIGHLIGHTED							"smartMarkerHighlighted"
+#define SMARTMARKER_EXTRADATA								"smartMarkerExtra"									//mainly for extra tooltip text (info from other systems)
+#define SMARTMARKER_CONDSHOW								"smartMarkerCondShow"
+#define SMARTMARKER_CONDHIDE								"smartMarkerCondHide"
+
+//CONFIG RELATED
+#define CFG_SMARTMARKERS                          (configFile >> "CfgVehicles")
+#define CFG_SMARTMARKERS_SECTIONS                 (configFile >> "CfgVehicles" >> "Sections")
+#define CFG_SMARTMARKER_BASE                      "SmartMarker_Base_F"
+#define SMARTMARKERS_CONFIG(CLASS, PROPERTY)      [CFG_SMARTMARKERS >> CLASS, PROPERTY] call BIS_fnc_returnConfigEntry  //to
+
+#define MARKER_ICON_TYPE(CLASS)       SMARTMARKERS_CONFIG(CLASS >> "MarkerIcon", "type")
+
+//JUST DEFINES THE STRUCTURE OF THE DATA (ALL SMARTMARKERS ATTRIBUTES LOADED FROM CONFIG)
+#define STRUCT_SMARTMARKER_NAME_INDEX                 		0
+#define STRUCT_SMARTMARKER_DATA_INDEX                 		1
+#define STRUCT_SMARTMARKER_LODS_INDEX                 		2
+#define STRUCT_SMARTMARKER_TOOLTIP_INDEX                  3
+#define STRUCT_SMARTMARKER_SECTION_NAME_INDEX							0
+#define STRUCT_SMARTMARKER_SECTION_ATTRIBUTES_INDEX				1
+#define STRUCT_SMARTMARKER_SECTION_ATTRIBUTE_NAME_INDEX		0
+#define STRUCT_SMARTMARKER_SECTION_ATTRIBUTE_VALUE_INDEX	1
+#define STRUCT_SMARTMARKER_CUSTOMDATA_NAME_INDEX          0
+#define STRUCT_SMARTMARKER_CUSTOMDATA_TOOLTIP_INDEX       1
+
+//OPTIMALIZATION IDS (keep the names same as they are in cfg, the names are parsed)!
+#define MARKERICON 										0
+#define MARKERICONBACKGROUND 					1
+#define MARKERAREA	 									2
+#define MARKERTEXT	 									3
+
+#define TYPE 						0
+#define SIZE 						1
+#define COLOR						2
+#define ALPHA						3
+#define SHAPE						4
+#define BRUSH 					5
+#define LAYER						6
+#define TEXT						7
+#define OFFSET					8
+#define FONT						9
+#define COLOR_DISABLED 	10
+#define ALPHA_DISABLED 	11
+
+#define ATTRIBUTE_ASSIGNS \
+	private _type = 	TYPE; \
+	private _size = 	SIZE; \
+	private _color = 	COLOR; \
+	private _alpha = 	ALPHA; \
+	private _shape = 	SHAPE; \
+	private _brush = 	BRUSH; \
+	private _layer = 	LAYER; \
+	private _text = 	TEXT; \
+	private _offset = OFFSET;\
+	private _font = FONT; \
+	private _markerIcon = MARKERICON; \
+	private _markerIconBackGround = MARKERICONBACKGROUND; \
+	private _markerArea = MARKERAREA; \
+	private _markerText = MARKERTEXT; \
+	private _colorDisabled = COLOR_DISABLED; \
+	private _alphaDisabled = ALPHA_DISABLED
+
+
+#define SMARTMARKER_TOOLTIP_SECTION         "MarkerTooltip"
+#define ARR_PARAMS 													[nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil,nil]
+//MARKER INSTANCES
+#define MARKER_PREFIX                                     "BIS_smrk"
+#define MARKER_PREFIX_ICON 																MARKER_PREFIX + "_I"
+#define MARKER_PREFIX_ICONBACKGROUND											MARKER_PREFIX + "_B"
+#define MARKER_PREFIX_AREA																MARKER_PREFIX + "_A"
+#define MARKER_PREFIX_TEXT																MARKER_PREFIX + "_T"
+#define MARKER_NAME_UNIQUE(MARKER_PREFIX) 								format ["%1%2",MARKER_PREFIX,time*10000]
+#define MARKER_CONTROL                                    "marker"
+#define MARKER_SHOW_SPEED 			0.5
+#define MARKER_HIDE_SPEED 			0.5
+#define MARKER_ANIMATION_FRAMES 8
+#define OP(ALPHA, FINAL_ALPHA) if(_startAlpha > _finalAlpha) then {ALPHA > (FINAL_ALPHA+0.001)} else {(ALPHA+0.001) < FINAL_ALPHA}
+#define ROUND(NUMBER) parseNumber (NUMBER toFixed 2)
+#define MARKER_INTERRUPT_DELAY 1;
+
+#define FUNCTION_PREFIX_CREATE             "BIS_fnc_OM_moduleSmartMarkers_CreateMarker"
+#define FUNCTION_PREFIX_UPDATE             "BIS_fnc_OM_moduleSmartMarkers_UpdateMarker"
+#define CREATE_SECTION(SECTION)     				(call compile format ["%1%2", FUNCTION_PREFIX_CREATE, SECTION])
+#define UPDATE_SECTION(SECTION)							(call compile format ["%1%2", FUNCTION_PREFIX_UPDATE, SECTION])
+#define MARKER_SIZE_SINGULAR								[0,0]
+#define MARKER_TEXT_OFFSET_FAKE 						"      "
+
+//MAP SCALE RELATED
+#define MAP_LOD_0_MIN   0
+#define MAP_LOD_0_MAX   0.0347353//0.0149956
+#define MAP_LOD_1_MIN   MAP_LOD_0_MAX
+#define MAP_LOD_1_MAX   0.431711//0.21
+#define MAP_LOD_2_MIN   MAP_LOD_1_MAX
+#define MAP_LOD_2_MAX   1
+//#define MAP_LOD_3_MIN   MAP_LOD_2_MAX
+//#define MAP_LOD_3_MAX   1
+
+#define MAP_LOD0        0
+#define MAP_LOD1        1
+#define MAP_LOD2        2
+/* #define MAP_LOD3        3 */
+#define MAP_LOD_MIN     0
+#define MAP_LOD_MAX     2
+
+#define MAP_CENTER                          ((uiNameSpace getVariable "map") posScreenToWorld [0.5,0.5])
+#define MAP_MARK_AS_READ_AREA_X             3000
+#define MAP_MARK_AS_READ_AREA_Y             3000
+#define MAP_NR_OF_BLINKS_TO_MARK_AS_READ    2
+#define IS_IN_SAFEZONE_X(X) (if(safezoneX < X && X < (safezoneX + safezoneW)) then {true} else {false})
+#define IS_IN_SAFEZONE_Y(Y) (if(safezoneY < Y && Y < (safezoneY + safezoneH)) then {true} else {false})
+#define LOCATOR_MARKER      	"mil_triangle"
+#define LOCATOR_MARKER_SIZE 	[2,2]
+
+/* #define MAP_SCALE_MIN 0.02 */
+/* #define MAP_SCALE_MAX 0.146607 */
+
+#define EVENT_INIT          				0
+#define EVENT_DRAW          				1
+#define EVENT_MOUSE_OVER    				2
+#define EVENT_MAP										3
+#define EVENT_MOUSE_BUTTON_UP 			4
+#define CTRL_LMB										0
+#define UI_DELAY 										0.1
+#define CHECK_CONDITION_DELAY				1.0
+
+#define TERMINATE_RUNNING_SCRIPTS \
+	private _scripts = SMARTMARKERS_MODULE_LOGIC getVariable SMARTMARKERS_VAR_SCRIPT_STORAGE;\
+	if(count _scripts > 0) then {	{terminate _x} forEach _scripts; _scripts = [];	SMARTMARKERS_MODULE_LOGIC setVariable [SMARTMARKERS_VAR_SCRIPT_STORAGE, []];}; \
+	{ if(!isNull _x) then {terminate _x} } forEach (missionNamespace getVariable ["BIS_fnc_eventTimeline_array", []]); missionNamespace setVariable ["BIS_fnc_eventTimeline_array", []]
+
+#define ON_HIDE_MARKER \
+  (uiNameSpace getvariable "map") ctrlMapCursor ["Track", "Track	"]; \
+  if(SMARTMARKERS_MODULE_LOGIC getVariable ["tooltipShown", true]) then \
+  { [] call BIS_fnc_OM_moduleSmartMarkers_HideTooltip; SMARTMARKERS_MODULE_LOGIC setVariable ["tooltipShown", false];};
+
+#define MARKER_UNDER_MOUSE_CURSOR(CONTROLUNDERMOUSEARR) \
+count CONTROLUNDERMOUSEARR != 0 && {CONTROLUNDERMOUSEARR select 0 == MARKER_CONTROL}
+
+#define TASK_CATEGORY "Tasks"
+
+#define GET_MARKER_SECTION_BY_TYPE(SMARTMARKER, TYPE) \
+SMARTMARKER select {_x select 0 == TYPE} select 0 select 1
+
+//parameters for the Target Selection mode (SyndikatTeam)
+#define TARGETSEL_CURSOR        ["Track", "HC_overEnemy"]
+#define TARGETSEL_TITLE         Localize "STR_A3_OM_System_SmartMarker_TargetSelTitle"  //TODO: Localize
+#define TARGETSEL_DESCRIPTION   Localize "STR_A3_OM_System_SmartMarker_TargetSelDescriptioni" //TODO: Localize
+#define TARGETSEL_IMG           "a3\Missions_F_Oldman\Data\img\Tooltip\SM_CSAT_TARGET_CA.paa" //TODO: Img

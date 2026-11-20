@@ -1,0 +1,40 @@
+if (isNil "BIS_OM_weatherQueue") exitWith {};
+#define WEATHER_SUNRISE_TIME 7
+#define WEATHER_SUNSET_TIME 18
+_reportArray = [];
+_reportArray pushBack selectRandom ["OM_WM_introduction_0", "OM_WM_introduction_1", "OM_WM_introduction_2", "OM_WM_introduction_3", "OM_WM_introduction_4"];
+_reportArray pushBack format ["OM_WM_current_%1_%2", round (overcast * 4), if (daytime > WEATHER_SUNRISE_TIME && daytime < WEATHER_SUNSET_TIME) then {"day"} else {"night"}];
+if (rain > 0) then {_reportArray pushBack selectRandom ["OM_WM_current_rain_0", "OM_WM_current_rain_1"]};
+_overcastLong = ((BIS_OM_weatherQueue select 0) + (BIS_OM_weatherQueue select 1) + (BIS_OM_weatherQueue select 2)) / 3;
+_reportArray pushBack format ["OM_WM_forecast_weather_%1", round (_overcastLong * 2)];
+_tempLong = (((BIS_OM_weatherForecast select 0) select 4) + ((BIS_OM_weatherForecast select 1) select 4) + ((BIS_OM_weatherForecast select 2) select 4)) / 3;
+if (_tempLong < 17.5) then {_reportArray pushBack "OM_WM_forecast_temperature_0"} else {
+	if (_tempLong < 22.5) then {_reportArray pushBack "OM_WM_forecast_temperature_1"} else {
+		if (_tempLong < 27.5) then {_reportArray pushBack "OM_WM_forecast_temperature_2"} else {
+			if (_tempLong < 32.5) then {_reportArray pushBack "OM_WM_forecast_temperature_3"} else {
+				_reportArray pushBack "OM_WM_forecast_temperature_4";
+			};
+		};
+	};
+};
+_rainLong = ((BIS_OM_weatherForecast select 0) select 1) + ((BIS_OM_weatherForecast select 1) select 1) + ((BIS_OM_weatherForecast select 2) select 1);
+if (_rainLong > 0.75) then {
+	_reportArray pushBack "OM_WM_forecast_rain_1";
+} else {
+	if (_rainLong > 0) then {
+		_reportArray pushBack "OM_WM_forecast_rain_0";
+	};
+};
+_stormLong = ((BIS_OM_weatherForecast select 0) select 2) + ((BIS_OM_weatherForecast select 1) select 2) + ((BIS_OM_weatherForecast select 2) select 2);
+if (_stormLong > 0) then {
+	_reportArray pushBack "OM_WM_forecast_storm_0";
+};
+_reportArray pushBack "OM_WM_goodbye_0";
+_reportArray spawn {
+	_prevSentence = "";
+	{
+		if (_prevSentence != "") then {waitUntil {player kbWasSaid [player, "OM_WeatherForecast", _prevSentence, 10]}};
+		player kbTell [player, "OM_WeatherForecast", _x];
+		_prevSentence = _x;
+	} forEach _this;
+};

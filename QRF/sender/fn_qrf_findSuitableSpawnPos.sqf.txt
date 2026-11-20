@@ -1,0 +1,70 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_qrfType", "_searchPos", ["_noRoadCheck", false]];
+
+private _searchRange = GVAR(QRF, "spawnRange");
+["QRF FINDSPAWNPOS Type:%1 SearchPos:%2 SearchRange:%3", _qrfType, _searchPos, _searchRange] call bis_fnc_logFormat;
+
+private _spawnAndDestPos = [[],[]];
+private _useSafePos = true;
+if (!(_noRoadCheck) && _qrfType isEqualTo "Motorized") then {
+	_useSafePos = false;
+	//TODO tweak values
+	private _rangeModifier = 2;
+	private _initialRoadDistance = INITIAL_ROAD_DISTANCE;  
+	private _distanceFromInitialRoad = _searchRange*_rangeModifier;
+	["QRF FINDSPAWNPOS Road Traverse START"] call bis_fnc_logFormat;
+	private _nearRealRoadStart = [_searchPos, _initialRoadDistance] call BIS_fnc_nearestRealRoad;
+	private _roadTraversalResult = [objNull, []];
+	if (!isNull _nearRealRoadStart) then {
+		_roadTraversalResult = [_nearRealRoadStart, _distanceFromInitialRoad] call BIS_fnc_roadTraverse;
+	};
+	["QRF FINDSPAWNPOS Road Traverse ENDED %1", _roadTraversalResult] call bis_fnc_logFormat;
+	private _selectedRoad = _roadTraversalResult#0;
+	if (!isNull _selectedRoad) then {
+		private _spawnPosRadius = QRF_SPAWN_POS_RADIUS_MOTORIZED;
+		private _objDist = QRF_SPAWN_OBJ_DIST_MOTORIZED;
+		_spawnAndDestPos = [getPos _selectedRoad, getPosATL _nearRealRoadStart]; //[ _suitablePos, 0, _spawnPosRadius, _objDist] call BIS_fnc_findSafePos, [_nearRealRoadStart, 0, _destPosRadius] call BIS_fnc_findSafePos; _destPosRadius = 50;
+		//TODO ADD avoid road obstacles
+		//private _roadPositionsBlocked = [];
+		// {
+		// 	if (([_x] call bis_fnc_roadIsBlocked)) then {
+		// 		_roadPositionsBlocked pushBack (getPosATL _x);
+		// 	};
+		// } forEach _roadTraversalResult#1;
+		// [_spawnPos, []]; //TODO ADD _roadPositionsBlocked;
+	};
+};
+
+if (_useSafePos) then {
+	#define SHORE_MODE_WATER	2;
+	#define SHORE_MODE_LAND		0;
+
+	private _rangeModifier = QRF_SPAWN_RANGE_MODIFIER_MOTORIZED;
+	private _spawnHeight = 0;
+	private _dist = QRF_SPAWN_DESTPOS_MAX_DIST;
+	private _shoreMode = SHORE_MODE_LAND;
+	private _objectSize = 0;
+
+	switch (_qrfType) do {
+		case "Air": {
+			_spawnHeight = QRF_AIR_SPAWN_ALTITUDE; //TODO param
+			_rangeModifier = QRF_SPAWN_RANGE_MODIFIER_AIR;
+			_objectSize = GVAR(QRF, "airLandingNearestObjectDistance");
+			_dist = GVAR(QRF, "airLandingFindPosRadius");
+		};
+		case "Infantry": {
+			_rangeModifier = QRF_SPAWN_RANGE_MODIFIER_INFANTRY;
+			_dist = QRF_SPAWN_DESTPOS_MAX_DIST;  
+		};
+		case "Ship": {
+			_shoreMode = SHORE_MODE_WATER;	
+		};
+		default {};
+	};
+	private _searchRangeT = (_searchRange * _rangeModifier);                   //air 10
+    _spawnPos = [_searchPos, _searchRangeT, _searchRangeT + (QRF_SPAWN_RANGE_MODIFIER*_rangeModifier), 0, _shoreMode] call BIS_fnc_findSafePos;
+	_spawnPos pushBack (getTerrainHeightASL _spawnPos + _spawnHeight);
+	_spawnAndDestPos = [_spawnPos, ([_searchPos, 0, _dist, _objectSize, _shoreMode, 0, 0, [], [[0,0,0],[0,0,0]] ] call BIS_fnc_findSafePos)]; 
+};
+["QRF FINDSPAWNPOS SpawnPos:%1", _spawnAndDestPos] call bis_fnc_logFormat;
+_spawnAndDestPos

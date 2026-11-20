@@ -1,0 +1,27 @@
+#define WEATHER_START 				0.25			// --- initial weather at the start of the scenario <0, 1>, should be divisible by WEATHER_CHANGE_STEP
+#define WEATHER_DURATION 			4			// --- duration for which the weather stays the same (hours), should be higher than WEATHER_CHANGE_DURATION_MAX
+#define WEATHER_CHANGE_STEP 			0.25			// --- how much a weather can change between two states <0, 1>
+#define WEATHER_CHANGE_DURATION_MIN 		1.25			// --- minimum duration for weather change (hours)
+#define WEATHER_CHANGE_DURATION_MAX 		2.5			// --- maximum duration for weather change (hours)
+#define WEATHER_OVERCAST_LIMIT_RAIN		0.7			// --- minimum overcast value to start raining <0, 1>
+#define WEATHER_RAIN_MIN			0.15			// --- minimum rain value <0, 1>
+#define WEATHER_RAIN_MAX			1			// --- maximum rain value <0, 1>
+#define WEATHER_RAIN_PROBABILITY		0.65			// --- probability of rain when conditions are met <0, 1>
+#define WEATHER_RAIN_DURATION_MIN		0.15			// --- minimum rain duration (hours)
+#define WEATHER_RAIN_DURATION_MAX		3			// --- maximum rain duration (hours)
+#define WEATHER_OVERCAST_LIMIT_LIGHTNINGS	0.8			// --- minimum overcast value for lightnings <0, 1>
+#define WEATHER_LIGHTNINGS_MIN			0.15			// --- minimum lightnings value <0, 1>
+#define WEATHER_LIGHTNINGS_MAX			1			// --- maximum lightnings value <0, 1>
+#define WEATHER_LIGHTNINGS_PROBABILITY		0.75			// --- probability of lightnings when conditions are met <0, 1>
+#define WEATHER_FOG_PRESET			[0.05, 0.02, 150]	// --- preset fog value
+#define WEATHER_FOG_DURATION_MIN		0.5			// --- minimum fog duration (hours)
+#define WEATHER_FOG_DURATION_MAX		2			// --- maximum fog duration (hours)
+#define WEATHER_FOG_OVERCAST_LIMIT		0.55			// --- minimum overcast for fog to form during daytime <0, 1>
+#define WEATHER_FOG_FORMATION_TIME		0.25			// --- fog formation time (hours)
+#define WEATHER_RAIN_UI_REPRESENT_THRESHOLD	0.5			// --- minimum rain forecast value to show rain in UI forecast picture <0, 1>
+#define WEATHER_MISC_TEXT_THRESHOLD		0.01			// --- minimum forecast value of rain, fog or storm to show percentage of in UI forecast <0, 1>
+#define WEATHER_FORECAST_UPDATE_FREQUENCY	0.5			// --- forecast recalculation frequency (hours), update happens automatically upon timeskip or when forecast becomes obsolete
+
+#define WEATHER_SUNRISE_TIME 7
+#define WEATHER_SUNSET_TIME 18
+#define WEATHER_HOUR_IN_YEAR_RATIO 1 / (365 * 24)

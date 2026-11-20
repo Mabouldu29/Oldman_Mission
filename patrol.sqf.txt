@@ -1,0 +1,344 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc";
+
+/*
+	Script handling patrol areas: Areas where random units can be spawned
+
+	Agent: Tick spawn chances
+	Spawn:
+	Scan and despawn units
+	Init
+*/
+
+BIS_patrolAreas = entities "ModulePatrolArea_F";
+BIS_spawnedPatrols = [];
+
+BIS_fnc_initPatrolArea = {
+	params ["_area"];
+	// Guard agaist double init
+	if (!isNil {GVAR(_area,"#spawned")}) exitWith {["Patrol area already initialized"] call BIS_fnc_logFormat};
+	private _allData = [];
+
+	// Scan all vehicles and groups connected to patrol area
+	{
+		private _allEntities = [_x] call BIS_fnc_allConnectedUnits;
+		private _data = [_allEntities] call BIS_fnc_om_scanAndDelete;
+		_allData pushBack _data;
+	} forEach synchronizedObjects _area;
+
+	// Calculate spawnArea
+	private _range = GVAR(_area,"SpawnDistance");
+	private _spawnArea = +([getPos _area] + GVAR(_x,"objectArea"));
+	_spawnArea set [1,_spawnArea#1 + _range];
+	_spawnArea set [2,_spawnArea#2 + _range];
+
+	SVAR(_area,"#area",[getPos _area] + GVAR(_x,"objectArea"));
+	SVAR(_area,"#spawnArea",_spawnArea);
+	SVAR(_area,"#patrols",_allData);
+	SVAR(_area,"#spawned",[]);
+	SVAR(_area,"spawnTimeout",0);
+};
+
+// Check if player is in area, and if he is, spawn units according to area probability
+BIS_fnc_patrolAreaAgent = {
+	scriptname "BIS_fnc_patrolAreaAgent";
+	// Add mission EH
+	addMissionEventHandler ["EntityKilled",{
+		scriptName "BIS_fnc_patrolAreaAgent/EntityKilled";
+		params ["_killed"];
+		private _group = group _killed;
+		private _area = GVARS(_group,"patrolArea",objNull);
+		if (!isNull _area) then {
+			if ({alive _x} count units _group == 0) then {
+				SVAR(_area,"spawnTimeout", time + GVAR(_area,"timeout"));
+				if !(GVAR(_area,"Replenish")) then {
+					SVAR(_area,"MaxSpawned", (GVAR(_area,"MaxSpawned") - 1));
+				};
+			};
+		};
+	}];
+
+	while {true} do {
+		sleep 1;
+		PROFILE_START_INFO2("BIS_fnc_patrolAreaAgent", "BIS_fnc_patrolAreaAgent","BIS_fnc_patrolAreaAgent","BIS_fnc_patrolAreaAgent");
+		private _activeAreas = BIS_patrolAreas select {
+			time > GVAR(_x,"spawnTimeout")
+			&& {player inArea GVAR(_x,"#spawnArea")}
+		};
+		PROFILE_STOP("BIS_fnc_patrolAreaAgent");
+
+		{
+			PROFILE_INFO("BIS_fnc_patrolAreaAgent","BIS_fnc_patrolAreaAgent", 1);
+			if (BIS_flying) exitWith {};
+			if (count GVAR(_x,"#spawned") < GVAR(_x,"MaxSpawned") &&
+				{random (100/GVAR(_x,"ChanceOfSpawn")) <= 1} &&
+                {GVARS(_x,"Condition","") == "" || {call compile GVAR(_x,"condition")}}
+			) then {
+				private _groupData = selectRandom GVARS(_x,"#patrols",[]);
+				//[_x,_groupData] spawn BIS_fnc_patrolAreaSpawn;
+				[_x,_groupData] call BIS_fnc_patrolAreaSpawn;
+			};
+		} forEach _activeAreas;
+
+		// Handle despawning and changes in data representation
+		private _entitiesToDespawn = BIS_spawnedPatrols select {_x distance player > GVAR(_x,"spawnDistance") * 2.25};
+		if (count _entitiesToDespawn > 0) then {
+			[_entitiesToDespawn] spawn BIS_fnc_om_despawn;
+		};
+
+		sleep 2;
+
+		// Delete all invalid patrols
+		BIS_spawnedPatrols = BIS_spawnedPatrols - [objNull];
+		{
+			PROFILE_INFO("BIS_fnc_patrolAreaAgent2","BIS_fnc_patrolAreaAgent2", 1);
+			private _groups = GVAR(_x,"#spawned");
+			_groups = _groups - [grpNull];
+			SVAR(_x,"#spawned",_groups);
+		} forEach (BIS_patrolAreas select {count GVAR(_x,"#spawned") > 0});
+	};
+};
+
+BIS_fnc_patrolAreaSpawn = {
+	params ["_patrolArea","_data"];
+	PROFILE_INFO("BIS_fnc_patrolAreaSpawn","BIS_fnc_patrolAreaSpawn"+str _patrolArea, 1);
+	private _t = time;
+
+ 	// Find position for spawn
+	private _spawnDistance = GVARS(_patrolArea,"SpawnDistance",500);
+	private _area = GVAR(_patrolArea,"#area");
+	private _type = [_data] call BIS_fnc_om_groupDataType;
+
+	if (_type == "Motorized") exitWith {[_patrolArea, _data] call BIS_fnc_patrolAreaMotorized;};
+
+	// Find position, possiblity to fail it
+	private _pos = [];
+	switch (_type) do {
+		case "Air": {
+			PROFILE_INFO("BIS_fnc_patrolAreaSpawnb","BIS_fnc_patrolAreaSpawnb"+str _patrolArea, 1);
+			_pos = [_area,
+			{
+				_x distance player > _spawnDistance
+				&& {_x distance player < _spawnDistance*1.5}
+			}] call BIS_fnc_om_randomPosCode;
+			_pos set [2,200];
+		};
+		case "Ship": {
+			PROFILE_INFO("BIS_fnc_patrolAreaSpawnb","BIS_fnc_patrolAreaSpawnb"+str _patrolArea, 1);
+			_pos = [_area,{
+				surfaceIsWater _x
+				&& {_x distance player > _spawnDistance}
+				&& {_x distance player < _spawnDistance*1.5}
+			}] call BIS_fnc_om_randomPosCode;
+		};
+		default {
+			PROFILE_INFO("BIS_fnc_patrolAreaSpawnb","BIS_fnc_patrolAreaSpawnb"+str _patrolArea, 1);
+			_pos = [_area,{
+				!surfaceIsWater _x
+				&& {_x distance player > _spawnDistance}
+				&& {_x distance player < _spawnDistance*1.5}
+			}] call BIS_fnc_om_randomPosCode;
+		};
+	};
+
+	if (count _pos == 0) exitWith {
+		["Patrol Area: Could not find suitable postion to patrol: %1",_type] call BIS_fnc_logFormat;
+	};
+
+	// Make sure air patrol spawns in correct altitude
+	if (_type == "Air") then {_pos set [2,_data#0#0#2#2]};
+
+	// Spawn patrol and return data
+	([_data,_pos,false] call BIS_fnc_om_spawnFromData) params ["_vehicles","_groups"];
+
+	if (count _groups == 0) exitWith {debugLog "BIS_fnc_patrolAreaSpawn: No group"};
+
+	// Make units fly in altitude given by first vehicle in the composition
+	if (_type == "Air") then {
+		{_x flyInHeight _pos#2} forEach _vehicles;
+	};
+
+	// Make sure that leader is not stuck in middle of the crowd of his teammates
+	if (_type == "Infantry") then {
+		{
+			private _freePos = getPos leader _x;
+			_freePos set [0,_freePos#0 + 6];
+			(leader _x) setVehiclePosition [_freePos,[],0,""];
+		} forEach _groups;
+	};
+
+	sleep 0.1;
+
+	// Create random waypoints
+	private _leadGroup = _groups#0;
+	deleteWaypoint [_leadGroup, 0];
+	for "_i" from 0 to 3 do {
+		// Position: In player's radius, but also in the area
+		private _pos = [];
+			switch (_type) do {
+			case "Air": {
+				private _t = time;
+				_pos = [_area] call BIS_fnc_om_randomPosCode;
+				_pos set [2,200];
+			};
+			case "Ship": {
+				private _t = time;
+				_pos = [_area,{surfaceIsWater _x},500] call BIS_fnc_om_randomPosCode;
+			};
+			default {
+				private _t = time;
+				_pos = [_area,{!surfaceIsWater _x},500] call BIS_fnc_om_randomPosCode;
+			};
+		};
+
+		if (count _pos > 0) then {
+			private _wp = _leadGroup addWaypoint [_pos, 10];
+			if (_i < 3) then {
+				_wp setWaypointType "MOVE";
+			} else {
+				_wp setWaypointType "CYCLE";
+			};
+		};
+	};
+
+	// Edge case fix: Column formation can cause stuck leader.
+	if (formation _leadGroup == "COLUMN" && count _vehicles == 0) then {
+		private _leaderPos = getPos leader _leadGroup;
+		{_x setVehiclePosition [[[[_leaderPos, 20]],[]] call BIS_fnc_randomPos, [], 20,"FORM"]} forEach units _leadGroup;
+	};
+
+	// Push units into manager
+	{
+		BIS_spawnedPatrols pushBackUnique _x;
+		SVAR(_x,"spawnDistance",_spawnDistance);
+	} forEach _vehicles;
+	{
+		SVAR(_x,"patrolArea",_patrolArea);
+		{
+			BIS_spawnedPatrols pushBackUnique _x;
+			SVAR(_x,"spawnDistance",_spawnDistance);
+		} forEach units _x;
+	} forEach _groups;
+
+	if (DEBUG_MODE) then {systemChat format ["Patrol Spawned: %1 %2",_type, _spawnDistance]};
+
+	private _spawnedGroups = GVAR(_patrolArea,"#spawned");
+	_spawnedGroups append _groups;
+	SVAR(_patrolArea,"#spawned",_spawnedGroups);
+};
+
+BIS_fnc_patrolAreaMotorized = {
+	params ["_patrolArea","_data"];
+	PROFILE_INFO("BIS_fnc_patrolAreaMotorized","BIS_fnc_patrolAreaMotorized"+str _patrolArea, 1);
+
+	private _roadCityMaxDistance = 500;
+	private _safeSpeed = 50;
+
+	private _area = GVAR(_patrolArea,"objectArea");
+	private _maxAreaSize = _area#0 max _area#1;
+
+	private _patrolRoute = [position player, _maxAreaSize] call BIS_fnc_patrolAreaGetMotorizedPatrolRoute;
+	if (_patrolRoute isEqualTo []) exitWith {};
+
+	_patrolRoute params ["_startLocationRoadPos", "_finalLocationRoadPos"];
+	["Patrol spawn data %1 %2", _startLocationRoadPos, _data] call bis_fnc_logFormat;
+	private _arr = [_data, _startLocationRoadPos,true] call BIS_fnc_om_spawnFromData;
+	_arr params ["_vehicles","_groups"];
+	if (count _groups == 0) exitWith {debugLog "BIS_fnc_patrolAreaSpawn: No group"};
+
+	private _allUnits = +_vehicles;
+	{
+		_allUnits append (units _x);
+	} forEach _groups;
+
+	{
+		_x limitSpeed _safeSpeed;
+	} forEach _vehicles;
+
+	sleep 2;
+	// Create  waypoints
+	private _leadGroup = _groups#0;
+
+	deleteWaypoint [_leadGroup, 0];
+	private _wpRadius = 10;
+	private _waypoints = [["MOVE", _finalLocationRoadPos], ["MOVE", _startLocationRoadPos], ["CYCLE", _finalLocationRoadPos]];
+
+	{
+		_x params ["_wpType", "_wpPos"];
+		private _wp = _leadGroup addWaypoint [_wpPos, _wpRadius];
+		_wp setWaypointType _wpType;
+	} forEach _waypoints;
+
+	//Push units into manager
+	{
+		BIS_spawnedPatrols pushBackUnique _x;
+		SVAR(_x,"spawnDistance",_maxAreaSize);
+	} forEach _vehicles;
+	{
+		{
+			BIS_spawnedPatrols pushBackUnique _x;
+			SVAR(_x,"spawnDistance",_maxAreaSize);
+		} forEach units _x;
+	} forEach _groups;
+
+	if (DEBUG_MODE) then {systemChat format ["Patrol Spawned: %1 %2",_type, _spawnDistance]};
+
+	private _spawnedGroups = GVAR(_patrolArea,"#spawned");
+	_spawnedGroups append _groups;
+	SVAR(_patrolArea,"#spawned",_spawnedGroups);
+};
+
+BIS_fnc_patrolAreaGetMotorizedPatrolRoute = {
+	params["_pos", "_maxSize"];
+
+	private _maxSizeMultiplier = 1.5;
+	private _nearbyLocations = nearestLocations [_pos, ["NameLocal","NameCity","NameCityCapital","NameMarine","NameVillage"], (_maxSize * _maxSizeMultiplier)];
+	private _locationsCount = count _nearbyLocations;
+
+	//Remove all water locations
+	for "_i" from (_locationsCount -1) to 0 step -1 do {
+		private _currentLocation = _nearbyLocations#_i;
+		if (surfaceIsWater locationPosition _currentLocation) then {_nearbyLocations deleteAt _i;_locationsCount = _locationsCount-1;};
+	};
+
+	["Patrol Area: Locations count %1", _locationsCount] call BIS_fnc_logFormat;
+	if (_locationsCount < 2) exitWith {
+		["Patrol Area: Could not find suitable postion to patrol: Motorized No usable location is nearby"] call BIS_fnc_logFormat;
+		[]
+	};
+
+	{
+		["Patrol Area: Location %1 - %2", _x, name _x] call BIS_fnc_logFormat;
+	} forEach _nearbyLocations;
+
+	private _startLocationPos = locationPosition (_nearbyLocations#(_locationsCount-1)); //should be furthest
+	private _finalLocationPos = locationPosition (_nearbyLocations#0); //should be nearest
+
+	[_startLocationPos, "PATROL_START", "mil_start"] call BIS_fnc_qrf_debugMarker;
+	[_finalLocationPos, "PATROL_END", "mil_end"] call BIS_fnc_qrf_debugMarker;
+
+	private _startLocationRoad = [_startLocationPos, _roadCityMaxDistance] call BIS_fnc_nearestRealRoad;
+	if (isNull _startLocationRoad) exitWith {"Patrol Area: Could not find suitable start location road for motorized patol" call BIS_fnc_logFormat;[]};
+
+	private _startLocationRoadPos = getPos _startLocationRoad;
+	[_startLocationRoadPos, "PATROL_START_ROAD", "mil_start"] call BIS_fnc_qrf_debugMarker;
+
+	private _finalLocationRoad = [_finalLocationPos,_roadCityMaxDistance] call BIS_fnc_nearestRealRoad;
+	if (isNull _finalLocationRoad) exitWith {"Patrol Area: Could not find suitable final location road for motorized patol" call BIS_fnc_logFormat;[]};
+
+	private _finalLocationRoadPos = getPos _finalLocationRoad;
+	[_finalLocationRoadPos, "PATROL_END_ROAD", "mil_end"] call BIS_fnc_qrf_debugMarker;
+
+	[_startLocationRoadPos, _finalLocationRoadPos]
+};
+
+BIS_fnc_om_patrolDespawnDistance = {
+	params ["_unit"];
+	_unit = vehicle _unit;
+	private _spawnDistance = 400;
+	switch (true) do {
+		case (_unit isKindOf "Air"): {_spawnDistance = 2200};
+		case (_unit isKindOf "LandVehicle"): {_spawnDistance = 800};
+		case (_unit isKindOf "Ship"): {_spawnDistance = 800};
+	};
+	(_spawnDistance * 1.5)
+};

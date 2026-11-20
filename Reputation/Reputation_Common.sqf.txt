@@ -1,0 +1,37 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+
+/* BIS_fnc_OM_moduleReputation_CFGgetProperty =
+{
+  params["_class", "_subclass", "_property", [ "_lod",0,[9] ] ];
+}; */
+
+BIS_fnc_OM_moduleReputation_OnLevelChanged =
+{
+  private _levelReached = GET_REPUTATION_LEVEL();
+  private _levelLeft = GET_REPUTATION_LEVELPREVIOUS();
+  private _arrCallBacks = (REPUTATION_MODULE_LOGIC getVariable REPUTATION_CALLBACKS);
+
+  /* private _arrCallBacks = (REPUTATION_MODULE_LOGIC getVariable REPUTATION_CALLBACKS) select
+    {
+      _x select 1 == _levelReached  || _x select 2 == _levelLeft ||
+      (_x select 1 == LEVEL_UNDEFINED) && (_x select 2 == LEVEL_UNDEFINED)
+    }; */
+  private _itemsToRemove = [];
+  {
+    _x params ["_code", "_reachLevel", "_leaveLevel", "_persistent"];
+    if( _reachLevel == _levelReached  || _leaveLevel == _levelLeft || (_reachLevel == LEVEL_UNDEFINED) && (_leaveLevel == LEVEL_UNDEFINED) ) then
+    {
+      [_levelReached, _levelLeft] spawn _code;
+      ["Reputation: Executing the code: %1", _code] call BIS_fnc_logFormat;
+      /* if( !_persistent ) then {_itemsToRemove pushBack _forEachIndex}; */
+      if( !_persistent ) then { _arrCallBacks set [_forEachIndex, nil] };
+    };
+  } forEach _arrCallBacks;
+
+  REPUTATION_MODULE_LOGIC setVariable [ REPUTATION_CALLBACKS, _arrCallBacks select {!isNil "_x"} ];
+  //INFO IN DIARY
+  SYNDIKAT_UPDATE_INFO_MARKETS();
+  SYNDIKAT_UPDATE_INFO_TEAM();
+  SYNDIKAT_UPDATE_INFO_SAFEHOUSE();
+};

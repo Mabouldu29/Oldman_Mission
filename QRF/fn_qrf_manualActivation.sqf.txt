@@ -1,0 +1,4 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params[ ["_isManual", "ERRORVAL", [true] ] ];
+SVAR(QRF, "manualActivation", _isManual);
+["QRF Manual activation: %1", _isManual] call bis_fnc_logFormat;

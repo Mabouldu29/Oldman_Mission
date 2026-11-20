@@ -1,0 +1,51 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+
+params [ ["_mode", "init", ["", 999]], ["_input", [], [[]] ] ];
+_input params
+[
+	"_param1",
+	["_param2", nil,	[999, objNull, [], "", true, taskNull]],
+	["_param3", position player, [999, objNull, [], "", true, taskNull]],
+	["_param4", false, [999, objNull, [], "", true, taskNull] ],
+	["_param5", [], [999, objNull, [], "", true, taskNull] ]
+];
+
+private ["_logic"];
+private _ret = false;
+
+if(typename _mode == "STRING" && {_mode == MODE_INIT}) then
+{
+	_logic = _param1;
+	missionNamespace setVariable ["BIS_OM_Reputation_logic", _logic];
+}
+else
+{
+	_logic = missionNamespace getVariable  "BIS_OM_Reputation_logic";
+	if(isNil "_logic") then {_mode = MODE_ERROR};
+};
+
+switch _mode do
+{
+	case MODE_INIT:
+	{
+		WaitUntil{!isNil "BIS_missionInitDone"};
+		[FUNCTIONS_PATH, FUNCTIONS_PREFIX, FUNCTIONS_NAMES] call BIS_fnc_LoadFunctions;
+		[_logic] call BIS_fnc_OM_moduleReputation_Init;
+		_ret = true;
+	};
+	case MODE_INCREASE_LEVEL:
+	{
+		 _ret = [_logic, _param1] call BIS_fnc_OM_moduleReputation_Increase;
+	};
+	case MODE_REGISTER:
+	{
+		 _ret = [_logic, _param1] call BIS_fnc_OM_moduleReputation_Register;
+	};
+	case MODE_ERROR:
+	{
+		["Error: Reputation system has not been yet initialized.", 0] call BIS_fnc_logFormat;
+		_ret = false;
+	};
+};
+_ret
