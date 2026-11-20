@@ -1,0 +1,47 @@
+0 = []  spawn
+{
+    scriptname "Extra jet QRF if player uses armoured vehicle";
+
+    while {isnil "BIS_QRFjetShotDown"} do
+    {
+        if !(isnil "BIS_QRFjetShotDown") exitWith {};
+        waituntil
+        {
+            sleep 1;
+            (BIS_relEast getVariable "threat" > 90 && ((count (allTurrets vehicle player) > 0)
+            ||
+            (((vehicle player) iskindof "Truck_03_base_F") || (vehicle player) iskindof "MRAP_02_base_F")))
+            &&
+            player distance [1437.93,12629.7,500] > 4000
+        };
+
+        _sectorToActivate_A = [[1437.93,12629.7,500],50] call BIS_fnc_om_sectorsInRange; //select {_x == BIS_SC_JetQRF};
+        {
+            [_x, true] call BIS_fnc_sectorSetManualControl,
+            _x spawn BIS_fnc_om_sectorActivate
+        } forEach _sectorToActivate_A;
+
+        waituntil {count ((_sectorToActivate_A select 0 ) getvariable "#groups") != 0};
+
+        _groupA = (((_sectorToActivate_A select 0 ) getvariable "#groups") select 0);
+        _groupA enableDynamicSimulation false;
+        (leader _groupA) setskill 1;
+        (leader _groupA) setskill ["general",1];
+        (leader _groupA) setskill ["commanding",1];
+        (leader _groupA) allowCrewInImmobile true;
+
+        _jet = vehicle (leader _groupA);
+        _jet enableDynamicSimulation false;
+        _jet enableSimulation true;
+        _jet addEventHandler ["killed", {BIS_QRFjetShotDown = TRUE}];
+
+        _stalking = [_groupA, group player, 10, 400, { BIS_relEast getVariable "threat" < 20 }, [2199.95,13378.3,0]] spawn BIS_fnc_stalk;
+
+        waituntil {(BIS_relEast getVariable "threat" < 20 && (leader _groupA) distance player > 3000) || !isnil "BIS_QRFjetShotDown"};
+        if (!isnil "BIS_QRFjetShotDown") exitwith {};
+
+        {
+            [_x, false] call BIS_fnc_sectorSetManualControl,
+        } forEach _sectorToActivate_A;
+    };
+};

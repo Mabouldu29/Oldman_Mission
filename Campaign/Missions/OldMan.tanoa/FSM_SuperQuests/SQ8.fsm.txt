@@ -1,0 +1,479 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, SQ8">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-250.000000,-975.000000,-150.000000,-925.000000,0.000000,"Init"};
+item1[] = {"condition_of_tas",4,218,-250.000000,-875.000000,-150.000000,-825.000000,0.000000,"condition" \n "of task"};
+item2[] = {"G_E_N__S_T_A_T_I",-1,250,-351.266113,-1064.974854,-298.835632,196.415863,0.000000,"G" \n "E" \n "N" \n "" \n "S" \n "T" \n "A" \n "T" \n "I" \n "O" \n "N" \n "" \n "" \n "S" \n "Q" \n ""};
+item3[] = {"Building__destroyed",4,218,275.000000,-975.000000,375.000000,-925.000000,0.000000,"Building " \n "destroyed "};
+item4[] = {"pick_up_car",4,218,-250.000000,-675.000000,-150.000000,-625.000000,0.000000,"pick up" \n "car"};
+item5[] = {"create_task",2,250,-250.000000,-775.000000,-150.000000,-725.000000,0.000000,"create task"};
+item6[] = {"__end2",2,250,25.000000,-675.000000,125.000000,-625.000000,0.000000,"#end2"};
+item7[] = {"__end",2,250,275.000000,-675.000000,375.000000,-625.000000,0.000000,"#end"};
+item8[] = {"",7,210,-79.000000,-754.000000,-71.000000,-746.000000,0.000000,""};
+item9[] = {"attachBomb",2,4346,-250.000000,-575.000000,-150.000000,-525.000000,0.000000,"attachBomb"};
+item10[] = {"task_done",4,218,-125.000000,-675.000000,-25.000000,-625.000000,0.000000,"task done"};
+item11[] = {"timeout",4,218,150.000000,-775.000000,250.000000,-725.000000,0.000000,"timeout"};
+item12[] = {"Syndikats_blew_it",2,250,150.000000,-675.000000,250.000000,-625.000000,0.000000,"Syndikats" \n "blew it up "};
+item13[] = {"conv_done_",4,218,-250.000000,-450.000000,-150.000000,-400.000000,0.000000,"conv" \n "done" \n ""};
+item14[] = {"unlock_car",2,250,-125.000000,-450.000000,-25.000000,-400.000000,0.000000,"unlock car"};
+item15[] = {"timer",4,218,150.000000,-375.000000,250.000000,-325.000000,0.000000,"timer"};
+item16[] = {"composition__1_e",2,250,150.000000,-300.000000,250.000000,-250.000000,0.000000,"composition" \n "#1 explosion"};
+item17[] = {"timer",4,218,150.000000,-225.000000,250.000000,-175.000000,0.000000,"timer"};
+item18[] = {"composition__2_I",1,250,150.000000,-150.000000,250.000000,-100.000000,0.000000,"composition" \n "#2 IDAP"};
+item19[] = {"",7,210,196.000000,-429.000000,204.000000,-421.000000,0.000000,""};
+item20[] = {"_",8,218,25.000000,-575.000000,115.000000,-525.000000,0.000000,""};
+item21[] = {"show_carbomb_ser",2,250,25.000000,-450.000000,125.000000,-400.000000,0.000000,"show carbomb" \n "service"};
+item22[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+version=1;
+class LayoutItems
+{
+	class Item2
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+};
+link0[] = {0,1};
+link1[] = {0,10};
+link2[] = {1,5};
+link3[] = {3,7};
+link4[] = {4,9};
+link5[] = {5,4};
+link6[] = {5,8};
+link7[] = {5,10};
+link8[] = {6,20};
+link9[] = {8,10};
+link10[] = {8,11};
+link11[] = {9,10};
+link12[] = {9,13};
+link13[] = {10,6};
+link14[] = {11,12};
+link15[] = {12,19};
+link16[] = {13,14};
+link17[] = {14,10};
+link18[] = {15,16};
+link19[] = {16,17};
+link20[] = {17,18};
+link21[] = {19,15};
+link22[] = {20,21};
+link23[] = {21,19};
+link24[] = {22,3};
+globals[] = {0.000000,0,0,0,0,640,480,1,667,6316128,1,-309.251617,447.470184,-67.539551,-1105.670410,761,1044,1};
+window[] = {2,-1,-1,-1,-1,1072,26,872,26,3,779};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SQ8";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "private _experationTime = 96; //(4 days)" \n
+                         "BIS_SQ8_runningFSM = true;" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "task_done">*/
+                                class task_done
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="__end2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ8_done"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "condition_of_tas">*/
+                                class condition_of_tas
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="create_task";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//true" \n
+                                         "BIS_dbgReputationValue >= 1250" \n
+                                         "/*&&" \n
+                                         "!isnil ""BIS_visitedBala""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "create_task">*/
+                class create_task
+                {
+                        name = "create_task";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"BIS_teroristCar = objNull;" \n
+                         "if (isnil ""BIS_carsToExplode"") then {BIS_carsToExplode = [];};" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ta_destroy_police_station_call"",""none"",true,{}] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ8_Destroy = [""T_SQ8_D_station"", []] call bis_fnc_questCreateManualy;" \n
+                         "	BIS_SQ8_PickUpCar = [""T_SQ8_L_PickUp"", [BIS_SQ8_LocationCar]] call bis_fnc_questCreateManualy;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[" \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""BOSS plane delivered"" ] " \n
+                         "	]" \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "_experiatonDate = [date, _experationTime, ""h""] call BIS_fnc_CalculateDateTime;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "task_done">*/
+                                class task_done
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="__end2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ8_done"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timeout">*/
+                                class timeout
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Syndikats_blew_it";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date,_experiatonDate] call BIS_fnc_IsDateTimeNewer && (player distance [5434.21,3984.88,0] > 1000)" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "pick_up_car">*/
+                                class pick_up_car
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="attachBomb";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_teroristCar < 15 && ((vehicle player) == player)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__end2">*/
+                class __end2
+                {
+                        name = "__end2";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"BIS_SQ8_Explosion = true;" \n
+                         "BIS_SQ8_Ruins = true;" \n
+                         "BIS_SQ8_StationNoSpawn = true;" \n
+                         "" \n
+                         "//_bis_3DenLayer_Station = (getMissionLayerEntities ""BIS_SC_Station"") select 0;" \n
+                         "//{deletevehicle _x} foreach _bis_3DenLayer_Station;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="show_carbomb_ser";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__end">*/
+                class __end
+                {
+                        name = "__end";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"BIS_SQ8_Explosion = true;" \n
+                         "BIS_SQ8_Ruins = true;" \n
+                         "BIS_SQ8_StationNoSpawn = true;" \n
+                         "" \n
+                         "BIS_3DenLayer_Station = (getMissionLayerEntities ""BIS_SC_Station"") select 0;" \n
+                         "{deletevehicle _x} foreach BIS_3DenLayer_Station;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "attachBomb">*/
+                class attachBomb
+                {
+                        name = "attachBomb";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"//--- welcome conversation PLACEHOLDER" \n
+                         "0 = [] spawn " \n
+                         "{" \n
+                         "	waituntil {vehicle player == player};" \n
+                         "	" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_mechanic_rigging_car"",""none"",nil,{}] call BIS_fnc_om_conversation;" \n
+                         "		BIS_SQ8_mechanicSpeechdone = true;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[" \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""BOSS plane delivered"" ] " \n
+                         "		]" \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "conv_done_">*/
+                                class conv_done_
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="unlock_car";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ8_mechanicSpeechdone"" || (vehicle player) in BIS_CarsToExplode"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_done">*/
+                                class task_done
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="__end2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ8_done"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Syndikats_blew_it">*/
+                class Syndikats_blew_it
+                {
+                        name = "Syndikats_blew_it";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"//--- blowup the station and spawn linked compositions" \n
+                         "BIS_SQ8_Explosion = true;" \n
+                         "BIS_SQ8_Ruins = true;" \n
+                         "BIS_SQ8_StationNoSpawn = true;" \n
+                         "//--- send SMS by syndikat boss and cancel tasks" \n
+                         "" \n
+                         "//--- destroy building itself" \n
+                         "" \n
+                         "//--- set limit for next composition" \n
+                         "_experationTime = 2;" \n
+                         "_experiatonDate = [date, _experationTime, ""h""] call BIS_fnc_CalculateDateTime;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timer">*/
+                                class timer
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="composition__1_e";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"" \n
+                                         "[date,_experiatonDate] call BIS_fnc_IsDateTimeNewer;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "unlock_car">*/
+                class unlock_car
+                {
+                        name = "unlock_car";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"//--- unlock car" \n
+                         "if !(isnull BIS_teroristCar) then " \n
+                         "{" \n
+                         "	[BIS_teroristCar,false] spawn BIS_fnc_OM_ChargeInCar;" \n
+                         "	BIS_teroristCar lock false; " \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "task_done">*/
+                                class task_done
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="__end2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ8_done"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "composition__1_e">*/
+                class composition__1_e
+                {
+                        name = "composition__1_e";
+                        itemno = 16;
+                        init = /*%FSM<STATEINIT""">*/"BIS_SQ8_Explosion = nil;" \n
+                         "BIS_SQ8_IDAP = true;" \n
+                         "" \n
+                         "_experationTime = 4;" \n
+                         "_experiatonDate = [date, _experationTime, ""h""] call BIS_fnc_CalculateDateTime;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timer">*/
+                                class timer
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="composition__2_I";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date,_experiatonDate] call BIS_fnc_IsDateTimeNewer;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "composition__2_I">*/
+                class composition__2_I
+                {
+                        name = "composition__2_I";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"BIS_SQ8_IDAP = nil;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "show_carbomb_ser">*/
+                class show_carbomb_ser
+                {
+                        name = "show_carbomb_ser";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/"//--- SYNDIKAT BOSS CALL, OPEN CAR BOMB SERVICE" \n
+                         "BIS_CarBombServiceAvailable = true;" \n
+                         "" \n
+                         "_experationTime = 2;" \n
+                         "_experiatonDate = [date, _experationTime, ""h""] call BIS_fnc_CalculateDateTime;" \n
+                         "" \n
+                         "_StationInterior = ([getPos player,100] call BIS_fnc_om_sectorsInRange) select {_x == BIS_SQ8_SC_Station};" \n
+                         "{deletevehicle _x} foreach ((_StationInterior select 0) getvariable ""#objects"") ;" \n
+                         "" \n
+                         "0 = [] spawn " \n
+                         "{" \n
+                         "	sleep (10 + random 5);" \n
+                         "	//--- syndikat boss conversation" \n
+                         "" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""ta_police_station_destroyed_call"",""none"",true] call BIS_fnc_om_conversation;" \n
+                         "		//--- dirty hack solution how to reveal carbomb services" \n
+                         "		private _sectorToActivate_A = [[2650.71,2421.22,0],20] call BIS_fnc_om_sectorsInRange;" \n
+                         "		private _sectorToActivate_B = [[8828.68,6601.39,0.293],20] call BIS_fnc_om_sectorsInRange;" \n
+                         "		private _sectorToActivate_C = [[9320.39,11141,0],20] call BIS_fnc_om_sectorsInRange;" \n
+                         "" \n
+                         "		private _sectorsToActivate = _sectorToActivate_A + _sectorToActivate_B + _sectorToActivate_C;" \n
+                         "		{" \n
+                         "			[_x, true] call BIS_fnc_sectorSetManualControl," \n
+                         "			[_x] spawn BIS_fnc_om_sectorActivate" \n
+                         "		} forEach _sectorsToActivate;" \n
+                         "	" \n
+                         "		sleep 10;" \n
+                         "		{" \n
+                         "			[_x, false] call BIS_fnc_sectorSetManualControl" \n
+                         "		} forEach _sectorsToActivate;" \n
+                         "		[ 4, [250]] call BIS_fnc_OM_ModuleReputation;" \n
+                         "		[1, [8000]] call BIS_fnc_OM_ModuleEconomy;" \n
+                         "		_null = [""OMMoneyTransfer"",[FORMAT [""8000 %1"", ""$""]] ] call BIS_fnc_shownotification;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[" \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""BOSS plane delivered"" ] " \n
+                         "		]" \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timer">*/
+                                class timer
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="composition__1_e";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"" \n
+                                         "[date,_experiatonDate] call BIS_fnc_IsDateTimeNewer;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Building__destroyed">*/
+                                class Building__destroyed
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="__end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ8_done"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "composition__2_I",
+        };
+};
+/*%FSM</COMPILE>*/

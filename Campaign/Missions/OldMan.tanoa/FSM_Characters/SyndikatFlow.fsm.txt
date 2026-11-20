@@ -1,0 +1,774 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, SyndikatrFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"player_has_trust",4,218,-225.000000,-1150.000000,-125.000000,-1100.000000,0.000000,"player has" \n "trust and he is in " \n "the camp"};
+item1[] = {"select_random_speeker",2,250,-225.000000,-1075.000000,-125.000000,-1025.000000,0.000000,"select random" \n "speeker and play" \n "monologue"};
+item2[] = {"Init",0,250,-225.000000,-1275.000000,-125.000000,-1225.000000,0.000000,"Init"};
+item3[] = {"",7,210,-179.000000,-1179.000000,-171.000000,-1171.000000,0.000000,""};
+item4[] = {"SQ6_in_boat",4,218,-100.000000,-1150.000000,0.000000,-1100.000000,0.000000,"SQ6" \n "in boat"};
+item5[] = {"select_random_speeker_1",2,250,-100.000000,-1075.000000,0.000000,-1025.000000,0.000000,"select random" \n "speeker and play" \n "task plan"};
+item6[] = {"",7,210,-54.000008,-1179.000000,-45.999992,-1171.000000,0.000000,""};
+item7[] = {"",7,210,-54.000008,-1004.000000,-45.999992,-996.000000,0.000000,""};
+item8[] = {"",7,210,-179.000000,-1004.000000,-170.999985,-996.000000,0.000000,""};
+item9[] = {"",7,210,-253.999969,-1004.000000,-246.000015,-996.000000,0.000000,""};
+item10[] = {"",7,210,-254.000015,-1179.000000,-245.999985,-1171.000000,0.000000,""};
+item11[] = {"",7,210,71.000000,-1179.000000,79.000000,-1171.000000,0.000000,""};
+item12[] = {"SQ6_comming_to_",4,218,25.000000,-1150.000000,125.000000,-1100.000000,0.000000,"SQ6" \n "comming to " \n "the boat"};
+item13[] = {"select_random_speeker_2",2,250,25.000000,-1075.000000,125.000000,-1025.000000,0.000000,"select random" \n "speeker and play" \n "sentence"};
+item14[] = {"",7,210,71.000000,-1004.000000,79.000000,-996.000000,0.000000,""};
+item15[] = {"",7,210,196.000000,-1179.000000,204.000000,-1171.000000,0.000000,""};
+item16[] = {"SQ6_retreat",4,218,150.000000,-1150.000000,250.000000,-1100.000000,0.000000,"SQ6" \n "retreat"};
+item17[] = {"select_random_speeker_3",2,250,150.000000,-1075.000000,250.000000,-1025.000000,0.000000,"select random" \n "speeker and play" \n "sentence"};
+item18[] = {"",7,210,196.000000,-1004.000000,204.000000,-996.000000,0.000000,""};
+item19[] = {"",7,210,321.000000,-1179.000000,329.000000,-1171.000000,0.000000,""};
+item20[] = {"SQ6_attack_starts",4,218,275.000000,-1150.000000,375.000000,-1100.000000,0.000000,"SQ6" \n "attack starts" \n "now"};
+item21[] = {"select_random_speeker_4",2,250,275.000000,-1075.000000,375.000000,-1025.000000,0.000000,"select random" \n "speeker and play" \n "sentence"};
+item22[] = {"",7,210,321.000000,-1004.000000,329.000000,-996.000000,0.000000,""};
+item23[] = {"SQ0_wallet_deliv",4,218,425.000000,-1150.000000,525.000000,-1100.000000,0.000000,"SQ0" \n "wallet delivered"};
+item24[] = {"lets_boss_talk_",2,4346,425.000000,-1075.000000,525.000000,-1025.000000,0.000000,"lets boss talk" \n ""};
+item25[] = {"",7,210,471.000000,-1179.000000,479.000000,-1171.000000,0.000000,""};
+item26[] = {"",7,210,471.000000,-1004.000000,479.000000,-996.000000,0.000000,""};
+item27[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,1};
+link1[] = {1,8};
+link2[] = {2,3};
+link3[] = {3,0};
+link4[] = {3,6};
+link5[] = {4,5};
+link6[] = {5,7};
+link7[] = {6,4};
+link8[] = {6,11};
+link9[] = {7,8};
+link10[] = {8,9};
+link11[] = {9,10};
+link12[] = {10,3};
+link13[] = {11,12};
+link14[] = {11,15};
+link15[] = {12,13};
+link16[] = {13,14};
+link17[] = {14,7};
+link18[] = {15,19};
+link19[] = {16,17};
+link20[] = {17,18};
+link21[] = {18,14};
+link22[] = {19,20};
+link23[] = {19,25};
+link24[] = {20,21};
+link25[] = {21,22};
+link26[] = {22,18};
+link27[] = {23,24};
+link28[] = {24,26};
+link29[] = {25,23};
+link30[] = {26,22};
+link31[] = {27,16};
+globals[] = {0.000000,0,0,0,0,640,480,1,588,6316128,1,-119.915710,619.754089,-584.967285,-1401.938599,909,1030,1};
+window[] = {2,-1,-1,-1,-1,1150,104,950,104,3,927};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SyndikatrFlow";
+        class States
+        {
+                /*%FSM<STATE "select_random_speeker">*/
+                class select_random_speeker
+                {
+                        name = "select_random_speeker";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"//--- prevent repeating this nod" \n
+                         "private _whereToPickDrugs = false;" \n
+                         "" \n
+                         "//--- find closest Syndikat" \n
+                         "private _talkingSyndikatArr = (nearestObjects [player, ['Man'], 100]) select {(side _x) == resistance};" \n
+                         "" \n
+                         "if (count _talkingSyndikatArr != 0) then {" \n
+                         "" \n
+                         "	private _talkingSyndikat = (_talkingSyndikatArr apply {[_x distance player,_x]})#0#1;" \n
+                         "	BIS_SoldierA = _talkingSyndikat;" \n
+                         "" \n
+                         "	//--- and let him speak" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_medicine_available"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ0_Syndikat_pills_on_table"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "SQ6_in_boat">*/
+                                class SQ6_in_boat
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_planOfAssault""" \n
+                                         "&&" \n
+                                         "{_planOfAssault}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_comming_to_">*/
+                                class SQ6_comming_to_
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getInBoat""" \n
+                                         "&&" \n
+                                         "{_getInBoat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_attack_starts">*/
+                                class SQ6_attack_starts
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackStart""" \n
+                                         "&&" \n
+                                         "{_attackStart}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ0_wallet_deliv">*/
+                                class SQ0_wallet_deliv
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="lets_boss_talk_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_walletDelivered""" \n
+                                         "&&" \n
+                                         "{_walletDelivered}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_trust">*/
+                                class player_has_trust
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="select_random_speeker";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_welcomeOldman""" \n
+                                         "&&" \n
+                                         "isNil ""_whereToPickDrugs"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "SQ6_in_boat">*/
+                                class SQ6_in_boat
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_planOfAssault""" \n
+                                         "&&" \n
+                                         "{_planOfAssault}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_comming_to_">*/
+                                class SQ6_comming_to_
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getInBoat""" \n
+                                         "&&" \n
+                                         "{_getInBoat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_attack_starts">*/
+                                class SQ6_attack_starts
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackStart""" \n
+                                         "&&" \n
+                                         "{_attackStart}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ0_wallet_deliv">*/
+                                class SQ0_wallet_deliv
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="lets_boss_talk_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_walletDelivered""" \n
+                                         "&&" \n
+                                         "{_walletDelivered}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_trust">*/
+                                class player_has_trust
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="select_random_speeker";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_welcomeOldman""" \n
+                                         "&&" \n
+                                         "isNil ""_whereToPickDrugs"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "select_random_speeker_1">*/
+                class select_random_speeker_1
+                {
+                        name = "select_random_speeker_1";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"//--- prevent repeating this nod" \n
+                         "private _planOfAssault = false;" \n
+                         "" \n
+                         "//--- find closest Syndikat" \n
+                         "private _talkingSyndikatArr = (nearestObjects [player, ['Man'], 100]) select {(side _x) == resistance};" \n
+                         "" \n
+                         "" \n
+                         "if (count _talkingSyndikatArr != 0) then {" \n
+                         "" \n
+                         "	private _talkingSyndikat = (_talkingSyndikatArr apply {[_x distance player,_x]})#0#1;" \n
+                         "	BIS_SoldierA = _talkingSyndikat;" \n
+                         "" \n
+                         "	//--- and let him speak" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_at_syndikat_en_route"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ6_plan_of_attack_on_boat"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "SQ6_in_boat">*/
+                                class SQ6_in_boat
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_planOfAssault""" \n
+                                         "&&" \n
+                                         "{_planOfAssault}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_comming_to_">*/
+                                class SQ6_comming_to_
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getInBoat""" \n
+                                         "&&" \n
+                                         "{_getInBoat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_attack_starts">*/
+                                class SQ6_attack_starts
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackStart""" \n
+                                         "&&" \n
+                                         "{_attackStart}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ0_wallet_deliv">*/
+                                class SQ0_wallet_deliv
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="lets_boss_talk_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_walletDelivered""" \n
+                                         "&&" \n
+                                         "{_walletDelivered}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_trust">*/
+                                class player_has_trust
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="select_random_speeker";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_welcomeOldman""" \n
+                                         "&&" \n
+                                         "isNil ""_whereToPickDrugs"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "select_random_speeker_2">*/
+                class select_random_speeker_2
+                {
+                        name = "select_random_speeker_2";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"//--- prevent repeating this nod" \n
+                         "private _getInBoat = false;" \n
+                         "" \n
+                         "//--- find closest Syndikat" \n
+                         "private _talkingSyndikatArr = (nearestObjects [player, ['Man'], 100]) select {(side _x) == resistance};" \n
+                         "" \n
+                         "" \n
+                         "if (count _talkingSyndikatArr != 0) then {" \n
+                         "" \n
+                         "	private _talkingSyndikat = (_talkingSyndikatArr apply {[_x distance player,_x]})#0#1;" \n
+                         "	BIS_SoldierA = _talkingSyndikat;" \n
+                         "" \n
+                         "	//--- and let him speak" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_at_syndikat_boat"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ6_plan_of_attack_on_boat"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "SQ6_in_boat">*/
+                                class SQ6_in_boat
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_planOfAssault""" \n
+                                         "&&" \n
+                                         "{_planOfAssault}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_comming_to_">*/
+                                class SQ6_comming_to_
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getInBoat""" \n
+                                         "&&" \n
+                                         "{_getInBoat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_attack_starts">*/
+                                class SQ6_attack_starts
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackStart""" \n
+                                         "&&" \n
+                                         "{_attackStart}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ0_wallet_deliv">*/
+                                class SQ0_wallet_deliv
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="lets_boss_talk_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_walletDelivered""" \n
+                                         "&&" \n
+                                         "{_walletDelivered}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_trust">*/
+                                class player_has_trust
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="select_random_speeker";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_welcomeOldman""" \n
+                                         "&&" \n
+                                         "isNil ""_whereToPickDrugs"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "select_random_speeker_3">*/
+                class select_random_speeker_3
+                {
+                        name = "select_random_speeker_3";
+                        itemno = 17;
+                        init = /*%FSM<STATEINIT""">*/"//--- prevent repeating this nod" \n
+                         "private _5min = false;" \n
+                         "" \n
+                         "//--- find closest Syndikat" \n
+                         "private _talkingSyndikatArr = (nearestObjects [player, ['Man'], 100]) select {(side _x) == resistance};" \n
+                         "" \n
+                         "if (count _talkingSyndikatArr != 0) then {" \n
+                         "" \n
+                         "	private _talkingSyndikat = (_talkingSyndikatArr apply {[_x distance player,_x]})#0#1;" \n
+                         "	BIS_SoldierA = _talkingSyndikat;" \n
+                         "" \n
+                         "	//--- and let him speak" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_syndikat_soldier_retreat"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ6_plan_of_attack_on_boat"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "SQ6_in_boat">*/
+                                class SQ6_in_boat
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_planOfAssault""" \n
+                                         "&&" \n
+                                         "{_planOfAssault}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_comming_to_">*/
+                                class SQ6_comming_to_
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getInBoat""" \n
+                                         "&&" \n
+                                         "{_getInBoat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_attack_starts">*/
+                                class SQ6_attack_starts
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackStart""" \n
+                                         "&&" \n
+                                         "{_attackStart}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ0_wallet_deliv">*/
+                                class SQ0_wallet_deliv
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="lets_boss_talk_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_walletDelivered""" \n
+                                         "&&" \n
+                                         "{_walletDelivered}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_trust">*/
+                                class player_has_trust
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="select_random_speeker";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_welcomeOldman""" \n
+                                         "&&" \n
+                                         "isNil ""_whereToPickDrugs"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "select_random_speeker_4">*/
+                class select_random_speeker_4
+                {
+                        name = "select_random_speeker_4";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/"//--- prevent repeating this nod" \n
+                         "private _attackStart = false;" \n
+                         "" \n
+                         "//--- find closest Syndikat" \n
+                         "private _talkingSyndikatArr = (nearestObjects [player, ['Man'], 100]) select {(side _x) == resistance};" \n
+                         "" \n
+                         "if (count _talkingSyndikatArr != 0) then {" \n
+                         "" \n
+                         "	private _talkingSyndikat = (_talkingSyndikatArr apply {[_x distance player,_x]})#0#1;" \n
+                         "	BIS_SoldierA = _talkingSyndikat;" \n
+                         "" \n
+                         "	//--- and let him speak" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_syndikat_soldier_attack"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ6_plan_of_attack_on_boat"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "SQ6_in_boat">*/
+                                class SQ6_in_boat
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_planOfAssault""" \n
+                                         "&&" \n
+                                         "{_planOfAssault}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_comming_to_">*/
+                                class SQ6_comming_to_
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getInBoat""" \n
+                                         "&&" \n
+                                         "{_getInBoat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_attack_starts">*/
+                                class SQ6_attack_starts
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackStart""" \n
+                                         "&&" \n
+                                         "{_attackStart}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ0_wallet_deliv">*/
+                                class SQ0_wallet_deliv
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="lets_boss_talk_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_walletDelivered""" \n
+                                         "&&" \n
+                                         "{_walletDelivered}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_trust">*/
+                                class player_has_trust
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="select_random_speeker";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_welcomeOldman""" \n
+                                         "&&" \n
+                                         "isNil ""_whereToPickDrugs"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "lets_boss_talk_">*/
+                class lets_boss_talk_
+                {
+                        name = "lets_boss_talk_";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/"//--- prevent repeating this nod" \n
+                         "private _walletDelivered = false;" \n
+                         "[] spawn {" \n
+                         "" \n
+                         "	sleep 100;" \n
+                         "" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""ta_evidence_received""] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ0_wallet_delivered"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "SQ6_in_boat">*/
+                                class SQ6_in_boat
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_planOfAssault""" \n
+                                         "&&" \n
+                                         "{_planOfAssault}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_comming_to_">*/
+                                class SQ6_comming_to_
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getInBoat""" \n
+                                         "&&" \n
+                                         "{_getInBoat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_attack_starts">*/
+                                class SQ6_attack_starts
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackStart""" \n
+                                         "&&" \n
+                                         "{_attackStart}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ0_wallet_deliv">*/
+                                class SQ0_wallet_deliv
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="lets_boss_talk_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_walletDelivered""" \n
+                                         "&&" \n
+                                         "{_walletDelivered}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_trust">*/
+                                class player_has_trust
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="select_random_speeker";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_welcomeOldman""" \n
+                                         "&&" \n
+                                         "isNil ""_whereToPickDrugs"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 27;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "SQ6_retreat">*/
+                                class SQ6_retreat
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="select_random_speeker_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_5min""" \n
+                                         "&&" \n
+                                         "{_5min}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+        };
+};
+/*%FSM</COMPILE>*/

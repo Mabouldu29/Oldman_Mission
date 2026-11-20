@@ -1,0 +1,243 @@
+class CfgCredits
+{
+	class Campaign
+	{
+		title = $STR_a3_credits_campaignTitleOM;
+
+		class DesignLead
+		{
+			title = $STR_a3_credits_projectlead;
+			names[] = {
+				"Jaroslav Kašný"
+			};
+		};
+		class Design
+		{
+			title = $STR_A3_om_credits_designers;
+			names[] = {
+				"Jan Čepera",	
+				"Martin Hájek",
+				"Jakub Hrubý",
+				"Jaroslav Kašný",
+				"Václav 'Sarge' Kerber",
+				"Václav Oliva",
+				"Josef Zemánek"
+			};
+		};
+		class Writers
+		{
+			title = $STR_a3_credits_writed;
+			names[] = {
+				"Scott Alsworth"
+			};
+		};
+		class Audio
+		{
+			title = $STR_a3_credits_audio;
+			names[] = {
+				"Miguel Fernandez Salas",
+				"Tomáš Bayer",
+				"Ján Dušek"
+			};
+		};
+		class Artists
+		{
+			title = $STR_a3_credits_artists;
+			//columns = 2;
+			names[] = {
+				"Scott Alsworth",
+				"Luiz Carlos Amaral Cordova",
+				"Luboš Groch",
+				"Mário Kurty",
+				"Petr Ledecký",
+				"Iveta Navrátilová",
+				"Matěj Pína",	
+				"Khomsan Suphom"
+			};
+		};
+		class EnviromentDesign
+		{
+			title = $STR_a3_credits_enviromentdesigner;
+			names[] = {
+				"Lenka Buchtová",	
+				"Jan Trecha"
+			};
+		};
+		class Encoders
+		{
+			title = $STR_a3_credits_encoders;
+			names[] = {
+				"Jiří Lank",
+				"Maciej Pham"
+			};
+		};
+		class VA
+		{
+			title = $STR_a3_credits_voiceactingdirector;
+			names[] = {
+				"Daniel Brown"
+			};
+		};
+		class VoiceActors
+		{
+			title = $STR_a3_credits_voiceactor;
+			names[] = {
+				"Vincent Araujo",
+				"Eva Bérénice Boulay",
+				"Thomas Bouton",
+				"Gael Dandelot",
+				"Filip Ješina",
+				"Ahmed Laissaoui",
+				"Runkui Li",
+				"Furan Li",
+				"Sebastien Martineau",
+				"Michael Pittham",
+				"Vratislav Rous"
+			};
+		};
+		class QALead
+		{
+			title = $STR_a3_credits_qualityassurancelead;
+			names[] = {
+				"David Bódi"
+			};
+		};
+		class QA
+		{
+			title = $STR_a3_credits_qualityassurance;
+			names[] = {
+				"Jan Bakovský",
+				"Jan Bakule",
+				"Federico Colicchio",
+				"Lukáš Koudelka",
+				"Rakpon Malarote",
+				"Miloš Miko",
+				"Tomáš Novák",
+				"Jakub Šmejkal"
+			};
+		};
+		class MarketingLead
+		{
+			title = $STR_a3_credits_brandmanager;
+			names[] = {
+				"Korneel van 't Land"
+			};
+		};
+		class Marketing
+		{
+			title = $STR_a3_credits_publishing;
+			columns = 2;
+			names[] = {
+
+				"Vanessa Itriago Ramos", 
+				"Adam Bíl",
+				"Alex Dean Sutton",
+				"David Foltýn", 
+				"Anna Galbová",
+				"Niles George",
+				"Filip Hauer", 
+				"Pavel Mázl", 
+				"Petr Poláček",
+				"Ivo Stružinský", 
+				"Nela Wojaczková"
+			};
+		};
+		class LocalizationLead
+		{
+			title = $STR_a3_credits_localizationproducer;
+			names[] = {
+				"Vojtěch Schubert"
+			};
+		};
+		class LocalizationProducer
+		{
+			title = $STR_a3_credits_associatelocalizationproducer;
+			names[] = {
+				"Martin Kořenek"
+			};
+		};
+		class Localization
+		{
+			title = $STR_a3_credits_externallocalization;
+			columns = 2;
+			names[] = {
+				"Thiago Araujo",
+				"Eliška Boudová",
+				"Sara Cascianelli",
+				"Liu Dasheng",
+				"Rafael Galhardi",
+				"Hiroya Ishida",
+				"Jiwoon Kang",
+				"Bartosz Klofik (Biuro tłumaczeń Locsmith)",
+				"Dmitry Kornyukhov",
+				"Martin Kořenek",
+				"Joanna Král",
+				"Goulven Le Goff",
+				"Doris Liang",
+				"Ramón Méndez",
+				"Artemiy Mikheev",
+				"Fernando Moreiras",
+				"Seyoon Oh",
+				"Jiří Petrů",
+				"Marco Piccinnu",
+				"Raphael Rouby",
+				"Igor Savenkov",
+				"Vojtěch Schubert",
+				"Carmen Simio",
+				"Felix Tappe",
+				"Bora Tasdemir",
+				"Loek van Kooten (Loekalization)"
+			};
+		};
+		class LocalizationSH
+		{
+			title = $STR_a3_credits_localizationSH;
+			//columns = 2;
+			names[] = {
+				"Derya Donmez",
+				"Mine Sunkar",
+				"William Wang",
+				"Andrew Zhu"
+			};
+		};
+		class Bohemia
+		{
+			title = $STR_cfg_titles_bislogo;
+			columns = 2;
+			names[] = {
+				"Lenka Aulická",
+				"Michal Bartoš",
+				"Radek Bolemant",
+				"Lukáš Gregor",
+				"Libor Hájek",
+				"Magdaléna Havelková",
+				"Adéla Horáková",
+				"Joris-Jan van 't Land",
+				"Vojtěch Ješátko",
+				"Jiří Kolář",
+				"Pavla Lejčarová",
+				"Jiří Lemberger",
+				"Jan Libich",
+				"Karel Mořický",
+				"Slavomír Pavlíček",
+				"Tomáš Pavlíček",
+				"Radek Pazdera",
+				"Kateřina Skalická",
+				"Petr Šimůnek",
+				"Marek Španěl",
+				$STR_a3_credits_andeverybodyelse
+			};
+		};
+		
+		class Thanks
+		{
+			title = $STR_a3_credits_specialthanks;
+			names[] = {
+				"Sergei Ganin",
+				"Bořivoj Klíma",
+				"Jaroslav Kolář",
+				$STR_a3_credits_dedicatedCommunityLoyalSupporters
+			};
+		};
+	};
+};

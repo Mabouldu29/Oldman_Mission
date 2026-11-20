@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Boat_Civil_01_F","",[6845.81,13530.9,9.85654],[[-0.405831,0.913948,-0.000396612],[0.00338439,0.00193676,0.999992]],0,1,[],["a3\boat_f_gamma\boat_civil_01\data\boat_civil_01_ext_co.paa","a3\boat_f_gamma\boat_civil_01\data\boat_civil_01_int_co.paa"],false,[],[true,false]],["C_Offroad_01_F","",[6834.7,13367.7,0.0104475],[[0.86318,0.504601,-0.0172735],[-0.00700125,0.0461711,0.998909]],0,1,[],["a3\soft_f\offroad_01\data\offroad_01_ext_base01_co.paa","a3\soft_f\offroad_01\data\offroad_01_ext_base01_co.paa"],false,[],[true,false]],["C_Rubberboat","",[6738.4,13495.8,5.21152],[[0.957839,-0.284838,0.0375837],[-0.0363266,0.00969695,0.999293]],0,1,[],["a3\boat_f\boat_transport_01\data\boat_transport_01_civilian_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[6867.99,13310.9,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[6837.36,13375.9,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[6781.85,13334,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[6871.7,13323.2,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_man_polo_6_F_afro","",[6899.83,13348.2,0.00151682],0,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_redwhite",[]],[],[],"H_Cap_khaki_specops_UK","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[6851.95,13351,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[6901.69,13390.5,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[6793,13385.5,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[6851.51,13347,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_man_polo_1_F_afro","",[6851.63,13335.9,0.0013628],10.8279,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_blue",[]],[],[],"H_Cap_blk","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[6782.39,13340.7,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[6852.06,13360.9,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[6955.61,13365.5,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[6786.47,13365.3,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[6783.11,13343.9,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_man_polo_4_F_afro","",[6781.11,13329.2,0.00151348],0,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_tricolour",[]],[],[],"H_Beret_blk","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		167.008
+]

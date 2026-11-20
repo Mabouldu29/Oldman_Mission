@@ -1,0 +1,33 @@
+// TEMPORARY TEST of players threat information
+#define THREAT_SWITCH 		  90
+#define THREAT_TRESHOLD_GRID 		  30
+#define THREAT_TRESHOLD_SOLID 		110
+#define MAX_TRANSPARENCY_SOLID 		0.60
+#define MAX_TRANSPARENCY_GRID     0.70
+
+//waituntil {!isNil "BIS_missionInitDone"};
+WaitUntil{ (missionNamespace getVariable "BIS_OM_Reputation_logic") getVariable ["ReputationInitialized", false] };
+
+sleep 1;
+
+[] spawn
+{
+	private "_threat";
+  private _prevThreat = 0;
+  {_x setMarkerAlpha 0} forEach ["BIS_relationshipMarker","BIS_relationshipMarker_1"];
+
+  while {true} do
+	{
+		_threat = BIS_relEast getVariable "threat";
+    if( _prevThreat != _threat ) then
+    {
+  	  "BIS_relationshipMarker" setMarkerAlpha (linearConversion [15,THREAT_TRESHOLD_SOLID,_threat,0,MAX_TRANSPARENCY_SOLID,true]);
+      if (_threat > THREAT_SWITCH) then {"BIS_relationshipMarker" setMarkerColor "ColorRed"} else {"BIS_relationshipMarker" setMarkerColor "ColorOPFOR"};
+      if (_threat > THREAT_SWITCH) then {THREAT_TRESHOLD_SOLID = THREAT_TRESHOLD_SOLID - 20};
+      "BIS_relationshipMarker_1" setMarkerAlpha (linearConversion [0,THREAT_TRESHOLD_GRID,_threat,0,MAX_TRANSPARENCY_GRID,true]);
+
+      _prevThreat = _threat
+    };
+    sleep 0.5;
+  };
+};

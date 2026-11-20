@@ -1,0 +1,6 @@
+#ifndef OM_MAIN_MISSION
+	waituntil {!isNil "BIS_missionInitDone"};
+	#include "\a3\Missions_F_Oldman\Campaign\Missions\Oldman.tanoa\init_systemExec.sqf"
+#else
+
+#endif

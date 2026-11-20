@@ -1,0 +1,719 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, DoctorFeedback">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-300.000000,-625.000000,-200.000000,-575.000000,0.000000,"Init"};
+item1[] = {"",7,210,1321.000000,-1179.000000,1329.000000,-1171.000000,0.000000,""};
+item2[] = {"died_one",4,218,-425.000000,-550.000000,-325.000000,-500.000000,1.000000,"died" \n "one"};
+item3[] = {"died_more",4,218,-300.000000,-550.000000,-200.000000,-500.000000,1.000000,"died" \n "more"};
+item4[] = {"none",4,218,-175.000000,-550.000000,-75.000000,-500.000000,0.000000,"none"};
+item5[] = {"_",2,250,-175.000000,-475.000000,-75.000000,-425.000000,0.000000,""};
+item6[] = {"__1",2,250,-300.000000,-475.000000,-200.000000,-425.000000,0.000000,""};
+item7[] = {"__2",2,4346,-425.000000,-475.000000,-325.000000,-425.000000,0.000000,""};
+item8[] = {"",7,210,-254.000000,-354.000000,-246.000015,-346.000000,0.000000,""};
+item9[] = {"dying_one",4,218,-425.000000,-300.000000,-325.000000,-250.000000,1.000000,"dying" \n "one"};
+item10[] = {"dying_more",4,218,-300.000000,-300.000000,-200.000000,-250.000000,1.000000,"dying" \n "more"};
+item11[] = {"none",4,218,-175.000000,-300.000000,-75.000000,-250.000000,0.000000,"none"};
+item12[] = {"__3",2,250,-425.000000,-225.000000,-325.000000,-175.000000,0.000000,""};
+item13[] = {"__4",2,250,-300.000000,-225.000000,-200.000000,-175.000000,0.000000,""};
+item14[] = {"__5",2,250,-175.000000,-225.000000,-75.000000,-175.000000,0.000000,""};
+item15[] = {"",7,210,-254.000000,-116.500000,-246.000000,-108.500000,0.000000,""};
+item16[] = {"drugs_run_out_cr",4,218,-300.000000,-75.000000,-200.000000,-25.000000,1.000000,"drugs run out" \n "crytical"};
+item17[] = {"drugs_run_out",4,218,-425.000000,-75.000000,-325.000000,-25.000000,1.000000,"drugs run out"};
+item18[] = {"drugs_run_out_so",4,218,-175.000000,-75.000000,-75.000000,-25.000000,1.000000,"drugs run out" \n "soft"};
+item19[] = {"none",4,218,-50.000000,-75.000000,50.000000,-25.000000,0.000000,"none"};
+item20[] = {"__6",2,250,-425.000000,0.000000,-325.000000,50.000000,0.000000,""};
+item21[] = {"__7",2,250,-300.000000,0.000000,-200.000000,50.000000,0.000000,""};
+item22[] = {"__8",2,250,-175.000000,0.000000,-75.000000,50.000000,0.000000,""};
+item23[] = {"__9",2,250,-50.000000,0.000000,50.000000,50.000000,0.000000,""};
+item24[] = {"_",8,218,-300.000000,125.000000,-200.000000,175.000000,0.000000,""};
+item25[] = {"END_say_it",1,250,-300.000000,200.000000,-200.000000,250.000000,0.000000,"END" \n "say it"};
+link0[] = {0,2};
+link1[] = {0,3};
+link2[] = {0,4};
+link3[] = {2,7};
+link4[] = {3,6};
+link5[] = {4,5};
+link6[] = {5,8};
+link7[] = {6,8};
+link8[] = {7,8};
+link9[] = {8,9};
+link10[] = {8,10};
+link11[] = {8,11};
+link12[] = {9,12};
+link13[] = {10,13};
+link14[] = {11,14};
+link15[] = {12,15};
+link16[] = {13,15};
+link17[] = {14,15};
+link18[] = {15,16};
+link19[] = {15,17};
+link20[] = {15,18};
+link21[] = {15,19};
+link22[] = {16,21};
+link23[] = {17,20};
+link24[] = {18,22};
+link25[] = {19,23};
+link26[] = {20,24};
+link27[] = {21,24};
+link28[] = {22,24};
+link29[] = {23,24};
+link30[] = {24,25};
+globals[] = {0.000000,0,0,0,0,640,480,1,672,6316128,1,-745.015259,-56.107269,264.199402,-660.484680,748,1004,1};
+window[] = {2,-1,-1,-1,-1,1176,130,1738,130,3,766};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "DoctorFeedback";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _commArray = [];" \n
+                         "" \n
+                         "//--- take the numbers" \n
+                         "private _countDying = BIS_SQcfsm getFSMVariable [""_countDying"",0];" \n
+                         "private _countDead = BIS_SQcfsm getFSMVariable [""_countDead"",0];" \n
+                         "" \n
+                         "//--- take the state of civilians" \n
+                         "private _deadArthur = BIS_SQcfsm getFSMVariable [""_deadArthur"",false];" \n
+                         "private _deadLucas = BIS_SQcfsm getFSMVariable [""_deadLucas"",false];" \n
+                         "private _deadHoward = BIS_SQcfsm getFSMVariable [""_deadHoward"",false];" \n
+                         "private _deadJohn = BIS_SQcfsm getFSMVariable [""_deadJohn"",false];" \n
+                         "private _deadrenly = BIS_SQcfsm getFSMVariable [""_deadrenly"",false];" \n
+                         "" \n
+                         "private _dyingArthur = BIS_SQcfsm getFSMVariable [""_dyingArthur"",false];" \n
+                         "private _dyingLucas = BIS_SQcfsm getFSMVariable [""_dyingLucas"",false];" \n
+                         "private _dyingHoward = BIS_SQcfsm getFSMVariable [""_dyingHoward"",false];" \n
+                         "private _dyingJohn = BIS_SQcfsm getFSMVariable [""_dyingJohn"",false];" \n
+                         "private _dyingRenly = BIS_SQcfsm getFSMVariable [""_dyingRenly"",false];" \n
+                         "" \n
+                         "private _medicineLow = BIS_SQcfsm getFSMVariable [""_medicineLow"",false];" \n
+                         "private _medicineRanOut = BIS_SQcfsm getFSMVariable [""_medicineRanOut"",false];" \n
+                         "private _medicineCritical = BIS_SQcfsm getFSMVariable [""_medicineCritical"",false];" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "	sleep 5;" \n
+                         "	//--- clear the counter in SQc fsm" \n
+                         "	BIS_SQcfsm setFSMVariable [""_countDying"",0];" \n
+                         "	BIS_SQcfsm setFSMVariable [""_countDead"",0];" \n
+                         "	{BIS_SQcfsm setFSMVariable [_x,false]} forEach [""_deadArthur"",""_deadLucas"",""_deadHoward"",""_deadJohn"",""_deadrenly"",""_dyingArthur"",""_dyingLucas"",""_dyingHoward"",""_dyingJohn"",""_dyingRenly"",""_medicineLow"",""_medicineRanOut"",""_medicineCritical""];" \n
+                         "};" \n
+                         "" \n
+                         "private _openingBlockA = " \n
+                         "{" \n
+                         "	[""in_doctor_report_A""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _openingBlockB = " \n
+                         "{" \n
+                         "	[""in_doctor_report_B""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _openingBlockC = " \n
+                         "{" \n
+                         "	[""in_doctor_report_C""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _openingBlockD = " \n
+                         "{" \n
+                         "	[""in_doctor_report_D""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "_commArray pushBack (selectRandom [_openingBlockA,_openingBlockB,_openingBlockC,_openingBlockD]);"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "died_more">*/
+                                class died_more
+                                {
+                                        itemno = 3;
+                                        priority = 1.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDead > 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "died_one">*/
+                                class died_one
+                                {
+                                        itemno = 2;
+                                        priority = 1.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDead == 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "none">*/
+                                class none
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDead == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dying_more">*/
+                                class dying_more
+                                {
+                                        itemno = 10;
+                                        priority = 1.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDying > 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "dying_one">*/
+                                class dying_one
+                                {
+                                        itemno = 9;
+                                        priority = 1.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDying == 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "none">*/
+                                class none
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="__5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDying == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__1">*/
+                class __1
+                {
+                        name = "__1";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"private _moreDiedBlock = " \n
+                         "{" \n
+                         "	[""in_doctor_report_casualties"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "_commArray pushBack _moreDiedBlock;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dying_more">*/
+                                class dying_more
+                                {
+                                        itemno = 10;
+                                        priority = 1.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDying > 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "dying_one">*/
+                                class dying_one
+                                {
+                                        itemno = 9;
+                                        priority = 1.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDying == 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "none">*/
+                                class none
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="__5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDying == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__2">*/
+                class __2
+                {
+                        name = "__2";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"if (_deadArthur) then {" \n
+                         "		private _nameDeadBlock = " \n
+                         "	{" \n
+                         "		[""in_doctor_report_casuality_A"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQcInjFeedback setFSMVariable [""_nameDeadBlock"",_nameDeadBlock];" \n
+                         "};" \n
+                         "" \n
+                         "if (_deadLucas) then {" \n
+                         "		private _nameDeadBlock = " \n
+                         "	{" \n
+                         "		[""in_doctor_report_casuality_B"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQcInjFeedback setFSMVariable [""_nameDeadBlock"",_nameDeadBlock]" \n
+                         "};" \n
+                         "" \n
+                         "if (_deadHoward) then {" \n
+                         "		private _nameDeadBlock = " \n
+                         "	{" \n
+                         "		[""in_doctor_report_casuality_C"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQcInjFeedback setFSMVariable [""_nameDeadBlock"",_nameDeadBlock]" \n
+                         "};" \n
+                         "" \n
+                         "if (_deadJohn) then {" \n
+                         "		private _nameDeadBlock = " \n
+                         "	{" \n
+                         "		[""in_doctor_report_casuality_D"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQcInjFeedback setFSMVariable [""_nameDeadBlock"",_nameDeadBlock]" \n
+                         "};" \n
+                         "" \n
+                         "if (_deadrenly) then {" \n
+                         "		private _nameDeadBlock = " \n
+                         "	{" \n
+                         "	 [""in_doctor_report_casuality_E"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQcInjFeedback setFSMVariable [""_nameDeadBlock"",_nameDeadBlock]" \n
+                         "};" \n
+                         "" \n
+                         "_commArray pushBack _nameDeadBlock;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "dying_more">*/
+                                class dying_more
+                                {
+                                        itemno = 10;
+                                        priority = 1.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDying > 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "dying_one">*/
+                                class dying_one
+                                {
+                                        itemno = 9;
+                                        priority = 1.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDying == 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "none">*/
+                                class none
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="__5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countDying == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__3">*/
+                class __3
+                {
+                        name = "__3";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"if (_dyingArthur) then {" \n
+                         "		private _nameDyingBlock = " \n
+                         "	{" \n
+                         "		[""in_doctor_arthur_dying_A"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQcInjFeedback setFSMVariable [""_nameDyingBlock"",_nameDyingBlock];" \n
+                         "};" \n
+                         "" \n
+                         "if (_dyingLucas) then {" \n
+                         "		private _nameDyingBlock = " \n
+                         "	{" \n
+                         "		[""in_doctor_report_dying_B"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQcInjFeedback setFSMVariable [""_nameDyingBlock"",_nameDyingBlock];" \n
+                         "};" \n
+                         "" \n
+                         "if (_dyingHoward) then {" \n
+                         "		private _nameDyingBlock = " \n
+                         "	{" \n
+                         "		[""in_doctor_report_dying_C"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQcInjFeedback setFSMVariable [""_nameDyingBlock"",_nameDyingBlock];" \n
+                         "};" \n
+                         "" \n
+                         "if (_dyingJohn) then {" \n
+                         "		private _nameDyingBlock = " \n
+                         "	{" \n
+                         "		[""in_doctor_report_dying_D"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQcInjFeedback setFSMVariable [""_nameDyingBlock"",_nameDyingBlock];" \n
+                         "};" \n
+                         "" \n
+                         "if (_dyingRenly) then {" \n
+                         "		private _nameDyingBlock = " \n
+                         "	{" \n
+                         "		[""in_doctor_report_dying_E"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQcInjFeedback setFSMVariable [""_nameDyingBlock"",_nameDyingBlock];" \n
+                         "};" \n
+                         "" \n
+                         "_commArray pushBack _nameDyingBlock;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "drugs_run_out">*/
+                                class drugs_run_out
+                                {
+                                        itemno = 17;
+                                        priority = 1.000000;
+                                        to="__6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_medicineRanOut"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "drugs_run_out_so">*/
+                                class drugs_run_out_so
+                                {
+                                        itemno = 18;
+                                        priority = 1.000000;
+                                        to="__8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_medicineLow"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "drugs_run_out_cr">*/
+                                class drugs_run_out_cr
+                                {
+                                        itemno = 16;
+                                        priority = 1.000000;
+                                        to="__7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_medicineCritical"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "none">*/
+                                class none
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="__9";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__4">*/
+                class __4
+                {
+                        name = "__4";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"private _moreDyingBlock = " \n
+                         "{" \n
+                         "	[""in_doctor_report_dying_F"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "_commArray pushBack _moreDyingBlock;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "drugs_run_out">*/
+                                class drugs_run_out
+                                {
+                                        itemno = 17;
+                                        priority = 1.000000;
+                                        to="__6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_medicineRanOut"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "drugs_run_out_so">*/
+                                class drugs_run_out_so
+                                {
+                                        itemno = 18;
+                                        priority = 1.000000;
+                                        to="__8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_medicineLow"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "drugs_run_out_cr">*/
+                                class drugs_run_out_cr
+                                {
+                                        itemno = 16;
+                                        priority = 1.000000;
+                                        to="__7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_medicineCritical"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "none">*/
+                                class none
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="__9";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__5">*/
+                class __5
+                {
+                        name = "__5";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "drugs_run_out">*/
+                                class drugs_run_out
+                                {
+                                        itemno = 17;
+                                        priority = 1.000000;
+                                        to="__6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_medicineRanOut"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "drugs_run_out_so">*/
+                                class drugs_run_out_so
+                                {
+                                        itemno = 18;
+                                        priority = 1.000000;
+                                        to="__8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_medicineLow"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "drugs_run_out_cr">*/
+                                class drugs_run_out_cr
+                                {
+                                        itemno = 16;
+                                        priority = 1.000000;
+                                        to="__7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_medicineCritical"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "none">*/
+                                class none
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="__9";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__6">*/
+                class __6
+                {
+                        name = "__6";
+                        itemno = 20;
+                        init = /*%FSM<STATEINIT""">*/"private _drugsRunOutBlock = " \n
+                         "{" \n
+                         "	[""in_doctor_report_drugs_out"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "_commArray pushBack _drugsRunOutBlock;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="END_say_it";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__7">*/
+                class __7
+                {
+                        name = "__7";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/"private _DrugsRunOutCryticalBlock = " \n
+                         "{" \n
+                         "	[""in_doctor_report_drugs_running_out"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "_commArray pushBack _DrugsRunOutCryticalBlock;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="END_say_it";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__8">*/
+                class __8
+                {
+                        name = "__8";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"private _drugsRunOutSoftBlock = " \n
+                         "{" \n
+                         "	[""in_doctor_report_drugs_running_low"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "_commArray pushBack _drugsRunOutSoftBlock;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="END_say_it";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__9">*/
+                class __9
+                {
+                        name = "__9";
+                        itemno = 23;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="END_say_it";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_say_it">*/
+                class END_say_it
+                {
+                        name = "END_say_it";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/"private _endingBlockA = " \n
+                         "{" \n
+                         "	[""in_doctor_report_A_out"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _endingBlockB = " \n
+                         "{" \n
+                         "	[""in_doctor_report_B_out"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _endingBlockC = " \n
+                         "{" \n
+                         "	[""in_doctor_report_C_out"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _endingBlockD = " \n
+                         "{" \n
+                         "	[""in_doctor_report_D_out"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "_commArray pushBack (selectRandom [_endingBlockA,_endingBlockB,_endingBlockC,_endingBlockD]);" \n
+                         "" \n
+                         "" \n
+                         "//--- start the call" \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {}, {}, false, _priority, false, ""SQc_doc_report"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach _commArray;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "END_say_it",
+        };
+};
+/*%FSM</COMPILE>*/

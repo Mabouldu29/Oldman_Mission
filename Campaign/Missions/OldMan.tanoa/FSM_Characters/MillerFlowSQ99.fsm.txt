@@ -1,0 +1,1109 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, MillerFlowSQ99">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"",7,210,271.000000,-1079.000000,279.000000,-1071.000000,0.000000,""};
+item1[] = {"Init",0,250,-225.000000,-1100.000000,-125.000000,-1050.000000,0.000000,"Init"};
+item2[] = {"Miller_dead",4,218,325.000000,650.000000,425.000000,700.000000,1000.000000,"Miller dead"};
+item3[] = {"FSM_end",1,250,475.000000,650.000000,575.000000,700.000000,0.000000,"FSM end"};
+item4[] = {"",7,210,271.000000,671.000000,279.000000,679.000000,0.000000,""};
+item5[] = {"facility_ko",4,218,-225.000000,-1025.000000,-125.000000,-975.000000,0.000000,"facility ko"};
+item6[] = {"Miller_call__he",2,250,-225.000000,-800.000000,-125.000000,-750.000000,0.000000,"Miller call, he" \n "has" \n "antimalarial"};
+item7[] = {"SQ_99",-1,250,-550.000000,-900.000000,-500.000000,625.000000,0.000000,"SQ 99"};
+item8[] = {"o_p_e_n_i_n_g__s",-1,250,177.433044,-912.071777,222.791351,-308.451050,0.000000,"o" \n "p" \n "e" \n "n" \n "i" \n "n" \n "g" \n "" \n "s" \n "c" \n "e" \n "n" \n "e"};
+item9[] = {"l_a_p_t_o_p__i_n",-1,250,177.615631,-307.950104,224.279938,133.156235,0.000000,"l" \n "a" \n "p" \n "t" \n "o" \n "p" \n "" \n "i" \n "n" \n "t" \n "e" \n "l"};
+item10[] = {"___s_t__m_e_e_t",-1,250,177.681549,133.405518,224.098938,622.632507,0.000000,"1" \n "s" \n "t" \n "" \n "m" \n "e" \n "e" \n "t" \n "i" \n "n" \n "g"};
+item11[] = {"",7,210,-179.000015,-729.000000,-171.000000,-721.000000,0.000000,""};
+item12[] = {"player_met_Mille",4,218,-225.000000,-675.000000,-125.000000,-625.000000,0.000000,"player met" \n "Miller"};
+item13[] = {"Millers_call",2,250,-100.000000,-675.000000,0.000000,-625.000000,0.000000,"Millers call"};
+item14[] = {"reminder",4,218,-100.000000,-750.000000,0.000000,-700.000000,0.000000,"reminder"};
+item15[] = {"Miller_talk_shed",2,250,-225.000000,-600.000000,-125.000000,-550.000000,0.000000,"Miller talk" \n "shed" \n " face to face"};
+item16[] = {"comm_finished",4,218,-225.000000,-525.000000,-125.000000,-475.000000,0.000000,"comm finished"};
+item17[] = {"They_go",2,250,-225.000000,-450.000000,-125.000000,-400.000000,0.000000,"They go"};
+item18[] = {"",7,210,271.000000,-779.000000,279.000000,-771.000000,0.000000,""};
+item19[] = {"",7,210,271.000000,-654.000000,279.000000,-646.000000,0.000000,""};
+item20[] = {"",7,210,271.000000,-579.000061,279.000000,-571.000000,0.000000,""};
+item21[] = {"",7,210,271.000000,-429.000000,279.000000,-421.000000,0.000000,""};
+item22[] = {"Miller_reach__co",4,218,-225.000000,0.000000,-125.000000,50.000000,0.000000,"Miller reach " \n "coast"};
+item23[] = {"",7,210,-179.000000,-29.000000,-170.999985,-21.000000,0.000000,""};
+item24[] = {"set_delay",2,4346,-225.000000,-950.000000,-125.000000,-900.000000,0.000000,"set delay"};
+item25[] = {"delay",4,218,-225.000000,-875.000000,-125.000000,-825.000000,0.000000,"delay"};
+item26[] = {"comm_interupted",4,218,-350.000000,-525.000000,-250.000000,-475.000000,0.000000,"comm interupted"};
+item27[] = {"",7,210,-303.999969,-579.000000,-296.000000,-571.000000,0.000000,""};
+item28[] = {"comm",2,250,-350.000000,-450.000000,-250.000000,-400.000000,0.000000,"comm"};
+item29[] = {"player_still_aim",4,218,-475.000000,-375.000000,-375.000000,-325.000000,0.000000,"player still" \n "aiming"};
+item30[] = {"comm_1",2,250,-475.000000,-100.000000,-375.000000,-50.000000,0.000000,"comm"};
+item31[] = {"player_stop_aimi",4,218,-350.000000,-375.000000,-250.000000,-325.000000,0.000000,"player stop" \n "aiming"};
+item32[] = {"comm_2",2,250,-350.000000,-100.000000,-250.000000,-50.000000,0.000000,"comm"};
+item33[] = {"",7,210,-429.000000,-429.000000,-421.000000,-421.000000,0.000000,""};
+item34[] = {"everybody_in_SDV",4,218,25.000000,0.000000,125.000000,50.000000,0.000000,"everybody in" \n "SDV"};
+item35[] = {"",7,210,70.999992,-29.000000,79.000008,-21.000000,0.000000,""};
+item36[] = {"Millers_talk",2,250,-225.000000,75.000000,-125.000000,125.000000,0.000000,"Millers talk"};
+item37[] = {"Millers_talk_Lets",2,250,25.000000,75.000000,125.000000,125.000000,0.000000,"Millers talk" \n "Lets go"};
+item38[] = {"player_not_leavi",4,218,-425.000000,0.000000,-325.000000,50.000000,0.000000,"player not" \n "leaving"};
+item39[] = {"",7,210,-304.000000,-29.000000,-296.000000,-21.000000,0.000000,""};
+item40[] = {"",7,210,-379.000000,-29.000000,-371.000000,-21.000000,0.000000,""};
+item41[] = {"",7,210,-254.000000,158.500000,-245.999985,166.500000,0.000000,""};
+item42[] = {"",7,210,71.000000,158.500000,79.000000,166.500000,0.000000,""};
+item43[] = {"",7,210,-179.000000,158.500000,-171.000000,166.500000,0.000000,""};
+item44[] = {"",7,210,-254.000000,-29.000000,-246.000000,-21.000000,0.000000,""};
+item45[] = {"Get_out_",2,250,-425.000000,75.000000,-325.000000,125.000000,0.000000,"Get out!"};
+item46[] = {"",7,210,-379.000000,158.500000,-371.000000,166.500000,0.000000,""};
+item47[] = {"",7,210,-303.999969,158.500000,-296.000000,166.500000,0.000000,""};
+item48[] = {"",7,210,-54.000000,-29.000000,-46.000000,-21.000002,0.000000,""};
+item49[] = {"player_has_diving",4,218,-100.000000,0.000000,0.000000,50.000000,0.000000,"player has" \n "diving stuff"};
+item50[] = {"To_watter_Millers",2,250,-100.000000,75.000000,0.000000,125.000000,0.000000,"To watter" \n "Millers talk"};
+item51[] = {"",7,210,-53.999992,158.500000,-46.000008,166.500000,0.000000,""};
+item52[] = {"",7,210,271.000000,-29.000000,279.000000,-21.000000,0.000000,""};
+version=1;
+class LayoutItems
+{
+	class Item7
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+	class Item8
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+	class Item9
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=16707283;
+	};
+	class Item10
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=13499833;
+	};
+};
+link0[] = {0,18};
+link1[] = {1,0};
+link2[] = {1,5};
+link3[] = {2,3};
+link4[] = {4,2};
+link5[] = {5,24};
+link6[] = {6,11};
+link7[] = {6,18};
+link8[] = {11,12};
+link9[] = {11,14};
+link10[] = {12,15};
+link11[] = {13,12};
+link12[] = {13,19};
+link13[] = {14,13};
+link14[] = {15,16};
+link15[] = {15,20};
+link16[] = {15,27};
+link17[] = {16,17};
+link18[] = {17,21};
+link19[] = {17,23};
+link20[] = {18,19};
+link21[] = {19,20};
+link22[] = {20,21};
+link23[] = {21,52};
+link24[] = {22,36};
+link25[] = {23,22};
+link26[] = {23,48};
+link27[] = {24,25};
+link28[] = {25,6};
+link29[] = {26,28};
+link30[] = {27,26};
+link31[] = {28,31};
+link32[] = {28,33};
+link33[] = {29,30};
+link34[] = {31,32};
+link35[] = {32,39};
+link36[] = {33,29};
+link37[] = {34,37};
+link38[] = {35,34};
+link39[] = {35,52};
+link40[] = {36,43};
+link41[] = {37,42};
+link42[] = {38,45};
+link43[] = {39,40};
+link44[] = {39,44};
+link45[] = {40,38};
+link46[] = {41,44};
+link47[] = {42,51};
+link48[] = {43,41};
+link49[] = {44,23};
+link50[] = {45,46};
+link51[] = {46,47};
+link52[] = {47,39};
+link53[] = {48,35};
+link54[] = {48,49};
+link55[] = {49,50};
+link56[] = {50,51};
+link57[] = {51,43};
+link58[] = {52,4};
+globals[] = {0.000000,0,0,0,0,640,480,1,662,6316128,1,-432.897705,88.469604,-354.639038,-1223.584473,618,1030,1};
+window[] = {2,-1,-1,-1,-1,1306,260,1106,260,3,636};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "MillerFlowSQ99";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "facility_ko">*/
+                                class facility_ko
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_hasAntimalarial"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "FSM_end">*/
+                class FSM_end
+                {
+                        name = "FSM_end";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_call__he">*/
+                class Miller_call__he
+                {
+                        name = "Miller_call__he";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_lab_destroyed_in_call""] call BIS_fnc_om_conversation;" \n
+                         "	" \n
+                         "	if (isNil ""BIS_SQ_D_Facility"") then " \n
+                         "	{" \n
+                         "		[""ta_lab_destroyed_not_known_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	if (!isNil ""BIS_SQ_D_Facility"") then " \n
+                         "	{" \n
+                         "		[""ta_lab_destroyed_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	BIS_SQ99fsm setFSMVariable [""_addTaskMeetMiller"", true];" \n
+                         "" \n
+                         "};" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ99_Miller_facility_destroyed"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "private _delay = time + 600;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reminder">*/
+                                class reminder
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="Millers_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_delay < time"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_met_Mille">*/
+                                class player_met_Mille
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="Miller_talk_shed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_TalkToOldman"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_call">*/
+                class Millers_call
+                {
+                        name = "Millers_call";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ex_miller_where_are_you_d""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ99_Miller_facility_destroyed_reminder"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_met_Mille">*/
+                                class player_met_Mille
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="Miller_talk_shed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_TalkToOldman"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_talk_shed">*/
+                class Miller_talk_shed
+                {
+                        name = "Miller_talk_shed";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "[] spawn {" \n
+                         "	waitUntil {(missionNamespace getVariable [""BIS_OM_MillersDropItSentence"",false]) || (BIS_MillerSQ99fsm getFSMVariable [""_comFinishCanGo"",false])};" \n
+                         "	//--- exit this if FSM continue, it's not needed." \n
+                         "	if (BIS_MillerSQ99fsm getFSMVariable [""_comFinishCanGo"",false]) exitWith {};" \n
+                         "	//--- if player pissed of Miller play the line" \n
+                         "	if (missionNamespace getVariable [""BIS_OM_MillersDropItSentence"",false]) exitWith {" \n
+                         "		//--- Get the last sentence before interuption" \n
+                         "    BIS_OM_lastSentece = ((missionNameSpace getVariable ""BIS_OM_ActionQueue_logic"") getVariable ""activeaction"")#8;" \n
+                         "		[1," \n
+                         "			[ " \n
+                         "				[{[""eve_miller_threatened"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {}, {}, false, -1, true, ""WARNING"" ] " \n
+                         "			] " \n
+                         "		] call BIS_fnc_OM_moduleActionQueue; " \n
+                         "		//--- could this be part of previous dialogue?" \n
+                         "		//--- ToDo: wait till palyer stil aiming at Miller" \n
+                         "		waitUntil {!isNil ""BIS_MillerCanContinueTalking""};" \n
+                         "		[1," \n
+                         "			[ " \n
+                         "				[{[""ta_escape_rv_resumed"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 100, 9999999999, {" \n
+                         "        switch (BIS_OM_lastSentece) do {" \n
+                         "          case ""_sentenceC"": {" \n
+                         "            [1," \n
+                         "              [ " \n
+                         "                [{[""ta_escape_rv_malaria_info_d"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {" \n
+                         "                  [1," \n
+                         "                    [ " \n
+                         "                      [{[""ta_escape_rv_malaria_info_e"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {" \n
+                         "                        [1," \n
+                         "                            [ " \n
+                         "                                [{[""ta_escape_rv_malaria_info_h"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {BIS_MillerSQ99fsm setFSMVariable [""_comFinishCanGo"", true]}, {}, true, -1, false, ""sentenceHC"" ] " \n
+                         "                            ] " \n
+                         "                        ] call BIS_fnc_OM_moduleActionQueue;    " \n
+                         "                      }, {}, true, -1, false, ""sentenceE"" ] " \n
+                         "                    ] " \n
+                         "                  ] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "                }, {}, true, -1, false, ""sentenceD"" ] " \n
+                         "              ] " \n
+                         "            ] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "          };" \n
+                         "          case ""_sentenceD"": {" \n
+                         "            [1," \n
+                         "              [ " \n
+                         "                [{[""ta_escape_rv_malaria_info_e"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {" \n
+                         "                  [1," \n
+                         "                    [ " \n
+                         "                      [{[""ta_escape_rv_malaria_info_h"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {BIS_MillerSQ99fsm setFSMVariable [""_comFinishCanGo"", true]}, {}, true, -1, false, ""sentenceHD"" ] " \n
+                         "                    ] " \n
+                         "                  ] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "                }, {}, true, -1, false, ""sentenceE"" ] " \n
+                         "              ] " \n
+                         "            ] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "            };" \n
+                         "           case ""_sentenceE"": {" \n
+                         "                [1," \n
+                         "                    [ " \n
+                         "                        [{[""ta_escape_rv_malaria_info_h"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {BIS_MillerSQ99fsm setFSMVariable [""_comFinishCanGo"", true]}, {}, true, -1, false, ""sentenceHE"" ] " \n
+                         "                    ] " \n
+                         "                ] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "                };  " \n
+                         "            };" \n
+                         "        }, {}, true, -1, false, ""Miller resume back to the dialogue"" ] " \n
+                         "			] " \n
+                         "		] call BIS_fnc_OM_moduleActionQueue; " \n
+                         "  };" \n
+                         "};" \n
+                         "" \n
+                         "//--- START OF THE DIALOGUE" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[{[""ta_escape_rv_in"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {}, {}, false, 2, false, ""SQ99_Miller_welocme_oldman_st.Maria"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[{" \n
+                         "			if (isNil ""BIS_SQ_D_Facility"") then {" \n
+                         "				[""ta_escape_rv_malaria_info_a"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "			} else {" \n
+                         "				[""ta_escape_rv_a"",""none"",FALSE] call BIS_fnc_om_conversation;	" \n
+                         "			};" \n
+                         "			BIS_SQ99fsm setFSMVariable [""_checkAiming"", true];" \n
+                         "		}, [], 2, 9999999999, {}, {}, false, 2, false, ""SQ99_Miller_mission_is_over"" ]" \n
+                         "		 " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "	[{[""ta_escape_rv_malaria_info_b"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {" \n
+                         "		[1," \n
+                         "			[ " \n
+                         "			[{[""ta_escape_rv_malaria_info_c"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {" \n
+                         "				[1," \n
+                         "					[ " \n
+                         "					[{[""ta_escape_rv_malaria_info_d"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {" \n
+                         "						[1," \n
+                         "							[ " \n
+                         "							[{[""ta_escape_rv_malaria_info_e"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {" \n
+                         "								[1," \n
+                         "								    [ " \n
+                         "									[{[""ta_escape_rv_malaria_info_h"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 2, 9999999999, {BIS_MillerSQ99fsm setFSMVariable [""_comFinishCanGo"", true]}, {}, false, -1, false, ""_sentenceH"" ]" \n
+                         "                            ]" \n
+                         "								] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "							}, {}, false, -1, false, ""_sentenceE"" ]" \n
+                         "                     ]" \n
+                         "						] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "					}, {}, true, -1, false, ""_sentenceD"" ]" \n
+                         "					] " \n
+                         "				] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "			}, {}, true, -1, false, ""_sentenceC"" ]" \n
+                         "			] " \n
+                         "		] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "	}, {}, true, -1, false, ""_sentenceB"" ]" \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "comm_interupted">*/
+                                class comm_interupted
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerAiming"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "comm_finished">*/
+                                class comm_finished
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="They_go";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_comFinishCanGo"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "They_go">*/
+                class They_go
+                {
+                        name = "They_go";
+                        itemno = 17;
+                        init = /*%FSM<STATEINIT""">*/"BIS_SQ99fsm setFSMVariable [""_MillerRunToCache"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "everybody_in_SDV">*/
+                                class everybody_in_SDV
+                                {
+                                        itemno = 34;
+                                        priority = 0.000000;
+                                        to="Millers_talk_Lets";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_onBoardLetsGo""" \n
+                                         "&&" \n
+                                         "{_onBoardLetsGo}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_diving">*/
+                                class player_has_diving
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="To_watter_Millers";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_toWatter""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "_toWatter" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	vest player == ""V_RebreatherB""" \n
+                                         "	||" \n
+                                         "	vest player == ""V_RebreatherO""" \n
+                                         ")" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_reach__co">*/
+                                class Miller_reach__co
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="Millers_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CTRGboardSDV""" \n
+                                         "&&" \n
+                                         "{_CTRGboardSDV}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_delay">*/
+                class set_delay
+                {
+                        name = "set_delay";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/"private _delay = time + 6;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "delay">*/
+                                class delay
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="Miller_call__he";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comm">*/
+                class comm
+                {
+                        name = "comm";
+                        itemno = 28;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	BIS_SQ99fsm setFSMVariable [""_MillerCombat"", true];" \n
+                         "	[""Eve_miller_drop_the_gun"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 100, 9999999999, {}, {}, false, 4, true, ""SQ99_Miller_drop_the_gun"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_still_aim">*/
+                                class player_still_aim
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_openFire"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_stop_aimi">*/
+                                class player_stop_aimi
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="comm_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_backCalm"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comm_1">*/
+                class comm_1
+                {
+                        name = "comm_1";
+                        itemno = 30;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	BIS_SQ99fsm setFSMVariable [""_MillerCombat"", true];" \n
+                         "	[""eve_miller_attacks"",""none"",FALSE] call BIS_fnc_om_conversation; " \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ99_Miller_attack_oldman"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comm_2">*/
+                class comm_2
+                {
+                        name = "comm_2";
+                        itemno = 32;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	BIS_SQ99fsm setFSMVariable [""_MillerCombat"", true];" \n
+                         "	[""eve_miller_threatened_continued"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	BIS_MillerSQ99fsm setFSMVariable [""_delay2ndTime"", time + 15];" \n
+                         "};" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, 9999999999, {}, {}, false, 1, true, ""SQ99_Miller_now_get_out"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_diving">*/
+                                class player_has_diving
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="To_watter_Millers";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_toWatter""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "_toWatter" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	vest player == ""V_RebreatherB""" \n
+                                         "	||" \n
+                                         "	vest player == ""V_RebreatherO""" \n
+                                         ")" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "everybody_in_SDV">*/
+                                class everybody_in_SDV
+                                {
+                                        itemno = 34;
+                                        priority = 0.000000;
+                                        to="Millers_talk_Lets";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_onBoardLetsGo""" \n
+                                         "&&" \n
+                                         "{_onBoardLetsGo}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_reach__co">*/
+                                class Miller_reach__co
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="Millers_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CTRGboardSDV""" \n
+                                         "&&" \n
+                                         "{_CTRGboardSDV}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_not_leavi">*/
+                                class player_not_leavi
+                                {
+                                        itemno = 38;
+                                        priority = 0.000000;
+                                        to="Get_out_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_delay2ndTime""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	time > _delay2ndTime" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Miller < 20" \n
+                                         "	&&" \n
+                                         "	isNil ""_playerDontLeave""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_talk">*/
+                class Millers_talk
+                {
+                        name = "Millers_talk";
+                        itemno = 36;
+                        init = /*%FSM<STATEINIT""">*/"_CTRGboardSDV = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_escape_on_beach_diving_gear"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ99_diving_gear"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "everybody_in_SDV">*/
+                                class everybody_in_SDV
+                                {
+                                        itemno = 34;
+                                        priority = 0.000000;
+                                        to="Millers_talk_Lets";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_onBoardLetsGo""" \n
+                                         "&&" \n
+                                         "{_onBoardLetsGo}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_diving">*/
+                                class player_has_diving
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="To_watter_Millers";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_toWatter""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "_toWatter" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	vest player == ""V_RebreatherB""" \n
+                                         "	||" \n
+                                         "	vest player == ""V_RebreatherO""" \n
+                                         ")" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_reach__co">*/
+                                class Miller_reach__co
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="Millers_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CTRGboardSDV""" \n
+                                         "&&" \n
+                                         "{_CTRGboardSDV}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_talk_Lets">*/
+                class Millers_talk_Lets
+                {
+                        name = "Millers_talk_Lets";
+                        itemno = 37;
+                        init = /*%FSM<STATEINIT""">*/"_onBoardLetsGo = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_escape_departure"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ99_Miller_on_beach"" ]" \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "everybody_in_SDV">*/
+                                class everybody_in_SDV
+                                {
+                                        itemno = 34;
+                                        priority = 0.000000;
+                                        to="Millers_talk_Lets";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_onBoardLetsGo""" \n
+                                         "&&" \n
+                                         "{_onBoardLetsGo}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_diving">*/
+                                class player_has_diving
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="To_watter_Millers";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_toWatter""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "_toWatter" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	vest player == ""V_RebreatherB""" \n
+                                         "	||" \n
+                                         "	vest player == ""V_RebreatherO""" \n
+                                         ")" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_reach__co">*/
+                                class Miller_reach__co
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="Millers_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CTRGboardSDV""" \n
+                                         "&&" \n
+                                         "{_CTRGboardSDV}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Get_out_">*/
+                class Get_out_
+                {
+                        name = "Get_out_";
+                        itemno = 45;
+                        init = /*%FSM<STATEINIT""">*/"_playerDontLeave = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[{[""eve_miller_angry"",""none"",FALSE] call BIS_fnc_om_conversation}, [], 10, 9999999999, {}, {}, false, -1, true, ""SQ99_Miller_is_thretening_get_out"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "	BIS_SQ99fsm setFSMVariable [""_playerDontLeave"", true];" \n
+                         "};" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, 9999999999, {}, {}, false, 4, false, """" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_diving">*/
+                                class player_has_diving
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="To_watter_Millers";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_toWatter""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "_toWatter" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	vest player == ""V_RebreatherB""" \n
+                                         "	||" \n
+                                         "	vest player == ""V_RebreatherO""" \n
+                                         ")" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "everybody_in_SDV">*/
+                                class everybody_in_SDV
+                                {
+                                        itemno = 34;
+                                        priority = 0.000000;
+                                        to="Millers_talk_Lets";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_onBoardLetsGo""" \n
+                                         "&&" \n
+                                         "{_onBoardLetsGo}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_reach__co">*/
+                                class Miller_reach__co
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="Millers_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CTRGboardSDV""" \n
+                                         "&&" \n
+                                         "{_CTRGboardSDV}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_not_leavi">*/
+                                class player_not_leavi
+                                {
+                                        itemno = 38;
+                                        priority = 0.000000;
+                                        to="Get_out_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_delay2ndTime""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	time > _delay2ndTime" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Miller < 20" \n
+                                         "	&&" \n
+                                         "	isNil ""_playerDontLeave""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "To_watter_Millers">*/
+                class To_watter_Millers
+                {
+                        name = "To_watter_Millers";
+                        itemno = 50;
+                        init = /*%FSM<STATEINIT""">*/"_toWatter = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_escape_on_beach"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ99_Miller_to_watter"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "everybody_in_SDV">*/
+                                class everybody_in_SDV
+                                {
+                                        itemno = 34;
+                                        priority = 0.000000;
+                                        to="Millers_talk_Lets";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_onBoardLetsGo""" \n
+                                         "&&" \n
+                                         "{_onBoardLetsGo}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_diving">*/
+                                class player_has_diving
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="To_watter_Millers";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_toWatter""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "_toWatter" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	vest player == ""V_RebreatherB""" \n
+                                         "	||" \n
+                                         "	vest player == ""V_RebreatherO""" \n
+                                         ")" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_reach__co">*/
+                                class Miller_reach__co
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="Millers_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CTRGboardSDV""" \n
+                                         "&&" \n
+                                         "{_CTRGboardSDV}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "FSM_end",
+        };
+};
+/*%FSM</COMPILE>*/

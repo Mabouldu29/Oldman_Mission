@@ -1,0 +1,114 @@
+["BOOT: booting up started at %1 -----------------------------------------------------------------------------", time] call BIS_fnc_logFormat;
+
+cutText ["","BLACK OUT", 0.001];
+enableEnvironment [false, false];
+
+#define OM_MAIN_MISSION 1
+#include "init_variables.sqf"
+["BOOT: start mission date: %1", BIS_StartMissionDate] call BIS_fnc_logFormat;
+#include "\a3\Missions_F_Oldman\Campaign\Missions\T_SQ0_T_Arthur.Tanoa\init.sqf"
+#include "\a3\Missions_F_Oldman\Campaign\Missions\T_islandFacility.Tanoa\init.sqf"
+#include "\a3\Missions_F_Oldman\Campaign\Missions\SE_CSAT.Tanoa\init.sqf"
+#include "\a3\Missions_F_Oldman\Campaign\Missions\SE_SYN.Tanoa\init.sqf"
+#include "\a3\Missions_F_Oldman\Campaign\Missions\C_Cache.Tanoa\init.sqf"
+#include "\a3\Missions_F_Oldman\Campaign\Missions\T_SQ3_F_AutonomousTurrets.Tanoa\init.sqf"
+#include "\a3\Missions_F_Oldman\Campaign\Missions\CENTER_SyndiCamp.Tanoa\init.sqf"
+#include "\a3\Missions_F_Oldman\Campaign\Missions\T_SQ4_D_AARadar.tanoa\init.sqf"
+#include "\a3\Missions_F_Oldman\Campaign\Missions\SE_CIV.tanoa\init.sqf"
+
+waituntil {!isNil "BIS_missionInitDone"};
+
+
+
+#include "init_threatInfo.sqf"
+#include "init_systemExec.sqf"
+#include "init_eventHandlers.sqf"
+
+//--- Outro variables
+//--- Miller is alive
+BIS_millerStatus = 0;
+//--- Vaccine location is unknown
+BIS_vaccineStatus = 1;
+//--- CSAT stay on Tanoa
+BIS_CSATStatus = 1;
+//--- Oldman left by boat
+BIS_OldmanStatus = 2;
+
+//--- Loop of bin sound at the beginning
+[] spawn
+{
+	waitUntil {!isNil "BIS_introDone"};
+	while {player distance BIS_Bin < 100 && !isNil "BIS_introDone"} do
+	{
+		BIS_Bin say3D ["OMbinFly",10];
+		sleep 10;
+	};
+};
+
+BIS_Dreamer lookAt bis_fakeTarget;
+player enablesimulation false;
+
+WaitUntil{ (missionNamespace getVariable "BIS_OM_Reputation_logic") getVariable ["ReputationInitialized", false] };
+#include "init_reputation_actions.sqf"
+#include "init_jetQRF.sqf"
+
+//--- temporary REMOVE later
+BIS_OM_trackerEnabled = false;
+//--- Oldman weapon shed functionality
+[] spawn BIS_fnc_OM_weaponShed;
+
+//--- nasty hack how to change news about 1st malaria outbreak
+
+[] spawn {
+	waitUntil {!isNil "BIS_LuganvilleOutbreak" && {[date, (missionNamespace getVariable "BIS_LuganvilleOutbreak")] call BIS_fnc_IsDateTimeNewer}};
+	[2,"News_Infection01"] call BIS_fnc_OM_questNews;
+	[1,"News_malaria_luganville_secured"] call BIS_fnc_OM_questNews;
+};
+
+// --- cancel irrelevant tasks - loop check
+
+[] spawn {
+	_allQuestClasses = "TRUE" configClasses (missionConfigFile >> "CfgQuests");
+	_allCancelConditions = _allQuestClasses apply {getText (_x >> "cancelCondition")};
+	_allTitles = _allQuestClasses apply {getText (_x >> "title")};
+	{
+		if (_x != "") then {
+			_allCancelConditions set [_forEachIndex, compile _x];
+		} else {
+			_allCancelConditions set [_forEachIndex, {FALSE}];
+		};
+	} forEach _allCancelConditions;
+	while {TRUE} do {
+		_allPlayerTasks = [player] call BIS_fnc_tasksUnit;
+		_allPlayerTasksActive = _allPlayerTasks select {!([_x] call BIS_fnc_taskCompleted)};
+		_allPlayerTasksActiveTitles = _allPlayerTasksActive apply {(([_x] call BIS_fnc_taskDescription) # 1) # 0};
+		{
+			_title = _x;
+			_questID = _allTitles find _title;
+			_assignedQuests = [["questState", 1],"", false, nil, true] call bis_fnc_questGetData;
+			_assignedQuestTitles = _assignedQuests apply {_x getVariable "title"};
+			_questActualID = _assignedQuestTitles find _title;
+			if (_questActualID != -1) then {
+				_questActual = _assignedQuests # _questActualID;
+				if (_questID != -1) then {
+					_cancelCondition = _allCancelConditions # _questID;
+					if (call _cancelCondition) then {
+						_parentTask = _allPlayerTasksActive # _forEachIndex;
+						[_questActual getVariable "questId", 6] call bis_fnc_questSetState;
+						[1, [GVAR(_questActual, "questTemplate")]] call BIS_fnc_OM_moduleSmartMarkers;
+						{
+							_title = (([_x] call BIS_fnc_taskDescription) # 1) # 0;
+							_questActualID = _assignedQuestTitles find _title;
+							if (_questActualID != -1) then {
+								_questActual = _assignedQuests # _questActualID;
+								[1, [GVAR(_questActual, "questTemplate")]] call BIS_fnc_OM_moduleSmartMarkers;
+							};
+						} forEach ([_parentTask] call BIS_fnc_taskChildren);
+					};
+				};
+			};
+			sleep 0.1;
+		} forEach _allPlayerTasksActiveTitles;
+		sleep 5;
+	};
+};

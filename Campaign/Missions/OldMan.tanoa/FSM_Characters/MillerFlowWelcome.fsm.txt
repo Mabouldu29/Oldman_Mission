@@ -1,0 +1,246 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, MillerFlowWelcome">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Milelr__despawne",4,218,-700.000000,500.000000,-600.000000,550.000000,0.000000,"Milelr " \n "despawned"};
+item1[] = {"player_get_close",4,218,-700.000000,350.000000,-600.000000,400.000000,0.000000,"player get" \n "closer"};
+item2[] = {"",7,210,-654.000000,321.000000,-646.000000,329.000000,0.000000,""};
+item3[] = {"Miller_talk_",2,250,-700.000000,425.000000,-600.000000,475.000000,0.000000,"Miller talk" \n ""};
+item4[] = {"null",2,250,-825.000000,425.000000,-725.000000,475.000000,0.000000,"null"};
+item5[] = {"",7,210,-429.000000,446.000000,-421.000000,454.000000,0.000000,""};
+item6[] = {"",7,210,-779.000000,571.000000,-771.000000,579.000000,0.000000,""};
+item7[] = {"",7,210,-779.000000,321.000000,-771.000000,329.000000,0.000000,""};
+item8[] = {"",7,210,-654.000000,571.000000,-646.000000,579.000000,0.000000,""};
+item9[] = {"Init",0,250,-700.000000,75.000000,-600.000000,125.000000,0.000000,"Init"};
+item10[] = {"Miller_is_dead",4,4314,-475.000000,300.000000,-375.000000,350.000000,0.000000,"Miller is" \n "dead"};
+item11[] = {"END",1,250,-475.000000,225.000000,-375.000000,275.000000,0.000000,"END"};
+item12[] = {"__st_despawn",4,218,-700.000000,150.000000,-600.000000,200.000000,0.000000,"1st despawn"};
+item13[] = {"nil",2,250,-700.000000,225.000000,-600.000000,275.000000,0.000000,"nil"};
+link0[] = {0,8};
+link1[] = {1,3};
+link2[] = {2,1};
+link3[] = {2,10};
+link4[] = {3,0};
+link5[] = {3,5};
+link6[] = {4,7};
+link7[] = {5,10};
+link8[] = {6,4};
+link9[] = {7,2};
+link10[] = {8,6};
+link11[] = {9,12};
+link12[] = {10,11};
+link13[] = {12,13};
+link14[] = {13,2};
+globals[] = {0.000000,0,0,0,0,640,480,1,695,6316128,1,-965.781799,-375.996826,704.071899,27.335789,875,1030,1};
+window[] = {2,-1,-1,-32000,-32000,1202,156,1321,156,3,893};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "MillerFlowWelcome";
+        class States
+        {
+                /*%FSM<STATE "Miller_talk_">*/
+                class Miller_talk_
+                {
+                        name = "Miller_talk_";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"private _randomSentence = selectRandom [1,2,3];" \n
+                         "switch (_randomSentence) do {" \n
+                         "    case 1: { " \n
+                         "        [1," \n
+                         "            [ " \n
+                         "                [" \n
+                         "                    {" \n
+                         "                        [""eve_greeting_quest_complete_a"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "                    }, [], 2, _validity, {}, {}, false, _priority, false, ""SQmMiller_welcome_player_in_shelter"" " \n
+                         "                ] " \n
+                         "            ] " \n
+                         "        ] call BIS_fnc_OM_moduleActionQueue; " \n
+                         "    };" \n
+                         "    case 2: { " \n
+                         "        [1," \n
+                         "            [ " \n
+                         "                [" \n
+                         "                    {" \n
+                         "                        [""eve_greeting_quest_complete_b"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "                    }, [], 2, _validity, {}, {}, false, _priority, false, ""SQmMiller_welcome_player_in_shelter"" " \n
+                         "                ] " \n
+                         "            ] " \n
+                         "        ] call BIS_fnc_OM_moduleActionQueue; " \n
+                         "    };" \n
+                         "    case 3: { " \n
+                         "        [1," \n
+                         "            [ " \n
+                         "                [" \n
+                         "                    {" \n
+                         "                        [""eve_greeting_quest_complete_c"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "                    }, [], 2, _validity, {}, {}, false, _priority, false, ""SQmMiller_welcome_player_in_shelter"" " \n
+                         "                ] " \n
+                         "            ] " \n
+                         "        ] call BIS_fnc_OM_moduleActionQueue; " \n
+                         "    };" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead""" \n
+                                         "||" \n
+                                         "[""T_SQ_D_Facility""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Milelr__despawne">*/
+                                class Milelr__despawne
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="null";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull BIS_Miller"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "null">*/
+                class null
+                {
+                        name = "null";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead""" \n
+                                         "||" \n
+                                         "[""T_SQ_D_Facility""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_close">*/
+                                class player_get_close
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Miller_talk_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_Miller""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNull BIS_Miller" \n
+                                         "	&& " \n
+                                         "	player distance BIS_Miller < 5" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "__st_despawn">*/
+                                class __st_despawn
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="nil";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_Miller""" \n
+                                         "&&" \n
+                                         "{isNull BIS_Miller}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END">*/
+                class END
+                {
+                        name = "END";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "nil">*/
+                class nil
+                {
+                        name = "nil";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead""" \n
+                                         "||" \n
+                                         "[""T_SQ_D_Facility""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_close">*/
+                                class player_get_close
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Miller_talk_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_Miller""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNull BIS_Miller" \n
+                                         "	&& " \n
+                                         "	player distance BIS_Miller < 5" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "END",
+        };
+};
+/*%FSM</COMPILE>*/

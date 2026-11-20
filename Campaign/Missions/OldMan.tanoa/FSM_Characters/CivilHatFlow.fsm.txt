@@ -1,0 +1,72 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, CivilHatFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"player_took__NPCs",4,4314,-225.000000,-1125.000000,-125.000000,-1075.000000,0.000000,"player took " \n "NPCs hat"};
+item1[] = {"monologue",1,250,-225.000000,-1050.000000,-125.000000,-1000.000000,0.000000,"monologue"};
+item2[] = {"Init",0,250,-225.000000,-1200.000000,-125.000000,-1150.000000,0.000000,"Init"};
+link0[] = {0,1};
+link1[] = {2,0};
+globals[] = {0.000000,0,0,0,0,640,480,1,563,6316128,1,-476.969635,90.038696,-600.427429,-1226.694092,909,1004,1};
+window[] = {2,-1,-1,-1,-1,1098,52,898,52,3,927};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "CivilHatFlow";
+        class States
+        {
+                /*%FSM<STATE "monologue">*/
+                class monologue
+                {
+                        name = "monologue";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ex_steals_hat"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_hat_stolen_NPC"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_took__NPCs">*/
+                                class player_took__NPCs
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="monologue";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!(missionNamespace getVariable [""BIS_HatNotTaken"", true])"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "monologue",
+        };
+};
+/*%FSM</COMPILE>*/

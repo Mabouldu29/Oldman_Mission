@@ -1,0 +1,396 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, TraitorFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"DEAD",1,4346,225.000000,-700.000000,325.000000,-650.000000,0.000000,"DEAD"};
+item1[] = {"hold_action__use",2,250,-225.000000,-800.000000,-125.000000,-750.000000,0.000000,"hold action " \n "used"};
+item2[] = {"__1",4,218,-225.000000,-700.000000,-125.000000,-650.000000,0.000000,""};
+item3[] = {"Traitor_relased",2,250,-225.000000,-600.000000,-125.000000,-550.000000,0.000000,"Traitor relased " \n "Gendarme " \n "Alive"};
+item4[] = {"_",4,218,-100.000000,-700.000000,0.000000,-650.000000,0.000000,""};
+item5[] = {"Traitor_released",2,250,-100.000000,-600.000000,0.000000,-550.000000,0.000000,"Traitor released" \n "Gendarme" \n "Dead"};
+item6[] = {"_",4,218,-225.000000,-500.000000,-125.000000,-450.000000,0.000000,""};
+item7[] = {"reward_and_escap",1,250,-225.000000,-400.000000,-125.000000,-350.000000,0.000000,"reward and" \n "escape"};
+item8[] = {"traitor_was_kill",4,218,50.000000,-700.000000,150.000000,-650.000000,0.000000,"traitor was" \n "killed"};
+item9[] = {"",7,210,96.000000,-1179.000000,104.000000,-1171.000000,0.000000,""};
+item10[] = {"",7,210,91.000000,-778.999878,109.000000,-771.000183,0.000000,""};
+item11[] = {"",7,210,91.000000,-578.999817,109.000008,-571.000122,0.000000,""};
+item12[] = {"",7,210,-59.000000,-778.999817,-41.000000,-771.000122,0.000000,""};
+item13[] = {"",7,210,-59.000000,-478.999878,-41.000000,-471.000153,0.000000,""};
+item14[] = {"",7,210,-159.000000,-628.999817,-141.000000,-621.000183,0.000000,""};
+item15[] = {"initial_talk_to",2,250,-225.000000,-1000.000000,-125.000000,-950.000000,0.000000,"initial talk to" \n "Oldman"};
+item16[] = {"_",4,218,-225.000000,-900.000000,-125.000000,-850.000000,0.000000,""};
+item17[] = {"Init",0,250,-225.000000,-1200.000000,-125.000000,-1150.000000,0.000000,"Init"};
+item18[] = {"_",4,218,-225.000000,-1100.000000,-125.000000,-1050.000000,0.000000,""};
+item19[] = {"",7,210,96.000000,-979.000000,104.000000,-971.000000,0.000000,""};
+link0[] = {1,2};
+link1[] = {1,12};
+link2[] = {2,3};
+link3[] = {3,6};
+link4[] = {3,14};
+link5[] = {4,5};
+link6[] = {5,11};
+link7[] = {5,13};
+link8[] = {6,7};
+link9[] = {8,0};
+link10[] = {9,19};
+link11[] = {10,8};
+link12[] = {11,8};
+link13[] = {12,4};
+link14[] = {12,10};
+link15[] = {13,6};
+link16[] = {14,11};
+link17[] = {15,16};
+link18[] = {15,19};
+link19[] = {16,1};
+link20[] = {17,9};
+link21[] = {17,18};
+link22[] = {18,15};
+link23[] = {19,10};
+globals[] = {0.000000,0,0,0,0,640,480,1,561,6316128,1,-323.690247,348.283264,-266.039063,-1008.240479,909,1004,1};
+window[] = {2,-1,-1,-1,-1,1202,156,1002,156,3,927};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "TraitorFlow";
+        class States
+        {
+                /*%FSM<STATE "DEAD">*/
+                class DEAD
+                {
+                        name = "DEAD";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"[    " \n
+                         " BIS_traitor,               " \n
+                         " localize ""STR_A3_TraitorFlow.fsmFSM_States_DEAD0"", //ToDo localize (translate)              " \n
+                         " ""\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa"",     " \n
+                         " ""\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa"",     " \n
+                         " ""player distance _this < 2 && {['T_SQ0_R_Traitor'] call bis_fnc_questGetState != 0}"",          " \n
+                         " ""player distance _this < 2"",          " \n
+                         " {},                 " \n
+                         " {},                 " \n
+                         " {" \n
+                         "	[] spawn {" \n
+                         "		BIS_BossFSM setFSMVariable [""_playerPhotoDeadTraitor"", true]; " \n
+                         "		titleCut ["""", ""White In"",0.2]; playSound ""OMCameraPhoto"";" \n
+                         "		sleep 0.5;" \n
+                         "		playSound ""OMPhoneSMSsend"";" \n
+                         "		sleep 5;" \n
+                         "		[1," \n
+                         "			[ " \n
+                         "				[{[""ta_photo_taken""] call BIS_fnc_om_conversation}, [], 2, 4, {}, {}, false, 9999999999, false, ""Boss calls to player about photo of dead traitor body""] " \n
+                         "			] " \n
+                         "		] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "	};" \n
+                         " },        " \n
+                         " {},                 " \n
+                         " [],                 " \n
+                         " 1,                 " \n
+                         " 0,                 " \n
+                         " true,                " \n
+                         " false                " \n
+                         "] call BIS_fnc_holdActionAdd;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "hold_action__use">*/
+                class hold_action__use
+                {
+                        name = "hold_action__use";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"BIS_traitor playMove ""Acts_AidlPsitMstpSsurWnonDnon_out"";" \n
+                         "BIS_traitor setUnitPos ""MIDDLE"";" \n
+                         "BIS_traitor disableAI ""MOVE"";" \n
+                         "" \n
+                         "private _speechUntied = " \n
+                         "{" \n
+                         "	[""eve_traitor_untied"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[  " \n
+                         "		[_speechUntied, [], 2, _validity, {BIS_Traitorfsm setFSMVariable [""_traitorFree"", true];}, {}, false, _priority, false, ""SQ0_traitor_untied"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Traitor_released";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_traitorFree""" \n
+                                         "&&" \n
+                                         "count ((player nearEntities [""Man"", 100]) select {side _x == east && alive _x}) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_was_kill">*/
+                                class traitor_was_kill
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TraitorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Traitor_relased";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_traitorFree""" \n
+                                         "&&" \n
+                                         "count ((player nearEntities [""Man"", 100]) select {side _x == east && alive _x}) != 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Traitor_relased">*/
+                class Traitor_relased
+                {
+                        name = "Traitor_relased";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""eve_traitor_untied_guards"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {BIS_SQ0fsm setFSMVariable [""_addQuestKillGendarme"", true]}, {}, false, _priority, false, ""SQ0_traitor_kill_gendarme"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "traitor_was_kill">*/
+                                class traitor_was_kill
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TraitorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="reward_and_escap";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_Traitor""" \n
+                                         "&&" \n
+                                         "player distance BIS_Traitor < 3" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "    (!isNil ""_conversationTraitorDone"")" \n
+                                         "    ||" \n
+                                         "    (!isNil ""BIS_SQ0_G_ClearTraitorArea""" \n
+                                         "    &&" \n
+                                         "    {[BIS_SQ0_G_ClearTraitorArea] call bis_fnc_questGetState == 3}) " \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Traitor_released">*/
+                class Traitor_released
+                {
+                        name = "Traitor_released";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""eve_traitor_untied_no_guards"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {BIS_Traitorfsm setFSMVariable [""_conversationTraitorDone"", true]}, {}, false, _priority, false, ""SQ0_traitor_gendarme_dead_ahead"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="reward_and_escap";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_Traitor""" \n
+                                         "&&" \n
+                                         "player distance BIS_Traitor < 3" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "    (!isNil ""_conversationTraitorDone"")" \n
+                                         "    ||" \n
+                                         "    (!isNil ""BIS_SQ0_G_ClearTraitorArea""" \n
+                                         "    &&" \n
+                                         "    {[BIS_SQ0_G_ClearTraitorArea] call bis_fnc_questGetState == 3}) " \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_was_kill">*/
+                                class traitor_was_kill
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TraitorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "reward_and_escap">*/
+                class reward_and_escap
+                {
+                        name = "reward_and_escap";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""eve_traitor_escape"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQsfsm setFSMVariable [""_playerGetTaskID"", true];" \n
+                         "	BIS_SQsfsm setFSMVariable [""_addCacheLakatoro"", true];" \n
+                         "	[""in_traitor_reward"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	sleep 5;" \n
+                         "	[""SYNDIKAT: graveyard stash""] call BIS_fnc_om_addIntel;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {" \n
+                         "												BIS_traitor enableAI ""ALL""; " \n
+                         "												BIS_Traitor doMove [10130,9033]; " \n
+                         "												BIS_traitor setUnitPos ""UP""; " \n
+                         "												BIS_traitor setSpeedMode ""FULL"";" \n
+                         "												BIS_traitor stop false;" \n
+                         "											 }, {}, false, _priority, false, ""SQ0_traitor_run_away"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "initial_talk_to">*/
+                class initial_talk_to
+                {
+                        name = "initial_talk_to";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""eve_traitor_found"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_traitor_found"" ]" \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "traitor_was_kill">*/
+                                class traitor_was_kill
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TraitorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="hold_action__use";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ0_R_Traitor""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 17;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "traitor_was_kill">*/
+                                class traitor_was_kill
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TraitorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="initial_talk_to";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player in list BIS_trg_traitorHouse" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Traitor"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "DEAD",
+                "reward_and_escap",
+        };
+};
+/*%FSM</COMPILE>*/

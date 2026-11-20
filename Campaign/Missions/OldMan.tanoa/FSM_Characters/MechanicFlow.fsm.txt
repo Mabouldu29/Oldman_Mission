@@ -1,0 +1,215 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, MechanicFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,50.000000,-1300.000000,150.000000,-1250.000000,0.000000,"Init"};
+item1[] = {"wallet_delivered_1",4,218,-50.000000,-1225.000000,50.000000,-1175.000000,0.000000,"wallet" \n "delivered" \n "NPC"};
+item2[] = {"talk",2,4346,-50.000000,-1150.000000,50.000000,-1100.000000,0.000000,"talk"};
+item3[] = {"wallet_delivered",4,218,125.000000,-1225.000000,225.000000,-1175.000000,0.000000,"wallet" \n "delivered" \n "box"};
+item4[] = {"no_talk",2,250,125.000000,-1150.000000,225.000000,-1100.000000,0.000000,"no talk"};
+item5[] = {"_",4,218,25.000000,-1050.000000,125.000000,-1000.000000,0.000000,""};
+item6[] = {"KILLED",4,218,375.000000,-950.000000,475.000000,-900.000000,0.000000,"KILLED"};
+item7[] = {"MECHANIC_IS_DEAD",1,250,375.000000,-800.000000,475.000000,-750.000000,0.000000,"MECHANIC IS" \n "DEAD"};
+item8[] = {"",7,210,421.000000,-1129.000000,429.000000,-1121.000000,0.000000,""};
+item9[] = {"",7,210,421.000000,-1279.000000,429.000000,-1271.000000,0.000000,""};
+item10[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,1};
+link1[] = {0,3};
+link2[] = {0,9};
+link3[] = {1,2};
+link4[] = {2,5};
+link5[] = {2,8};
+link6[] = {3,4};
+link7[] = {4,5};
+link8[] = {4,8};
+link9[] = {6,7};
+link10[] = {8,6};
+link11[] = {9,8};
+link12[] = {5,10};
+globals[] = {0.000000,0,0,0,0,640,480,1,589,6316128,1,-192.572601,481.074799,-673.722717,-1446.686279,875,1004,1};
+window[] = {2,-1,-1,-1,-1,1306,260,1106,260,3,893};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "MechanicFlow";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private _ArthurFirstTalk = false;" \n
+                         "private _ArthurFirstCall = false;" \n
+                         "" \n
+                         "private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "wallet_delivered">*/
+                                class wallet_delivered
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="no_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_Mechanic""" \n
+                                         "&&" \n
+                                         "isNull BIS_Mechanic " \n
+                                         "&&" \n
+                                         "!isNil ""BIS_SQ0_F_TraitorID""" \n
+                                         "&&" \n
+                                         "{[""T_SQ0_F_TraitorID""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "KILLED">*/
+                                class KILLED
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="MECHANIC_IS_DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MechnicDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "wallet_delivered_1">*/
+                                class wallet_delivered_1
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_Mechanic""" \n
+                                         "&&" \n
+                                         "!isNull BIS_Mechanic " \n
+                                         "&&" \n
+                                         "!isNil ""BIS_SQ0_F_TraitorID""" \n
+                                         "&&" \n
+                                         "{[""T_SQ0_F_TraitorID""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "talk">*/
+                class talk
+                {
+                        name = "talk";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""eve_mechanic""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Miller first time"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "KILLED">*/
+                                class KILLED
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="MECHANIC_IS_DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MechnicDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "no_talk">*/
+                class no_talk
+                {
+                        name = "no_talk";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "KILLED">*/
+                                class KILLED
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="MECHANIC_IS_DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MechnicDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="____FAKE____";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "MECHANIC_IS_DEAD">*/
+                class MECHANIC_IS_DEAD
+                {
+                        name = "MECHANIC_IS_DEAD";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "MECHANIC_IS_DEAD",
+        };
+};
+/*%FSM</COMPILE>*/

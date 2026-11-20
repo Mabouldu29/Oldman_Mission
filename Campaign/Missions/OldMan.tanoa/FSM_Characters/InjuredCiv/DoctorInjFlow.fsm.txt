@@ -1,0 +1,692 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, DoctorFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-725.000000,-1175.000000,-625.000000,-1125.000000,0.000000,"Init"};
+item1[] = {"DEAD",1,250,25.000000,-950.000000,125.000000,-900.000000,0.000000,"DEAD"};
+item2[] = {"doc_dead",4,218,-100.000000,-950.000000,0.000000,-900.000000,0.000000,"doc" \n "dead"};
+item3[] = {"",7,210,-54.000000,-1091.500000,-46.000000,-1083.500000,0.000000,""};
+item4[] = {"set_free_clear",4,218,-725.000000,-1050.000000,-625.000000,-1000.000000,0.000000,"set free" \n "clear"};
+item5[] = {"",7,210,-679.000000,-1091.500000,-671.000000,-1083.500000,0.000000,""};
+item6[] = {"_",2,250,-725.000000,-975.000000,-625.000000,-925.000000,0.000000,""};
+item7[] = {"",7,210,-579.000000,-1091.500000,-571.000000,-1083.500000,0.000000,""};
+item8[] = {"set_free_still_d",4,218,-625.000000,-1050.000000,-525.000000,-1000.000000,0.000000,"set free" \n "still danger"};
+item9[] = {"",7,210,-479.000000,-1091.500000,-471.000000,-1083.500000,0.000000,""};
+item10[] = {"set_free_clear_after",4,218,-525.000000,-1050.000000,-425.000000,-1000.000000,0.000000,"set free" \n "clear after" \n "danger"};
+item11[] = {"__1",2,250,-625.000000,-975.000000,-525.000000,-925.000000,0.000000,""};
+item12[] = {"__2",2,250,-525.000000,-975.000000,-425.000000,-925.000000,0.000000,""};
+item13[] = {"",7,210,-679.000000,-904.000000,-671.000000,-896.000000,0.000000,""};
+item14[] = {"",7,210,-579.000000,-904.000000,-571.000000,-896.000000,0.000000,""};
+item15[] = {"",7,210,-479.000061,-904.000000,-470.999939,-896.000000,0.000000,""};
+item16[] = {"",7,210,-379.000000,-1091.500000,-371.000000,-1083.500000,0.000000,""};
+item17[] = {"try_to_open_locked",4,218,-425.000000,-1050.000000,-325.000000,-1000.000000,0.000000,"try to open locked" \n "doors"};
+item18[] = {"__3",2,250,-425.000000,-975.000000,-325.000000,-925.000000,0.000000,""};
+item19[] = {"",7,210,-379.000000,-904.000000,-371.000000,-896.000000,0.000000,""};
+item20[] = {"",7,210,-279.000000,-1091.500000,-271.000000,-1083.500000,0.000000,""};
+item21[] = {"they_are_free_sp",4,218,-325.000000,-1050.000000,-225.000000,-1000.000000,0.000000,"they are free" \n "speech"};
+item22[] = {"__4",2,250,-325.000000,-975.000000,-225.000000,-925.000000,0.000000,""};
+item23[] = {"",7,210,-279.000000,-904.000000,-271.000000,-896.000000,0.000000,""};
+item24[] = {"",7,210,-754.000000,-904.000000,-746.000000,-896.000000,0.000000,""};
+item25[] = {"",7,210,-754.000000,-1091.500000,-746.000000,-1083.500000,0.000000,""};
+link0[] = {0,5};
+link1[] = {2,1};
+link2[] = {3,2};
+link3[] = {4,6};
+link4[] = {5,4};
+link5[] = {5,7};
+link6[] = {6,13};
+link7[] = {7,8};
+link8[] = {7,9};
+link9[] = {8,11};
+link10[] = {9,10};
+link11[] = {9,16};
+link12[] = {10,12};
+link13[] = {11,14};
+link14[] = {12,15};
+link15[] = {13,24};
+link16[] = {14,13};
+link17[] = {15,14};
+link18[] = {16,17};
+link19[] = {16,20};
+link20[] = {17,18};
+link21[] = {18,19};
+link22[] = {19,15};
+link23[] = {20,3};
+link24[] = {20,21};
+link25[] = {21,22};
+link26[] = {22,23};
+link27[] = {23,19};
+link28[] = {24,25};
+link29[] = {25,5};
+globals[] = {0.000000,0,0,0,0,640,480,1,655,6316128,1,-777.440613,203.875671,-473.384460,-1295.789795,1198,1030,1};
+window[] = {2,-1,-1,-1,-1,1254,2128,3736,208,3,1216};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "DoctorFlow";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "private _medicineLow = false;" \n
+                         "private _medicineCritical = false;" \n
+                         "private _medicineRanOut = false;" \n
+                         "" \n
+                         "private _dyingArthur = false;" \n
+                         "private _deadArthur = false;" \n
+                         "" \n
+                         "private _dyingLucas = false;" \n
+                         "private _deadLucas = false;" \n
+                         "" \n
+                         "private _dyingHoward = false;" \n
+                         "private _deadHoward = false;" \n
+                         "" \n
+                         "private _dyingRenly = false;" \n
+                         "private _deadRenly = false;" \n
+                         "" \n
+                         "private _dyingJohn = false;" \n
+                         "private _deadJohn = false;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "set_free_still_d">*/
+                                class set_free_still_d
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear_after">*/
+                                class set_free_clear_after
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeAfterDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "try_to_open_locked">*/
+                                class try_to_open_locked
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getTheKeyDialog""" \n
+                                         "&&" \n
+                                         "{_getTheKeyDialog}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "they_are_free_sp">*/
+                                class they_are_free_sp
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_fianlDoctorSpeech""" \n
+                                         "&&" \n
+                                         "{[""T_SQc_F_DocVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "doc_dead">*/
+                                class doc_dead
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_DoctorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear">*/
+                                class set_free_clear
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "{_setFreeClear}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "DEAD">*/
+                class DEAD
+                {
+                        name = "DEAD";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"_setFreeClear = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_doctor_set_free_in""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ99_Doc_set_free"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "set_free_still_d">*/
+                                class set_free_still_d
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear_after">*/
+                                class set_free_clear_after
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeAfterDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "try_to_open_locked">*/
+                                class try_to_open_locked
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getTheKeyDialog""" \n
+                                         "&&" \n
+                                         "{_getTheKeyDialog}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "they_are_free_sp">*/
+                                class they_are_free_sp
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_fianlDoctorSpeech""" \n
+                                         "&&" \n
+                                         "{[""T_SQc_F_DocVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "doc_dead">*/
+                                class doc_dead
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_DoctorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear">*/
+                                class set_free_clear
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "{_setFreeClear}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__1">*/
+                class __1
+                {
+                        name = "__1";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/"_setFreeDanger = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_doctor_set_free_danger""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ99_Doc_set_free_danger"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "set_free_still_d">*/
+                                class set_free_still_d
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear_after">*/
+                                class set_free_clear_after
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeAfterDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "try_to_open_locked">*/
+                                class try_to_open_locked
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getTheKeyDialog""" \n
+                                         "&&" \n
+                                         "{_getTheKeyDialog}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "they_are_free_sp">*/
+                                class they_are_free_sp
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_fianlDoctorSpeech""" \n
+                                         "&&" \n
+                                         "{[""T_SQc_F_DocVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "doc_dead">*/
+                                class doc_dead
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_DoctorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear">*/
+                                class set_free_clear
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "{_setFreeClear}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__2">*/
+                class __2
+                {
+                        name = "__2";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"_setFreeAfterDanger = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_doctor_set_free_safe""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ99_doc_safe"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "set_free_still_d">*/
+                                class set_free_still_d
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear_after">*/
+                                class set_free_clear_after
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeAfterDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "try_to_open_locked">*/
+                                class try_to_open_locked
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getTheKeyDialog""" \n
+                                         "&&" \n
+                                         "{_getTheKeyDialog}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "they_are_free_sp">*/
+                                class they_are_free_sp
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_fianlDoctorSpeech""" \n
+                                         "&&" \n
+                                         "{[""T_SQc_F_DocVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "doc_dead">*/
+                                class doc_dead
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_DoctorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear">*/
+                                class set_free_clear
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "{_setFreeClear}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__3">*/
+                class __3
+                {
+                        name = "__3";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"_getTheKeyDialog = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_doctor_get_the_key""] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ99fsm setFSMVariable [""_addTaskKey"",true];" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ99_get_the_key"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "set_free_still_d">*/
+                                class set_free_still_d
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear_after">*/
+                                class set_free_clear_after
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeAfterDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "try_to_open_locked">*/
+                                class try_to_open_locked
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getTheKeyDialog""" \n
+                                         "&&" \n
+                                         "{_getTheKeyDialog}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "they_are_free_sp">*/
+                                class they_are_free_sp
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_fianlDoctorSpeech""" \n
+                                         "&&" \n
+                                         "{[""T_SQc_F_DocVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "doc_dead">*/
+                                class doc_dead
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_DoctorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear">*/
+                                class set_free_clear
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "{_setFreeClear}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__4">*/
+                class __4
+                {
+                        name = "__4";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"_fianlDoctorSpeech = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_doctor_set_free""] call BIS_fnc_om_conversation;" \n
+                         "	[""eve_doctor_goodbye"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ99bfsm setFSMVariable [""_addTaskleaveTanoa"",true];" \n
+                         "	BIS_SQ99bfsm setFSMVariable [""_talkAboutHuntingHim"",true];" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ99_Doc_free_speech"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "set_free_still_d">*/
+                                class set_free_still_d
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear_after">*/
+                                class set_free_clear_after
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="__2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "{_setFreeAfterDanger}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "try_to_open_locked">*/
+                                class try_to_open_locked
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="__3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_getTheKeyDialog""" \n
+                                         "&&" \n
+                                         "{_getTheKeyDialog}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "they_are_free_sp">*/
+                                class they_are_free_sp
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="__4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_fianlDoctorSpeech""" \n
+                                         "&&" \n
+                                         "{[""T_SQc_F_DocVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "doc_dead">*/
+                                class doc_dead
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_DoctorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "set_free_clear">*/
+                                class set_free_clear
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "{_setFreeClear}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "DEAD",
+        };
+};
+/*%FSM</COMPILE>*/

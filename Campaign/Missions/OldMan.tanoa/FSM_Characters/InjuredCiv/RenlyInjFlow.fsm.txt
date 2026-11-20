@@ -1,0 +1,146 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, RenlyFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-225.479630,-1195.916260,-125.479630,-1145.916260,0.000000,"Init"};
+item1[] = {"DEAD",1,250,125.000000,-1075.000000,225.000000,-1025.000000,0.000000,"DEAD"};
+item2[] = {"killed",4,218,0.000000,-1075.000000,100.000000,-1025.000000,0.000000,"killed"};
+item3[] = {"",7,210,-179.000000,-1116.500000,-171.000000,-1108.500000,0.000000,""};
+item4[] = {"",7,210,-179.000000,-916.500000,-170.999985,-908.500000,0.000000,""};
+item5[] = {"player_try_to_heal",4,218,-225.000000,-1075.000000,-125.000000,-1025.000000,0.000000,"player try" \n "to heal him"};
+item6[] = {"talk",2,250,-225.000000,-1000.000000,-125.000000,-950.000000,0.000000,"talk"};
+item7[] = {"",7,210,-254.000000,-916.500000,-246.000015,-908.500000,0.000000,""};
+item8[] = {"",7,210,-254.000000,-1116.500000,-246.000000,-1108.500000,0.000000,""};
+item9[] = {"",7,210,46.000000,-1116.500000,54.000000,-1108.500000,0.000000,""};
+link0[] = {0,3};
+link1[] = {2,1};
+link2[] = {3,5};
+link3[] = {3,9};
+link4[] = {4,7};
+link5[] = {5,6};
+link6[] = {6,4};
+link7[] = {7,8};
+link8[] = {8,3};
+link9[] = {9,2};
+globals[] = {0.000000,0,0,0,0,640,480,1,573,6316128,1,-493.015289,172.912933,-636.144714,-1402.878540,872,1004,1};
+window[] = {2,-1,-1,-1,-1,1306,260,1106,260,3,890};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "RenlyFlow";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_RenlyDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_RenlyDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_RenlyDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "DEAD">*/
+                class DEAD
+                {
+                        name = "DEAD";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "talk">*/
+                class talk
+                {
+                        name = "talk";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"_playerTryHeal = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_renly_no_good"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQc_player_try_heal_Renly"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_RenlyDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_RenlyDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_RenlyDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "DEAD",
+        };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,1031 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, SQ99b">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-50.000000,-925.000000,50.000000,-875.000000,0.000000,"Init"};
+item1[] = {"player_tries_to",4,218,-50.000000,-375.000000,50.000000,-325.000000,0.000000,"player tries" \n "to open doors"};
+item2[] = {"delay",4,218,-50.000000,-850.000000,50.000000,-800.000000,0.000000,"delay"};
+item3[] = {"",7,210,-4.000008,-404.000000,4.000008,-396.000000,0.000000,""};
+item4[] = {"close_to_doc_cle",4,218,50.000000,-375.000000,150.000000,-325.000000,0.000000,"close to doc" \n "clear"};
+item5[] = {"close_to_doc_dan",4,218,150.000000,-375.000000,250.000000,-325.000000,0.000000,"close to doc" \n "danger"};
+item6[] = {"close_to_doc_clear",4,218,250.000000,-375.000000,350.000000,-325.000000,0.000000,"close to doc" \n "clear after danger"};
+item7[] = {"",7,210,96.000000,-404.000000,104.000000,-396.000000,0.000000,""};
+item8[] = {"",7,210,196.000000,-404.000000,204.000000,-396.000000,0.000000,""};
+item9[] = {"",7,210,296.000000,-404.000000,304.000000,-396.000000,0.000000,""};
+item10[] = {"",7,210,96.000000,-404.000000,104.000000,-396.000000,0.000000,""};
+item11[] = {"talk",2,250,-50.000000,-300.000000,50.000000,-250.000000,0.000000,"talk"};
+item12[] = {"talk_1",2,250,50.000000,-300.000000,150.000000,-250.000000,0.000000,"talk"};
+item13[] = {"talk_2",2,250,150.000000,-300.000000,250.000000,-250.000000,0.000000,"talk"};
+item14[] = {"talk_3",2,250,250.000000,-300.000000,350.000000,-250.000000,0.000000,"talk"};
+item15[] = {"",7,210,-4.000000,-229.000000,4.000000,-221.000000,0.000000,""};
+item16[] = {"",7,210,96.000000,-229.000000,104.000000,-221.000000,0.000000,""};
+item17[] = {"",7,210,196.000000,-229.000000,204.000000,-221.000000,0.000000,""};
+item18[] = {"",7,210,296.000000,-229.000000,304.000000,-221.000000,0.000000,""};
+item19[] = {"Doctor_calls",2,250,-50.000000,-775.000000,50.000000,-725.000000,0.000000,"Doctor calls"};
+item20[] = {"doctor_finished",4,218,-50.000000,-700.000000,50.000000,-650.000000,0.000000,"doctor finished" \n "&" \n "or he is dead"};
+item21[] = {"Syndiakt_boss_ca",2,250,-50.000000,-625.000000,50.000000,-575.000000,0.000000,"Syndiakt boss" \n "calls"};
+item22[] = {"",7,210,-79.000000,-229.000000,-71.000000,-221.000000,0.000000,""};
+item23[] = {"",7,210,-79.000000,-404.000000,-71.000000,-396.000000,0.000000,""};
+item24[] = {"comm_finished",4,218,-50.000000,-550.000000,50.000000,-500.000000,0.000000,"comm finished"};
+item25[] = {"add_task__escape",2,250,-50.000000,-475.000000,50.000000,-425.000000,0.000000,"add task " \n "escape and lower" \n "reputation"};
+item26[] = {"add_task_leave_t",4,218,350.000000,-375.000000,450.000000,-325.000000,0.000000,"add task leave" \n "town"};
+item27[] = {"",7,210,396.000000,-404.000000,404.000000,-396.000000,0.000000,""};
+item28[] = {"talk_4",2,250,350.000000,-300.000000,450.000000,-250.000000,0.000000,"talk"};
+item29[] = {"",7,210,396.000000,-229.000000,404.000000,-221.000000,0.000000,""};
+item30[] = {"add_task_leave_T_1",4,218,450.000000,-375.000000,550.000000,-325.000000,0.000000,"add task leave" \n "TANOA"};
+item31[] = {"",7,210,496.000031,-404.000000,503.999969,-396.000000,0.000000,""};
+item32[] = {"talk_5",2,4346,450.000000,-300.000000,550.000000,-250.000000,0.000000,"talk"};
+item33[] = {"",7,210,496.000031,-229.000000,503.999969,-221.000000,0.000000,""};
+link0[] = {0,2};
+link1[] = {1,11};
+link2[] = {2,19};
+link3[] = {3,1};
+link4[] = {3,10};
+link5[] = {4,12};
+link6[] = {5,13};
+link7[] = {6,14};
+link8[] = {8,5};
+link9[] = {8,9};
+link10[] = {9,6};
+link11[] = {9,27};
+link12[] = {10,4};
+link13[] = {10,8};
+link14[] = {11,15};
+link15[] = {12,16};
+link16[] = {13,17};
+link17[] = {14,18};
+link18[] = {15,22};
+link19[] = {16,15};
+link20[] = {17,16};
+link21[] = {18,17};
+link22[] = {19,20};
+link23[] = {20,21};
+link24[] = {21,24};
+link25[] = {22,23};
+link26[] = {23,3};
+link27[] = {24,25};
+link28[] = {25,3};
+link29[] = {26,28};
+link30[] = {27,26};
+link31[] = {27,31};
+link32[] = {28,29};
+link33[] = {29,18};
+link34[] = {30,32};
+link35[] = {31,30};
+link36[] = {32,33};
+link37[] = {33,29};
+globals[] = {0.000000,0,0,0,0,640,480,1,501,6316128,1,-109.437866,524.662659,-26.625885,-698.563721,972,1030,1};
+window[] = {2,-1,-1,-1,-1,1306,260,1106,260,3,990};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SQ99b";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"// queue variables" \n
+                         "private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         " " \n
+                         "//--- Lock building with prisoned civilians" \n
+                         "{BIS_finalHouse setVariable [_x,1,true]} forEach [""bis_disabled_Door_1"",""bis_disabled_Door_2""];" \n
+                         "" \n
+                         "private _delay = time + 120;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "delay">*/
+                                class delay
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Doctor_calls";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "talk">*/
+                class talk
+                {
+                        name = "talk";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/"_getTheKey = false;" \n
+                         "BIS_doctorInjfsm setFSMVariable [""_getTheKeyDialog"",true];" \n
+                         "BIS_T_SQ99_G_Keys = [""T_SQ99_G_Keys"", []] call bis_fnc_questCreateManualy;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "close_to_doc_cle">*/
+                                class close_to_doc_cle
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="talk_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_dan">*/
+                                class close_to_doc_dan
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="talk_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_clear">*/
+                                class close_to_doc_clear
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="talk_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_t">*/
+                                class add_task_leave_t
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="talk_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_addTaskleaveTown""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_T_1">*/
+                                class add_task_leave_T_1
+                                {
+                                        itemno = 30;
+                                        priority = 0.000000;
+                                        to="talk_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskleaveTanoa""" \n
+                                         "&&" \n
+                                         "{_addTaskleaveTanoa}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_tries_to">*/
+                                class player_tries_to
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_getTheKey""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_finalHouse animationPhase ""door_1_handle_locked_rot"" != 0" \n
+                                         "	||" \n
+                                         "	BIS_finalHouse animationPhase ""door_2_handle_locked_rot"" != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "talk_1">*/
+                class talk_1
+                {
+                        name = "talk_1";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"_setFreeClear = false;" \n
+                         "BIS_doctorInjfsm setFSMVariable [""_setFreeClear"",true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "close_to_doc_cle">*/
+                                class close_to_doc_cle
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="talk_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_dan">*/
+                                class close_to_doc_dan
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="talk_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_clear">*/
+                                class close_to_doc_clear
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="talk_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_t">*/
+                                class add_task_leave_t
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="talk_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_addTaskleaveTown""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_T_1">*/
+                                class add_task_leave_T_1
+                                {
+                                        itemno = 30;
+                                        priority = 0.000000;
+                                        to="talk_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskleaveTanoa""" \n
+                                         "&&" \n
+                                         "{_addTaskleaveTanoa}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_tries_to">*/
+                                class player_tries_to
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_getTheKey""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_finalHouse animationPhase ""door_1_handle_locked_rot"" != 0" \n
+                                         "	||" \n
+                                         "	BIS_finalHouse animationPhase ""door_2_handle_locked_rot"" != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "talk_2">*/
+                class talk_2
+                {
+                        name = "talk_2";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"_setFreeDanger = false;" \n
+                         "BIS_doctorInjfsm setFSMVariable [""_setFreeDanger"",true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "close_to_doc_cle">*/
+                                class close_to_doc_cle
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="talk_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_dan">*/
+                                class close_to_doc_dan
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="talk_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_clear">*/
+                                class close_to_doc_clear
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="talk_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_t">*/
+                                class add_task_leave_t
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="talk_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_addTaskleaveTown""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_T_1">*/
+                                class add_task_leave_T_1
+                                {
+                                        itemno = 30;
+                                        priority = 0.000000;
+                                        to="talk_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskleaveTanoa""" \n
+                                         "&&" \n
+                                         "{_addTaskleaveTanoa}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_tries_to">*/
+                                class player_tries_to
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_getTheKey""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_finalHouse animationPhase ""door_1_handle_locked_rot"" != 0" \n
+                                         "	||" \n
+                                         "	BIS_finalHouse animationPhase ""door_2_handle_locked_rot"" != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "talk_3">*/
+                class talk_3
+                {
+                        name = "talk_3";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"_setFreeAfterDanger = false;" \n
+                         "BIS_doctorInjfsm setFSMVariable [""_setFreeAfterDanger"",true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "close_to_doc_cle">*/
+                                class close_to_doc_cle
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="talk_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_dan">*/
+                                class close_to_doc_dan
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="talk_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_clear">*/
+                                class close_to_doc_clear
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="talk_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_t">*/
+                                class add_task_leave_t
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="talk_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_addTaskleaveTown""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_T_1">*/
+                                class add_task_leave_T_1
+                                {
+                                        itemno = 30;
+                                        priority = 0.000000;
+                                        to="talk_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskleaveTanoa""" \n
+                                         "&&" \n
+                                         "{_addTaskleaveTanoa}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_tries_to">*/
+                                class player_tries_to
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_getTheKey""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_finalHouse animationPhase ""door_1_handle_locked_rot"" != 0" \n
+                                         "	||" \n
+                                         "	BIS_finalHouse animationPhase ""door_2_handle_locked_rot"" != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Doctor_calls">*/
+                class Doctor_calls
+                {
+                        name = "Doctor_calls";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/"BIS_Doctorfsm setFSMVariable [""_endingReminder"", true];" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "doctor_finished">*/
+                                class doctor_finished
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Syndiakt_boss_ca";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_doctorCallFinished""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_DoctorDead""" \n
+                                         "" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Syndiakt_boss_ca">*/
+                class Syndiakt_boss_ca
+                {
+                        name = "Syndiakt_boss_ca";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/"BIS_Bossfsm setFSMVariable [""_threaten"", true];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "comm_finished">*/
+                                class comm_finished
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="add_task__escape";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threatenFinished"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "add_task__escape">*/
+                class add_task__escape
+                {
+                        name = "add_task__escape";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/"BIS_T_SQ99_F_SyndiVaccine = [""T_SQ99_F_SyndiVaccine"", [T_F_SyndiVaccine]] call bis_fnc_questCreateManualy;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "close_to_doc_cle">*/
+                                class close_to_doc_cle
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="talk_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_dan">*/
+                                class close_to_doc_dan
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="talk_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_clear">*/
+                                class close_to_doc_clear
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="talk_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_t">*/
+                                class add_task_leave_t
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="talk_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_addTaskleaveTown""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_T_1">*/
+                                class add_task_leave_T_1
+                                {
+                                        itemno = 30;
+                                        priority = 0.000000;
+                                        to="talk_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskleaveTanoa""" \n
+                                         "&&" \n
+                                         "{_addTaskleaveTanoa}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_tries_to">*/
+                                class player_tries_to
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_getTheKey""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_finalHouse animationPhase ""door_1_handle_locked_rot"" != 0" \n
+                                         "	||" \n
+                                         "	BIS_finalHouse animationPhase ""door_2_handle_locked_rot"" != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "talk_4">*/
+                class talk_4
+                {
+                        name = "talk_4";
+                        itemno = 28;
+                        init = /*%FSM<STATEINIT""">*/"private _addTaskleaveTown = false;" \n
+                         "BIS_T_SQ99_L_TownEscape = [""T_SQ99_L_TownEscape"", [T_L_TownEscape]] call bis_fnc_questCreateManualy;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "close_to_doc_cle">*/
+                                class close_to_doc_cle
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="talk_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_dan">*/
+                                class close_to_doc_dan
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="talk_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_clear">*/
+                                class close_to_doc_clear
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="talk_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_t">*/
+                                class add_task_leave_t
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="talk_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_addTaskleaveTown""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_T_1">*/
+                                class add_task_leave_T_1
+                                {
+                                        itemno = 30;
+                                        priority = 0.000000;
+                                        to="talk_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskleaveTanoa""" \n
+                                         "&&" \n
+                                         "{_addTaskleaveTanoa}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_tries_to">*/
+                                class player_tries_to
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_getTheKey""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_finalHouse animationPhase ""door_1_handle_locked_rot"" != 0" \n
+                                         "	||" \n
+                                         "	BIS_finalHouse animationPhase ""door_2_handle_locked_rot"" != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "talk_5">*/
+                class talk_5
+                {
+                        name = "talk_5";
+                        itemno = 32;
+                        init = /*%FSM<STATEINIT""">*/"private _addTaskleaveTanoa = false;" \n
+                         "[] spawn {" \n
+                         "	BIS_T_SQ99_L_LeaveTanoa = [""T_SQ99_L_LeaveTanoa"", [T_L_LeaveTanoa]] call bis_fnc_questCreateManualy; " \n
+                         "	sleep 5;" \n
+                         "	[""CSAT: Base - Tavu Submarine""] call BIS_fnc_om_addIntel;" \n
+                         "	sleep 5;" \n
+                         "	//--- cancel doctors quest" \n
+                         "	//BIS_cancelDocQuests = true;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "close_to_doc_cle">*/
+                                class close_to_doc_cle
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="talk_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeClear""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_dan">*/
+                                class close_to_doc_dan
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="talk_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_doc_clear">*/
+                                class close_to_doc_clear
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="talk_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_setFreeAfterDanger""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player in list BIS_housePresenceList" \n
+                                         "	&&" \n
+                                         "	({side _x == RESISTANCE && alive _x} count nearestObjects [player, ['Man'], 100]) == 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_t">*/
+                                class add_task_leave_t
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="talk_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_addTaskleaveTown""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_task_leave_T_1">*/
+                                class add_task_leave_T_1
+                                {
+                                        itemno = 30;
+                                        priority = 0.000000;
+                                        to="talk_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskleaveTanoa""" \n
+                                         "&&" \n
+                                         "{_addTaskleaveTanoa}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_tries_to">*/
+                                class player_tries_to
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_getTheKey""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_Doctor""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_finalHouse animationPhase ""door_1_handle_locked_rot"" != 0" \n
+                                         "	||" \n
+                                         "	BIS_finalHouse animationPhase ""door_2_handle_locked_rot"" != 0" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+        };
+};
+/*%FSM</COMPILE>*/

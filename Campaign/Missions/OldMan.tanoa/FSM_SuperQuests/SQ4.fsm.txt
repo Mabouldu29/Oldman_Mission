@@ -1,0 +1,947 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, SQ4">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"__Start",0,250,-1525.000000,-625.000000,-1425.000000,-575.000000,0.000000,"#Start"};
+item1[] = {"",7,210,-1591.500000,-366.500000,-1583.500000,-358.500000,0.000000,""};
+item2[] = {"player_found_int",4,218,-1525.000000,-525.000000,-1425.000000,-475.000000,0.000000,"player found" \n "intel"};
+item3[] = {"",7,210,-1479.000000,-554.000000,-1471.000000,-546.000000,0.000000,""};
+item4[] = {"player_is_tasked",4,218,-1275.000000,-525.000000,-1175.000000,-475.000000,1.000000,"player is tasked" \n "by Miller"};
+item5[] = {"",7,210,-1229.000000,-554.000000,-1221.000000,-546.000000,0.000000,""};
+item6[] = {"introducing_comm",2,250,-1275.000000,-450.000000,-1175.000000,-400.000000,0.000000,"introducing" \n "comm"};
+item7[] = {"introducing_comm_1",2,250,-1525.000000,-450.000000,-1425.000000,-400.000000,0.000000,"introducing" \n "comm"};
+item8[] = {"",7,210,-1591.500000,-554.000000,-1583.500000,-546.000000,0.000000,""};
+item9[] = {"END",1,4346,-775.000000,-450.000000,-675.000000,-400.000000,0.000000,"END"};
+item10[] = {"get_intel_backup",4,218,-1025.000000,-525.000000,-925.000000,-475.000000,0.000000,"get intel" \n "backup radar"};
+item11[] = {"",7,210,-1479.000000,-366.500000,-1471.000000,-358.500000,0.000000,""};
+item12[] = {"",7,210,-1229.000000,-366.500000,-1221.000000,-358.500000,0.000000,""};
+item13[] = {"comm_about_the_b",2,250,-1025.000000,-450.000000,-925.000000,-400.000000,0.000000,"comm about" \n "the backup"};
+item14[] = {"both_radars_are",4,218,-775.000000,-525.000000,-675.000000,-475.000000,0.000000,"both radars" \n "are gone"};
+item15[] = {"talk_finished",4,218,-1150.000000,-525.000000,-1050.000000,-475.000000,0.000000,"talk finished"};
+item16[] = {"Add_the_quest_primary",2,250,-1150.000000,-450.000000,-1050.000000,-400.000000,0.000000,"Add the quest" \n "primary radar"};
+item17[] = {"talk_finished_1",4,218,-900.000000,-525.000000,-800.000000,-475.000000,0.000000,"talk finished"};
+item18[] = {"Add_the_quest_backup",2,250,-900.000000,-450.000000,-800.000000,-400.000000,0.000000,"Add the quest" \n "backup radar"};
+item19[] = {"",7,210,-1104.000000,-554.000000,-1096.000000,-546.000000,0.000000,""};
+item20[] = {"",7,210,-979.000000,-554.000000,-971.000000,-546.000000,0.000000,""};
+item21[] = {"",7,210,-854.000000,-554.000000,-846.000000,-546.000000,0.000000,""};
+item22[] = {"",7,210,-729.000000,-554.000000,-721.000000,-546.000000,0.000000,""};
+item23[] = {"",7,210,-854.000000,-366.500000,-846.000000,-358.500000,0.000000,""};
+item24[] = {"",7,210,-979.000000,-366.500000,-971.000000,-358.500000,0.000000,""};
+item25[] = {"",7,210,-1104.000000,-366.500000,-1096.000000,-358.500000,0.000000,""};
+item26[] = {"",7,210,-1354.000000,-554.000000,-1346.000000,-546.000000,0.000000,""};
+item27[] = {"",7,210,-1354.000000,-366.500000,-1346.000000,-358.500000,0.000000,""};
+item28[] = {"player_see_radar",4,218,-1400.000000,-525.000000,-1300.000000,-475.000000,0.000000,"player see" \n "radar (main)"};
+item29[] = {"start_comm",2,250,-1400.000000,-450.000000,-1300.000000,-400.000000,0.000000,"start comm"};
+link0[] = {0,3};
+link1[] = {1,8};
+link2[] = {2,7};
+link3[] = {3,2};
+link4[] = {3,26};
+link5[] = {4,6};
+link6[] = {5,4};
+link7[] = {5,19};
+link8[] = {6,12};
+link9[] = {7,11};
+link10[] = {8,3};
+link11[] = {10,13};
+link12[] = {11,1};
+link13[] = {12,27};
+link14[] = {13,24};
+link15[] = {14,9};
+link16[] = {15,16};
+link17[] = {16,25};
+link18[] = {17,18};
+link19[] = {18,23};
+link20[] = {19,15};
+link21[] = {19,20};
+link22[] = {20,10};
+link23[] = {20,21};
+link24[] = {21,17};
+link25[] = {21,22};
+link26[] = {22,14};
+link27[] = {23,24};
+link28[] = {24,25};
+link29[] = {25,12};
+link30[] = {26,5};
+link31[] = {26,28};
+link32[] = {27,11};
+link33[] = {28,29};
+link34[] = {29,27};
+globals[] = {0.000000,0,0,0,0,640,480,1,267,6316128,1,-1100.546387,-585.246094,-137.787537,-715.448242,785,880,1};
+window[] = {2,-1,-1,-1,-1,1061,182,1576,182,3,803};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SQ4";
+        class States
+        {
+                /*%FSM<STATE "__Start">*/
+                class __Start
+                {
+                        name = "__Start";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"//--- Millers FSM" \n
+                         "BIS_MillerSQ4fsm = [""OldMan.Tanoa"", ""FSM_Characters\MillerFlowSQ4.fsm""] call BIS_fnc_OM_EXEC;" \n
+                         "" \n
+                         "/*" \n
+                         "BIS_SecondaryRadarDestroyed = false;" \n
+                         "" \n
+                         "/*" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_tasked">*/
+                                class player_is_tasked
+                                {
+                                        itemno = 4;
+                                        priority = 1.000000;
+                                        to="introducing_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerGivedIntel""" \n
+                                         "&&" \n
+                                         "{_millerGivedIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_see_radar">*/
+                                class player_see_radar
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="start_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntelSeeIt""" \n
+                                         "&&" \n
+                                         "{_AAradarIntelSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished">*/
+                                class talk_finished
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_primary";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_primaryRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskPrimaryRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "(!isNil ""_AAradarIntel""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelSeeIt""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "get_intel_backup">*/
+                                class get_intel_backup
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="comm_about_the_b";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAbackupIntel""" \n
+                                         "&&" \n
+                                         "{_AAbackupIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished_1">*/
+                                class talk_finished_1
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_backup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_backupRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskBackupRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "((!isNil ""_AAradarIntel"" || !isNil ""_AAradarIntelSeeIt"")" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "both_radars_are">*/
+                                class both_radars_are
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ4_D_primaryRadar""] call bis_fnc_questGetState == 3" \n
+                                         "&&" \n
+                                         "[""T_SQ4_D_backupRadar""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_int">*/
+                                class player_found_int
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="introducing_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntel""" \n
+                                         "&&" \n
+                                         "{_AAradarIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "introducing_comm">*/
+                class introducing_comm
+                {
+                        name = "introducing_comm";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"_millerGivedIntel = false;" \n
+                         "_AAradarIntel = false;" \n
+                         "BIS_MillerSQ4fsm setFSMVariable [""_DiscoverAA"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_tasked">*/
+                                class player_is_tasked
+                                {
+                                        itemno = 4;
+                                        priority = 1.000000;
+                                        to="introducing_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerGivedIntel""" \n
+                                         "&&" \n
+                                         "{_millerGivedIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_see_radar">*/
+                                class player_see_radar
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="start_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntelSeeIt""" \n
+                                         "&&" \n
+                                         "{_AAradarIntelSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished">*/
+                                class talk_finished
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_primary";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_primaryRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskPrimaryRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "(!isNil ""_AAradarIntel""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelSeeIt""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "get_intel_backup">*/
+                                class get_intel_backup
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="comm_about_the_b";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAbackupIntel""" \n
+                                         "&&" \n
+                                         "{_AAbackupIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished_1">*/
+                                class talk_finished_1
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_backup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_backupRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskBackupRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "((!isNil ""_AAradarIntel"" || !isNil ""_AAradarIntelSeeIt"")" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "both_radars_are">*/
+                                class both_radars_are
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ4_D_primaryRadar""] call bis_fnc_questGetState == 3" \n
+                                         "&&" \n
+                                         "[""T_SQ4_D_backupRadar""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_int">*/
+                                class player_found_int
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="introducing_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntel""" \n
+                                         "&&" \n
+                                         "{_AAradarIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "introducing_comm_1">*/
+                class introducing_comm_1
+                {
+                        name = "introducing_comm_1";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"_AAradarIntel = false;" \n
+                         "BIS_MillerSQ4fsm setFSMVariable [""_DiscoverAAbyHimself"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_tasked">*/
+                                class player_is_tasked
+                                {
+                                        itemno = 4;
+                                        priority = 1.000000;
+                                        to="introducing_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerGivedIntel""" \n
+                                         "&&" \n
+                                         "{_millerGivedIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_see_radar">*/
+                                class player_see_radar
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="start_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntelSeeIt""" \n
+                                         "&&" \n
+                                         "{_AAradarIntelSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished">*/
+                                class talk_finished
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_primary";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_primaryRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskPrimaryRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "(!isNil ""_AAradarIntel""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelSeeIt""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "get_intel_backup">*/
+                                class get_intel_backup
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="comm_about_the_b";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAbackupIntel""" \n
+                                         "&&" \n
+                                         "{_AAbackupIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished_1">*/
+                                class talk_finished_1
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_backup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_backupRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskBackupRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "((!isNil ""_AAradarIntel"" || !isNil ""_AAradarIntelSeeIt"")" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "both_radars_are">*/
+                                class both_radars_are
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ4_D_primaryRadar""] call bis_fnc_questGetState == 3" \n
+                                         "&&" \n
+                                         "[""T_SQ4_D_backupRadar""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_int">*/
+                                class player_found_int
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="introducing_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntel""" \n
+                                         "&&" \n
+                                         "{_AAradarIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END">*/
+                class END
+                {
+                        name = "END";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"// --- Delete current crew in any AA systems and make sure that there will be non in the new ones." \n
+                         "BIS_AAsystemDisabled = TRUE;" \n
+                         "{deletevehicle (gunner _x)} foreach (entities ""O_SAM_System_04_F"");" \n
+                         "[1,""News_radar_destroyed""] call BIS_fnc_OM_questNews;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comm_about_the_b">*/
+                class comm_about_the_b
+                {
+                        name = "comm_about_the_b";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"_AAbackupIntel = false;" \n
+                         "BIS_MillerSQ4fsm setFSMVariable [""_DiscoverAABackup"", true];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_tasked">*/
+                                class player_is_tasked
+                                {
+                                        itemno = 4;
+                                        priority = 1.000000;
+                                        to="introducing_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerGivedIntel""" \n
+                                         "&&" \n
+                                         "{_millerGivedIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_see_radar">*/
+                                class player_see_radar
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="start_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntelSeeIt""" \n
+                                         "&&" \n
+                                         "{_AAradarIntelSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished">*/
+                                class talk_finished
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_primary";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_primaryRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskPrimaryRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "(!isNil ""_AAradarIntel""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelSeeIt""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "get_intel_backup">*/
+                                class get_intel_backup
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="comm_about_the_b";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAbackupIntel""" \n
+                                         "&&" \n
+                                         "{_AAbackupIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished_1">*/
+                                class talk_finished_1
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_backup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_backupRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskBackupRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "((!isNil ""_AAradarIntel"" || !isNil ""_AAradarIntelSeeIt"")" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "both_radars_are">*/
+                                class both_radars_are
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ4_D_primaryRadar""] call bis_fnc_questGetState == 3" \n
+                                         "&&" \n
+                                         "[""T_SQ4_D_backupRadar""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_int">*/
+                                class player_found_int
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="introducing_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntel""" \n
+                                         "&&" \n
+                                         "{_AAradarIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Add_the_quest_primary">*/
+                class Add_the_quest_primary
+                {
+                        name = "Add_the_quest_primary";
+                        itemno = 16;
+                        init = /*%FSM<STATEINIT""">*/"// --- add tasks to player" \n
+                         "BIS_SQ4_D_primaryRadar = [""T_SQ4_D_primaryRadar"", [T_D_PrimaryRadar]] call bis_fnc_questCreateManualy;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_tasked">*/
+                                class player_is_tasked
+                                {
+                                        itemno = 4;
+                                        priority = 1.000000;
+                                        to="introducing_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerGivedIntel""" \n
+                                         "&&" \n
+                                         "{_millerGivedIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_see_radar">*/
+                                class player_see_radar
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="start_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntelSeeIt""" \n
+                                         "&&" \n
+                                         "{_AAradarIntelSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished">*/
+                                class talk_finished
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_primary";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_primaryRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskPrimaryRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "(!isNil ""_AAradarIntel""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelSeeIt""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "get_intel_backup">*/
+                                class get_intel_backup
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="comm_about_the_b";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAbackupIntel""" \n
+                                         "&&" \n
+                                         "{_AAbackupIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished_1">*/
+                                class talk_finished_1
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_backup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_backupRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskBackupRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "((!isNil ""_AAradarIntel"" || !isNil ""_AAradarIntelSeeIt"")" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "both_radars_are">*/
+                                class both_radars_are
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ4_D_primaryRadar""] call bis_fnc_questGetState == 3" \n
+                                         "&&" \n
+                                         "[""T_SQ4_D_backupRadar""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_int">*/
+                                class player_found_int
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="introducing_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntel""" \n
+                                         "&&" \n
+                                         "{_AAradarIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Add_the_quest_backup">*/
+                class Add_the_quest_backup
+                {
+                        name = "Add_the_quest_backup";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"// --- add tasks to player backup radar" \n
+                         "BIS_SQ4_D_backupRadar = [""T_SQ4_D_backupRadar"", [T_D_backupRadar]] call bis_fnc_questCreateManualy;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_tasked">*/
+                                class player_is_tasked
+                                {
+                                        itemno = 4;
+                                        priority = 1.000000;
+                                        to="introducing_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerGivedIntel""" \n
+                                         "&&" \n
+                                         "{_millerGivedIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_see_radar">*/
+                                class player_see_radar
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="start_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntelSeeIt""" \n
+                                         "&&" \n
+                                         "{_AAradarIntelSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished">*/
+                                class talk_finished
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_primary";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_primaryRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskPrimaryRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "(!isNil ""_AAradarIntel""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelSeeIt""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "get_intel_backup">*/
+                                class get_intel_backup
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="comm_about_the_b";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAbackupIntel""" \n
+                                         "&&" \n
+                                         "{_AAbackupIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished_1">*/
+                                class talk_finished_1
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_backup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_backupRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskBackupRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "((!isNil ""_AAradarIntel"" || !isNil ""_AAradarIntelSeeIt"")" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "both_radars_are">*/
+                                class both_radars_are
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ4_D_primaryRadar""] call bis_fnc_questGetState == 3" \n
+                                         "&&" \n
+                                         "[""T_SQ4_D_backupRadar""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_int">*/
+                                class player_found_int
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="introducing_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntel""" \n
+                                         "&&" \n
+                                         "{_AAradarIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "start_comm">*/
+                class start_comm
+                {
+                        name = "start_comm";
+                        itemno = 29;
+                        init = /*%FSM<STATEINIT""">*/"_AAradarIntelSeeIt = false;" \n
+                         "BIS_MillerSQ4fsm setFSMVariable [""_DiscoverAAbyHimselfSeeIt"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_tasked">*/
+                                class player_is_tasked
+                                {
+                                        itemno = 4;
+                                        priority = 1.000000;
+                                        to="introducing_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerGivedIntel""" \n
+                                         "&&" \n
+                                         "{_millerGivedIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_see_radar">*/
+                                class player_see_radar
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="start_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntelSeeIt""" \n
+                                         "&&" \n
+                                         "{_AAradarIntelSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished">*/
+                                class talk_finished
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_primary";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_primaryRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskPrimaryRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "(!isNil ""_AAradarIntel""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelSeeIt""" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "get_intel_backup">*/
+                                class get_intel_backup
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="comm_about_the_b";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAbackupIntel""" \n
+                                         "&&" \n
+                                         "{_AAbackupIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "talk_finished_1">*/
+                                class talk_finished_1
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="Add_the_quest_backup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""BIS_SQ4_D_backupRadar""" \n
+                                         "&&" \n
+                                         "(!isNil ""_addTaskBackupRadar""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_MillerDead"")" \n
+                                         "&&" \n
+                                         "((!isNil ""_AAradarIntel"" || !isNil ""_AAradarIntelSeeIt"")" \n
+                                         "||" \n
+                                         "!isNil ""_AAradarIntelByFindingBackup"")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "both_radars_are">*/
+                                class both_radars_are
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ4_D_primaryRadar""] call bis_fnc_questGetState == 3" \n
+                                         "&&" \n
+                                         "[""T_SQ4_D_backupRadar""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_int">*/
+                                class player_found_int
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="introducing_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AAradarIntel""" \n
+                                         "&&" \n
+                                         "{_AAradarIntel}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="__Start";
+        finalStates[] =
+        {
+                "END",
+        };
+};
+/*%FSM</COMPILE>*/

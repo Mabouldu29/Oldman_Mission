@@ -1,0 +1,162 @@
+/*
+	INITIALIZE THE DISCOUNTS BASED ON THE REPUTATION LEVELS
+*/
+#define PRICE_BASIC 200
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+/* #ifndef OM_MAIN_MISSION
+WaitUntil{ REPUTATION_IS_INITIALIZED() };
+#endif */
+
+BIS_dbgReputationLevel = GET_REPUTATION_LEVEL(); BIS_dbgReputationLevelPrev = GET_REPUTATION_LEVELPREVIOUS();BIS_dbgReputationValue = GET_REPUTATION_VALUE();
+DEBUG_INFO("BIS_dbgReputationLevel"); DEBUG_INFO("BIS_dbgReputationLevelPrev");DEBUG_INFO("BIS_dbgReputationValue");
+
+/*
+	==============================================================================
+	HERE DEFINE THE ACTIONS WHICH SHOULD BE EXECUTED ON REACHING A CERTAIN LEVEL
+	==============================================================================
+*/
+
+private _level3 =
+{
+	params [ ["_actualLevel", 3, [999] ], ["_prevLevel", 3, [999] ] ];
+	ECONOMY_SET_ITEM_EXTRACHARGE_COST(-35);
+	ECONOMY_SET_ITEM_EXTRACHARGE_PURCHASE(35);
+	[_actualLevel,_prevLevel] spawn BIS_fnc_OM_repNotification;
+	missionNamespace setvariable ["BedPriceSyndikat", PRICE_BASIC/_actualLevel];
+};
+private _level2 =
+{
+	params [ ["_actualLevel", 2, [999] ], ["_prevLevel", 2, [999] ] ];
+	ECONOMY_SET_ITEM_EXTRACHARGE_COST(-20);
+	ECONOMY_SET_ITEM_EXTRACHARGE_PURCHASE(20);
+	[_actualLevel,_prevLevel] spawn BIS_fnc_OM_repNotification;
+	missionNamespace setvariable ["BedPriceSyndikat", PRICE_BASIC/_actualLevel];
+	missionNameSpace setVariable ["BIS_SynikatSmugglersRestricted", false];
+};
+private _level1 =
+{
+	params [ ["_actualLevel", 1, [999] ], ["_prevLevel", 1, [999] ] ];
+	ECONOMY_SET_ITEM_EXTRACHARGE_COST(-10);
+	ECONOMY_SET_ITEM_EXTRACHARGE_PURCHASE(10);
+	SUPPORT_SET_EVENT_PROBABILITY(1);
+	SYNDIKATTEAM_SET_FLAG( INDIRECT_ACTIVATION_ENABLED );
+	SYNDIKATTEAM_SET_FLAG( DIRECT_ACTIVATION_ENABLED );
+	if(isNil "BIS_infoSyndikat_SyndikatTeam") then
+	{
+		BIS_infoSyndikat_SyndikatTeam = player createDiaryRecord ["SyndikatInfo", [  localize "STR_A3_init_reputation_actions.sqf0", [] call BIS_fnc_generateSyndikatsInfoText_SyndikatTeam], taskNull, "", false];
+	};
+	//Syndikat Team can be called over the radio
+	//removed only if the reputation gets bad (Boss reacts over the phone related to the reputation)
+	if(isNil {missionNameSpace getVariable "SyndikatTeamRequestCallID"}) then
+	{
+		missionNameSpace setVariable
+		[
+			"SyndikatTeamRequestCallID",
+			["Boss", localize "STR_A3_init_reputation_actions.sqf1", {[3,[true]] call BIS_fnc_OM_moduleSyndikatTeam}, true, false] call BIS_fnc_OM_phone_addCall	//TODO: localize
+		]
+	};
+
+	[_actualLevel,_prevLevel] spawn BIS_fnc_OM_repNotification;
+	missionNamespace setvariable ["BedPriceSyndikat", PRICE_BASIC/_actualLevel];
+};
+private _level0 =
+{
+	params [ ["_actualLevel", 0, [999] ], ["_prevLevel", 0, [999] ] ];
+	missionNameSpace setVariable ["BIS_mainCampRestricted", false];
+	missionNameSpace setVariable ["BIS_TempleCampRestricted", false];
+	missionNameSpace setVariable ["BIS_AllCampsRestricted", false];
+	missionNameSpace setVariable ["BIS_SyndikatRestpointsRestricted", false];
+	ECONOMY_SET_ITEM_EXTRACHARGE_COST(0);
+	ECONOMY_SET_ITEM_EXTRACHARGE_PURCHASE(0);
+	SUPPORT_SET_EVENT_PROBABILITY(0.65);
+	if (!isNil "_firstTimeRepChanged") then {SYNDIKATTEAM_SET_FLAG( DIRECT_ACTIVATION_ENABLED )};
+	if(isNil "BIS_infoSyndikat_SyndikatAssault") then
+	{
+		BIS_infoSyndikat_SyndikatAssault = player createDiaryRecord ["SyndikatInfo", [  localize "STR_A3_init_reputation_actions.sqf2", [] call BIS_fnc_generateSyndikatsInfoText_SyndikatAssault], taskNull, "", false];
+	};
+	if(isNil "BIS_infoSyndikat_DropOffPoint") then
+	{
+		BIS_infoSyndikat_DropOffPoint = player createDiaryRecord ["SyndikatInfo", [  localize "STR_A3_init_reputation_actions.sqf3", [] call BIS_fnc_generateSyndikatsInfoText_DropOffPoints], taskNull, "", false]
+	};
+	if (!isNil "_firstTimeRepChanged") then
+	{
+		[_actualLevel,_prevLevel] spawn BIS_fnc_OM_repNotification;
+	}
+	else
+	{
+		private _firstTimeRepChanged = true;
+		["Syndikatinfo", true] call BIS_fnc_OM_phone_enableButton; //---enable Syndikat Info button
+	};
+	missionNamespace setvariable ["BedPriceSyndikat", PRICE_BASIC];
+	if(isNil "BIS_infoSyndikat_safehouse") then
+	{
+		BIS_infoSyndikat_safehouse = player createDiaryRecord ["SyndikatInfo", [  localize "STR_A3_init_reputation_actions.sqf4", [] call BIS_fnc_generateSyndikatsInfoText_safehouse], taskNull, "", false];
+	};
+};
+private _levelMinus1 =
+{
+	params [ ["_actualLevel", -1, [999] ], ["_prevLevel", -1, [999] ] ];
+	if(_actualLevel != _prevLevel) then{ [_actualLevel,_prevLevel] spawn BIS_fnc_OM_repNotification; };		//mission started, do not activate the speech
+	missionNameSpace setVariable ["BIS_mainCampRestricted", (_actualLevel == _prevLevel)];									//TODO: remove if not needed anymore
+	missionNameSpace setVariable ["BIS_TempleCampRestricted", true];
+	missionNameSpace setVariable ["BIS_AllCampsRestricted", true];
+	missionNameSpace setVariable ["BIS_SyndikatRestpointsRestricted", true];
+	missionNameSpace setVariable ["BIS_SynikatSmugglersRestricted", true];
+	ECONOMY_SET_ITEM_EXTRACHARGE_COST(10);
+	ECONOMY_SET_ITEM_EXTRACHARGE_PURCHASE(-10);
+	SUPPORT_SET_EVENT_PROBABILITY(0);
+	SYNDIKATTEAM_CLEAR_FLAG( DIRECT_ACTIVATION_ENABLED + INDIRECT_ACTIVATION_ENABLED );		//Syndikat Team disabled (neither by direct contact in a camp nor over the radio (TODO))
+	//Remove the request call from the diary menu
+	if!(isNil {missionNameSpace getVariable "SyndikatTeamRequestCallID"}) then
+	{
+		[missionNameSpace getVariable "SyndikatTeamRequestCallID"] call BIS_fnc_OM_phone_removeCall;
+		missionNameSpace setVariable ["SyndikatTeamRequestCallID", nil];
+	};
+
+	missionNamespace setvariable ["BedPriceSyndikat", PRICE_BASIC*10000];
+};
+private _levelMinus2 =
+{
+	params [ ["_actualLevel", -2, [999] ], ["_prevLevel", -2, [999] ] ];
+	ECONOMY_SET_ITEM_EXTRACHARGE_COST(20);
+	ECONOMY_SET_ITEM_EXTRACHARGE_PURCHASE(-20);
+	SUPPORT_SET_EVENT_PROBABILITY(0); 						//no support
+	[_actualLevel,_prevLevel] spawn BIS_fnc_OM_repNotification;
+	missionNamespace setvariable ["BedPriceSyndikat", PRICE_BASIC*100000];
+	/*if (_actualLevel < _prevLevel) then
+	{
+		hint "SYNDIKAT BOSS:\nOldman, You just fucked it up! Dont count with any help of my people! Dont even think about it!\n\n (Reputation level -2)"	//TODO: Localize
+	}
+	else
+	{
+		hint "SYNDIKAT BOSS:\nEhm Oldman? Dont think that we are friends now or even one of us! But thank you for that things you have done for us recently!\n\n (Reputation level -2)"	//TODO: Localize
+	};*/
+};
+private _levelMinus3 =
+{
+	params [ ["_actualLevel", -3, [999] ], ["_prevLevel", -3, [999] ] ];
+	//TODO: CLOSE MARKETS
+	ECONOMY_SET_ITEM_EXTRACHARGE_COST(1000);			//TEMP
+	ECONOMY_SET_ITEM_EXTRACHARGE_PURCHASE(-100);	//TEMP
+	[_actualLevel,_prevLevel] spawn BIS_fnc_OM_repNotification;
+	missionNamespace setvariable ["BedPriceSyndikat", PRICE_BASIC*1000000];
+	/*if (_actualLevel < _prevLevel) then
+	{
+		hint "SYNDIKAT BOSS:\nI just want to let you know Oldman, that you cant win this fight! You hear me?! I'll make sure that everybody knows your fucking face and you will regret that you choosed wrong side! You piece of shit! \n\n (Reputation level -3)"; //TODO: Localize
+	}
+	else
+	{
+		hint ""
+	};*/
+};
+
+[MODE_REGISTER, [ [_level3, 			 3, nil, true] ] ] call BIS_fnc_OM_moduleReputation;
+[MODE_REGISTER, [ [_level2, 			 2, nil, true] ] ] call BIS_fnc_OM_moduleReputation;
+[MODE_REGISTER, [ [_level1, 			 1, nil, true] ] ] call BIS_fnc_OM_moduleReputation;
+[MODE_REGISTER, [ [_level0, 			 0, nil, true] ] ] call BIS_fnc_OM_moduleReputation;
+[MODE_REGISTER, [ [_levelMinus1,	-1, nil, true] ] ] call BIS_fnc_OM_moduleReputation;
+[MODE_REGISTER, [ [_levelMinus2,	-2, nil, true] ] ] call BIS_fnc_OM_moduleReputation;
+[MODE_REGISTER, [ [_levelMinus3,	-3, nil, true] ] ] call BIS_fnc_OM_moduleReputation;
+
+[] call _levelMinus1;

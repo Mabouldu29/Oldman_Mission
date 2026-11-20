@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_WoodPile_F",[13553.8,8368.93,0.0697098],[[0.139813,0.990176,0.00188585],[-0.000261799,-0.0018676,0.999998]],0,"",false,false,[],false,2],["Land_GarbageHeap_04_F",[13552.6,8368.04,0.101948],[[-0.128173,-0.99175,-0.00186969],[0,-0.00188524,0.999998]],0,"",false,false,[],false,2]]
+		,
+		//--- #size
+		64.069
+]

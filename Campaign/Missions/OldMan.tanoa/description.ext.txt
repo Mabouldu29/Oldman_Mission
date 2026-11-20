@@ -1,0 +1,7 @@
+author = $STR_A3_Bohemia_Interactive;
+doneKeys[] =        {"BIS_OM_Oldman"};
+//SECTOR MODUL INIT.
+#include "\a3\Missions_F_Oldman\Systems\commonDescription.inc"
+onPauseScript[] = {BIS_fnc_OM_pause};
+
+#include "cfgCredits.inc"

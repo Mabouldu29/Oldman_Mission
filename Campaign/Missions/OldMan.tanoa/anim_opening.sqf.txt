@@ -1,0 +1,423 @@
+#include "\a3\Functions_F_Tacops\Systems\fn_animatedScreen.inc"
+#include "\A3\Missions_F_Oldman\Campaign\Missions\Oldman.tanoa\anim_opening_data.inc"
+
+private _timeline =
+
+[
+
+	[0.0, 	{
+				playMusic "OM_Intro";
+			}
+	],
+
+	[ 1.0, 	{
+
+				//<t color='#%2' size='%1' shadowColor='#000000' shadow = '2'> Tanoa. 2038.</t>
+				[MODE_BLACKIN,0,false] call bis_fnc_animatedScreen;
+				0 = [true, [localize "STR_A3_anim_opening.sqf0"], STYLE_ONE_SENTENCE] spawn BIS_fnc_OM_AS_ShowStaticText;
+
+			}
+	],
+
+	[4.0, 	{
+				[MODE_BLACKOUT,2,false] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[ 6.0, 	{
+
+
+				//<t color='#%2' size='%1' shadowColor='#000000' shadow = '2'>Exercise Safe Horizon has ended.</t>
+				[MODE_BLACKIN,0,false] call bis_fnc_animatedScreen;
+				0 = [true, [localize "STR_A3_anim_opening.sqf1"], STYLE_ONE_SENTENCE] spawn BIS_fnc_OM_AS_ShowStaticText;
+
+			}
+	],
+
+	[10.0, 	{
+				[MODE_BLACKOUT,2,false] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[11.0, 	{
+				playSound "intro_Airbase";
+			}
+	],
+
+	[12.000,
+			{
+
+				[MODE_RESET,[true,true]] call bis_fnc_animatedScreen;
+				[MODE_BLACKOUT,	0.01, true] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_CREATE,		NATO_LEAVE_ID_BACKGROUND,	NATO_LEAVE_IMG_BACKGROUND,	nil,nil,1	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		NATO_LEAVE_ID_STORM,		NATO_LEAVE_IMG_STORM,	[0.050,0.750],0.3,4	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		NATO_LEAVE_ID_BACKPACKS,	NATO_LEAVE_IMG_BACKPACKS,	[0.480,0.480],nil,1	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		NATO_LEAVE_ID_SOLDIERS,		NATO_LEAVE_IMG_SOLDIERS,	[0.500,0.480],nil,1.20	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		NATO_LEAVE_ID_VTOL,			NATO_LEAVE_IMG_VTOL,		nil,nil,1	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		NATO_LEAVE_ID_VTOL_SHADOW,	NATO_LEAVE_IMG_VTOL_SHADOW,	nil,0.3,1	] call bis_fnc_animatedScreen;
+
+				//[MODE_LAYER_FADE, 		NATO_LEAVE_ID_VTOL_SHADOW,			0, 0., 0.0			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [NATO_LEAVE_ID_BACKGROUND], 7,nil,1.05			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [NATO_LEAVE_ID_BACKPACKS], 7,[0.500,0.480],1.05		] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [NATO_LEAVE_ID_SOLDIERS], 7,[0.530,0.485],1.25			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [NATO_LEAVE_ID_VTOL,NATO_LEAVE_ID_VTOL_SHADOW], 7,[0.490,0.500],1.05			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [NATO_LEAVE_ID_STORM], 7,[-0.200,0.750],4			] call bis_fnc_animatedScreen;
+				[MODE_BLACKIN,			2,				false								] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_ROTATE, 	[
+
+						NATO_LEAVE_ID_BACKGROUND,
+						NATO_LEAVE_ID_STORM,
+						NATO_LEAVE_ID_BACKPACKS,
+						NATO_LEAVE_ID_SOLDIERS,
+						NATO_LEAVE_ID_VTOL,
+						NATO_LEAVE_ID_VTOL_SHADOW
+
+						],				7,-1						] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[17.0, 	{
+				[MODE_BLACKOUT,2,false] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[ 19.0, {
+				[MODE_BLACKIN,0,false] call bis_fnc_animatedScreen;
+				[MODE_RESET,[true,true]] call bis_fnc_animatedScreen;
+
+				//<t color='#%2' size='%1' shadowColor='#000000' shadow = '2'>NATO have reneged on their commitments. A malaria epidemic spreads...</t>
+				//<t color='#%2' size='%1' shadowColor='#000000' shadow = '2'>And a newly elected government calls for humanitarian support - from CSAT.</t>
+				//<t color='#%2' size='%1' shadowColor='#000000' shadow = '2'>First they sent their doctors. Then, they sent their soldiers.</t>
+				0 = [true, [localize "STR_A3_anim_opening.sqf2" , localize "STR_A3_anim_opening.sqf3"], STYLE_TWO_SENTENCES] spawn BIS_fnc_OM_AS_ShowStaticText;
+			}
+	],
+
+	[25.0, 	{
+				playSound "intro_Map";
+			}
+	],
+
+	[ 26.000,
+			{
+				[MODE_RESET,[true,true]] call bis_fnc_animatedScreen;
+				[MODE_BLACKOUT,	0.01, true] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_BACKGROUND,	CSAT_TAKE_OVER_IMG_BACKGROUND,	nil,nil,1	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_FOREGROUND,	CSAT_TAKE_OVER_IMG_FOREGROUND,	nil,nil,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_HEX1,			CSAT_TAKE_OVER_IMG_HEX1,	[0.320,0.320],nil,0.0	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_HEX2,			CSAT_TAKE_OVER_IMG_HEX2,	[0.630,0.650],nil,0	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_HEX3,			CSAT_TAKE_OVER_IMG_HEX3,	[0.567,0.410],nil,0	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_HEX4,			CSAT_TAKE_OVER_IMG_HEX4,	[0.330,0.600],nil,0	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_HEX5,			CSAT_TAKE_OVER_IMG_HEX4,	[0.330,0.500],nil,0	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_HEX6,			CSAT_TAKE_OVER_IMG_HEX4,	[0.430,0.600],nil,0	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_ICON,			CSAT_TAKE_OVER_IMG_ICON,	nil,0,1	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_TEXT,			CSAT_TAKE_OVER_IMG_TEXT,	nil,nil,1	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_TEXT_OVERLAY,	CSAT_TAKE_OVER_IMG_TEXT_OVERLAY,	nil,nil,1	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_MAP_BORDER,			CSAT_TAKE_OVER_IMG_MAP_BORDER,	nil,0,1	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		CSAT_TAKE_OVER_ID_MAP_TEXT,	CSAT_TAKE_OVER_IMG_MAP_TEXT,	nil,0,1	] call bis_fnc_animatedScreen;
+				[MODE_BLACKIN,			2,				false								] call bis_fnc_animatedScreen;
+
+				[] spawn {
+
+					[MODE_LAYER_ANIMATE, CSAT_TAKE_OVER_ID_HEX1, 7,[0.520,0.520],1.2			] call bis_fnc_animatedScreen;
+					uisleep 0.5;
+					[MODE_LAYER_ANIMATE, CSAT_TAKE_OVER_ID_HEX2, 7,[0.505,0.560],1.2			] call bis_fnc_animatedScreen;
+					uisleep 0.8;
+					[MODE_LAYER_ANIMATE, CSAT_TAKE_OVER_ID_HEX3, 10.5,[0.510,0.500],0.9			] call bis_fnc_animatedScreen;
+					uisleep 0.4;
+					[MODE_LAYER_ANIMATE, CSAT_TAKE_OVER_ID_HEX4, 7,[0.490,0.590],0.68			] call bis_fnc_animatedScreen;
+					uisleep 0.2;
+					[MODE_LAYER_ANIMATE, CSAT_TAKE_OVER_ID_HEX5, 7,[0.330,0.500],0.45			] call bis_fnc_animatedScreen;
+					uisleep 0.5;
+					[MODE_LAYER_ANIMATE, CSAT_TAKE_OVER_ID_HEX6, 7,[0.430,0.600],0.45			] call bis_fnc_animatedScreen;
+					uisleep 2.5;
+					[MODE_LAYER_FADE, CSAT_TAKE_OVER_ID_ICON, 3, 1, 0			] call bis_fnc_animatedScreen;
+					[MODE_LAYER_FADE, CSAT_TAKE_OVER_ID_TEXT_OVERLAY, 3, 0, 1			] call bis_fnc_animatedScreen;
+
+				};
+				[MODE_LAYER_FADE, 		[
+					CSAT_TAKE_OVER_ID_HEX1,
+					CSAT_TAKE_OVER_ID_HEX2,
+					CSAT_TAKE_OVER_ID_HEX3,
+					CSAT_TAKE_OVER_ID_HEX4,
+					CSAT_TAKE_OVER_ID_HEX5,
+					CSAT_TAKE_OVER_ID_HEX6
+					],			3, 1, 0.0			] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_ROTATE, 	[
+
+						CSAT_TAKE_OVER_ID_BACKGROUND,
+						CSAT_TAKE_OVER_ID_FOREGROUND,
+						CSAT_TAKE_OVER_ID_HEX1,
+						CSAT_TAKE_OVER_ID_HEX2,
+						CSAT_TAKE_OVER_ID_HEX3,
+						CSAT_TAKE_OVER_ID_HEX4,
+						CSAT_TAKE_OVER_ID_HEX5,
+						CSAT_TAKE_OVER_ID_HEX6,
+						CSAT_TAKE_OVER_ID_ICON,
+						CSAT_TAKE_OVER_ID_TEXT,
+						CSAT_TAKE_OVER_ID_TEXT_OVERLAY,
+						CSAT_TAKE_OVER_ID_MAP_BORDER,
+						CSAT_TAKE_OVER_ID_MAP_TEXT
+
+						],				12,2						] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[ 36.00,
+			{
+					[MODE_BLACKOUT,2,false] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[ 38.0, {
+				[MODE_BLACKIN,0,false] call bis_fnc_animatedScreen;
+				[MODE_RESET,[true,true]] call bis_fnc_animatedScreen;
+
+				0 = [true, [localize "STR_A3_anim_opening.sqf4" , localize "STR_A3_anim_opening.sqf5"], STYLE_TWO_SENTENCES] spawn BIS_fnc_OM_AS_ShowStaticText;
+			}
+	],
+
+	[ 46.00,
+			{
+					[MODE_BLACKOUT,2,false] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[47.0, 	{
+				playSound "intro_Syndikat";
+			}
+	],
+
+	[48.000,
+			{
+
+				[MODE_RESET,[true,true]] call bis_fnc_animatedScreen;
+				[MODE_BLACKOUT,	0.01, true] call bis_fnc_animatedScreen;
+
+				private _duration = 7;
+
+
+
+				[MODE_LAYER_CREATE,		POLITIQUE_ID_BACKGROUND,	POLITIQUE_IMG_BACKGROUND,	nil,nil,1	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		POLITIQUE_ID_BODYGUARD,		POLITIQUE_IMG_BODYGUARD,	[0.540,0.500],nil,1	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		POLITIQUE_ID_POLITICIAN,	POLITIQUE_IMG_POLITICIAN,	nil,nil,0.9	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		POLITIQUE_ID_THUG,			POLITIQUE_IMG_THUG,			nil,nil,0.9	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		POLITIQUE_ID_LEAFLET1,		POLITIQUE_IMG_LEAFLET1,		[0.640,0.500],nil,0.9	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		POLITIQUE_ID_LEAFLET2,		POLITIQUE_IMG_LEAFLET2,		nil,nil,0.9	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		POLITIQUE_ID_LEAFLET3,		POLITIQUE_IMG_LEAFLET3,		nil,nil,0.9	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		POLITIQUE_ID_PAMPHLETEER,	POLITIQUE_IMG_PAMPHLETEER,	[0.250,0.500],nil,0.9	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		POLITIQUE_ID_BLOOD,			POLITIQUE_IMG_BLOOD,	[0.650,0.520],0,0.9	] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_ANIMATE, [POLITIQUE_ID_BODYGUARD], _duration,[0.545,0.500]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [POLITIQUE_ID_POLITICIAN], _duration,[0.490,0.500]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [POLITIQUE_ID_THUG], _duration,[0.510,0.500]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [POLITIQUE_ID_LEAFLET1], _duration,[0.660,0.515]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [POLITIQUE_ID_LEAFLET2], _duration,[0.450,0.510]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [POLITIQUE_ID_LEAFLET3], _duration,[0.550,0.500]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [POLITIQUE_ID_PAMPHLETEER], _duration,[0.230,0.505]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [POLITIQUE_ID_BLOOD], _duration,[0.630,0.520]			] call bis_fnc_animatedScreen;
+				[MODE_BLACKIN,			2,				false								] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_ROTATE, 	[
+
+						POLITIQUE_ID_BACKGROUND,
+						POLITIQUE_ID_BODYGUARD,
+						POLITIQUE_ID_POLITICIAN,
+						POLITIQUE_ID_THUG,
+						POLITIQUE_ID_LEAFLET1,
+						POLITIQUE_ID_LEAFLET2,
+						POLITIQUE_ID_LEAFLET3,
+						POLITIQUE_ID_PAMPHLETEER,
+						POLITIQUE_ID_BLOOD
+
+						],				7,-1						] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[ 48.50,
+			{
+					[MODE_LAYER_FADE, 	 POLITIQUE_ID_BLOOD,			1, 1, 0			] call bis_fnc_animatedScreen;
+			}
+	],
+	[ 50.50,
+			{
+					[MODE_LAYER_FADE, 	 POLITIQUE_ID_BLOOD,			2, 0, 1			] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[ 53.00,
+			{
+					[MODE_BLACKOUT,2,false] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[ 55.0, {
+				[MODE_BLACKIN,0,false] call bis_fnc_animatedScreen;
+				[MODE_RESET,[true,true]] call bis_fnc_animatedScreen;
+
+				0 = [true, [localize "STR_A3_anim_opening.sqf6" , localize "STR_A3_anim_opening.sqf7"], STYLE_TWO_SENTENCES] spawn BIS_fnc_OM_AS_ShowStaticText;
+			}
+	],
+
+	[ 62.00,
+			{
+					[MODE_BLACKOUT,2,false] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[63.0, 	{
+				playSound "intro_Battle";
+			}
+	],
+
+	[64.000,
+			{
+
+				[MODE_RESET,[true,true]] call bis_fnc_animatedScreen;
+				[MODE_BLACKOUT,	0.01, true] call bis_fnc_animatedScreen;
+				private _duration = 7;
+				//7 fadeMusic 0;
+
+
+
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_BACKGROUND,			INSURGENTS_IMG_BACKGROUND,			nil,nil,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_MIDGROUND,			INSURGENTS_IMG_MIDGROUND,			nil,nil,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_INSURGENT,			INSURGENTS_IMG_INSURGENT,			nil,nil,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_SMOKE,				INSURGENTS_IMG_SMOKE,				nil,nil,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_SMOKE_OVERLAY,		INSURGENTS_IMG_SMOKE_OVERLAY,		nil,nil,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_MUZZLE_FLASH_1,		INSURGENTS_IMG_MUZZLE_FLASH_1,		nil,0,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_MUZZLE_FLASH_2,		INSURGENTS_IMG_MUZZLE_FLASH_2,		nil,0,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_MUZZLE_FLASH_3,		INSURGENTS_IMG_MUZZLE_FLASH_3,		nil,0,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_CREEPER_FOREGROUND,	INSURGENTS_IMG_CREEPER_FOREGROUND,	nil,nil,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_PLANT_FOREGROUND,		INSURGENTS_IMG_PLANT_FOREGROUND,	nil,nil,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_SMOKE_FOREGROUND,		INSURGENTS_IMG_SMOKE_FOREGROUND,	nil,nil,1] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		INSURGENTS_ID_SMOKE_FOREGROUND_OV,	INSURGENTS_IMG_SMOKE_FOREGROUND_OV,	nil,nil,1] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_ANIMATE, [INSURGENTS_ID_SMOKE], _duration,[0.500,0.460]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [INSURGENTS_ID_CREEPER_FOREGROUND], _duration,[0.540,0.500]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [INSURGENTS_ID_PLANT_FOREGROUND], _duration,[0.470,0.500]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [INSURGENTS_ID_SMOKE_FOREGROUND], _duration,[0.470,0.500]			] call bis_fnc_animatedScreen;
+				[MODE_LAYER_ANIMATE, [
+
+							INSURGENTS_ID_MIDGROUND,
+							INSURGENTS_ID_INSURGENT
+
+							], _duration,[0.500,0.500],1.03			] call bis_fnc_animatedScreen;
+
+				[MODE_BLACKIN,			2,				false								] call bis_fnc_animatedScreen;
+
+				[] spawn {
+					uisleep 1.5;
+					[MODE_LAYER_FADE, 		INSURGENTS_ID_MUZZLE_FLASH_1, 		0.05,0.9,0.0             ] call bis_fnc_animatedScreen;
+					uisleep 0.1;
+					[MODE_LAYER_FADE, 		INSURGENTS_ID_MUZZLE_FLASH_1, 		0.1,0,0.9             ] call bis_fnc_animatedScreen;
+					uisleep 0.5;
+					[MODE_LAYER_FADE, 		INSURGENTS_ID_MUZZLE_FLASH_2, 		0.05,0.9,0.0             ] call bis_fnc_animatedScreen;
+					uisleep 0.1;
+					[MODE_LAYER_FADE, 		INSURGENTS_ID_MUZZLE_FLASH_2, 		0.1,0,0.9             ] call bis_fnc_animatedScreen;
+					uisleep 1.0;
+					[MODE_LAYER_FADE, 		INSURGENTS_ID_MUZZLE_FLASH_3, 		0.05,0.9,0.0             ] call bis_fnc_animatedScreen;
+					uisleep 0.1;
+					[MODE_LAYER_FADE, 		INSURGENTS_ID_MUZZLE_FLASH_3, 		0.1,0,0.9             ] call bis_fnc_animatedScreen;
+
+				};
+			}
+	],
+
+
+	[ 69.00,
+			{
+					[MODE_BLACKOUT,2,false] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[ 73.0, {
+				[MODE_BLACKIN,0,false] call bis_fnc_animatedScreen;
+				[MODE_RESET,[true,true]] call bis_fnc_animatedScreen;
+				//playMusic "AmbientTrack01_F_Orange";
+				//0 fadeMusic 1;
+
+				0 = [true, [localize "STR_A3_anim_opening.sqf8" , localize "STR_A3_anim_opening.sqf9"], STYLE_TWO_SENTENCES] spawn BIS_fnc_OM_AS_ShowStaticText;
+			}
+	],
+
+	[ 80.00,
+			{
+					[MODE_BLACKOUT,2,false] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[81.0, 	{
+				playSound "intro_Legion";
+			}
+	],
+
+	[82.000,
+			{
+
+				[MODE_RESET,[true,true]] call bis_fnc_animatedScreen;
+				[MODE_BLACKOUT,	0.01, true] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_CREATE,		LEGIO_ID_NEWSPAPER_IMAGE,	LEGIO_IMG_NEWSPAPER_IMAGE,	nil,nil,1.0	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		LEGIO_ID_NEWSPAPER_CLEAN,	LEGIO_IMG_NEWSPAPER_CLEAN,	nil,nil,2.0	] call bis_fnc_animatedScreen;
+				[MODE_LAYER_CREATE,		LEGIO_ID_NEWSPAPER_SEPIA,	LEGIO_IMG_NEWSPAPER_SEPIA,	nil,nil,2.0	] call bis_fnc_animatedScreen;
+
+				[MODE_BLACKIN,			2,				false								] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_ROTATE, 	[
+
+						LEGIO_ID_NEWSPAPER_IMAGE,
+						LEGIO_ID_NEWSPAPER_CLEAN,
+						LEGIO_ID_NEWSPAPER_SEPIA
+
+						],				16,5						] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_ANIMATE, [LEGIO_ID_NEWSPAPER_IMAGE], 9,nil,0.811			] call bis_fnc_animatedScreen;
+
+				[MODE_LAYER_ANIMATE, 	[
+
+						LEGIO_ID_NEWSPAPER_CLEAN,
+						LEGIO_ID_NEWSPAPER_SEPIA
+
+						],				20,nil,1.15					] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[84.000,
+			{
+				[MODE_LAYER_FADE, 		LEGIO_ID_NEWSPAPER_IMAGE, 		3.00,0.0,1.0             ] call bis_fnc_animatedScreen;
+
+			}
+	],
+
+	[91.000,
+			{
+				[MODE_LAYER_FADE, 		LEGIO_ID_NEWSPAPER_CLEAN, 		6.00,0.0,1.0             ] call bis_fnc_animatedScreen;
+
+			}
+	],
+
+	[ 100, //6
+			{
+				[MODE_BLACKOUT,2,false] call bis_fnc_animatedScreen;
+			}
+	],
+
+	[ 102.00, //9
+			{
+				/* _ee = ["cut_camera_placement_call_1st_part", "Oldman", nil, player, nil, TRUE] spawn BIS_fnc_kbTell; */
+				//0 = [] spawn BIS_fnc_OM_CameraShot;
+				//BIS_startCamShot = true;
+			}
+	],
+
+	[ 102.5, //9.5
+				
+				{
+					["Timeline finished:%1", 0 ] call BIS_fnc_LogFormat;
+				}
+	]
+];

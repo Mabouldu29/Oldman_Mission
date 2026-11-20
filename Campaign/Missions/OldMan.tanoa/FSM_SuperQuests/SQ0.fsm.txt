@@ -1,0 +1,1802 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, SQ0">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-50.000000,-975.000000,50.000000,-925.000000,0.000000,"Init"};
+item1[] = {"car_marker",4,218,-50.000000,-900.000000,50.000000,-850.000000,0.000000,"car marker"};
+item2[] = {"code",2,250,-50.000000,-525.000000,50.000000,-475.000000,0.000000,"code"};
+item3[] = {"close_to_Arthur",4,218,-50.000000,-450.000000,50.000000,-400.000000,0.000000,"close to Arthur"};
+item4[] = {"code_1",2,250,-50.000000,-375.000000,50.000000,-325.000000,0.000000,"code"};
+item5[] = {"fetch_Charge",4,218,-50.000000,-300.000000,50.000000,-250.000000,0.000000,"fetch Charge"};
+item6[] = {"code_2",2,250,-50.000000,-225.000000,50.000000,-175.000000,0.000000,"code"};
+item7[] = {"player_has_charg",4,218,-50.000000,-150.000000,50.000000,-100.000000,0.000000,"player" \n "has" \n "charge"};
+item8[] = {"delete_marker_",2,250,-50.000000,-75.000000,50.000000,-25.000000,0.000000,"delete marker" \n ""};
+item9[] = {"is_morning",4,218,-50.000000,300.000000,50.000000,350.000000,0.000000,"is morning"};
+item10[] = {"code_3",2,4346,-50.000000,375.000000,50.000000,425.000000,0.000000,"code"};
+item11[] = {"Arthur_killed",4,218,125.000000,-525.000000,225.000000,-475.000000,0.000000,"Arthur killed"};
+item12[] = {"",7,210,83.500000,-504.000000,91.500000,-496.000000,0.000000,""};
+item13[] = {"",7,210,83.500000,-354.000000,91.500000,-346.000000,0.000000,""};
+item14[] = {"",7,210,-104.000000,-354.000000,-95.999992,-346.000000,0.000000,""};
+item15[] = {"",7,210,-104.000008,-204.000000,-95.999992,-196.000000,0.000000,""};
+item16[] = {"",7,210,-104.000008,-504.000031,-96.000000,-495.999969,0.000000,""};
+item17[] = {"",7,210,-104.000000,321.000000,-95.999992,329.000000,0.000000,""};
+item18[] = {"player_meet_Synd",4,218,-50.000000,650.000000,50.000000,700.000000,0.000000,"player meet" \n "Syndikat"};
+item19[] = {"code_4",2,250,-50.000000,725.000000,50.000000,775.000000,0.000000,"code"};
+item20[] = {"doctor_task_play",4,218,-50.000000,450.000000,50.000000,500.000000,0.000000,"doctor task" \n "player"};
+item21[] = {"code_5",2,250,-50.000000,525.000000,50.000000,575.000000,0.000000,"code"};
+item22[] = {"code_6",2,250,-50.000000,-825.000000,50.000000,-775.000000,0.000000,"code"};
+item23[] = {"go_for_Arthur",4,218,-50.000000,-750.000000,50.000000,-700.000000,0.000000,"go for Arthur"};
+item24[] = {"code_7",2,250,125.000000,-450.000000,225.000000,-400.000000,0.000000,"code"};
+item25[] = {"_",4,218,125.000000,-75.000000,225.000000,-25.000000,0.000000,""};
+item26[] = {"give_task_meet_M",4,218,75.000000,650.000000,175.000000,700.000000,0.000000,"give task" \n "meet Miller"};
+item27[] = {"code_8",2,250,75.000000,725.000000,175.000000,775.000000,0.000000,"code"};
+item28[] = {"",7,210,-4.000000,608.500000,4.000000,616.500000,0.000000,""};
+item29[] = {"",7,210,121.000000,608.500000,129.000000,616.500000,0.000000,""};
+item30[] = {"",7,210,-4.000000,958.500000,4.000000,966.500000,0.000000,""};
+item31[] = {"",7,210,121.000000,958.500000,129.000000,966.500000,0.000000,""};
+item32[] = {"",7,210,-129.000000,958.500000,-121.000000,966.500000,0.000000,""};
+item33[] = {"",7,210,-129.000000,608.500000,-120.999992,616.500000,0.000000,""};
+item34[] = {"D_A_Y__1",-1,250,-200.000000,325.000000,-150.000000,975.000000,0.000000,"D" \n "A" \n "Y" \n "" \n "1"};
+item35[] = {"D_A_Y__0",-1,250,-200.000000,-975.000000,-150.000000,325.000000,0.000000,"D" \n "A" \n "Y" \n "" \n "0"};
+item36[] = {"give_task",4,218,75.000000,800.000000,175.000000,850.000000,0.000000,"give" \n "task"};
+item37[] = {"code_9",2,250,75.000000,875.000000,175.000000,925.000000,0.000000,"code"};
+item38[] = {"Miller_call_fini",4,218,-50.000000,0.000000,50.000000,50.000000,0.000000,"Miller call" \n "finished"};
+item39[] = {"add_task_go_Home",2,250,-50.000000,75.000000,50.000000,125.000000,0.000000,"add task" \n "go Home"};
+item40[] = {"",7,210,-79.000008,-53.999992,-70.999992,-46.000008,0.000000,""};
+item41[] = {"",7,210,-79.000008,283.500000,-70.999992,291.499969,0.000000,""};
+item42[] = {"CHEAT_2",4,218,250.000000,-525.000000,350.000000,-475.000000,0.000000,"CHEAT 2"};
+item43[] = {"",7,210,296.000000,-954.000000,304.000000,-946.000000,0.000000,""};
+item44[] = {"code_10",2,250,250.000000,-450.000000,350.000000,-400.000000,0.000000,"code"};
+item45[] = {"",7,210,296.000000,321.000031,304.000000,328.999969,0.000000,""};
+item46[] = {"",7,210,296.000000,-804.000000,304.000000,-796.000000,0.000000,""};
+item47[] = {"",7,210,71.000000,-566.500000,79.000000,-558.500000,0.000000,""};
+item48[] = {"",7,210,296.000000,-566.500000,304.000000,-558.500000,0.000000,""};
+item49[] = {"code_11",2,250,-50.000000,-675.000000,50.000000,-625.000000,0.000000,"code"};
+item50[] = {"comm__finished",4,218,-50.000000,-600.000000,50.000000,-550.000000,0.000000,"comm " \n "finished"};
+item51[] = {"DOCTOR_IS_DEAD",4,218,75.000000,375.000000,175.000000,425.000000,1.000000,"DOCTOR" \n "IS" \n "DEAD"};
+item52[] = {"code_12",2,250,75.000000,525.000000,175.000000,575.000000,0.000000,"code"};
+item53[] = {"",7,210,-104.000008,-654.000000,-96.000000,-646.000000,0.000000,""};
+item54[] = {"",7,210,-104.000000,-804.000000,-96.000000,-796.000000,0.000000,""};
+item55[] = {"player_checked_n",4,218,-50.000000,150.000000,50.000000,200.000000,0.000000,"player" \n "checked ntb"};
+item56[] = {"add_task_go_Slee",2,250,-50.000000,225.000000,50.000000,275.000000,0.000000,"add task" \n "go Sleep"};
+item57[] = {"",7,210,-79.000000,96.000000,-71.000000,104.000000,0.000000,""};
+item58[] = {"Miller_arange_meeting",4,218,200.000000,650.000000,300.000000,700.000000,0.000000,"Miller arange" \n "meeting with" \n "Syndikat"};
+item59[] = {"Start_quest",2,250,200.000000,725.000000,300.000000,775.000000,0.000000,"Start quest"};
+item60[] = {"",7,210,246.000000,608.500000,254.000000,616.500000,0.000000,""};
+item61[] = {"",7,210,246.000000,958.500000,254.000000,966.500000,0.000000,""};
+item62[] = {"add_quest_kill_g",4,218,325.000000,650.000000,425.000000,700.000000,0.000000,"add quest" \n "kill gendarme"};
+item63[] = {"gendarme__are_killed",4,218,450.000000,650.000000,550.000000,700.000000,0.000000,"gendarme " \n "are killed" \n "or time pass"};
+item64[] = {"",7,210,371.000000,608.500000,379.000000,616.500000,0.000000,""};
+item65[] = {"",7,210,496.000000,608.500000,504.000000,616.500000,0.000000,""};
+item66[] = {"Start_quest_1",2,250,325.000000,725.000000,425.000000,775.000000,0.000000,"Start quest"};
+item67[] = {"Finish_quest",2,250,450.000000,725.000000,550.000000,775.000000,0.000000,"Finish" \n "quest"};
+item68[] = {"",7,210,371.000000,958.500000,379.000000,966.500000,0.000000,""};
+item69[] = {"",7,210,496.000000,958.500000,503.999969,966.500000,0.000000,""};
+item70[] = {"all_done_terminate",4,218,450.000000,525.000000,550.000000,575.000000,0.000000,"all done" \n "terminate FSM"};
+item71[] = {"END",1,250,450.000000,450.000000,550.000000,500.000000,0.000000,"END"};
+item72[] = {"add_hint_hostels",4,218,575.000000,650.000000,675.000000,700.000000,0.000000,"add hint" \n "hostels"};
+item73[] = {"hint_hostels",2,250,575.000000,725.000000,675.000000,775.000000,0.000000,"hint hostels"};
+item74[] = {"",7,210,621.000000,608.500000,629.000000,616.500000,0.000000,""};
+item75[] = {"",7,210,621.000000,958.500000,629.000000,966.500061,0.000000,""};
+item76[] = {"",7,210,-104.000000,171.000000,-96.000000,179.000015,0.000000,""};
+item77[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+version=1;
+class LayoutItems
+{
+	class Item34
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=14154732;
+	};
+	class Item35
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+};
+link0[] = {0,1};
+link1[] = {0,43};
+link2[] = {1,22};
+link3[] = {2,3};
+link4[] = {2,12};
+link5[] = {2,16};
+link6[] = {2,47};
+link7[] = {3,4};
+link8[] = {4,5};
+link9[] = {4,13};
+link10[] = {4,14};
+link11[] = {5,6};
+link12[] = {6,7};
+link13[] = {6,15};
+link14[] = {7,8};
+link15[] = {8,38};
+link16[] = {8,40};
+link17[] = {9,10};
+link18[] = {10,20};
+link19[] = {10,51};
+link20[] = {11,24};
+link21[] = {12,11};
+link22[] = {13,12};
+link23[] = {14,15};
+link24[] = {15,76};
+link25[] = {16,14};
+link26[] = {17,9};
+link27[] = {18,19};
+link28[] = {19,30};
+link29[] = {20,21};
+link30[] = {21,28};
+link31[] = {22,23};
+link32[] = {22,46};
+link33[] = {22,54};
+link34[] = {23,49};
+link35[] = {24,25};
+link36[] = {25,8};
+link37[] = {26,27};
+link38[] = {27,36};
+link39[] = {28,18};
+link40[] = {28,29};
+link41[] = {29,26};
+link42[] = {29,60};
+link43[] = {30,32};
+link44[] = {31,30};
+link45[] = {32,33};
+link46[] = {33,28};
+link47[] = {36,37};
+link48[] = {37,31};
+link49[] = {38,39};
+link50[] = {39,55};
+link51[] = {39,57};
+link52[] = {40,57};
+link53[] = {41,9};
+link54[] = {42,44};
+link55[] = {43,46};
+link56[] = {44,45};
+link57[] = {45,9};
+link58[] = {46,48};
+link59[] = {47,48};
+link60[] = {49,50};
+link61[] = {49,53};
+link62[] = {50,2};
+link63[] = {51,52};
+link64[] = {52,29};
+link65[] = {53,16};
+link66[] = {54,53};
+link67[] = {55,56};
+link68[] = {56,9};
+link69[] = {57,41};
+link70[] = {58,59};
+link71[] = {59,61};
+link72[] = {60,58};
+link73[] = {60,64};
+link74[] = {61,31};
+link75[] = {62,66};
+link76[] = {63,67};
+link77[] = {64,62};
+link78[] = {64,65};
+link79[] = {65,63};
+link80[] = {65,70};
+link81[] = {65,74};
+link82[] = {66,68};
+link83[] = {67,69};
+link84[] = {68,61};
+link85[] = {69,68};
+link86[] = {70,71};
+link87[] = {72,73};
+link88[] = {73,75};
+link89[] = {74,72};
+link90[] = {75,69};
+link91[] = {76,17};
+link92[] = {76,55};
+link93[] = {77,42};
+globals[] = {0.000000,0,0,0,0,640,480,1,449,6316128,1,-631.027771,337.198853,835.991089,-38.792690,974,880,1};
+window[] = {2,-1,-1,-1,-1,1254,208,1054,208,3,992};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SQ0";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"// queue variables" \n
+                         "private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "private _goToHome = false;" \n
+                         "private _giveIntelHideout = false;" \n
+                         "private _giveFetchChargeTask = false;" \n
+                         "" \n
+                         "[0, [""SmartMarker_C_Cars_F"",""BIS_OldmanCarSmarmarker"", getMarkerPos ""BIS_oldmanCar"", false, [ [""name"", localize ""STR_A3_SQ0.fsmFSM_States_Init0""],[""title"",localize ""STR_A3_SQ0.fsmFSM_States_Init1""],[""description"",localize ""STR_A3_SQ0.fsmFSM_States_Init2""] ] ]] call BIS_fnc_OM_moduleSmartMarkers;  //---ToDo: Localize" \n
+                         "" \n
+                         "[] spawn " \n
+                         "{" \n
+                         "	waitUntil {sleep 0.5; vehicle player != player};" \n
+                         "	[1,[""BIS_OldmanCarSmarmarker""]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "};" \n
+                         "" \n
+                         "[] spawn " \n
+                         "{" \n
+                         "	sleep 20;" \n
+                         "	[""CSAT: Oumere base""] call BIS_fnc_om_addIntel;" \n
+                         "};" \n
+                         "" \n
+                         "// make absolutely sure that Arthur is not in a wrong animation" \n
+                         "[] spawn " \n
+                         "{" \n
+                         "	waitUntil {sleep 1; player distance BIS_Arthur < 100};" \n
+                         "	BIS_Arthur switchMove """";" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "car_marker">*/
+                                class car_marker
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="code_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_goToHome"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code">*/
+                class code
+                {
+                        name = "code";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"BIS_SQ0_L_Arthur = [""T_SQ0_L_Arthur"", [T_L_Arthur]] call bis_fnc_questCreateManualy;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_killed">*/
+                                class Arthur_killed
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="code_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_checked_n">*/
+                                class player_checked_n
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="add_task_go_Slee";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskSleep"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [2038,2,7,6,25] ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_Arthur">*/
+                                class close_to_Arthur
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="code_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Arthur <3;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_1">*/
+                class code_1
+                {
+                        name = "code_1";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"// --- Add task transport Arthur" \n
+                         "BIS_T_SQ0_T_Arthur = [""T_SQ0_T_Arthur"", [T_T_Arthur]] call bis_fnc_questCreateManualy;" \n
+                         "BIS_Arthurfsm setFSMVariable [""_ArthurFirstTalk"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_killed">*/
+                                class Arthur_killed
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="code_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_checked_n">*/
+                                class player_checked_n
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="add_task_go_Slee";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskSleep"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [2038,2,7,6,25] ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "fetch_Charge">*/
+                                class fetch_Charge
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="code_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_giveFetchChargeTask"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_2">*/
+                class code_2
+                {
+                        name = "code_2";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+                         "	// --- First, create aditional marker for Quest Pistol" \n
+                         "	BIS_aditionalSM = [0, [""SmartMarker_T_Default_F"", ""BIS_ArthurShed"",[13552,8371], false, [ [""name"", localize ""STR_A3_SQ0.fsmFSM_States_code_20""],[""title"",localize ""STR_A3_SQ0.fsmFSM_States_code_21""],[""description"",localize ""STR_A3_SQ0.fsmFSM_States_code_22""],[""img"",""\a3\Missions_F_Oldman\Data\img\Tooltip\T_SQ0_G_Charge_tooltip.paa""] ]]] call BIS_fnc_OM_moduleSmartMarkers; //---ToDo: Localize" \n
+                         "" \n
+                         "	// --- Start Quest" \n
+                         "	BIS_T_SQ0_G_Charge = [""T_SQ0_G_Charge"", []] call bis_fnc_questCreateManualy;" \n
+                         "" \n
+                         "	// --- Delete smart marker on Arthur position - obsolete" \n
+                         "	[1,[	""BIS_smrk_ArthurPoz""]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "	sleep 3;" \n
+                         "	[BIS_T_SQ0_G_Charge, BIS_aditionalSM] call bis_fnc_questAssociateSmartMarker; " \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_checked_n">*/
+                                class player_checked_n
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="add_task_go_Slee";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskSleep"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [2038,2,7,6,25] ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_charg">*/
+                                class player_has_charg
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="delete_marker_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_T_SQ0_G_Charge"" " \n
+                                         "&&" \n
+                                         "{[BIS_T_SQ0_G_Charge] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "delete_marker_">*/
+                class delete_marker_
+                {
+                        name = "delete_marker_";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"// --- delete shed smart marker (Arthur's village]" \n
+                         "[1, [""BIS_ArthurShed""]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [2038,2,7,6,25] ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_call_fini">*/
+                                class Miller_call_fini
+                                {
+                                        itemno = 38;
+                                        priority = 0.000000;
+                                        to="add_task_go_Home";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_goToHomeMillerCalls"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_3">*/
+                class code_3
+                {
+                        name = "code_3";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/"if (player getVariable [""BIS_ScreenIsBlack"",false] && isNil ""BIS_DoctorDead"" && player in list BIS_OldmanHouseTrg) then {" \n
+                         "	//--- Var controling Sector with doctor. Now player is shifting time so he can't see him. Lets spawn him. Only in case player is shifting time at home" \n
+                         "	BIS_SQ0fsm setFSMVariable [""_canSpawnDoctor"",true];" \n
+                         "	//--- start door knocking" \n
+                         "	BIS_oldmanDoors say3d [""OMknocking"",200];" \n
+                         "	//--- Close oldman hose doors" \n
+                         "	{bis_ap animate [_x,0]} forEach [""door_1_rot"",""door_2_rot""];" \n
+                         "	//--- Knocking loop" \n
+                         "	[] spawn {" \n
+                         "		sleep 10;" \n
+                         "		while {!isNull BIS_oldmanDoors && player in list BIS_OldmanHouseTrg} do {" \n
+                         "		private _randomSound = selectRandom [""OMknockingAwake01"",""OMknockingAwake02"",""OMknockingAwake03"",""OMknockingAwake04"",""OMknockingAwake05""];" \n
+                         "		playSound _randomSound;" \n
+                         "		sleep 3 + (random 2);" \n
+                         "	};" \n
+                         "};" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "if (isNil ""BIS_DoctorDead"") then" \n
+                         "{" \n
+                         "	BIS_Doctorfsm setFSMVariable [""_playerTalkDoctorOldmanHouse"", true];" \n
+                         "};" \n
+                         "" \n
+                         "// set the mosquitos in the Luganville" \n
+                         "missionNamespace setVariable [""BIS_LuganvilleOutbreak"",[date, 4, ""h""] call BIS_fnc_CalculateDateTime];" \n
+                         "[[13528.652,8411.605,0],2,120] spawn BIS_fnc_OM_Mosquitos;" \n
+                         "" \n
+                         "// disable spawning Arthur, delete him, if he unfinished quest meet him, cancel it" \n
+                         "BIS_stopSpawnArthur = false;" \n
+                         "if (!isNil ""BIS_Arthur"" && {!isNull BIS_Arthur}) then {" \n
+                         "	_arthurVeh = vehicle BIS_Arthur;" \n
+                         "	deleteVehicle BIS_Arthur;" \n
+                         "	if !(isNil ""BIS_fnc_holdActionVehicle"") then {" \n
+                         "		[_arthurVeh, false] call BIS_fnc_holdActionVehicle;" \n
+                         "	};" \n
+                         "};" \n
+                         "" \n
+                         "//--- delete Lucas ammo box" \n
+                         "deleteVehicle BIS_LucashHiddenAmmobox;" \n
+                         "" \n
+                         "// cancel go home task, if player ignore it" \n
+                         "if (!isNil ""BIS_SQ0_L_Home"" && {[""T_SQ0_L_Home""] call bis_fnc_questGetState != 3}) then " \n
+                         "{" \n
+                         "	[BIS_SQ0_L_Home,  6] call bis_fnc_questSetState;" \n
+                         "};" \n
+                         "" \n
+                         "//--- delete old village smart marker" \n
+                         "[1,[""BIS_infectedVillageBefore""]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "" \n
+                         "//--- delete Arthur smart marker loc, if player skip the time" \n
+                         "[1,[	""BIS_smrk_ArthurPoz""]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "" \n
+                         "//add 1st track of radio and fill in the playlist" \n
+                         "[] execVM ""a3\Missions_F_Oldman\Campaign\Missions\OldMan.tanoa\init_radio.sqf"";" \n
+                         "" \n
+                         "// run other potential mosquito outbreaks" \n
+                         "BIS_MosquitoOutbreaksFSM = execFSM ""MosquitoOutbreaks.fsm"";" \n
+                         "(missionNamespace getVariable ""FSMs"") pushBack [BIS_MosquitoOutbreaksFSM];" \n
+                         "" \n
+                         "//--- finish task sleep" \n
+                         "if (!isNil ""BIS_SQ0_G_Wait"") then " \n
+                         "{" \n
+                         "	[BIS_SQ0_G_Wait,  3] call bis_fnc_questSetState;" \n
+                         "};" \n
+                         "//--- Start Syndikat quest flow" \n
+                         "bis_fnc_missionFlow_fsm setFSMVariable [""_SQs"",true];" \n
+                         "" \n
+                         "//--- counter to terminate FSM" \n
+                         "private _countStates = 0;" \n
+                         "" \n
+                         "//--- radio news about outbreak in Luganvill" \n
+                         "[1,""News_Infection01""] call BIS_fnc_OM_questNews;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "DOCTOR_IS_DEAD">*/
+                                class DOCTOR_IS_DEAD
+                                {
+                                        itemno = 51;
+                                        priority = 1.000000;
+                                        to="code_12";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_DoctorDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "doctor_task_play">*/
+                                class doctor_task_play
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="code_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_DoctorTalkToOldmanHouse"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_4">*/
+                class code_4
+                {
+                        name = "code_4";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/"_playerMeetSyndi = false;" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "	sleep 3;	" \n
+                         "	BIS_Bossfsm setFSMVariable [""_WelcomeDialogue"", true];" \n
+                         "};" \n
+                         "" \n
+                         "_countStates = _countStates + 1;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "give_task_meet_M">*/
+                                class give_task_meet_M
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="code_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _millerDelay" \n
+                                         "&&" \n
+                                         "_millerAddTask"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_arange_meeting">*/
+                                class Miller_arange_meeting
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="Start_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerArangeMeetingSyndikat""" \n
+                                         "&&" \n
+                                         "{_millerArangeMeetingSyndikat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_quest_kill_g">*/
+                                class add_quest_kill_g
+                                {
+                                        itemno = 62;
+                                        priority = 0.000000;
+                                        to="Start_quest_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_addQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "gendarme__are_killed">*/
+                                class gendarme__are_killed
+                                {
+                                        itemno = 63;
+                                        priority = 0.000000;
+                                        to="Finish_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_finishQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_finishQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "all_done_terminate">*/
+                                class all_done_terminate
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countStates == 6;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_hint_hostels">*/
+                                class add_hint_hostels
+                                {
+                                        itemno = 72;
+                                        priority = 0.000000;
+                                        to="hint_hostels";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addHintHostels""" \n
+                                         "&&" \n
+                                         "{_addHintHostels}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_meet_Synd">*/
+                                class player_meet_Synd
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="code_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_playerMeetSyndi" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_Syndikat""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_Syndikat] call bis_fnc_questGetState == 3}" \n
+                                         ")" \n
+                                         "||" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_SyndikatArrangedByMiller""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_SyndikatArrangedByMiller] call bis_fnc_questGetState == 3}" \n
+                                         ")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_5">*/
+                class code_5
+                {
+                        name = "code_5";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/"BIS_SQ0_L_Syndikat = [""T_SQ0_L_Syndikat"", [T_L_Syndikat]] call bis_fnc_questCreateManualy;" \n
+                         "" \n
+                         "// --- start civilist and syndiakts flow" \n
+                         "bis_fnc_missionFlow_fsm setFSMVariable [""_SQc"",true];" \n
+                         "" \n
+                         "private _millerDelay = time + 120;" \n
+                         "private _millerAddTask = true;" \n
+                         "private _playerMeetSyndi = true;" \n
+                         "private _playerHasSyndiTask = true;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "give_task_meet_M">*/
+                                class give_task_meet_M
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="code_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _millerDelay" \n
+                                         "&&" \n
+                                         "_millerAddTask"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_arange_meeting">*/
+                                class Miller_arange_meeting
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="Start_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerArangeMeetingSyndikat""" \n
+                                         "&&" \n
+                                         "{_millerArangeMeetingSyndikat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_quest_kill_g">*/
+                                class add_quest_kill_g
+                                {
+                                        itemno = 62;
+                                        priority = 0.000000;
+                                        to="Start_quest_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_addQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "gendarme__are_killed">*/
+                                class gendarme__are_killed
+                                {
+                                        itemno = 63;
+                                        priority = 0.000000;
+                                        to="Finish_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_finishQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_finishQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "all_done_terminate">*/
+                                class all_done_terminate
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countStates == 6;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_hint_hostels">*/
+                                class add_hint_hostels
+                                {
+                                        itemno = 72;
+                                        priority = 0.000000;
+                                        to="hint_hostels";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addHintHostels""" \n
+                                         "&&" \n
+                                         "{_addHintHostels}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_meet_Synd">*/
+                                class player_meet_Synd
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="code_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_playerMeetSyndi" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_Syndikat""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_Syndikat] call bis_fnc_questGetState == 3}" \n
+                                         ")" \n
+                                         "||" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_SyndikatArrangedByMiller""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_SyndikatArrangedByMiller] call bis_fnc_questGetState == 3}" \n
+                                         ")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_6">*/
+                class code_6
+                {
+                        name = "code_6";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"_delay = time + 90;" \n
+                         "" \n
+                         "[] spawn " \n
+                         "{" \n
+                         "	sleep 15;" \n
+                         "	player setVariable [ ""BIS_OM_ShowCenterDot"", true ];" \n
+                         "	// --- Give player intel about his house" \n
+                         "	[""Oldman: Your house""] call BIS_fnc_om_addIntel;" \n
+                         "	sleep 10;" \n
+                         "	[[""Old_Man"", ""Relations""]] call BIS_fnc_advHint;" \n
+                         "}"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_checked_n">*/
+                                class player_checked_n
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="add_task_go_Slee";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskSleep"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [2038,2,7,6,25] ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "go_for_Arthur">*/
+                                class go_for_Arthur
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="code_11";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[([BIS_StartMissionDate, 4, ""h""] call BIS_fnc_CalculateDateTime),date ] call BIS_fnc_IsDateTimeNewer" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	player distance getMarkerPos ""BIS_startPoz"" > 100" \n
+                                         "	||" \n
+                                         "	time > _delay" \n
+                                         ")" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_7">*/
+                class code_7
+                {
+                        name = "code_7";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/"// --- Delete Arthur smart marker (loc)" \n
+                         "[1,[	""BIS_smrk_ArthurPoz""]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "" \n
+                         "BIS_ArthurDead = false;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="delete_marker_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!BIS_ArthurDead"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_8">*/
+                class code_8
+                {
+                        name = "code_8";
+                        itemno = 27;
+                        init = /*%FSM<STATEINIT""">*/"_millerAddTask = false;" \n
+                         "//enable composition - temporary, rework - get function, if player has specific intel or not." \n
+                         "missionNamespace setVariable [""BIS_MillerInHideout"",[date, 4, ""h""] call BIS_fnc_CalculateDateTime];" \n
+                         "" \n
+                         "//--- add event on watch timeline" \n
+                         "[(missionNamespace getVariable ""BIS_MillerInHideout""), localize ""STR_A3_SQ0.fsmFSM_States_code_80"", ""a3\Ui_f\data\IGUI\Cfg\simpleTasks\types\Meet_ca.paa""] call BIS_fnc_OM_addWatchEvent; //--- ToDo: Localize" \n
+                         "" \n
+                         "BIS_MillerSQ0fsm setFSMVariable [""_giveIntelHideout"", true];" \n
+                         "// --- RUN SQ1 FSM" \n
+                         "bis_fnc_missionFlow_fsm setFSMVariable [""_SQ1"",true];" \n
+                         "" \n
+                         "_countStates = _countStates + 1;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "give_task">*/
+                                class give_task
+                                {
+                                        itemno = 36;
+                                        priority = 0.000000;
+                                        to="code_9";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_giveTaskMeetMiller"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_9">*/
+                class code_9
+                {
+                        name = "code_9";
+                        itemno = 37;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+                         "	BIS_SQ0_L_Miller = [""T_SQ0_L_Miller"", [T_L_Miller]] call bis_fnc_questCreateManualy;" \n
+                         "	sleep 5;" \n
+                         "	[[""Old_Man"", ""SkippingTime""]] call BIS_fnc_advHint;" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "give_task_meet_M">*/
+                                class give_task_meet_M
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="code_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _millerDelay" \n
+                                         "&&" \n
+                                         "_millerAddTask"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_arange_meeting">*/
+                                class Miller_arange_meeting
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="Start_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerArangeMeetingSyndikat""" \n
+                                         "&&" \n
+                                         "{_millerArangeMeetingSyndikat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_quest_kill_g">*/
+                                class add_quest_kill_g
+                                {
+                                        itemno = 62;
+                                        priority = 0.000000;
+                                        to="Start_quest_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_addQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "gendarme__are_killed">*/
+                                class gendarme__are_killed
+                                {
+                                        itemno = 63;
+                                        priority = 0.000000;
+                                        to="Finish_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_finishQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_finishQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "all_done_terminate">*/
+                                class all_done_terminate
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countStates == 6;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_hint_hostels">*/
+                                class add_hint_hostels
+                                {
+                                        itemno = 72;
+                                        priority = 0.000000;
+                                        to="hint_hostels";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addHintHostels""" \n
+                                         "&&" \n
+                                         "{_addHintHostels}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_meet_Synd">*/
+                                class player_meet_Synd
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="code_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_playerMeetSyndi" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_Syndikat""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_Syndikat] call bis_fnc_questGetState == 3}" \n
+                                         ")" \n
+                                         "||" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_SyndikatArrangedByMiller""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_SyndikatArrangedByMiller] call bis_fnc_questGetState == 3}" \n
+                                         ")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "add_task_go_Home">*/
+                class add_task_go_Home
+                {
+                        name = "add_task_go_Home";
+                        itemno = 39;
+                        init = /*%FSM<STATEINIT""">*/"BIS_SQ0_L_Home = [""T_SQ0_L_Home"", [T_L_Home]] call bis_fnc_questCreateManualy;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [2038,2,7,6,25] ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_checked_n">*/
+                                class player_checked_n
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="add_task_go_Slee";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskSleep"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_10">*/
+                class code_10
+                {
+                        name = "code_10";
+                        itemno = 44;
+                        init = /*%FSM<STATEINIT""">*/"skipTime 14.2;" \n
+                         "player setPos [12445.2,8441.83];" \n
+                         "player setDir 180;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [2038,2,7,6,25] ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_11">*/
+                class code_11
+                {
+                        name = "code_11";
+                        itemno = 49;
+                        init = /*%FSM<STATEINIT""">*/"BIS_Arthurfsm setFSMVariable [""_ArthurFirstCall"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_checked_n">*/
+                                class player_checked_n
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="add_task_go_Slee";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskSleep"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [2038,2,7,6,25] ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "comm__finished">*/
+                                class comm__finished
+                                {
+                                        itemno = 50;
+                                        priority = 0.000000;
+                                        to="code";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_ArthurAddTask"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_12">*/
+                class code_12
+                {
+                        name = "code_12";
+                        itemno = 52;
+                        init = /*%FSM<STATEINIT""">*/"private _millerDelay = time + 10;" \n
+                         "private _millerAddTask = true;" \n
+                         "private _playerMeetSyndi = false;" \n
+                         "private _playerHasSyndiTask = false;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_arange_meeting">*/
+                                class Miller_arange_meeting
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="Start_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerArangeMeetingSyndikat""" \n
+                                         "&&" \n
+                                         "{_millerArangeMeetingSyndikat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_quest_kill_g">*/
+                                class add_quest_kill_g
+                                {
+                                        itemno = 62;
+                                        priority = 0.000000;
+                                        to="Start_quest_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_addQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "gendarme__are_killed">*/
+                                class gendarme__are_killed
+                                {
+                                        itemno = 63;
+                                        priority = 0.000000;
+                                        to="Finish_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_finishQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_finishQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "all_done_terminate">*/
+                                class all_done_terminate
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countStates == 6;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_hint_hostels">*/
+                                class add_hint_hostels
+                                {
+                                        itemno = 72;
+                                        priority = 0.000000;
+                                        to="hint_hostels";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addHintHostels""" \n
+                                         "&&" \n
+                                         "{_addHintHostels}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "give_task_meet_M">*/
+                                class give_task_meet_M
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="code_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _millerDelay" \n
+                                         "&&" \n
+                                         "_millerAddTask"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "add_task_go_Slee">*/
+                class add_task_go_Slee
+                {
+                        name = "add_task_go_Slee";
+                        itemno = 56;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+                         "	BIS_SQ0_G_Wait = ['T_SQ0_G_Wait', [T_G_Wait]] call bis_fnc_questCreateManualy;" \n
+                         "	sleep 5;" \n
+                         "	[[""Old_Man"", ""Sleeping""]] call BIS_fnc_advHint;" \n
+                         "	//--- add event on watch timeline" \n
+                         "	[[2038,2,7,6,30], localize ""STR_A3_SQ0.fsmFSM_States_add_task_go_Slee0"", ""a3\Ui_f\data\IGUI\Cfg\simpleTasks\types\Talk_ca.paa""] call BIS_fnc_OM_addWatchEvent; //--- ToDo: Localize" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [2038,2,7,6,25] ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Start_quest">*/
+                class Start_quest
+                {
+                        name = "Start_quest";
+                        itemno = 59;
+                        init = /*%FSM<STATEINIT""">*/"_millerArangeMeetingSyndikat = false;" \n
+                         "BIS_SQ0_L_SyndikatArrangedByMiller = [""T_SQ0_L_SyndikatArrangedByMiller"", [T_L_SyndikatArrangedByMiller]] call bis_fnc_questCreateManualy;" \n
+                         "" \n
+                         "_countStates = _countStates + 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "give_task_meet_M">*/
+                                class give_task_meet_M
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="code_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _millerDelay" \n
+                                         "&&" \n
+                                         "_millerAddTask"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_arange_meeting">*/
+                                class Miller_arange_meeting
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="Start_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerArangeMeetingSyndikat""" \n
+                                         "&&" \n
+                                         "{_millerArangeMeetingSyndikat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_quest_kill_g">*/
+                                class add_quest_kill_g
+                                {
+                                        itemno = 62;
+                                        priority = 0.000000;
+                                        to="Start_quest_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_addQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "gendarme__are_killed">*/
+                                class gendarme__are_killed
+                                {
+                                        itemno = 63;
+                                        priority = 0.000000;
+                                        to="Finish_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_finishQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_finishQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "all_done_terminate">*/
+                                class all_done_terminate
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countStates == 6;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_hint_hostels">*/
+                                class add_hint_hostels
+                                {
+                                        itemno = 72;
+                                        priority = 0.000000;
+                                        to="hint_hostels";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addHintHostels""" \n
+                                         "&&" \n
+                                         "{_addHintHostels}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_meet_Synd">*/
+                                class player_meet_Synd
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="code_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_playerMeetSyndi" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_Syndikat""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_Syndikat] call bis_fnc_questGetState == 3}" \n
+                                         ")" \n
+                                         "||" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_SyndikatArrangedByMiller""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_SyndikatArrangedByMiller] call bis_fnc_questGetState == 3}" \n
+                                         ")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Start_quest_1">*/
+                class Start_quest_1
+                {
+                        name = "Start_quest_1";
+                        itemno = 66;
+                        init = /*%FSM<STATEINIT""">*/"_addQuestKillGendarme = false;" \n
+                         "//--- manual sector control" \n
+                         "[BIS_SEC_Traitor, true] call BIS_fnc_sectorSetManualControl;" \n
+                         "[BIS_SEC_Traitor] spawn BIS_fnc_om_sectorActivate;" \n
+                         "" \n
+                         "BIS_SQ0_G_ClearTraitorArea = ['T_SQ0_G_ClearTraitorArea', [T_G_ClearTraitorArea]] call bis_fnc_questCreateManualy;" \n
+                         "" \n
+                         "//--- trigger for checking situation" \n
+                         "if (!isNil ""BIS_traitor"") then {" \n
+                         "	private _trg = createTrigger [""EmptyDetector"", getPos BIS_traitor, false];" \n
+                         "	_trg setTriggerArea [50,50,0,false];	" \n
+                         "	_trg setTriggerActivation [""EAST"",""NOT PRESENT"",false];" \n
+                         "	_trg setTriggerStatements [""this"",""BIS_SQ0fsm setFSMVariable ['_finishQuestKillGendarme',true]"",""""];" \n
+                         "};" \n
+                         "" \n
+                         "_countStates = _countStates + 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "give_task_meet_M">*/
+                                class give_task_meet_M
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="code_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _millerDelay" \n
+                                         "&&" \n
+                                         "_millerAddTask"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_arange_meeting">*/
+                                class Miller_arange_meeting
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="Start_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerArangeMeetingSyndikat""" \n
+                                         "&&" \n
+                                         "{_millerArangeMeetingSyndikat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_quest_kill_g">*/
+                                class add_quest_kill_g
+                                {
+                                        itemno = 62;
+                                        priority = 0.000000;
+                                        to="Start_quest_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_addQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "gendarme__are_killed">*/
+                                class gendarme__are_killed
+                                {
+                                        itemno = 63;
+                                        priority = 0.000000;
+                                        to="Finish_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_finishQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_finishQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "all_done_terminate">*/
+                                class all_done_terminate
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countStates == 6;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_hint_hostels">*/
+                                class add_hint_hostels
+                                {
+                                        itemno = 72;
+                                        priority = 0.000000;
+                                        to="hint_hostels";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addHintHostels""" \n
+                                         "&&" \n
+                                         "{_addHintHostels}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_meet_Synd">*/
+                                class player_meet_Synd
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="code_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_playerMeetSyndi" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_Syndikat""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_Syndikat] call bis_fnc_questGetState == 3}" \n
+                                         ")" \n
+                                         "||" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_SyndikatArrangedByMiller""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_SyndikatArrangedByMiller] call bis_fnc_questGetState == 3}" \n
+                                         ")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Finish_quest">*/
+                class Finish_quest
+                {
+                        name = "Finish_quest";
+                        itemno = 67;
+                        init = /*%FSM<STATEINIT""">*/"_finishQuestKillGendarme = false;" \n
+                         "[BIS_SEC_Traitor, false] call BIS_fnc_sectorSetManualControl;" \n
+                         "" \n
+                         "[BIS_SQ0_G_ClearTraitorArea,  3] call bis_fnc_questSetState;" \n
+                         "" \n
+                         "_countStates = _countStates + 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "give_task_meet_M">*/
+                                class give_task_meet_M
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="code_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _millerDelay" \n
+                                         "&&" \n
+                                         "_millerAddTask"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_arange_meeting">*/
+                                class Miller_arange_meeting
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="Start_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerArangeMeetingSyndikat""" \n
+                                         "&&" \n
+                                         "{_millerArangeMeetingSyndikat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_quest_kill_g">*/
+                                class add_quest_kill_g
+                                {
+                                        itemno = 62;
+                                        priority = 0.000000;
+                                        to="Start_quest_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_addQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "gendarme__are_killed">*/
+                                class gendarme__are_killed
+                                {
+                                        itemno = 63;
+                                        priority = 0.000000;
+                                        to="Finish_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_finishQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_finishQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "all_done_terminate">*/
+                                class all_done_terminate
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countStates == 6;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_hint_hostels">*/
+                                class add_hint_hostels
+                                {
+                                        itemno = 72;
+                                        priority = 0.000000;
+                                        to="hint_hostels";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addHintHostels""" \n
+                                         "&&" \n
+                                         "{_addHintHostels}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_meet_Synd">*/
+                                class player_meet_Synd
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="code_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_playerMeetSyndi" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_Syndikat""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_Syndikat] call bis_fnc_questGetState == 3}" \n
+                                         ")" \n
+                                         "||" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_SyndikatArrangedByMiller""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_SyndikatArrangedByMiller] call bis_fnc_questGetState == 3}" \n
+                                         ")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END">*/
+                class END
+                {
+                        name = "END";
+                        itemno = 71;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "hint_hostels">*/
+                class hint_hostels
+                {
+                        name = "hint_hostels";
+                        itemno = 73;
+                        init = /*%FSM<STATEINIT""">*/"//--- we don't have to count this node because is 100% sure it will be unactive in moment we need to quit FSM." \n
+                         "_addHintHostels = false;" \n
+                         "[[""Old_Man"", ""Accommodation""]] call BIS_fnc_advHint;" \n
+                         "_countStates = _countStates + 1;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "give_task_meet_M">*/
+                                class give_task_meet_M
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="code_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _millerDelay" \n
+                                         "&&" \n
+                                         "_millerAddTask"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Miller_arange_meeting">*/
+                                class Miller_arange_meeting
+                                {
+                                        itemno = 58;
+                                        priority = 0.000000;
+                                        to="Start_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_millerArangeMeetingSyndikat""" \n
+                                         "&&" \n
+                                         "{_millerArangeMeetingSyndikat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_quest_kill_g">*/
+                                class add_quest_kill_g
+                                {
+                                        itemno = 62;
+                                        priority = 0.000000;
+                                        to="Start_quest_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_addQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "gendarme__are_killed">*/
+                                class gendarme__are_killed
+                                {
+                                        itemno = 63;
+                                        priority = 0.000000;
+                                        to="Finish_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_finishQuestKillGendarme""" \n
+                                         "&&" \n
+                                         "{_finishQuestKillGendarme}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "all_done_terminate">*/
+                                class all_done_terminate
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_countStates == 6;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_hint_hostels">*/
+                                class add_hint_hostels
+                                {
+                                        itemno = 72;
+                                        priority = 0.000000;
+                                        to="hint_hostels";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addHintHostels""" \n
+                                         "&&" \n
+                                         "{_addHintHostels}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_meet_Synd">*/
+                                class player_meet_Synd
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="code_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_playerMeetSyndi" \n
+                                         "&&" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_Syndikat""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_Syndikat] call bis_fnc_questGetState == 3}" \n
+                                         ")" \n
+                                         "||" \n
+                                         "(" \n
+                                         "	!isNil ""BIS_SQ0_L_SyndikatArrangedByMiller""" \n
+                                         "	&&" \n
+                                         "	{[BIS_SQ0_L_SyndikatArrangedByMiller] call bis_fnc_questGetState == 3}" \n
+                                         ")"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 77;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "CHEAT_2">*/
+                                class CHEAT_2
+                                {
+                                        itemno = 42;
+                                        priority = 0.000000;
+                                        to="code_10";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"cheat2"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "END",
+        };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,669 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, SQc">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-50.000000,-1175.000000,50.000000,-1125.000000,0.000000,"Init"};
+item1[] = {"first_pils_deliv",4,218,-50.000000,-800.000000,50.000000,-750.000000,0.000000,"first pils" \n "delivered"};
+item2[] = {"need_truck_info",2,250,-50.000000,-725.000000,50.000000,-675.000000,0.000000,"need truck" \n "info"};
+item3[] = {"truck_delivered",4,218,-50.000000,-500.000000,50.000000,-450.000000,0.000000,"truck delivered"};
+item4[] = {"",7,210,258.500000,-254.000000,266.500000,-246.000000,0.000000,""};
+item5[] = {"",7,210,258.500000,-104.000000,266.500000,-96.000000,0.000000,""};
+item6[] = {"",7,210,258.500000,-29.000000,266.500000,-21.000000,0.000000,""};
+item7[] = {"D_A_Y__0",-1,250,-375.000000,-875.000000,-325.000000,375.000000,0.000000,"D" \n "A" \n "Y" \n "" \n "0"};
+item8[] = {"DEAD",4,218,350.000000,-50.000000,450.000000,0.000000,0.000000,"DEAD"};
+item9[] = {"",7,210,258.500000,-1153.999878,266.500000,-1146.000000,0.000000,""};
+item10[] = {"",7,210,258.500000,-704.000000,266.500000,-696.000000,0.000000,""};
+item11[] = {"",7,210,258.500000,-554.000000,266.500000,-546.000000,0.000000,""};
+item12[] = {"_",1,250,350.000000,25.000000,450.000000,75.000000,0.000000,""};
+item13[] = {"thank_for_it_and",2,250,-50.000000,-425.000000,50.000000,-375.000000,0.000000,"thank for it" \n "and" \n "plan"};
+item14[] = {"at_the__new_posi",4,218,-50.000000,-350.000000,50.000000,-300.000000,0.000000,"at the" \n " new position"};
+item15[] = {"medicine_permanent",2,4346,-50.000000,-275.000000,50.000000,-225.000000,0.000000,"medicine" \n "permanent quest"};
+item16[] = {"_",4,218,-50.000000,-200.000000,50.000000,-150.000000,0.000000,""};
+item17[] = {"comm__finished",4,218,-50.000000,-650.000000,50.000000,-600.000000,0.000000,"comm " \n "finished"};
+item18[] = {"add_task_bring_t",2,250,-50.000000,-575.000000,50.000000,-525.000000,0.000000,"add task" \n "bring truck"};
+item19[] = {"",7,210,258.500000,-404.000000,266.500000,-396.000000,0.000000,""};
+item20[] = {"__1",2,250,-50.000000,-125.000000,50.000000,-75.000000,0.000000,""};
+item21[] = {"Syndiakt_trust_i",4,218,-50.000000,-1100.000000,50.000000,-1050.000000,0.000000,"Syndiakt trust" \n "incrised"};
+item22[] = {"update_task_desc",2,250,-50.000000,-1025.000000,50.000000,-975.000000,0.000000,"update task" \n "description"};
+item23[] = {"",7,210,-79.000000,-1154.000000,-71.000000,-1146.000000,0.000000,""};
+item24[] = {"",7,210,258.500000,-854.000000,266.500000,-846.000000,0.000000,""};
+item25[] = {"player_has_pills",4,218,-50.000000,-950.000000,50.000000,-900.000000,0.000000,"player has" \n "pills"};
+item26[] = {"update_task_desc_1",2,250,-50.000000,-875.000000,50.000000,-825.000000,0.000000,"update task" \n "description"};
+item27[] = {"",7,210,-79.000000,-929.000000,-71.000000,-921.000000,0.000000,""};
+item28[] = {"",7,210,258.500000,-1004.000000,266.500000,-996.000000,0.000000,""};
+item29[] = {"player_at_the_military",4,218,-175.000000,-350.000000,-75.000000,-300.000000,0.000000,"player at the" \n "military island"};
+item30[] = {"",7,210,-129.000000,-554.000000,-120.999992,-546.000000,0.000000,""};
+item31[] = {"",7,210,-129.000000,-404.000000,-121.000000,-396.000000,0.000000,""};
+item32[] = {"",7,210,-129.000000,-254.000000,-121.000008,-246.000000,0.000000,""};
+item33[] = {"",7,210,-129.000000,-1154.000000,-121.000008,-1146.000000,0.000000,""};
+item34[] = {"",7,210,-129.000000,-1004.000000,-121.000000,-996.000000,0.000000,""};
+item35[] = {"",7,210,-129.000000,-854.000000,-121.000000,-846.000000,0.000000,""};
+version=1;
+class LayoutItems
+{
+	class Item7
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+};
+link0[] = {0,9};
+link1[] = {0,21};
+link2[] = {0,23};
+link3[] = {1,2};
+link4[] = {2,10};
+link5[] = {2,17};
+link6[] = {3,13};
+link7[] = {4,5};
+link8[] = {5,6};
+link9[] = {6,8};
+link10[] = {8,12};
+link11[] = {9,28};
+link12[] = {10,11};
+link13[] = {11,19};
+link14[] = {13,14};
+link15[] = {13,19};
+link16[] = {13,31};
+link17[] = {14,15};
+link18[] = {15,4};
+link19[] = {15,16};
+link20[] = {16,20};
+link21[] = {17,18};
+link22[] = {18,3};
+link23[] = {18,11};
+link24[] = {18,30};
+link25[] = {19,4};
+link26[] = {20,5};
+link27[] = {21,22};
+link28[] = {22,25};
+link29[] = {22,28};
+link30[] = {22,34};
+link31[] = {23,27};
+link32[] = {23,33};
+link33[] = {24,10};
+link34[] = {25,26};
+link35[] = {26,1};
+link36[] = {26,24};
+link37[] = {26,35};
+link38[] = {27,25};
+link39[] = {28,24};
+link40[] = {29,32};
+link41[] = {30,31};
+link42[] = {31,29};
+link43[] = {32,15};
+link44[] = {33,34};
+link45[] = {34,35};
+link46[] = {35,30};
+globals[] = {0.000000,0,0,0,0,640,480,1,459,6316128,1,-458.039978,256.786224,-189.743469,-928.101501,972,1030,1};
+window[] = {2,-1,-1,-1,-1,1150,104,950,104,3,990};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SQc";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"// queue variables" \n
+                         "private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "	sleep 1;" \n
+                         "	BIS_SQc_F_Medicine = [""T_SQc_F_Medicine"", [T_F_Medicine]] call bis_fnc_questCreateManualy;" \n
+                         "};" \n
+                         "" \n
+                         "// sick FSMs" \n
+                         "BIS_ArthurInjfsm = [""Oldman.Tanoa"", ""FSM_Characters\InjuredCiv\ArthurInjFlow.fsm""] call BIS_fnc_OM_EXEC;" \n
+                         "BIS_LucasInjfsm = [""Oldman.Tanoa"", ""FSM_Characters\InjuredCiv\LucasInjFlow.fsm""] call BIS_fnc_OM_EXEC;" \n
+                         "BIS_HowardInjfsm = [""Oldman.Tanoa"", ""FSM_Characters\InjuredCiv\HowardInjFlow.fsm""] call BIS_fnc_OM_EXEC;" \n
+                         "BIS_RenlyInjfsm = [""Oldman.Tanoa"", ""FSM_Characters\InjuredCiv\RenlyInjFlow.fsm""] call BIS_fnc_OM_EXEC;" \n
+                         "//--- John's FSM starts sooner"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_has_pills">*/
+                                class player_has_pills
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="update_task_desc_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SQc_F_Medicine""" \n
+                                         "&&" \n
+                                         "{_x == ""Antimalaricum""} count magazines player >= 2"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "DEAD">*/
+                                class DEAD
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CiviliansAreDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_at_the_military">*/
+                                class player_at_the_military
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="medicine_permanent";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_moveCiviliansAhead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Syndiakt_trust_i">*/
+                                class Syndiakt_trust_i
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="update_task_desc";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_updateMedicineTask"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "need_truck_info">*/
+                class need_truck_info
+                {
+                        name = "need_truck_info";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"BIS_doctorfsm setFSMVariable [""_pillsDelivered"",true];" \n
+                         "BIS_doctorfsm setFSMVariable [""_needTruck"",true];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "DEAD">*/
+                                class DEAD
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CiviliansAreDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "comm__finished">*/
+                                class comm__finished
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="add_task_bring_t";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_giveTaskFetchtruck"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"// --- if permament medicine quest exist then cancel the quest" \n
+                         "if (!isNil ""BIS_SQc_F_MedicineUnlimited"") then {[""T_SQc_F_MedicineUnlimited"",  6] call bis_fnc_questSetState};" \n
+                         "" \n
+                         "// --- if bring vaccine to a doctor exist, then cancel the quest" \n
+                         "if (!isNil ""BIS_SQc_F_DocVaccine"") then {[""T_SQc_F_DocVaccine"",  6] call bis_fnc_questSetState;};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "thank_for_it_and">*/
+                class thank_for_it_and
+                {
+                        name = "thank_for_it_and";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"BIS_doctorfsm setFSMVariable [""_thanksForTruck"",true];" \n
+                         "private _moveDate = [date, 1, ""d""] call BIS_fnc_CalculateDateTime;" \n
+                         "" \n
+                         "private _truckToDeleteArr = nearestObjects [T_F_Truck, [""Truck_F""],500] select {locked _x == 2};" \n
+                         "private _trucktoDelete = (_truckToDeleteArr#0);" \n
+                         "" \n
+                         "_trucktoDelete addEventHandler [""Killed"", {" \n
+                         "	params [""_unit"", ""_killer"", ""_instigator"", ""_useEffects""];" \n
+                         "	0 = [] spawn {" \n
+                         "		sleep 10;" \n
+                         "		BIS_doctorfsm setFSMVariable [""_transportTruckDestroyed"",true];" \n
+                         "	};" \n
+                         "}];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "DEAD">*/
+                                class DEAD
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CiviliansAreDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_at_the_military">*/
+                                class player_at_the_military
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="medicine_permanent";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_moveCiviliansAhead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "at_the__new_posi">*/
+                                class at_the__new_posi
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="medicine_permanent";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date,_moveDate] call BIS_fnc_IsDateTimeNewer "/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "medicine_permanent">*/
+                class medicine_permanent
+                {
+                        name = "medicine_permanent";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"if (!isNil ""BIS_SQc_F_Truck"" && !isNil ""_moveDate"" && {([BIS_SQc_F_Truck] call bis_fnc_questGetState == 3) && ([date,_moveDate] call BIS_fnc_IsDateTimeNewer)}) then {" \n
+                         "	//--- by the book flow, player did a task with the truck" \n
+                         "	BIS_doctorfsm setFSMVariable [""_onNewPosition"",true];" \n
+                         "	" \n
+                         "	// --- delete a truck used by Doctor to move" \n
+                         "	deleteVehicle _truckToDelete;" \n
+                         "" \n
+                         "	//--- delete obsolete civ. location SM" \n
+                         "	[1,[""CIV_Survivors01""]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "	" \n
+                         "	//--- SM for task deliver vaccine is visible now" \n
+                         "	[3, [""T_SQc_F_DocVaccine""]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "} else {" \n
+                         "	//--- player rush to Military island" \n
+                         "	BIS_doctorfsm setFSMVariable [""_onNewPositionWithoutTruck"",true];" \n
+                         "" \n
+                         "	// cancel 1st bring pills quest" \n
+                         "	if (!isNil ""BIS_SQc_F_Medicine"" && {[""T_SQc_F_Medicine""] call bis_fnc_questGetState != 3}) then " \n
+                         "	{" \n
+                         "		[BIS_SQc_F_Medicine,  6] call bis_fnc_questSetState;" \n
+                         "	};" \n
+                         "};" \n
+                         "" \n
+                         "//--- Initialize system infected civilians" \n
+                         "[""BIS_Doctor""] call BIS_fnc_OM_infectedGroupHandle;" \n
+                         "" \n
+                         "private _countDying = 0;" \n
+                         "private _countDead = 0;" \n
+                         "//--- Arthur" \n
+                         "if (!(missionNamespace getVariable [""BIS_ArthurInjuredDead1stHideout"",false]) && !(missionNamespace getVariable [""BIS_ArthurInjuredDeadVillage"",false])) then " \n
+                         "{" \n
+                         "	[" \n
+                         "        ""BIS_Arthur"",                            		 // n�zev promenn�" \n
+                         "        ""Arthur"",                                   	 // jm�no" \n
+                         "        55,                                             // vek" \n
+                         "        {" \n
+                         "            BIS_SQcfsm setFSMVariable [""_dyingArthur"",true]; " \n
+                         "			_countDying = BIS_SQcfsm getFSMVariable [""_countDying"",0];" \n
+                         "            _countDying = _countDying +1; " \n
+                         "            BIS_SQcfsm setFSMVariable [""_countDying"",_countdying];" \n
+                         "            bis_fnc_missionFlow_fsm setFSMVariable [""_runFeedback"",true]" \n
+                         "        },    " \n
+                         "        {" \n
+                         "            BIS_SQcfsm setFSMVariable [""_deadArthur"",true]; " \n
+                         "			_countDead = BIS_SQcfsm getFSMVariable [""_countDead"",0];" \n
+                         "            _countDead = _countDead +1; " \n
+                         "            BIS_SQcfsm setFSMVariable [""_countDead"",_countDead]; " \n
+                         "            bis_fnc_missionFlow_fsm setFSMVariable [""_runFeedback"",true]; " \n
+                         "            if (!(isNil ""BIS_Arthur"") && !(isNull BIS_Arthur)) then {BIS_Arthur setDamage 1} else {BIS_ArthurInjuredDead2ndHideout = true} " \n
+                         "        }     " \n
+                         "	] call BIS_fnc_OM_medicine_addInfected;" \n
+                         "};" \n
+                         "" \n
+                         "//--- Lucas" \n
+                         "if (!(missionNamespace getVariable [""BIS_LucasDead1stHideout"",false]) && !(missionNamespace getVariable [""BIS_LucasDeadVillage"",false]) && ([""T_SQ0_G_Charge""] call bis_fnc_questGetState == 3)) then " \n
+                         "{" \n
+                         "	[" \n
+                         "        ""BIS_Lucas"",                            			 // n�zev promenn�" \n
+                         "        ""Lucas"",                                   		 // jm�no" \n
+                         "        30,                                             // vek" \n
+                         "        {" \n
+                         "            BIS_SQcfsm setFSMVariable [""_dyingLucas"",true]; " \n
+                         "            _countDying = BIS_SQcfsm getFSMVariable [""_countDying"",0];" \n
+                         "            _countDying = _countDying +1; " \n
+                         "            BIS_SQcfsm setFSMVariable [""_countDying"",_countdying]; " \n
+                         "            bis_fnc_missionFlow_fsm setFSMVariable [""_runFeedback"",true]" \n
+                         "        },    " \n
+                         "        {" \n
+                         "            BIS_SQcfsm setFSMVariable [""_deadLucas"",true]; " \n
+                         "            _countDead = BIS_SQcfsm getFSMVariable [""_countDead"",0];" \n
+                         "            _countDead = _countDead +1; " \n
+                         "            BIS_SQcfsm setFSMVariable [""_countDead"",_countDead]; " \n
+                         "            bis_fnc_missionFlow_fsm setFSMVariable [""_runFeedback"",true];" \n
+                         "            if (!(isNil ""BIS_Lucas"") && !(isNull BIS_Lucas)) then {BIS_Lucas setDamage 1}else {BIS_LucasDead2ndHideout = true};" \n
+                         "        }     " \n
+                         "	] call BIS_fnc_OM_medicine_addInfected;" \n
+                         "	" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "//--- Howard" \n
+                         "if (!(missionNamespace getVariable [""BIS_HowardDead1stHideout"",false]) && !(missionNamespace getVariable [""BIS_HowardDeadVillage"",false])) then " \n
+                         "{" \n
+                         "    [" \n
+                         "        ""BIS_Howard"",                            		 // n�zev promenn�" \n
+                         "        ""Howard"",                                 		 // jm�no" \n
+                         "        65,                                             // vek" \n
+                         "        {" \n
+                         "            BIS_SQcfsm setFSMVariable [""_dyingHoward"",true];" \n
+                         "            _countDying = BIS_SQcfsm getFSMVariable [""_countDying"",0]; " \n
+                         "            _countDying = _countdying +1; " \n
+                         "            BIS_SQcfsm setFSMVariable [""_countDying"",_countdying]; " \n
+                         "            bis_fnc_missionFlow_fsm setFSMVariable [""_runFeedback"",true]" \n
+                         "        },    " \n
+                         "        {" \n
+                         "            BIS_SQcfsm setFSMVariable [""_deadHoward"",true]; " \n
+                         "            _countDead = BIS_SQcfsm getFSMVariable [""_countDead"",0];" \n
+                         "            _countDead = _countDead +1; " \n
+                         "            BIS_SQcfsm setFSMVariable [""_countDead"",_countDead]; " \n
+                         "            bis_fnc_missionFlow_fsm setFSMVariable [""_runFeedback"",true]; " \n
+                         "            if (!(isNil ""BIS_Howard"") && !(isNull BIS_Howard)) then {BIS_Howard setDamage 1} else {BIS_HowardDead2ndHideout = true};" \n
+                         "        }   " \n
+                         "	] call BIS_fnc_OM_medicine_addInfected;" \n
+                         "};" \n
+                         "" \n
+                         "//--- Renly" \n
+                         "if (!(missionNamespace getVariable [""BIS_RenlyDead1stHideout"",false]) && !(missionNamespace getVariable [""BIS_RenlyDeadVillage"",false])) then " \n
+                         "{" \n
+                         "	[" \n
+                         "        ""BIS_Renly"",                            			 // n�zev promenn�" \n
+                         "        ""Renly"",                                 		 // jm�no" \n
+                         "        21,                                             // vek" \n
+                         "    {" \n
+                         "        BIS_SQcfsm setFSMVariable [""_dyingRenly"",true]; " \n
+                         "        _countDying = BIS_SQcfsm getFSMVariable [""_countDying"",0];" \n
+                         "        _countDying = _countdying +1; " \n
+                         "        BIS_SQcfsm setFSMVariable [""_countDying"",_countdying]; " \n
+                         "        bis_fnc_missionFlow_fsm setFSMVariable [""_runFeedback"",true];" \n
+                         "    },   " \n
+                         "    {" \n
+                         "        BIS_SQcfsm setFSMVariable [""_deadRenly"",true]; " \n
+                         "        _countDead = BIS_SQcfsm getFSMVariable [""_countDead"",0];" \n
+                         "        _countDead = _countDead +1; " \n
+                         "        BIS_SQcfsm setFSMVariable [""_countDead"",_countDead]; " \n
+                         "        bis_fnc_missionFlow_fsm setFSMVariable [""_runFeedback"",true]; " \n
+                         "        if (!(isNil ""BIS_Renly"") && !(isNull BIS_Renly)) then {BIS_Renly setDamage 1} else {BIS_RenlyDead2ndHideout = true};" \n
+                         "    }      " \n
+                         "	] call BIS_fnc_OM_medicine_addInfected;" \n
+                         "};" \n
+                         "" \n
+                         "//--- John" \n
+                         "if (!(missionNamespace getVariable [""BIS_JohnDead1stHideout"",false]) && !(missionNamespace getVariable [""BIS_JohnDeadVillage"",false])) then " \n
+                         "{" \n
+                         "	[" \n
+                         "        ""BIS_John"",                            			 // n�zev promenn�" \n
+                         "        ""John"",                                 			 // jm�no" \n
+                         "        43,                                             // vek" \n
+                         "        {" \n
+                         "            BIS_SQcfsm setFSMVariable [""_dyingJohn"",true];" \n
+                         "            _countDying = BIS_SQcfsm getFSMVariable [""_countDying"",0]; " \n
+                         "            _countDying = _countdying +1; " \n
+                         "            BIS_SQcfsm setFSMVariable [""_countDying"",_countdying]; " \n
+                         "            bis_fnc_missionFlow_fsm setFSMVariable [""_runFeedback"",true];" \n
+                         "        },    " \n
+                         "        {" \n
+                         "            BIS_SQcfsm setFSMVariable [""_deadJohn"",true]; " \n
+                         "            _countDead = BIS_SQcfsm getFSMVariable [""_countDead"",0];" \n
+                         "            _countDead = _countDead +1; " \n
+                         "            BIS_SQcfsm setFSMVariable [""_countDead"",_countDead];" \n
+                         "            bis_fnc_missionFlow_fsm setFSMVariable [""_runFeedback"",true];" \n
+                         "            if (!(isNil ""BIS_John"") && !(isNull BIS_John)) then {BIS_John setDamage 1} else {BIS_JohnDead2ndHideout = true};" \n
+                         "        }     " \n
+                         "	] call BIS_fnc_OM_medicine_addInfected;" \n
+                         "// --- John fsm start in mission flow fsm" \n
+                         "};" \n
+                         "" \n
+                         "// --- start Doctor FSM handling injured and comm about them" \n
+                         "BIS_DoctorInjfsm = [""Oldman.Tanoa"", ""FSM_Characters\InjuredCiv\DoctorInjFlow.fsm""] call BIS_fnc_OM_EXEC;" \n
+                         "" \n
+                         "" \n
+                         "//Displaying the state of the villagers is initiated in the quest's code template onCreated. But it is dependant on the code above."/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "DEAD">*/
+                                class DEAD
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CiviliansAreDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_giveTaskPilsPermanent"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "add_task_bring_t">*/
+                class add_task_bring_t
+                {
+                        name = "add_task_bring_t";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn " \n
+                         "{" \n
+                         "// --- First, create aditional marker for Quest deliver truck. ToDo: Do it clickable to the related quest???" \n
+                         "BIS_mrk_transportTruckAlternate = [0, [""SmartMarker_T_Default_F"", ""BIS_TransportTrucLoc"",[13236,8522], false, [ [""name"", localize ""STR_A3_SQc.fsmFSM_States_add_task_bring_t0""],[""title"",localize ""STR_A3_SQc.fsmFSM_States_add_task_bring_t1""],[""description"",localize ""STR_A3_SQc.fsmFSM_States_add_task_bring_t2""] ]]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "sleep 2;" \n
+                         "BIS_SQc_F_Truck = [""T_SQc_F_Truck"", [T_F_Truck]] call bis_fnc_questCreateManualy;" \n
+                         "sleep 5;" \n
+                         "[BIS_SQc_F_Truck, BIS_mrk_transportTruckAlternate] call bis_fnc_questAssociateSmartMarker; " \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "DEAD">*/
+                                class DEAD
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CiviliansAreDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_at_the_military">*/
+                                class player_at_the_military
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="medicine_permanent";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_moveCiviliansAhead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "truck_delivered">*/
+                                class truck_delivered
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="thank_for_it_and";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SQc_F_Truck"" && {[BIS_SQc_F_Truck] call bis_fnc_questGetState == 3};"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__1">*/
+                class __1
+                {
+                        name = "__1";
+                        itemno = 20;
+                        init = /*%FSM<STATEINIT""">*/"BIS_SQc_F_DocVaccine = [""T_SQc_F_DocVaccine"", [T_F_DocVaccine]] call bis_fnc_questCreateManualy;" \n
+                         "if (isNil ""BIS_SQc_G_Vaccine"") then {BIS_SQc_G_Vaccine = [""T_SQc_G_Vaccine"", []] call bis_fnc_questCreateManualy};" \n
+                         "BIS_SQc_F_MedicineUnlimited = [""T_SQc_F_MedicineUnlimited"", [T_F_MedicineUnlimited]] call bis_fnc_questCreateManualy;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "DEAD">*/
+                                class DEAD
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CiviliansAreDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "update_task_desc">*/
+                class update_task_desc
+                {
+                        name = "update_task_desc";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"[BIS_SQc_F_Medicine, [localize ""STR_A3_SQc.fsmFSM_States_update_task_desc0"", ""BIS_SyndiCampPlantation"",[2, [""T_SQc_F_Medicine""]] call BIS_fnc_OM_moduleSmartMarkers],true] call bis_fnc_setDescription; //---ToDo: Localize" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "DEAD">*/
+                                class DEAD
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CiviliansAreDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_at_the_military">*/
+                                class player_at_the_military
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="medicine_permanent";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_moveCiviliansAhead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has_pills">*/
+                                class player_has_pills
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="update_task_desc_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SQc_F_Medicine""" \n
+                                         "&&" \n
+                                         "{_x == ""Antimalaricum""} count magazines player >= 2"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "update_task_desc_1">*/
+                class update_task_desc_1
+                {
+                        name = "update_task_desc_1";
+                        itemno = 26;
+                        init = /*%FSM<STATEINIT""">*/"[] spawn {" \n
+                         "	sleep 5;" \n
+                         "	[BIS_SQc_F_Medicine, [localize ""STR_A3_SQc.fsmFSM_States_update_task_desc_10"",[2, [""T_SQc_F_Medicine""]] call BIS_fnc_OM_moduleSmartMarkers],true] call bis_fnc_setDescription; //---ToDo: Localize" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "DEAD">*/
+                                class DEAD
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_CiviliansAreDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_at_the_military">*/
+                                class player_at_the_military
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="medicine_permanent";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_moveCiviliansAhead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "first_pils_deliv">*/
+                                class first_pils_deliv
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="need_truck_info";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SQc_F_Medicine"" && {[BIS_SQc_F_Medicine] call bis_fnc_questGetState == 3};"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "_",
+        };
+};
+/*%FSM</COMPILE>*/

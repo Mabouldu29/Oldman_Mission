@@ -1,0 +1,20 @@
+//--- allow player wait,anywhere he wants by input action '!'
+[] spawn BIS_fnc_OM_wait;
+
+//--- show hint with actual money state when player opens inventory
+[] call BIS_fnc_OM_moneyCheck;
+
+//--- run even if player took some of the interactive items (money, documents)
+[] call BIS_fnc_OM_interactiveItems;
+
+// weather manager
+[] call BIS_fnc_OMWeatherManagerCore;
+
+// phone
+[] call BIS_fnc_OM_phone_core;
+
+// phone contacts
+["Miller", (false)] call BIS_fnc_OM_phone_addContact;
+["Arthur", (false)] call BIS_fnc_OM_phone_addContact;
+["Doctor", (false)] call BIS_fnc_OM_phone_addContact;
+

@@ -1,0 +1,2287 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, BossFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-75.000000,-875.000000,25.000000,-825.000000,0.000000,"Init"};
+item1[] = {"__5",4,218,-75.000000,-800.000000,25.000000,-750.000000,0.000000,""};
+item2[] = {"first_meeting_with",2,250,-75.000000,-700.000000,25.000000,-650.000000,0.000000,"first meeting" \n "with syndikat"};
+item3[] = {"_",4,218,-325.000000,-800.000000,-225.000000,-750.000000,1.000000,""};
+item4[] = {"first_meeting__player",2,250,-325.000000,-700.000000,-225.000000,-650.000000,0.000000,"first meeting," \n "player did task" \n "ahead"};
+item5[] = {"",7,210,-154.000015,-854.000000,-146.000000,-846.000000,0.000000,""};
+item6[] = {"",7,210,-279.000000,-854.000000,-271.000000,-846.000000,0.000000,""};
+item7[] = {"__2",4,218,-200.000000,-800.000000,-100.000000,-750.000000,0.000000,""};
+item8[] = {"first_meeting__player_1",2,250,-200.000000,-700.000000,-100.000000,-650.000000,0.000000,"first meeting," \n "player is there" \n "too late"};
+item9[] = {"traitor__done",4,218,-75.000000,-250.000000,25.000000,-200.000000,0.000000,"traitor " \n "done"};
+item10[] = {"player_deliver_I",2,4346,-75.000000,-25.000000,25.000000,25.000000,0.000000,"player deliver" \n "ID"};
+item11[] = {"",7,210,121.000000,-479.000000,129.000000,-471.000000,0.000000,""};
+item12[] = {"house_done",4,218,75.000000,-100.000000,175.000000,-50.000000,0.000000,"house" \n "done"};
+item13[] = {"player_destroyed",2,250,75.000000,-25.000000,175.000000,25.000000,0.000000,"player destroyed" \n "the house"};
+item14[] = {"_",8,218,0.000000,75.000000,100.000000,125.000000,0.000000,""};
+item15[] = {"adding_reward_pi",2,250,0.000000,175.000000,100.000000,225.000000,0.000000,"adding reward" \n "pills"};
+item16[] = {"traitor_dead__by",4,218,200.000000,-500.000000,300.000000,-450.000000,0.000000,"traitor" \n "dead (by gendarme)"};
+item17[] = {"",7,210,-279.000000,96.000000,-271.000000,104.000000,0.000000,""};
+item18[] = {"SQ_0",-1,250,-450.000000,-650.000000,-400.000000,325.000000,0.000000,"SQ 0"};
+item19[] = {"timeout__traitor",2,250,200.000000,-100.000000,300.000000,-50.000000,0.000000,"timeout " \n "traitor gone"};
+item20[] = {"delay",4,218,0.000000,250.000000,100.000000,300.000000,0.000000,"delay"};
+item21[] = {"info_about_discounts",2,250,0.000000,475.000000,100.000000,525.000000,0.000000,"info about" \n "discounts and" \n "drop points"};
+item22[] = {"traitor__dead",4,218,-225.000000,-100.000000,-125.000000,-50.000000,0.000000,"traitor " \n "dead"};
+item23[] = {"player_took_photo",2,250,-225.000000,-25.000000,-125.000000,25.000000,0.000000,"player took" \n "photo of body"};
+item24[] = {"comm_finished_and",4,218,-150.000000,-400.000000,-50.000000,-350.000000,0.000000,"comm finished" \n "and " \n "delay passed"};
+item25[] = {"__nd_part_of_comm",2,250,-150.000000,-325.000000,-50.000000,-275.000000,0.000000,"2nd part" \n "of comm" \n "save house etc"};
+item26[] = {"",7,210,-179.000000,-304.000000,-170.999985,-296.000000,0.000000,""};
+item27[] = {"",7,210,-29.000000,-304.000000,-21.000000,-296.000000,0.000000,""};
+item28[] = {"player_destroyed",4,218,-300.000000,475.000000,-200.000000,525.000000,0.000000,"player destroyed" \n "facility"};
+item29[] = {"",7,210,-379.000000,-854.000000,-371.000000,-846.000000,0.000000,""};
+item30[] = {"",7,210,-379.000000,496.000000,-371.000000,504.000000,0.000000,""};
+item31[] = {"set_delay",2,250,-300.000000,550.000000,-200.000000,600.000000,0.000000,"set delay"};
+item32[] = {"adding_reward_pi_1",2,250,-325.000000,-25.000000,-225.000000,25.000000,0.000000,"adding reward" \n "pills"};
+item33[] = {"",7,210,-254.000015,795.999939,-246.000000,804.000000,0.000000,""};
+item34[] = {"",7,210,-378.999969,796.000000,-371.000000,804.000000,0.000000,""};
+item35[] = {"player_newer_met",4,218,-425.000000,550.000000,-325.000000,600.000000,0.000000,"player" \n "newer met" \n "Boss"};
+item36[] = {"boss_call",2,250,-425.000000,700.000000,-325.000000,750.000000,0.000000,"boss call"};
+item37[] = {"player_know_Synd",4,218,-300.000000,625.000000,-200.000000,675.000000,0.000000,"player know" \n "Syndikat"};
+item38[] = {"boss_call_1",2,250,-300.000000,700.000000,-200.000000,750.000000,0.000000,"boss call"};
+item39[] = {"player_is_getting",4,218,-300.000000,825.000000,-200.000000,875.000000,0.000000,"player is getting" \n "close"};
+item40[] = {"player_is_there",4,218,-175.000000,825.000000,-75.000000,875.000000,0.000000,"player is there"};
+item41[] = {"",7,210,-379.000000,-304.000000,-371.000000,-296.000000,0.000000,""};
+item42[] = {"cooperation_offer",2,250,0.000000,325.000000,100.000000,375.000000,0.000000,"cooperation offer" \n "SQ6 NVGs quest"};
+item43[] = {"SQ6_done",4,218,0.000000,400.000000,100.000000,450.000000,0.000000,"SQ6 done"};
+item44[] = {"",7,210,-254.000000,346.000000,-246.000000,354.000000,0.000000,""};
+item45[] = {"__4",4,218,350.000000,-800.000000,450.000000,-750.000000,0.000000,""};
+item46[] = {"first_meeting_with_1",2,250,350.000000,-700.000000,450.000000,-650.000000,0.000000,"first meeting" \n "with syndikat"};
+item47[] = {"__1",4,218,100.000000,-800.000000,200.000000,-750.000000,1.000000,""};
+item48[] = {"first_meeting__player_2",2,250,100.000000,-700.000000,200.000000,-650.000000,0.000000,"first meeting," \n "player did task" \n "ahead"};
+item49[] = {"__3",4,218,225.000000,-800.000000,325.000000,-750.000000,0.000000,""};
+item50[] = {"first_meeting__player_3",2,250,225.000000,-700.000000,325.000000,-650.000000,0.000000,"first meeting," \n "player is there" \n "too late"};
+item51[] = {"",7,210,-253.999969,-629.000000,-246.000015,-621.000000,0.000000,""};
+item52[] = {"",7,210,-166.500000,-629.000000,-158.500000,-621.000000,0.000000,""};
+item53[] = {"",7,210,-66.500000,-629.000000,-58.500000,-621.000000,0.000000,""};
+item54[] = {"",7,210,146.000000,-629.000000,154.000000,-621.000000,0.000000,""};
+item55[] = {"",7,210,246.000000,-629.000000,254.000000,-621.000000,0.000000,""};
+item56[] = {"",7,210,383.500000,-629.000000,391.500000,-621.000000,0.000000,""};
+item57[] = {"",7,210,396.000000,-479.000000,404.000000,-470.999969,0.000000,""};
+item58[] = {"",7,210,383.500000,-541.500000,391.500000,-533.500000,0.000000,""};
+item59[] = {"",7,210,271.000000,-541.500000,279.000000,-533.500000,0.000000,""};
+item60[] = {"DOCTOR_ARRANGE_M",-1,250,-500.000000,-975.000000,0.000000,-925.000000,0.000000,"DOCTOR ARRANGE MEETING"};
+item61[] = {"",7,210,-103.999992,-541.500000,-96.000008,-533.500000,0.000000,""};
+item62[] = {"",7,210,-154.000000,-541.500000,-146.000000,-533.500000,0.000000,""};
+item63[] = {"MILLER_ARRANGE_M",-1,250,50.000000,-975.000000,550.000000,-925.000000,0.000000,"MILLER ARRANGE MEETING"};
+item64[] = {"",7,210,146.000000,-854.000000,154.000000,-846.000000,0.000000,""};
+item65[] = {"",7,210,271.000000,-854.000000,279.000000,-846.000000,0.000000,""};
+item66[] = {"",7,210,396.000000,-854.000000,404.000000,-846.000000,0.000000,""};
+item67[] = {"_",8,218,-300.000000,-600.000000,-250.000000,-575.000000,0.000000,""};
+item68[] = {"",7,210,108.500000,-591.500000,116.500000,-583.500000,0.000000,""};
+item69[] = {"player_finish_fetch",4,218,-50.000000,825.000000,50.000000,875.000000,0.000000,"player finish" \n "fetch vaccine"};
+item70[] = {"player_left_town",4,218,75.000000,825.000000,175.000000,875.000000,0.000000,"player left town" \n "good reputation"};
+item71[] = {"",7,210,-129.000000,796.000000,-120.999992,804.000000,0.000000,""};
+item72[] = {"",7,210,-4.000000,796.000000,4.000000,804.000000,0.000000,""};
+item73[] = {"",7,210,121.000000,796.000000,129.000000,804.000000,0.000000,""};
+item74[] = {"boss_call_2",2,250,-300.000000,900.000000,-200.000000,950.000000,0.000000,"boss call"};
+item75[] = {"boss_call_3",2,250,-175.000000,900.000000,-75.000000,950.000000,0.000000,"boss call"};
+item76[] = {"boss_call_4",2,250,-50.000000,900.000000,50.000000,950.000000,0.000000,"boss call"};
+item77[] = {"boss_call_5",2,250,75.000000,900.000000,175.000000,950.000000,0.000000,"boss call"};
+item78[] = {"player_left_town_1",4,218,200.000000,825.000000,300.000000,875.000000,0.000000,"player left town" \n "bad reputation"};
+item79[] = {"",7,210,246.000000,796.000000,254.000000,804.000000,0.000000,""};
+item80[] = {"boss_call_6",2,250,200.000000,900.000000,300.000000,950.000000,0.000000,"boss call"};
+item81[] = {"",7,210,246.000000,970.999939,254.000000,979.000000,0.000000,""};
+item82[] = {"",7,210,121.000000,971.000000,129.000000,979.000061,0.000000,""};
+item83[] = {"",7,210,-4.000000,971.000000,4.000000,979.000000,0.000000,""};
+item84[] = {"",7,210,-129.000000,971.000000,-120.999992,979.000000,0.000000,""};
+item85[] = {"",7,210,-254.000000,971.000061,-246.000000,979.000000,0.000000,""};
+item86[] = {"",7,210,-379.000000,971.000000,-371.000000,979.000000,0.000000,""};
+item87[] = {"player_set_free",4,218,325.000000,825.000000,425.000000,875.000000,0.000000,"player" \n "set free doctor"};
+item88[] = {"",7,210,371.000000,796.000000,379.000000,804.000000,0.000000,""};
+item89[] = {"boss_call_7",2,250,325.000000,900.000000,425.000000,950.000000,0.000000,"boss call"};
+item90[] = {"",7,210,371.000000,970.999939,379.000000,979.000000,0.000000,""};
+item91[] = {"traitor_dead___by",4,218,175.000000,400.000000,275.000000,450.000000,0.000000,"traitor" \n "dead" \n " (by gendarme)"};
+item92[] = {"timeout__traitor_1",2,250,175.000000,475.000000,275.000000,525.000000,0.000000,"timeout " \n "traitor gone"};
+item93[] = {"",7,210,133.500000,345.999969,141.500000,354.000000,0.000000,""};
+item94[] = {"",7,210,133.500000,495.999969,141.500000,504.000000,0.000000,""};
+item95[] = {"",7,210,133.500000,421.000000,141.500000,429.000000,0.000000,""};
+item96[] = {"",7,210,221.000000,546.000000,229.000000,554.000000,0.000000,""};
+item97[] = {"",7,210,-91.499992,546.000000,-83.500008,554.000000,0.000000,""};
+item98[] = {"",7,210,-91.500008,496.000000,-83.499992,503.999969,0.000000,""};
+item99[] = {"set_delay_",2,250,-75.000000,-175.000000,25.000000,-125.000000,0.000000,"set delay" \n ""};
+item100[] = {"delay_passd_",4,218,-75.000000,-100.000000,25.000000,-50.000000,0.000000,"delay" \n "passd" \n ""};
+version=1;
+class LayoutItems
+{
+	class Item18
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+	class Item60
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+	class Item63
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+};
+link0[] = {0,1};
+link1[] = {0,5};
+link2[] = {0,64};
+link3[] = {1,2};
+link4[] = {2,11};
+link5[] = {2,53};
+link6[] = {2,61};
+link7[] = {3,4};
+link8[] = {4,51};
+link9[] = {4,67};
+link10[] = {5,6};
+link11[] = {5,7};
+link12[] = {6,3};
+link13[] = {6,29};
+link14[] = {7,8};
+link15[] = {8,52};
+link16[] = {8,62};
+link17[] = {9,99};
+link18[] = {10,14};
+link19[] = {11,12};
+link20[] = {11,16};
+link21[] = {12,13};
+link22[] = {13,14};
+link23[] = {14,15};
+link24[] = {15,20};
+link25[] = {16,19};
+link26[] = {17,14};
+link27[] = {19,12};
+link28[] = {20,42};
+link29[] = {21,94};
+link30[] = {21,98};
+link31[] = {22,23};
+link32[] = {23,14};
+link33[] = {24,25};
+link34[] = {25,26};
+link35[] = {25,27};
+link36[] = {26,22};
+link37[] = {26,41};
+link38[] = {27,9};
+link39[] = {27,11};
+link40[] = {28,31};
+link41[] = {29,41};
+link42[] = {30,28};
+link43[] = {31,35};
+link44[] = {31,37};
+link45[] = {32,17};
+link46[] = {33,39};
+link47[] = {33,71};
+link48[] = {34,33};
+link49[] = {35,36};
+link50[] = {36,34};
+link51[] = {37,38};
+link52[] = {38,33};
+link53[] = {39,74};
+link54[] = {40,75};
+link55[] = {41,30};
+link56[] = {42,43};
+link57[] = {42,44};
+link58[] = {42,93};
+link59[] = {43,21};
+link60[] = {44,28};
+link61[] = {45,46};
+link62[] = {46,56};
+link63[] = {46,57};
+link64[] = {46,58};
+link65[] = {47,48};
+link66[] = {48,54};
+link67[] = {48,68};
+link68[] = {49,50};
+link69[] = {50,55};
+link70[] = {50,59};
+link71[] = {51,44};
+link72[] = {52,51};
+link73[] = {53,52};
+link74[] = {54,53};
+link75[] = {55,54};
+link76[] = {56,55};
+link77[] = {57,16};
+link78[] = {58,59};
+link79[] = {59,61};
+link80[] = {61,24};
+link81[] = {62,61};
+link82[] = {64,47};
+link83[] = {64,65};
+link84[] = {65,49};
+link85[] = {65,66};
+link86[] = {66,45};
+link87[] = {67,32};
+link88[] = {68,67};
+link89[] = {69,76};
+link90[] = {70,77};
+link91[] = {71,40};
+link92[] = {71,72};
+link93[] = {72,69};
+link94[] = {72,73};
+link95[] = {73,70};
+link96[] = {73,79};
+link97[] = {74,85};
+link98[] = {75,84};
+link99[] = {76,83};
+link100[] = {77,82};
+link101[] = {78,80};
+link102[] = {79,78};
+link103[] = {79,88};
+link104[] = {80,81};
+link105[] = {81,82};
+link106[] = {82,83};
+link107[] = {83,84};
+link108[] = {84,85};
+link109[] = {85,86};
+link110[] = {86,34};
+link111[] = {87,89};
+link112[] = {88,87};
+link113[] = {89,90};
+link114[] = {90,81};
+link115[] = {91,92};
+link116[] = {92,43};
+link117[] = {92,96};
+link118[] = {93,95};
+link119[] = {94,95};
+link120[] = {95,91};
+link121[] = {96,97};
+link122[] = {97,98};
+link123[] = {98,28};
+link124[] = {99,100};
+link125[] = {100,10};
+globals[] = {0.000000,0,0,0,0,640,480,1,463,6316128,1,-531.466187,276.864441,143.169189,-968.420288,749,1030,1};
+window[] = {2,-1,-1,-1,-1,1124,78,924,78,3,767};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "BossFlow";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"// queue variables" \n
+                         "private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "//--- Set dialogues for branching" \n
+                         "private _bossWelcome = {" \n
+                         "    //--- Opening phrase, Syndikat Boss is calling to player, it's first contact. It's same for all branches" \n
+                         "    //--- Follow: _oldmanWantsMedicine; _oldmanWantsCooperate" \n
+                         "	[""eve_syndikat_webcam_a_in""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _oldmanWantsMedicine = {" \n
+                         "    //--- Appointment was arranged by Doctor. Boss knows player is here to get MEDICINE" \n
+                         "    //--- Follow: _oldmanDestroyedHouseAhead; _bossTalkAboutHisProblem; _bossAddTaskRescueMedicine" \n
+                         "	[""eve_syndikat_webcam_b"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _oldmanWantsCooperate = {" \n
+                         "    //--- Appointment was arranged by Miller. Boss knows player is here to start cooperate" \n
+                         "    //--- Follow: _bossAcceptOldman; _bossTalkPrisonedMan;  " \n
+                         "	[""eve_syndikat_webcam_c"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _oldmanDestroyedHouseAhead = {" \n
+                         "    //--- Player destroyed house ahead, so boss is giving him reward, reputation is increased, talk about where to get medicine follow" \n
+                         "    //--- Follow: another conversation, about reward, it's out of this branching " \n
+                         "	[""eve_syndikat_webcam_d"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _bossTalkAboutHisProblem = {" \n
+                         "    //--- Player is there too late, traitor was killed, he gets only task to blow up the house with evidence" \n
+                         "    //---Follow: _bossAddTaskBlowUpHouse; " \n
+                         "	[""eve_syndikat_webcam_e"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	if (BIS_Bossfsm getFSMVariable [""BIS_canSetScreen"",true]) then {BIS_SyndiNTB setObjectTexture [0, ""\a3\Missions_F_Oldman\Data\img\Screens\Desktop_Preview_Syndikat_intel_image_01_co.paa""]};" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "private _bossTalkHangedMan = {" \n
+                         "    //--- Boss is tasking player to blow up traitors house" \n
+                         "    //--- Follow: _bossAddTaskBlowUpHouse" \n
+                         "	[""ta_syndikat_webcam_f"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	if (BIS_Bossfsm getFSMVariable [""BIS_canSetScreen"",true]) then {BIS_SyndiNTB setObjectTexture [0, ""\a3\Missions_F_Oldman\Data\img\Screens\Desktop_Preview_Syndikat_intel_image_01_co.paa""]};" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "private _bossTalkPrisonedMan = {" \n
+                         "	//--- traitor prisoned" \n
+                         "	[""ta_syndikat_webcam_g"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	if (BIS_Bossfsm getFSMVariable [""BIS_canSetScreen"",true]) then {BIS_SyndiNTB setObjectTexture [0, ""\a3\Missions_F_Oldman\Data\img\Screens\Desktop_Preview_Syndikat_intel_image_01_co.paa""]};" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "private _bossAddTaskBlowUpHouse = {" \n
+                         "    //--- Boss add task blow up house" \n
+                         "    //--- Follow: _checkLaptop" \n
+                         "	[""ta_syndikat_webcam_h"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SyndiNTB setObjectTexture [0, ""\a3\Missions_F_Oldman\Data\img\Screens\Desktop_Preview_Syndikat_intel_image_02_co.paa""];" \n
+                         "	BIS_Bossfsm setFSMVariable [""BIS_canSetScreen"",false];" \n
+                         "	" \n
+                         "};" \n
+                         "" \n
+                         "private _bossAddTaskRescueMedicine = {" \n
+                         "    //--- Boss is tasking player to save traitor (it's optional task)" \n
+                         "    //--- Follow: _bossAddTaskRescueDescription" \n
+                         "	[""ta_syndikat_webcam_i"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	if (BIS_Bossfsm getFSMVariable [""BIS_canSetScreen"",true]) then {BIS_SyndiNTB setObjectTexture [0, ""\a3\Missions_F_Oldman\Data\img\Screens\Desktop_Preview_Syndikat_intel_image_01_co.paa""]};" \n
+                         "};" \n
+                         "" \n
+                         "private _bossAddTaskRescueCooperation = {" \n
+                         "    //--- Boss is tasking player to save traitor (it's optional task)" \n
+                         "    //--- Follow: _bossAddTaskRescueDescription" \n
+                         "	[""ta_syndikat_webcam_j"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _bossAddTaskRescueDescription = {" \n
+                         "    //--- Boss is tasking player to save traitor (it's optional task)" \n
+                         "    //--- Follow: _bossAddTaskBlowUpHouse;" \n
+                         "	[""eve_syndikat_webcam_k"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _bossAcceptOldman = {" \n
+                         "    //--- Boss know player blows up house ahead " \n
+                         "    //--- another conversation, about reward, it's out of this branching " \n
+                         "	[""eve_syndikat_webcam_l"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _checkLaptop = {" \n
+                         "    //--- Boss is asking player to check notebook on the table (it will add tasks to player)" \n
+                         "    //--- Follow: _byeMedicine; _byeCooperation" \n
+                         "	[""eve_syndikat_webcam_m"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _byeMedicine = {" \n
+                         "    //---farewell " \n
+                         "    //--- Follow: Nothing" \n
+                         "	[""eve_syndikat_webcam_n_out"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _byeCooperation = {" \n
+                         "    //---farewell " \n
+                         "    //--- Follow: Nothing" \n
+                         "	[""eve_syndikat_webcam_o_out"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "//--- quest house or traitor finished" \n
+                         "" \n
+                         "private _getTrustMedicine = {" \n
+                         "    //--- When the quest is done, player gets Syndikat trust. House is destroyed or Syndikat gets info about dead traitor. Doctor is alive." \n
+                         "    //--- Follow: _getTrust" \n
+                         "	[""eve_syndikat_webcam_p"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	[""Boss""] call BIS_fnc_OM_phone_addContact;" \n
+                         "};" \n
+                         "" \n
+                         "private _getTrust = {" \n
+                         "    //--- Follow _getTrustMedicine, or can be used alone in case doctor is dead." \n
+                         "    //--- Follow: Nothing" \n
+                         "	[""eve_syndikat_webcam_q_out"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	[""SYNDIKAT: camp""] call BIS_fnc_om_addIntel;" \n
+                         "	sleep 4;" \n
+                         "	BIS_SQcfsm setFSMVariable [""_updateMedicineTask"", true];" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 3;
+                                        priority = 1.000000;
+                                        to="first_meeting__player";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SQ0_L_Syndikat""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""_WelcomeDialogue""" \n
+                                         "	&&" \n
+                                         "	!isNil ""_WelcomeDialogueTaskTraitorAhead""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 47;
+                                        priority = 1.000000;
+                                        to="first_meeting__player_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SQ0_L_SyndikatArrangedByMiller""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""_WelcomeDialogue""" \n
+                                         "	&&" \n
+                                         "	!isNil ""_WelcomeDialogueTaskTraitorAhead""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="first_meeting__player_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SQ0_L_Syndikat""" \n
+                                         "&&" \n
+                                         "{	" \n
+                                         "	!isNil ""_WelcomeDialogue""" \n
+                                         "	&&" \n
+                                         "	[date, ([BIS_StartMissionDate, 3, ""d""] call BIS_fnc_CalculateDateTime)] call BIS_fnc_IsDateTimeNewer" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="first_meeting__player_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SQ0_L_SyndikatArrangedByMiller""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""_WelcomeDialogue""" \n
+                                         "	&&" \n
+                                         "	[date, ([BIS_StartMissionDate, 3, ""d""] call BIS_fnc_CalculateDateTime)] call BIS_fnc_IsDateTimeNewer" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="first_meeting_with_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SQ0_L_SyndikatArrangedByMiller""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""_WelcomeDialogue""" \n
+                                         "	&&" \n
+                                         "	[([BIS_StartMissionDate, 3, ""d""] call BIS_fnc_CalculateDateTime), date ] call BIS_fnc_IsDateTimeNewer" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="first_meeting_with";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SQ0_L_Syndikat""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""_WelcomeDialogue""" \n
+                                         "	&&" \n
+                                         "	[([BIS_StartMissionDate, 3, ""d""] call BIS_fnc_CalculateDateTime), date ] call BIS_fnc_IsDateTimeNewer" \n
+                                         "}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "first_meeting_with">*/
+                class first_meeting_with
+                {
+                        name = "first_meeting_with";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"private _syndiTraitorIntel = true;" \n
+                         "" \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {BIS_Bossfsm setFSMVariable [""_1stPartComm"",true];BIS_Bossfsm setFSMVariable [""_delay"",(time+180)]}, {}, false, _priority, false, ""Syndikat boss welcome normal, DOCTOR arrange the meeting"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_bossWelcome,_oldmanWantsMedicine,_bossAddTaskRescueMedicine,_bossAddTaskBlowUpHouse,_bossTalkPrisonedMan,_bossAddTaskRescueDescription,_checkLaptop,_byeMedicine];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "traitor_dead__by">*/
+                                class traitor_dead__by
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="timeout__traitor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"// --- time has pass and esctor is not spawned (player is not there)" \n
+                                         "[date, ([BIS_StartMissionDate, 3, ""d""] call BIS_fnc_CalculateDateTime)] call BIS_fnc_IsDateTimeNewer" \n
+                                         "&&" \n
+                                         "BIS_SEC_Traitor getVariable ""#state"" == 0" \n
+                                         "&&" \n
+                                         "isNil ""_traitorIsDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "comm_finished_and">*/
+                                class comm_finished_and
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="__nd_part_of_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_1stPartComm""" \n
+                                         "&&" \n
+                                         "!isNil ""_delay""" \n
+                                         "&&" \n
+                                         "{time > _delay}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "house_done">*/
+                                class house_done
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="player_destroyed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ0_D_TraitorHouse""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "first_meeting__player">*/
+                class first_meeting__player
+                {
+                        name = "first_meeting__player";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {}, {}, false, _priority, false, ""Syndikat boss welcome task blow up the house is done DOCTOR arrange the meeting"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue" \n
+                         "} forEach [_bossWelcome,_oldmanWantsMedicine,_oldmanDestroyedHouseAhead]" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 67;
+                                        priority = 0.000000;
+                                        to="adding_reward_pi_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//time > _delay" \n
+                                         "true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "first_meeting__player_1">*/
+                class first_meeting__player_1
+                {
+                        name = "first_meeting__player_1";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"private _syndiTraitorIntel = true;" \n
+                         "private _traitorIsDead = true;" \n
+                         "" \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {BIS_Bossfsm setFSMVariable [""_1stPartComm"",true];BIS_Bossfsm setFSMVariable [""_delay"",(time+180)]}, {}, false, _priority, false, ""Syndikat boss welcome too late, task kill was not created DOCTOR arrange the meeting"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_bossWelcome,_oldmanWantsMedicine,_bossTalkAboutHisProblem,_bossAddTaskBlowUpHouse,_checkLaptop,_byeMedicine];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "comm_finished_and">*/
+                                class comm_finished_and
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="__nd_part_of_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_1stPartComm""" \n
+                                         "&&" \n
+                                         "!isNil ""_delay""" \n
+                                         "&&" \n
+                                         "{time > _delay}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "player_deliver_I">*/
+                class player_deliver_I
+                {
+                        name = "player_deliver_I";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/"/*private _speech = " \n
+                         "{" \n
+                         "	[""ta_evidence_received""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Syndikat boss calls, traitor ID was delivered"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "*/" \n
+                         "// when variable is set, there is dialogue about pills in syndiakt camp" \n
+                         "BIS_Syndikatfsm setFSMVariable [""_welcomeTalkPickUpPills"",true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="adding_reward_pi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//time > _delay" \n
+                                         "true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "player_destroyed">*/
+                class player_destroyed
+                {
+                        name = "player_destroyed";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	sleep 10;" \n
+                         "	[""ta_house_destroyed""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Syndikat boss calls, house was destroyed"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "// when variable is set, there is dialogue about pills in syndiakt camp" \n
+                         "BIS_Syndikatfsm setFSMVariable [""_welcomeTalkPickUpPills"",true];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="adding_reward_pi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//time > _delay" \n
+                                         "true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "adding_reward_pi">*/
+                class adding_reward_pi
+                {
+                        name = "adding_reward_pi";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"if (isNil ""BIS_SQ0_L_SyndikatArrangedByMiller"") then {" \n
+                         "	{" \n
+                         "		[1," \n
+                         "			[ " \n
+                         "				[_x, [], 2, _validity, {}, {}, false, _priority, false, ""Syndikat boss tells player where to get reward"" ] " \n
+                         "			] " \n
+                         "		] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "	} forEach [_getTrustMedicine,_getTrust];" \n
+                         "};" \n
+                         "" \n
+                         "//trust is increased in the Quest onFinish code" \n
+                         "_delay = time + 300;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "delay">*/
+                                class delay
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="cooperation_offer";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "timeout__traitor">*/
+                class timeout__traitor
+                {
+                        name = "timeout__traitor";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/"_traitorIsDead = true;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ex_timeout_traitor""] call BIS_fnc_om_conversation;" \n
+                         "	BIS_traitorExecuted = true;" \n
+                         "	BIS_SQsfsm setFSMVariable [""_cancelTraitorTask"", true];" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Boss_traitor_dead"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "house_done">*/
+                                class house_done
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="player_destroyed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ0_D_TraitorHouse""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "info_about_discounts">*/
+                class info_about_discounts
+                {
+                        name = "info_about_discounts";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/"[""Enable""] call BIS_fnc_OM_ModuleSyndikatAgent;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_dead___by">*/
+                                class traitor_dead___by
+                                {
+                                        itemno = 91;
+                                        priority = 0.000000;
+                                        to="timeout__traitor_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"// --- time has pass and esctor is not spawned (player is not there)" \n
+                                         "[date, ([BIS_StartMissionDate, 3, ""d""] call BIS_fnc_CalculateDateTime)] call BIS_fnc_IsDateTimeNewer" \n
+                                         "&&" \n
+                                         "BIS_SEC_Traitor getVariable ""#state"" == 0" \n
+                                         "&&" \n
+                                         "isNil ""_traitorIsDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "player_took_photo">*/
+                class player_took_photo
+                {
+                        name = "player_took_photo";
+                        itemno = 23;
+                        init = /*%FSM<STATEINIT""">*/"//--- code from this cell (dialogue) was shifted into traitor fsm" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="adding_reward_pi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//time > _delay" \n
+                                         "true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__nd_part_of_comm">*/
+                class __nd_part_of_comm
+                {
+                        name = "__nd_part_of_comm";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	" \n
+                         "	[""in_black_market_prices""] call BIS_fnc_om_conversation;" \n
+                         "	if (isNil ""BIS_SQ0_D_TraitorHouse"") then {[""in_black_market_prices_laptop"",nil,FALSE] call BIS_fnc_om_conversation};" \n
+                         "	if (isNil ""BIS_SQ0_D_TraitorHouse"") then {BIS_SQsfsm setFSMVariable [""_playerHasSyndiIntel"",true]};" \n
+                         "	BIS_Bossfsm setFSMVariable [""_addMarketAndSafehouse"",true];" \n
+                         "	BIS_SQ0fsm setFSMVariable [""_addHintHostels"",true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Boss calls to player with some aditional informations"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "traitor__done">*/
+                                class traitor__done
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="set_delay_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTransportID"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "house_done">*/
+                                class house_done
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="player_destroyed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ0_D_TraitorHouse""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_dead__by">*/
+                                class traitor_dead__by
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="timeout__traitor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"// --- time has pass and esctor is not spawned (player is not there)" \n
+                                         "[date, ([BIS_StartMissionDate, 3, ""d""] call BIS_fnc_CalculateDateTime)] call BIS_fnc_IsDateTimeNewer" \n
+                                         "&&" \n
+                                         "BIS_SEC_Traitor getVariable ""#state"" == 0" \n
+                                         "&&" \n
+                                         "isNil ""_traitorIsDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor__dead">*/
+                                class traitor__dead
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="player_took_photo";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerPhotoDeadTraitor""" \n
+                                         "&&" \n
+                                         "{_playerPhotoDeadTraitor}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_delay">*/
+                class set_delay
+                {
+                        name = "set_delay";
+                        itemno = 31;
+                        init = /*%FSM<STATEINIT""">*/"private _delay = time + 60;" \n
+                         "" \n
+                         "//--- common start" \n
+                         "private _speechOpeningBoss = " \n
+                         "{" \n
+                         "	[""eve_syndikat_end_in""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "//--- start when player newer was in a contact with Syndikat Boss" \n
+                         "private _speechOpeningUnknown = " \n
+                         "{" \n
+                         "	[""eve_syndikat_end_in_unknown""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "//--- speek" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_syndikat_end_a"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "		if (!isNil ""BIS_MillerDead"") then {" \n
+                         "			[""eve_syndikat_end_b"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "		};" \n
+                         "		if ([""T_SQ1_F_Evidence""] call bis_fnc_questGetState == 3) then {" \n
+                         "			[""eve_syndikat_end_c"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "		};" \n
+                         "		if ([""T_SQ4_D_primaryRadar""] call bis_fnc_questGetState == 3 && [""T_SQ4_D_backupRadar""] call bis_fnc_questGetState == 3) then {" \n
+                         "		[""eve_syndikat_end_d"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "		};" \n
+                         "		if (!isNil ""BIS_disableAutonomousTurret"" && {BIS_disableAutonomousTurret}) then {" \n
+                         "			[""eve_syndikat_end_e"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "		};" \n
+                         "	[""eve_syndikat_end_f"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "		if (!isNil ""BIS_CiviliansAreDead"" && !isNil ""BIS_DoctorDead"") then {" \n
+                         "			[""eve_syndikat_end_g"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "		};" \n
+                         "	[""eve_syndikat_end_h"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ99bfsm setFSMVariable [""_threatenFinished"", true];" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_know_Synd">*/
+                                class player_know_Synd
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="boss_call_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_WelcomeDialogue""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_newer_met">*/
+                                class player_newer_met
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="boss_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_WelcomeDialogue"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "adding_reward_pi_1">*/
+                class adding_reward_pi_1
+                {
+                        name = "adding_reward_pi_1";
+                        itemno = 32;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="adding_reward_pi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//time > _delay" \n
+                                         "true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call">*/
+                class boss_call
+                {
+                        name = "boss_call";
+                        itemno = 36;
+                        init = /*%FSM<STATEINIT""">*/"{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {}, {}, false, _priority, false, ""Player don't know Syndikat, Syndikat boss calls he kidnaped Oldman friends"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_speechOpeningUnknown,_speech];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_there">*/
+                                class player_is_there
+                                {
+                                        itemno = 40;
+                                        priority = 0.000000;
+                                        to="boss_call_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_isThere""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 15}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_finish_fetch">*/
+                                class player_finish_fetch
+                                {
+                                        itemno = 69;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questFetchSyndiVacc""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town">*/
+                                class player_left_town
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") >= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town_1">*/
+                                class player_left_town_1
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") <= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_set_free">*/
+                                class player_set_free
+                                {
+                                        itemno = 87;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_talkAboutHuntingHim""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	_talkAboutHuntingHim" \n
+                                         "	&&" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is_getting">*/
+                                class player_is_getting
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_gettingCloserTalk""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 300}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_1">*/
+                class boss_call_1
+                {
+                        name = "boss_call_1";
+                        itemno = 38;
+                        init = /*%FSM<STATEINIT""">*/"{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {}, {}, false, _priority, false, ""Player know Syndikat, Syndikat boss calls he kidnaped Oldman friends"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_speechOpeningBoss,_speech];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_there">*/
+                                class player_is_there
+                                {
+                                        itemno = 40;
+                                        priority = 0.000000;
+                                        to="boss_call_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_isThere""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 15}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_finish_fetch">*/
+                                class player_finish_fetch
+                                {
+                                        itemno = 69;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questFetchSyndiVacc""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town">*/
+                                class player_left_town
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") >= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town_1">*/
+                                class player_left_town_1
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") <= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_set_free">*/
+                                class player_set_free
+                                {
+                                        itemno = 87;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_talkAboutHuntingHim""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	_talkAboutHuntingHim" \n
+                                         "	&&" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is_getting">*/
+                                class player_is_getting
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_gettingCloserTalk""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 300}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "cooperation_offer">*/
+                class cooperation_offer
+                {
+                        name = "cooperation_offer";
+                        itemno = 42;
+                        init = /*%FSM<STATEINIT""">*/"BIS_addDropPointsLocation = true;" \n
+                         "bis_fnc_missionFlow_fsm setFSMVariable [""_showSavePointSM"",true]; " \n
+                         "//--- enable possibility to run SQ5" \n
+                         "bis_fnc_missionFlow_fsm setFSMVariable [""_SQ5"",true]; " \n
+                         "BIS_SQsfsm setFSMVariable [""_startSQ6"", true];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_dead___by">*/
+                                class traitor_dead___by
+                                {
+                                        itemno = 91;
+                                        priority = 0.000000;
+                                        to="timeout__traitor_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"// --- time has pass and esctor is not spawned (player is not there)" \n
+                                         "[date, ([BIS_StartMissionDate, 3, ""d""] call BIS_fnc_CalculateDateTime)] call BIS_fnc_IsDateTimeNewer" \n
+                                         "&&" \n
+                                         "BIS_SEC_Traitor getVariable ""#state"" == 0" \n
+                                         "&&" \n
+                                         "isNil ""_traitorIsDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_done">*/
+                                class SQ6_done
+                                {
+                                        itemno = 43;
+                                        priority = 0.000000;
+                                        to="info_about_discounts";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_sq6End""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "first_meeting_with_1">*/
+                class first_meeting_with_1
+                {
+                        name = "first_meeting_with_1";
+                        itemno = 46;
+                        init = /*%FSM<STATEINIT""">*/"private _syndiTraitorIntel = true;" \n
+                         "" \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {BIS_Bossfsm setFSMVariable [""_1stPartComm"",true];BIS_Bossfsm setFSMVariable [""_delay"",(time+180)]}, {}, false, _priority, false, ""Syndikat boss welcome normal MILLER arrange the meeting"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_bossWelcome,_oldmanWantsCooperate,_bossAddTaskRescueCooperation,_bossTalkPrisonedMan,_bossAddTaskBlowUpHouse,_bossAddTaskRescueDescription,_checkLaptop,_byeCooperation];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "traitor_dead__by">*/
+                                class traitor_dead__by
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="timeout__traitor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"// --- time has pass and esctor is not spawned (player is not there)" \n
+                                         "[date, ([BIS_StartMissionDate, 3, ""d""] call BIS_fnc_CalculateDateTime)] call BIS_fnc_IsDateTimeNewer" \n
+                                         "&&" \n
+                                         "BIS_SEC_Traitor getVariable ""#state"" == 0" \n
+                                         "&&" \n
+                                         "isNil ""_traitorIsDead"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "comm_finished_and">*/
+                                class comm_finished_and
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="__nd_part_of_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_1stPartComm""" \n
+                                         "&&" \n
+                                         "!isNil ""_delay""" \n
+                                         "&&" \n
+                                         "{time > _delay}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "first_meeting__player_2">*/
+                class first_meeting__player_2
+                {
+                        name = "first_meeting__player_2";
+                        itemno = 48;
+                        init = /*%FSM<STATEINIT""">*/"{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {}, {}, false, _priority, false, ""Syndikat boss welcome task blow up the house done MILLER arrange the meeting"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_bossWelcome,_oldmanWantsCooperate,_bossAcceptOldman];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 67;
+                                        priority = 0.000000;
+                                        to="adding_reward_pi_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//time > _delay" \n
+                                         "true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "first_meeting__player_3">*/
+                class first_meeting__player_3
+                {
+                        name = "first_meeting__player_3";
+                        itemno = 50;
+                        init = /*%FSM<STATEINIT""">*/"private _syndiTraitorIntel = true;" \n
+                         "private _traitorIsDead = true;" \n
+                         "" \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {BIS_Bossfsm setFSMVariable [""_1stPartComm"",true];BIS_Bossfsm setFSMVariable [""_delay"",(time+180)]}, {}, false, _priority, false, ""Syndikat boss welcome too late, task kill is not created MILLER arrange the meeting"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_bossWelcome,_oldmanWantsCooperate,_bossAddTaskRescueCooperation,_bossTalkHangedMan,_bossAddTaskBlowUpHouse,_checkLaptop,_byeCooperation];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "comm_finished_and">*/
+                                class comm_finished_and
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="__nd_part_of_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_1stPartComm""" \n
+                                         "&&" \n
+                                         "!isNil ""_delay""" \n
+                                         "&&" \n
+                                         "{time > _delay}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_2">*/
+                class boss_call_2
+                {
+                        name = "boss_call_2";
+                        itemno = 74;
+                        init = /*%FSM<STATEINIT""">*/"private _gettingCloserTalk = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_in_georgetown_syndikat_boss""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ99_Boss_player_in_town"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_there">*/
+                                class player_is_there
+                                {
+                                        itemno = 40;
+                                        priority = 0.000000;
+                                        to="boss_call_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_isThere""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 15}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_finish_fetch">*/
+                                class player_finish_fetch
+                                {
+                                        itemno = 69;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questFetchSyndiVacc""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town">*/
+                                class player_left_town
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") >= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town_1">*/
+                                class player_left_town_1
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") <= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_set_free">*/
+                                class player_set_free
+                                {
+                                        itemno = 87;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_talkAboutHuntingHim""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	_talkAboutHuntingHim" \n
+                                         "	&&" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is_getting">*/
+                                class player_is_getting
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_gettingCloserTalk""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 300}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_3">*/
+                class boss_call_3
+                {
+                        name = "boss_call_3";
+                        itemno = 75;
+                        init = /*%FSM<STATEINIT""">*/"private _isThere = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_approaching_van_syndikat_boss""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ99_Boss_palyer_close_van"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_there">*/
+                                class player_is_there
+                                {
+                                        itemno = 40;
+                                        priority = 0.000000;
+                                        to="boss_call_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_isThere""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 15}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_finish_fetch">*/
+                                class player_finish_fetch
+                                {
+                                        itemno = 69;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questFetchSyndiVacc""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town">*/
+                                class player_left_town
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") >= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town_1">*/
+                                class player_left_town_1
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") <= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_set_free">*/
+                                class player_set_free
+                                {
+                                        itemno = 87;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_talkAboutHuntingHim""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	_talkAboutHuntingHim" \n
+                                         "	&&" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is_getting">*/
+                                class player_is_getting
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_gettingCloserTalk""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 300}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_4">*/
+                class boss_call_4
+                {
+                        name = "boss_call_4";
+                        itemno = 76;
+                        init = /*%FSM<STATEINIT""">*/"private _questFetchSyndiVacc = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ta_counteragent_in_van""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ99_Boss_player_did_drop"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_there">*/
+                                class player_is_there
+                                {
+                                        itemno = 40;
+                                        priority = 0.000000;
+                                        to="boss_call_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_isThere""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 15}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_finish_fetch">*/
+                                class player_finish_fetch
+                                {
+                                        itemno = 69;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questFetchSyndiVacc""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town">*/
+                                class player_left_town
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") >= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town_1">*/
+                                class player_left_town_1
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") <= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_set_free">*/
+                                class player_set_free
+                                {
+                                        itemno = 87;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_talkAboutHuntingHim""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	_talkAboutHuntingHim" \n
+                                         "	&&" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is_getting">*/
+                                class player_is_getting
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_gettingCloserTalk""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 300}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_5">*/
+                class boss_call_5
+                {
+                        name = "boss_call_5";
+                        itemno = 77;
+                        init = /*%FSM<STATEINIT""">*/"//--- dialogue where player has a good reputation to Syndikat. he release prisoned civilians and tells player about the fact CSAT knows his face and soon every soldier on Tanoa will know what he did. Sugges him to leave tanoa and tells him about SDV submarine in CSAT base (only safe way how to leave Tanoa is by SDV)" \n
+                         "private _questLeaveTwonFinished = false;" \n
+                         "private _speechGoodReputation = " \n
+                         "{" \n
+                         "		[""ta_sample_taken_to_van_alt_in_call""] call BIS_fnc_om_conversation;" \n
+                         "		if (!isNil ""BIS_CiviliansAreDead"" || !isNil ""BIS_DoctorDead"") then {" \n
+                         "			[""ta_sample_taken_to_van_alt_doctor_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "		};" \n
+                         "		[""ta_sample_taken_to_van_alt_out_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "		sleep 5;" \n
+                         "		BIS_SQ99bfsm setFSMVariable [""_addTaskleaveTanoa"", true];" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speechGoodReputation, [], 2, _validity, {}, {}, false, _priority, false, ""SQ99_Boss_leave_tanoa_good_rep"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_there">*/
+                                class player_is_there
+                                {
+                                        itemno = 40;
+                                        priority = 0.000000;
+                                        to="boss_call_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_isThere""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 15}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_finish_fetch">*/
+                                class player_finish_fetch
+                                {
+                                        itemno = 69;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questFetchSyndiVacc""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town">*/
+                                class player_left_town
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") >= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town_1">*/
+                                class player_left_town_1
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") <= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_set_free">*/
+                                class player_set_free
+                                {
+                                        itemno = 87;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_talkAboutHuntingHim""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	_talkAboutHuntingHim" \n
+                                         "	&&" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is_getting">*/
+                                class player_is_getting
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_gettingCloserTalk""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 300}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_6">*/
+                class boss_call_6
+                {
+                        name = "boss_call_6";
+                        itemno = 80;
+                        init = /*%FSM<STATEINIT""">*/"//---dialogue where player has a bad reputation. Syndikat release civilinas or do he kill them? and tell him about SDV and leavign tanoa. Important is to have a different tone of speek." \n
+                         "private _questLeaveTwonFinished = false;" \n
+                         "private _speechBadReputation = " \n
+                         "{" \n
+                         "		[""ta_sample_taken_to_van_alt_bad_rep_in_call""] call BIS_fnc_om_conversation;" \n
+                         "		if (!isNil ""BIS_CiviliansAreDead"" || !isNil ""BIS_DoctorDead"") then {" \n
+                         "			//--- did he in case of a bad reputation?" \n
+                         "			[""ta_sample_taken_to_van_alt_bad_rep_doctor_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "		};" \n
+                         "		[""ta_sample_taken_to_van_alt_bad_rep_out_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "		sleep 5;" \n
+                         "		BIS_SQ99bfsm setFSMVariable [""_addTaskleaveTanoa"", true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speechBadReputation, [], 2, _validity, {}, {}, false, _priority, false, ""SQ99_Boss_leave_tanoa_bad_rep"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_there">*/
+                                class player_is_there
+                                {
+                                        itemno = 40;
+                                        priority = 0.000000;
+                                        to="boss_call_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_isThere""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 15}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_finish_fetch">*/
+                                class player_finish_fetch
+                                {
+                                        itemno = 69;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questFetchSyndiVacc""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town">*/
+                                class player_left_town
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") >= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town_1">*/
+                                class player_left_town_1
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") <= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_set_free">*/
+                                class player_set_free
+                                {
+                                        itemno = 87;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_talkAboutHuntingHim""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	_talkAboutHuntingHim" \n
+                                         "	&&" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is_getting">*/
+                                class player_is_getting
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_gettingCloserTalk""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 300}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_7">*/
+                class boss_call_7
+                {
+                        name = "boss_call_7";
+                        itemno = 89;
+                        init = /*%FSM<STATEINIT""">*/"private _talkAboutHuntingHim = false;" \n
+                         "private _speech = " \n
+                         "	{" \n
+                         "		[""eve_doctor_rescued""] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Syndikat boss calls, player fight with syndi and sets free a doctor"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is_there">*/
+                                class player_is_there
+                                {
+                                        itemno = 40;
+                                        priority = 0.000000;
+                                        to="boss_call_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_isThere""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 15}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_finish_fetch">*/
+                                class player_finish_fetch
+                                {
+                                        itemno = 69;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questFetchSyndiVacc""" \n
+                                         "&&" \n
+                                         "{[""T_SQ99_F_SyndiVaccine""] call bis_fnc_questGetState == 3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town">*/
+                                class player_left_town
+                                {
+                                        itemno = 70;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") >= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_left_town_1">*/
+                                class player_left_town_1
+                                {
+                                        itemno = 78;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questLeaveTwonFinished""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	(((missionNameSpace getVariable 'BIS_OM_Reputation_logic') getVariable  ""ReputationLevel"") <= 0)" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_set_free">*/
+                                class player_set_free
+                                {
+                                        itemno = 87;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_talkAboutHuntingHim""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	_talkAboutHuntingHim" \n
+                                         "	&&" \n
+                                         "	[""T_SQ99_L_TownEscape""] call bis_fnc_questGetState == 3" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is_getting">*/
+                                class player_is_getting
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_gettingCloserTalk""" \n
+                                         "&&" \n
+                                         "{player distance BIS_finalWreck < 300}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "timeout__traitor_1">*/
+                class timeout__traitor_1
+                {
+                        name = "timeout__traitor_1";
+                        itemno = 92;
+                        init = /*%FSM<STATEINIT""">*/"_traitorIsDead = true;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ex_timeout_traitor""] call BIS_fnc_om_conversation;" \n
+                         "	BIS_traitorExecuted = true;" \n
+                         "	BIS_SQsfsm setFSMVariable [""_cancelTraitorTask"", true];" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Boss_traitor_dead"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_destroyed">*/
+                                class player_destroyed
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_threaten""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "SQ6_done">*/
+                                class SQ6_done
+                                {
+                                        itemno = 43;
+                                        priority = 0.000000;
+                                        to="info_about_discounts";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_sq6End""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_delay_">*/
+                class set_delay_
+                {
+                        name = "set_delay_";
+                        itemno = 99;
+                        init = /*%FSM<STATEINIT""">*/"private _delay = time + 5;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "delay_passd_">*/
+                                class delay_passd_
+                                {
+                                        itemno = 100;
+                                        priority = 0.000000;
+                                        to="player_deliver_I";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+        };
+};
+/*%FSM</COMPILE>*/

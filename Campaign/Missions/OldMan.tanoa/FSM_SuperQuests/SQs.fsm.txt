@@ -1,0 +1,1079 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, SQs">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-49.584320,-968.523560,50.415680,-918.523560,0.000000,"Init"};
+item1[] = {"start_operation",4,218,325.000000,-725.000000,425.000000,-675.000000,0.000000,"start operation" \n "Balavu"};
+item2[] = {"code",2,250,325.000000,-650.000000,425.000000,-600.000000,0.000000,"code"};
+item3[] = {"",7,210,371.000000,-779.000000,379.000000,-771.000000,0.000000,""};
+item4[] = {"",7,210,371.000000,-391.500000,379.000000,-383.500000,0.000000,""};
+item5[] = {"syndi_task_added",4,218,-50.000000,-725.000000,50.000000,-675.000000,0.000000,"syndi task" \n "added"};
+item6[] = {"code_1",2,250,-50.000000,-650.000000,50.000000,-600.000000,0.000000,"code"};
+item7[] = {"",7,210,-4.000000,-779.000000,4.000000,-771.000000,0.000000,""};
+item8[] = {"",7,210,-4.000000,-391.500000,4.000000,-383.500000,0.000000,""};
+item9[] = {"syndi_task_fetch",4,218,75.000000,-725.000000,175.000000,-675.000000,0.000000,"syndi task" \n "fetch ID"};
+item10[] = {"code_2",2,250,75.000000,-650.000000,175.000000,-600.000000,0.000000,"code"};
+item11[] = {"",7,210,121.000000,-779.000000,129.000000,-771.000000,0.000000,""};
+item12[] = {"",7,210,121.000000,-391.500000,129.000000,-383.500000,0.000000,""};
+item13[] = {"add_intel_cache",4,218,200.000000,-725.000000,300.000000,-675.000000,0.000000,"add intel" \n "cache"};
+item14[] = {"code_3",2,250,200.000000,-650.000000,300.000000,-600.000000,0.000000,"code"};
+item15[] = {"",7,210,246.000000,-779.000000,254.000000,-771.000000,0.000000,""};
+item16[] = {"",7,210,246.000000,-391.500000,254.000000,-383.500000,0.000000,""};
+item17[] = {"",7,210,-66.499992,-391.500000,-58.500008,-383.500000,0.000000,""};
+item18[] = {"",7,210,-66.499992,-779.000000,-58.500008,-771.000000,0.000000,""};
+item19[] = {"traitor_is_dead",4,218,450.000000,-725.000000,550.000000,-675.000000,0.000000,"traitor is" \n "dead"};
+item20[] = {"cancel_his_quest",2,4346,450.000000,-650.000000,550.000000,-600.000000,0.000000,"cancel his" \n "quest"};
+item21[] = {"",7,210,496.000000,-779.000000,504.000000,-771.000000,0.000000,""};
+item22[] = {"",7,210,496.000000,-391.500000,504.000000,-383.500000,0.000000,""};
+item23[] = {"time_to_add_quest",4,218,575.000000,-725.000000,675.000000,-675.000000,0.000000,"time to add" \n "quest plane"};
+item24[] = {"create_quest",2,250,575.000000,-650.000000,675.000000,-600.000000,0.000000,"create quest"};
+item25[] = {"",7,210,621.000000,-779.000000,629.000000,-771.000000,0.000000,""};
+item26[] = {"",7,210,621.000000,-391.500000,629.000000,-383.500000,0.000000,""};
+item27[] = {"BP_port_container",4,218,700.000000,-725.000000,800.000000,-675.000000,0.000000,"BP port" \n "container "};
+item28[] = {"send_SMS",2,250,700.000000,-650.000000,800.000000,-600.000000,0.000000,"send SMS"};
+item29[] = {"",7,210,746.000000,-779.000000,754.000000,-771.000000,0.000000,""};
+item30[] = {"",7,210,746.000000,-391.500000,754.000000,-383.500000,0.000000,""};
+link0[] = {0,7};
+link1[] = {1,2};
+link2[] = {2,4};
+link3[] = {3,1};
+link4[] = {3,21};
+link5[] = {4,16};
+link6[] = {5,6};
+link7[] = {6,8};
+link8[] = {7,5};
+link9[] = {7,11};
+link10[] = {8,17};
+link11[] = {9,10};
+link12[] = {10,12};
+link13[] = {11,9};
+link14[] = {11,15};
+link15[] = {12,8};
+link16[] = {13,14};
+link17[] = {14,16};
+link18[] = {15,3};
+link19[] = {15,13};
+link20[] = {16,12};
+link21[] = {17,18};
+link22[] = {18,7};
+link23[] = {19,20};
+link24[] = {20,22};
+link25[] = {21,19};
+link26[] = {21,25};
+link27[] = {22,4};
+link28[] = {23,24};
+link29[] = {24,26};
+link30[] = {25,23};
+link31[] = {25,29};
+link32[] = {26,22};
+link33[] = {27,28};
+link34[] = {28,30};
+link35[] = {29,27};
+link36[] = {30,26};
+globals[] = {0.000000,0,0,0,0,640,480,1,448,6316128,1,-66.164505,793.974060,-150.855103,-1071.864990,975,880,1};
+window[] = {2,-1,-1,-32000,-32000,1202,156,1002,156,3,993};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SQs";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"// queue variables" \n
+                         "private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "syndi_task_fetch">*/
+                                class syndi_task_fetch
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerGetTaskID""" \n
+                                         "&&" \n
+                                         "{_playerGetTaskID}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_intel_cache">*/
+                                class add_intel_cache
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCacheLakatoro""" \n
+                                         "&&" \n
+                                         "{_addCacheLakatoro}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "start_operation">*/
+                                class start_operation
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="code";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startSQ6""" \n
+                                         "&&" \n
+                                         "{_startSQ6}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_is_dead">*/
+                                class traitor_is_dead
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="cancel_his_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_cancelTraitorTask""" \n
+                                         "&&" \n
+                                         "{_cancelTraitorTask}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_to_add_quest">*/
+                                class time_to_add_quest
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="create_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questPlaneSyndi""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 0" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 1" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 2" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "BP_port_container">*/
+                                class BP_port_container
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="send_SMS";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_addDropPointsLocation""" \n
+                                         "&& " \n
+                                         "isnil ""_bluePearlHarborContainerInfo""" \n
+                                         "&&" \n
+                                         "isnil ""BIS_BP_ContainerFound"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "syndi_task_added">*/
+                                class syndi_task_added
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="code_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerHasSyndiIntel""" \n
+                                         "&&" \n
+                                         "{_playerHasSyndiIntel}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code">*/
+                class code
+                {
+                        name = "code";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"_startSQ6 = false;" \n
+                         "bis_fnc_missionFlow_fsm setFSMVariable [""_SQ6"",true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "syndi_task_fetch">*/
+                                class syndi_task_fetch
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerGetTaskID""" \n
+                                         "&&" \n
+                                         "{_playerGetTaskID}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_intel_cache">*/
+                                class add_intel_cache
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCacheLakatoro""" \n
+                                         "&&" \n
+                                         "{_addCacheLakatoro}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "start_operation">*/
+                                class start_operation
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="code";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startSQ6""" \n
+                                         "&&" \n
+                                         "{_startSQ6}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_is_dead">*/
+                                class traitor_is_dead
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="cancel_his_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_cancelTraitorTask""" \n
+                                         "&&" \n
+                                         "{_cancelTraitorTask}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_to_add_quest">*/
+                                class time_to_add_quest
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="create_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questPlaneSyndi""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 0" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 1" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 2" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "BP_port_container">*/
+                                class BP_port_container
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="send_SMS";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_addDropPointsLocation""" \n
+                                         "&& " \n
+                                         "isnil ""_bluePearlHarborContainerInfo""" \n
+                                         "&&" \n
+                                         "isnil ""BIS_BP_ContainerFound"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "syndi_task_added">*/
+                                class syndi_task_added
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="code_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerHasSyndiIntel""" \n
+                                         "&&" \n
+                                         "{_playerHasSyndiIntel}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_1">*/
+                class code_1
+                {
+                        name = "code_1";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"_playerHasSyndiIntel = false;" \n
+                         "[] spawn " \n
+                         "{" \n
+                         "	// --- First, create aditional markers for Quest Traitor" \n
+                         "	[0, [""SmartMarker_C_Loc_F"", ""BIS_RedSpringMine"",[11957,10381], false,[[""name"", localize ""STR_A3_SQs.fsmFSM_States_code_10""],[""title"",localize ""STR_A3_SQs.fsmFSM_States_code_11""],[""description"",localize ""STR_A3_SQs.fsmFSM_States_code_12""]],false]] call BIS_fnc_OM_moduleSmartMarkers; //---ToDo: Localize" \n
+                         "	sleep 1;" \n
+                         "	[0, [""SmartMarker_O_CSAT_F"", ""BIS_VagalalaCSATHotel"",[11071,9861],false,[],false]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "	sleep 1;" \n
+                         "	[0, [""SmartMarker_O_Gendarme_F"", ""BIS_VagalalaPoliceStation"",[11063,9796],false,[],false]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "" \n
+                         "	// --- common markers - restricted areas" \n
+                         "	// --- vagalala pol station" \n
+                         "	_nic = createMarker [""BIS_VagalalaPolStation"", [11064.3,9795.9]];" \n
+                         "	{" \n
+                         "	    _x setMarkerShape ""RECTANGLE""," \n
+                         "	    _x setMarkerColor ""colorOPFOR""," \n
+                         "	    _x setmarkerDir 194.4," \n
+                         "	    _x setMarkerSize [9.3,11.5]," \n
+                         "		 _x setMarkerAlpha 0.5" \n
+                         "	} foreach [""BIS_VagalalaPolStation""];" \n
+                         "" \n
+                         "	// --- red spring mine" \n
+                         "	[0, [""SmartMarker_O_Area_F"", ""BIS_mineLoc"",[11927,10367],false,[],false]] call BIS_fnc_OM_moduleSmartMarkers; " \n
+                         "" \n
+                         "	// --- CSAT hotel" \n
+                         "	_nic = createMarker [""BIS_VagalalaCSATHotel"", [11069.4,9856.5]];" \n
+                         "	{" \n
+                         "	    _x setMarkerShape ""RECTANGLE""," \n
+                         "	    _x setMarkerColor ""colorOPFOR""," \n
+                         "	    _x setmarkerDir 0," \n
+                         "	    _x setMarkerSize [26.7,21.2]," \n
+                         "		 _x setMarkerAlpha 0.5" \n
+                         "	} foreach [""BIS_VagalalaCSATHotel""];" \n
+                         "	sleep 10;" \n
+                         "	saveGame;" \n
+                         "};" \n
+                         "" \n
+                         "if ([([BIS_StartMissionDate, 3, ""d""] call BIS_fnc_CalculateDateTime), date ] call BIS_fnc_IsDateTimeNewer) then " \n
+                         "{" \n
+                         "	[] spawn " \n
+                         "	{" \n
+                         "		// --- wait for smart markers. They has to be created before the task is created" \n
+                         "		sleep 3;" \n
+                         "		BIS_SQ0_D_TraitorHouse = [""T_SQ0_D_TraitorHouse"", [T_D_TraitorHouse]] call bis_fnc_questCreateManualy;" \n
+                         "		sleep 5;" \n
+                         "		BIS_SQ0_R_Traitor = [""T_SQ0_R_Traitor"", [T_R_Traitor]] call bis_fnc_questCreateManualy;" \n
+                         "	};" \n
+                         "" \n
+                         "} else" \n
+                         "{" \n
+                         "	[] spawn " \n
+                         "	{" \n
+                         "			// --- wait for smart markers. They has to be created before the task is created" \n
+                         "			sleep 3;" \n
+                         "			BIS_SQ0_D_TraitorHouse = [""T_SQ0_D_TraitorHouse"", [T_D_TraitorHouse]] call bis_fnc_questCreateManualy;" \n
+                         "	};" \n
+                         "}" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "syndi_task_fetch">*/
+                                class syndi_task_fetch
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerGetTaskID""" \n
+                                         "&&" \n
+                                         "{_playerGetTaskID}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_intel_cache">*/
+                                class add_intel_cache
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCacheLakatoro""" \n
+                                         "&&" \n
+                                         "{_addCacheLakatoro}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "start_operation">*/
+                                class start_operation
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="code";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startSQ6""" \n
+                                         "&&" \n
+                                         "{_startSQ6}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_is_dead">*/
+                                class traitor_is_dead
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="cancel_his_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_cancelTraitorTask""" \n
+                                         "&&" \n
+                                         "{_cancelTraitorTask}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_to_add_quest">*/
+                                class time_to_add_quest
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="create_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questPlaneSyndi""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 0" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 1" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 2" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "BP_port_container">*/
+                                class BP_port_container
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="send_SMS";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_addDropPointsLocation""" \n
+                                         "&& " \n
+                                         "isnil ""_bluePearlHarborContainerInfo""" \n
+                                         "&&" \n
+                                         "isnil ""BIS_BP_ContainerFound"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "syndi_task_added">*/
+                                class syndi_task_added
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="code_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerHasSyndiIntel""" \n
+                                         "&&" \n
+                                         "{_playerHasSyndiIntel}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_2">*/
+                class code_2
+                {
+                        name = "code_2";
+                        itemno = 10;
+                        init = /*%FSM<STATEINIT""">*/"_playerGetTaskID = false;" \n
+                         "BIS_SQ0_F_TraitorID = ['T_SQ0_F_TraitorID', [T_F_TraitorID]] call bis_fnc_questCreateManualy;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "syndi_task_fetch">*/
+                                class syndi_task_fetch
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerGetTaskID""" \n
+                                         "&&" \n
+                                         "{_playerGetTaskID}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_intel_cache">*/
+                                class add_intel_cache
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCacheLakatoro""" \n
+                                         "&&" \n
+                                         "{_addCacheLakatoro}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "start_operation">*/
+                                class start_operation
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="code";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startSQ6""" \n
+                                         "&&" \n
+                                         "{_startSQ6}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_is_dead">*/
+                                class traitor_is_dead
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="cancel_his_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_cancelTraitorTask""" \n
+                                         "&&" \n
+                                         "{_cancelTraitorTask}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_to_add_quest">*/
+                                class time_to_add_quest
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="create_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questPlaneSyndi""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 0" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 1" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 2" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "BP_port_container">*/
+                                class BP_port_container
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="send_SMS";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_addDropPointsLocation""" \n
+                                         "&& " \n
+                                         "isnil ""_bluePearlHarborContainerInfo""" \n
+                                         "&&" \n
+                                         "isnil ""BIS_BP_ContainerFound"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "syndi_task_added">*/
+                                class syndi_task_added
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="code_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerHasSyndiIntel""" \n
+                                         "&&" \n
+                                         "{_playerHasSyndiIntel}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code_3">*/
+                class code_3
+                {
+                        name = "code_3";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"_addCacheLakatoro = false;" \n
+                         "['Syndikat: Lakatoro Cache'] call BIS_fnc_om_addIntel;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "syndi_task_fetch">*/
+                                class syndi_task_fetch
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerGetTaskID""" \n
+                                         "&&" \n
+                                         "{_playerGetTaskID}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_intel_cache">*/
+                                class add_intel_cache
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCacheLakatoro""" \n
+                                         "&&" \n
+                                         "{_addCacheLakatoro}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "start_operation">*/
+                                class start_operation
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="code";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startSQ6""" \n
+                                         "&&" \n
+                                         "{_startSQ6}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_is_dead">*/
+                                class traitor_is_dead
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="cancel_his_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_cancelTraitorTask""" \n
+                                         "&&" \n
+                                         "{_cancelTraitorTask}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_to_add_quest">*/
+                                class time_to_add_quest
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="create_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questPlaneSyndi""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 0" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 1" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 2" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "BP_port_container">*/
+                                class BP_port_container
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="send_SMS";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_addDropPointsLocation""" \n
+                                         "&& " \n
+                                         "isnil ""_bluePearlHarborContainerInfo""" \n
+                                         "&&" \n
+                                         "isnil ""BIS_BP_ContainerFound"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "syndi_task_added">*/
+                                class syndi_task_added
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="code_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerHasSyndiIntel""" \n
+                                         "&&" \n
+                                         "{_playerHasSyndiIntel}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "cancel_his_quest">*/
+                class cancel_his_quest
+                {
+                        name = "cancel_his_quest";
+                        itemno = 20;
+                        init = /*%FSM<STATEINIT""">*/"_cancelTraitorTask = false;" \n
+                         "[BIS_SQ0_R_Traitor,  6] call bis_fnc_questSetState;" \n
+                         "[1,""News_execution""] call BIS_fnc_OM_questNews;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "syndi_task_fetch">*/
+                                class syndi_task_fetch
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerGetTaskID""" \n
+                                         "&&" \n
+                                         "{_playerGetTaskID}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_intel_cache">*/
+                                class add_intel_cache
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCacheLakatoro""" \n
+                                         "&&" \n
+                                         "{_addCacheLakatoro}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "start_operation">*/
+                                class start_operation
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="code";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startSQ6""" \n
+                                         "&&" \n
+                                         "{_startSQ6}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_is_dead">*/
+                                class traitor_is_dead
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="cancel_his_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_cancelTraitorTask""" \n
+                                         "&&" \n
+                                         "{_cancelTraitorTask}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_to_add_quest">*/
+                                class time_to_add_quest
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="create_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questPlaneSyndi""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 0" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 1" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 2" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "BP_port_container">*/
+                                class BP_port_container
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="send_SMS";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_addDropPointsLocation""" \n
+                                         "&& " \n
+                                         "isnil ""_bluePearlHarborContainerInfo""" \n
+                                         "&&" \n
+                                         "isnil ""BIS_BP_ContainerFound"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "syndi_task_added">*/
+                                class syndi_task_added
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="code_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerHasSyndiIntel""" \n
+                                         "&&" \n
+                                         "{_playerHasSyndiIntel}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "create_quest">*/
+                class create_quest
+                {
+                        name = "create_quest";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/"_questPlaneSyndi = false;" \n
+                         "[] spawn {" \n
+                         "	sleep 1200;" \n
+                         "	if (!isNil ""BIS_SQ5fsm"") then {BIS_SQ5fsm setFSMVariable [""_startQuest"",true]};" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "syndi_task_fetch">*/
+                                class syndi_task_fetch
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerGetTaskID""" \n
+                                         "&&" \n
+                                         "{_playerGetTaskID}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_intel_cache">*/
+                                class add_intel_cache
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCacheLakatoro""" \n
+                                         "&&" \n
+                                         "{_addCacheLakatoro}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "start_operation">*/
+                                class start_operation
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="code";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startSQ6""" \n
+                                         "&&" \n
+                                         "{_startSQ6}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_is_dead">*/
+                                class traitor_is_dead
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="cancel_his_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_cancelTraitorTask""" \n
+                                         "&&" \n
+                                         "{_cancelTraitorTask}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_to_add_quest">*/
+                                class time_to_add_quest
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="create_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questPlaneSyndi""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 0" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 1" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 2" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "BP_port_container">*/
+                                class BP_port_container
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="send_SMS";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_addDropPointsLocation""" \n
+                                         "&& " \n
+                                         "isnil ""_bluePearlHarborContainerInfo""" \n
+                                         "&&" \n
+                                         "isnil ""BIS_BP_ContainerFound"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "syndi_task_added">*/
+                                class syndi_task_added
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="code_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerHasSyndiIntel""" \n
+                                         "&&" \n
+                                         "{_playerHasSyndiIntel}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "send_SMS">*/
+                class send_SMS
+                {
+                        name = "send_SMS";
+                        itemno = 28;
+                        init = /*%FSM<STATEINIT""">*/"_bluePearlHarborContainerInfo = true;" \n
+                         "" \n
+                         "0 = [] spawn " \n
+                         "{" \n
+                         "	sleep (500 + random 120);" \n
+                         "	if (isnil ""BIS_MillerDead"") then " \n
+                         "	{" \n
+                         "		//--- SMS sent by Miller" \n
+                         "		[""MILLER"",localize ""str_a3_om_container_guns_Miller_sms""] call BIS_fnc_OM_phone_SMS; //TODO: Localize" \n
+                         "	} else {" \n
+                         "		//--- SMS sent by BOSS" \n
+                         "		[""BOSS"",localize ""str_a3_om_container_guns_Boss_sms""] call BIS_fnc_OM_phone_SMS; //TODO: Localize" \n
+                         "	};" \n
+                         "};" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "syndi_task_fetch">*/
+                                class syndi_task_fetch
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="code_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerGetTaskID""" \n
+                                         "&&" \n
+                                         "{_playerGetTaskID}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_intel_cache">*/
+                                class add_intel_cache
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="code_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCacheLakatoro""" \n
+                                         "&&" \n
+                                         "{_addCacheLakatoro}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "start_operation">*/
+                                class start_operation
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="code";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startSQ6""" \n
+                                         "&&" \n
+                                         "{_startSQ6}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "traitor_is_dead">*/
+                                class traitor_is_dead
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="cancel_his_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_cancelTraitorTask""" \n
+                                         "&&" \n
+                                         "{_cancelTraitorTask}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_to_add_quest">*/
+                                class time_to_add_quest
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="create_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_questPlaneSyndi""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 0" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 1" \n
+                                         "	&&" \n
+                                         "	[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState != 2" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "BP_port_container">*/
+                                class BP_port_container
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="send_SMS";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_addDropPointsLocation""" \n
+                                         "&& " \n
+                                         "isnil ""_bluePearlHarborContainerInfo""" \n
+                                         "&&" \n
+                                         "isnil ""BIS_BP_ContainerFound"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "syndi_task_added">*/
+                                class syndi_task_added
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="code_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerHasSyndiIntel""" \n
+                                         "&&" \n
+                                         "{_playerHasSyndiIntel}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+        };
+};
+/*%FSM</COMPILE>*/

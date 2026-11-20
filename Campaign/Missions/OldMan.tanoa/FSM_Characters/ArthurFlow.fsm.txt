@@ -1,0 +1,2716 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, ArthurFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-227.246063,-1059.797119,-127.246063,-1009.797119,0.000000,"Init"};
+item1[] = {"Arthur_dead",4,218,1150.000000,-800.000000,1250.000000,-750.000000,1000.000000,"Arthur dead"};
+item2[] = {"FSM_end",1,250,1150.000000,-975.000000,1250.000000,-925.000000,0.000000,"FSM end"};
+item3[] = {"_",4,218,-218.966156,-739.557190,-128.966156,-689.557251,0.000000,""};
+item4[] = {"Arthur_met_player",2,250,-219.910400,-651.227417,-129.910400,-601.227417,0.000000,"Arthur met player" \n "face to face"};
+item5[] = {"",7,210,-179.939240,-791.058594,-171.939255,-783.058594,0.000000,""};
+item6[] = {"player___Arthur",4,218,-220.672089,-566.025574,-130.672089,-516.025574,0.000000,"player & Arthur" \n "in vehicle"};
+item7[] = {"Arthurs_initial",2,250,-218.112000,-472.156494,-128.111969,-422.156555,0.000000,"Arthurs initial " \n "talk" \n ""};
+item8[] = {"__3",4,218,-225.000000,-325.000000,-125.000000,-275.000000,0.000000,""};
+item9[] = {"IDAP",2,250,-225.000000,-250.000000,-125.000000,-200.000000,0.000000,"IDAP"};
+item10[] = {"_",4,218,-100.000000,-325.000000,0.000000,-275.000000,0.000000,""};
+item11[] = {"Tractor",2,250,-100.000000,-250.000000,0.000000,-200.000000,0.000000,"Tractor"};
+item12[] = {"__5",4,218,-218.965591,-91.560791,-128.965607,-41.560760,0.000000,""};
+item13[] = {"in_Village",2,250,-221.525726,-5.369232,-131.525726,44.630768,0.000000,"in Village"};
+item14[] = {"",7,210,-184.000000,-366.499969,-166.000000,-358.500000,0.000000,""};
+item15[] = {"",7,210,-59.000008,-366.500000,-40.999992,-358.500031,0.000000,""};
+item16[] = {"",7,210,-59.000015,-153.999985,-40.999985,-146.000015,0.000000,""};
+item17[] = {"",7,210,-184.000000,-153.999985,-166.000000,-146.000015,0.000000,""};
+item18[] = {"",7,210,-271.500000,-153.999985,-253.500000,-146.000015,0.000000,""};
+item19[] = {"",7,210,-271.500000,-366.499969,-253.500000,-358.500000,0.000000,""};
+item20[] = {"_",4,218,-224.734406,79.593048,-134.734406,129.593048,0.000000,""};
+item21[] = {"walking_into_the",2,250,-250.000000,150.000000,-150.000000,200.000000,0.000000,"walking into the" \n "shed"};
+item22[] = {"",7,210,1146.000000,-366.500000,1154.000000,-358.500000,0.000000,""};
+item23[] = {"",7,210,1146.000000,-66.500000,1154.000122,-58.500000,0.000000,""};
+item24[] = {"",7,210,1191.000000,-616.500061,1209.000000,-608.499878,0.000000,""};
+item25[] = {"",7,210,1191.000000,-441.500092,1209.000000,-433.499908,0.000000,""};
+item26[] = {"",7,210,1196.000000,-366.500000,1204.000000,-358.500000,0.000000,""};
+item27[] = {"",7,210,1196.000000,8.500001,1204.000000,16.500000,0.000000,""};
+item28[] = {"",7,210,1196.000000,171.000000,1204.000000,179.000000,0.000000,""};
+item29[] = {"_",4,218,-221.623535,-969.629089,-131.623535,-919.629150,0.000000,""};
+item30[] = {"First_call_from",2,250,-221.749481,-883.499756,-131.749481,-833.499817,0.000000,"First call from " \n "Arthur"};
+item31[] = {"SQ_0",-1,250,-351.266113,-1064.974854,-298.835632,196.415863,0.000000,"SQ 0"};
+item32[] = {"_",-1,250,-350.876343,-1176.790771,-298.626434,-1070.362183,0.000000,""};
+item33[] = {"__1",4,218,50.000000,-325.000000,150.000000,-275.000000,0.000000,""};
+item34[] = {"Wrecked__Smuggle",2,4346,50.000000,-250.000000,150.000000,-200.000000,0.000000,"Wrecked " \n "Smuggler"};
+item35[] = {"",7,210,90.999992,-366.499969,109.000008,-358.500000,0.000000,""};
+item36[] = {"",7,210,90.999985,-153.999985,109.000008,-146.000015,0.000000,""};
+item37[] = {"__2",4,218,200.000000,-325.000000,300.000000,-275.000000,0.000000,""};
+item38[] = {"Checkpoint_Start",2,250,200.000000,-250.000000,300.000000,-200.000000,0.000000,"Checkpoint" \n "Start"};
+item39[] = {"",7,210,241.000000,-366.500000,259.000000,-358.500031,0.000000,""};
+item40[] = {"",7,210,241.000000,-153.999985,259.000000,-146.000015,0.000000,""};
+item41[] = {"__4",4,218,350.000000,-325.000000,450.000000,-275.000000,0.000000,""};
+item42[] = {"Checkpoint_enter",2,250,350.000000,-250.000000,450.000000,-200.000000,0.000000,"Checkpoint" \n "entered"};
+item43[] = {"",7,210,391.000000,-366.500000,409.000000,-358.500031,0.000000,""};
+item44[] = {"",7,210,391.000000,-153.999985,409.000000,-146.000015,0.000000,""};
+item45[] = {"__10",4,218,500.000000,-325.000000,600.000000,-275.000000,0.000000,""};
+item46[] = {"Checkpoint_parke",2,250,500.000000,-250.000000,600.000000,-200.000000,0.000000,"Checkpoint" \n "parked"};
+item47[] = {"",7,210,541.000000,-366.499969,559.000000,-358.500000,0.000000,""};
+item48[] = {"",7,210,541.000000,-153.999985,559.000000,-146.000015,0.000000,""};
+item49[] = {"__7",4,218,750.000000,-325.000000,850.000000,-275.000000,0.000000,""};
+item50[] = {"Checkpoint_control",2,250,750.000000,-250.000000,850.000000,-200.000000,0.000000,"Checkpoint" \n "control done"};
+item51[] = {"",7,210,791.000000,-366.499969,809.000000,-358.500000,0.000000,""};
+item52[] = {"",7,210,791.000061,-153.999985,808.999939,-146.000015,0.000000,""};
+item53[] = {"__8",4,218,875.000000,-325.000000,975.000000,-275.000000,0.000000,""};
+item54[] = {"Checkpoint_alert",2,250,875.000000,-250.000000,975.000000,-200.000000,0.000000,"Checkpoint" \n "alert" \n "trying escape"};
+item55[] = {"",7,210,916.000000,-366.499969,934.000000,-358.500000,0.000000,""};
+item56[] = {"",7,210,916.000061,-153.999985,933.999939,-146.000015,0.000000,""};
+item57[] = {"__9",4,218,1025.000000,-325.000000,1125.000000,-275.000000,0.000000,""};
+item58[] = {"Checkpoint_left",2,250,1025.000000,-250.000000,1125.000000,-200.000000,0.000000,"Checkpoint" \n "left" \n "OK"};
+item59[] = {"",7,210,1066.000122,-366.500000,1083.999878,-358.500031,0.000000,""};
+item60[] = {"",7,210,1066.000000,-153.999985,1084.000000,-146.000015,0.000000,""};
+item61[] = {"_",4,218,-250.000000,375.000000,-150.000000,425.000000,0.000000,""};
+item62[] = {"player_took__the",2,250,-250.000000,450.000000,-150.000000,500.000000,0.000000,"player took " \n "the bomb"};
+item63[] = {"",7,210,1191.000000,471.000000,1209.000000,479.000000,0.000000,""};
+item64[] = {"__6",4,218,625.000000,-325.000000,725.000000,-275.000000,0.000000,""};
+item65[] = {"",7,210,671.000000,-366.500000,679.000000,-358.500000,0.000000,""};
+item66[] = {"Checkpoint_control_1",2,250,625.000000,-250.000000,725.000000,-200.000000,0.000000,"Checkpoint" \n "control in" \n "progress"};
+item67[] = {"",7,210,671.000000,-154.000000,679.000000,-146.000000,0.000000,""};
+item68[] = {"Arthur_stop_next",4,218,-250.000000,225.000000,-150.000000,275.000000,0.000000,"Arthur stop" \n "next to the shed"};
+item69[] = {"we_are_here",2,250,-250.000000,300.000000,-150.000000,350.000000,0.000000,"we are here"};
+item70[] = {"",7,210,-54.000000,171.000000,-46.000000,179.000000,0.000000,""};
+item71[] = {"",7,210,-54.000008,396.000000,-45.999992,404.000000,0.000000,""};
+version=1;
+class LayoutItems
+{
+	class Item31
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+	class Item32
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+};
+link0[] = {0,29};
+link1[] = {1,2};
+link2[] = {3,4};
+link3[] = {4,6};
+link4[] = {4,24};
+link5[] = {5,1};
+link6[] = {5,3};
+link7[] = {6,7};
+link8[] = {7,14};
+link9[] = {7,25};
+link10[] = {8,9};
+link11[] = {9,17};
+link12[] = {10,11};
+link13[] = {11,16};
+link14[] = {12,13};
+link15[] = {13,20};
+link16[] = {13,27};
+link17[] = {14,8};
+link18[] = {14,15};
+link19[] = {15,10};
+link20[] = {15,35};
+link21[] = {16,17};
+link22[] = {17,12};
+link23[] = {17,18};
+link24[] = {18,19};
+link25[] = {19,14};
+link26[] = {20,21};
+link27[] = {21,68};
+link28[] = {21,70};
+link29[] = {22,23};
+link30[] = {22,26};
+link31[] = {23,12};
+link32[] = {24,1};
+link33[] = {25,24};
+link34[] = {26,25};
+link35[] = {27,26};
+link36[] = {28,27};
+link37[] = {29,30};
+link38[] = {30,5};
+link39[] = {33,34};
+link40[] = {34,36};
+link41[] = {35,33};
+link42[] = {35,39};
+link43[] = {36,16};
+link44[] = {37,38};
+link45[] = {38,40};
+link46[] = {39,37};
+link47[] = {39,43};
+link48[] = {40,36};
+link49[] = {41,42};
+link50[] = {42,44};
+link51[] = {43,41};
+link52[] = {43,47};
+link53[] = {44,40};
+link54[] = {45,46};
+link55[] = {46,48};
+link56[] = {47,45};
+link57[] = {47,65};
+link58[] = {48,44};
+link59[] = {49,50};
+link60[] = {50,52};
+link61[] = {51,49};
+link62[] = {51,55};
+link63[] = {52,67};
+link64[] = {53,54};
+link65[] = {54,56};
+link66[] = {55,53};
+link67[] = {55,59};
+link68[] = {56,52};
+link69[] = {57,58};
+link70[] = {58,60};
+link71[] = {59,22};
+link72[] = {59,57};
+link73[] = {60,56};
+link74[] = {61,62};
+link75[] = {62,63};
+link76[] = {63,28};
+link77[] = {64,66};
+link78[] = {65,51};
+link79[] = {65,64};
+link80[] = {66,67};
+link81[] = {67,48};
+link82[] = {68,69};
+link83[] = {69,61};
+link84[] = {70,28};
+link85[] = {70,71};
+link86[] = {71,61};
+globals[] = {0.000000,0,0,0,0,640,480,1,584,6316128,1,-182.312012,545.275024,294.553223,-561.920654,875,1030,1};
+window[] = {2,-1,-1,-1,-1,1176,130,976,130,3,893};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "ArthurFlow";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private _ArthurFirstTalk = false;" \n
+                         "private _ArthurFirstCall = false;" \n
+                         "" \n
+                         "private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="First_call_from";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ArthurFirstCall"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "FSM_end">*/
+                class FSM_end
+                {
+                        name = "FSM_end";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Arthur_met_player">*/
+                class Arthur_met_player
+                {
+                        name = "Arthur_met_player";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_go_to_village""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Arthur_Oldman_face_to_face"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "private _delay = time + 180;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player___Arthur">*/
+                                class player___Arthur
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="Arthurs_initial";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(vehicle player != player" \n
+                                         "&&" \n
+                                         "vehicle BIS_Arthur == vehicle player)" \n
+                                         "||" \n
+                                         "(time > _delay)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Arthurs_initial">*/
+                class Arthurs_initial
+                {
+                        name = "Arthurs_initial";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""fil_driving_situation_a""] call BIS_fnc_om_conversation;" \n
+                         "	[""fil_driving_situation_b"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "	[""fil_driving_situation_c"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ0fsm setFSMVariable [""_giveFetchChargeTask"", true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Arthur_in_oldman_vehicle"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "IDAP">*/
+                class IDAP
+                {
+                        name = "IDAP";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"private _IDAPTalk = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""fil_driving_idap""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Arthur_IDAP"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Tractor">*/
+                class Tractor
+                {
+                        name = "Tractor";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/"private _tractorTalk = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""fil_driving_tractor""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Arthur_Tractor"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "in_Village">*/
+                class in_Village
+                {
+                        name = "in_Village";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""fil_arrival""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Arthur_in_village"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="walking_into_the";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"([""T_SQ0_T_Arthur""] call bis_fnc_questGetState) == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "walking_into_the">*/
+                class walking_into_the
+                {
+                        name = "walking_into_the";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_walking_to_the_shed""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Arthur_to_shed"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 61;
+                                        priority = 0.000000;
+                                        to="player_took__the";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[BIS_T_SQ0_G_Charge] call bis_fnc_questGetState == 3" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Arthur_stop_next">*/
+                                class Arthur_stop_next
+                                {
+                                        itemno = 68;
+                                        priority = 0.000000;
+                                        to="we_are_here";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_arthurNextToShed"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "First_call_from">*/
+                class First_call_from
+                {
+                        name = "First_call_from";
+                        itemno = 30;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	sleep 5;" \n
+                         "	[""ta_meet_arthur_call""] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ0fsm setFSMVariable [""_ArthurAddTask"", true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_arthur_1st_call"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="Arthur_met_player";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_ArthurFirstTalk"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Wrecked__Smuggle">*/
+                class Wrecked__Smuggle
+                {
+                        name = "Wrecked__Smuggle";
+                        itemno = 34;
+                        init = /*%FSM<STATEINIT""">*/"private _SmugglerWreckTalk = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""fil_driving_profiteers""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, 4, {}, {}, false, _priority, false, ""SQ0_Arthur_smuggler"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Checkpoint_Start">*/
+                class Checkpoint_Start
+                {
+                        name = "Checkpoint_Start";
+                        itemno = 38;
+                        init = /*%FSM<STATEINIT""">*/"private _checkpointStart = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ta_driving_checkpoint""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, true, _priority, false, ""SQ0_Arthur_Checkpoint_slow_down"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Checkpoint_enter">*/
+                class Checkpoint_enter
+                {
+                        name = "Checkpoint_enter";
+                        itemno = 42;
+                        init = /*%FSM<STATEINIT""">*/"private _checkpointCloser = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""in_driving_follow_instructions""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, true, _priority, false, ""SQ0_Arthur_Checkpoint_parking_instruction"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Checkpoint_parke">*/
+                class Checkpoint_parke
+                {
+                        name = "Checkpoint_parke";
+                        itemno = 46;
+                        init = /*%FSM<STATEINIT""">*/"private _checkpointStoped = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""in_driving_looking_for_weapons""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, true, _priority, false, ""SQ0_Arthur_Checkpoint_CSAT_looking_for_Weapons"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Checkpoint_control">*/
+                class Checkpoint_control
+                {
+                        name = "Checkpoint_control";
+                        itemno = 50;
+                        init = /*%FSM<STATEINIT""">*/"private _checkpointLeaving = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ta_driving_drive_on""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Arthur_Checkpoint_done"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Checkpoint_alert">*/
+                class Checkpoint_alert
+                {
+                        name = "Checkpoint_alert";
+                        itemno = 54;
+                        init = /*%FSM<STATEINIT""">*/"private _checkpointEscape = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ex_driving_escape""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, true, ""SQ0_Arthur_Checkpoint_alert"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Checkpoint_left">*/
+                class Checkpoint_left
+                {
+                        name = "Checkpoint_left";
+                        itemno = 58;
+                        init = /*%FSM<STATEINIT""">*/"private _checkpointLeftOk = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""in_driving_csat_situation""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, true, ""SQ0_Arthur_Checkpoint_left_OK"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "player_took__the">*/
+                class player_took__the
+                {
+                        name = "player_took__the";
+                        itemno = 62;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_explosives_taken"",nil,TRUE,{if (_sentenceNr == 4) then {[1, [250]] call BIS_fnc_OM_ModuleEconomy; _null = [""OMMoneyTransfer"",[FORMAT [""250 %1"", ""$""]] ] call BIS_fnc_shownotification;}}] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Arthur_player_took_bomb"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Checkpoint_control_1">*/
+                class Checkpoint_control_1
+                {
+                        name = "Checkpoint_control_1";
+                        itemno = 66;
+                        init = /*%FSM<STATEINIT""">*/"private _checkpointStoped = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""in_driving_doing_good""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, true, _priority, false, ""SQ0_Arthur_Checkpoint_control_progress"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Arthur_dead">*/
+                                class Arthur_dead
+                                {
+                                        itemno = 1;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="Tractor";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_TractorRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_TractorRepairingMan" \n
+                                         "&&" \n
+                                         "player distance BIS_TractorRepairingMan < 30" \n
+                                         "&&" \n
+                                         "isNil ""_tractorTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__1">*/
+                                class __1
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Wrecked__Smuggle";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_CarRepairingMan < 100" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "alive BIS_CarRepairingMan" \n
+                                         "&&" \n
+                                         "isNil ""_SmugglerWreckTalk""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__2">*/
+                                class __2
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Checkpoint_Start";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance getMarkerPos ""BIS_CSAT_CheckpointLuganville"" < 350" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointStart""" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__3">*/
+                                class __3
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="IDAP";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Sec_LuganvilleIDAP < 50" \n
+                                         "&&" \n
+                                         "isNil ""_IDAPTalk"";"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__4">*/
+                                class __4
+                                {
+                                        itemno = 41;
+                                        priority = 0.000000;
+                                        to="Checkpoint_enter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"vehicle player != player" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	BIS_checkpoint_Luganville getVariable [""BIS_state"",20]  == 2" \n
+                                         "	&&" \n
+                                         "	isNil ""_checkpointCloser""" \n
+                                         "	" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5">*/
+                                class __5
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="in_Village";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_sec_mosqVillageLuganville_Start < 50" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__6">*/
+                                class __6
+                                {
+                                        itemno = 64;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__7">*/
+                                class __7
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Checkpoint_control";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 7" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeaving"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__8">*/
+                                class __8
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Checkpoint_alert";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 5" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointEscape"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__9">*/
+                                class __9
+                                {
+                                        itemno = 57;
+                                        priority = 0.000000;
+                                        to="Checkpoint_left";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 10" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointLeftOk"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__10">*/
+                                class __10
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="Checkpoint_parke";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_checkpoint_Luganville getVariable [""BIS_state"",20] == 6" \n
+                                         "&&" \n
+                                         "isNil ""_checkpointStoped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "we_are_here">*/
+                class we_are_here
+                {
+                        name = "we_are_here";
+                        itemno = 69;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""eve_at_shed"",nil] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ0_Arthur_next_to_shed""] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 61;
+                                        priority = 0.000000;
+                                        to="player_took__the";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[BIS_T_SQ0_G_Charge] call bis_fnc_questGetState == 3" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	!isNil ""BIS_Arthur""" \n
+                                         "	&&" \n
+                                         "	player distance BIS_Arthur < 20" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "FSM_end",
+        };
+};
+/*%FSM</COMPILE>*/

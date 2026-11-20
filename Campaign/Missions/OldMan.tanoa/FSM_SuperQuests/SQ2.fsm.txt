@@ -1,0 +1,355 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, SQ2">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-225.000000,-1075.000000,-125.000000,-1025.000000,0.000000,"Init"};
+item1[] = {"crashsite_out_of",4,218,-225.000000,-950.000000,-125.000000,-900.000000,0.000000,"crashsite" \n "out of reach"};
+item2[] = {"timer",4,218,100.000000,-325.000000,200.000000,-275.000000,0.000000,"timer"};
+item3[] = {"Miller_responds",2,250,100.000000,-225.000000,200.000000,-175.000000,0.000000,"Miller responds"};
+item4[] = {"timer",4,218,100.000000,-125.000000,200.000000,-75.000000,0.000000,"timer"};
+item5[] = {"Took__photos_",4,218,-225.000000,-575.000000,-125.000000,-525.000000,0.000000,"Took " \n "photos" \n ""};
+item6[] = {"mark_intel__in_m",2,250,-225.000000,-425.000000,-125.000000,-375.000000,0.000000,"mark intel " \n "in map"};
+item7[] = {"no_swimming",4,218,-225.000000,-325.000000,-125.000000,-275.000000,0.000000,"no swimming"};
+item8[] = {"send_photos",2,250,-75.000000,-325.000000,25.000000,-275.000000,0.000000,"send photos"};
+item9[] = {"F_revealed__by_h",4,218,-100.000000,-700.000000,0.000000,-650.000000,0.000000,"F revealed" \n " by himself"};
+item10[] = {"",7,210,-54.000008,-779.000000,-45.999992,-771.000000,0.000000,""};
+item11[] = {"sms_to_miller__",2,250,-100.000000,-575.000000,0.000000,-525.000000,0.000000,"sms to miller" \n "+" \n "notification"};
+item12[] = {"add_Intel_1_by_1",1,4346,250.000000,-125.000000,350.000000,-75.000000,0.000000,"add Intel" \n "1 by 1"};
+item13[] = {"SQ_2_",-1,250,-351.266113,-1064.974854,-298.835632,196.415863,0.000000,"SQ 2" \n ""};
+item14[] = {"cheat1",4,218,250.000000,-800.000000,350.000000,-750.000000,0.000000,"cheat1"};
+item15[] = {"Calling",2,250,-225.000000,-800.000000,-125.000000,-750.000000,0.000000,"Calling"};
+item16[] = {"Miller_Dead",4,218,-48.774292,-1073.329224,41.225708,-1023.329224,0.000000,"Miller" \n "Dead"};
+item17[] = {"_",1,250,107.013733,-1066.216675,197.013763,-1016.216675,0.000000,""};
+item18[] = {"Milled__dead",4,218,-75.000000,-50.000000,25.000000,0.000000,0.000000,"Milled " \n "dead"};
+item19[] = {"",7,210,296.000000,-29.000000,304.000000,-21.000000,0.000000,""};
+item20[] = {"",7,210,217.271912,-782.074097,225.271912,-774.074097,0.000000,""};
+version=1;
+class LayoutItems
+{
+	class Item13
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+};
+link0[] = {0,1};
+link1[] = {0,16};
+link2[] = {1,15};
+link3[] = {2,3};
+link4[] = {3,4};
+link5[] = {4,12};
+link6[] = {5,6};
+link7[] = {6,7};
+link8[] = {7,8};
+link9[] = {8,2};
+link10[] = {8,18};
+link11[] = {9,11};
+link12[] = {10,9};
+link13[] = {10,20};
+link14[] = {11,5};
+link15[] = {14,12};
+link16[] = {15,5};
+link17[] = {15,10};
+link18[] = {16,17};
+link19[] = {18,19};
+link20[] = {19,12};
+link21[] = {20,14};
+globals[] = {0.000000,0,0,0,0,640,480,1,592,6316128,1,-472.522827,397.468994,170.678711,-853.425964,875,1030,1};
+window[] = {2,-1,-1,-32000,-32000,1098,52,898,52,3,893};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SQ2";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"cheat1 = false;" \n
+                         "private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "//UnderWaterPlane_logic = objnull;" \n
+                         "private _UWplaneLocation = position UnderWaterPlane_logic;" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_Dead">*/
+                                class Miller_Dead
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "crashsite_out_of">*/
+                                class crashsite_out_of
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Calling";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"// --- Make sure that player didnt see the crash of the plane" \n
+                                         "player distance _UWplaneLocation > 500;"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_responds">*/
+                class Miller_responds
+                {
+                        name = "Miller_responds";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_plane_intel_collected_call"",""""] call BIS_fnc_om_conversation;" \n
+                         "	// --- task marker is now visible and diary is updated (Sarge update)" \n
+                         "	[3, [""T_SQ_D_Facility""]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "	[BIS_SQ_D_Facility, [localize ""STR_A3_SQ2.fsmFSM_States_Miller_responds0"",""BIS_facilityLocMrk""], false] call bis_fnc_setDescription; //---ToDo: Localize" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[" \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ2_Miller_react_on_facility_photo"" ] " \n
+                         "	]" \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "_t = time + (60 + random 30); "/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "timer">*/
+                                class timer
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="add_Intel_1_by_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _t "/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "mark_intel__in_m">*/
+                class mark_intel__in_m
+                {
+                        name = "mark_intel__in_m";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"[1,[""BIS_UnderwaterCrashSite""]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "deleteVehicle BIS_UW_camera;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "no_swimming">*/
+                                class no_swimming
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="send_photos";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//!(underwater player)" \n
+                                         "!(surfaceIsWater position player) " \n
+                                         "||" \n
+                                         "(vehicle player) != player"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "send_photos">*/
+                class send_photos
+                {
+                        name = "send_photos";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"if (isnil ""BIS_MillerDead"") then {[""Miller"",localize ""STR_A3_SQ2.fsmFSM_States_send_photos0""] call BIS_fnc_OM_phone_SMSsend;}; //---ToDo: Localize" \n
+                         "_t = time + (20 + random 15); "/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Milled__dead">*/
+                                class Milled__dead
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="add_Intel_1_by_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timer">*/
+                                class timer
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Miller_responds";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _t " \n
+                                         "&&" \n
+                                         "{isnil ""BIS_MillerDead""}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "sms_to_miller__">*/
+                class sms_to_miller__
+                {
+                        name = "sms_to_miller__";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/"[""Miller"",localize ""STR_A3_SQ2.fsmFSM_States_sms_to_miller__0""] call BIS_fnc_OM_phone_SMSsend; //---ToDo: Localize" \n
+                         "[0, [ ""SmartMarker_O_Facility_F"",  ""BIS_MI_FACILITY"",[2379.6,13106.6,0], false, [ [""name"", localize ""STR_A3_SQ2.fsmFSM_States_sms_to_miller__1""],[""title"",localize ""STR_A3_SQ2.fsmFSM_States_sms_to_miller__2""],[""description"",localize ""STR_A3_SQ2.fsmFSM_States_sms_to_miller__3""] ] ]] call BIS_fnc_OM_moduleSmartMarkers; //---ToDo: Localize" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Took__photos_">*/
+                                class Took__photos_
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="mark_intel__in_m";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ2_G_Photos""] call bis_fnc_questIsFinished"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "add_Intel_1_by_1">*/
+                class add_Intel_1_by_1
+                {
+                        name = "add_Intel_1_by_1";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "0 = [] spawn " \n
+                         "{" \n
+                         "	sleep (600 + random 300);" \n
+                         "	[""FACILITY: Anti-Air System by Miller""] call BIS_fnc_om_addIntel;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Calling">*/
+                class Calling
+                {
+                        name = "Calling";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	//--- start of conversation" \n
+                         "	[""ta_collect_plane_intel_call"",""""] call BIS_fnc_om_conversation;" \n
+                         "	//--- create SM and add task" \n
+                         "	[0, [ ""SmartMarker_I_Cache_F"",  ""BIS_UnderwaterCrashSite"",getPos UnderWaterPlane_logic, false, [ [""name"", localize ""STR_A3_SQ2.fsmFSM_States_Calling0""],[""title"",localize ""STR_A3_SQ2.fsmFSM_States_Calling1""],[""description"",localize ""STR_A3_SQ2.fsmFSM_States_Calling2""] ] ]] call BIS_fnc_OM_moduleSmartMarkers;//---ToDo: Localize" \n
+                         "	BIS_T_SQ2_G_Photos = [""T_SQ2_G_Photos"", [T_SQ2_G_Photos]] call bis_fnc_questCreateManualy;" \n
+                         "" \n
+                         "	//--- player needs some equipment" \n
+                         "	if ([player, [""V_RebreatherIA"",""V_RebreatherB"",""V_RebreatherIR""]] call bis_fnc_countUnitItems == 0) then {" \n
+                         "		[""ta_collect_plane_intel_gear_call"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "		[0, [ ""SmartMarker_O_Gendarme_F"",  ""BIS_BayWatch"",[10107.3,5023.7,0], false, [ [""name"", localize ""STR_A3_SQ2.fsmFSM_States_Calling3""],[""title"",localize ""STR_A3_SQ2.fsmFSM_States_Calling4""],[""description"",localize ""STR_A3_SQ2.fsmFSM_States_Calling5""] ] ]] call BIS_fnc_OM_moduleSmartMarkers;//---ToDo: Localize" \n
+                         "		BIS_T_SQ2_G_Suit = [""T_SQ2_G_DivingSuit"", []] call bis_fnc_questCreateManualy;" \n
+                         "	};	" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[" \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Miller first time"" ] " \n
+                         "	]" \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "//_t = time + 5;" \n
+                         "" \n
+                         "" \n
+                         " " \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "F_revealed__by_h">*/
+                                class F_revealed__by_h
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="sms_to_miller__";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"false"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "cheat1">*/
+                                class cheat1
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="add_Intel_1_by_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"cheat1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Took__photos_">*/
+                                class Took__photos_
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="mark_intel__in_m";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ2_G_Photos""] call bis_fnc_questIsFinished"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 17;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "add_Intel_1_by_1",
+                "_",
+        };
+};
+/*%FSM</COMPILE>*/

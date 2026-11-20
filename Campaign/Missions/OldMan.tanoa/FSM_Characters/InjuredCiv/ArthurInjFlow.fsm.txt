@@ -1,0 +1,404 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, ArthurFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-475.000000,-1200.000000,-375.000000,-1150.000000,0.000000,"Init"};
+item1[] = {"DEAD",1,250,175.000000,-1075.000000,275.000000,-1025.000000,0.000000,"DEAD"};
+item2[] = {"killed",4,218,25.000000,-1075.000000,125.000000,-1025.000000,0.000000,"killed"};
+item3[] = {"",7,210,-179.000000,-1116.500000,-171.000000,-1108.500000,0.000000,""};
+item4[] = {"",7,210,-179.000000,-929.000000,-171.000000,-921.000000,0.000000,""};
+item5[] = {"Lucas_arrested",4,218,-350.000000,-1075.000000,-250.000000,-1025.000000,0.000000,"Lucas" \n "arrested"};
+item6[] = {"Arthur_talks",2,250,-350.000000,-1000.000000,-250.000000,-950.000000,0.000000,"Arthur talks"};
+item7[] = {"Lucas_saved",4,218,-475.000000,-1075.000000,-375.000000,-1025.000000,0.000000,"Lucas" \n "saved"};
+item8[] = {"Arthur_thanks",2,250,-475.000000,-1000.000000,-375.000000,-950.000000,0.000000,"Arthur thanks"};
+item9[] = {"",7,210,-429.000000,-1116.500000,-421.000000,-1108.500000,0.000000,""};
+item10[] = {"",7,210,-304.000000,-1116.500000,-296.000000,-1108.500000,0.000000,""};
+item11[] = {"",7,210,-304.000000,-929.000000,-296.000000,-921.000000,0.000000,""};
+item12[] = {"",7,210,-429.000000,-929.000000,-421.000000,-921.000000,0.000000,""};
+item13[] = {"",7,210,-54.000000,-1116.500000,-46.000000,-1108.500000,0.000000,""};
+item14[] = {"player_try_to_heal",4,218,-100.000000,-1075.000000,0.000000,-1025.000000,0.000000,"player try" \n "to heal him"};
+item15[] = {"Talk",2,4346,-100.000000,-1000.000000,0.000000,-950.000000,0.000000,"Talk"};
+item16[] = {"",7,210,-54.000000,-929.000000,-46.000000,-921.000000,0.000000,""};
+item17[] = {"",7,210,71.000000,-1116.500000,79.000000,-1108.500000,0.000000,""};
+item18[] = {"",7,210,-516.500000,-929.000000,-508.500000,-921.000000,0.000000,""};
+item19[] = {"",7,210,-516.500000,-1116.500000,-508.500000,-1108.500000,0.000000,""};
+link0[] = {0,9};
+link1[] = {2,1};
+link2[] = {3,13};
+link3[] = {4,11};
+link4[] = {5,6};
+link5[] = {6,11};
+link6[] = {7,8};
+link7[] = {8,12};
+link8[] = {9,7};
+link9[] = {9,10};
+link10[] = {10,3};
+link11[] = {10,5};
+link12[] = {11,12};
+link13[] = {12,18};
+link14[] = {13,14};
+link15[] = {13,17};
+link16[] = {14,15};
+link17[] = {15,16};
+link18[] = {16,4};
+link19[] = {17,2};
+link20[] = {18,19};
+link21[] = {19,9};
+globals[] = {0.000000,0,0,0,0,640,480,1,593,6316128,1,-601.395691,37.644653,-543.115845,-1295.357666,875,1030,1};
+window[] = {2,-1,-1,-1,-1,1306,260,1106,260,3,893};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "ArthurFlow";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Lucas_arrested">*/
+                                class Lucas_arrested
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="Arthur_talks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_ArthurSideQuestIntroduction""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_ArthurInjured""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance BIS_ArthurInjured < 3" \n
+                                         "	&&" \n
+                                         "	{([""T_SQ0_G_Charge""] call bis_fnc_questGetState) != 3}" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="Talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurInjuredDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_ArthurInjuredDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_ArthurInjuredDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Lucas_saved">*/
+                                class Lucas_saved
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="Arthur_thanks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_lucasSaved""" \n
+                                         "&&" \n
+                                         "([""T_SQc_T_Lucas""] call bis_fnc_questGetState) == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "DEAD">*/
+                class DEAD
+                {
+                        name = "DEAD";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Arthur_talks">*/
+                class Arthur_talks
+                {
+                        name = "Arthur_talks";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"_ArthurSideQuestIntroduction = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""TA_Rescue_Lucas"",""none""] call BIS_fnc_om_conversation;" \n
+                         "	//--- start the quest" \n
+                         "	BIS_SQc_R_Lucas = [""T_SQc_R_Lucas"", [T_R_Lucas]] call bis_fnc_questCreateManualy;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQc_Arthur_rescue_lucas"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Lucas_arrested">*/
+                                class Lucas_arrested
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="Arthur_talks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_ArthurSideQuestIntroduction""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_ArthurInjured""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance BIS_ArthurInjured < 3" \n
+                                         "	&&" \n
+                                         "	{([""T_SQ0_G_Charge""] call bis_fnc_questGetState) != 3}" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="Talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurInjuredDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_ArthurInjuredDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_ArthurInjuredDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Lucas_saved">*/
+                                class Lucas_saved
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="Arthur_thanks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_lucasSaved""" \n
+                                         "&&" \n
+                                         "([""T_SQc_T_Lucas""] call bis_fnc_questGetState) == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Arthur_thanks">*/
+                class Arthur_thanks
+                {
+                        name = "Arthur_thanks";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"_lucasSaved = false;" \n
+                         "[] spawn {" \n
+                         "	sleep 30;" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""TA_lucas_rescued""] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQc_Arthur_thanks_for_Lucas_rescue"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Lucas_arrested">*/
+                                class Lucas_arrested
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="Arthur_talks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_ArthurSideQuestIntroduction""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_ArthurInjured""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance BIS_ArthurInjured < 3" \n
+                                         "	&&" \n
+                                         "	{([""T_SQ0_G_Charge""] call bis_fnc_questGetState) != 3}" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="Talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurInjuredDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_ArthurInjuredDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_ArthurInjuredDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Lucas_saved">*/
+                                class Lucas_saved
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="Arthur_thanks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_lucasSaved""" \n
+                                         "&&" \n
+                                         "([""T_SQc_T_Lucas""] call bis_fnc_questGetState) == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Talk">*/
+                class Talk
+                {
+                        name = "Talk";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"_playerTryHeal = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ex_first_aid_not_effective"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQc_Arthur_player_used_FAK"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Lucas_arrested">*/
+                                class Lucas_arrested
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="Arthur_talks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_ArthurSideQuestIntroduction""" \n
+                                         "&&" \n
+                                         "!isNil ""BIS_ArthurInjured""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance BIS_ArthurInjured < 3" \n
+                                         "	&&" \n
+                                         "	{([""T_SQ0_G_Charge""] call bis_fnc_questGetState) != 3}" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="Talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_ArthurInjuredDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_ArthurInjuredDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_ArthurInjuredDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Lucas_saved">*/
+                                class Lucas_saved
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="Arthur_thanks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_lucasSaved""" \n
+                                         "&&" \n
+                                         "([""T_SQc_T_Lucas""] call bis_fnc_questGetState) == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "DEAD",
+        };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,200 @@
+#include "\A3\Functions_F_Tacops\Systems\fn_animatedScreen.inc"
+
+//GLOBAL ANIMATED SCREEN DEFINITION
+#define SCREEN_NR_OF_PICTURE_LAYERS    12
+#define SCREEN_NR_OF_TEXT_LAYERS	5
+#define SCREEN_OVERSCALE	     	1.05
+#define SCREEN_FADE_TIME                2
+
+//"CSS" STYLES FOR STATIC TEXTS
+#define FONT_TEXT_STATIC        "PuristaBold"
+#define FONT_TEXT_DYNAMIC	"PuristaBold"
+#define SIZE_TEXT_STATIC_TITTLE 6
+#define SIZE_TEXT_STATIC	6
+#define SIZE_TEXT_STATIC_A      2
+#define SIZE_TEXT_STATIC_B      1.5
+#define SIZE_TEXT_DYNAMIC       10
+
+#define COLOR_TEXT_STATIC_A		[208/255,240/255,255/255,1]
+#define COLOR_TEXT_STATIC_B		[207/255,207/255,207/255,1]
+#define COLOR_TEXT_STATIC_A1		[255/255,255/255,255/255,1]
+#define COLOR_TEXT_STATIC_B1		[255/255,255/255,255/255,1]
+#define COLOR_TEXT_DYNAMIC_BACKGROUND	[160/255,192/255,255/255,1]
+#define COLOR_TEXT_DYNAMIC_FOREGROUND	[255/255,255/255,255/255,1]
+
+#define LAYER_TEXT_STATIC	0
+#define LAYER_TEXT_STATIC_A	0
+#define LAYER_TEXT_STATIC_B     1
+#define LAYER_TEXT_STATIC_B2    2
+#define LAYER_TEXT_DYNAMIC_BACKGROUND1       0
+#define LAYER_TEXT_DYNAMIC_BACKGROUND2       1
+#define LAYER_TEXT_DYNAMIC_FOREGROUND1       2
+#define LAYER_TEXT_DYNAMIC_FOREGROUND2       3
+
+#define POSITION_TEXT_STATIC_BIG        [0.5, 0.50]
+#define POSITION_TEXT_STATIC_BIGA       [0.5, 0.50]
+#define POSITION_TEXT_STATIC_BIGB       [0.5, 0.50]
+#define POSITION_TEXT_STATIC  		[0.50,0.50]
+#define POSITION_TEXT_STATIC_A  	[0.50,0.50]
+#define POSITION_TEXT_STATIC_B  	[0.50,0.50]
+#define POSITION_TEXT_STATIC_B2 	[0.50,0.50]
+#define POSITION_TEXT_DYNAMIC_TL	[0.1,0.1]
+#define POSITION_TEXT_DYNAMIC_BR	[0.6,0.7]
+#define POSITION_TEXT_DYNAMIC_C1	[0.51,0.55]
+
+#define TIME_TEXT_STATIC        1
+#define TIME_TEXT_STATIC_A      TIME_TEXT_STATIC*3
+#define TIME_TEXT_STATIC_B      TIME_TEXT_STATIC_A*1.5
+#define TIME_TEXT_STATIC_B2     TIME_TEXT_STATIC_B*1.5
+#define TIME_TEXT_DYNAMIC_A 	3
+#define TIME_TEXT_DYNAMIC_B 	5
+
+#define FULL_CONFIG_STATIC_TEXT_BIG    	POSITION_TEXT_STATIC_BIG,	ALIGN_TOP,    COLOR_TEXT_STATIC_A, 0, SIZE_TEXT_STATIC_TITTLE,  0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT_BIGA   	POSITION_TEXT_STATIC_BIGA,	ALIGN_BOTTOM, COLOR_TEXT_STATIC_A, 0, SIZE_TEXT_STATIC_TITTLE,  0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT_BIGB   	POSITION_TEXT_STATIC_BIGB,	ALIGN_TOP,    COLOR_TEXT_STATIC_A, 0, SIZE_TEXT_STATIC_TITTLE,  0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT       	POSITION_TEXT_STATIC,		ALIGN_TOP,    COLOR_TEXT_STATIC_A, 0, SIZE_TEXT_STATIC,	  	0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT_A       POSITION_TEXT_STATIC_A,		ALIGN_BOTTOM, COLOR_TEXT_STATIC_B, 0, SIZE_TEXT_STATIC_B, 	0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT_B       POSITION_TEXT_STATIC_B,		ALIGN_BOTTOM, COLOR_TEXT_STATIC_B, 0, SIZE_TEXT_STATIC_B, 	0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT_B2      POSITION_TEXT_STATIC_B2,	ALIGN_TOP,    COLOR_TEXT_STATIC_B, 0, SIZE_TEXT_STATIC_B, 	0, FONT_TEXT_STATIC
+
+#define STYLE_TITLE_BIG                 0
+#define STYLE_TITLE			1
+#define STYLE_TITLE_AND_SENTENCE        2
+#define STYLE_ONE_SENTENCE              3
+#define STYLE_TWO_SENTENCES             4
+
+#define STYLE_DYNAMIC_TOPLEFT           1
+#define STYLE_DYNAMIC_BOTTOMRIGHT       2
+#define STYLE_DYNAMIC_CENTER1           3
+
+
+
+
+
+//PARALLAX LAYERS DEFINITONS ---------------------------------------------------
+
+//IMG = Image definition (file)
+//ID = Layer definition (number)
+
+//OLDMAN INTRO
+#define DATA_FOLDER											"\a3\Missions_F_Oldman\data\img\Intro\"
+#define INTRO_ID_SKYBOX1 								1
+#define INTRO_IMG_SKYBOX1 							DATA_FOLDER + "mist.paa"
+#define INTRO_ID_PARTICLEMIST1 					2
+#define INTRO_IMG_PARTICLEMIST1 				DATA_FOLDER + "mist.paa"
+#define INTRO_ID_PARTICLEMIST2 					3
+#define INTRO_ID_HEX1					 					4
+#define INTRO_IMG_HEX1				 					DATA_FOLDER + "HEX.paa"
+#define INTRO_ID_HEX_SINGLE01	 					5
+#define INTRO_ID_HEX_SINGLE02	 					6
+#define INTRO_ID_HEX_SINGLE03	 					7
+#define INTRO_ID_HEX_SINGLE04	 					8
+#define INTRO_ID_HEX_SINGLE05	 					9
+#define INTRO_IMG_HEX_SINGLE01					DATA_FOLDER + "HEX_single01.paa"
+#define INTRO_ID_CSATSOLDIER	 					10
+#define INTRO_IMG_CSATSOLDIER	 					DATA_FOLDER + "CSATSoldier.paa"
+#define INTRO_ID_CSATDOCTOR	 						11
+#define INTRO_IMG_CSATDOCTOR	 					DATA_FOLDER + "CSATDoctor.paa"
+#define INTRO_ID_CSATDOCTORSOLDIER			12
+#define INTRO_IMG_CSATDOCTORSOLDIER			DATA_FOLDER + "CSATDoctorSoldier.paa"
+#define INTRO_ID_SYNDIKATSOLDIER				13
+#define INTRO_IMG_SYNDIKATSOLDIER				DATA_FOLDER + "SyndikatSoldier.paa"
+
+//--- Slide 01
+#define NATO_LEAVE_ID_BACKGROUND            1
+#define NATO_LEAVE_IMG_BACKGROUND  	        "\a3\Missions_F_Oldman\data\img\Intro\NATOLeave\OM_Intro01_Background_ca.paa"
+#define NATO_LEAVE_ID_BACKPACKS             6
+#define NATO_LEAVE_IMG_BACKPACKS  	        "\a3\Missions_F_Oldman\data\img\Intro\NATOLeave\OM_Intro01_Backpacks_ca.paa"
+#define NATO_LEAVE_ID_SOLDIERS              5
+#define NATO_LEAVE_IMG_SOLDIERS  	        "\a3\Missions_F_Oldman\data\img\Intro\NATOLeave\OM_Intro01_Soldiers_ca.paa"
+#define NATO_LEAVE_ID_VTOL                  3
+#define NATO_LEAVE_IMG_VTOL   	            "\a3\Missions_F_Oldman\data\img\Intro\NATOLeave\OM_Intro01_VTOL_ca.paa"
+#define NATO_LEAVE_ID_VTOL_SHADOW           4
+#define NATO_LEAVE_IMG_VTOL_SHADOW  	    "\a3\Missions_F_Oldman\data\img\Intro\NATOLeave\OM_Intro01_VTOLshadow_ca.paa"
+#define NATO_LEAVE_ID_STORM                 7
+#define NATO_LEAVE_IMG_STORM                "\a3\Missions_F_Oldman\data\img\Outro\CSATLeave\OM_Outro05_Storm_lightning3_ca.paa"
+
+//--- Slide 02
+#define CSAT_TAKE_OVER_ID_BACKGROUND        1
+#define CSAT_TAKE_OVER_IMG_BACKGROUND	    "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Background_ca.paa"
+#define CSAT_TAKE_OVER_ID_FOREGROUND        12
+#define CSAT_TAKE_OVER_IMG_FOREGROUND       "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Foreground_ca.paa"
+#define CSAT_TAKE_OVER_ID_HEX1              5
+#define CSAT_TAKE_OVER_IMG_HEX1             "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Hex1_ca.paa"
+#define CSAT_TAKE_OVER_ID_HEX2              7
+#define CSAT_TAKE_OVER_IMG_HEX2             "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Hex2_ca.paa"
+#define CSAT_TAKE_OVER_ID_HEX3              6
+#define CSAT_TAKE_OVER_IMG_HEX3             "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Hex3_ca.paa"
+#define CSAT_TAKE_OVER_ID_HEX4              8
+#define CSAT_TAKE_OVER_IMG_HEX4             "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Hex4_ca.paa"
+#define CSAT_TAKE_OVER_ID_HEX5              9
+#define CSAT_TAKE_OVER_IMG_HEX5            "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Hex4_ca.paa"
+#define CSAT_TAKE_OVER_ID_HEX6              10
+#define CSAT_TAKE_OVER_IMG_HEX6             "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Hex4_ca.paa"
+#define CSAT_TAKE_OVER_ID_ICON              13
+#define CSAT_TAKE_OVER_IMG_ICON             "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Icon_ca.paa"
+#define CSAT_TAKE_OVER_ID_TEXT              14
+#define CSAT_TAKE_OVER_IMG_TEXT             "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Text_ca.paa"
+#define CSAT_TAKE_OVER_ID_TEXT_OVERLAY      11
+#define CSAT_TAKE_OVER_IMG_TEXT_OVERLAY     "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Text_Overlay_ca.paa"
+#define CSAT_TAKE_OVER_ID_MAP_BORDER      3
+#define CSAT_TAKE_OVER_IMG_MAP_BORDER     "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Map_Border_ca.paa"
+#define CSAT_TAKE_OVER_ID_MAP_TEXT      4
+#define CSAT_TAKE_OVER_IMG_MAP_TEXT     "\a3\Missions_F_Oldman\data\img\Intro\CSATTakeOver\OM_Intro02_Text_Overlay_ca.paa"
+
+//--- Slide 03 POLITIQUE
+#define POLITIQUE_ID_BACKGROUND             1
+#define POLITIQUE_IMG_BACKGROUND 	        "\a3\Missions_F_Oldman\data\img\Intro\Politique\OM_Intro03_Background_ca.paa"
+#define POLITIQUE_ID_BODYGUARD              2
+#define POLITIQUE_IMG_BODYGUARD 	        "\a3\Missions_F_Oldman\data\img\Intro\Politique\OM_Intro03_Bodyguard_ca.paa"
+#define POLITIQUE_ID_POLITICIAN             3
+#define POLITIQUE_IMG_POLITICIAN 	        "\a3\Missions_F_Oldman\data\img\Intro\Politique\OM_Intro03_Politician_ca.paa"
+#define POLITIQUE_ID_THUG                   4
+#define POLITIQUE_IMG_THUG       	        "\a3\Missions_F_Oldman\data\img\Intro\Politique\OM_Intro03_Thug_ca.paa"
+#define POLITIQUE_ID_LEAFLET1               5
+#define POLITIQUE_IMG_LEAFLET1    	        "\a3\Missions_F_Oldman\data\img\Intro\Politique\OM_Intro03_Leaflet_1_ca.paa"
+#define POLITIQUE_ID_LEAFLET2               6
+#define POLITIQUE_IMG_LEAFLET2    	        "\a3\Missions_F_Oldman\data\img\Intro\Politique\OM_Intro03_Leaflet_2_ca.paa"
+#define POLITIQUE_ID_LEAFLET3               7
+#define POLITIQUE_IMG_LEAFLET3    	        "\a3\Missions_F_Oldman\data\img\Intro\Politique\OM_Intro03_Leaflet_3_ca.paa"
+#define POLITIQUE_ID_PAMPHLETEER            8
+#define POLITIQUE_IMG_PAMPHLETEER    	    "\a3\Missions_F_Oldman\data\img\Intro\Politique\OM_Intro03_Pamphleteer_ca.paa"
+#define POLITIQUE_ID_BLOOD                  9
+#define POLITIQUE_IMG_BLOOD         	    "\a3\Missions_F_Oldman\data\img\Intro\Politique\OM_Intro03_Blood_ca.paa"
+
+//--- Slide 03 ATTACK
+
+#define INSURGENTS_ID_BACKGROUND            1
+#define INSURGENTS_IMG_BACKGROUND 	        "\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Background_ca.paa"
+#define INSURGENTS_ID_MIDGROUND             7
+#define INSURGENTS_IMG_MIDGROUND 	        "\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Midground_ca.paa"
+#define INSURGENTS_ID_INSURGENT             8
+#define INSURGENTS_IMG_INSURGENT	        "\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Insurgent_ca.paa"
+#define INSURGENTS_ID_SMOKE                 5
+#define INSURGENTS_IMG_SMOKE    	        "\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Smoke_ca.paa"
+#define INSURGENTS_ID_SMOKE_OVERLAY         6
+#define INSURGENTS_IMG_SMOKE_OVERLAY   	    "\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Smoke_Overlay_ca.paa"
+#define INSURGENTS_ID_MUZZLE_FLASH_1        2
+#define INSURGENTS_IMG_MUZZLE_FLASH_1  	    "\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Muzzle_Flash_1_ca.paa"
+#define INSURGENTS_ID_MUZZLE_FLASH_2        3
+#define INSURGENTS_IMG_MUZZLE_FLASH_2  	    "\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Muzzle_Flash_2_ca.paa"
+#define INSURGENTS_ID_MUZZLE_FLASH_3        4
+#define INSURGENTS_IMG_MUZZLE_FLASH_3  	    "\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Muzzle_Flash_3_ca.paa"
+#define INSURGENTS_ID_CREEPER_FOREGROUND    12
+#define INSURGENTS_IMG_CREEPER_FOREGROUND  	"\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Creeper_Foreground_ca.paa"
+#define INSURGENTS_ID_PLANT_FOREGROUND      13
+#define INSURGENTS_IMG_PLANT_FOREGROUND  	"\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Plant_Foreground_ca.paa"
+#define INSURGENTS_ID_SMOKE_FOREGROUND      15
+#define INSURGENTS_IMG_SMOKE_FOREGROUND  	"\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Smoke_Foreground_ca.paa"
+#define INSURGENTS_ID_SMOKE_FOREGROUND_OV   11
+#define INSURGENTS_IMG_SMOKE_FOREGROUND_OV  "\a3\Missions_F_Oldman\data\img\Intro\Insurgents\OM_Intro04_Smoke_Foreground_Overlay_ca.paa"
+
+//--- Slide 04 LEGIO
+#define LEGIO_ID_BACKGROUND             3
+#define LEGIO_IMG_BACKGROUND 	        "\a3\Missions_F_Oldman\data\img\Intro\Legio\OM_Intro05_Newspaper_background_ca.paa"
+#define LEGIO_ID_NEWSPAPER_CLEAN        2
+#define LEGIO_IMG_NEWSPAPER_CLEAN  	    "\a3\Missions_F_Oldman\data\img\Intro\Legio\OM_Intro05_Newspaper_Clean_ca.paa"
+#define LEGIO_ID_NEWSPAPER_IMAGE        3
+#define LEGIO_IMG_NEWSPAPER_IMAGE  	    "\a3\Missions_F_Oldman\data\img\Intro\Legio\OM_Intro05_Newspaper_Image_ca.paa"
+#define LEGIO_ID_NEWSPAPER_SEPIA        1
+#define LEGIO_IMG_NEWSPAPER_SEPIA  	    "\a3\Missions_F_Oldman\data\img\Intro\Legio\OM_Intro05_Newspaper_Sepia_ca.paa"

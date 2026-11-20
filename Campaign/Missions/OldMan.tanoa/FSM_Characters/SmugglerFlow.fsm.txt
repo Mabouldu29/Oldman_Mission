@@ -1,0 +1,142 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, SmugglerFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"DEAD",1,250,-100.000000,-1050.000000,0.000000,-1000.000000,0.000000,"DEAD"};
+item1[] = {"composition__is",4,218,-350.000000,-1125.000000,-250.000000,-1075.000000,0.000000,"composition " \n "is gone"};
+item2[] = {"",7,210,-304.000000,-1179.000000,-296.000031,-1171.000000,0.000000,""};
+item3[] = {"END_obsolete",1,250,-350.000000,-1050.000000,-250.000000,-1000.000000,0.000000,"END" \n "obsolete"};
+item4[] = {"smuggler_was_kil",4,218,-100.000000,-1125.000000,0.000000,-1075.000000,0.000000,"smuggler was" \n "killed"};
+item5[] = {"",7,210,-54.000000,-1179.000000,-46.000000,-1171.000000,0.000000,""};
+item6[] = {"smuggler_talk",1,4346,-225.000000,-1050.000000,-125.000000,-1000.000000,0.000000,"smuggler talk"};
+item7[] = {"Init",0,250,-225.000000,-1200.000000,-125.000000,-1150.000000,0.000000,"Init"};
+item8[] = {"player_close",4,218,-225.000000,-1125.000000,-125.000000,-1075.000000,0.000000,"player close"};
+link0[] = {1,3};
+link1[] = {2,1};
+link2[] = {4,0};
+link3[] = {5,4};
+link4[] = {7,2};
+link5[] = {7,5};
+link6[] = {7,8};
+link7[] = {8,6};
+globals[] = {0.000000,0,0,0,0,640,480,1,564,6316128,1,-621.431763,44.046509,-567.168945,-1302.195190,909,1004,1};
+window[] = {2,-1,-1,-1,-1,1254,208,1054,208,3,927};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SmugglerFlow";
+        class States
+        {
+                /*%FSM<STATE "DEAD">*/
+                class DEAD
+                {
+                        name = "DEAD";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_obsolete">*/
+                class END_obsolete
+                {
+                        name = "END_obsolete";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "smuggler_talk">*/
+                class smuggler_talk
+                {
+                        name = "smuggler_talk";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""eve_smuggler"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, 10, {}, {}, false, 0, false, ""Smuggler to player"" ]" \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "composition__is">*/
+                                class composition__is
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="END_obsolete";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date,([BIS_StartMissionDate, 13, ""h""] call BIS_fnc_CalculateDateTime)] call BIS_fnc_IsDateTimeNewer"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "smuggler_was_kil">*/
+                                class smuggler_was_kil
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_SmugglerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_close">*/
+                                class player_close
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="smuggler_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_CarRepairingMan""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	alive BIS_CarRepairingMan" \n
+                                         "	&&" \n
+                                         "	player distance BIS_CarRepairingMan < 4" \n
+                                         "	&&" \n
+                                         "	vehicle player == player" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "DEAD",
+                "END_obsolete",
+                "smuggler_talk",
+        };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,497 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, HowardFlow">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"delay",4,218,-600.000000,-600.000000,-500.000000,-550.000000,0.000000,"delay"};
+item1[] = {"Howard_thanks",2,250,-600.000000,-525.000000,-500.000000,-475.000000,0.000000,"Howard thanks"};
+item2[] = {"",7,210,-804.000000,-641.500000,-796.000000,-633.500000,0.000000,""};
+item3[] = {"Init",0,250,-850.000000,-725.000000,-750.000000,-675.000000,0.000000,"Init"};
+item4[] = {"DEAD",1,250,-225.000000,-600.000000,-125.000000,-550.000000,0.000000,"DEAD"};
+item5[] = {"killed",4,218,-350.000000,-600.000000,-250.000000,-550.000000,0.000000,"killed"};
+item6[] = {"",7,210,-679.000000,-641.500000,-671.000000,-633.500000,0.000000,""};
+item7[] = {"",7,210,-554.000000,-641.500000,-546.000000,-633.500000,0.000000,""};
+item8[] = {"Player_close_How",4,218,-850.000000,-600.000000,-750.000000,-550.000000,0.000000,"Player close" \n "Howard"};
+item9[] = {"Howard_talks",2,4346,-850.000000,-525.000000,-750.000000,-475.000000,0.000000,"Howard talks"};
+item10[] = {"Item_sold",4,218,-725.000000,-600.000000,-625.000000,-550.000000,0.000000,"Item" \n "sold"};
+item11[] = {"hack_it_finish_q",2,250,-725.000000,-525.000000,-625.000000,-475.000000,0.000000,"hack it" \n "finish quest"};
+item12[] = {"",7,210,-304.000000,-641.500000,-296.000000,-633.500000,0.000000,""};
+item13[] = {"",7,210,-554.000000,-454.000000,-546.000000,-446.000000,0.000000,""};
+item14[] = {"",7,210,-679.000000,-454.000000,-671.000000,-446.000000,0.000000,""};
+item15[] = {"",7,210,-804.000000,-454.000000,-796.000000,-446.000000,0.000000,""};
+item16[] = {"",7,210,-891.500000,-454.000000,-883.500000,-446.000000,0.000000,""};
+item17[] = {"",7,210,-891.500000,-641.500000,-883.500000,-633.500000,0.000000,""};
+item18[] = {"",7,210,-429.000000,-641.500000,-421.000000,-633.500000,0.000000,""};
+item19[] = {"player_try_to_heal",4,218,-475.000000,-600.000000,-375.000000,-550.000000,0.000000,"player try" \n "to heal him"};
+item20[] = {"Talk",2,250,-475.000000,-525.000000,-375.000000,-475.000000,0.000000,"Talk"};
+item21[] = {"",7,210,-429.000000,-454.000000,-421.000000,-446.000000,0.000000,""};
+item22[] = {"____FAKE____",9,0,0.000000,0.000000,0.000000,0.000000,0.000000,"____FAKE____"};
+link0[] = {0,1};
+link1[] = {1,13};
+link2[] = {2,6};
+link3[] = {2,8};
+link4[] = {3,2};
+link5[] = {5,4};
+link6[] = {6,7};
+link7[] = {6,10};
+link8[] = {7,18};
+link9[] = {8,9};
+link10[] = {9,15};
+link11[] = {10,11};
+link12[] = {11,14};
+link13[] = {12,5};
+link14[] = {13,14};
+link15[] = {14,15};
+link16[] = {15,16};
+link17[] = {16,17};
+link18[] = {17,2};
+link19[] = {18,12};
+link20[] = {18,19};
+link21[] = {19,20};
+link22[] = {20,21};
+link23[] = {21,13};
+link24[] = {22,0};
+globals[] = {0.000000,0,0,0,0,640,480,1,600,6316128,1,-999.147400,-400.418457,-114.245667,-819.035400,281,880,1};
+window[] = {2,-1,-1,-1,-1,1202,156,1002,156,3,299};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "HowardFlow";
+        class States
+        {
+                /*%FSM<STATE "Howard_thanks">*/
+                class Howard_thanks
+                {
+                        name = "Howard_thanks";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"_howardThanksSideQuest = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	sleep 10;" \n
+                         "	[""Howard"",{" \n
+                         "		[""Howard"", ""Oldman, Howard here.""] spawn BIS_fnc_showSubtitle;" \n
+                         "		sleep 2;" \n
+                         "		[""Howard"", ""Thank you for that.""] spawn BIS_fnc_showSubtitle;" \n
+                         "		sleep 3;" \n
+                         "		[""Howard"", ""I hope you get a decent reward.""] spawn BIS_fnc_showSubtitle;" \n
+                         "		sleep 4;" \n
+                         "		[""Howard"", ""I'll try to contact merchant and ask him for some sale for you.""] spawn BIS_fnc_showSubtitle;" \n
+                         "		sleep 6;" \n
+                         "		//ToDo: implement some discount here" \n
+                         "	}] call BIS_fnc_OM_phone_incomingCall;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Miller first time"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Item_sold">*/
+                                class Item_sold
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="hack_it_finish_q";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_HowardItemSold""" \n
+                                         "&&" \n
+                                         "!isnil 'BIS_SQcResearchItemSold'"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="Talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_HowardDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_HowardDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_HowardDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Player_close_How">*/
+                                class Player_close_How
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="Howard_talks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_sideQuestHowardIntro""" \n
+                                         "&&" \n
+                                         "{player distance BIS_Howard < 2}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "_delay = 99999999999;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Item_sold">*/
+                                class Item_sold
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="hack_it_finish_q";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_HowardItemSold""" \n
+                                         "&&" \n
+                                         "!isnil 'BIS_SQcResearchItemSold'"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="Talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_HowardDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_HowardDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_HowardDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Player_close_How">*/
+                                class Player_close_How
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="Howard_talks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_sideQuestHowardIntro""" \n
+                                         "&&" \n
+                                         "{player distance BIS_Howard < 2}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "DEAD">*/
+                class DEAD
+                {
+                        name = "DEAD";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Howard_talks">*/
+                class Howard_talks
+                {
+                        name = "Howard_talks";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"_sideQuestHowardIntro = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ta_research_papers"",""none""] call BIS_fnc_om_conversation;" \n
+                         "	//--- start the quest" \n
+                         "	//[0,['SmartMarker_C_Loc_F', 'BIS_smr_howardStash',getMarkerPos 'BIS_howardStash',false,[],false]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "	[0,['SmartMarker_C_Loc_F', 'BIS_smr_howardStash',getMarkerPos 'BIS_howardStash',false,[[""title"",localize ""STR_A3_T_SQc_F_Research_questDefines.incT_SQc_F_Research0""],[""description"",""""] ],false]] call BIS_fnc_OM_moduleSmartMarkers;" \n
+                         "" \n
+                         "	sleep 1;" \n
+                         "	BIS_SQc_F_reseach = [""T_SQc_F_Research"", [T_F_Research]] call bis_fnc_questCreateManualy;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQc_howard_tells_player_about_papers"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Item_sold">*/
+                                class Item_sold
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="hack_it_finish_q";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_HowardItemSold""" \n
+                                         "&&" \n
+                                         "!isnil 'BIS_SQcResearchItemSold'"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="Talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_HowardDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_HowardDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_HowardDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Player_close_How">*/
+                                class Player_close_How
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="Howard_talks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_sideQuestHowardIntro""" \n
+                                         "&&" \n
+                                         "{player distance BIS_Howard < 2}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "hack_it_finish_q">*/
+                class hack_it_finish_q
+                {
+                        name = "hack_it_finish_q";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/"_HowardItemSold = false;" \n
+                         "[""T_SQc_F_Research"",  3] call bis_fnc_questSetState;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Item_sold">*/
+                                class Item_sold
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="hack_it_finish_q";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_HowardItemSold""" \n
+                                         "&&" \n
+                                         "!isnil 'BIS_SQcResearchItemSold'"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="Talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_HowardDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_HowardDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_HowardDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Player_close_How">*/
+                                class Player_close_How
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="Howard_talks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_sideQuestHowardIntro""" \n
+                                         "&&" \n
+                                         "{player distance BIS_Howard < 2}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Talk">*/
+                class Talk
+                {
+                        name = "Talk";
+                        itemno = 20;
+                        init = /*%FSM<STATEINIT""">*/"_playerTryHeal = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_howard_no_good"","""",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Player tryes to heal Renly by FAK"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Item_sold">*/
+                                class Item_sold
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="hack_it_finish_q";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_HowardItemSold""" \n
+                                         "&&" \n
+                                         "!isnil 'BIS_SQcResearchItemSold'"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_try_to_heal">*/
+                                class player_try_to_heal
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="Talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerTryHeal""" \n
+                                         "&&" \n
+                                         "{_playerTryHeal}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "killed">*/
+                                class killed
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="DEAD";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_HowardDeadVillage""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_HowardDead1stHideout""" \n
+                                         "||" \n
+                                         "!isNil ""BIS_HowardDead2ndHideout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Player_close_How">*/
+                                class Player_close_How
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="Howard_talks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_sideQuestHowardIntro""" \n
+                                         "&&" \n
+                                         "{player distance BIS_Howard < 2}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "____FAKE____">*/
+                class ____FAKE____
+                {
+                        name = "____FAKE____";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "delay">*/
+                                class delay
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="Howard_thanks";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_howardThanksSideQuest""" \n
+                                         "&&" \n
+                                         "time > _delay" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "DEAD",
+        };
+};
+/*%FSM</COMPILE>*/

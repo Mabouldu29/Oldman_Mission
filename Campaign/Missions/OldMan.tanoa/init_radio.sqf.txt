@@ -1,0 +1,37 @@
+#include "\a3\Missions_F_Oldman\Systems\scripts\Radio\definitions.inc"
+BIS_OM_radioNewsPoolDefault = ["News_checkpoints","News_hostels","News_idap","News_rebels_attack_Lugganville","News_sugar_company","News_weapons","News_weapons_prohibited"];
+
+[] spawn
+{
+	[MODE_STOP,["Radio_Tanoa_News"]] call BIS_fnc_OM_moduleRadio;
+	 waituntil {!isNil "BIS_missionInitDone"};
+	 WaitUntil {sleep 1; vehicle player != player && { vehicle player call BIS_fnc_OM_moduleRadio_vehicleHasRadio } };
+	Sleep 1;
+	playMusic "News_BackOnline";
+	0 fadeMusic 1;
+	Sleep 38.5;
+	[BIS_moduleRadio, "Radio_Tanoa_News",[MEDIA_TYPE_MUSIC,MUSIC_STYLE_ROCK+MUSIC_STYLE_OST,PRIORITY_MEDIUM]] call BIS_fnc_OM_moduleRadio_Radio_Enqueue;
+	//--- add first news
+	[MODE_ENQUEUE,["Radio_Tanoa_News",["News_checkpoints",PRIORITY_LOW]]] call BIS_fnc_OM_moduleRadio;
+	[MODE_PLAY,["Radio_Tanoa_News"]] call BIS_fnc_OM_moduleRadio;
+	BIS_moduleRadio setVariable ["BIS_loopEnabled", true];
+
+	private _channelData = ["Radio_Tanoa_News"] call BIS_fnc_OM_moduleRadio_getChannelData;
+	while{true} do
+	{
+		/* if([CHANNEL_MUSIC_QUEUE(_channelData)] call BIS_fnc_PriorityQueue_IsEmpty) then
+		{
+			"Radio: adding music to queue" call BIS_fnc_Log;
+			[BIS_moduleRadio, "Radio_Tanoa_News",[GET_PLAYLIST(player getVariable["BIS_playlistType", 2])]] call BIS_fnc_OM_moduleRadio_Radio_Enqueue;
+		}; */
+		if([CHANNEL_NEWS_QUEUE(_channelData)] call BIS_fnc_PriorityQueue_IsEmpty) then
+		{
+			[MODE_ENQUEUE, ["Radio_Tanoa_News",[BIS_OM_radioNewsPoolDefault select floor random (count BIS_OM_radioNewsPoolDefault),2]]] call BIS_fnc_OM_moduleRadio;
+			if (count BIS_OM_radioNewsPoolCustom > 0) then 
+			{
+				[MODE_ENQUEUE, ["Radio_Tanoa_News",[BIS_OM_radioNewsPoolCustom select floor random (count BIS_OM_radioNewsPoolCustom),64]]] call BIS_fnc_OM_moduleRadio;
+			}
+		};
+		sleep 10;
+	};
+};

@@ -1,0 +1,639 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, SQ99">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-50.000000,-425.000000,50.000000,-375.000000,0.000000,"Init"};
+item1[] = {"",7,210,121.000031,-404.000000,128.999969,-396.000000,0.000000,""};
+item2[] = {"delay",4,218,-50.000000,-350.000000,50.000000,-300.000000,0.000000,"delay"};
+item3[] = {"Miller_has_antim",2,250,-50.000000,-275.000000,50.000000,-225.000000,0.000000,"Miller has" \n "antimalarial"};
+item4[] = {"comm_finished",4,218,-50.000000,-200.000000,50.000000,-150.000000,0.000000,"comm" \n "finished"};
+item5[] = {"add_task_meet__M",2,250,-50.000000,-125.000000,50.000000,-75.000000,0.000000,"add task meet " \n "Miller"};
+item6[] = {"Miller_dead",4,218,75.000000,-350.000000,175.000000,-300.000000,1000.000000,"Miller dead"};
+item7[] = {"player_met_mille",4,218,-50.000000,-50.000000,50.000000,0.000000,0.000000,"player met" \n "miller"};
+item8[] = {"comm",2,250,-50.000000,25.000000,50.000000,75.000000,0.000000,"comm"};
+item9[] = {"Miller_aim_playe",2,250,-250.000000,325.000000,-150.000000,375.000000,0.000000,"Miller aim" \n "player"};
+item10[] = {"",7,210,-4.000000,496.000000,4.000000,504.000000,0.000000,""};
+item11[] = {"THERE_IS_NO_MILL",1,250,75.000000,-275.000000,175.000000,-225.000000,0.000000,"THERE IS" \n "NO MILLER"};
+item12[] = {"start_checking_a",4,218,-50.000000,100.000000,50.000000,150.000000,0.000000,"start checking" \n "aiming"};
+item13[] = {"code",2,250,-50.000000,175.000000,50.000000,225.000000,0.000000,"code"};
+item14[] = {"pass_without_aim",4,218,-50.000000,250.000000,50.000000,300.000000,0.000000,"pass without" \n "aiming"};
+item15[] = {"",7,210,-204.000000,196.000000,-196.000000,204.000000,0.000000,""};
+item16[] = {"Miller_back__to",2,250,-250.000000,475.000000,-150.000000,525.000000,0.000000,"Miller back " \n "to safe"};
+item17[] = {"player_aiming",4,218,-250.000000,250.000000,-150.000000,300.000000,0.000000,"player" \n "aiming"};
+item18[] = {"player_far_from",4,218,-125.000000,475.000000,-25.000000,525.000000,0.000000,"player far" \n "from Miller"};
+item19[] = {"player_dropped_w",4,218,-250.000000,400.000000,-150.000000,450.000000,0.000000,"player dropped" \n "weapon"};
+item20[] = {"Miller_fire__at",1,250,-375.000000,750.000000,-275.000000,800.000000,0.000000,"Miller fire " \n "at Oldman"};
+item21[] = {"",7,210,-329.000000,346.000000,-321.000000,354.000000,0.000000,""};
+item22[] = {"player_still_has",4,218,-375.000000,550.000000,-275.000000,600.000000,0.000000,"player still" \n "has weapon"};
+item23[] = {"Miller_run_to_ca",2,4346,-50.000000,825.000000,50.000000,875.000000,0.000000,"Miller run" \n "to cache"};
+item24[] = {"player_is_attacking",4,218,-375.000000,825.000000,-275.000000,875.000000,0.000000,"player is" \n "attacking Miller" \n ""};
+item25[] = {"",7,210,-454.000000,196.000000,-446.000000,204.000000,0.000000,""};
+item26[] = {"player_is__shoot",4,218,-500.000000,750.000000,-400.000000,800.000000,0.000000,"player is " \n "shooting"};
+item27[] = {"",7,210,-454.000000,346.000000,-446.000000,354.000031,0.000000,""};
+item28[] = {"player__waiting",4,218,-250.000000,550.000000,-150.000000,600.000000,0.000000,"player " \n "waiting"};
+item29[] = {"",7,210,-4.000000,896.000000,4.000000,904.000000,0.000000,""};
+item30[] = {"",7,210,-454.000000,896.000000,-446.000031,904.000000,0.000000,""};
+item31[] = {"Miller_aim_playe_1",2,250,-250.000000,625.000000,-150.000000,675.000000,0.000000,"Miller aim" \n "player"};
+item32[] = {"player_still_wai",4,218,-250.000000,700.000000,-150.000000,750.000000,0.000000,"player still" \n "waiting"};
+item33[] = {"",7,210,-453.999969,496.000000,-446.000031,504.000000,0.000000,""};
+item34[] = {"",7,210,-454.000000,646.000000,-446.000000,654.000000,0.000000,""};
+link0[] = {0,1};
+link1[] = {0,2};
+link2[] = {1,6};
+link3[] = {2,3};
+link4[] = {3,4};
+link5[] = {4,5};
+link6[] = {5,7};
+link7[] = {6,11};
+link8[] = {7,8};
+link9[] = {8,12};
+link10[] = {9,19};
+link11[] = {9,21};
+link12[] = {10,23};
+link13[] = {12,13};
+link14[] = {13,14};
+link15[] = {13,15};
+link16[] = {14,10};
+link17[] = {15,17};
+link18[] = {15,25};
+link19[] = {16,18};
+link20[] = {16,22};
+link21[] = {16,28};
+link22[] = {16,33};
+link23[] = {17,9};
+link24[] = {18,10};
+link25[] = {19,16};
+link26[] = {21,22};
+link27[] = {21,27};
+link28[] = {22,20};
+link29[] = {23,24};
+link30[] = {23,29};
+link31[] = {24,20};
+link32[] = {25,27};
+link33[] = {26,20};
+link34[] = {27,33};
+link35[] = {28,31};
+link36[] = {29,30};
+link37[] = {30,26};
+link38[] = {31,22};
+link39[] = {31,32};
+link40[] = {31,34};
+link41[] = {32,20};
+link42[] = {33,34};
+link43[] = {34,26};
+globals[] = {0.000000,0,0,0,0,640,480,1,474,6316128,1,-654.389221,141.549500,991.558594,148.125732,972,1030,1};
+window[] = {2,-1,-1,-1,-1,1072,26,872,26,3,990};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SQ99";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"// queue variables" \n
+                         "private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         " " \n
+                         "private _delay = time + 2;" \n
+                         "" \n
+                         "// run Miller FSM realted to the quest" \n
+                         "BIS_MillerSQ99fsm = [""OldMan.Tanoa"", ""FSM_Characters\millerFlowSQ99.fsm""] call BIS_fnc_OM_EXEC;" \n
+                         "" \n
+                         "//--- switch of ammo boxes if player deliver i to Syndikats" \n
+                         "player addEventHandler [""Put"", {   " \n
+                         "    params [""_unit"", ""_container"", ""_item""];  " \n
+                         "    if (_container == BIS_finalBox) exitWith {  " \n
+                         "        _container hideObject true;  " \n
+                         "        BIS_finalBox_fake hideObject false;  " \n
+                         "    };    " \n
+                         "}];" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 6;
+                                        priority = 1000.000000;
+                                        to="THERE_IS_NO_MILL";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "delay">*/
+                                class delay
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="Miller_has_antim";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time < _delay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_has_antim">*/
+                class Miller_has_antim
+                {
+                        name = "Miller_has_antim";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"BIS_MillerSQ99fsm setFSMVariable [""_hasAntimalarial"", true];" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "comm_finished">*/
+                                class comm_finished
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="add_task_meet__M";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTaskMeetMiller"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "add_task_meet__M">*/
+                class add_task_meet__M
+                {
+                        name = "add_task_meet__M";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"BIS_T_SQ99_L_MillerMeetingFinal = [""T_SQ99_L_MillerMeetingFinal"", [T_L_MillerMeetingFinal]] call bis_fnc_questCreateManualy; " \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_met_mille">*/
+                                class player_met_mille
+                                {
+                                        itemno = 7;
+                                        priority = 0.000000;
+                                        to="comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ99_L_MillerMeetingFinal""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comm">*/
+                class comm
+                {
+                        name = "comm";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"// --- Finish meet Miller quest" \n
+                         "BIS_MillerSQ99fsm setFSMVariable [""_TalkToOldman"", true];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "start_checking_a">*/
+                                class start_checking_a
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="code";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_checkAiming"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_aim_playe">*/
+                class Miller_aim_playe
+                {
+                        name = "Miller_aim_playe";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"BIS_Miller setBehaviour ""COMBAT"";" \n
+                         "BIS_Miller lookAt player;" \n
+                         "BIS_MIller doTarget player;" \n
+                         "playMusic [""BackgroundTrack01_F_EPB"",9];" \n
+                         "0 fadeMusic 1;" \n
+                         "" \n
+                         "_delay = time + 30;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_still_has">*/
+                                class player_still_has
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="Miller_fire__at";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay" \n
+                                         "&&" \n
+                                         "currentWeapon player != """""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is__shoot">*/
+                                class player_is__shoot
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_fire__at";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_MillerShooting"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_dropped_w">*/
+                                class player_dropped_w
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="Miller_back__to";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"currentWeapon player == """""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "THERE_IS_NO_MILL">*/
+                class THERE_IS_NO_MILL
+                {
+                        name = "THERE_IS_NO_MILL";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "code">*/
+                class code
+                {
+                        name = "code";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"// check where player aiming" \n
+                         "0 = [15,45] spawn  {  " \n
+                         "	player setDamage 0.1; " \n
+                         "  params  " \n
+                         "  [ " \n
+                         "	  [""_1stWarningTime"",5, [0]], " \n
+                         "     [""_shootingTime"",25, [0]]" \n
+                         "     //[""_shootingTime"",60, [0]]  " \n
+                         "  ]; " \n
+                         "  private _aimingTime = 0; " \n
+                         "  while {_aimingTime < _shootingTime || !(BIS_SQ99fsm getFSMVariable [""_MillerRunToCache"", false])} do {   " \n
+                         "	//hint format [""%1"",_aimingTime];" \n
+                         "    if (currentWeapon player != """" && !(weaponLowered player) && cursorObject == BIS_Miller) then {  " \n
+                         "        _aimingTime = _aimingTime + 1;  " \n
+                         "        sleep 0.1;  " \n
+                         "	    if (_aimingTime > _1stWarningTime) then {" \n
+                         "            missionNamespace setVariable [""BIS_OM_MillersDropItSentence"",true];" \n
+                         "            private _coolTime = 0;" \n
+                         "            while {!(currentWeapon player != """" && !(weaponLowered player) && cursorObject == BIS_Miller) || currentWeapon player == """"} do {" \n
+                         "                _coolTime = _coolTime + 1;" \n
+                         "                sleep 0.1;" \n
+                         "                //--- it's too late, Miller is angry, end the loop" \n
+                         "                if (BIS_MillerSQ99fsm getFSMVariable [""_playerAiming"", false]) exitWith {};" \n
+                         "                //--- player is not aiming for some time or he drops a weapon" \n
+                         "                if (_coolTime > 2) exitWith {BIS_MillerCanContinueTalking = true};" \n
+                         "                };" \n
+                         "            };" \n
+                         "        if (_aimingTime == _shootingTime) exitWith {BIS_MillerSQ99fsm setFSMVariable [""_playerAiming"", true]};" \n
+                         "        if (BIS_SQ99fsm getFSMVariable [""_MillerRunToCache"", false]) exitWith {};   " \n
+                         "    }; " \n
+                         "	sleep 0.1;" \n
+                         "  };  " \n
+                         "};" \n
+                         "" \n
+                         "// fire check" \n
+                         "_EHFiredIdx = player addEventHandler [""Fired"", {BIS_SQ99fsm setFSMVariable [""_MillerShooting"", true]}]"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_aiming">*/
+                                class player_aiming
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="Miller_aim_playe";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_MillerCombat"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is__shoot">*/
+                                class player_is__shoot
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_fire__at";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_MillerShooting"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "pass_without_aim">*/
+                                class pass_without_aim
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="Miller_run_to_ca";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_MillerRunToCache"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_back__to">*/
+                class Miller_back__to
+                {
+                        name = "Miller_back__to";
+                        itemno = 16;
+                        init = /*%FSM<STATEINIT""">*/"BIS_Miller setBehaviour ""SAFE"";" \n
+                         "BIS_Miller lookAt player;" \n
+                         "BIS_MIller doTarget objNull;" \n
+                         "" \n
+                         "_delay = time;" \n
+                         "BIS_MillerSQ99fsm setFSMVariable [""_backCalm"", true];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_still_has">*/
+                                class player_still_has
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="Miller_fire__at";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay" \n
+                                         "&&" \n
+                                         "currentWeapon player != """""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player__waiting">*/
+                                class player__waiting
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="Miller_aim_playe_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerDontLeave"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is__shoot">*/
+                                class player_is__shoot
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_fire__at";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_MillerShooting"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_far_from">*/
+                                class player_far_from
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_run_to_ca";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Miller > 20"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_fire__at">*/
+                class Miller_fire__at
+                {
+                        name = "Miller_fire__at";
+                        itemno = 20;
+                        init = /*%FSM<STATEINIT""">*/"player addRating -3000000;" \n
+                         "BIS_Miller reveal player;" \n
+                         "BIS_Miller doFire player;" \n
+                         "BIS_MillerSQ99fsm setFSMVariable [""_openFire"", true];" \n
+                         "" \n
+                         "//--- CTRG soldiers behaviour setup" \n
+                         "" \n
+                         "{" \n
+                         "	_x setUnitPos ""MIDDLE"";" \n
+                         "	_x setBehaviour ""COMBAT"";" \n
+                         "	_x allowFleeing 0;" \n
+                         "} forEach [BIS_CTRG01,BIS_CTRG02];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_run_to_ca">*/
+                class Miller_run_to_ca
+                {
+                        name = "Miller_run_to_ca";
+                        itemno = 23;
+                        init = /*%FSM<STATEINIT""">*/"0 = [] spawn" \n
+                         "{" \n
+                         "	// --- run on the coast" \n
+                         "	private _MillerGroup = [BIS_CTRG01,BIS_CTRG02];" \n
+                         "	BIS_Miller move getMarkerPos ""BIS_MillerWP01"";" \n
+                         "" \n
+                         "	if (isNil ""_MillerCombat"") then {playMusic ""EventTrack02a_F_Tacops""}; " \n
+                         "	waitUntil {sleep 0.5; unitReady BIS_Miller};" \n
+                         "" \n
+                         "	BIS_MillerSQ99fsm setFSMVariable [""_CTRGboardSDV"", true];" \n
+                         "	sleep 4;" \n
+                         "" \n
+                         "	// --- go pick up wet suit" \n
+                         "	BIS_Miller move getMarkerPos ""BIS_MillerWP02"";" \n
+                         "	waitUntil {sleep 0.5; unitReady BIS_Miller};" \n
+                         "	sleep 1;" \n
+                         "	BIS_Miller action [""TakeWeapon"", BIS_CTRGbox, ""fakeMagazine""];" \n
+                         "	{" \n
+                         "		removeUniform _x;" \n
+                         "		removeVest _x;" \n
+                         "		removeBackpack _x;" \n
+                         "		removeHeadgear _x;" \n
+                         "		removeGoggles _x;" \n
+                         "" \n
+                         "		_x forceAddUniform ""U_B_Wetsuit"";" \n
+                         "		_x addVest ""V_RebreatherB"";" \n
+                         "		_x addBackpack ""B_SCBA_01_F"";" \n
+                         "	} forEach [BIS_Miller];" \n
+                         "	sleep 3;" \n
+                         "" \n
+                         "	// --- wait till player picked up diving gear" \n
+                         "	waitUntil {sleep 0.5; (" \n
+                         "		vest player == ""V_RebreatherB""" \n
+                         "		||" \n
+                         "		vest player == ""V_RebreatherO""" \n
+                         "		)	" \n
+                         "	};" \n
+                         "" \n
+                         "	BIS_MillerSQ99fsm setFSMVariable [""_toWatter"", true];" \n
+                         "" \n
+                         "	//--- join with the rest and order them to board SDV" \n
+                         "	_MillerGroup joinSilent BIS_Miller;" \n
+                         "	BIS_Miller assignAsDriver BIS_SDV;" \n
+                         "	BIS_CTRG01 assignAsGunner BIS_SDV;" \n
+                         "	player assignAsCargoIndex [BIS_SDV,2];" \n
+                         "	BIS_CTRG02 assignAsCargoIndex [BIS_SDV,1];" \n
+                         "	[BIS_Miller,BIS_CTRG01,BIS_CTRG02] orderGetIn true;" \n
+                         "" \n
+                         "	//--- crew in SDV " \n
+                         "	0 = [] spawn {" \n
+                         "	waitUntil {vehicle player == BIS_SDV && alive BIS_Miller};" \n
+                         "	//--- cancel doctors quest" \n
+                         "	BIS_cancelDocQuests = true;" \n
+                         "" \n
+                         "	BIS_Miller moveInDriver BIS_SDV;" \n
+                         "	if (alive BIS_CTRG01) then {BIS_CTRG01 moveIngunner BIS_SDV};" \n
+                         "	if (alive BIS_CTRG02) then {BIS_CTRG02 moveInCargo [BIS_SDV,1]};" \n
+                         "	BIS_SDV lock true;" \n
+                         "	//--- Miller has vaccine, and Oldman is with him, set for outro" \n
+                         "	BIS_vaccineStatus = 3;" \n
+                         "	BIS_OldmanStatus = 3;" \n
+                         "	BIS_CSATStatus = 0;" \n
+                         "	};" \n
+                         "" \n
+                         "	waitUntil {sleep 0.5;" \n
+                         "	(isNil ""_MillerCombat"" && count (units group BIS_Miller) != 0 && {{(vehicle _x) == BIS_SDV} forEach (units group BIS_Miller) + [player]})" \n
+                         "	||" \n
+                         "	(!isNil ""_MillerCombat"" && count (units group BIS_Miller) != 0 && {{(vehicle _x) == BIS_SDV} forEach (units group BIS_Miller)})" \n
+                         "  };" \n
+                         "	BIS_MillerSQ99fsm setFSMVariable [""_onBoardLetsGo"", true];" \n
+                         "	// --- temporary hack?" \n
+                         "	[] call BIS_fnc_OM_moduleRadio_disableRadio;" \n
+                         "	[""T_SQ99_F_Finale.Tanoa"", ""sdv_path.sqf""] call BIS_fnc_OM_EXEC;" \n
+                         "	BIS_Miller move [5291.51,14912.5,-39.0036];//getMarkerPos ""BIS_MillerWP03"";" \n
+                         "	sleep 16;" \n
+                         "	0 fadeMusic 0;" \n
+                         "	playMusic [""LeadTrack01_F_Tacops"",45];" \n
+                         "	7 fadeMusic 0.35;" \n
+                         "	sleep 15;" \n
+                         "	3 fadeMusic 1;" \n
+                         "	sleep 12;" \n
+                         "	cutText ["""",""BLACK OUT"", 4];" \n
+                         "	4 fadeSound 0;" \n
+                         "	sleep 13.5;" \n
+                         "	3 fadeMusic 0;" \n
+                         "	sleep 3.1;" \n
+                         "	bis_fnc_missionFlow_fsm setFSMVariable [""_WestEnd"",true];" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_is__shoot">*/
+                                class player_is__shoot
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_fire__at";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_MillerShooting"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is_attacking">*/
+                                class player_is_attacking
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="Miller_fire__at";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"currentWeapon player != """" " \n
+                                         "&&" \n
+                                         "player distance BIS_MIller < 50" \n
+                                         "&&" \n
+                                         "!isNil ""_MillerCombat"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_aim_playe_1">*/
+                class Miller_aim_playe_1
+                {
+                        name = "Miller_aim_playe_1";
+                        itemno = 31;
+                        init = /*%FSM<STATEINIT""">*/"BIS_Miller setBehaviour ""COMBAT"";" \n
+                         "BIS_Miller lookAt player;" \n
+                         "BIS_MIller doTarget player;" \n
+                         "" \n
+                         "" \n
+                         "_delayAgain = time + 15;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_still_wai">*/
+                                class player_still_wai
+                                {
+                                        itemno = 32;
+                                        priority = 0.000000;
+                                        to="Miller_fire__at";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance BIS_Miller < 20" \n
+                                         "&&" \n
+                                         "time > _delayAgain"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_is__shoot">*/
+                                class player_is__shoot
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_fire__at";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_MillerShooting"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_still_has">*/
+                                class player_still_has
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="Miller_fire__at";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay" \n
+                                         "&&" \n
+                                         "currentWeapon player != """""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "THERE_IS_NO_MILL",
+                "Miller_fire__at",
+        };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,1194 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, SQ6">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-50.000000,-1125.000000,50.000000,-1075.000000,0.000000,"Init"};
+item1[] = {"quest_supply_don",4,218,-50.000000,-900.000000,50.000000,-850.000000,0.000000,"quest supply" \n "done"};
+item2[] = {"start_task_get_to",2,250,-50.000000,-675.000000,50.000000,-625.000000,0.000000,"start task" \n "get to Cerebu"};
+item3[] = {"time_passed",4,218,-300.000000,-900.000000,-200.000000,-850.000000,0.000000,"time passed"};
+item4[] = {"Boss_opening_speach",4,218,-50.000000,-1050.000000,50.000000,-1000.000000,0.000000,"Boss opening" \n "speach done"};
+item5[] = {"cancel_quest",2,250,-300.000000,-675.000000,-200.000000,-625.000000,0.000000,"cancel quest"};
+item6[] = {"start_task_fetch",2,250,-50.000000,-975.000000,50.000000,-925.000000,0.000000,"start task" \n "fetch NVGs" \n "add intel"};
+item7[] = {"",7,210,-254.000000,-954.000000,-246.000000,-946.000000,0.000000,""};
+item8[] = {"delay",4,218,-300.000000,-600.000000,-200.000000,-550.000000,0.000000,"delay"};
+item9[] = {"time_passed_too",4,218,75.000000,-900.000000,175.000000,-850.000000,1.000000,"time passed" \n "too much"};
+item10[] = {"",7,210,120.999992,-954.000000,129.000000,-946.000000,0.000000,""};
+item11[] = {"END_FIGHT__HAPPE",1,250,-300.000000,-525.000000,-200.000000,-475.000000,0.000000,"END" \n "FIGHT " \n "HAPPENED"};
+item12[] = {"END_SKIPPED",1,250,75.000000,-675.000000,175.000000,-625.000000,0.000000,"END" \n "SKIPPED"};
+item13[] = {"time_to_spawn_attack",4,218,-50.000000,-450.000000,50.000000,-400.000000,0.000000,"time to spawn" \n "attack group"};
+item14[] = {"spawn_boat_add_transport",2,250,-50.000000,-375.000000,50.000000,-325.000000,0.000000,"spawn boat" \n "add transport" \n "task"};
+item15[] = {"time_to_spawn_the",4,218,-50.000000,-600.000000,50.000000,-550.000000,0.000000,"time to spawn" \n "the boat"};
+item16[] = {"start__conversat",2,250,-50.000000,-525.000000,50.000000,-475.000000,0.000000,"start " \n "conversation"};
+item17[] = {"player_in_boat",4,218,-50.000000,-300.000000,50.000000,-250.000000,0.000000,"player in" \n "boat"};
+item18[] = {"disable_sector_d",2,250,-50.000000,-225.000000,50.000000,-175.000000,0.000000,"disable" \n "sector despawn"};
+item19[] = {"task_completed",4,218,-50.000000,-150.000000,50.000000,-100.000000,0.000000,"task" \n "completed"};
+item20[] = {"unload_Syndikats",2,250,-50.000000,-75.000000,50.000000,-25.000000,0.000000,"unload Syndikats" \n "set 1st WP"};
+item21[] = {"on_start_positio",4,218,-50.000000,0.000000,50.000000,50.000000,0.000000,"on start" \n "position"};
+item22[] = {"set_delay_wait_for",2,250,-50.000000,75.000000,50.000000,125.000000,0.000000,"set delay" \n "wait for 5 min"};
+item23[] = {"delay_passed_",4,218,-50.000000,150.000000,50.000000,200.000000,0.000000,"delay passed" \n ""};
+item24[] = {"attack_",2,4346,-50.000000,225.000000,50.000000,275.000000,0.000000,"attack!"};
+item25[] = {"unit_was_wipeout",4,218,75.000000,0.000000,175.000000,50.000000,0.000000,"unit was" \n "wipeout"};
+item26[] = {"_",2,250,75.000000,75.000000,175.000000,125.000000,0.000000,""};
+item27[] = {"Syndikats_were_",4,218,-175.000000,300.000000,-75.000000,350.000000,0.000000,"Syndikats" \n "were " \n "killed"};
+item28[] = {"",7,210,121.000000,-54.000000,129.000000,-46.000000,0.000000,""};
+item29[] = {"",7,210,121.000000,-204.000000,129.000000,-196.000000,0.000000,""};
+item30[] = {"",7,210,-129.000000,96.000000,-120.999992,104.000000,0.000000,""};
+item31[] = {"ASSAULT_FAILED",2,250,-175.000000,375.000000,-75.000000,425.000000,0.000000,"ASSAULT" \n "FAILED"};
+item32[] = {"",7,210,-129.000000,246.000000,-121.000008,254.000000,0.000000,""};
+item33[] = {"player_did_it",4,218,-175.000000,600.000000,-75.000000,650.000000,0.000000,"player" \n "did it"};
+item34[] = {"END_PLAYER_HERO",1,250,-175.000000,675.000000,-75.000000,725.000000,0.000000,"END" \n "PLAYER" \n "HERO"};
+item35[] = {"tank_destroyed",4,218,-50.000000,300.000000,50.000000,350.000000,0.000000,"tank" \n "destroyed"};
+item36[] = {"retreat",2,250,-50.000000,525.000000,50.000000,575.000000,0.000000,"retreat"};
+item37[] = {"player_far_enoug",4,218,-50.000000,600.000000,50.000000,650.000000,0.000000,"player" \n "far enough"};
+item38[] = {"END_WIN_DESPAWN",1,250,-50.000000,675.000000,50.000000,725.000000,0.000000,"END" \n "WIN" \n "DESPAWN"};
+item39[] = {"",7,210,221.000000,-54.000000,229.000000,-46.000000,0.000000,""};
+item40[] = {"set_boss_call",2,250,75.000000,225.000000,175.000000,275.000000,0.000000,"set boss" \n "call"};
+item41[] = {"",7,210,221.000000,171.000000,229.000000,179.000000,0.000000,""};
+item42[] = {"_",8,218,75.000000,450.000000,175.000000,500.000000,0.000000,""};
+item43[] = {"tank_destroyed_a",4,218,75.000000,150.000000,175.000000,200.000000,0.000000,"tank" \n "destroyed" \n "ahead"};
+item44[] = {"",7,210,121.000000,546.000000,129.000000,554.000000,0.000000,""};
+item45[] = {"player_wait__too",4,218,-300.000000,-300.000000,-200.000000,-250.000000,0.000000,"player wait " \n "too long"};
+item46[] = {"",7,210,-254.000000,-354.000000,-246.000000,-346.000000,0.000000,""};
+item47[] = {"handle_boat_by_A",2,250,-300.000000,-225.000000,-200.000000,-175.000000,0.000000,"handle boat" \n "by AI"};
+item48[] = {"on_coast",4,218,-300.000000,-150.000000,-200.000000,-100.000000,0.000000,"on coast"};
+item49[] = {"",7,210,-254.000000,-54.000000,-246.000000,-46.000000,0.000000,""};
+item50[] = {"player_wait_extremly",4,218,-300.000000,-450.000000,-200.000000,-400.000000,1.000000,"player wait" \n "extremly long" \n "end it"};
+item51[] = {"",7,210,221.000000,-354.000000,229.000000,-346.000000,0.000000,""};
+item52[] = {"",7,210,221.000000,-204.000000,229.000000,-196.000000,0.000000,""};
+item53[] = {"set_boss_call_1",2,250,-50.000000,375.000000,50.000000,425.000000,0.000000,"set boss" \n "call"};
+item54[] = {"_",8,218,-50.000000,450.000000,50.000000,500.000000,0.000000,""};
+item55[] = {"",7,210,-129.000000,558.500000,-120.999992,566.500000,0.000000,""};
+item56[] = {"is_morning",4,218,-300.000000,600.000000,-200.000000,650.000000,0.000000,"is morning"};
+item57[] = {"END_cancle_the_t",1,250,-300.000000,675.000000,-200.000000,725.000000,0.000000,"END" \n "cancle the task"};
+item58[] = {"",7,210,258.500000,96.000000,266.500000,104.000000,0.000000,""};
+item59[] = {"",7,210,258.500000,771.000000,266.500000,779.000061,0.000000,""};
+item60[] = {"",7,210,-454.000000,558.500000,-446.000000,566.500000,0.000000,""};
+item61[] = {"",7,210,-254.000000,558.500000,-246.000000,566.500000,0.000000,""};
+item62[] = {"",7,210,-454.000000,771.000000,-446.000000,779.000000,0.000000,""};
+item63[] = {"",7,210,-254.000000,396.000000,-246.000000,404.000031,0.000000,""};
+item64[] = {"task_supply__done",4,218,-175.000000,-900.000000,-75.000000,-850.000000,1.000000,"task supply " \n "done" \n "tanks gone"};
+item65[] = {"END_TANKS_gone_",1,250,-175.000000,-750.000000,-75.000000,-700.000000,0.000000,"END" \n "TANKS gone " \n "AHAED"};
+item66[] = {"",7,210,-129.000000,-954.000000,-121.000000,-946.000000,0.000000,""};
+item67[] = {"",7,210,-79.000008,-503.999969,-70.999992,-496.000000,0.000000,""};
+item68[] = {"",7,210,-79.000000,-654.000000,-71.000000,-646.000000,0.000000,""};
+item69[] = {"",7,210,-79.000000,-866.500000,-71.000000,-858.500000,0.000000,""};
+item70[] = {"__1",2,250,-50.000000,-825.000000,50.000000,-775.000000,0.000000,""};
+item71[] = {"Comm_with_Boss_d",4,218,-50.000000,-750.000000,50.000000,-700.000000,0.000000,"Comm with" \n "Boss done"};
+item72[] = {"",7,210,-79.000008,-804.000000,-70.999992,-796.000000,0.000000,""};
+item73[] = {"is_waiting_too_l",4,218,-425.000000,600.000000,-325.000000,650.000000,0.000000,"is waiting too" \n "long"};
+item74[] = {"END_finish_the_b",1,250,-425.000000,675.000000,-325.000000,725.000000,0.000000,"END" \n "finish the battle"};
+item75[] = {"",7,210,-379.000000,96.000000,-371.000031,104.000000,0.000000,""};
+link0[] = {0,4};
+link1[] = {1,70};
+link2[] = {2,15};
+link3[] = {2,68};
+link4[] = {3,5};
+link5[] = {4,6};
+link6[] = {5,8};
+link7[] = {6,1};
+link8[] = {6,10};
+link9[] = {6,66};
+link10[] = {7,3};
+link11[] = {8,11};
+link12[] = {9,12};
+link13[] = {10,9};
+link14[] = {13,14};
+link15[] = {14,17};
+link16[] = {14,46};
+link17[] = {14,51};
+link18[] = {15,16};
+link19[] = {16,9};
+link20[] = {16,13};
+link21[] = {16,67};
+link22[] = {17,18};
+link23[] = {18,19};
+link24[] = {18,29};
+link25[] = {19,20};
+link26[] = {20,21};
+link27[] = {20,28};
+link28[] = {21,22};
+link29[] = {22,23};
+link30[] = {22,30};
+link31[] = {22,43};
+link32[] = {23,24};
+link33[] = {24,32};
+link34[] = {24,35};
+link35[] = {25,26};
+link36[] = {26,58};
+link37[] = {27,31};
+link38[] = {28,25};
+link39[] = {28,39};
+link40[] = {29,28};
+link41[] = {29,52};
+link42[] = {30,32};
+link43[] = {30,75};
+link44[] = {31,63};
+link45[] = {32,27};
+link46[] = {33,34};
+link47[] = {35,53};
+link48[] = {36,37};
+link49[] = {37,38};
+link50[] = {39,41};
+link51[] = {40,42};
+link52[] = {41,43};
+link53[] = {42,44};
+link54[] = {43,40};
+link55[] = {44,36};
+link56[] = {45,47};
+link57[] = {46,45};
+link58[] = {46,50};
+link59[] = {47,48};
+link60[] = {48,49};
+link61[] = {49,20};
+link62[] = {50,12};
+link63[] = {51,52};
+link64[] = {52,39};
+link65[] = {53,54};
+link66[] = {54,36};
+link67[] = {55,33};
+link68[] = {56,57};
+link69[] = {58,59};
+link70[] = {59,62};
+link71[] = {60,61};
+link72[] = {61,55};
+link73[] = {61,56};
+link74[] = {62,60};
+link75[] = {63,61};
+link76[] = {64,65};
+link77[] = {66,7};
+link78[] = {66,64};
+link79[] = {67,68};
+link80[] = {68,72};
+link81[] = {69,64};
+link82[] = {70,71};
+link83[] = {70,72};
+link84[] = {71,2};
+link85[] = {72,69};
+link86[] = {73,74};
+link87[] = {75,73};
+globals[] = {0.000000,0,0,0,0,640,480,1,559,6316128,1,-397.029510,235.527557,664.169067,-301.066132,675,1030,1};
+window[] = {2,-1,-1,-32000,-32000,1306,260,1106,260,3,693};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SQ6";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"//--- START boss conversation FSM" \n
+                         "BIS_BossFlowSQ6fsm = [""OldMan.Tanoa"", ""FSM_Characters\BossFlowSQ6.fsm""] call BIS_fnc_OM_EXEC;" \n
+                         "(missionNamespace getVariable ""FSMs"") pushBack [BIS_BossFlowSQ6fsm];" \n
+                         "" \n
+                         "if (date#3 < 18) then {" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_dateOfAttack"", [date#0,date#1,date#2,20,00]];" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_dateOfAttackFSM"", [date#0,date#1,date#2,19,55]];" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_dateOfAttackSkipped"", [date#0,date#1,date#2,20,55]];" \n
+                         "}" \n
+                         "else" \n
+                         "{" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_dateOfAttack"", [date#0,date#1,(date#2)+1,20,00]];" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_dateOfAttackFSM"", [date#0,date#1,(date#2)+1,19,55]];" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_dateOfAttackSkipped"", [date#0,date#1,(date#2)+1,20,55]];" \n
+                         "};" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Boss_opening_speach">*/
+                                class Boss_opening_speach
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="start_task_fetch";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addNVGquest""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "start_task_get_to">*/
+                class start_task_get_to
+                {
+                        name = "start_task_get_to";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"BIS_T_SQ6_L_Cerebu = ['T_SQ6_L_Cerebu', [T_L_Cerebu]] call bis_fnc_questCreateManualy;" \n
+                         "" \n
+                         "//--- add event on watch timeline" \n
+                         "[_dateOfAttack, localize ""STR_A3_SQ6.fsmFSM_States_start_task_get_to0"", ""a3\Ui_f\data\IGUI\Cfg\simpleTasks\types\Meet_ca.paa""] call BIS_fnc_OM_addWatchEvent; //--- ToDo: Localize" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "task_supply__done">*/
+                                class task_supply__done
+                                {
+                                        itemno = 64;
+                                        priority = 1.000000;
+                                        to="END_TANKS_gone_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCerebuLocQuest""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_F_NVGs""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	!isNil ""BIN_Silo1""" \n
+                                         "	&&" \n
+                                         "	!isNil ""BIN_Silo2""" \n
+                                         "	&&" \n
+                                         "	damage BIN_Silo1 == 1 || damage BIN_Silo2 == 1" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_to_spawn_the">*/
+                                class time_to_spawn_the
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="start__conversat";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, _dateOfAttackFSM ] call BIS_fnc_IsDateTimeNewer"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "cancel_quest">*/
+                class cancel_quest
+                {
+                        name = "cancel_quest";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"if (!isNil ""BIS_T_SQ6_F_NVGs"") then {" \n
+                         "	[BIS_T_SQ6_F_NVGs,  6] call bis_fnc_questSetState" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "delay">*/
+                                class delay
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="END_FIGHT__HAPPE";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, _dateOfAttackSkipped ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "start_task_fetch">*/
+                class start_task_fetch
+                {
+                        name = "start_task_fetch";
+                        itemno = 6;
+                        init = /*%FSM<STATEINIT""">*/"BIS_T_SQ6_F_NVGs = ['T_SQ6_F_NVGs', [T_F_NVGs]] call bis_fnc_questCreateManualy;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "time_passed_too">*/
+                                class time_passed_too
+                                {
+                                        itemno = 9;
+                                        priority = 1.000000;
+                                        to="END_SKIPPED";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, _dateOfAttackSkipped ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_supply__done">*/
+                                class task_supply__done
+                                {
+                                        itemno = 64;
+                                        priority = 1.000000;
+                                        to="END_TANKS_gone_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCerebuLocQuest""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_F_NVGs""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	!isNil ""BIN_Silo1""" \n
+                                         "	&&" \n
+                                         "	!isNil ""BIN_Silo2""" \n
+                                         "	&&" \n
+                                         "	damage BIN_Silo1 == 1 || damage BIN_Silo2 == 1" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_passed">*/
+                                class time_passed
+                                {
+                                        itemno = 3;
+                                        priority = 0.000000;
+                                        to="cancel_quest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, _dateOfAttack ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "quest_supply_don">*/
+                                class quest_supply_don
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="__1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ6_F_NVGs""] call bis_fnc_questGetState == 3" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_FIGHT__HAPPE">*/
+                class END_FIGHT__HAPPE
+                {
+                        name = "END_FIGHT__HAPPE";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/"BIS_BossFlowSQ6fsm setFSMVariable [""_attackHappenedWithout"", true];" \n
+                         "BIS_Bossfsm setFSMVariable [""_sq6End"", true];" \n
+                         "" \n
+                         "//--- condition for ambient dialogue" \n
+                         "missionNamespace setVariable [""BIS_ambtCon_fuelDepo"",true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_SKIPPED">*/
+                class END_SKIPPED
+                {
+                        name = "END_SKIPPED";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"BIS_BossFlowSQ6fsm setFSMVariable [""_attackSkipped"", true];" \n
+                         "BIS_Bossfsm setFSMVariable [""_sq6End"", true];" \n
+                         "// --- if player skipped time to much and is sitting on the coast, disable spawning sector with boat and delete spawned boat" \n
+                         "if (!isNil ""BIS_SQ6_boat"") then {" \n
+                         "	{deleteVehicle _x} forEach crew BIS_SQ6_boat;" \n
+                         "	deleteVehicle BIS_SQ6_boat;" \n
+                         "};" \n
+                         "BIS_SQ6fsm setFSMVariable [""_spawnBoat"",false];" \n
+                         "" \n
+                         "//--- Cancel quests if tehy were assigned to palyer and are unfinished" \n
+                         "if ([""T_SQ6_F_NVGs""] call bis_fnc_questGetState != 3) then {" \n
+                         "	[BIS_T_SQ6_F_NVGs,  6] call bis_fnc_questSetState" \n
+                         "};" \n
+                         "" \n
+                         "if ([""T_SQ6_L_Cerebu""] call bis_fnc_questGetState == 1) then {" \n
+                         "	[BIS_T_SQ6_L_Cerebu,  6] call bis_fnc_questSetState" \n
+                         "};" \n
+                         "" \n
+                         "if ([""T_SQ6_L_Koumac""] call bis_fnc_questGetState == 1) then {" \n
+                         "	[BIS_T_SQ6_L_Koumac,  6] call bis_fnc_questSetState" \n
+                         "};" \n
+                         "" \n
+                         "if (!isNil ""BIN_Silo1"" &&  !isNil ""BIN_Silo2"") then {" \n
+                         "" \n
+                         "	{_x setDamage 1} forEach [BIN_Silo1,BIN_Silo2];" \n
+                         "};" \n
+                         "" \n
+                         "//--- condition for ambient dialogue" \n
+                         "missionNamespace setVariable [""BIS_ambtCon_fuelDepo"",true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "spawn_boat_add_transport">*/
+                class spawn_boat_add_transport
+                {
+                        name = "spawn_boat_add_transport";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"//--- temporary disableing the drop points" \n
+                         "private _temporaryDropPointDisable = false;" \n
+                         "[] spawn {" \n
+                         "	if (BIS_SQ6fsm getFSMVariable [""_spawnBoatAlternate"",false]) then {" \n
+                         "" \n
+                         "		//--- Player is too close and he potentialy could see spawn of the boat - shift the place" \n
+                         "		BIS_T_SQ6_L_Koumac = ['T_SQ6_L_Koumac', [T_L_Koumac]] call bis_fnc_questCreateManualy;" \n
+                         "	  BIS_SQ6BoatPoz = [0, [""SmartMarker_I_Boats_F"", ""BIS_TransportBoatLocPick"",[1453,3088], false, [ [""name"", localize ""STR_A3_SQ6.fsmFSM_States_spawn_boat_add_transport0""],[""title"",localize ""STR_A3_SQ6.fsmFSM_States_spawn_boat_add_transport1""]]]] call BIS_fnc_OM_moduleSmartMarkers; //--- ToDo: Localize" \n
+                         "	} else {" \n
+                         "	  BIS_SQ6BoatPoz = [0, [""SmartMarker_I_Boats_F"", ""BIS_TransportBoatLocPick"",[2162,4674], false, [ [""name"", localize ""STR_A3_SQ6.fsmFSM_States_spawn_boat_add_transport2""],[""title"",localize ""STR_A3_SQ6.fsmFSM_States_spawn_boat_add_transport3""]]]] call BIS_fnc_OM_moduleSmartMarkers; //--- ToDo: Localize" \n
+                         "};" \n
+                         "" \n
+                         "	sleep 3;" \n
+                         "	BIS_mrk_transportBoatAlternate = [0, [""SmartMarker_T_Default_F"", ""BIS_TransportBoatLoc"",[2070,5800], false, [ [""name"", localize ""STR_A3_SQ6.fsmFSM_States_spawn_boat_add_transport4""],[""title"",localize ""STR_A3_SQ6.fsmFSM_States_spawn_boat_add_transport5""],[""description"",localize ""STR_A3_SQ6.fsmFSM_States_spawn_boat_add_transport6""],[""img"",""\a3\Missions_F_Oldman\Data\img\Tooltip\T_SQ6_F_Boat_tooltip.paa""]]]] call BIS_fnc_OM_moduleSmartMarkers; //--- ToDo: Localize" \n
+                         "	sleep 2;" \n
+                         "	BIS_SQ6_F_Boat = [""T_SQ6_F_Boat"", [T_F_Boat]] call bis_fnc_questCreateManualy;" \n
+                         "	sleep 5;" \n
+                         "	[BIS_SQ6_F_Boat, BIS_mrk_transportBoatAlternate] call bis_fnc_questAssociateSmartMarker; " \n
+                         "	sleep 5;" \n
+                         "	BIS_SQ6_D_fuelTank = [""T_SQ6_D_fuelTank"", [T_D_fuelTank]] call bis_fnc_questCreateManualy;" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_wait_extremly">*/
+                                class player_wait_extremly
+                                {
+                                        itemno = 50;
+                                        priority = 1.000000;
+                                        to="END_SKIPPED";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [(BIS_SQ6fsm getFSMVariable ""_dateOfAttackSkipped""), 21, ""m""] call BIS_fnc_CalculateDateTime ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_wait__too">*/
+                                class player_wait__too
+                                {
+                                        itemno = 45;
+                                        priority = 0.000000;
+                                        to="handle_boat_by_A";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [(BIS_SQ6fsm getFSMVariable ""_dateOfAttackSkipped""), 20, ""m""] call BIS_fnc_CalculateDateTime ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "tank_destroyed_a">*/
+                                class tank_destroyed_a
+                                {
+                                        itemno = 43;
+                                        priority = 0.000000;
+                                        to="set_boss_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_in_boat">*/
+                                class player_in_boat
+                                {
+                                        itemno = 17;
+                                        priority = 0.000000;
+                                        to="disable_sector_d";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_inBoat""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "start__conversat">*/
+                class start__conversat
+                {
+                        name = "start__conversat";
+                        itemno = 16;
+                        init = /*%FSM<STATEINIT""">*/"if (!(player getVariable [""BIS_ScreenIsBlack"",false]) && player distance [2153,4619] < 200) then {" \n
+                         "" \n
+                         "	//--- Player is too close and he potentialy could see spawn of the boat - shift the place" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_spawnBoatAlternate"",true];" \n
+                         "" \n
+                         "} else {" \n
+                         "" \n
+                         "	//--- Player is waiting, or he is far, we can use original position" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_spawnBoat"",true];" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "task_supply__done">*/
+                                class task_supply__done
+                                {
+                                        itemno = 64;
+                                        priority = 1.000000;
+                                        to="END_TANKS_gone_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCerebuLocQuest""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_F_NVGs""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	!isNil ""BIN_Silo1""" \n
+                                         "	&&" \n
+                                         "	!isNil ""BIN_Silo2""" \n
+                                         "	&&" \n
+                                         "	damage BIN_Silo1 == 1 || damage BIN_Silo2 == 1" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_passed_too">*/
+                                class time_passed_too
+                                {
+                                        itemno = 9;
+                                        priority = 1.000000;
+                                        to="END_SKIPPED";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, _dateOfAttackSkipped ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_to_spawn_attack">*/
+                                class time_to_spawn_attack
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="spawn_boat_add_transport";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addTransportBoatTask""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "disable_sector_d">*/
+                class disable_sector_d
+                {
+                        name = "disable_sector_d";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"private _sectorToActivate = ([[BIS_SEC_SQ6_Koumac,BIS_SEC_SQ6_Cerebu], [], {_x distance player}, ""ASCEND""] call BIS_fnc_sortBy)#0;" \n
+                         "[_sectorToActivate, true] call BIS_fnc_sectorSetManualControl;" \n
+                         "[_sectorToActivate] spawn BIS_fnc_om_sectorActivate;    " \n
+                         "" \n
+                         "" \n
+                         "private _syndAttackUnits = units group BIS_Syn_AttackGroupLeader;" \n
+                         "{_x enableDynamicSimulation false} forEach _syndAttackUnits;" \n
+                         "private _syndAttackGroup = group BIS_Syn_AttackGroupLeader;" \n
+                         "" \n
+                         "//--- let the random syndikat talk about the plan" \n
+                         "BIS_Syndikatfsm setFSMVariable [""_planOfAssault"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "unit_was_wipeout">*/
+                                class unit_was_wipeout
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"({alive _x} count _syndAttackUnits) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "tank_destroyed_a">*/
+                                class tank_destroyed_a
+                                {
+                                        itemno = 43;
+                                        priority = 0.000000;
+                                        to="set_boss_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_completed">*/
+                                class task_completed
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="unload_Syndikats";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ6_F_Boat""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "unload_Syndikats">*/
+                class unload_Syndikats
+                {
+                        name = "unload_Syndikats";
+                        itemno = 20;
+                        init = /*%FSM<STATEINIT""">*/"//---put it back online" \n
+                         "private _temporaryDropPointDisable = true;" \n
+                         "{[_x] orderGetIn false} forEach _syndAttackUnits;" \n
+                         "{ unassignVehicle _x } forEach _syndAttackUnits;" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "	waitUntil {count (crew BIS_SQ6_boat) == 0};" \n
+                         "	sleep 3;" \n
+                         "	0 fadeMusic 1;" \n
+                         "	playMusic ""BackgroundTrack04_F_EPC"";" \n
+                         "	BIS_Syn_AttackGroupLeader move getMarkerPos ""BIS_SQ6AttackWP01"";" \n
+                         "	BIS_Syn_AttackGroupLeader setSpeedMode ""FULL"";" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "unit_was_wipeout">*/
+                                class unit_was_wipeout
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"({alive _x} count _syndAttackUnits) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "tank_destroyed_a">*/
+                                class tank_destroyed_a
+                                {
+                                        itemno = 43;
+                                        priority = 0.000000;
+                                        to="set_boss_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "on_start_positio">*/
+                                class on_start_positio
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="set_delay_wait_for";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(count (nearestObjects [getMarkerPos ""BIS_SQ6AttackWP01"", ['Man'], 15] select {side _x == RESISTANCE && alive _x}) != 0)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_delay_wait_for">*/
+                class set_delay_wait_for
+                {
+                        name = "set_delay_wait_for";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"private _delay = [date, 5, ""m""] call BIS_fnc_CalculateDateTime;" \n
+                         "BIS_BossFlowSQ6fsm setFSMVariable [""_5minCountdown"", true];" \n
+                         "{_x setUnitPos ""MIDDLE""} forEach _syndAttackUnits;" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "	waitUntil {BIS_BossFlowSQ6fsm getFSMVariable [""_updateTaskFuelDepo"", false]};" \n
+                         "	[BIS_SQ6_D_fuelTank, [localize ""STR_A3_SQ6.fsmFSM_States_set_delay_wait_for0"",""BIS_SQ6updatetTaskLoc""],true] call bis_fnc_setDescription; //---ToDo: Localize" \n
+                         "};" \n
+                         "" \n
+                         "//--- let the random syndikat talk about the plan" \n
+                         "BIS_Syndikatfsm setFSMVariable [""_5min"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "tank_destroyed_a">*/
+                                class tank_destroyed_a
+                                {
+                                        itemno = 43;
+                                        priority = 0.000000;
+                                        to="set_boss_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Syndikats_were_">*/
+                                class Syndikats_were_
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="ASSAULT_FAILED";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"({alive _x} count _syndAttackUnits) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "is_waiting_too_l">*/
+                                class is_waiting_too_l
+                                {
+                                        itemno = 73;
+                                        priority = 0.000000;
+                                        to="END_finish_the_b";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [_delay, 30, ""m""] call BIS_fnc_CalculateDateTime ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "delay_passed_">*/
+                                class delay_passed_
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="attack_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, _delay ] call BIS_fnc_IsDateTimeNewer" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "attack_">*/
+                class attack_
+                {
+                        name = "attack_";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/"BIS_BossFlowSQ6fsm setFSMVariable [""_startAttack"", true];" \n
+                         "{_x setUnitPos ""UP""} forEach _syndAttackUnits;" \n
+                         "" \n
+                         "[_syndAttackGroup] spawn {" \n
+                         "" \n
+                         "	// --- sector manual control, disable despawn" \n
+                         "	{" \n
+                         "		[_x,true] call BIS_fnc_sectorSetManualControl;" \n
+                         "		[_x] spawn BIS_fnc_om_sectorActivate;  " \n
+                         "	} forEach[BIS_SEC_SynSupportGroup,BIS_SEC_CSAT_fuelDepo];" \n
+                         "	// --- all sectors are spawned" \n
+                         "	waitUntil {BIS_SEC_SynSupportGroup getVariable ""#state"" == 2};" \n
+                         "" \n
+                         "	// --- move units and wait till all CSAT in base are dead" \n
+                         "	{_x move getMarkerPos ""BIS_SQ6AttackWP02""} foreach [BIS_Syn_AttackGroupLeader,BIS_Syn_SupportGroupLeader];" \n
+                         "	waitUntil {sleep 1; (count (nearestObjects [getMarkerPos ""BIS_SQ6AttackWP02"", ['Man'], 50] select {side _x == EAST && alive _x}) == 0) || (count (nearestObjects [getMarkerPos ""BIS_SQ6AttackWP02"", ['Man'], 8] select {side _x == RESISTANCE && alive _x}) != 0)};" \n
+                         "" \n
+                         "	// --- select nearest Syndi and send him to put the charge" \n
+                         "	private _bombMan = (nearestObjects [getMarkerPos ""BIS_SQ6AttackWP02"", ['Man'], 200] select {side _x == RESISTANCE && alive _x})#0;" \n
+                         "  if (isNil ""_bombMan"") exitWith {};" \n
+                         "" \n
+                         "	[_bombMan] joinSilent grpNull;" \n
+                         "	_bombMan move [2290,6311];" \n
+                         "	_bombMan setSpeedMode ""FULL"";" \n
+                         "	_bombMan setUnitPos ""UP"";" \n
+                         "	" \n
+                         "	// --- bomb man on position, put the charge" \n
+                         "	waitUntil {sleep 0.5 ; unitReady _bombMan};" \n
+                         "	_bombMan switchMove ""amovpercmstpsraswrfldnon_ainvpercmstpsraswrfldnon_putdown"";" \n
+                         "	_bombMan fire [""DemoChargeMuzzle"", ""DemoChargeMuzzle"", ""DemoCharge_Remote_Mag""];" \n
+                         "	_bombMan move getMarkerPos ""BIS_SQ6AttackWP01"";" \n
+                         "	" \n
+                         "	// --- send Syndi units out of the zone, boss call" \n
+                         "	{_x move getMarkerPos ""BIS_SQ6AttackWP03""} foreach [BIS_Syn_AttackGroupLeader,BIS_Syn_SupportGroupLeader];" \n
+                         "	BIS_BossFlowSQ6fsm setFSMVariable [""_chargeAtPlace"", true];" \n
+                         "" \n
+                         "	// --- bomb man away or dead, make sure it will blow up" \n
+                         "	waitUntil {sleep 5 ; ((_bombMan distance [2290,6311] > 50 || !alive _bombMan) && player distance [2290,6311] > 50) || (player distance [2290,6311] > 100)};" \n
+                         "	_bombMan action [""TOUCHOFF"",_bombMan];" \n
+                         "	[_bombMan] joinSilent _this#0;" \n
+                         "	BIN_silo1 setdamage 0.6;" \n
+                         "" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Syndikats_were_">*/
+                                class Syndikats_were_
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="ASSAULT_FAILED";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"({alive _x} count _syndAttackUnits) == 0"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "tank_destroyed">*/
+                                class tank_destroyed
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="set_boss_call_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 26;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_did_it">*/
+                                class player_did_it
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="END_PLAYER_HERO";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 56;
+                                        priority = 0.000000;
+                                        to="END_cancle_the_t";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [_dateOfAttack, 10, ""h""] call BIS_fnc_CalculateDateTime ] call BIS_fnc_IsDateTimeNewer;" \n
+                                         "" \n
+                                         "//--- condition for ambient dialogue" \n
+                                         "missionNamespace setVariable [""BIS_ambtCon_fuelDepo"",true];"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "ASSAULT_FAILED">*/
+                class ASSAULT_FAILED
+                {
+                        name = "ASSAULT_FAILED";
+                        itemno = 31;
+                        init = /*%FSM<STATEINIT""">*/"BIS_BossFlowSQ6fsm setFSMVariable [""_retreat"", true];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_did_it">*/
+                                class player_did_it
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="END_PLAYER_HERO";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ6_D_fuelTank""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "is_morning">*/
+                                class is_morning
+                                {
+                                        itemno = 56;
+                                        priority = 0.000000;
+                                        to="END_cancle_the_t";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[date, [_dateOfAttack, 10, ""h""] call BIS_fnc_CalculateDateTime ] call BIS_fnc_IsDateTimeNewer;" \n
+                                         "" \n
+                                         "//--- condition for ambient dialogue" \n
+                                         "missionNamespace setVariable [""BIS_ambtCon_fuelDepo"",true];"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_PLAYER_HERO">*/
+                class END_PLAYER_HERO
+                {
+                        name = "END_PLAYER_HERO";
+                        itemno = 34;
+                        init = /*%FSM<STATEINIT""">*/"BIS_BossFlowSQ6fsm setFSMVariable [""_playerDidHero"", true];" \n
+                         "BIS_Bossfsm setFSMVariable [""_sq6End"", true];" \n
+                         "" \n
+                         "//--- condition for ambient dialogue" \n
+                         "missionNamespace setVariable [""BIS_ambtCon_fuelDepo"",true];" \n
+                         "" \n
+                         "//--- news" \n
+                         "[1,""News_depot_success_alone"",1] call BIS_fnc_OM_questNews;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "retreat">*/
+                class retreat
+                {
+                        name = "retreat";
+                        itemno = 36;
+                        init = /*%FSM<STATEINIT""">*/"{_x move getMarkerPos ""BIS_SQ6AttackWP03""} foreach [BIS_Syn_AttackGroupLeader,BIS_Syn_SupportGroupLeader];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_far_enoug">*/
+                                class player_far_enoug
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="END_WIN_DESPAWN";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!isNil ""_syndAttackGroup""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	player distance (leader _syndAttackGroup) > 200" \n
+                                         "})" \n
+                                         "||" \n
+                                         "isNil ""_syndAttackGroup"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_WIN_DESPAWN">*/
+                class END_WIN_DESPAWN
+                {
+                        name = "END_WIN_DESPAWN";
+                        itemno = 38;
+                        init = /*%FSM<STATEINIT""">*/"{" \n
+                         "	[_x, false] call BIS_fnc_sectorSetManualControl;" \n
+                         "} forEach[BIS_SEC_SynSupportGroup,BIS_SEC_CSAT_fuelDepo];" \n
+                         "" \n
+                         "// cancel transport task, if player ignore it" \n
+                         "if (!isNil ""BIS_SQ6_F_Boat"" && {[""T_SQ6_F_Boat""] call bis_fnc_questGetState != 3}) then " \n
+                         "{" \n
+                         "	[BIS_SQ6_F_Boat,  6] call bis_fnc_questSetState;" \n
+                         "};" \n
+                         "" \n
+                         "if (!isNil ""BIS_Syn_AttackGroupLeader"") then {" \n
+                         "	{deleteVehicle _x} forEach units group BIS_Syn_AttackGroupLeader;" \n
+                         "};" \n
+                         "" \n
+                         "BIS_Bossfsm setFSMVariable [""_sq6End"", true];" \n
+                         "" \n
+                         "//--- condition for ambient dialogue" \n
+                         "missionNamespace setVariable [""BIS_ambtCon_fuelDepo"",true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_boss_call">*/
+                class set_boss_call
+                {
+                        name = "set_boss_call";
+                        itemno = 40;
+                        init = /*%FSM<STATEINIT""">*/"BIS_BossFlowSQ6fsm setFSMVariable [""_tankDestroyedAhead"", true];" \n
+                         "" \n
+                         "//--- news" \n
+                         "[1,""News_depot_success_alone"",1] call BIS_fnc_OM_questNews;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 42;
+                                        priority = 0.000000;
+                                        to="retreat";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "handle_boat_by_A">*/
+                class handle_boat_by_A
+                {
+                        name = "handle_boat_by_A";
+                        itemno = 47;
+                        init = /*%FSM<STATEINIT""">*/"" \n
+                         "private _sectorToActivate = ([[BIS_SEC_SQ6_Koumac,BIS_SEC_SQ6_Cerebu], [], {_x distance player}, ""ASCEND""] call BIS_fnc_sortBy)#0; " \n
+                         "[_sectorToActivate, true] call BIS_fnc_sectorSetManualControl;" \n
+                         "[_sectorToActivate] spawn BIS_fnc_om_sectorActivate;         " \n
+                         "" \n
+                         "" \n
+                         "private _syndAttackUnits = units group BIS_Syn_AttackGroupLeader;" \n
+                         "private _syndAttackGroup = group BIS_Syn_AttackGroupLeader;" \n
+                         "{_x enableDynamicSimulation false} forEach _syndAttackUnits;" \n
+                         "" \n
+                         "[] spawn {" \n
+                         "" \n
+                         "	unassignVehicle BIS_Syn_AttackGroupLeader;" \n
+                         "	BIS_Syn_AttackGroupLeader assignAsDriver BIS_SQ6_boat;" \n
+                         "	BIS_Syn_AttackGroupLeader moveInDriver BIS_SQ6_boat;" \n
+                         "	BIS_Syn_AttackGroupLeader move getMarkerPos ""BIS_SQ6AttackBoatWP01"";" \n
+                         "	waitUntil {sleep 0.5 ; unitReady BIS_Syn_AttackGroupLeader};" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_AiDriveBoat"",true];" \n
+                         "};" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "on_coast">*/
+                                class on_coast
+                                {
+                                        itemno = 48;
+                                        priority = 0.000000;
+                                        to="unload_Syndikats";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_AiDriveBoat""" \n
+                                         "&&" \n
+                                         "{unitReady BIS_Syn_AttackGroupLeader}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_boss_call_1">*/
+                class set_boss_call_1
+                {
+                        name = "set_boss_call_1";
+                        itemno = 53;
+                        init = /*%FSM<STATEINIT""">*/"BIS_BossFlowSQ6fsm setFSMVariable [""_tankDestroyedByTheBook"", true];" \n
+                         "" \n
+                         "//--- news" \n
+                         "[1,""News_depot_success"",1] call BIS_fnc_OM_questNews;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 54;
+                                        priority = 0.000000;
+                                        to="retreat";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_cancle_the_t">*/
+                class END_cancle_the_t
+                {
+                        name = "END_cancle_the_t";
+                        itemno = 57;
+                        init = /*%FSM<STATEINIT""">*/"[""T_SQ6_D_fuelTank"",  6] call bis_fnc_questSetState;" \n
+                         "BIS_Bossfsm setFSMVariable [""_sq6End"", true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_TANKS_gone_">*/
+                class END_TANKS_gone_
+                {
+                        name = "END_TANKS_gone_";
+                        itemno = 65;
+                        init = /*%FSM<STATEINIT""">*/"BIS_BossFlowSQ6fsm setFSMVariable [""_playerDidItAhead"", true];" \n
+                         "BIS_Bossfsm setFSMVariable [""_sq6End"", true];" \n
+                         "" \n
+                         "if ([""T_SQ6_L_Cerebu""] call bis_fnc_questGetState == 1) then {" \n
+                         "	[BIS_T_SQ6_L_Cerebu,  6] call bis_fnc_questSetState" \n
+                         "};" \n
+                         "" \n
+                         "if ([""T_SQ6_L_Koumac""] call bis_fnc_questGetState == 1) then {" \n
+                         "	[BIS_T_SQ6_L_Koumac,  6] call bis_fnc_questSetState" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "__1">*/
+                class __1
+                {
+                        name = "__1";
+                        itemno = 70;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "task_supply__done">*/
+                                class task_supply__done
+                                {
+                                        itemno = 64;
+                                        priority = 1.000000;
+                                        to="END_TANKS_gone_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCerebuLocQuest""" \n
+                                         "&&" \n
+                                         "{" \n
+                                         "	[""T_SQ6_F_NVGs""] call bis_fnc_questGetState == 3" \n
+                                         "	&&" \n
+                                         "	!isNil ""BIN_Silo1""" \n
+                                         "	&&" \n
+                                         "	!isNil ""BIN_Silo2""" \n
+                                         "	&&" \n
+                                         "	damage BIN_Silo1 == 1 || damage BIN_Silo2 == 1" \n
+                                         "}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Comm_with_Boss_d">*/
+                                class Comm_with_Boss_d
+                                {
+                                        itemno = 71;
+                                        priority = 0.000000;
+                                        to="start_task_get_to";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_addCerebuLocQuest"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_finish_the_b">*/
+                class END_finish_the_b
+                {
+                        name = "END_finish_the_b";
+                        itemno = 74;
+                        init = /*%FSM<STATEINIT""">*/"[""T_SQ6_D_fuelTank"",  6] call bis_fnc_questSetState;" \n
+                         "" \n
+                         "{" \n
+                         "	[_x, false] call BIS_fnc_sectorSetManualControl;" \n
+                         "} forEach[BIS_SEC_SynSupportGroup,BIS_SEC_CSAT_fuelDepo];" \n
+                         "" \n
+                         "if ([""T_SQ6_F_NVGs""] call bis_fnc_questGetState == 3) then {" \n
+                         "	{_x setDamage 1} forEach [BIN_Silo1,BIN_Silo2];" \n
+                         "};" \n
+                         "" \n
+                         "if (!isNil ""BIS_Syn_AttackGroupLeader"") then {" \n
+                         "	{deleteVehicle _x} forEach units group BIS_Syn_AttackGroupLeader;" \n
+                         "};" \n
+                         "" \n
+                         "BIS_Bossfsm setFSMVariable [""_sq6End"", true];" \n
+                         "" \n
+                         "//--- condition for ambient dialogue" \n
+                         "missionNamespace setVariable [""BIS_ambtCon_fuelDepo"",true];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "END_FIGHT__HAPPE",
+                "END_SKIPPED",
+                "END_PLAYER_HERO",
+                "END_WIN_DESPAWN",
+                "END_cancle_the_t",
+                "END_TANKS_gone_",
+                "END_finish_the_b",
+        };
+};
+/*%FSM</COMPILE>*/

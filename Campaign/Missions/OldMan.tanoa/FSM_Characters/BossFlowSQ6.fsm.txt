@@ -1,0 +1,1156 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, BossFlowSQ6">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-275.000000,-700.000000,-175.000000,-650.000000,0.000000,"Init"};
+item1[] = {"Bos_can_introduc",8,218,-275.000000,-625.000000,-175.000000,-575.000000,0.000000,"Bos can" \n "introduce"};
+item2[] = {"SQ_6",-1,250,-450.000000,-650.000000,-400.000000,325.000000,0.000000,"SQ 6"};
+item3[] = {"quest_introducti",2,250,-275.000000,-550.000000,-175.000000,-500.000000,0.000000,"quest introduction"};
+item4[] = {"quest_canceled",4,218,-375.000000,-475.000000,-275.000000,-425.000000,0.000000,"quest canceled"};
+item5[] = {"quest_finished",4,218,-200.000000,-475.000000,-100.000000,-425.000000,0.000000,"quest finished"};
+item6[] = {"",7,210,-328.999969,-528.999939,-321.000031,-521.000000,0.000000,""};
+item7[] = {"",7,210,-154.000000,-529.000000,-146.000000,-521.000000,0.000000,""};
+item8[] = {"boss_call",2,250,-200.000000,-400.000000,-100.000000,-350.000000,0.000000,"boss" \n "call"};
+item9[] = {"boss_call_1",2,250,-375.000000,-400.000000,-275.000000,-350.000000,0.000000,"boss" \n "call"};
+item10[] = {"attack_happened",4,218,-375.000000,-325.000000,-275.000000,-275.000000,0.000000,"attack" \n "happened without" \n "player"};
+item11[] = {"boss__call",1,250,-375.000000,-250.000000,-275.000000,-200.000000,0.000000,"boss " \n "call"};
+item12[] = {"attack_skipped",4,218,-375.000000,25.000000,-275.000000,75.000000,0.000000,"attack" \n "skipped"};
+item13[] = {"boss_call_2",1,250,-375.000000,100.000000,-275.000000,150.000000,0.000000,"boss" \n "call"};
+item14[] = {"",7,210,-391.500000,-529.000000,-383.500000,-521.000000,0.000000,""};
+item15[] = {"",7,210,-391.500000,46.000000,-383.500000,54.000000,0.000000,""};
+item16[] = {"add_quest_loc",4,218,-200.000000,-325.000000,-100.000000,-275.000000,0.000000,"add quest" \n "loc"};
+item17[] = {"boss_call_3",2,250,-200.000000,-250.000000,-100.000000,-200.000000,0.000000,"boss" \n "call"};
+item18[] = {"add_quest_boat",4,218,-200.000000,-175.000000,-100.000000,-125.000000,0.000000,"add quest" \n "boat"};
+item19[] = {"boss__call_1",2,250,-200.000000,-100.000000,-100.000000,-50.000000,0.000000,"boss " \n "call"};
+item20[] = {"",7,210,-329.000000,-79.000000,-321.000000,-71.000000,0.000000,""};
+item21[] = {"on_start_poz_5_m",4,218,-200.000000,25.000000,-100.000000,75.000000,0.000000,"on start" \n "poz" \n "5 minutes"};
+item22[] = {"boss_call_4",2,250,-200.000000,100.000000,-100.000000,150.000000,0.000000,"boss call"};
+item23[] = {"start_attack",4,218,-75.000000,25.000000,25.000000,75.000000,0.000000,"start attack"};
+item24[] = {"boss_call_5",2,250,-75.000000,100.000000,25.000000,150.000000,0.000000,"boss call"};
+item25[] = {"attack_failed_re",4,218,50.000000,25.000000,150.000000,75.000000,0.000000,"attack failed" \n "retreat"};
+item26[] = {"boss_callfdsa",2,250,50.000000,100.000000,150.000000,150.000000,0.000000,"boss callfdsa"};
+item27[] = {"player_did_it_he",4,218,300.000000,25.000000,400.000000,75.000000,0.000000,"player did it" \n "hero"};
+item28[] = {"boss_call_6",1,250,300.000000,100.000000,400.000000,150.000000,0.000000,"boss call"};
+item29[] = {"charge_on__the_p",4,218,175.000000,25.000000,275.000000,75.000000,0.000000,"charge on " \n "the place"};
+item30[] = {"boss_call_7",2,250,175.000000,100.000000,275.000000,150.000000,0.000000,"boss call"};
+item31[] = {"task_finished_ah",4,218,425.000000,25.000000,525.000000,75.000000,0.000000,"task finished" \n "ahead"};
+item32[] = {"boss_call_8",1,250,425.000000,100.000000,525.000000,150.000000,0.000000,"boss call"};
+item33[] = {"task_finished_by",4,218,550.000000,25.000000,650.000000,75.000000,0.000000,"task finished" \n "by the book"};
+item34[] = {"boss_call_9",1,250,550.000000,100.000000,650.000000,150.000000,0.000000,"boss call"};
+item35[] = {"",7,210,-154.000000,-16.500004,-146.000000,-8.499996,0.000000,""};
+item36[] = {"",7,210,-29.000000,-16.500004,-21.000000,-8.499996,0.000000,""};
+item37[] = {"",7,210,96.000000,-16.500004,104.000000,-8.499996,0.000000,""};
+item38[] = {"",7,210,221.000000,-16.500004,229.000000,-8.499996,0.000000,""};
+item39[] = {"",7,210,346.000000,-16.500004,354.000000,-8.499996,0.000000,""};
+item40[] = {"",7,210,596.000061,-16.500004,604.000000,-8.499996,0.000000,""};
+item41[] = {"",7,210,471.000000,-16.500004,479.000000,-8.499996,0.000000,""};
+item42[] = {"",7,210,221.000000,183.500000,229.000000,191.500000,0.000000,""};
+item43[] = {"",7,210,96.000000,183.500000,104.000000,191.500000,0.000000,""};
+item44[] = {"",7,210,-29.000000,183.500000,-21.000000,191.500000,0.000000,""};
+item45[] = {"",7,210,-154.000000,183.500000,-146.000015,191.500000,0.000000,""};
+item46[] = {"",7,210,-229.000000,183.500000,-221.000000,191.500000,0.000000,""};
+item47[] = {"",7,210,-229.000000,-16.500000,-220.999985,-8.500000,0.000000,""};
+item48[] = {"",7,210,-241.500000,-229.000000,-233.499985,-221.000000,0.000000,""};
+item49[] = {"",7,210,-241.500000,-116.500000,-233.499985,-108.500000,0.000000,""};
+item50[] = {"",7,210,-328.999969,-116.500000,-321.000000,-108.500000,0.000000,""};
+item51[] = {"END_task_done_ah",1,250,100.000000,-400.000000,200.000000,-350.000000,0.000000,"END task" \n "done ahead"};
+item52[] = {"player_did_it_ah",4,218,-50.000000,-400.000000,50.000000,-350.000000,1.000000,"player did it" \n "ahead"};
+item53[] = {"player_did_it_ah",4,218,-50.000000,-250.000000,50.000000,-200.000000,0.000000,"player did it" \n "ahead"};
+item54[] = {"END_task_done_ah_1",1,250,350.000000,-250.000000,450.000000,-200.000000,0.000000,"END task" \n "done ahead"};
+item55[] = {"set_delay",2,250,75.000000,-250.000000,175.000000,-200.000000,0.000000,"set delay"};
+item56[] = {"delay_pass",4,218,200.000000,-250.000000,300.000000,-200.000000,0.000000,"delay" \n "pass"};
+version=1;
+class LayoutItems
+{
+	class Item2
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+};
+link0[] = {0,1};
+link1[] = {1,3};
+link2[] = {3,6};
+link3[] = {3,7};
+link4[] = {4,9};
+link5[] = {5,8};
+link6[] = {6,4};
+link7[] = {6,14};
+link8[] = {7,5};
+link9[] = {8,16};
+link10[] = {8,52};
+link11[] = {9,10};
+link12[] = {10,11};
+link13[] = {12,13};
+link14[] = {14,15};
+link15[] = {15,12};
+link16[] = {16,17};
+link17[] = {17,18};
+link18[] = {17,48};
+link19[] = {17,53};
+link20[] = {18,19};
+link21[] = {19,20};
+link22[] = {19,35};
+link23[] = {20,12};
+link24[] = {21,22};
+link25[] = {22,45};
+link26[] = {23,24};
+link27[] = {24,44};
+link28[] = {25,26};
+link29[] = {26,43};
+link30[] = {27,28};
+link31[] = {29,30};
+link32[] = {30,42};
+link33[] = {31,32};
+link34[] = {33,34};
+link35[] = {35,21};
+link36[] = {35,36};
+link37[] = {36,23};
+link38[] = {36,37};
+link39[] = {37,25};
+link40[] = {37,38};
+link41[] = {38,29};
+link42[] = {38,39};
+link43[] = {39,27};
+link44[] = {39,41};
+link45[] = {40,33};
+link46[] = {41,31};
+link47[] = {41,40};
+link48[] = {42,43};
+link49[] = {43,44};
+link50[] = {44,45};
+link51[] = {45,46};
+link52[] = {46,47};
+link53[] = {47,35};
+link54[] = {48,49};
+link55[] = {49,50};
+link56[] = {50,20};
+link57[] = {52,51};
+link58[] = {53,55};
+link59[] = {55,56};
+link60[] = {56,54};
+globals[] = {0.000000,0,0,0,0,640,480,1,448,6316128,1,-507.872467,507.315979,523.317505,-548.039185,976,1030,1};
+window[] = {2,-1,-1,-32000,-32000,1228,182,1028,182,3,994};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "BossFlowSQ6";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"// queue variables" \n
+                         "private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Bos_can_introduc">*/
+                                class Bos_can_introduc
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="quest_introducti";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true" \n
+                                         "" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "quest_introducti">*/
+                class quest_introducti
+                {
+                        name = "quest_introducti";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	//--- opening talk about NVGs" \n
+                         "	[""ta_syndikat_nvgs""] call BIS_fnc_om_conversation;" \n
+                         "	[""Gendarmerie:  Main base""] call BIS_fnc_om_addIntel;" \n
+                         "	if (date#3 < 15) then {" \n
+                         "		//--- attack today" \n
+                         "		[""ta_syndikat_nvgs_later"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "	}" \n
+                         "	else" \n
+                         "	{" \n
+                         "		//--- attack tomorrow" \n
+                         "		[""ta_syndikat_nvgs_tomorrow"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	[""ta_syndikat_nvgs_meeting_out"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_addNVGquest"",true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_Syndikat_NVG_Start"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "quest_finished">*/
+                                class quest_finished
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="boss_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"['T_SQ6_F_NVGs'] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "attack_skipped">*/
+                                class attack_skipped
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackSkipped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "quest_canceled">*/
+                                class quest_canceled
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="boss_call_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"['T_SQ6_F_NVGs'] call bis_fnc_questGetState == 6"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call">*/
+                class boss_call
+                {
+                        name = "boss_call";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_syndikat_nvgs_done""] call BIS_fnc_om_conversation;" \n
+                         "	" \n
+                         "};	" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_quest_nvg_done"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_did_it_ah">*/
+                                class player_did_it_ah
+                                {
+                                        itemno = 52;
+                                        priority = 1.000000;
+                                        to="END_task_done_ah";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerDidItAhead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_quest_loc">*/
+                                class add_quest_loc
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="boss_call_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"['T_SQ6_F_NVGs'] call bis_fnc_questGetState == 3" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_1">*/
+                class boss_call_1
+                {
+                        name = "boss_call_1";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_syndikat_nvgs_timeout""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_nvg_quest_timeout"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "private _delay = time + 18;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "attack_happened">*/
+                                class attack_happened
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="boss__call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackHappenedWithout"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss__call">*/
+                class boss__call
+                {
+                        name = "boss__call";
+                        itemno = 11;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_syndikat_operation_fail""] call BIS_fnc_om_conversation;" \n
+                         "	[""ta_syndikat_nvgs_out"",nil,""FALSE""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_attack_failed_without_player"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_2">*/
+                class boss_call_2
+                {
+                        name = "boss_call_2";
+                        itemno = 13;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	if ([BIS_T_SQ6_F_NVGs] call bis_fnc_questGetState == 3) then {" \n
+                         "	//--- typo in the conversation name is intended keep it to fit source file." \n
+                         "	[""ta_syndikat_opertaion_success""] call BIS_fnc_om_conversation;" \n
+                         "	}" \n
+                         "	else" \n
+                         "	{" \n
+                         "	[""ta_syndikat_operation_fail""] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Syndikat boss welcome normal"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_3">*/
+                class boss_call_3
+                {
+                        name = "boss_call_3";
+                        itemno = 17;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{		" \n
+                         "		[""ta_syndikat_nvgs_done_out"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "		BIS_SQ6fsm setFSMVariable [""_addCerebuLocQuest"", true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_add_quest_loc"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "player_did_it_ah">*/
+                                class player_did_it_ah
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerDidItAhead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "attack_skipped">*/
+                                class attack_skipped
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackSkipped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "add_quest_boat">*/
+                                class add_quest_boat
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="boss__call_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"['T_SQ6_L_Cerebu'] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss__call_1">*/
+                class boss__call_1
+                {
+                        name = "boss__call_1";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_syndikat_assault""] call BIS_fnc_om_conversation;" \n
+                         "	if (BIS_SQ6fsm getFSMVariable [""_spawnBoatAlternate"",false]) then {" \n
+                         "		[""ta_syndikat_assault_moved"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "	} " \n
+                         "	else" \n
+                         "	{" \n
+                         "		[""ta_syndikat_assault_ready"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "	BIS_SQ6fsm setFSMVariable [""_addTransportBoatTask"", true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_add_quest_boat"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "on_start_poz_5_m">*/
+                                class on_start_poz_5_m
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_5minCountdown""" \n
+                                         "&&" \n
+                                         "{_5minCountdown}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "start_attack">*/
+                                class start_attack
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startAttack""" \n
+                                         "&&" \n
+                                         "{_startAttack}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "attack_failed_re">*/
+                                class attack_failed_re
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="boss_callfdsa";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_retreat""" \n
+                                         "&&" \n
+                                         "{_retreat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "charge_on__the_p">*/
+                                class charge_on__the_p
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_chargeAtPlace""" \n
+                                         "&&" \n
+                                         "{_chargeAtPlace}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_did_it_he">*/
+                                class player_did_it_he
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerDidHero""" \n
+                                         "&&" \n
+                                         "{_playerDidHero}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_finished_ah">*/
+                                class task_finished_ah
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="boss_call_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_tankDestroyedAhead""" \n
+                                         "&&" \n
+                                         "{_tankDestroyedAhead}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_finished_by">*/
+                                class task_finished_by
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="boss_call_9";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_tankDestroyedByTheBook""" \n
+                                         "&&" \n
+                                         "{_tankDestroyedByTheBook}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "attack_skipped">*/
+                                class attack_skipped
+                                {
+                                        itemno = 12;
+                                        priority = 0.000000;
+                                        to="boss_call_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_attackSkipped"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_4">*/
+                class boss_call_4
+                {
+                        name = "boss_call_4";
+                        itemno = 22;
+                        init = /*%FSM<STATEINIT""">*/"_5minCountdown = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""in_syndikat_assault_prepare""] call BIS_fnc_om_conversation;" \n
+                         "	BIS_BossFlowSQ6fsm setFSMVariable [""_updateTaskFuelDepo"", true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {BIS_Syndikatfsm setFSMVariable [""_5min"", true]}, {}, false, _priority, false, ""SQ6_attack_in_5min"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "start_attack">*/
+                                class start_attack
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startAttack""" \n
+                                         "&&" \n
+                                         "{_startAttack}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "attack_failed_re">*/
+                                class attack_failed_re
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="boss_callfdsa";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_retreat""" \n
+                                         "&&" \n
+                                         "{_retreat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "charge_on__the_p">*/
+                                class charge_on__the_p
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_chargeAtPlace""" \n
+                                         "&&" \n
+                                         "{_chargeAtPlace}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_did_it_he">*/
+                                class player_did_it_he
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerDidHero""" \n
+                                         "&&" \n
+                                         "{_playerDidHero}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_finished_ah">*/
+                                class task_finished_ah
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="boss_call_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_tankDestroyedAhead""" \n
+                                         "&&" \n
+                                         "{_tankDestroyedAhead}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_finished_by">*/
+                                class task_finished_by
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="boss_call_9";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_tankDestroyedByTheBook""" \n
+                                         "&&" \n
+                                         "{_tankDestroyedByTheBook}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "on_start_poz_5_m">*/
+                                class on_start_poz_5_m
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_5minCountdown""" \n
+                                         "&&" \n
+                                         "{_5minCountdown}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_5">*/
+                class boss_call_5
+                {
+                        name = "boss_call_5";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/"_startAttack = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_syndikat_assault_begins""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {BIS_Syndikatfsm setFSMVariable [""_attackStart"", true]}, {}, false, _priority, false, ""SQ6_attackStarts"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "start_attack">*/
+                                class start_attack
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startAttack""" \n
+                                         "&&" \n
+                                         "{_startAttack}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "attack_failed_re">*/
+                                class attack_failed_re
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="boss_callfdsa";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_retreat""" \n
+                                         "&&" \n
+                                         "{_retreat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "charge_on__the_p">*/
+                                class charge_on__the_p
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_chargeAtPlace""" \n
+                                         "&&" \n
+                                         "{_chargeAtPlace}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_did_it_he">*/
+                                class player_did_it_he
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerDidHero""" \n
+                                         "&&" \n
+                                         "{_playerDidHero}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_finished_ah">*/
+                                class task_finished_ah
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="boss_call_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_tankDestroyedAhead""" \n
+                                         "&&" \n
+                                         "{_tankDestroyedAhead}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_finished_by">*/
+                                class task_finished_by
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="boss_call_9";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_tankDestroyedByTheBook""" \n
+                                         "&&" \n
+                                         "{_tankDestroyedByTheBook}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "on_start_poz_5_m">*/
+                                class on_start_poz_5_m
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_5minCountdown""" \n
+                                         "&&" \n
+                                         "{_5minCountdown}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_callfdsa">*/
+                class boss_callfdsa
+                {
+                        name = "boss_callfdsa";
+                        itemno = 26;
+                        init = /*%FSM<STATEINIT""">*/"_retreat = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_syndikat_assault_fail""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_attack_failed"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "start_attack">*/
+                                class start_attack
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startAttack""" \n
+                                         "&&" \n
+                                         "{_startAttack}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "attack_failed_re">*/
+                                class attack_failed_re
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="boss_callfdsa";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_retreat""" \n
+                                         "&&" \n
+                                         "{_retreat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "charge_on__the_p">*/
+                                class charge_on__the_p
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_chargeAtPlace""" \n
+                                         "&&" \n
+                                         "{_chargeAtPlace}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_did_it_he">*/
+                                class player_did_it_he
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerDidHero""" \n
+                                         "&&" \n
+                                         "{_playerDidHero}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_finished_ah">*/
+                                class task_finished_ah
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="boss_call_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_tankDestroyedAhead""" \n
+                                         "&&" \n
+                                         "{_tankDestroyedAhead}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_finished_by">*/
+                                class task_finished_by
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="boss_call_9";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_tankDestroyedByTheBook""" \n
+                                         "&&" \n
+                                         "{_tankDestroyedByTheBook}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "on_start_poz_5_m">*/
+                                class on_start_poz_5_m
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_5minCountdown""" \n
+                                         "&&" \n
+                                         "{_5minCountdown}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_6">*/
+                class boss_call_6
+                {
+                        name = "boss_call_6";
+                        itemno = 28;
+                        init = /*%FSM<STATEINIT""">*/"_retreat = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ta_syndikat_assault_alone""] call BIS_fnc_om_conversation;" \n
+                         "	[""ta_syndikat_nvgs_out"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""sq6_finished_player_did_hero"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_7">*/
+                class boss_call_7
+                {
+                        name = "boss_call_7";
+                        itemno = 30;
+                        init = /*%FSM<STATEINIT""">*/"_chargeAtPlace = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_syndikat_assault_charge""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_charge_on_place"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "start_attack">*/
+                                class start_attack
+                                {
+                                        itemno = 23;
+                                        priority = 0.000000;
+                                        to="boss_call_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_startAttack""" \n
+                                         "&&" \n
+                                         "{_startAttack}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "attack_failed_re">*/
+                                class attack_failed_re
+                                {
+                                        itemno = 25;
+                                        priority = 0.000000;
+                                        to="boss_callfdsa";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_retreat""" \n
+                                         "&&" \n
+                                         "{_retreat}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "charge_on__the_p">*/
+                                class charge_on__the_p
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="boss_call_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_chargeAtPlace""" \n
+                                         "&&" \n
+                                         "{_chargeAtPlace}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_did_it_he">*/
+                                class player_did_it_he
+                                {
+                                        itemno = 27;
+                                        priority = 0.000000;
+                                        to="boss_call_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_playerDidHero""" \n
+                                         "&&" \n
+                                         "{_playerDidHero}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_finished_ah">*/
+                                class task_finished_ah
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="boss_call_8";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_tankDestroyedAhead""" \n
+                                         "&&" \n
+                                         "{_tankDestroyedAhead}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_finished_by">*/
+                                class task_finished_by
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="boss_call_9";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_tankDestroyedByTheBook""" \n
+                                         "&&" \n
+                                         "{_tankDestroyedByTheBook}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "on_start_poz_5_m">*/
+                                class on_start_poz_5_m
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="boss_call_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_5minCountdown""" \n
+                                         "&&" \n
+                                         "{_5minCountdown}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_8">*/
+                class boss_call_8
+                {
+                        name = "boss_call_8";
+                        itemno = 32;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_syndikat_assault_alone""] call BIS_fnc_om_conversation;" \n
+                         "	[""ta_syndikat_nvgs_out"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Syndikat boss: Charge on place."" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "boss_call_9">*/
+                class boss_call_9
+                {
+                        name = "boss_call_9";
+                        itemno = 34;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_syndikat_assault_success_charge""] call BIS_fnc_om_conversation;" \n
+                         "	[""ta_syndikat_nvgs_out"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_done_by_book"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_task_done_ah">*/
+                class END_task_done_ah
+                {
+                        name = "END_task_done_ah";
+                        itemno = 51;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ex_target_destroyed"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_quest_canceled_player_did_ahead"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END_task_done_ah_1">*/
+                class END_task_done_ah_1
+                {
+                        name = "END_task_done_ah_1";
+                        itemno = 54;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ex_silo_destroyed_no_operation"",nil,FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ6_quest_canceled_player_did_ahead_has_task_location"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_delay">*/
+                class set_delay
+                {
+                        name = "set_delay";
+                        itemno = 55;
+                        init = /*%FSM<STATEINIT""">*/"private _delay = time + 10;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "delay_pass">*/
+                                class delay_pass
+                                {
+                                        itemno = 56;
+                                        priority = 0.000000;
+                                        to="END_task_done_ah_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "boss__call",
+                "boss_call_2",
+                "boss_call_6",
+                "boss_call_8",
+                "boss_call_9",
+                "END_task_done_ah",
+                "END_task_done_ah_1",
+        };
+};
+/*%FSM</COMPILE>*/

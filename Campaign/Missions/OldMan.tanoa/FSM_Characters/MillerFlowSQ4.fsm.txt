@@ -1,0 +1,1429 @@
+/*%FSM<COMPILE "C:\bis\FSMEditor\scriptedFSM.cfg, MillerFlowSQ4">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"SQ_4",-1,250,-825.000000,325.000000,-775.000000,800.000000,0.000000,"SQ 4"};
+item1[] = {"player_get_photo",4,218,-700.000000,350.000000,-600.000000,400.000000,0.000000,"player get" \n "photos"};
+item2[] = {"",7,210,-654.000000,321.000000,-646.000000,329.000000,0.000000,""};
+item3[] = {"Miller_talk_about",2,250,-700.000000,425.000000,-600.000000,475.000000,0.000000,"Miller talk" \n "about it"};
+item4[] = {"player_found_backup",4,218,-325.000000,350.000000,-225.000000,400.000000,0.000000,"player found" \n "backup radar" \n "know main"};
+item5[] = {"Miller_reacts",2,250,-325.000000,425.000000,-225.000000,475.000000,0.000000,"Miller reacts"};
+item6[] = {"",7,210,-279.000000,321.000000,-271.000000,329.000000,0.000000,""};
+item7[] = {"",7,210,-741.500000,521.000000,-733.500000,529.000000,0.000000,""};
+item8[] = {"",7,210,-741.500000,321.000000,-733.500000,329.000000,0.000000,""};
+item9[] = {"",7,210,-654.000000,521.000000,-646.000000,529.000000,0.000000,""};
+item10[] = {"",7,210,-279.000000,521.000000,-271.000000,529.000000,0.000000,""};
+item11[] = {"player_get_radar",4,218,-575.000000,350.000000,-475.000000,400.000000,0.000000,"player get" \n "radar intel" \n "by himself"};
+item12[] = {"Interact_with_Mi",2,250,-575.000000,425.000000,-475.000000,475.000000,0.000000,"Interact with" \n "Miller"};
+item13[] = {"",7,210,-529.000000,321.000000,-521.000061,329.000000,0.000000,""};
+item14[] = {"",7,210,-529.000000,521.000000,-521.000061,529.000000,0.000000,""};
+item15[] = {"Init",0,250,-700.000000,175.000000,-600.000000,225.000000,0.000000,"Init"};
+item16[] = {"Miller_is_dead",4,218,-325.000000,250.000000,-225.000000,300.000000,0.000000,"Miller is" \n "dead"};
+item17[] = {"END",1,250,-325.000000,175.000000,-225.000000,225.000000,0.000000,"END"};
+item18[] = {"Primary_radar_de",4,218,-75.000000,350.000000,25.000000,400.000000,0.000000,"Primary radar" \n "destroyed"};
+item19[] = {"Miller_reacts_1",2,250,-75.000000,425.000000,25.000000,475.000000,0.000000,"Miller reacts"};
+item20[] = {"Backup_radar_des",4,218,50.000000,350.000000,150.000000,400.000000,0.000000,"Backup radar" \n "destroyed"};
+item21[] = {"Miller_reacts_2",2,250,50.000000,425.000000,150.000000,475.000000,0.000000,"Miller reacts"};
+item22[] = {"",7,210,-29.000000,320.999969,-21.000000,329.000000,0.000000,""};
+item23[] = {"",7,210,96.000000,321.000000,104.000000,329.000031,0.000000,""};
+item24[] = {"",7,210,96.000000,521.000000,104.000000,529.000000,0.000000,""};
+item25[] = {"",7,210,-29.000000,521.000000,-21.000000,529.000000,0.000000,""};
+item26[] = {"Both_radars_are",4,218,175.000000,350.000000,275.000000,400.000000,0.000000,"Both radars are" \n "destroyed"};
+item27[] = {"Miller_reacts_QUEST",1,250,175.000000,425.000000,275.000000,475.000000,0.000000,"Miller reacts" \n "QUEST END"};
+item28[] = {"",7,210,221.000000,320.999969,229.000000,329.000000,0.000000,""};
+item29[] = {"player_found_backup_1",4,218,-200.000000,350.000000,-100.000000,400.000000,0.000000,"player found" \n "backup radar" \n "dont' know main"};
+item30[] = {"Miller_reacts_3",2,250,-200.000000,425.000000,-100.000000,475.000000,0.000000,"Miller reacts"};
+item31[] = {"",7,210,-154.000000,321.000000,-146.000000,329.000000,0.000000,""};
+item32[] = {"",7,210,-154.000000,521.000000,-146.000000,529.000000,0.000000,""};
+item33[] = {"",7,210,-404.000000,321.000000,-396.000000,329.000031,0.000000,""};
+item34[] = {"",7,210,-404.000000,521.000000,-396.000000,529.000000,0.000000,""};
+item35[] = {"player_found_main",4,218,-450.000000,350.000000,-350.000000,400.000000,0.000000,"player found" \n "main radar" \n "he can see it"};
+item36[] = {"Millers_call",2,4346,-450.000000,425.000000,-350.000000,475.000000,0.000000,"Millers call"};
+version=1;
+class LayoutItems
+{
+	class Item0
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=16744703;
+	};
+};
+link0[] = {1,3};
+link1[] = {2,1};
+link2[] = {2,13};
+link3[] = {3,9};
+link4[] = {4,5};
+link5[] = {5,10};
+link6[] = {6,4};
+link7[] = {6,16};
+link8[] = {6,31};
+link9[] = {7,8};
+link10[] = {8,2};
+link11[] = {9,7};
+link12[] = {10,34};
+link13[] = {11,12};
+link14[] = {12,14};
+link15[] = {13,11};
+link16[] = {13,33};
+link17[] = {14,9};
+link18[] = {15,2};
+link19[] = {16,17};
+link20[] = {18,19};
+link21[] = {19,25};
+link22[] = {20,21};
+link23[] = {21,24};
+link24[] = {22,18};
+link25[] = {22,23};
+link26[] = {23,20};
+link27[] = {23,28};
+link28[] = {24,25};
+link29[] = {25,32};
+link30[] = {26,27};
+link31[] = {28,26};
+link32[] = {29,30};
+link33[] = {30,32};
+link34[] = {31,22};
+link35[] = {31,29};
+link36[] = {32,10};
+link37[] = {33,6};
+link38[] = {33,35};
+link39[] = {34,14};
+link40[] = {35,36};
+link41[] = {36,34};
+globals[] = {0.000000,0,0,0,0,640,480,1,692,6316128,1,-880.152710,-239.175568,796.853271,61.377655,875,1030,1};
+window[] = {2,-1,-1,-1,-1,1254,208,1373,208,3,893};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "MillerFlowSQ4";
+        class States
+        {
+                /*%FSM<STATE "Miller_talk_about">*/
+                class Miller_talk_about
+                {
+                        name = "Miller_talk_about";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"_DiscoverAA = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""in_aa_intel_airstrike""] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ4fsm setFSMVariable [""_addTaskPrimaryRadar"", true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ4_Miller_info_about_radar_form_wreck"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "// --- Note: this defense shoot down the civilian airplane (the one player was diving to), mention it somehow?" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_radar">*/
+                                class player_get_radar
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Interact_with_Mi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimself""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimself}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_main">*/
+                                class player_found_main
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="Millers_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimselfSeeIt""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimselfSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup">*/
+                                class player_found_backup
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Miller_reacts";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false]" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_photo">*/
+                                class player_get_photo
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Miller_talk_about";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAA""" \n
+                                         "&&" \n
+                                         "{_DiscoverAA}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup_1">*/
+                                class player_found_backup_1
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "!(BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false])" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Primary_radar_de">*/
+                                class Primary_radar_de
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_radarDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Backup_radar_des">*/
+                                class Backup_radar_des
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_backupDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Both_radars_are">*/
+                                class Both_radars_are
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_QUEST";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_radarFinalTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_reacts">*/
+                class Miller_reacts
+                {
+                        name = "Miller_reacts";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"_DiscoverAABackup = false;" \n
+                         "/*" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	sleep 2;" \n
+                         "	[""Miller"",localize ""STR_A3_MillerFlowSQ4.fsmFSM_States_Miller_reacts0""] call BIS_fnc_OM_phone_SMSsend;" \n
+                         "	sleep 20;" \n
+                         "	[""Miller"",{		" \n
+                         "			[""Miller"", ""You are right, Oldman.""] spawn BIS_fnc_showSubtitle;" \n
+                         "			sleep 4;" \n
+                         "			[""Miller"", ""It's a backup of the weakest link in the chain.""] spawn BIS_fnc_showSubtitle;" \n
+                         "			sleep 6;" \n
+                         "			[""Miller"", ""To make a sky safer, you must destroy this one too!""] spawn BIS_fnc_showSubtitle;" \n
+                         "			sleep 6;" \n
+                         "			BIS_SQ4fsm setFSMVariable [""_addTaskBackupRadar"", true];" \n
+                         "		}] call BIS_fnc_OM_phone_incomingCall;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""Miller data structure quest reminder."" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "*/" \n
+                         "" \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {}, {}, false, _priority, false, ""SQ4_Miller_player_found_backup_radar_know_main"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_speechSecondRadarFoundIn,_speechSecondRadarFoundMainKnown];" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_radar">*/
+                                class player_get_radar
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Interact_with_Mi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimself""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimself}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_main">*/
+                                class player_found_main
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="Millers_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimselfSeeIt""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimselfSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup">*/
+                                class player_found_backup
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Miller_reacts";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false]" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_photo">*/
+                                class player_get_photo
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Miller_talk_about";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAA""" \n
+                                         "&&" \n
+                                         "{_DiscoverAA}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup_1">*/
+                                class player_found_backup_1
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "!(BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false])" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Primary_radar_de">*/
+                                class Primary_radar_de
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_radarDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Backup_radar_des">*/
+                                class Backup_radar_des
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_backupDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Both_radars_are">*/
+                                class Both_radars_are
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_QUEST";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_radarFinalTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Interact_with_Mi">*/
+                class Interact_with_Mi
+                {
+                        name = "Interact_with_Mi";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"_DiscoverAAbyHimself = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	sleep 2;" \n
+                         "	[""Miller"",localize ""STR_A3_MillerFlowSQ4.fsmFSM_States_Interact_with_Mi0""] call BIS_fnc_OM_phone_SMSsend; //--- ToDo: Localize" \n
+                         "	sleep 20;" \n
+                         "	[""ta_destroy_radar_a_call""] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ4fsm setFSMVariable [""_addTaskPrimaryRadar"", true];" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ4_Miller_radar_intel_player_found"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_radar">*/
+                                class player_get_radar
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Interact_with_Mi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimself""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimself}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_main">*/
+                                class player_found_main
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="Millers_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimselfSeeIt""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimselfSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup">*/
+                                class player_found_backup
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Miller_reacts";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false]" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_photo">*/
+                                class player_get_photo
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Miller_talk_about";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAA""" \n
+                                         "&&" \n
+                                         "{_DiscoverAA}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup_1">*/
+                                class player_found_backup_1
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "!(BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false])" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Primary_radar_de">*/
+                                class Primary_radar_de
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_radarDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Backup_radar_des">*/
+                                class Backup_radar_des
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_backupDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Both_radars_are">*/
+                                class Both_radars_are
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_QUEST";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_radarFinalTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "//--- secondary radar found" \n
+                         "private _speechSecondRadarFoundIn = " \n
+                         "{" \n
+                         "	//--- player found backup radar - opening" \n
+                         "	sleep 2;" \n
+                         "	[""Miller"",localize ""STR_A3_MillerFlowSQ4.fsmFSM_States_Init0""] call BIS_fnc_OM_phone_SMSsend; //--- Todo: Localize" \n
+                         "	sleep 20;" \n
+                         "	[""ta_second_radar_found_in_call""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _speechSecondRadarFoundMainKnown = " \n
+                         "{" \n
+                         "	//--- player found backup radar and know about primary" \n
+                         "	[""ta_second_radar_found_main_known_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ4fsm setFSMVariable [""_addTaskBackupRadar"", true];" \n
+                         "};" \n
+                         "" \n
+                         "private _speechSecondRadarFoundMain = " \n
+                         "{" \n
+                         "	//--- player found backup radar and didn't know about primary" \n
+                         "	[""ta_second_radar_found_main_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	[""CSAT: Anti air radars""] call BIS_fnc_om_addIntel;" \n
+                         "	sleep 5;" \n
+                         "	BIS_SQ4fsm setFSMVariable [""_addTaskBackupRadar"", true];" \n
+                         "	BIS_SQ4fsm setFSMVariable [""_addTaskPrimaryRadar"", true];" \n
+                         "	BIS_SQ4fsm setFSMVariable [""_AAradarIntelByFindingBackup"", true];" \n
+                         "};" \n
+                         "" \n
+                         "//--- radar(s) destroyed" \n
+                         "private _speechRadarDestroyedIn = " \n
+                         "{" \n
+                         "	//--- start of comm in case one of the radars is destroyed" \n
+                         "	[""eve_radar_destroyed_in_call""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _speechRadarPrimaryDestroyed = " \n
+                         "{" \n
+                         "	//--- primary radar is destroyed" \n
+                         "	[""eve_main_radar_destroyed_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _speechRadarSecondaryDestroyed = " \n
+                         "{" \n
+                         "	//--- backup radar is destroyed" \n
+                         "	[""eve_second_radar_destroyed_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _speechOneRadarDestroyed = " \n
+                         "{" \n
+                         "	//--- one radar is destroyed" \n
+                         "	[""eve_radar_station_out_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _speechBothRadarDestroyed = " \n
+                         "{" \n
+                         "	//--- both radars are destroyed" \n
+                         "	[""ta_all_radar_sites_destroyed_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "private _lastDestroyed = [_speechRadarPrimaryDestroyed,_speechRadarSecondaryDestroyed];" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_radar">*/
+                                class player_get_radar
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Interact_with_Mi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimself""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimself}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_main">*/
+                                class player_found_main
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="Millers_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimselfSeeIt""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimselfSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup">*/
+                                class player_found_backup
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Miller_reacts";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false]" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_photo">*/
+                                class player_get_photo
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Miller_talk_about";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAA""" \n
+                                         "&&" \n
+                                         "{_DiscoverAA}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup_1">*/
+                                class player_found_backup_1
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "!(BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false])" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Primary_radar_de">*/
+                                class Primary_radar_de
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_radarDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Backup_radar_des">*/
+                                class Backup_radar_des
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_backupDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Both_radars_are">*/
+                                class Both_radars_are
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_QUEST";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_radarFinalTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "END">*/
+                class END
+                {
+                        name = "END";
+                        itemno = 17;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_reacts_1">*/
+                class Miller_reacts_1
+                {
+                        name = "Miller_reacts_1";
+                        itemno = 19;
+                        init = /*%FSM<STATEINIT""">*/"_radarDestroyedTalk = false;" \n
+                         "private _firstRadarTalk = false;" \n
+                         "_lastDestroyed = _lastDestroyed - [_speechRadarPrimaryDestroyed];" \n
+                         "" \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {}, {}, false, _priority, false, ""SQ4_Miller_primary_radar_destroyed"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_speechRadarDestroyedIn,_speechRadarPrimaryDestroyed,_speechOneRadarDestroyed];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_radar">*/
+                                class player_get_radar
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Interact_with_Mi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimself""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimself}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_main">*/
+                                class player_found_main
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="Millers_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimselfSeeIt""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimselfSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup">*/
+                                class player_found_backup
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Miller_reacts";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false]" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_photo">*/
+                                class player_get_photo
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Miller_talk_about";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAA""" \n
+                                         "&&" \n
+                                         "{_DiscoverAA}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup_1">*/
+                                class player_found_backup_1
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "!(BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false])" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Primary_radar_de">*/
+                                class Primary_radar_de
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_radarDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Backup_radar_des">*/
+                                class Backup_radar_des
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_backupDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Both_radars_are">*/
+                                class Both_radars_are
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_QUEST";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_radarFinalTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_reacts_2">*/
+                class Miller_reacts_2
+                {
+                        name = "Miller_reacts_2";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/"_backupDestroyedTalk = false;" \n
+                         "private _firstRadarTalk = false;" \n
+                         "_lastDestroyed = _lastDestroyed - [_speechRadarSecondaryDestroyed];" \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {}, {}, false, _priority, false, ""SQ4_Miller_backup_radar_destroyed"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_speechRadarDestroyedIn,_speechRadarSecondaryDestroyed,_speechOneRadarDestroyed];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_radar">*/
+                                class player_get_radar
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Interact_with_Mi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimself""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimself}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_main">*/
+                                class player_found_main
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="Millers_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimselfSeeIt""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimselfSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup">*/
+                                class player_found_backup
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Miller_reacts";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false]" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_photo">*/
+                                class player_get_photo
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Miller_talk_about";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAA""" \n
+                                         "&&" \n
+                                         "{_DiscoverAA}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup_1">*/
+                                class player_found_backup_1
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "!(BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false])" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Primary_radar_de">*/
+                                class Primary_radar_de
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_radarDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Backup_radar_des">*/
+                                class Backup_radar_des
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_backupDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Both_radars_are">*/
+                                class Both_radars_are
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_QUEST";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_radarFinalTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_reacts_QUEST">*/
+                class Miller_reacts_QUEST
+                {
+                        name = "Miller_reacts_QUEST";
+                        itemno = 27;
+                        init = /*%FSM<STATEINIT""">*/"_radarFinalTalk = false;" \n
+                         "private _finalRadarSpeech = [_speechRadarDestroyedIn,_speechBothRadarDestroyed];" \n
+                         "[_finalRadarSpeech, _lastDestroyed, 1] call BIS_fnc_arrayInsert;" \n
+                         "" \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {}, {}, false, _priority, false, ""SQ4_Miller_both_radars_gone"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach ([_finalRadarSpeech, _lastDestroyed, 1] call BIS_fnc_arrayInsert);" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_reacts_3">*/
+                class Miller_reacts_3
+                {
+                        name = "Miller_reacts_3";
+                        itemno = 30;
+                        init = /*%FSM<STATEINIT""">*/"_DiscoverAABackup = false;" \n
+                         "{" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_x, [], 2, _validity, {}, {}, false, _priority, false, ""SQ4_Miller_player_found_backup_radar_dont_known_main"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "} forEach [_speechSecondRadarFoundIn,_speechSecondRadarFoundMain];" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_radar">*/
+                                class player_get_radar
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Interact_with_Mi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimself""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimself}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_main">*/
+                                class player_found_main
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="Millers_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimselfSeeIt""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimselfSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup">*/
+                                class player_found_backup
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Miller_reacts";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false]" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_photo">*/
+                                class player_get_photo
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Miller_talk_about";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAA""" \n
+                                         "&&" \n
+                                         "{_DiscoverAA}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup_1">*/
+                                class player_found_backup_1
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "!(BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false])" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Primary_radar_de">*/
+                                class Primary_radar_de
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_radarDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Backup_radar_des">*/
+                                class Backup_radar_des
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_backupDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Both_radars_are">*/
+                                class Both_radars_are
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_QUEST";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_radarFinalTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_call">*/
+                class Millers_call
+                {
+                        name = "Millers_call";
+                        itemno = 36;
+                        init = /*%FSM<STATEINIT""">*/"_DiscoverAAbyHimselfSeeIt = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	sleep 2;" \n
+                         "	[""Miller"",localize ""STR_A3_MillerFlowSQ4.fsmFSM_States_Millers_call0""] call BIS_fnc_OM_phone_SMSsend; //--- ToDo: Localize" \n
+                         "	sleep 20;" \n
+                         "	[""ta_destroy_radar_main_intel_call""] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ4fsm setFSMVariable [""_addTaskPrimaryRadar"", true];	" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ4_Miller_player_see_primary_radar"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_is_dead">*/
+                                class Miller_is_dead
+                                {
+                                        itemno = 16;
+                                        priority = 0.000000;
+                                        to="END";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_radar">*/
+                                class player_get_radar
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="Interact_with_Mi";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimself""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimself}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_main">*/
+                                class player_found_main
+                                {
+                                        itemno = 35;
+                                        priority = 0.000000;
+                                        to="Millers_call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAAbyHimselfSeeIt""" \n
+                                         "&&" \n
+                                         "{_DiscoverAAbyHimselfSeeIt}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup">*/
+                                class player_found_backup
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="Miller_reacts";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false]" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_get_photo">*/
+                                class player_get_photo
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="Miller_talk_about";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAA""" \n
+                                         "&&" \n
+                                         "{_DiscoverAA}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_found_backup_1">*/
+                                class player_found_backup_1
+                                {
+                                        itemno = 29;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_DiscoverAABackup""" \n
+                                         "&&" \n
+                                         "!(BIS_SQ4fsm getFSMVariable [""_addTaskPrimaryRadar"",false])" \n
+                                         "&&" \n
+                                         "{_DiscoverAABackup}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Primary_radar_de">*/
+                                class Primary_radar_de
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_radarDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Backup_radar_des">*/
+                                class Backup_radar_des
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_firstRadarTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         "&&" \n
+                                         "{_backupDestroyedTalk}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "Both_radars_are">*/
+                                class Both_radars_are
+                                {
+                                        itemno = 26;
+                                        priority = 0.000000;
+                                        to="Miller_reacts_QUEST";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_radarFinalTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_radarDestroyedTalk""" \n
+                                         "&&" \n
+                                         "!isNil ""_backupDestroyedTalk""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "END",
+                "Miller_reacts_QUEST",
+        };
+};
+/*%FSM</COMPILE>*/

@@ -1,0 +1,32 @@
+//EH - add toolkit to all cars
+player addEventHandler ["GetInMan", {
+	params ["_unit", "_role", "_vehicle", "_turret"];
+	If (!("ToolKit" in (getItemCargo _vehicle select 0)) && !("ToolKit" in backpackItems player)) exitWith {_vehicle addItemCargo ["Toolkit", 1]};
+}];
+
+// eh on examination of the leaflet in rest house
+[missionNameSpace,"objectInspected",{0 = [_this select 0] spawn {if (!isNil "BIS_leafletTanoaNorth" && {BIS_leafletTanoaNorth == (_this select 0)}) then {missionNameSpace setVariable ["BIS_showSaveMarkerTanoaNorth", true]}}}] call bis_fnc_addScriptedEventHandler;
+[missionNameSpace,"objectInspected",{0 = [_this select 0] spawn {if (!isNil "BIS_leafletTanoaSouth" && {BIS_leafletTanoaSouth == (_this select 0)}) then {missionNameSpace setVariable ["BIS_showSaveMarkerTanoaSouth", true]}}}] call bis_fnc_addScriptedEventHandler;
+[missionNameSpace,"objectInspected",{0 = [_this select 0] spawn {if (!isNil "BIS_leafletDutch" && {BIS_leafletDutch == (_this select 0)}) then {missionNameSpace setVariable ["BIS_showSaveMarkerDutch", true]}}}] call bis_fnc_addScriptedEventHandler;
+[missionNameSpace,"objectInspected",{0 = [_this select 0] spawn {if (!isNil "BIS_leafletBalaSouth" && {BIS_leafletBalaSouth == (_this select 0)}) then {missionNameSpace setVariable ["BIS_showSaveMarkerBalaSouth", true]}}}] call bis_fnc_addScriptedEventHandler;
+[missionNameSpace,"objectInspected",{0 = [_this select 0] spawn {if (!isNil "BIS_leafletBalaNorth" && {BIS_leafletBalaNorth == (_this select 0)}) then {missionNameSpace setVariable ["BIS_showSaveMarkerBalaNorth", true]}}}] call bis_fnc_addScriptedEventHandler;
+
+//--- EH for the 1st hint about sleeping bags
+player addEventHandler ["Take", { 
+	params ["_unit", "_container", "_item"];
+	if (_item == "Sleeping_bag_folded_01") then {
+		[["Old_Man", "SleepingBags"]] call BIS_fnc_advHint;
+		player removeEventHandler ["take",_thisEventHandler];
+	};
+
+}];
+
+//--- EH for the 1st pick up of vaccine
+player addEventHandler ["Take", { 
+	params ["_unit", "_container", "_item"];
+	if (_item == "AntimalaricumVaccine") then {
+		player setVariable ["BIS_playerHasFacilityVaccine",true];
+		player removeEventHandler ["take",_thisEventHandler];
+	};
+
+}];

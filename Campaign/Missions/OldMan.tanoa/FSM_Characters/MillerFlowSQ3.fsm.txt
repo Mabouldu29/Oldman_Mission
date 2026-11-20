@@ -1,0 +1,2018 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, MillerFlowSQ3">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"plans__delivered",4,218,-225.000000,-575.000000,-125.000000,-525.000000,0.000000,"plans " \n "delivered"};
+item1[] = {"Init",0,250,-225.000000,-1050.000000,-125.000000,-1000.000000,0.000000,"Init"};
+item2[] = {"Miller_dead",4,218,475.000000,1125.000000,575.000000,1175.000000,1000.000000,"Miller dead"};
+item3[] = {"FSM_end",1,250,475.000000,1225.000000,575.000000,1275.000000,0.000000,"FSM end"};
+item4[] = {"quest_photo_comp",4,218,-225.000000,-975.000000,-125.000000,-925.000000,0.000000,"quest photo" \n "completed"};
+item5[] = {"introduction",2,250,-225.000000,-750.000000,-125.000000,-700.000000,0.000000,"introduction"};
+item6[] = {"",7,210,-179.000000,-616.500000,-171.000000,-608.500000,0.000000,""};
+item7[] = {"SQ_3",-1,250,-409.998474,-1054.142334,-347.362335,1107.731567,0.000000,"SQ 3"};
+item8[] = {"g_e_t__s_t_r_u_c",-1,250,430.776306,-1064.104736,477.306122,-319.928772,0.000000,"g" \n "e" \n "t" \n "" \n "s" \n "t" \n "r" \n "u" \n "c" \n "t" \n "u" \n "r" \n "e" \n "" \n "d" \n "a" \n "t" \n "a"};
+item9[] = {"p_i_c_k__u_p__v",-1,250,430.849426,-318.609955,477.513733,122.496384,0.000000,"p" \n "i" \n "c" \n "k" \n "" \n "u" \n "p" \n "" \n "v" \n "i" \n "r" \n "u" \n "s"};
+item10[] = {"v_i_r_u_s__u_p_l",-1,250,430.828522,122.358063,477.616180,1101.745483,0.000000,"v" \n "i" \n "r" \n "u" \n "s" \n "" \n "u" \n "p" \n "l" \n "o" \n "a" \n "d" \n "i" \n "n" \n "g"};
+item11[] = {"",7,210,521.000000,521.000000,529.000000,529.000000,0.000000,""};
+item12[] = {"",7,210,521.000000,621.000000,529.000000,629.000000,0.000000,""};
+item13[] = {"",7,210,-54.000000,-616.500000,-46.000000,-608.500000,0.000000,""};
+item14[] = {"task_reminder",4,218,-100.000000,-575.000000,0.000000,-525.000000,0.000000,"task" \n "reminder"};
+item15[] = {"Millers_talk",2,250,-225.000000,-500.000000,-125.000000,-450.000000,0.000000,"Millers" \n "talk"};
+item16[] = {"Millers__call",2,250,-100.000000,-500.000000,0.000000,-450.000000,0.000000,"Millers " \n "call"};
+item17[] = {"",7,210,-53.999992,-416.500000,-46.000008,-408.500000,0.000000,""};
+item18[] = {"virus_is__ready",4,218,-225.000000,-400.000000,-125.000000,-350.000000,0.000000,"virus is " \n "ready"};
+item19[] = {"",7,210,-279.000000,-416.500000,-271.000000,-408.500000,0.000000,""};
+item20[] = {"",7,210,-279.000000,-616.500000,-271.000000,-608.500000,0.000000,""};
+item21[] = {"Miller_calls_player",2,250,-225.000000,-325.000000,-125.000000,-275.000000,0.000000,"Miller" \n "calls player" \n ""};
+item22[] = {"player__has_flas",4,218,-225.000000,-100.000000,-125.000000,-50.000000,0.000000,"player " \n "has flashdisk"};
+item23[] = {"virust_task_desc",2,250,-225.000000,-25.000000,-125.000000,25.000000,0.000000,"virust task" \n "description"};
+item24[] = {"delay",4,218,-100.000000,-325.000000,0.000000,-275.000000,0.000000,"delay"};
+item25[] = {"Miller_calls_player_1",2,250,-100.000000,-250.000000,0.000000,-200.000000,0.000000,"Miller calls" \n "player again"};
+item26[] = {"plans__delivered",4,218,150.000000,-900.000000,250.000000,-850.000000,1.000000,"plans " \n "delivered"};
+item27[] = {"talk_to_Miller",2,250,150.000000,-825.000000,250.000000,-775.000000,0.000000,"talk to" \n "Miller"};
+item28[] = {"wait_till_player",4,218,150.000000,-725.000000,250.000000,-675.000000,0.000000,"wait till" \n "player has task" \n "destroy facility"};
+item29[] = {"player_get_data",2,250,150.000000,-500.000000,250.000000,-450.000000,0.000000,"player get" \n "data structure" \n "ahead"};
+item30[] = {"",7,210,196.000000,-379.000000,204.000000,-371.000000,0.000000,""};
+item31[] = {"flash_disk_conne",4,218,-225.000000,100.000000,-125.000000,150.000000,0.000000,"flash disk" \n "connected"};
+item32[] = {"",7,210,-179.000015,71.000000,-171.000000,79.000000,0.000000,""};
+item33[] = {"time_has__passed",4,218,-100.000000,100.000000,0.000000,150.000000,0.000000,"time has" \n " passed"};
+item34[] = {"",7,210,-54.000008,71.000000,-45.999992,79.000000,0.000000,""};
+item35[] = {"Miller_calls",2,250,-225.000000,325.000000,-125.000000,375.000000,0.000000,"Miller calls"};
+item36[] = {"Reminder_A",2,250,-100.000000,175.000000,0.000000,225.000000,0.000000,"Reminder" \n "A"};
+item37[] = {"more_time_has__p",4,218,25.000000,100.000000,125.000000,150.000000,0.000000,"more" \n "time has " \n "passed"};
+item38[] = {"",7,210,70.999992,71.000000,79.000008,79.000000,0.000000,""};
+item39[] = {"Reminder_B",2,250,25.000000,175.000000,125.000000,225.000000,0.000000,"Reminder" \n "B"};
+item40[] = {"system__rebooted",4,218,-225.000000,425.000000,-125.000000,475.000000,0.000000,"system " \n "rebooted"};
+item41[] = {"Millers_comm",2,250,-225.000000,500.000000,-125.000000,550.000000,0.000000,"Millers comm"};
+item42[] = {"",7,210,70.999992,396.000000,79.000008,404.000000,0.000000,""};
+item43[] = {"",7,210,-54.000008,396.000000,-45.999992,404.000000,0.000000,""};
+item44[] = {"",7,210,-254.000000,396.000000,-246.000000,404.000000,0.000000,""};
+item45[] = {"",7,210,-254.000015,71.000000,-245.999985,79.000000,0.000000,""};
+item46[] = {"",7,210,-179.000000,620.999939,-171.000000,629.000000,0.000000,""};
+item47[] = {"",7,210,-179.000000,908.500000,-171.000000,916.500061,0.000000,""};
+item48[] = {"",7,210,-54.142090,906.637024,-46.142090,914.637085,0.000000,""};
+item49[] = {"__5_",4,218,-150.000000,650.000000,-50.000000,700.000000,0.000000,"25%"};
+item50[] = {"Millers_comm_1",2,250,-150.000000,725.000000,-50.000000,775.000000,0.000000,"Millers comm"};
+item51[] = {"__0_",4,218,-25.000000,650.000000,75.000000,700.000000,0.000000,"50%"};
+item52[] = {"Millers_comm_2",2,250,-25.000000,725.000000,75.000000,775.000000,0.000000,"Millers comm"};
+item53[] = {"__5__1",4,218,100.000000,650.000000,200.000000,700.000000,0.000000,"75%"};
+item54[] = {"Millers_comm_3",2,250,100.000000,725.000000,200.000000,775.000000,0.000000,"Millers comm"};
+item55[] = {"reboot_done",4,218,-225.000000,950.000000,-125.000000,1000.000000,0.000000,"reboot done"};
+item56[] = {"Millers_comm_4",1,250,-225.000000,1025.000000,-125.000000,1075.000000,0.000000,"Millers comm"};
+item57[] = {"",7,210,-104.000000,620.999939,-96.000000,629.000000,0.000000,""};
+item58[] = {"",7,210,21.000000,620.999939,29.000000,629.000000,0.000000,""};
+item59[] = {"",7,210,146.000000,621.000000,154.000000,629.000061,0.000000,""};
+item60[] = {"",7,210,371.000000,621.000000,379.000000,629.000061,0.000000,""};
+item61[] = {"",7,210,371.000000,883.500000,379.000000,891.500061,0.000000,""};
+item62[] = {"",7,210,146.000000,808.500000,154.000000,816.500061,0.000000,""};
+item63[] = {"",7,210,21.000000,808.499939,29.000000,816.500000,0.000000,""};
+item64[] = {"",7,210,-104.000000,808.499939,-96.000000,816.500000,0.000000,""};
+item65[] = {"",7,210,-179.000000,808.500000,-171.000000,816.500061,0.000000,""};
+item66[] = {"",7,210,-216.499985,808.500000,-208.500000,816.500000,0.000000,""};
+item67[] = {"",7,210,-216.500000,621.000000,-208.500000,629.000000,0.000000,""};
+item68[] = {"reboot_failed",4,218,-100.000000,950.000000,0.000000,1000.000000,0.000000,"reboot failed"};
+item69[] = {"Millers_comm_5",3,250,-100.000000,1025.000000,0.000000,1075.000000,0.000000,"Millers comm"};
+item70[] = {"",7,210,-116.500000,883.499939,-108.500000,891.500000,0.000000,""};
+item71[] = {"set_delay",2,250,-225.000000,-900.000000,-125.000000,-850.000000,0.000000,"set delay"};
+item72[] = {"delay",4,218,-225.000000,-825.000000,-125.000000,-775.000000,0.000000,"delay"};
+item73[] = {"player_has__network",4,218,150.000000,-1050.000000,250.000000,-1000.000000,0.000000,"player has " \n "network plans"};
+item74[] = {"player_meets_Mil",4,218,-225.000000,-250.000000,-125.000000,-200.000000,0.000000,"player meets" \n "Miller"};
+item75[] = {"pick_up_comm",2,250,-225.000000,-175.000000,-125.000000,-125.000000,0.000000,"pick up" \n "comm"};
+item76[] = {"",7,210,521.000000,-954.000000,529.000000,-946.000000,0.000000,""};
+item77[] = {"",7,210,-491.499969,-879.000000,-483.500031,-871.000000,0.000000,""};
+item78[] = {"",7,210,521.000000,-804.000000,529.000000,-796.000000,0.000000,""};
+item79[] = {"",7,210,521.000000,-729.000000,529.000000,-721.000000,0.000000,""};
+item80[] = {"",7,210,521.000000,-616.500000,529.000000,-608.500000,0.000000,""};
+item81[] = {"",7,210,521.000000,-479.000000,529.000000,-471.000000,0.000000,""};
+item82[] = {"",7,210,521.000000,-229.000000,529.000000,-221.000000,0.000000,""};
+item83[] = {"",7,210,-491.499969,-304.000000,-483.500000,-296.000000,0.000000,""};
+item84[] = {"",7,210,521.000000,-154.000000,529.000000,-146.000000,0.000000,""};
+item85[] = {"",7,210,521.000000,-4.000000,529.000000,4.000000,0.000000,""};
+item86[] = {"",7,210,521.000000,71.000000,529.000000,79.000000,0.000000,""};
+item87[] = {"",7,210,521.000000,1046.000000,529.000000,1053.999878,0.000000,""};
+item88[] = {"",7,210,-491.500031,1045.999878,-483.500000,1054.000000,0.000000,""};
+item89[] = {"",7,210,-491.500000,1146.000000,-483.500000,1154.000000,0.000000,""};
+item90[] = {"cheat1",4,218,325.000000,-550.000000,425.000000,-500.000000,0.000000,"cheat1"};
+item91[] = {"REGULAR_FLOW",-1,250,-225.000000,-1200.000000,-125.000000,-1100.000000,0.000000,"REGULAR" \n "FLOW"};
+item92[] = {"AHEAD_FLOW",-1,250,150.000000,-1200.000000,250.000000,-1100.000000,0.000000,"AHEAD" \n "FLOW"};
+item93[] = {"comm_with_Miller",2,250,150.000000,-975.000000,250.000000,-925.000000,0.000000,"comm with" \n "Miller"};
+item94[] = {"player_has__network",4,218,25.000000,-575.000000,125.000000,-525.000000,0.000000,"player has " \n "network plans"};
+item95[] = {"comm_with_Miller_1",2,250,25.000000,-500.000000,125.000000,-450.000000,0.000000,"comm with" \n "Miller" \n "task update"};
+item96[] = {"",7,210,71.000000,-416.500000,79.000000,-408.500000,0.000000,""};
+item97[] = {"",7,210,71.000000,-616.500000,79.000000,-608.500000,0.000000,""};
+item98[] = {"delay",2,250,175.000000,-650.000000,225.000000,-625.000000,0.000000,"delay"};
+item99[] = {"pass",4,218,175.000000,-575.000000,225.000000,-550.000000,0.000000,"pass"};
+item100[] = {"",7,210,521.000000,-1079.000000,529.000000,-1071.000000,0.000000,""};
+item101[] = {"",7,210,-179.000000,-1079.000000,-171.000015,-1071.000000,0.000000,""};
+item102[] = {"",7,210,521.000000,-641.500000,529.000000,-633.500000,0.000000,""};
+item103[] = {"",7,210,271.000000,621.000000,279.000000,629.000000,0.000000,""};
+item104[] = {"alarm_rised",4,218,225.000000,650.000000,325.000000,700.000000,0.000000,"alarm rised"};
+item105[] = {"Millers_comm_6",2,250,225.000000,725.000000,325.000000,775.000000,0.000000,"Millers comm"};
+item106[] = {"",7,210,271.000000,808.500000,279.000000,816.500000,0.000000,""};
+item107[] = {"delay_passed",4,218,25.000000,1025.000000,125.000000,1075.000000,0.000000,"delay passed"};
+item108[] = {"Millers_comm_7",1,250,150.000000,1025.000000,250.000000,1075.000000,0.000000,"Millers comm"};
+item109[] = {"set_delay_1",2,250,-225.000000,175.000000,-125.000000,225.000000,0.000000,"set delay"};
+item110[] = {"delay_pass",4,4314,-225.000000,250.000000,-125.000000,300.000000,0.000000,"delay pass"};
+version=1;
+class LayoutItems
+{
+	class Item7
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+	class Item8
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+	class Item9
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=16707283;
+	};
+	class Item10
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=13499833;
+	};
+	class Item91
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=65408;
+	};
+	class Item92
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=2675415;
+	};
+};
+link0[] = {0,15};
+link1[] = {1,4};
+link2[] = {1,73};
+link3[] = {1,101};
+link4[] = {2,3};
+link5[] = {4,71};
+link6[] = {5,6};
+link7[] = {5,79};
+link8[] = {6,0};
+link9[] = {6,13};
+link10[] = {11,12};
+link11[] = {12,87};
+link12[] = {13,14};
+link13[] = {13,97};
+link14[] = {14,16};
+link15[] = {15,18};
+link16[] = {16,17};
+link17[] = {17,19};
+link18[] = {18,21};
+link19[] = {19,20};
+link20[] = {20,6};
+link21[] = {21,24};
+link22[] = {21,74};
+link23[] = {21,83};
+link24[] = {22,23};
+link25[] = {23,32};
+link26[] = {23,85};
+link27[] = {24,25};
+link28[] = {25,74};
+link29[] = {25,82};
+link30[] = {26,27};
+link31[] = {27,28};
+link32[] = {27,78};
+link33[] = {27,90};
+link34[] = {28,98};
+link35[] = {29,30};
+link36[] = {29,81};
+link37[] = {30,18};
+link38[] = {31,109};
+link39[] = {32,31};
+link40[] = {32,34};
+link41[] = {33,36};
+link42[] = {34,33};
+link43[] = {34,38};
+link44[] = {35,40};
+link45[] = {36,43};
+link46[] = {37,39};
+link47[] = {38,37};
+link48[] = {38,86};
+link49[] = {39,42};
+link50[] = {40,41};
+link51[] = {41,11};
+link52[] = {41,46};
+link53[] = {42,43};
+link54[] = {43,44};
+link55[] = {44,45};
+link56[] = {45,32};
+link57[] = {46,57};
+link58[] = {47,48};
+link59[] = {47,55};
+link60[] = {48,68};
+link61[] = {49,50};
+link62[] = {50,64};
+link63[] = {51,52};
+link64[] = {52,63};
+link65[] = {53,54};
+link66[] = {54,62};
+link67[] = {55,56};
+link68[] = {57,49};
+link69[] = {57,58};
+link70[] = {58,51};
+link71[] = {58,59};
+link72[] = {59,53};
+link73[] = {59,103};
+link74[] = {60,12};
+link75[] = {60,61};
+link76[] = {61,70};
+link77[] = {62,63};
+link78[] = {63,64};
+link79[] = {64,65};
+link80[] = {65,47};
+link81[] = {65,66};
+link82[] = {66,67};
+link83[] = {67,46};
+link84[] = {68,69};
+link85[] = {69,107};
+link86[] = {70,55};
+link87[] = {70,68};
+link88[] = {71,26};
+link89[] = {71,72};
+link90[] = {71,77};
+link91[] = {72,5};
+link92[] = {73,93};
+link93[] = {74,75};
+link94[] = {75,22};
+link95[] = {75,84};
+link96[] = {76,78};
+link97[] = {77,83};
+link98[] = {78,79};
+link99[] = {79,102};
+link100[] = {80,81};
+link101[] = {81,82};
+link102[] = {82,84};
+link103[] = {83,88};
+link104[] = {84,85};
+link105[] = {85,86};
+link106[] = {86,11};
+link107[] = {87,2};
+link108[] = {88,89};
+link109[] = {89,2};
+link110[] = {90,21};
+link111[] = {93,26};
+link112[] = {93,76};
+link113[] = {94,95};
+link114[] = {95,96};
+link115[] = {96,17};
+link116[] = {97,80};
+link117[] = {97,94};
+link118[] = {98,99};
+link119[] = {98,102};
+link120[] = {99,29};
+link121[] = {100,76};
+link122[] = {101,100};
+link123[] = {102,80};
+link124[] = {103,60};
+link125[] = {103,104};
+link126[] = {104,105};
+link127[] = {105,106};
+link128[] = {106,62};
+link129[] = {107,108};
+link130[] = {109,110};
+link131[] = {110,35};
+globals[] = {0.000000,0,0,0,0,640,480,1,740,6316128,1,-355.547180,167.215576,673.916748,41.938370,852,1030,1};
+window[] = {2,-1,-1,-1,-1,990,52,898,52,3,870};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "MillerFlowSQ3";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 1;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has__network">*/
+                                class player_has__network
+                                {
+                                        itemno = 73;
+                                        priority = 0.000000;
+                                        to="comm_with_Miller";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_hasDocuments"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "quest_photo_comp">*/
+                                class quest_photo_comp
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="set_delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ2_G_Photos""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "FSM_end">*/
+                class FSM_end
+                {
+                        name = "FSM_end";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "introduction">*/
+                class introduction
+                {
+                        name = "introduction";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_autonomous_turrets_in_call""] call BIS_fnc_om_conversation;" \n
+                         "	[""ta_autonomous_turrets_out_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ3fsm setFSMVariable [""_giveTaskStructure"", true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_opening_info_about_network_structure"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has__network">*/
+                                class player_has__network
+                                {
+                                        itemno = 94;
+                                        priority = 0.000000;
+                                        to="comm_with_Miller_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_hasDocuments""" \n
+                                         "&&" \n
+                                         "isNil ""_hasDocumentsTalk""" \n
+                                         "&&" \n
+                                         "{_hasDocuments}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_reminder">*/
+                                class task_reminder
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="Millers__call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_TaskStructureReminder""" \n
+                                         "&&" \n
+                                         "{_TaskStructureReminder}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "plans__delivered">*/
+                                class plans__delivered
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="Millers_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_TaskStructureFinished""" \n
+                                         "&&" \n
+                                         "{_TaskStructureFinished}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_talk">*/
+                class Millers_talk
+                {
+                        name = "Millers_talk";
+                        itemno = 15;
+                        init = /*%FSM<STATEINIT""">*/"_TaskStructureFinished = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ta_network_intel"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_plans_delivered_by_plan"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "virus_is__ready">*/
+                                class virus_is__ready
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_calls_player";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_goForVirus"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers__call">*/
+                class Millers__call
+                {
+                        name = "Millers__call";
+                        itemno = 16;
+                        init = /*%FSM<STATEINIT""">*/"_TaskStructureReminder = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ex_miller_where_are_you_b"",""none""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_get_the_data_reminder"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has__network">*/
+                                class player_has__network
+                                {
+                                        itemno = 94;
+                                        priority = 0.000000;
+                                        to="comm_with_Miller_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_hasDocuments""" \n
+                                         "&&" \n
+                                         "isNil ""_hasDocumentsTalk""" \n
+                                         "&&" \n
+                                         "{_hasDocuments}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_reminder">*/
+                                class task_reminder
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="Millers__call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_TaskStructureReminder""" \n
+                                         "&&" \n
+                                         "{_TaskStructureReminder}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "plans__delivered">*/
+                                class plans__delivered
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="Millers_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_TaskStructureFinished""" \n
+                                         "&&" \n
+                                         "{_TaskStructureFinished}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_calls_player">*/
+                class Miller_calls_player
+                {
+                        name = "Miller_calls_player";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_virus_prepared_call"",""none""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_virus_ready""] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "private _reminderDelay = time + 1200;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_meets_Mil">*/
+                                class player_meets_Mil
+                                {
+                                        itemno = 74;
+                                        priority = 0.000000;
+                                        to="pick_up_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_Miller""" \n
+                                         "&&" \n
+                                         "{player distance BIS_Miller < 5}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "delay">*/
+                                class delay
+                                {
+                                        itemno = 24;
+                                        priority = 0.000000;
+                                        to="Miller_calls_player_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _reminderDelay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "virust_task_desc">*/
+                class virust_task_desc
+                {
+                        name = "virust_task_desc";
+                        itemno = 23;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_virus_collected"",""none""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_upload_instructions"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "private _delayReminderA = time + 1800;" \n
+                         "private _delayReminderB = time + 3200;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "more_time_has__p">*/
+                                class more_time_has__p
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Reminder_B";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_goRebootSystemRemB""" \n
+                                         "&&" \n
+                                         "{time > _delayReminderB}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_has__passed">*/
+                                class time_has__passed
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Reminder_A";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_goRebootSystemRemA""" \n
+                                         "&&" \n
+                                         "{time > _delayReminderA}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "flash_disk_conne">*/
+                                class flash_disk_conne
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="set_delay_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_goRebootSystem"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_calls_player_1">*/
+                class Miller_calls_player_1
+                {
+                        name = "Miller_calls_player_1";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ex_miller_where_are_you_c"",""none""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_virus_ready_reminder_to_pick_up"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_meets_Mil">*/
+                                class player_meets_Mil
+                                {
+                                        itemno = 74;
+                                        priority = 0.000000;
+                                        to="pick_up_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_Miller""" \n
+                                         "&&" \n
+                                         "{player distance BIS_Miller < 5}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "talk_to_Miller">*/
+                class talk_to_Miller
+                {
+                        name = "talk_to_Miller";
+                        itemno = 27;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""eve_network_intel_early"",""none""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_player_delivered_plans_ahead"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "cheat1">*/
+                                class cheat1
+                                {
+                                        itemno = 90;
+                                        priority = 0.000000;
+                                        to="Miller_calls_player";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"cheat1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "wait_till_player">*/
+                                class wait_till_player
+                                {
+                                        itemno = 28;
+                                        priority = 0.000000;
+                                        to="delay";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ_D_Facility""] call bis_fnc_questGetState == 1"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "player_get_data">*/
+                class player_get_data
+                {
+                        name = "player_get_data";
+                        itemno = 29;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""ta_autonomous_turrets_in_call""] call BIS_fnc_om_conversation;" \n
+                         "	[""ta_autonomous_turrets_early_out_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	BIS_SQ3fsm setFSMVariable [""_workingOnVirus"", true];" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_add_task_disable_turrets_ahead_branch"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "virus_is__ready">*/
+                                class virus_is__ready
+                                {
+                                        itemno = 18;
+                                        priority = 0.000000;
+                                        to="Miller_calls_player";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_goForVirus"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Miller_calls">*/
+                class Miller_calls
+                {
+                        name = "Miller_calls";
+                        itemno = 35;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""eve_flashdrive_inserted_call"",""none""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_flasdisk_connected"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "system__rebooted">*/
+                                class system__rebooted
+                                {
+                                        itemno = 40;
+                                        priority = 0.000000;
+                                        to="Millers_comm";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_rebootStartAlarm""" \n
+                                         "||" \n
+                                         "!isNil ""_rebootStartSilent"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Reminder_A">*/
+                class Reminder_A
+                {
+                        name = "Reminder_A";
+                        itemno = 36;
+                        init = /*%FSM<STATEINIT""">*/"private _goRebootSystemRemA = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_miller_focus_on_task_call"",""none""] call BIS_fnc_om_conversation;" \n
+                         "	//--- randomly added intel to Player" \n
+                         "	private _randomBase = selectRandom ([""CSAT: Base - Balavu ferry"",""CSAT: Base - Laikoro"",""CSAT: Base - Fuel Depo"",""CSAT: Base - Luganville"",""CSAT: Base - Nicolet""] select {[_x] call BIS_fnc_OM_getIntelStatus == ""available""});" \n
+                         "	if (!isNil ""_randombase"") then {[_randomBase] call BIS_fnc_om_addIntel};" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_Virus_quest_reminder"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "more_time_has__p">*/
+                                class more_time_has__p
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Reminder_B";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_goRebootSystemRemB""" \n
+                                         "&&" \n
+                                         "{time > _delayReminderB}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_has__passed">*/
+                                class time_has__passed
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Reminder_A";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_goRebootSystemRemA""" \n
+                                         "&&" \n
+                                         "{time > _delayReminderA}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "flash_disk_conne">*/
+                                class flash_disk_conne
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="set_delay_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_goRebootSystem"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Reminder_B">*/
+                class Reminder_B
+                {
+                        name = "Reminder_B";
+                        itemno = 39;
+                        init = /*%FSM<STATEINIT""">*/"private _goRebootSystemRemB = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_miller_focus_on_task_angry_call"",""none""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_Virus_quest_reminder_angry"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "more_time_has__p">*/
+                                class more_time_has__p
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="Reminder_B";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_goRebootSystemRemB""" \n
+                                         "&&" \n
+                                         "{time > _delayReminderB}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "time_has__passed">*/
+                                class time_has__passed
+                                {
+                                        itemno = 33;
+                                        priority = 0.000000;
+                                        to="Reminder_A";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNil ""_goRebootSystemRemA""" \n
+                                         "&&" \n
+                                         "{time > _delayReminderA}" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "flash_disk_conne">*/
+                                class flash_disk_conne
+                                {
+                                        itemno = 31;
+                                        priority = 0.000000;
+                                        to="set_delay_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_goRebootSystem"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_comm">*/
+                class Millers_comm
+                {
+                        name = "Millers_comm";
+                        itemno = 41;
+                        init = /*%FSM<STATEINIT""">*/"if (!isNil ""_rebootStartSilent"") then" \n
+                         "{" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_reboot_starts_call"",""none""] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_reboot_start_silent"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "}" \n
+                         "else" \n
+                         "{" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_reboot_starts_alarm_call"",""none""] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_reboot_start_alarm"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5_">*/
+                                class __5_
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Millers_comm_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count75""" \n
+                                         "&&" \n
+                                         "{_count75}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__0_">*/
+                                class __0_
+                                {
+                                        itemno = 51;
+                                        priority = 0.000000;
+                                        to="Millers_comm_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count50""" \n
+                                         "&&" \n
+                                         "{_count50}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "alarm_rised">*/
+                                class alarm_rised
+                                {
+                                        itemno = 104;
+                                        priority = 0.000000;
+                                        to="Millers_comm_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_alarmRisedUpload""" \n
+                                         "&&" \n
+                                         "{_alarmRisedUpload}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reboot_done">*/
+                                class reboot_done
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="Millers_comm_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_systemRebooted""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reboot_failed">*/
+                                class reboot_failed
+                                {
+                                        itemno = 68;
+                                        priority = 0.000000;
+                                        to="Millers_comm_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_SystemRebootFailed""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5__1">*/
+                                class __5__1
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Millers_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count25""" \n
+                                         "&&" \n
+                                         "{_count25}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_comm_1">*/
+                class Millers_comm_1
+                {
+                        name = "Millers_comm_1";
+                        itemno = 50;
+                        init = /*%FSM<STATEINIT""">*/"_count25 = false;" \n
+                         "if (isNil ""_alarmRisedUpload"" && isNil ""_rebootStartAlarm"") then {" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_reboot_a"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ3_Miller_reboot_25"" ] " \n
+                         "		] 	" \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "} else {" \n
+                         "" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_reboot_a_urgent"",""none"",FALSE] call BIS_fnc_om_conversation;	" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ3_Miller_reboot_25"" ] " \n
+                         "		] 	" \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5_">*/
+                                class __5_
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Millers_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count25""" \n
+                                         "&&" \n
+                                         "{_count25}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__0_">*/
+                                class __0_
+                                {
+                                        itemno = 51;
+                                        priority = 0.000000;
+                                        to="Millers_comm_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count50""" \n
+                                         "&&" \n
+                                         "{_count50}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5__1">*/
+                                class __5__1
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Millers_comm_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count75""" \n
+                                         "&&" \n
+                                         "{_count75}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "alarm_rised">*/
+                                class alarm_rised
+                                {
+                                        itemno = 104;
+                                        priority = 0.000000;
+                                        to="Millers_comm_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_alarmRisedUpload""" \n
+                                         "&&" \n
+                                         "{_alarmRisedUpload}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reboot_failed">*/
+                                class reboot_failed
+                                {
+                                        itemno = 68;
+                                        priority = 0.000000;
+                                        to="Millers_comm_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_SystemRebootFailed""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reboot_done">*/
+                                class reboot_done
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="Millers_comm_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_systemRebooted""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_comm_2">*/
+                class Millers_comm_2
+                {
+                        name = "Millers_comm_2";
+                        itemno = 52;
+                        init = /*%FSM<STATEINIT""">*/"_count50 = false;" \n
+                         "" \n
+                         "if (isNil ""_alarmRisedUpload"" && isNil ""_rebootStartAlarm"") then {" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_reboot_b"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ3_Miller_reboot_25"" ] " \n
+                         "		] 	" \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "} else {" \n
+                         "" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_reboot_b_urgent"",""none"",FALSE] call BIS_fnc_om_conversation;	" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ3_Miller_reboot_25"" ] " \n
+                         "		] 	" \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5_">*/
+                                class __5_
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Millers_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count25""" \n
+                                         "&&" \n
+                                         "{_count25}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__0_">*/
+                                class __0_
+                                {
+                                        itemno = 51;
+                                        priority = 0.000000;
+                                        to="Millers_comm_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count50""" \n
+                                         "&&" \n
+                                         "{_count50}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5__1">*/
+                                class __5__1
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Millers_comm_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count75""" \n
+                                         "&&" \n
+                                         "{_count75}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "alarm_rised">*/
+                                class alarm_rised
+                                {
+                                        itemno = 104;
+                                        priority = 0.000000;
+                                        to="Millers_comm_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_alarmRisedUpload""" \n
+                                         "&&" \n
+                                         "{_alarmRisedUpload}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reboot_failed">*/
+                                class reboot_failed
+                                {
+                                        itemno = 68;
+                                        priority = 0.000000;
+                                        to="Millers_comm_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_SystemRebootFailed""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reboot_done">*/
+                                class reboot_done
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="Millers_comm_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_systemRebooted""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_comm_3">*/
+                class Millers_comm_3
+                {
+                        name = "Millers_comm_3";
+                        itemno = 54;
+                        init = /*%FSM<STATEINIT""">*/"_count75 = false;" \n
+                         "" \n
+                         "if (isNil ""_alarmRisedUpload"" && isNil ""_rebootStartAlarm"") then {" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_reboot_c"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ3_Miller_reboot_25"" ] " \n
+                         "		] 	" \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "} else {" \n
+                         "" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""eve_reboot_c_urgent"",""none"",FALSE] call BIS_fnc_om_conversation;	" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ3_Miller_reboot_25"" ] " \n
+                         "		] 	" \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "};" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5_">*/
+                                class __5_
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Millers_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count25""" \n
+                                         "&&" \n
+                                         "{_count25}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__0_">*/
+                                class __0_
+                                {
+                                        itemno = 51;
+                                        priority = 0.000000;
+                                        to="Millers_comm_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count50""" \n
+                                         "&&" \n
+                                         "{_count50}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5__1">*/
+                                class __5__1
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Millers_comm_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count75""" \n
+                                         "&&" \n
+                                         "{_count75}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reboot_failed">*/
+                                class reboot_failed
+                                {
+                                        itemno = 68;
+                                        priority = 0.000000;
+                                        to="Millers_comm_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_SystemRebootFailed""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "alarm_rised">*/
+                                class alarm_rised
+                                {
+                                        itemno = 104;
+                                        priority = 0.000000;
+                                        to="Millers_comm_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_alarmRisedUpload""" \n
+                                         "&&" \n
+                                         "{_alarmRisedUpload}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reboot_done">*/
+                                class reboot_done
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="Millers_comm_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_systemRebooted""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_comm_4">*/
+                class Millers_comm_4
+                {
+                        name = "Millers_comm_4";
+                        itemno = 56;
+                        init = /*%FSM<STATEINIT""">*/"if (isNil ""_rebootStartAlarm"") then {" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""ta_reboot_complete"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ3_Miller_reboot_completed"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "} else {" \n
+                         "	private _speech = " \n
+                         "	{" \n
+                         "		[""ta_reboot_complete_urgent"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "	};" \n
+                         "" \n
+                         "	[1," \n
+                         "		[ " \n
+                         "			[_speech, [], 2, 9999999999, {}, {}, false, 4, false, ""SQ3_Miller_reboot_completed"" ] " \n
+                         "		] " \n
+                         "	] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         "};" \n
+                         "" \n
+                         "_systemRebooted = true;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_comm_5">*/
+                class Millers_comm_5
+                {
+                        name = "Millers_comm_5";
+                        itemno = 69;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ta_reboot_fail"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_reboot_failed"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         " " \n
+                         "private _planBDelay = time + 1200;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "delay_passed">*/
+                                class delay_passed
+                                {
+                                        itemno = 107;
+                                        priority = 0.000000;
+                                        to="Millers_comm_7";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_delay">*/
+                class set_delay
+                {
+                        name = "set_delay";
+                        itemno = 71;
+                        init = /*%FSM<STATEINIT""">*/"_delay = time + 600;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "plans__delivered">*/
+                                class plans__delivered
+                                {
+                                        itemno = 26;
+                                        priority = 1.000000;
+                                        to="talk_to_Miller";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ3_F_NetworkStructure""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "delay">*/
+                                class delay
+                                {
+                                        itemno = 72;
+                                        priority = 0.000000;
+                                        to="introduction";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "pick_up_comm">*/
+                class pick_up_comm
+                {
+                        name = "pick_up_comm";
+                        itemno = 75;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""eve_upload_virus"",""none""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_take_flash_disk"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player__has_flas">*/
+                                class player__has_flas
+                                {
+                                        itemno = 22;
+                                        priority = 0.000000;
+                                        to="virust_task_desc";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"//[player, ""FlashDisk""] call bis_fnc_countUnitItems != 0" \n
+                                         """FlashDisk"" in magazines player"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comm_with_Miller">*/
+                class comm_with_Miller
+                {
+                        name = "comm_with_Miller";
+                        itemno = 93;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	sleep 2;" \n
+                         "	[""Miller"",localize ""STR_A3_MillerFlowSQ3.fsmFSM_States_comm_with_Miller0""] call BIS_fnc_OM_phone_SMSsend; //--- Todo: Localize" \n
+                         "	sleep 10;" \n
+                         "	[""eve_network_intel_early_call""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_player_gets_network_plans_early"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "plans__delivered">*/
+                                class plans__delivered
+                                {
+                                        itemno = 26;
+                                        priority = 1.000000;
+                                        to="talk_to_Miller";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"[""T_SQ3_F_NetworkStructure""] call bis_fnc_questGetState == 3"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "comm_with_Miller_1">*/
+                class comm_with_Miller_1
+                {
+                        name = "comm_with_Miller_1";
+                        itemno = 95;
+                        init = /*%FSM<STATEINIT""">*/"_hasDocumentsTalk = false;" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	sleep 2;" \n
+                         "	[""Miller"",localize ""STR_A3_MillerFlowSQ3.fsmFSM_States_comm_with_Miller_10""] call BIS_fnc_OM_phone_SMSsend; //--- ToDo: Localize" \n
+                         "	sleep 10;" \n
+                         "	[""ta_network_intel_call"",""none""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_gets_network_structure."" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "player_has__network">*/
+                                class player_has__network
+                                {
+                                        itemno = 94;
+                                        priority = 0.000000;
+                                        to="comm_with_Miller_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_hasDocuments""" \n
+                                         "&&" \n
+                                         "isNil ""_hasDocumentsTalk""" \n
+                                         "&&" \n
+                                         "{_hasDocuments}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "task_reminder">*/
+                                class task_reminder
+                                {
+                                        itemno = 14;
+                                        priority = 0.000000;
+                                        to="Millers__call";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_TaskStructureReminder""" \n
+                                         "&&" \n
+                                         "{_TaskStructureReminder}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "plans__delivered">*/
+                                class plans__delivered
+                                {
+                                        itemno = 0;
+                                        priority = 0.000000;
+                                        to="Millers_talk";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_TaskStructureFinished""" \n
+                                         "&&" \n
+                                         "{_TaskStructureFinished}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "delay">*/
+                class delay
+                {
+                        name = "delay";
+                        itemno = 98;
+                        init = /*%FSM<STATEINIT""">*/"private _delay = time + 120;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "pass">*/
+                                class pass
+                                {
+                                        itemno = 99;
+                                        priority = 0.000000;
+                                        to="player_get_data";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_comm_6">*/
+                class Millers_comm_6
+                {
+                        name = "Millers_comm_6";
+                        itemno = 105;
+                        init = /*%FSM<STATEINIT""">*/"_alarmRisedUpload = false;" \n
+                         "" \n
+                         "private _speech = " \n
+                         "{" \n
+                         "	[""eve_reboot_alarm_call"",""none"",FALSE] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_alarm_rised"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "Miller_dead">*/
+                                class Miller_dead
+                                {
+                                        itemno = 2;
+                                        priority = 1000.000000;
+                                        to="FSM_end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""BIS_MillerDead"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5_">*/
+                                class __5_
+                                {
+                                        itemno = 49;
+                                        priority = 0.000000;
+                                        to="Millers_comm_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count25""" \n
+                                         "&&" \n
+                                         "{_count25}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reboot_done">*/
+                                class reboot_done
+                                {
+                                        itemno = 55;
+                                        priority = 0.000000;
+                                        to="Millers_comm_4";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_systemRebooted""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__0_">*/
+                                class __0_
+                                {
+                                        itemno = 51;
+                                        priority = 0.000000;
+                                        to="Millers_comm_2";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count50""" \n
+                                         "&&" \n
+                                         "{_count50}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "alarm_rised">*/
+                                class alarm_rised
+                                {
+                                        itemno = 104;
+                                        priority = 0.000000;
+                                        to="Millers_comm_6";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_alarmRisedUpload""" \n
+                                         "&&" \n
+                                         "{_alarmRisedUpload}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__5__1">*/
+                                class __5__1
+                                {
+                                        itemno = 53;
+                                        priority = 0.000000;
+                                        to="Millers_comm_3";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_count75""" \n
+                                         "&&" \n
+                                         "{_count75}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "reboot_failed">*/
+                                class reboot_failed
+                                {
+                                        itemno = 68;
+                                        priority = 0.000000;
+                                        to="Millers_comm_5";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isNil ""_SystemRebootFailed""" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "Millers_comm_7">*/
+                class Millers_comm_7
+                {
+                        name = "Millers_comm_7";
+                        itemno = 108;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	[""ex_virus_upload_fail_new_plan""] call BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[ " \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""SQ3_Miller_alternative_turrets_disabling"" ] " \n
+                         "	] " \n
+                         "] call BIS_fnc_OM_moduleActionQueue;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "set_delay_1">*/
+                class set_delay_1
+                {
+                        name = "set_delay_1";
+                        itemno = 109;
+                        init = /*%FSM<STATEINIT""">*/"private _delay = time + 3;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "delay_pass">*/
+                                class delay_pass
+                                {
+                                        itemno = 110;
+                                        priority = 0.000000;
+                                        to="Miller_calls";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _delay"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "FSM_end",
+                "Millers_comm_4",
+                "Millers_comm_7",
+        };
+};
+/*%FSM</COMPILE>*/

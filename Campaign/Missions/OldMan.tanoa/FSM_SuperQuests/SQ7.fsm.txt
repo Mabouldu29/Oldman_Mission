@@ -1,0 +1,486 @@
+/*%FSM<COMPILE "C:\Program Files (x86)\Steam\steamapps\common\Arma 3 Tools\FSMEditor\scriptedFSM.cfg, SQ7">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"Init",0,250,-75.000000,-1100.000000,25.000000,-1050.000000,0.000000,"Init"};
+item1[] = {"_",8,218,-247.314270,-1098.209473,-157.314270,-1048.209473,0.000000,""};
+item2[] = {"add_task",2,250,-250.000000,-1025.000000,-150.000000,-975.000000,0.000000,"add task"};
+item3[] = {"P_L_A_N_E___S_Q",-1,250,-351.266113,-1064.974854,-298.835632,196.415863,0.000000,"P" \n "L" \n "A" \n "N" \n "E" \n "" \n "" \n "S" \n "Q" \n ""};
+item4[] = {"landed",4,218,-250.000000,-750.000000,-150.000000,-700.000000,0.000000,"landed"};
+item5[] = {"load_plane",2,250,-250.000000,-650.000000,-150.000000,-600.000000,0.000000,"load" \n "plane"};
+item6[] = {"timer",4,218,-250.000000,-525.000000,-150.000000,-475.000000,0.000000,"timer"};
+item7[] = {"new_task",2,250,125.000000,-525.000000,225.000000,-475.000000,0.000000,"new task"};
+item8[] = {"landed",4,218,150.000000,-850.000000,250.000000,-800.000000,0.000000,"landed"};
+item9[] = {"end",1,4346,150.000000,-1025.000000,250.000000,-975.000000,0.000000,"end"};
+item10[] = {"loaders__dead",4,218,-136.010056,-585.542542,-36.010056,-535.542542,0.000000,"loaders " \n "dead"};
+item11[] = {"plane_destroyed",4,218,-50.000000,-850.000000,50.000000,-800.000000,0.000000,"plane" \n "destroyed" \n ""};
+item12[] = {"end_1",1,250,-50.000000,-1025.000000,50.000000,-975.000000,0.000000,"end"};
+item13[] = {"close_to_runway",4,218,-250.000000,-925.000000,-150.000000,-875.000000,0.000000,"close" \n "to runway"};
+item14[] = {"spawn_sector_IR",2,250,-250.000000,-850.000000,-150.000000,-800.000000,0.000000,"spawn sector" \n "IR grenades" \n "savegame"};
+item15[] = {"",7,210,-91.499992,-629.000000,-83.500008,-621.000000,0.000000,""};
+item16[] = {"",7,210,-91.499992,-1004.000000,-83.500008,-996.000000,0.000000,""};
+item17[] = {"",7,210,-91.500008,-829.000000,-83.499992,-821.000000,0.000000,""};
+item18[] = {"_",2,250,-55.924103,-674.536499,34.075912,-624.536499,0.000000,""};
+item19[] = {"_",8,218,3.161926,-585.012146,93.161926,-535.012146,0.000000,""};
+item20[] = {"too_far",4,218,155.353088,-642.307556,245.353088,-592.307556,0.000000,"too far"};
+item21[] = {"forget_units_and",2,250,153.562622,-748.841553,243.562622,-698.841553,0.000000,"forget" \n "units and sector"};
+version=1;
+class LayoutItems
+{
+	class Item3
+	{
+		class ItemInfo
+		{
+			FontFace="Arial";
+			FontHeight=15;
+			lStyle=1;
+		};
+		BgColor=15329769;
+	};
+};
+link0[] = {0,1};
+link1[] = {1,2};
+link2[] = {2,13};
+link3[] = {2,16};
+link4[] = {4,5};
+link5[] = {5,6};
+link6[] = {5,15};
+link7[] = {6,7};
+link8[] = {7,11};
+link9[] = {7,20};
+link10[] = {8,9};
+link11[] = {10,18};
+link12[] = {11,12};
+link13[] = {13,14};
+link14[] = {14,4};
+link15[] = {14,17};
+link16[] = {15,10};
+link17[] = {15,17};
+link18[] = {16,17};
+link19[] = {17,11};
+link20[] = {18,19};
+link21[] = {19,7};
+link22[] = {20,21};
+link23[] = {21,8};
+link24[] = {21,11};
+globals[] = {0.000000,0,0,0,0,640,480,1,643,6316128,1,-333.030090,348.249207,-393.906555,-1328.539429,761,1044,1};
+window[] = {2,-1,-1,-1,-1,1176,130,976,130,3,779};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "SQ7";
+        class States
+        {
+                /*%FSM<STATE "Init">*/
+                class Init
+                {
+                        name = "Init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private [""_speech"",""_interruptible"", ""_canInterruptPrevious"", ""_actionID""];" \n
+                         "private _priority = 4; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "private _validity = 9999999999; //priority normal see \Systems\scripts\ActionQueue\common_definitions.inc" \n
+                         "" \n
+                         "BIS_SQ7_bags = 0;" \n
+                         "BIS_SQ7_bagsLimit = 200;" \n
+                         "" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="add_task";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true" \n
+                                         ""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "add_task">*/
+                class add_task
+                {
+                        name = "add_task";
+                        itemno = 2;
+                        init = /*%FSM<STATEINIT""">*/"BIS_SQ7_T_Plane = [""T_SQ7_L_Runway"", [BIS_SQ7_RunwayLocation]] call bis_fnc_questCreateManualy;" \n
+                         "BIS_Zipper_Plane lock false;" \n
+                         "[1,[""BIS_SQ7_questSM""]] call BIS_fnc_OM_moduleSmartMarkers;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "plane_destroyed">*/
+                                class plane_destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="end_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ7_ZipperPlane_destroyed""//!alive BIS_Zipper_plane"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "close_to_runway">*/
+                                class close_to_runway
+                                {
+                                        itemno = 13;
+                                        priority = 0.000000;
+                                        to="spawn_sector_IR";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance [9906.81,9355.46,0] < 2000" \n
+                                         "&&" \n
+                                         "(vehicle player) isKindof ""Air"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "load_plane">*/
+                class load_plane
+                {
+                        name = "load_plane";
+                        itemno = 5;
+                        init = /*%FSM<STATEINIT""">*/"0=[""eve_player_lands_plane_call"",""none"",nil,{}] spawn BIS_fnc_om_conversation;" \n
+                         "" \n
+                         "_t = time + 180;" \n
+                         "" \n
+                         "{deletevehicle _x} foreach _IRGrenades;" \n
+                         "" \n
+                         "//BIS_SQ7_T_Defend = [""T_SQ7_L_Defend"", []] call bis_fnc_questCreateManualy;" \n
+                         "BIS_fnc_SQ7_load = " \n
+                         "{" \n
+                         "	params [""_guy""];" \n
+                         "" \n
+                         "	while {BIS_SQ7_bags < BIS_SQ7_bagsLimit} do " \n
+                         "	{" \n
+                         "		sleep (random 7);" \n
+                         "		if !(alive _guy) exitwith {};" \n
+                         "		if (BIS_SQ7_bags >= BIS_SQ7_bagsLimit) exitwith " \n
+                         "		{" \n
+                         "			_guy setbehaviour ""AWARE"";" \n
+                         "			_wp = (group _guy) addwaypoint [position _guy,0];" \n
+                         "			_wp setWaypointType ""GUARD"";" \n
+                         "		};" \n
+                         "		_guy move getpos BIS_Zipper_Plane;" \n
+                         "		waituntil {unitready _guy && alive _guy};" \n
+                         "		_backpack = backpack _guy;" \n
+                         "		_guy playaction ""PutDown"";" \n
+                         "		removebackpack _guy;" \n
+                         "		BIS_SQ7_bags = BIS_SQ7_bags + 25;" \n
+                         "		if (BIS_SQ7_bags >= 100 && isnil ""BIS_SQ7_loadNot"")  then {0=[""eve_loading_plane_call"",""none"",false,{}] spawn BIS_fnc_om_conversation;BIS_SQ7_loadNot = true;};" \n
+                         "		//hint str BIS_SQ7_bags;" \n
+                         "		_guy move getpos BIS_SQ7_Truck;" \n
+                         "		waituntil {unitready _guy && alive _guy};" \n
+                         "		if (BIS_SQ7_bags >= BIS_SQ7_bagsLimit) exitwith " \n
+                         "		{" \n
+                         "			_guy setbehaviour ""AWARE"";" \n
+                         "			_wp = (group _guy) addwaypoint [position _guy,0];" \n
+                         "			_wp setWaypointType ""GUARD"";" \n
+                         "		};" \n
+                         "		_guy playaction ""PutDown"";" \n
+                         "		_guy addbackpack _backpack" \n
+                         "	};" \n
+                         "};" \n
+                         "" \n
+                         "_NPCs = [BIS_SQ7_Loader,BIS_SQ7_Repairman];" \n
+                         "{_x setbehaviour ""CARELESS"";_x setspeedmode ""FULL""} foreach _NPCs;" \n
+                         "[BIS_SQ7_Loader] spawn BIS_fnc_SQ7_load;" \n
+                         "[BIS_SQ7_repairman] spawn BIS_fnc_SQ7_load;" \n
+                         "" \n
+                         "BIS_SQ7_TrueRepairman spawn " \n
+                         "{" \n
+                         "	_this move (BIS_zipper_plane getrelpos [-2,-10]);" \n
+                         "	waituntil {unitready _this};" \n
+                         "	_this doTarget BIS_Zipper_Plane;" \n
+                         "	_this dowatch BIS_Zipper_Plane;" \n
+                         "	_this disableAI ""ANIM"";" \n
+                         "	sleep 1;" \n
+                         "	_this setpos (BIS_zipper_plane getrelpos [-2,-10]);" \n
+                         "	_this setdir ((getdir BIS_Zipper_Plane) -90);" \n
+                         "	_this switchmove ""Acts_carFixingWheel"";" \n
+                         "	waituntil {!isnil ""BIS_SQ7_planeReady""};" \n
+                         "	_this enableAI ""ANIM"";" \n
+                         "	_this switchmove """";" \n
+                         "	_this move getpos BIS_SQ7_Truck;" \n
+                         "};" \n
+                         "" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "loaders__dead">*/
+                                class loaders__dead
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"count ([BIS_SQ7_Loader,BIS_SQ7_Repairman] select {alive _x})== 0 " \n
+                                         "||" \n
+                                         "!alive BIS_SQ7_Truck"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "plane_destroyed">*/
+                                class plane_destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="end_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ7_ZipperPlane_destroyed""//!alive BIS_Zipper_plane"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timer">*/
+                                class timer
+                                {
+                                        itemno = 6;
+                                        priority = 0.000000;
+                                        to="new_task";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"BIS_SQ7_bags >= BIS_SQ7_bagsLimit" \n
+                                         "||" \n
+                                         "time > _t"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "new_task">*/
+                class new_task
+                {
+                        name = "new_task";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"//[""BIS_SQ7_wait"",""SUCCEEDED""] call BIS_fnc_taskSetState;" \n
+                         "BIS_SQ7_planeReady = true;" \n
+                         "if (BIS_SQ7_bags >= BIS_SQ7_bagsLimit) then " \n
+                         "{" \n
+                         "	0=[""eve_plane_fully_loaded_call"",""none"",false,{}] spawn BIS_fnc_om_conversation;" \n
+                         "} else {" \n
+                         "	if !(isnil ""_bis_loadersDead"") exitwith {};" \n
+                         "	0=[""eve_loaders_kia_call"",""none"",false,{}] spawn BIS_fnc_om_conversation;" \n
+                         "};" \n
+                         "BIS_SQ7_T_Plane_B = [""T_SQ7_L_Airport"", [BIS_SQ7_LocationAirport]] call bis_fnc_questCreateManualy;" \n
+                         "{" \n
+                         "	_x lock false;" \n
+                         "	_x setdamage 0;" \n
+                         "	_x setfuel 1" \n
+                         "} foreach [BIS_Zipper_Plane];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "too_far">*/
+                                class too_far
+                                {
+                                        itemno = 20;
+                                        priority = 0.000000;
+                                        to="forget_units_and";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"player distance [9906.81,9355.46,0] > 1500"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "plane_destroyed">*/
+                                class plane_destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="end_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ7_ZipperPlane_destroyed""//!alive BIS_Zipper_plane"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "end">*/
+                class end
+                {
+                        name = "end";
+                        itemno = 9;
+                        init = /*%FSM<STATEINIT""">*/"private _speech = " \n
+                         "{" \n
+                         "	sleep 5;" \n
+                         "	[""ta_loaded_plane_delivered_call"",""none"",true] call BIS_fnc_om_conversation;" \n
+                         "	_price = (12000 * 	BIS_SQ7_bags)/BIS_SQ7_bagsLimit;" \n
+                         "" \n
+                         "	[1, [_price]] call BIS_fnc_OM_ModuleEconomy;" \n
+                         "	_null = [""OMMoneyTransfer"",[FORMAT [""%2 %1"", ""$"",_price]] ] call BIS_fnc_shownotification;" \n
+                         "	[ 4, [250]] call BIS_fnc_OM_ModuleReputation;" \n
+                         "};" \n
+                         "" \n
+                         "[1," \n
+                         "	[" \n
+                         "		[_speech, [], 2, _validity, {}, {}, false, _priority, false, ""BOSS plane delivered"" ] " \n
+                         "	]" \n
+                         "] call BIS_fnc_OM_moduleActionQueue;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "end_1">*/
+                class end_1
+                {
+                        name = "end_1";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"if !(isnil ""BIS_SQ7_landed"") then " \n
+                         "{" \n
+                         "	// AFTER LANDING IN FIELDS" \n
+                         "	[BIS_SQ7_T_Plane_B,  6] call bis_fnc_questSetState;" \n
+                         "} else {" \n
+                         "	// BEFORE LANDING IN FIELDS" \n
+                         "	[BIS_SQ7_T_Plane,  6] call bis_fnc_questSetState;" \n
+                         "	[ 4, [-100]] call BIS_fnc_OM_ModuleReputation;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "spawn_sector_IR">*/
+                class spawn_sector_IR
+                {
+                        name = "spawn_sector_IR";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"//--- create IR grenades to highlight runway in night" \n
+                         "_IRlightA = ""B_IRStrobe"" createVehicle [9937.04,9384.61,0];" \n
+                         "_IRlightB = ""B_IRStrobe"" createVehicle [9737.14,9538.61,0];" \n
+                         "" \n
+                         "_IRlightA_o = ""O_IRStrobe"" createVehicle [9937.04,9384.61,0];" \n
+                         "_IRlightB_o = ""O_IRStrobe"" createVehicle [9737.14,9538.61,0];" \n
+                         "" \n
+                         "_IRGrenades = [_IRlightA,_IRlightB,_IRlightA_o,_IRlightB_o];" \n
+                         "" \n
+                         "_sq7Runway = ([[9909.74,9407.7,0],100] call BIS_fnc_om_sectorsInRange) select {_x == BIS_SCname_FieldRunwayGuards};" \n
+                         "[_sq7Runway select 0, true] call BIS_fnc_sectorSetManualControl;" \n
+                         "[_sq7Runway select 0 ] spawn BIS_fnc_om_sectorActivate;" \n
+                         "" \n
+                         "" \n
+                         "//--- savegame" \n
+                         "savegame;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "plane_destroyed">*/
+                                class plane_destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="end_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ7_ZipperPlane_destroyed""//!alive BIS_Zipper_plane"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "landed">*/
+                                class landed
+                                {
+                                        itemno = 4;
+                                        priority = 0.000000;
+                                        to="load_plane";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ7_landed"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 18;
+                        init = /*%FSM<STATEINIT""">*/"0= [""eve_loaders_kia_call"",""none"",false,{}] spawn BIS_fnc_om_conversation;" \n
+                         "_bis_loadersDead = true;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 19;
+                                        priority = 0.000000;
+                                        to="new_task";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "forget_units_and">*/
+                class forget_units_and
+                {
+                        name = "forget_units_and";
+                        itemno = 21;
+                        init = /*%FSM<STATEINIT""">*/"_sq7groupsSYN = (([[9909.74,9407.7,0],100] call BIS_fnc_om_sectorsInRange) select {_x == BIS_SCname_FieldRunwayGuards} select 0) getvariable ""#groups"";" \n
+                         "_sq7Runway = ([[9909.74,9407.7,0],100] call BIS_fnc_om_sectorsInRange) select {_x == BIS_SCname_FieldRunwayGuards};" \n
+                         "_sq7GEN1 = (([[10092.5,9681.34,0],100] call BIS_fnc_om_sectorsInRange) select {_x == BIS_SCname_SQ7_GEN1} select 0) getvariable ""#groups"";" \n
+                         "_sq7GEN2 = (([[9536.89,9497.05,0],100] call BIS_fnc_om_sectorsInRange) select {_x == BIS_SCname_SQ7_GEN2} select 0) getvariable ""#groups"";" \n
+                         "[_sq7Runway select 0, false] call BIS_fnc_sectorSetManualControl;" \n
+                         "{deletevehicle _x} foreach ((_sq7Runway select 0) getvariable ""#vehicles"");" \n
+                         "" \n
+                         "{ " \n
+                         "    {deleteVehicle _x} forEach units _x; " \n
+                         "    deleteGroup _x; " \n
+                         "} foreach _sq7groupsSYN; " \n
+                         "" \n
+                         "{ " \n
+                         "    {deleteVehicle _x} forEach units _x; " \n
+                         "    deleteGroup _x; " \n
+                         "} foreach _sq7GEN1; " \n
+                         "{ " \n
+                         "    {deleteVehicle _x} forEach units _x; " \n
+                         "    deleteGroup _x; " \n
+                         "} foreach _sq7GEN2; "/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "plane_destroyed">*/
+                                class plane_destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 0.000000;
+                                        to="end_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ7_ZipperPlane_destroyed""//!alive BIS_Zipper_plane"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "landed">*/
+                                class landed
+                                {
+                                        itemno = 8;
+                                        priority = 0.000000;
+                                        to="end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!isnil ""BIS_SQ7_done"""/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="Init";
+        finalStates[] =
+        {
+                "end",
+                "end_1",
+        };
+};
+/*%FSM</COMPILE>*/
