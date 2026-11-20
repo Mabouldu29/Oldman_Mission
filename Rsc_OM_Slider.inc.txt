@@ -1,0 +1,352 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+/* #define BUTTON_ACTION if(BIS_SYNDIKATTEAM_LOGIC getVariable 'enoughMoney') then {	BIS_SYNDIKATTEAM_LOGIC setVariable ['playerConfirmedAssault', true];	closeDialog 667;} */
+/* #define BUTTON_ACTION if(BIS_SYNDIKATTEAM_LOGIC getVariable ['enoughMoney', false]) then {'NECO' call BIS_fnc_Log} else {'NIC' call BIS_fnc_Log} */
+/* #define STRINGIFY(CODE) #CODE */
+class RscRestUI
+{
+	/*
+		// background - ["0.626058 * safezoneW + safezoneX","0.566021 * safezoneH + safezoneY","0.206278 * safezoneW","0.187059 * safezoneH"]
+		// restTitle - ["0.626058 * safezoneW + safezoneX","0.455986 * safezoneH + safezoneY","0.206278 * safezoneW","0.0550174 * safezoneH"]
+		// restDescription - ["0.626058 * safezoneW + safezoneX","0.511003 * safezoneH + safezoneY","0.206278 * safezoneW","0.0550174 * safezoneH"]
+		// hoursToSleep - ["0.626058 * safezoneW + safezoneX","0.577024 * safezoneH + safezoneY","0.206278 * safezoneW","0.022007 * safezoneH"]
+		// hours - ["0.626058 * safezoneW + safezoneX","0.599031 * safezoneH + safezoneY","0.206278 * safezoneW","0.0330105 * safezoneH"]
+		// bar - ["0.637518 * safezoneW + safezoneX","0.643045 * safezoneH + safezoneY","0.183358 * safezoneW","0.0440139 * safezoneH"]
+		// actual time - ["0.626058 * safezoneW + safezoneX","0.687059 * safezoneH + safezoneY","0.206278 * safezoneW","0.0550174 * safezoneH"]
+		// confirm -["0.729197 * safezoneW + safezoneX","0.75308 * safezoneH + safezoneY","0.103139 * safezoneW","0.0330105 * safezoneH"]
+		// cancel button - ["0.814429 * safezoneW + safezoneX","0.566 * safezoneH + safezoneY","0.0154637 * safezoneW","0.022 * safezoneH"]
+	*/
+	idd = 666; // Display identification
+	enableSimulation = 1; // 1 (true) to allow world simulation to be running in the background, 0 to freeze it
+	enableDisplay = 0; // 1 (true) to allow scene rendering in the background
+	//Fadein = 2;
+
+	//onLoad = "_this call compile preprocessFileLineNumbers 'RscTestControlTypes.sqf';";
+	//onUnload = "systemChat str ['onUnload',_this]; false";
+	//onChildDestroyed = "systemChat str ['onChildDestroyed',_this]; false";
+
+	class ControlsBackground // Background controls (placed behind Controls)
+	{
+		class Background
+		{
+			idc = 9924;
+			type = CT_STATIC;
+			style = ST_CENTER; // 48 PICTURE
+			x = 0.626058 * safezoneW + safezoneX;
+			y = 0.566021 * safezoneH + safezoneY;
+			w = 0.206278 * safezoneW;
+			h = 0.187059 * safezoneH;
+			colorBackground[] = {0,0,0,0.5};
+			colorText[] = {0,0,0,0};
+			font = GUI_FONT_NORMAL;
+			sizeEx = GUI_GRID_CENTER_H;
+			text = "";//a3\Ui_f\data\GUI\Rsc\RscDisplayInventory\gradient_gs.paa
+			moving = 0;
+		};
+	};
+
+	class Controls // Main controls
+	{
+		class ButtonBck
+		{/*
+			idc = -1;
+			type = CT_STATIC;
+			style = ST_LEFT;
+			//["0.823109 * safezoneW + safezoneX","0.753701 * safezoneH + safezoneY","0.186033 * safezoneW","0.028189 * safezoneH"]
+			//["0.729197 * safezoneW + safezoneX","0.764084 * safezoneH + safezoneY","0.103139 * safezoneW","0.0330105 * safezoneH"]
+			x = 0.729197 * safezoneW + safezoneX;
+			y = 0.75308 * safezoneH + safezoneY;
+			w = 0.103139 * safezoneW;
+			h = 0.0330105 * safezoneH;
+			colorBackground[] = {0,0,0,0.85};
+			colorText[] = {0,0,0,0};
+			font = GUI_FONT_NORMAL;
+			sizeEx = GUI_GRID_CENTER_H;
+			text = "";
+			moving = 0;*/
+		};
+
+		class exitButton
+		{
+			idc = -1;
+			type = CT_BUTTON;
+			style = ST_CENTER;
+			default = false;
+			font = GUI_FONT_NORMAL;
+			sizeEx = 0.03;
+			colorText[] = { 1, 1, 1, 1 };
+			colorFocused[] = { 1, 1, 1, 0.1 };   // border color for focused state
+			colorDisabled[] = { 0, 0, 1, 0.7 };   // text color for disabled state
+			colorBackground[] = { 1, 1, 1, 0.1 };
+			colorBackgroundDisabled[] = { 1, 1, 1, 0.5 };   // background color for disabled state
+			colorBackgroundActive[] = { 1, 1, 1, 0.5 };   // background color for active state
+			offsetX = 0.003;
+			offsetY = 0.003;
+			offsetPressedX = 0.002;
+			offsetPressedY = 0.002;
+			colorShadow[] = { 0, 0, 0, 0 };
+			colorBorder[] = { 0, 0, 0, 1 };
+			borderSize = 0;
+			soundEnter[] = { "", 0, 1 };  // no sound
+			soundPush[] = { "", 0.1, 1 };
+			soundClick[] = { "", 0, 1 };  // no sound
+			soundEscape[] = { "", 0, 1 };  // no sound
+			x = 0.814429 * safezoneW + safezoneX; y = 0.566 * safezoneH + safezoneY;
+			w = 0.0154637 * safezoneW; h = 0.022 * safezoneH;
+			text = "X";
+			action = "closeDialog 0;player setvariable ['BIS_isSleeping',false];player setvariable ['BIS_isWaiting',false];";
+		};
+
+		class ButtonText
+		{
+			/*
+			idc = -1;
+			type = CT_ACTIVETEXT;
+			style = ST_CENTER;
+			blinkingPeriod = 2.5;
+			//["0.91123 * safezoneW + safezoneX","0.753701 * safezoneH + safezoneY","0.0979118 * safezoneW","0.028189 * safezoneH"]
+			//["0.729197 * safezoneW + safezoneX","0.764084 * safezoneH + safezoneY","0.103139 * safezoneW","0.0330105 * safezoneH"]
+			x = 0.729197 * safezoneW + safezoneX;
+			y = 0.75308 * safezoneH + safezoneY;
+			w = 0.103139 * safezoneW;
+			h = 0.0330105 * safezoneH;
+			color[] = {1,1,1,1};
+			ColorActive[] = {1, 0.7, 0.1, 1};
+			ColorDisabled[] = {0,0,0,0.3};
+			soundEnter[] = {"a3\UI_f\data\Sound\ReadOut\ReadoutHideClick2.wss", 0.5, 1.3};
+			soundPush[] = {"", 0.5, 1};
+			soundClick[] = {"a3\UI_f\data\Sound\RscButtonMenu\soundClick.wss", 0.5, 1.3};
+			soundEscape[] = {"", 0.5, 1};
+			font = GUI_FONT_NORMAL;
+			sizeEx = GUI_GRID_CENTER_H;
+			text = "CONFIRM";
+			action = "closeDialog 666;[] spawn BIS_fnc_om_GoSleep;BIS_SleepTimeSelected = true";
+			default = false;*/
+			idc = -1;
+			type = CT_BUTTON;
+			style = ST_CENTER;
+			default = false;
+			font = GUI_FONT_NORMAL;
+			sizeEx = 0.03;
+			colorText[] = { 1, 1, 1, 1 };
+			colorFocused[] = { 0.8, 0.8, 0.8, 0.1 };   // border color for focused state
+			colorDisabled[] = { 0, 0, 1, 0.7 };   // text color for disabled state
+			colorBackground[] = { 1, 1, 1, 0.3 };
+			colorBackgroundDisabled[] = { 1, 1, 1, 0.5 };   // background color for disabled state
+			colorBackgroundActive[] = { 1, 1, 1, 0.5 };   // background color for active state
+			offsetX = 0.003;
+			offsetY = 0.003;
+			offsetPressedX = 0.002;
+			offsetPressedY = 0.002;
+			colorShadow[] = { 0, 0, 0, 0 };
+			colorBorder[] = { 0, 0, 0, 1 };
+			borderSize = 0;
+			soundEnter[] = { "", 0, 1 };  // no sound
+			soundPush[] = { "", 0.1, 1 };
+			soundClick[] = { "", 0, 1 };  // no sound
+			soundEscape[] = { "", 0, 1 };  // no sound
+			x = 0.729197 * safezoneW + safezoneX;
+			y = 0.75308 * safezoneH + safezoneY;
+			w = 0.103139 * safezoneW;
+			h = 0.0330105 * safezoneH;
+			text = $STR_A3_OM_System_SyndiaktTeamUI_Confirm;
+			action = "closeDialog 666;[] spawn BIS_fnc_om_GoSleep;BIS_SleepTimeSelected = true";
+		};
+		class Slider
+		{
+		    idc = 5432;
+		    type = CT_SLIDER;
+		    style = SL_HORZ;
+		    //["0.860366 * safezoneW + safezoneX","0.67853 * safezoneH + safezoneY","0.0979118 * safezoneW","0.0187927 * safezoneH"]
+		    x = 0.637518 * safezoneW + safezoneX;
+		    y = 0.643045 * safezoneH + safezoneY;
+		    w = 0.183358 * safezoneW;
+		    h = (0.0440139 * safezoneH)/2;
+		    color[] = { 1, 1, 1, 1 };
+		    coloractive[] = { 1, 0.7, 0.1, 1 };
+		    // This is an ctrlEventHandler to show you some response if you move the sliderpointer.
+		    sliderposition = 1/3;
+		    linesize = 1/12;
+		    sliderrange[] = {0,14};
+		    sliderstep = 1/12;
+		    onSliderPosChanged = "BIS_SleepingTime = _this;[] execvm '\a3\Missions_F_Oldman\Systems\UI\Sleeping\RestTimeControl.SQF'"; //; hint format[""%1"",_this];
+		};
+
+		class TitleDescription
+		{
+			type = CT_STATIC;
+			IDC = 9821;
+			style = ST_LEFT + ST_MULTI + ST_NO_RECT;
+			shadow = 1;
+			//["0.860366 * safezoneW + safezoneX","0.640945 * safezoneH + safezoneY","0.0979118 * safezoneW","0.028189 * safezoneH"]
+			x = 0.626058 * safezoneW + safezoneX;
+			y = 0.511003 * safezoneH + safezoneY;
+			w = (0.183358 * safezoneW);//0.206278 * safezoneW;
+			h = (0.0550174 * safezoneH);
+			text = "";//Advance time by resting, heal your injuries and save the game.
+			LineSpacing = 1;
+			ColorBackground[] = {0,0,0,0};
+			ColorText[] = {1,1,1,1};
+			font = "PuristaBold";
+			size = 0.032;
+			SizeEx = 0.03;
+		};
+		class Title
+		{
+			type = 0;
+			IDC = 9832;
+			style = ST_CENTER;
+			shadow = 1;
+			//["0.860366 * safezoneW + safezoneX","0.640945 * safezoneH + safezoneY","0.0979118 * safezoneW","0.028189 * safezoneH"]
+			x = 0.626058 * safezoneW + safezoneX;
+			y = 0.455986 * safezoneH + safezoneY;
+			w = 0.206278 * safezoneW;
+			h = 0.0550174 * safezoneH;
+			text = "";//REST/WAIT
+			LineSpacing = 1.000000;
+			ColorBackground[] = {0,0,0,0};
+			ColorText[] = {1,1,1,1};
+			font = "PuristaBold";
+			SizeEx = 0.06;
+		};
+		// ["0.626058 * safezoneW + safezoneX","0.577024 * safezoneH + safezoneY","0.206278 * safezoneW","0.022007 * safezoneH"]
+		class numberTitle
+		{
+			type = 0;
+			IDC = 5543;
+			style = ST_CENTER;
+			shadow = 1;
+			//["0.626058 * safezoneW + safezoneX","0.599031 * safezoneH + safezoneY","0.206278 * safezoneW","0.0330105 * safezoneH"]
+			x = 0.626058 * safezoneW + safezoneX;
+			y = 0.577024 * safezoneH + safezoneY;
+			w = 0.206278 * safezoneW;
+			h = 0.022007 * safezoneH;
+			text = "";//HOURS TO REST
+
+			LineSpacing = 1.000000;
+			ColorBackground[] = {0,0,0,0};
+			ColorText[] = {1,1,1,1};
+			font = "PuristaBold";
+			SizeEx = 0.03;
+		};
+		class number
+		{
+			type = 0;
+			IDC = 4443;
+			style = ST_CENTER;
+			shadow = 1;
+			//["0.626058 * safezoneW + safezoneX","0.599031 * safezoneH + safezoneY","0.206278 * safezoneW","0.0330105 * safezoneH"]
+			x = 0.626058 * safezoneW + safezoneX;
+			y = 0.599031 * safezoneH + safezoneY;
+			w = 0.206278 * safezoneW;
+			h = 0.0330105 * safezoneH;
+			text = "00:20";
+			LineSpacing = 1.000000;
+			ColorBackground[] = {0,0,0,0};
+			ColorText[] = {1,1,1,1};
+			font = "PuristaBold";
+			SizeEx = 0.06;
+		};
+		class ActualTime
+		{
+			type = CT_STATIC;
+			IDC = 2114;
+			style = ST_CENTER + ST_MULTI + ST_NO_RECT;
+			shadow = 1;
+			// ["0.940603 * safezoneW + safezoneX","0.706719 * safezoneH + safezoneY","0.0587471 * safezoneW","0.0375853 * safezoneH"]
+			x = 0.626058 * safezoneW + safezoneX;
+			y = 0.687059 * safezoneH + safezoneY;//0.706719 * safezoneH + safezoneY;
+			w = 0.206278 * safezoneW;
+			h = 0.0375853 * safezoneH;
+			text = "";
+			LineSpacing = 1.000000;
+			ColorBackground[] = {0,0,0,0};
+			ColorText[] = {1,1,1,1};
+			font = "PuristaBold";
+			size = 0.035;
+			SizeEx = 0.03;
+		};
+	};
+};
+
+class RscSendAttack: RscRestUI
+{
+	idd = 667;
+	class Controls: Controls
+	{
+		class ButtonBck: ButtonBck
+		{
+			idc = 7778;
+		};
+		class exitButton : exitButton
+		{};
+		class ButtonText: ButtonText
+		{
+			idc = 7779;
+			action = "[] call BIS_fnc_OM_moduleSyndikatTeam_orderTeam;";
+		};
+		class Slider: Slider
+		{
+			IDC = 7432;
+			onSliderPosChanged = "[ _this ] execvm '\a3\Missions_F_Oldman\Systems\UI\SyndikatTeam\HandlerDatetimeControl.sqf'";//BIS_DistractionTime = _this
+			sliderposition = 0;
+			y = 0.643045 * 1.07 * safezoneH + safezoneY;
+		};
+		class SliderTeamSelect
+		{
+		    idc = 5433;
+		    type = CT_SLIDER;
+		    style = SL_HORZ;
+		    //["0.860366 * safezoneW + safezoneX","0.67853 * safezoneH + safezoneY","0.0979118 * safezoneW","0.0187927 * safezoneH"]
+		    x = 0.637518 * safezoneW + safezoneX;
+		    y = 0.577024 * 1.04 * safezoneH + safezoneY;
+		    w = 0.183358 * safezoneW;
+		    h = (0.0440139 * safezoneH)/2;
+		    color[] = { 1, 1, 1, 1 };
+		    coloractive[] = { 1, 0.7, 0.1, 1 };
+		    // This is an ctrlEventHandler to show you some response if you move the sliderpointer.
+		    sliderposition = 1;
+		    linesize = 1/10;
+		    sliderrange[] = {0.1,1};
+		    sliderstep = 1/10;
+		    onSliderPosChanged = "[_this] execvm '\a3\Missions_F_Oldman\Systems\UI\SyndikatTeam\RestUnitsControl.sqf'"; //; hint format[""%1"",_this];
+		};
+		class numberTitle: numberTitle //SELECT TIME
+		{
+			IDC = 7543;
+			y = 0.577024 * 1.14 * safezoneH + safezoneY;
+		};
+		class numberTitleSelectUnits: numberTitle //SELECT UNITS
+		{
+			IDC = 7544;
+			y = 0.577024 * 0.99 * safezoneH + safezoneY;
+			text = $STR_A3_OM_System_SyndiaktTeamUI_SelectUnits;
+		};
+		class ActualUnits: ActualTime	//UNITS SELECTED
+		{
+			IDC = 7115;
+			y = 0.577024 * 1.08 * safezoneH + safezoneY;
+			/* text = "ActualUnits" */
+		};
+		class number: number
+		{
+			IDC = 7443;
+			text = "";
+			y = 0.599031 * 1.05 * safezoneH + safezoneY;
+		};
+		class Title: Title	//AMBUSH
+		{
+			IDC = 7832;
+			y = 0.455986 *1.05 * safezoneH + safezoneY;
+		};
+		class TitleDescription: TitleDescription	//YOU CAN ORDER...
+		{
+			IDC = 7821;
+			y = 0.511003 * 1.05 * safezoneH + safezoneY;
+		};
+		class ActualTime: ActualTime	//ATTACK WILL START
+		{
+			IDC = 7114;
+			y = 0.687059 *1.03 * safezoneH + safezoneY;
+		};
+	};
+};

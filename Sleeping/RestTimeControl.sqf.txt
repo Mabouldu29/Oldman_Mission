@@ -1,0 +1,41 @@
+waitUntil {!isnull findDisplay 666};
+_display = findDisplay 666;
+
+// Catch display
+_W = _display displayCtrl 4443;
+
+// Grab time value from slider
+_actualTime = (BIS_SleepingTime select 1);
+// floor value
+_hours = floor _actualTime;
+// calculate rest to minutes
+_minutes = ((_actualTime - _hours)*60) tofixed 0;
+
+// Set value to skip
+BIS_TimeToSkipWhileSleeping = parsenumber (_actualtime tofixed 2);
+// Debug
+//hintsilent format ["%1",BIS_TimeToSkipWhileSleeping];
+
+// add zero in front of the number if less than 10
+if (parsenumber _minutes < 10) then {_minutes = format ["0%1",_minutes]} else {_minutes = format ["%1",_minutes]};
+if (_hours < 10) then {_hours = format ["0%1",_hours]} else {_hours = format ["%1",_hours]};
+
+// change 60 minutes to 1+ hour
+if (parsenumber _minutes == 60) then
+{
+	if ((parsenumber _hours) < 9) then
+	{
+		_hours = format ["0%1",(parsenumber _hours) + 1];
+	}
+	else
+	{
+		if ((parsenumber _hours) == 9) then
+		{
+			_hours = format ["%1",(parsenumber _hours) + 1];
+		}
+	};
+	// minutes to 00
+	_minutes = format ["0%1",0];
+};
+
+_w ctrlsettext (format ["%1:%2",_hours,_minutes]);

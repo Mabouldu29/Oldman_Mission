@@ -1,0 +1,3 @@
+params["_logic", "_param1"];
+PROFILE_INFO("DecreaseMoney","DecreaseMoney",1);
+_logic setVariable ["BIS_actualSum", ((_logic getVariable "BIS_actualSum") - _param1) max 0];

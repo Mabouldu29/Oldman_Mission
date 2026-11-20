@@ -1,0 +1,659 @@
+
+//#define RADIUS 	10;
+private _main = {
+	private _mode = param [0,"",[""]];
+	private _input = param [1,[],[[]]];
+	_module = _input param [0,objNull,[objNull]];
+	
+	switch _mode do {
+		case "init": {
+			["quest DESTROY INIT CALLED"] call bis_fnc_logFormat; 
+			if (is3DEN) then {
+				
+				//[_module] call _setDefaultName;
+				// [] call _drawEhAdd; 
+			
+			} else {
+				_module setVariable ["#moduleReady", false];
+				// _isActivated = _input param [1,true,[true]];
+				 waitUntil{time > 0};
+				if (isServer) then {
+			
+					private _terrainBuildingRadius = 10;
+					private _buildingsRes = [];
+					// private _editorBuildingNames = _module getVariable "editorBuildingNames";
+					if ((_module getVariable "editorBuildingNames") isEqualType []) then {_module setVariable ["editorBuildingNames", "[]"]; ["quest DESTROY DEFAULTING editorBuildingNames"] call bis_fnc_logFormat; }; //fix with incorrect default input
+					["quest DESTROY BUILDING GOT %1",_module getVariable "editorBuildingNames"] call bis_fnc_logFormat; 
+					
+					// private _terrainMulti =	_editorBuildingName isEqualType [];
+					// private _terrainSigle =	_editorBuildingName isEqualType "";
+
+					if (!([_module, false] call _isSingle)) then {
+						_terrainBuildingRadius = [_module, false] call _getModuleRadius;	
+					};
+					
+					["quest DESTROY MUTLI"] call bis_fnc_logFormat;
+
+
+					// if (_terrainMulti || _terrainSigle) then {
+						// if (_terrainMulti) then {
+							
+						// };
+						//we can do it like this,as module is snapped at exact building position
+				
+						private _types = (_module getVariable ["AllowedObjectClassName", ""]) splitString ",";
+						
+						if (count _types == 0) exitWith {};
+						
+						["quest DESTROY OT %1 %2", typeName _types, _types] call bis_fnc_logFormat;
+
+						private _buildings = [_module, _terrainBuildingRadius, _types] call _getTerrainBuildings;
+						["quest DESTROY OT %1",_buildings] call bis_fnc_logFormat;
+						_buildingsRes =  [_buildings] call _getTerrainBuilding;
+
+						if (count _buildingsRes > 0) then {
+							// if (_terrainSigle) then {
+							// 	["quest DESTROY BUILDING GOT %1", (_buildingsRes#0)] call bis_fnc_logFormat;
+							// 	_module setVariable ["#buildings",[_buildingsRes#0], true];
+							// } else {if (_terrainMulti) then {
+								["quest DESTROY BUILDING GOT %1", _buildingsRes] call bis_fnc_logFormat;
+								_module setVariable ["#buildings", _buildingsRes, true];
+								_module setVariable ["#moduleReady", true];
+							// };};		
+						};	
+					
+				};
+				// if (_isActivated) then {
+				// };
+			};
+		};
+
+		case "attributesChanged3DEN": { // When some attributes were changed (including position and` rotation)
+			["quest DESTROY attribChanged"] call bis_fnc_logFormat;		
+			
+			private _time = _module getVariable ["_time", -1];
+			_recalc = FALSE;
+			if (_time isEqualTo -1) then {
+				_recalc = TRUE;
+				["quest DESTROY attribChanged time %1", time] call bis_fnc_logFormat;		
+				_module setVariable ["_moduleNameCopy", (_module get3DENAttribute "name")#0];
+				_module setVariable ["_modulePositonCopy", (_module get3DENAttribute "position")#0];
+				_module setVariable ["_moduleSizeCopy", (_module get3DENAttribute "size2")#0];
+
+				_module setVariable ["_time", 0];
+			};
+			
+			if (time >= _time) then {
+				["quest DESTROY attribChanged first 777"] call bis_fnc_logFormat;		
+
+				["quest DESTROY attribChanged first 777 %1", [
+					(((_module get3DENAttribute "name")#0) isEqualTo (_module getVariable "_moduleNameCopy")),
+						(((_module get3DENAttribute "position")#0) isEqualTo (_module getVariable "_modulePositonCopy")),
+						(((_module get3DENAttribute "size")#0) isEqualTo (_module getVariable "_moduleSizeCopy")),
+					(_module get3DENAttribute "name")#0, _module getVariable "_moduleNameCopy", (_module get3DENAttribute "position")#0,_module getVariable "_modulePositonCopy", (_module get3DENAttribute "size2")#0, _module getVariable "_moduleSizeCopy"]] call bis_fnc_logFormat;				
+
+				private _nameChanged = false;
+				// private _modPos = (_module get3DENAttribute "position")#0;
+ 				// private _previous = (_module getVariable "_modulePositonCopy")	(() isEqualTo &&
+
+				if (!(((_module get3DENAttribute "name")#0) isEqualTo (_module getVariable "_moduleNameCopy")) &&
+				
+					((_module get3DENAttribute "size2")#0) isEqualTo (_module getVariable "_moduleSizeCopy")
+
+					) then {
+					["quest DESTROY NAME CHANGE  FED"] call bis_fnc_logFormat;		
+						
+					_nameChanged = true;
+					[_module, false, true] call _resetBuildingNames;	
+					[_module, _module getVariable ["#buildings", []]] call _setEditorBuildingNames;	
+
+					_module setVariable ["_moduleNameCopy", (_module get3DENAttribute "name")#0];
+				} else {
+						["quest DESTROY NOT THE NAME"] call bis_fnc_logFormat;
+					
+					_module setVariable ["_modulePositonCopy", (_module get3DENAttribute "position")#0];
+					_module setVariable ["_moduleSizeCopy", (_module get3DENAttribute "size2")#0];	
+					
+					private _types = (_module getVariable ["AllowedObjectClassName", ""]) splitString ",";
+						
+					if (count _types == 0) exitWith {};
+				if (!([_module] call _isSingle)) then {
+
+					// _buildings = ([_module, false, [], ((_module get3DENAttribute "size2")#0)#0] call _useTerrainObject); // (_module get3DENAttribute "size2")#0
+					// {
+					// 	_x setVariable ["_module", _module]; 
+					// } forEach _buildings;
+
+					private _moduleRadius = [_module] call _getModuleRadius;	
+		
+					["quest DESTROY attribChanged multi"] call bis_fnc_logFormat;
+					[] call _drawEhRemove;
+			
+					
+					[_module] call _resetBuildingNames;
+			
+					
+					["quest DESTROY EDITOR MULTI %1 %2", _types,typeName _types] call bis_fnc_logFormat;
+				
+					
+					private _editorObjects = [getPos _module, _moduleRadius, _types, _module] call _nearestEditorObjects;
+					
+					["quest DESTROY MULTI EDITOR COUNT %1 %2", count _editorObjects, _editorObjects] call bis_fnc_logFormat;
+					//["setEditorBuildingNames",[_ module, _editorObjects]] call bis_fnc_OM_ModuleQuest_destroyObject;
+					[_module, _editorObjects] call _setEditorBuildingNames;
+					private  _buildings = ([_module, false, _editorObjects, _moduleRadius, true] call _useTerrainObject); 	// (_module get3DENAttribute "size2")#0
+					
+						
+						["quest DESTROY MULTI BUILDINGS %1 %2", count _buildings, _buildings] call bis_fnc_logFormat;
+					
+						{
+							_x setVariable ["_module", _module]; 
+						} forEach _buildings;
+			
+					[] call _drawEhAdd; 
+			
+				} else {
+					if (!(_module getVariable ["_dragged", false]))then {
+
+						//TODO MORE EFFICIENT			
+						// private _allEditorObjects = [];
+						// {
+						// 	private _obj = GVARS(_x, objNull);
+						// 	if (isNull _obj) then {
+								
+						// 	};
+						// 	_obj setVariable ["_module", _module]; 
+						// 	_allEditorObjects pushBack _obj;		
+							
+						// 	["quest DESTROY SINGLE EDITOR %1 - %2", _x,_obj] call bis_fnc_logFormat;
+						// } forEach (_module get3DENAttribute "editorBuildingNames")#0;
+
+						// _module setVariable ["#buildings", _allEditorObjects];
+						
+					
+						// [] call _drawEhRemove;
+						
+						[_module] call _resetBuildingNames;			
+				
+						private _building = objNull;
+						private _editorObjects = [getPos _module, 50, _types, _module] call _nearestEditorObjects; //TO COVER EVEN BIG OBJECTS
+						if (count _editorObjects > 0) then {
+							_building = ([_module, false, [_editorObjects#0], -1] call _useTerrainObject);
+							_building setVariable ["_module", _module]; 	
+							[_module, [_building]] call _setEditorBuildingNames;
+						};
+						if (isNull _building) then {
+							_building = [_module, false] call _useTerrainObject;
+						};
+
+						// [] call _drawEhAdd; 
+
+						["quest DESTROY SINGLE EDITOR COUNT %1 - %2 FOR %3", _building,_editorObjects ,_types] call bis_fnc_logFormat;
+						
+						};
+					
+					};						
+				};
+	
+			_module setVariable ["_time", time + 0.1];	
+			};
+			if (_recalc) then {
+				["dragged3DEN", [_module]] call BIS_fnc_OM_moduleQuest_destroyObject;
+			};
+
+		};
+		// case "connectionChanged3DEN": {
+		// 	["quest DESTROY changed %1", _input] call bis_fnc_logFormat;
+		// };
+
+		// case "nearestEditorObjects": {
+		// 	(_input call _nearestEditorObjects)
+		// };
+ 
+		case "getBuildingBBox": {
+			//we cant make local fnc, for the sake of scopinh
+			private _building = _input param [1,objNull,[objNull]];
+			if (isNull _building) exitWith {[]};
+
+			private _bbox = boundingBoxReal _building;
+			_bbox params ["_point1","_point2"];
+
+			_point1 params ["_x1","_y1","_z1"];
+			_point2 params ["_x2","_y2","_z2"];
+
+			#define A		(_building modelToWorldVisual [_x1,_y1,_z1])
+			#define B		(_building modelToWorldVisual [_x2,_y1,_z1])
+			#define C		(_building modelToWorldVisual [_x2,_y1,_z2])
+			#define D		(_building modelToWorldVisual [_x1,_y1,_z2])
+			#define E		(_building modelToWorldVisual [_x1,_y2,_z1])
+			#define F		(_building modelToWorldVisual [_x2,_y2,_z1])
+			#define G		(_building modelToWorldVisual [_x2,_y2,_z2])
+			#define H		(_building modelToWorldVisual [_x1,_y2,_z2])
+
+			#define COLOR_HIGHLIGHT							[0,0,1,1]
+
+			private _edges =
+			[
+				[A,B,COLOR_HIGHLIGHT],
+				[B,C,COLOR_HIGHLIGHT],
+				[C,D,COLOR_HIGHLIGHT],
+				[D,A,COLOR_HIGHLIGHT],
+				[E,F,COLOR_HIGHLIGHT],
+				[F,G,COLOR_HIGHLIGHT],
+				[G,H,COLOR_HIGHLIGHT],
+				[H,E,COLOR_HIGHLIGHT],
+				[A,E,COLOR_HIGHLIGHT],
+				[B,F,COLOR_HIGHLIGHT],
+				[C,G,COLOR_HIGHLIGHT],
+				[D,H,COLOR_HIGHLIGHT] 
+			];
+
+			_edges
+		};
+		case "registeredToWorld3DEN": { // When added to the world (e.g., after undoing and redoing creation)
+				["quest DESTROY REGISTER CALLED"] call bis_fnc_logFormat; 
+			//[_module] call _setDefaultName;
+			// private _building = [_module, false] call _useTerrainObject;
+			// [] call _drawEhAdd; 
+		};
+		case "unregisteredFromWorld3DEN": {// When removed from the world (i.e., by deletion or undoing creation)
+			[] call _drawEhRemove;
+		};
+		case "dragged3DEN": {  // When object is being dragged
+			if (!(_module getVariable ["draggedFirstTime", false])) then {
+				_module setVariable ["draggedFirstTime", true];
+			};
+
+			if ([_module] call _isSingle) then {
+				_module setVariable ["_dragged", true];
+					//["setEditorBuildingNames",[_module, [_building] ]] call bis_fnc_OM_ModuleQuest_destroyObject;   [_module] call _singleBuildingHandling;
+				
+				[] call _drawEhRemove;	
+				[_module] call _resetBuildingNames;
+			
+				//TODO remove3DENConnection ["Sync", [_module], _building]; 
+				//get mission objects to snap
+				private _objects = get3DENMouseOver;
+				private _building = objNull;	
+
+				if (count _objects > 0) then {
+					private _entityTypeIndex = _objects findIf {"Object" isEqualTo _x};  
+					if (_entityTypeIndex > -1) then {
+						//["quest DESTROY MouseOverObj %1", [count _objects, _entityTypeIndex, _entityTypeIndex + 1, _objects]] call bis_fnc_logFormat;
+						private _entity = _objects#(_entityTypeIndex + 1);//objects: ["Object",B Alpha 1-1:1], taking index after type
+						
+						private _types = (_module getVariable ["AllowedObjectClassName", ""]) splitString ","; //TODO copypasta
+						private _isAllowedType = false;
+						{
+							if (_entity isKindOf _x) then {
+								_isAllowedType = true;
+							};
+						} forEach _types;
+						
+						if (_isAllowedType) then {
+							["quest DESTROY MouseOverObj ENTC %1", _entity] call bis_fnc_logFormat;		
+						
+							_building = ([_module, false, [_entity], -1] call _useTerrainObject);		
+							_building setVariable ["_module", _module]; 
+
+							["quest DESTROY MouseOverObj TERRA %1", _building] call bis_fnc_logFormat;
+
+							//TODO  add3DENEventHandler ["AttributesChanged3DEN", {
+							// 	params ["_building"];
+							// 	["setEditorBuildingName",[_building getVariable "_module", _building]] call bis_fnc_OM_ModuleQuest_destroyObject;
+							// }];
+	
+							
+							[_module, [_building]] call _setEditorBuildingNames;
+						};	
+					};		
+				};
+				if (isNull _building) then { //handle terrain objects
+					_building = [_module, false] call _useTerrainObject;
+				};
+				[] call _drawEhAdd;
+			
+			}; 
+		};
+	};
+};
+
+private _setDefaultName = {
+	params["_module"];
+	if (((_module get3DENAttribute "name")#0) isEqualTo "") then {
+		_module set3DENAttribute ["name", "DestroyQuest"];
+	};
+};
+
+private _resetBuildingNames = {
+	params["_module",
+			["_isReset", true],
+			["_isRename", false]
+	];
+	private _buildings = _module getVariable ["#buildings", [] ];
+	// // if (count _buildings > 0) then {
+	
+	{
+		["quest DESTROY SET_NAMES RESET MOD NAMES %1 - %2", _x get3DENAttribute ("name"), _x] call bis_fnc_logFormat;
+	} forEach _buildings;
+	
+	private _editorOnly = _buildings select {!(((_x get3DENAttribute "name")#0) isEqualTo "")};
+		
+	["quest DESTROY SET_NAMES RESET MOD %1", _editorOnly] call bis_fnc_logFormat;
+		
+	[_module, _editorOnly, _isReset, _isRename] call _setEditorBuildingNames;
+	
+	{
+		["quest DESTROY SET_NAMES RESET QUARD %1 - %2", _x get3DENAttribute ("name"), _x] call bis_fnc_logFormat;
+	} forEach _buildings;
+};
+
+private _setEditorBuildingNames = {
+	params["_module",
+	 ["_buildings", [],[ [] ] ], 
+	 ["_isReset", false ],
+	  ["_isRename", false ]
+	 ];
+
+	//if (count _buildings == 0) exitWith {[]}; //TODO premature returns FIX
+	["quest DESTROY SET_NAMES BUILDINGS %1 %2", _buildings, count _buildings] call bis_fnc_logFormat;
+	
+	private _buildingNames = [];
+	private _moduleName =  (_module get3DENAttribute "name")#0;		
+	private _buildingModuleName = format["%1Target",_moduleName];
+	private _prevModuleName = _module getVariable "_moduleNameCopy";
+	
+	for "_i" from 0 to (count _buildings -1) do {
+		private _building = _buildings#_i;
+		private _bName = (_building get3DENAttribute "name")#0;
+
+		["quest DESTROY SET_NAMES TEST %1 %2 %3 %4 %5 %6",_bName select [0, count _moduleName], _bName select [0, count _prevModuleName], _moduleName, _prevModuleName ,(((_bName select [0, count _moduleName]) isEqualTo _moduleName) ||   ((_bName select [0, count _prevModuleName]) isEqualTo _prevModuleName
+		
+		)) ] call bis_fnc_logFormat;	
+
+		if ((_isReset || _isRename) &&
+		(
+		 ((_bName select [0, count _moduleName]) isEqualTo _moduleName) ||
+		 ((_bName select [0, count _prevModuleName]) isEqualTo _prevModuleName)
+		)
+		) then {
+			["quest DESTROY SET_NAMES RESET %1 %2",_building, _building set3DENAttribute ["name", ""] ] call bis_fnc_logFormat;
+		} else {
+			if (_bName isEqualTo "") then {  
+				private _buildingTargetName = format["%1%2",_buildingModuleName, _i];
+				_bName = _buildingTargetName;  
+				["quest DESTROY SET_NAMES SET %1", _bName] call bis_fnc_logFormat;
+				_building set3DENAttribute ["name", _bName];
+			};
+			_buildingNames pushBack _bName;
+		};
+
+			// ["quest DESTROY NNED DEL %1", [_bName isEqualTo _buildingTargetName, _bName, _buildingTargetName] ] call bis_fnc_logFormat;
+			//["quest DESTROY NNED DELETE NAME %1",] call bis_fnc_logFormat;
+	
+		//sleep 0.1;
+		// ["quest DESTROY NNED ARRAY %1", _buildingNames] call bis_fnc_logFormat;
+		// ["quest DESTROY NNED %1 - %2", _bName, _building] call bis_fnc_logFormat;			
+	};
+
+	if (count _buildingNames > 0 || _isReset) then {
+		private _buildingNamesStr = format["%1", _buildingNames];
+		["quest DESTROY SET_NAMES BUILDING STR %1", _buildingNamesStr] call bis_fnc_logFormat;
+		
+		// _module clear3DENAttribute "editorBuildingNames";
+		_module set3DENAttribute ["editorBuildingNames", _buildingNamesStr]; 
+		// ["quest DESTROY  NNED FINAL %1 - %2 - %3", _module get3DENAttribute "editorBuildingNames", _buildingNames, str _buildingNames] call bis_fnc_logFormat;
+	};
+	
+}; 
+
+
+private _nearestEditorObjects = {
+	params["_pos", "_radius",
+	 	  ["_types", ["BUILDING"], [ [] ] ],
+	 	  "_module"
+	];
+	private _allEditorObjects = [];
+	//TODO apply insteasd of foreach
+	{
+		{
+			_allEditorObjects pushBackUnique _x;  //Some buildings can apply to multiple types, sadly
+		} forEach allMissionObjects _x;
+	} forEach _types;
+	
+	{
+		_allEditorObjects pushBackUnique _x;
+	} forEach synchronizedObjects _module;
+
+	["quest DESTROY FFFF %1 = %2", _types, _allEditorObjects] call bis_fnc_logFormat;
+	
+	if (count _allEditorObjects > 0) then {
+		if (toLower typeOf _module == "moduleomquest_destroyobjects_f" && !(isNil {_module get3DENAttribute "position"})) then {
+			private _pos = (_module get3DENAttribute "position") # 0;
+			private _dir = (_module get3DENAttribute "rotation") # 0 # 2;
+			private _a = (_module get3DENAttribute "size3") # 0 # 0;
+			private _b = (_module get3DENAttribute "size3") # 0 # 1;
+			private _c = (_module get3DENAttribute "size3") # 0 # 2;
+			private _isRectange = (_module get3DENAttribute "isRectangle") # 0;
+			_allEditorObjects = [_allEditorObjects, [_pos], {_input0 distance2D _x}, "ASCEND", {_x inArea [_pos, _a, _b, _dir, _isRectange, _c]}] call BIS_fnc_sortBy;
+		} else {
+			_allEditorObjects = [_allEditorObjects, [_pos], {_input0 distance2D _x}, "ASCEND", {(_pos distance2D _x) <= _radius}] call BIS_fnc_sortBy;
+		};
+	};
+	_allEditorObjects
+};
+
+private _getModuleRadius = {
+	params["_module", ["_isEden", true]];
+	
+	private _size = if (_isEden) then {
+		(_module get3DENAttribute "size2")#0
+	} else {
+		_module getVariable ["objectArea", [0,0] ]
+	};
+	_size params ["_a","_b"];
+	((_a max _b) * 1.42)
+};
+
+private _drawEhRemove = {
+	//remove 'Draw3D' eh if last module is removed
+	private _modules = (all3DENEntities param [3,[]]) select { _x isKindOf "ModuleOmQuest_DestroyObject_F" && {_x != _module}}; //TODO hardcoded type
+	if (count _modules == 0) then
+	{
+		private _ehDraw3D = missionNamespace getVariable ["resourceModules_ehDraw3D",-1];
+		if (_ehDraw3D != -1) then
+		{
+			removeMissionEventHandler ["Draw3D",_ehDraw3D];
+			missionNamespace setVariable ["resourceModules_ehDraw3D",-1];
+		};
+	};
+	
+	private _buildings = _module getVariable ["#buildings", []];
+	if (count _buildings > 0) then {
+		{
+			private _building = _x;
+			{
+				private _building = _x;
+				_building setVariable["#marriedTo", objNull];
+			} forEach _buildings;
+		} forEach _buildings;
+	};	
+};
+
+private _drawEhAdd = {
+	private _ehDraw3D =  missionNamespace getVariable ["resourceModules_ehDraw3D",-1];
+	if (_ehDraw3D == -1) then {
+		_ehDraw3D = addMissionEventHandler ["Draw3D", {
+			private _module = ((get3DENSelected "logic") select {_x isKindOf "ModuleOmQuest_DestroyObject_F"}) param [0,objNull]; //TODO hardcoded type
+			if (isNull _module) exitWith {};
+			private _buildings = _module getVariable ["#buildings", []];
+			if (count _buildings > 0) then {
+				{
+					private _building = _x;
+					//draw bbox
+					private _bbox = ["getBuildingBBox",[_module,_building]] call bis_fnc_OM_ModuleQuest_destroyObject;
+					{drawLine3D _x} forEach _bbox;
+				
+				} forEach _buildings;
+			};	
+		}];
+		missionNamespace setVariable ["resourceModules_ehDraw3D",_ehDraw3D];
+	};
+};
+
+//TODO merge with getMRadius
+private _isSingle = {	
+	params["_module", ["_isEditor", true]];
+	//TODO is this covering all cases ?
+ 	private _size2 = if (_isEditor) then {
+		(_module get3DENAttribute "size2")#0
+	} else {
+		((_module getVariable ["objectArea", [0,0]]) select [0, 2])
+	};
+	_size2 isEqualTo [0,0]
+};
+
+private _useTerrainObject = {
+	params["_module", ["_displayErrors", false], ["_buildings", []], ["_terrainBuildingRadius", 10], ["_appendObjects", false] ];
+
+
+	private _appended = [];
+	if (_appendObjects) then {
+		_appended = _buildings;
+	};	
+
+	if (_buildings isEqualTo [] || _appendObjects) then { //!(_terrainBuildingRadius isEqualTo -1) && 
+		
+		private _types = (_module getVariable ["AllowedObjectClassName", ""]) splitString ",";
+		["quest DESTROY APPEND %1", _types] call bis_fnc_logFormat;
+		
+		if (count _types > 0) then {
+			_buildings = [_module, _terrainBuildingRadius, _types] call _getTerrainBuildingsEden;
+			_buildings append _appended;
+		};
+	};
+
+	//TODO POTENTIALY BREAKING FOR THE OTHER USAGE
+	if (!_appendObjects && !(_terrainBuildingRadius isEqualTo -1)) then {
+		 _buildings = [_module, _buildings, _displayErrors] call _getTerrainBuildingEden;	
+		_buildings append _appended;
+	};
+	
+	private _buildingsRes = _buildings;
+	if (count _buildings > 0) then {  
+		if ([_module] call _isSingle) then {
+			_buildingsRes = _buildings#0;
+			// ["quest DESTROY USE single %1", _buildingsRes] call bis_fnc_logFormat;	
+			_module setVariable ["#buildings", [_buildingsRes]];
+		} else {
+			// ["quest DESTROY USE multi %1", _buildingsRes] call bis_fnc_logFormat;	
+			_module setVariable ["#buildings",_buildingsRes];
+		};
+		_module call _setTerrainBuildingEden;
+	} else {
+		// ["quest DESTROY USE NO %1", ""] call bis_fnc_logFormat;	
+		_module setVariable ["#buildings", [] ];
+	}; 
+
+	// if (!((_editorBuildingName#0) isEqualType []) then {
+
+		
+	// };
+	_buildingsRes
+};
+
+private _getTerrainBuildings = {
+	 params["_module", "_terrainBuildingRadius",
+	 	   ["_types", ["BUILDING", "HOUSE"], [ [] ] ]
+	 ];
+
+	 //TODO type filtering from module ? "HOUSE"
+	//"TREE", "SMALL TREE", "BUSH", "BUILDING", "HOUSE", "FOREST BORDER", "FOREST TRIANGLE", "FOREST SQUARE", "CHURCH", "CHAPEL", "CROSS",
+	//"BUNKER", "FORTRESS", "FOUNTAIN", "VIEW-TOWER", "LIGHTHOUSE", "QUAY", "FUELSTATION", "HOSPITAL", "FENCE", "WALL", "HIDE", "BUSSTOP", 
+	//"FOREST", "TRANSMITTER", "STACK", "TOURISM", "WATERTOWER", "POWER LINES", "POWERSOLAR", "POWERWAVE", "POWERWIND"]
+	["quest DESTROY FFFF REGE %1", _types] call bis_fnc_logFormat;
+
+	_buildings = (nearestTerrainObjects [_module,
+	_types
+	,_terrainBuildingRadius, false, true]);  
+	// select {_b=configFile >> "cfgVehicles" >> typeOf _x;(getText(_b >> "destrType") != "DestructNo" || getText(_b >> "simulation") != "church")};
+	_buildings
+};
+
+private _getTerrainBuildingsEden = {
+	 params["_module", "_terrainBuildingRadius", "_types"];
+	 private _buildings = _this call _getTerrainBuildings;
+	_buildings = _buildings select {_m = _x getVariable ["#marriedTo", objNull]; isNull _m || {_module == _m}};
+	_buildings
+};
+
+private _getTerrainBuilding = {
+	params["_buildings", ["_displayErrors", false]];
+	["quest DESTROY ONE_OBJECT"] call bis_fnc_logFormat;
+	private _buildingsResult = [];
+	if (count _buildings > 0) then {
+		{
+			private _buildingCandidate = _x;
+			private _buildingType = typeOf _buildingCandidate;
+			
+			["quest DESTROY ONE_OBJECT"] call bis_fnc_logFormat;
+
+			if (_buildingType != "") then {
+				private _b = configFile >> "cfgVehicles" >> _buildingType;
+				if (getText(_b >> "destrType") == "DestructNo" || getText(_b >> "destrType") == "") then { //TODO some buildings could have DestructionEffects>>Ruin1 set to same model
+					private _messageIndestructable = format ["This object is indestructible (%1'%2') !", _buildingType, getText(_b >> "displayName")];
+					["quest DESTROY ONE_OBJECT ERR %1", _messageIndestructable] call bis_fnc_logFormat;
+					if (_displayErrors) then {
+						["Error: %1", _messageIndestructable] call BIS_fnc_error;
+					};
+				} else {
+					_buildingsResult pushBack _buildingCandidate;
+				};	  
+			} else {
+				_buildingsResult pushBack _buildingCandidate;
+			};
+		} forEach _buildings;
+	};	
+	// ["quest DESTROY GET_TB RESULT %1", _buildingsResult] call bis_fnc_logFormat;
+	_buildingsResult
+};
+
+private _getTerrainBuildingEden = {
+	params["_module", "_buildings", ["_displayErrors", false]];
+	// ["quest DESTROY BuildPrev START"] call bis_fnc_logFormat;	
+	private _buildings =  [_buildings, _displayErrors] call _getTerrainBuilding;
+	if (count _buildings > 0) then {
+		private _buildingsPrev = _module getVariable ["#buildings", [] ];
+		
+		// ["quest DESTROY BuildPrev %1 - %2", _buildingsPrev, typeName _buildingsPrev] call bis_fnc_logFormat;	
+		
+		if (count _buildingsPrev > 0) then {
+			{
+				_x setVariable["#marriedTo", objNull];
+			} forEach _buildingsPrev;
+		};
+	};
+	_buildings
+};
+
+private _setTerrainBuildingEden = {
+	private _module = _this;
+	private _buildings = _module getVariable "#buildings";
+	
+	// ["quest DESTROY GETEDEN %1", _buildings] call bis_fnc_logFormat;
+
+	if ([_module] call _isSingle) then {
+		//snap module to building	
+		private _building = _buildings#0;
+		private _buildingPos = getPos _building; _buildingPos set [2,0];
+		_module set3DENAttribute ["position",_buildingPos];
+		_building setVariable["#marriedTo", _module];
+	} else {
+		{
+			_x setVariable["#marriedTo", _module];
+			
+		} forEach _buildings;
+	};
+};
+
+_this call _main

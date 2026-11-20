@@ -1,0 +1,110 @@
+#include "common_definitions.inc"
+
+#define DEBUG_CHECKPOINT                        1
+#define BOX_P1(BOX)                             (BOX select 0)
+#define BOX_P2(BOX)                             (BOX select 1)
+#define SOLDIER_VERTICAL_OFFSET                 2
+#define VEHICLE_DISTANCE_FROM_MARSHALL          2
+#define VEHICLE_DISTANCE_FROM_MARSHALL_MEDIUM   10
+#define VEHICLE_DISTANCE_FROM_MARSHALL_FAR      50
+#define VEHICLE_MAX_ANGLE_FROM_MARSHALL         45
+#define OBJ_ON_BACK                             0
+#define OBJ_ON_LEFT                             1
+#define OBJ_ON_RIGHT                            2
+#define CHECKPOINT_MAXIMUM_MOVEMENT_OFFSET      2
+
+#define STATE_NAMES \
+["IDLE", "CONTROL ACTIVE", "SUBJECT ENTERED CHECKPOINT ZONE", "ALARMED", "ALARMED-SPEED", \
+"ALARMED-WEAPON", "PARKED IN CONTROL POINT", "CONTROL DONE-OK", "CONTROL DONE-ALARM", \
+"SUBJECT LEFT PREMATURELY", "SUBJECT LEFT-OK (END)", "SYSTEM-SKIP", "CONTROL-IN PROGRESS", \
+"CHECKPOINT OPEN", "CONTROL INACTIVE (CAN PASS THROUGH)", "SUBJECT LEFT VEHICLE", "! INIT !", "! INTERRUPT !"]
+#define SET_STATE(CHECKPOINT, STATE, DELAY, FORCESTATE)     \
+CHECKPOINT setVariable ["BIS_Prevstate", GET_STATE(CHECKPOINT)]; \
+if(DELAY == 0) then {  CHECKPOINT setVariable ["BIS_state", STATE]} else \
+{CHECKPOINT setVariable ["BIS_state", STATE_CHECKPOINT_SYSTEM_SKIP]; _nextState = STATE; _time = time; _delay = DELAY, _forceState = FORCESTATE}
+#define GET_STATE(CHECKPOINT)                   CHECKPOINT getVariable ["BIS_state", STATE_CHECKPOINT_UNDEFINED]
+#define GET_STATE_NAME(INDEX) 				          STATE_NAMES select INDEX
+#define GET_PREVSTATE(CHECKPOINT)               (CHECKPOINT getVariable ["BIS_Prevstate", STATE_CHECKPOINT_UNDEFINED])
+
+
+
+#define OPEN_ZONE(ZONE) { _x setTriggerStatements ["this", "", ""] } foreach ZONE;
+#define CLOSE_ZONE(ZONE) { _x setTriggerStatements ["false", "", ""] } foreach ZONE;
+#define IN_ZONE(ZONE) (({triggerActivated _x} count ZONE > 0)  && {(vehicle player in list (ZONE select {triggerActivated _x} select 0))})
+#define CHECKPOINT_CHECK_MOVEMENT()                 \
+if( ( vehicle _vehicle  distance2D ( _checkpoint getVariable ["SubjectPosOnceParked", getpos _vehicle] )) > CHECKPOINT_MAXIMUM_MOVEMENT_OFFSET ) then \
+{SET_STATE( _checkpoint, STATE_CHECKPOINT_ALARMED_SPEED, 0, false)}
+#define CHECKPOINT_CHECK_RULES()                    \
+if ([side vehicle _vehicle] call BIS_fnc_om_threat > CHECKPOINT_THREAT_THRESHOLD) then { SET_STATE(_checkpoint, STATE_CHECKPOINT_ALARMED_WEAPON, 0, false);}; \
+if (speed _vehicle > CHECKPOINT_SPEED_LIMIT) then { SET_STATE(_checkpoint, STATE_CHECKPOINT_ALARMED_SPEED, 0, false);}; \
+if!(_vehicle in vehicle _vehicle) then {SET_STATE(_checkpoint, STATE_CHECKPOINT_SUBJECT_LEFT_VEHICLE, 0, true)}
+#define OPEN_GATE() if(!isNil "_gate") then {_gate animate ["door_1_rot",1]}
+#define CLOSE_GATE() if(!isNil "_gate") then {_gate animate ["door_1_rot",0]}
+#define RESET_SOLDIERS_POSITIONS()  \
+  _soldierZoneA setPosASL (_soldierAInitPos select 0);_soldierZoneA setdir (_soldierAInitPos select 1); \
+  _soldierZoneB setPosASL (_soldierBInitPos select 0);_soldierZoneB setdir (_soldierBInitPos select 1)
+/* #define HANDLE_GATE_SIMULATION() if(player distance _gate < 200) then {_gate enableSimulation true} else {_gate enableSimulation false}    //remove it from AI's pathfinding */
+
+#define ATTACK_SUBJECT(SUBJECT, SOLDIERS)           \
+private _subject=SUBJECT; if(vehicle SUBJECT != SUBJECT) then {_subject = driver SUBJECT }; {_x doTarget (driver _subject); _x doFire (driver _subject); _x reveal [_subject, 4]} forEach SOLDIERS
+#define SOLDIERS_ON_CHECKPOINT(CHECKPOINT, SIZE)    (CHECKPOINT nearEntities [["Man", "LandVehicle"],SIZE])
+#define MAKE_CHECKPOINT_OWNER_MORE_FRIENDLY       BIS_relEast setVariable ["finalRange", 1.0]
+#define MAKE_CHECKPOINT_OWNER_DEFAULT_FRIENDLY()    BIS_relEast setVariable ["finalRange", RELATION_DEFAULT_RANGE_FOR_UNARMED_PLAYER]
+/* #define EXECODE_DELAYED(CODE, DELAY)                [CODE, DELAY] spawn {params["_code", "_delay"]; Sleep _delay; call _code} */
+#define CHECKPOINT_RELATIONSHIP_CALM(SUBJECT_SIDE)        ([SUBJECT_SIDE] call BIS_fnc_om_aggroMode == M_CALM)
+#define CHECKPOINT_RELATIONSHIP_WARNED(SUBJECT_SIDE)      ([SUBJECT_SIDE] call BIS_fnc_om_aggroMode == M_PREPARE)
+#define CHECKPOINT_RELATIONSHIP_AGRESSIVE(SUBJECT_SIDE)   ([SUBJECT_SIDE] call BIS_fnc_om_aggroMode == M_AGRESSIVE)
+
+#define CODEF(F) F
+
+#define EXEC_ONCE_RESET() _checkpoint setVariable ["execOnceGuard", []]
+#define __EXEC_ONCE_IN_STATE_START__ \
+if!(_checkpoint getVariable ["executed", false]) then { \
+_checkpoint setVariable ["executed", true];
+#define __EXEC_ONCE_IN_STATE_END__ };
+#define __EXEC_ONCE_IN_STATE_RESET__ _checkpoint setVariable ["executed", false]
+
+
+#define __EXEC_ONCE_START__ \
+private _state = GET_STATE(_checkpoint); \
+private _execOnceGuard = _checkpoint getVariable ["execOnceGuard", []]; \
+private _nrOfGuards = count _execOnceGuard; \
+if( _nrOfGuards < (_state+1) ) then { \
+private _guardsToAdd = (_state + 1) - _nrOfGuards; \
+for "_iLoop" from 1 to _guardsToAdd do { _execOnceGuard = _execOnceGuard + [false];};}; \
+if!( _execOnceGuard select _state ) then {
+
+#define __EXEC_ONCE_END__ _execOnceGuard set [_state, true]; _checkpoint setVariable ["execOnceGuard", _execOnceGuard];};;
+
+//ANIMATIONS RELATED MACROS
+
+#define PLAY_SIMPLE       0
+#define PLAY_LOOP         1
+#define PLAY_OUT          2
+#define ANIMSET_NAVIGATE_STRAIGHT   [ "Acts_NavigatingChopper_in", "Acts_NavigatingChopper_loop", "Acts_NavigatingChopper_out" ]
+#define ANIMSET_NAVIGATE_RIGHT      [ "Acts_JetsMarshallingRight_in", "Acts_JetsMarshallingRight_loop", "Acts_JetsMarshallingRight_out" ]
+#define ANIMSET_NAVIGATE_LEFT       [ "Acts_JetsMarshallingLeft_in", "Acts_JetsMarshallingLeft_loop", "Acts_JetsMarshallingLeft_out" ]
+#define ANIMSET_NAVIGATE_LEAVE      [ "Acts_ShowingTheRightWay_in", "Acts_ShowingTheRightWay_loop", "Acts_ShowingTheRightWayt_out" ]
+#define MARSHALL_DEFAULT_ANIMPOSE   "AmovPercMstpSlowWrflDnon"
+#define SET_ANIMATION(SWITCHMOVE, SOLDIER, ANIM)   \
+if(SWITCHMOVE) then { SOLDIER switchMove ANIM } else { SOLDIER playMove ANIM };
+
+
+//CHKPOINT DRONES
+#define BACK_RIGHT(COORDS)          [(COORDS select 0 select 0 select 0),(COORDS select 0 select 0 select 1), COORDS select 1     ]
+#define BACK_LEFT(COORDS)           [(COORDS select 0 select 1 select 0),(COORDS select 0 select 1 select 1), COORDS select 1     ]
+#define BACK_LEFT_MID(COORDS)       [(COORDS select 0 select 1 select 0),(COORDS select 0 select 1 select 1), (COORDS select 1)/8 ]
+#define FRONT_LEFT(COORDS)          [(COORDS select 0 select 2 select 0),(COORDS select 0 select 2 select 1), COORDS select 1     ]
+#define FRONT_LEFT_MID(COORDS)      [(COORDS select 0 select 2 select 0),(COORDS select 0 select 2 select 1), (COORDS select 1)/8 ]
+#define FRONT_RIGHT(COORDS)         [(COORDS select 0 select 3 select 0),(COORDS select 0 select 3 select 1), COORDS select 1     ]
+#define FRONT_RIGHT_MID(COORDS)     [(COORDS select 0 select 3 select 0),(COORDS select 0 select 3 select 1), (COORDS select 1)/8 ]
+#define CENTER_LEFT_TOP(COORDS)     [BACK_LEFT(COORDS) select 0,   0,            COORDS select 1   ]
+#define CENTER_LEFT_MID(COORDS)     [BACK_LEFT(COORDS) select 0,   0,            COORDS select 1   ]
+#define CENTER_RIGHT_TOP(COORDS)    [BACK_RIGHT(COORDS) select 0,  0,            COORDS select 1   ]
+#define CENTER_FRONT_TOP(COORDS)    [0,                             FRONT_RIGHT(COORDS) select 1,               COORDS select 1   ]
+#define CENTER_BACK_TOP(COORDS)     [0,                             BACK_RIGHT(COORDS) select 1,                COORDS select 1   ]
+#define CENTER(COORDS)              [0,                             0,                                          COORDS select 1   ]
+#define DRONE_TYPES                 "C_UAV_06_F", "O_UAV_06_F", "I_UAV_06_F", "B_UAV_01_F", "O_UAV_01_F", "I_UAV_01_F"
+
+#define DETACH_DRONE_WAYPOINTS      {detach _x} forEach (attachedObjects (_checkpoint getVariable "subject")) select {typeOf _x == "Key_F"};
+#define GET_DRONE_TIMELINE(TIMELINE) if(!isNil {TIMELINE}) then {TIMELINE} else {-1};

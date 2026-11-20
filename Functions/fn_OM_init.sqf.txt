@@ -1,0 +1,39 @@
+private _mode = param [0,"",[""]];
+private _input = param [1,[],[[]]];
+private _module = _input param [0,objNull,[objNull]];
+
+switch _mode do
+{
+	// Default object init
+	case "init":
+	{
+		// Init Oldman Systems
+		if (is3DEN) exitWith {};
+		[_module] execVM "\a3\Missions_F_Oldman\Systems\scripts\init_systems.sqf";
+	};
+	// When some attributes were changed (including position and rotation)
+	case "attributesChanged3DEN":
+	{
+
+	};
+	// When added to the world (e.g., after undoing and redoing creation)
+	case "registeredToWorld3DEN":
+	{
+
+	};
+	// When removed from the world (i.e., by deletion or undoing creation)
+	case "unregisteredFromWorld3DEN":
+	{
+
+	};
+	// When connection to object changes (i.e., new one is added or existing one removed)
+	case "connectionChanged3DEN":
+	{
+
+	};
+	// When object is being dragged
+	case "dragged3DEN":
+	{
+
+	};
+};

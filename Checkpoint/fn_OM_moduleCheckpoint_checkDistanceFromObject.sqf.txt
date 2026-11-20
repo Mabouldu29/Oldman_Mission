@@ -1,0 +1,22 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+
+
+params[ "_obj1", "_obj2" ];
+private _closestObjDistance = 9999;
+
+for "_iLoop" from 0.5 to 1.4 step 0.1 do
+{
+
+  private _ret = ([_obj1, _obj2, _iLoop] call BIS_fnc_OM_moduleCheckpoint_intersect) select 0;
+  /* ["ret: %1", _ret] call BIS_fnc_logFormat; */
+  if(!isNil {_ret select 2} && {_ret select 2 == _obj2}) then
+  {
+    /* ["object: %1, coords: %2", _ret select 2, _ret select 0] call BIS_fnc_logFormat; */
+    private _dist = _ret select 0 distance2D _obj1;
+    if( _dist < _closestObjDistance ) then { _closestObjDistance = _dist };
+  };
+    /* sleep 0.1; */
+};
+/* ["Closest: %1", _closestObjDistance] call BIS_fnc_logFormat; */
+_closestObjDistance

@@ -1,0 +1,199 @@
+//MODULE SYSTEMS
+#define FUNCTIONS_PATH "\a3\Missions_F_Oldman\Systems\Scripts\Radio\"
+#define FUNCTIONS_NAMES ["Radio_Play", "Radio_Stop", "Radio_Enqueue", "Radio_Init", "Radio_FSM"]
+#define FUNCTIONS_PREFIX "BIS_fnc_OM_moduleRadio_"
+
+#define MODE_INIT         "init"
+#define MODE_PLAY         1
+#define MODE_STOP         2
+#define MODE_ENQUEUE      3
+#define MODE_START_FSM    4
+
+//USEFUL STUFF
+#define Ln2(X) private _ln=0; while{X=X>1} do {X/2,_ln=_ln+1}; _ln
+#define GET_TIME dayTime - (floor dayTime)
+#define RADIO_MODULE_LOGIC missionNamespace getVariable "BIS_OM_Radio_logic"
+#define CONVERT_SECONDS_TO_DAYTIME(SECONDS) (SECONDS/60)/60
+
+//TRACK SPECIFIC MACROS
+#define CFG_TRACKS              (configFile >> "Radio_Tracks")
+
+#define MEDIA_TYPE_MUSIC      0
+#define MEDIA_TYPE_NEWS       1
+
+#define MUSIC_STYLE_DEFAULT   2
+#define MUSIC_STYLE_ROCK      4
+#define MUSIC_STYLE_METAL     8
+#define MUSIC_STYLE_DANCE     16
+#define MUSIC_STYLE_DRMBASE   32
+#define MUSIC_STYLE_DUBSTEP   64
+#define MUSIC_STYLE_POP       128
+#define MUSIC_STYLE_FOLK      256
+#define MUSIC_STYLE_OST       512
+#define MUSIC_STYLE_CHILLOUT  1024
+#define MUSIC_STYLE_SPEECH    2048
+#define MUSIC_STYLE_ELECTRO   4096
+#define MUSIC_STYLE_JAZZ		  8192
+#define MUSIC_STYLE_SLOW		  16384
+
+#define NEWS_TYPE_DEFAULT     2
+#define NEWS_TYPE_EVENT       4
+#define NEWS_TYPE_WEATHER     8
+#define NEWS_TYPE_POLITICAL   16
+#define NEWS_TYPE_MANHUNT     32
+#define NEWS_TYPE_INFECTION   64
+#define NEWS_TYPE_UNIMPORTANT 128
+#define NEWS_TYPE_RESERVED    256
+
+#define MEDIA_PROPERTIES      ["file", "name", "type", "style", "length", "age"]
+#define MEDIA_CLASS(TRACK)    TRACK select 0
+#define MEDIA_FILE(TRACK)     TRACK select 1
+#define MEDIA_NAME(TRACK)     TRACK select 2
+#define MEDIA_TYPE(TRACK)     TRACK select 3
+#define MEDIA_STYLE(TRACK)    TRACK select 4
+#define MEDIA_LENGTH(TRACK)   TRACK select 5
+#define MEDIA_AGE(TRACK)      TRACK select 6
+
+#define EMITOR_AUDIBLE_RANGE    30 //How far is the radio audible
+#define EMITOR_CLASSES          ["Land_SurvivalRadio_F", "Land_FMradio_F"];
+
+#define PRIORITY_TRIVIAL      0
+#define PRIORITY_LOW          2
+#define PRIORITY_MEDIUM       32
+#define PRIORITY_HIGH         64
+#define PRIORITY_ULTRA        128
+
+#define VOLUME_MUSIC_NEWSCAST 1.0
+#define VOLUME_MUSIC_MUSICTRACK 0.25
+
+
+//channel specific macros
+#define CFG_CHANNELS                              	(configFile >> "Radio_Channels")
+#define CHANNEL_NAME(CHANNEL)                     									CHANNEL select 0
+#define CHANNEL_REAL_NAME(CHANNEL)																	CHANNEL select 10
+#define CHANNEL_MUSIC_QUEUE(CHANNEL)              									CHANNEL select 1
+#define CHANNEL_NEWS_QUEUE(CHANNEL)               									CHANNEL select 2
+#define CHANNEL_ACTUAL_QUEUE(CHANNEL)             									CHANNEL select 3
+#define CHANNEL_ACTUAL_TRACK(CHANNEL)             									CHANNEL select 4
+#define CHANNEL_NEXT_TRACK(CHANNEL)               									CHANNEL select 5
+#define CHANNEL_NEWSCAST_FREQUENCE(CHANNEL)       									CHANNEL select 6
+#define CHANNEL_PENDING_TRACKS_HNDL(CHANNEL)												CHANNEL select 7
+#define CHANNEL_SET_PENDING_TRACKS_HNDL(CHANNEL,HNDL)								CHANNEL set [7, HNDL]
+#define CHANNEL_NEWS_PLAYED_PER_BROADCAST(CHANNEL)									CHANNEL select 8
+#define CHANNEL_SET_NEWS_PLAYED_PER_BROADCAST(CHANNEL,NUMBER)				CHANNEL set [8, NUMBER]
+
+#define CHANNEL_SET_ACTUAL_TRACK(CHANNEL,NAME)    	CHANNEL set [4, NAME];
+#define CHANNEL_SET_NEXT_TRACK(CHANNEL)  \
+  private _nextTrack = [CHANNEL_ACTUAL_QUEUE(CHANNEL), true] call BIS_fnc_PriorityQueue_PopItem; \
+  if(count _nextTrack != 0) then {CHANNEL set [5, MEDIA_CLASS(_nextTrack)]} else {CHANNEL set [5, ""]}
+
+#define CHANNEL_PLAYLIST_MUSIC_LENGTH(CHANNEL)		[CFG_CHANNELS >> CHANNEL, "playlist_music_length"] call BIS_fnc_ReturnConfigEntry
+#define CHANNEL_PLAYLIST_NEWS_LENGTH(CHANNEL)			[CFG_CHANNELS >> CHANNEL, "playlist_news_length"] call BIS_fnc_ReturnConfigEntry
+/* #define CHANNEL_MAX_NEWS_TO_PLAY(CHANNEL)			[CFG_CHANNELS >> CHANNEL, "max_news_played_per_broadcast"] call BIS_fnc_ReturnConfigEntry */
+#define CHANNEL_MAX_NEWS_TO_PLAY(CHANNEL)					2
+#define CHANNEL_DEFAULT_JINGLE(CHANNEL)						[CFG_CHANNELS >> CHANNEL, "jingle_track"] call BIS_fnc_ReturnConfigEntry
+#define SET_MUSIC_QUEUE_ACTIVE(CHANNEL)						CHANNEL set [3, CHANNEL_MUSIC_QUEUE(CHANNEL)]
+#define SET_NEWS_QUEUE_ACTIVE(CHANNEL)						CHANNEL set [3, CHANNEL_NEWS_QUEUE(CHANNEL)]; ["Setting news queue active on channel: %1", CHANNEL_NAME(CHANNEL)] call BIS_fnc_LogFormat;
+#define SET_ACTIVE_QUEUE(CHANNEL, QUEUE)					CHANNEL set [3, QUEUE]
+
+#define CHANNEL_START_JINGLE                      0.00264299 //offset for starting the jingle TODO: make it better configured somewhere else
+#define CHANNEL_NEWSCAST_FREQUENCE_CFG(CHANNEL)   [CFG_CHANNELS >> CHANNEL, "newscast_frequence"] call BIS_fnc_ReturnConfigEntry
+#define CHANNEL_REAL_NAME_CFG(CHANNEL)						[CFG_CHANNELS >> CHANNEL, "name"] call BIS_fnc_ReturnConfigEntry
+#define CHANNEL_RE_QUEUE_TRACK(CHANNEL, TRACK) \
+  if( MEDIA_TYPE(TRACK) == MEDIA_TYPE_NEWS && (MEDIA_STYLE(TRACK) != NEWS_TYPE_RESERVED) ) then  \
+  { [ CHANNEL_NEWS_QUEUE(CHANNEL),TRACK, [CHANNEL_NEWS_QUEUE(CHANNEL)] call BIS_fnc_priorityQueue_getLowestPriority ] call BIS_fnc_PriorityQueue_PushItem; \
+  ["Track %1 has been requeued (player could not hear it)", MEDIA_CLASS(TRACK)] call BIS_fnc_LogFormat }
+//TODO: the could hear function must be made for different radio channels
+#define CHANNEL_PLAYER_COULD_HEAR_TRACK \
+  (RADIO_MODULE_LOGIC getVariable ["BIS_playerInVehicle", false]) || {_x getVariable "BIS_radioPlaying"} count ([4] call BIS_fnc_OM_moduleRadio_getEmitorsInRange) > 0
+#define CHANNEL_INTERRUPT_PLAYING_ON_EMITORS_IN_RANGE(CHANNELDATA) \
+  if( RADIO_MODULE_LOGIC getVariable ["BIS_playerInVehicle", false] && ( player getVariable [ "BIS_selectedRadio", "" ] == CHANNEL_NAME( _channelData ) ) ) then {playMusic "";}; \
+  private _emitors = [nil, false, CHANNEL_NAME(CHANNELDATA)] call BIS_fnc_OM_moduleRadio_getEmitorsInRange; \
+	{ \
+		if(_x getVariable ["BIS_radioPlaying", false]) then\
+		{\
+			[_x, CHANNEL_PENDING_TRACKS_HNDL(CHANNELDATA)] call BIS_fnc_OM_moduleRadio_interruptBroadcast;\
+		};\
+	} forEach _emitors; \
+	CHANNEL_SET_PENDING_TRACKS_HNDL(CHANNELDATA, scriptNull); \
+	RADIO_MODULE_LOGIC setVariable ["BIS_interruptTrack", CHANNEL_NAME(CHANNELDATA)]
+#define CHANNEL_IF_TIME_HAS_COME_PLAY_NEWSCAST(CHANNELDATA) \
+	if([CHANNELDATA] call BIS_fnc_OM_moduleRadio_TimeForNewsCast) then \
+	{\
+		[RADIO_MODULE_LOGIC, CHANNEL_NAME(CHANNELDATA), ["News_Jingle",999]] call BIS_fnc_OM_moduleRadio_Radio_Enqueue;\
+		CHANNEL_INTERRUPT_PLAYING_ON_EMITORS_IN_RANGE(_channelData);\
+		SET_STATE(CHANNELDATA, RADIO_STATE_PLAY_NEWS);\
+	}
+
+
+#define VEHICLE_TOGGLE_CHANNEL(ACTIONID) \
+  if(vehicle player getVariable ["BIS_radioEnable", true]) then \
+  {	\
+		[MODE_STOP,[player getVariable ["BIS_selectedRadio", RADIO_MODULE_LOGIC getVariable [ "BIS_defaultRadioChannel", "" ] ] ] ] call BIS_fnc_OM_moduleRadio;	\
+		player setVariable ["BIS_selectedRadio", ""];	\
+	}
+
+
+#define VEHICLE_CHANNEL_TOGGLE_ACTION(VEHICLE) \
+if (VEHICLE call BIS_fnc_OM_moduleRadio_vehicleHasRadio) then \
+{ \
+	VEHICLE addAction \
+	[ Localize "str_a3_radio_actionText_radioOff", \
+	{ params ["_target", "_caller", "_actionId", "_arguments"]; VEHICLE_TOGGLE_CHANNEL(_actionId) }, \
+	nil, 0, false, true, "", "_this in _target && { ((_this getVariable 'BIS_selectedRadio') != '') && (([_this getVariable 'BIS_selectedRadio'] call BIS_fnc_OM_moduleRadio_getChannelData select 9) in [5,7]) }"] \
+};
+
+/* #define VEHICLE_CHANNEL_PLAYLIST_CHANGE(TYPE) \
+  ["Radio_Tanoa_News"] call BIS_fnc_OM_moduleRadio_clearQueue; [BIS_moduleRadio, "Radio_Tanoa_News",[0,TYPE,1]] call BIS_fnc_OM_moduleRadio_Radio_Enqueue;\
+  [] spawn {[MODE_STOP,["Radio_Tanoa_News"]] call BIS_fnc_OM_moduleRadio; Sleep 1; [MODE_PLAY,["Radio_Tanoa_News"]] call BIS_fnc_OM_moduleRadio} */
+
+#define GET_PLAYLIST(NUMBER) [MUSIC_STYLE_CHILLOUT,MUSIC_STYLE_JAZZ,MUSIC_STYLE_OST,MUSIC_STYLE_ROCK,MUSIC_STYLE_DANCE,MUSIC_STYLE_ELECTRO] select NUMBER
+
+#define VEHICLE_ADD_ALL_CHANNELS_ACTION(RADIO_CHANNELS,VEHICLE) \
+{	\
+	if (VEHICLE call BIS_fnc_OM_moduleRadio_vehicleHasRadio) then \
+	{ \
+		VEHICLE addAction [ CHANNEL_REAL_NAME(_x), \
+		{  \
+			params ["_target", "_caller", "_actionId", "_arguments"];	\
+			private _actualRadio = _caller getVariable [ "BIS_selectedRadio", RADIO_MODULE_LOGIC getVariable [ "BIS_defaultRadioChannel", "" ] ];	\
+			vehicle player setVariable ["BIS_radioEnable", true]; \
+			if(_actualRadio != _arguments select 0) then \
+			{ \
+				[ MODE_STOP, [_actualRadio] ] call BIS_fnc_OM_moduleRadio;	\
+				[ MODE_PLAY, [_arguments select 0] ] call BIS_fnc_OM_moduleRadio; \
+				_caller setVariable ["BIS_selectedRadio", _arguments select 0];	\
+			};	\
+		}, \
+		[_x select 0], 0, false, true, "", "_this in _target"]	\
+	}; \
+} forEach (RADIO_CHANNELS)
+
+
+
+//FSM specific defines
+#define RADIO_STATE_INIT			               0
+#define RADIO_STATE_IDLE			               1
+#define RADIO_STATE_STOP  		               2
+#define RADIO_STATE_STOPPED		               3
+#define RADIO_STATE_PLAY_MUSIC  		         4
+#define RADIO_STATE_PLAYING_MUSIC            5
+#define RADIO_STATE_PLAY_NEWS	   			       6
+#define RADIO_STATE_PLAYING_NEWS	           7
+#define RADIO_STATE_PLAYER_GOTIN	           8
+#define RADIO_STATE_PLAYER_GOTOUT	           9
+#define RADIO_STATE_REENQUEUEMUSIC          10
+#define RADIO_STATE_NOTDEFINED		          999999
+
+#define STATE_NAMES 												["INIT", "IDLE", "STOP", "STOPPED", "PLAY MUSIC", "PLAYING MUSIC", "PLAY NEWS", "PLAYING NEWS", "PLAYER GOT IN", "PLAYER GOT OUT", "NOTDEFINED"]
+#define SET_STATE(CHANNELDATA, STATE) 			CHANNELDATA set [9, STATE]
+#define GET_STATE(CHANNELDATA) 							CHANNELDATA select 9
+#define GET_STATE_NAME(INDEX) 							STATE_NAMES select INDEX
+
+#define RADIO_STOP_PLAYING(CHANNELDATA)			SET_STATE(CHANNELDATA, RADIO_STATE_STOPPED)
+
+// Vehicles with radios //
+// Whitelist (what's not on it is blacklisted):
+#define BASE_VEHICLE_CLASSES_WITH_RADIOS ["Car", "Tank", "Helicopter", "Plane"]
+// Explicit blacklist(quadbike is a "Car", so it is explicitly blacklisted):
+#define BASE_VEHICLE_CLASSES_WITHOUT_RADIOS ["Quadbike_01_base_F"]

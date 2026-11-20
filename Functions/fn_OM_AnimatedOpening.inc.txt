@@ -1,0 +1,171 @@
+#include "\A3\Functions_F_Tacops\Systems\fn_animatedScreen.inc"
+
+//GLOBAL ANIMATED SCREEN DEFINITION
+#define SCREEN_NR_OF_PICTURE_LAYERS    12
+#define SCREEN_NR_OF_TEXT_LAYERS	5
+#define SCREEN_OVERSCALE	     	1.05
+#define SCREEN_FADE_TIME                2
+
+//"CSS" STYLES FOR STATIC TEXTS
+#define FONT_TEXT_STATIC        "PuristaBold"
+#define FONT_TEXT_DYNAMIC	"PuristaBold"
+#define SIZE_TEXT_STATIC_TITTLE 6
+#define SIZE_TEXT_STATIC	6
+#define SIZE_TEXT_STATIC_A      2
+#define SIZE_TEXT_STATIC_B      1.5
+#define SIZE_TEXT_DYNAMIC       10
+
+#define COLOR_TEXT_STATIC_A		[208/255,240/255,255/255,1]
+#define COLOR_TEXT_STATIC_B		[207/255,207/255,207/255,1]
+#define COLOR_TEXT_STATIC_A1		[255/255,255/255,255/255,1]
+#define COLOR_TEXT_STATIC_B1		[255/255,255/255,255/255,1]
+#define COLOR_TEXT_DYNAMIC_BACKGROUND	[160/255,192/255,255/255,1]
+#define COLOR_TEXT_DYNAMIC_FOREGROUND	[255/255,255/255,255/255,1]
+
+#define LAYER_TEXT_STATIC	0
+#define LAYER_TEXT_STATIC_A	0
+#define LAYER_TEXT_STATIC_B     1
+#define LAYER_TEXT_STATIC_B2    2
+#define LAYER_TEXT_DYNAMIC_BACKGROUND1       0
+#define LAYER_TEXT_DYNAMIC_BACKGROUND2       1
+#define LAYER_TEXT_DYNAMIC_FOREGROUND1       2
+#define LAYER_TEXT_DYNAMIC_FOREGROUND2       3
+
+#define POSITION_TEXT_STATIC_BIG        [0.5, 0.50]
+#define POSITION_TEXT_STATIC_BIGA       [0.5, 0.50]
+#define POSITION_TEXT_STATIC_BIGB       [0.5, 0.50]
+#define POSITION_TEXT_STATIC  		[0.50,0.50]
+#define POSITION_TEXT_STATIC_A  	[0.50,0.50]
+#define POSITION_TEXT_STATIC_B  	[0.50,0.50]
+#define POSITION_TEXT_STATIC_B2 	[0.50,0.50]
+#define POSITION_TEXT_DYNAMIC_TL	[0.1,0.1]
+#define POSITION_TEXT_DYNAMIC_BR	[0.6,0.7]
+#define POSITION_TEXT_DYNAMIC_C1	[0.51,0.55]
+
+#define TIME_TEXT_STATIC        1
+#define TIME_TEXT_STATIC_A      TIME_TEXT_STATIC*3
+#define TIME_TEXT_STATIC_B      TIME_TEXT_STATIC_A*1.5
+#define TIME_TEXT_STATIC_B2     TIME_TEXT_STATIC_B*1.5
+#define TIME_TEXT_DYNAMIC_A 	3
+#define TIME_TEXT_DYNAMIC_B 	5
+
+#define FULL_CONFIG_STATIC_TEXT_BIG    	POSITION_TEXT_STATIC_BIG,	ALIGN_TOP,    COLOR_TEXT_STATIC_A, 0, SIZE_TEXT_STATIC_TITTLE,  0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT_BIGA   	POSITION_TEXT_STATIC_BIGA,	ALIGN_BOTTOM, COLOR_TEXT_STATIC_A, 0, SIZE_TEXT_STATIC_TITTLE,  0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT_BIGB   	POSITION_TEXT_STATIC_BIGB,	ALIGN_TOP,    COLOR_TEXT_STATIC_A, 0, SIZE_TEXT_STATIC_TITTLE,  0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT       	POSITION_TEXT_STATIC,		ALIGN_TOP,    COLOR_TEXT_STATIC_A, 0, SIZE_TEXT_STATIC,	  	0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT_A       POSITION_TEXT_STATIC_A,		ALIGN_BOTTOM, COLOR_TEXT_STATIC_B, 0, SIZE_TEXT_STATIC_B, 	0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT_B       POSITION_TEXT_STATIC_B,		ALIGN_BOTTOM, COLOR_TEXT_STATIC_B, 0, SIZE_TEXT_STATIC_B, 	0, FONT_TEXT_STATIC
+#define FULL_CONFIG_STATIC_TEXT_B2      POSITION_TEXT_STATIC_B2,	ALIGN_TOP,    COLOR_TEXT_STATIC_B, 0, SIZE_TEXT_STATIC_B, 	0, FONT_TEXT_STATIC
+
+#define STYLE_TITLE_BIG                 0
+#define STYLE_TITLE			1
+#define STYLE_TITLE_AND_SENTENCE        2
+#define STYLE_ONE_SENTENCE              3
+#define STYLE_TWO_SENTENCES             4
+#define STYLE_TWO_SENTENCES_DELAY       5
+
+#define STYLE_DYNAMIC_TOPLEFT           1
+#define STYLE_DYNAMIC_BOTTOMRIGHT       2
+#define STYLE_DYNAMIC_CENTER1           3
+
+
+#define MILLER_ALIVE				0
+#define MILLER_DEAD_JUNGLE			1
+#define MILLER_DEAD_ISLAND			2
+
+#define VACCINE_DOCTOR				0
+#define VACCINE_UNKNOWN		        1
+#define VACCINE_SYNDIKAT			2
+#define VACCINE_MILLER			    3
+
+#define OLDMAN_SDV				    0
+#define OLDMAN_AIRCRAFT			    1
+#define OLDMAN_BOAT				    2
+#define OLDMAN_MILLER			    3
+
+
+//PARALLAX LAYERS DEFINITONS ---------------------------------------------------
+
+//IMG = Image definition (file)
+//ID = Layer definition (number)
+
+// SLIDE 01
+#define MILLER_HMS_ID_BACKGROUND        1
+#define MILLER_HMS_IMG_BACKGROUND	    "\a3\Missions_F_Oldman\data\img\Outro\MillerHMS\OM_Outro01_Background_ca.paa"
+#define MILLER_HMS_ID_FOREGROUND        2
+#define MILLER_HMS_IMG_FOREGROUND       "\a3\Missions_F_Oldman\data\img\Outro\MillerHMS\OM_Outro01_Foreground_ca.paa"
+#define MILLER_HMS_ID_PROTHEUS          3
+#define MILLER_HMS_IMG_PROTHEUS         "\a3\Missions_F_Oldman\data\img\Outro\MillerHMS\OM_Outro01_Proteus_ca.paa"
+#define MILLER_HMS_ID_BUBBLES           4
+#define MILLER_HMS_IMG_BUBBLES          "\a3\Missions_F_Oldman\data\img\Outro\MillerHMS\OM_Outro01_Bubbles_ca.paa"
+
+#define MILLER_JUNGLE_ID_BACKGROUND     1
+#define MILLER_JUNGLE_IMG_BACKGROUND    "\a3\Missions_F_Oldman\data\img\Outro\MillerJungle\OM_Outro02_Background_ca.paa"
+#define MILLER_JUNGLE_ID_BLOOD          2
+#define MILLER_JUNGLE_IMG_BLOOD         "\a3\Missions_F_Oldman\data\img\Outro\MillerJungle\OM_Outro02_blood_ca.paa"
+#define MILLER_JUNGLE_ID_MILLER         3
+#define MILLER_JUNGLE_IMG_MILLER        "\a3\Missions_F_Oldman\data\img\Outro\MillerJungle\OM_Outro02_Miller_ca.paa"
+#define MILLER_JUNGLE_ID_MIST           4
+#define MILLER_JUNGLE_IMG_MIST          "\a3\Missions_F_Oldman\data\img\Outro\MillerJungle\OM_Outro02_Mist_ca.paa"
+
+#define MILLER_ISLAND_ID_BACKGROUND     1
+#define MILLER_ISLAND_IMG_BACKGROUND    "\a3\Missions_F_Oldman\data\img\Outro\MillerIsland\OM_Outro02_Background_ca.paa"
+#define MILLER_ISLAND_ID_MILLER         3
+#define MILLER_ISLAND_IMG_MILLER        "\a3\Missions_F_Oldman\data\img\Outro\MillerIsland\OM_Outro02_Miller_Rebreather_ca.paa"
+
+
+#define VACCINE_WAREHOUSE_ID_BACKGROUND_OFF         1
+#define VACCINE_WAREHOUSE_IMG_BACKGROUND_OFF        "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Background_Dark_ca.paa"
+#define VACCINE_WAREHOUSE_ID_JEEP_DARK              2
+#define VACCINE_WAREHOUSE_IMG_JEEP_DARK             "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Jeep_Dark_ca.paa"
+#define VACCINE_WAREHOUSE_ID_COUNTERAGENT_DARK      3
+#define VACCINE_WAREHOUSE_IMG_COUNTERAGENT_DARK     "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Counteragent_Dark_ca.paa"
+#define VACCINE_WAREHOUSE_ID_BOX_DARK               4
+#define VACCINE_WAREHOUSE_IMG_BOX_DARK              "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Box_Dark_ca.paa"
+#define VACCINE_WAREHOUSE_ID_RACK_DARK              5
+#define VACCINE_WAREHOUSE_IMG_RACK_DARK             "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Rack_Dark_ca.paa"
+#define VACCINE_WAREHOUSE_ID_BACKGROUND             6
+#define VACCINE_WAREHOUSE_IMG_BACKGROUND            "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Background_ca.paa"
+#define VACCINE_WAREHOUSE_ID_DUST                   7
+#define VACCINE_WAREHOUSE_IMG_DUST                  "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Dust_ca.paa"
+#define VACCINE_WAREHOUSE_ID_JEEP                   8
+#define VACCINE_WAREHOUSE_IMG_JEEP                  "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Jeep_ca.paa"
+#define VACCINE_WAREHOUSE_ID_COUNTERAGENT           9
+#define VACCINE_WAREHOUSE_IMG_COUNTERAGENT          "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Counteragent_ca.paa"
+#define VACCINE_WAREHOUSE_ID_BOX                    10
+#define VACCINE_WAREHOUSE_IMG_BOX                   "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Box_ca.paa"
+#define VACCINE_WAREHOUSE_ID_RACK                   11
+#define VACCINE_WAREHOUSE_IMG_RACK                  "\a3\Missions_F_Oldman\data\img\Outro\VaccineWerehouse\OM_Outro03_Rack_ca.paa"
+
+
+#define VACCINE_LAB_ID_BACKGROUND       1
+#define VACCINE_LAB_IMG_BACKGROUND      "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro04_Background_ca.paa"
+#define VACCINE_LAB_ID_MIDGROUND        3
+#define VACCINE_LAB_IMG_MIDGROUND       "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro04_Midground_ca.paa"
+#define VACCINE_LAB_ID_DOCTOR           2
+#define VACCINE_LAB_IMG_DOCTOR          "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro04_Doctor_ca.paa"
+#define VACCINE_LAB_ID_GLASS            4
+#define VACCINE_LAB_IMG_GLASS           "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro04_Glass_Sheen_ca.paa"
+#define VACCINE_LAB_ID_SCIENTIST        5
+#define VACCINE_LAB_IMG_SCIENTIST       "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro04_Scientist_ca.paa"
+#define VACCINE_LAB_ID_LAPTOP           7
+#define VACCINE_LAB_IMG_LAPTOP          "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro04_Laptop_ca.paa"
+#define VACCINE_LAB_ID_CASE             8
+#define VACCINE_LAB_IMG_CASE            "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro04_Container_ca.paa"
+#define VACCINE_LAB_ID_DESK             6
+#define VACCINE_LAB_IMG_DESK            "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro04_Desk_ca.paa"
+
+#define CSAT_LEAVE_ID_BACKGROUND        1
+#define CSAT_LEAVE_IMG_BACKGROUND       "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro05_Background_ca.paa"
+#define CSAT_LEAVE_ID_STORM             2
+#define CSAT_LEAVE_IMG_STORM            "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro05_Storm_ca.paa"
+#define CSAT_LEAVE_ID_STORM_L1          3
+#define CSAT_LEAVE_IMG_STORM_L1         "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro05_Storm_lightning1_ca.paa"
+#define CSAT_LEAVE_ID_STORM_L2          4
+#define CSAT_LEAVE_IMG_STORM_L2         "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro05_Storm_lightning2_ca.paa"
+#define CSAT_LEAVE_ID_STORM_L3          5
+#define CSAT_LEAVE_IMG_STORM_L3         "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro05_Storm_lightning3_ca.paa"
+#define CSAT_LEAVE_ID_MIDGROUND         6    
+#define CSAT_LEAVE_IMG_MIDGROUND        "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro05_Midground_ca.paa"
+#define CSAT_LEAVE_ID_PROTESTERS        6    
+#define CSAT_LEAVE_IMG_PROTESTERS       "\a3\Missions_F_Oldman\data\img\Outro\VaccineLab\OM_Outro05_Protesters_ca.paa"

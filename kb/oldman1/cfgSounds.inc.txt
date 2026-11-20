@@ -1,0 +1,870 @@
+// Exported by kerbervac, 15.11.2019 18:38:37
+// Include to local CfgSounds config
+
+// ta_destroy_police_station_call
+class oldman1_001_ta_destroy_police_station_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\001_ta_destroy_police_station_call\oldman1_001_ta_destroy_police_station_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_001_ta_destroy_police_station_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\001_ta_destroy_police_station_call\oldman1_001_ta_destroy_police_station_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_001_ta_destroy_police_station_call_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\001_ta_destroy_police_station_call\oldman1_001_ta_destroy_police_station_call_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_001_ta_destroy_police_station_call_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\001_ta_destroy_police_station_call\oldman1_001_ta_destroy_police_station_call_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_001_ta_destroy_police_station_call_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\001_ta_destroy_police_station_call\oldman1_001_ta_destroy_police_station_call_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_001_ta_destroy_police_station_call_BOSS_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\001_ta_destroy_police_station_call\oldman1_001_ta_destroy_police_station_call_BOSS_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_001_ta_destroy_police_station_call_BOSS_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\001_ta_destroy_police_station_call\oldman1_001_ta_destroy_police_station_call_BOSS_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_001_ta_destroy_police_station_call_BOSS_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\001_ta_destroy_police_station_call\oldman1_001_ta_destroy_police_station_call_BOSS_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_police_station_destroyed_call
+class oldman1_002_ta_police_station_destroyed_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\002_ta_police_station_destroyed_call\oldman1_002_ta_police_station_destroyed_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_002_ta_police_station_destroyed_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\002_ta_police_station_destroyed_call\oldman1_002_ta_police_station_destroyed_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_002_ta_police_station_destroyed_call_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\002_ta_police_station_destroyed_call\oldman1_002_ta_police_station_destroyed_call_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_002_ta_police_station_destroyed_call_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\002_ta_police_station_destroyed_call\oldman1_002_ta_police_station_destroyed_call_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_rigging_car
+class oldman1_003_eve_mechanic_rigging_car_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\003_eve_mechanic_rigging_car\oldman1_003_eve_mechanic_rigging_car_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_003_eve_mechanic_rigging_car_MECHANIC_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\003_eve_mechanic_rigging_car\oldman1_003_eve_mechanic_rigging_car_MECHANIC_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_003_eve_mechanic_rigging_car_MECHANIC_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\003_eve_mechanic_rigging_car\oldman1_003_eve_mechanic_rigging_car_MECHANIC_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_003_eve_mechanic_rigging_car_MECHANIC_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\003_eve_mechanic_rigging_car\oldman1_003_eve_mechanic_rigging_car_MECHANIC_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_003_eve_mechanic_rigging_car_MECHANIC_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\003_eve_mechanic_rigging_car\oldman1_003_eve_mechanic_rigging_car_MECHANIC_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_which_car_a
+class oldman1_004_eve_mechanic_which_car_a_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\004_eve_mechanic_which_car_a\oldman1_004_eve_mechanic_which_car_a_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_which_car_b
+class oldman1_005_eve_mechanic_which_car_b_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\005_eve_mechanic_which_car_b\oldman1_005_eve_mechanic_which_car_b_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_005_eve_mechanic_which_car_b_MECHANIC_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\005_eve_mechanic_which_car_b\oldman1_005_eve_mechanic_which_car_b_MECHANIC_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_which_car_c
+class oldman1_006_eve_mechanic_which_car_c_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\006_eve_mechanic_which_car_c\oldman1_006_eve_mechanic_which_car_c_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_car_select_wait_a
+class oldman1_007_eve_mechanic_car_select_wait_a_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\007_eve_mechanic_car_select_wait_a\oldman1_007_eve_mechanic_car_select_wait_a_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_007_eve_mechanic_car_select_wait_a_MECHANIC_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\007_eve_mechanic_car_select_wait_a\oldman1_007_eve_mechanic_car_select_wait_a_MECHANIC_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_007_eve_mechanic_car_select_wait_a_MECHANIC_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\007_eve_mechanic_car_select_wait_a\oldman1_007_eve_mechanic_car_select_wait_a_MECHANIC_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_007_eve_mechanic_car_select_wait_a_MECHANIC_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\007_eve_mechanic_car_select_wait_a\oldman1_007_eve_mechanic_car_select_wait_a_MECHANIC_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_car_select_wait_b
+class oldman1_008_eve_mechanic_car_select_wait_b_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\008_eve_mechanic_car_select_wait_b\oldman1_008_eve_mechanic_car_select_wait_b_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_008_eve_mechanic_car_select_wait_b_MECHANIC_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\008_eve_mechanic_car_select_wait_b\oldman1_008_eve_mechanic_car_select_wait_b_MECHANIC_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_008_eve_mechanic_car_select_wait_b_MECHANIC_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\008_eve_mechanic_car_select_wait_b\oldman1_008_eve_mechanic_car_select_wait_b_MECHANIC_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_car_select_wait_c
+class oldman1_009_eve_mechanic_car_select_wait_c_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\009_eve_mechanic_car_select_wait_c\oldman1_009_eve_mechanic_car_select_wait_c_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_009_eve_mechanic_car_select_wait_c_MECHANIC_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\009_eve_mechanic_car_select_wait_c\oldman1_009_eve_mechanic_car_select_wait_c_MECHANIC_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_009_eve_mechanic_car_select_wait_c_MECHANIC_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\009_eve_mechanic_car_select_wait_c\oldman1_009_eve_mechanic_car_select_wait_c_MECHANIC_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_welcome_a
+class oldman1_010_eve_mechanic_welcome_a_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\010_eve_mechanic_welcome_a\oldman1_010_eve_mechanic_welcome_a_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_010_eve_mechanic_welcome_a_MECHANIC_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\010_eve_mechanic_welcome_a\oldman1_010_eve_mechanic_welcome_a_MECHANIC_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_welcome_b
+class oldman1_011_eve_mechanic_welcome_b_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\011_eve_mechanic_welcome_b\oldman1_011_eve_mechanic_welcome_b_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_011_eve_mechanic_welcome_b_MECHANIC_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\011_eve_mechanic_welcome_b\oldman1_011_eve_mechanic_welcome_b_MECHANIC_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_welcome_c
+class oldman1_012_eve_mechanic_welcome_c_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\012_eve_mechanic_welcome_c\oldman1_012_eve_mechanic_welcome_c_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_goodbye_a
+class oldman1_013_eve_mechanic_goodbye_a_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\013_eve_mechanic_goodbye_a\oldman1_013_eve_mechanic_goodbye_a_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_goodbye_b
+class oldman1_014_eve_mechanic_goodbye_b_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\014_eve_mechanic_goodbye_b\oldman1_014_eve_mechanic_goodbye_b_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_goodbye_c
+class oldman1_015_eve_mechanic_goodbye_c_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\015_eve_mechanic_goodbye_c\oldman1_015_eve_mechanic_goodbye_c_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_car_ready_a
+class oldman1_016_eve_mechanic_car_ready_a_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\016_eve_mechanic_car_ready_a\oldman1_016_eve_mechanic_car_ready_a_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_car_ready_b
+class oldman1_017_eve_mechanic_car_ready_b_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\017_eve_mechanic_car_ready_b\oldman1_017_eve_mechanic_car_ready_b_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_017_eve_mechanic_car_ready_b_MECHANIC_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\017_eve_mechanic_car_ready_b\oldman1_017_eve_mechanic_car_ready_b_MECHANIC_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic_car_ready_c
+class oldman1_018_eve_mechanic_car_ready_c_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\018_eve_mechanic_car_ready_c\oldman1_018_eve_mechanic_car_ready_c_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_get_plane_call
+class oldman1_019_ta_get_plane_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_019_ta_get_plane_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_019_ta_get_plane_call_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_019_ta_get_plane_call_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_019_ta_get_plane_call_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_019_ta_get_plane_call_BOSS_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_019_ta_get_plane_call_BOSS_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_019_ta_get_plane_call_BOSS_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_019_ta_get_plane_call_BOSS_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_019_ta_get_plane_call_BOSS_9
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_9.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_019_ta_get_plane_call_BOSS_10
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\019_ta_get_plane_call\oldman1_019_ta_get_plane_call_BOSS_10.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_dancera_go_away_a
+class oldman1_020_eve_dancera_go_away_a_DANCERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\020_eve_dancera_go_away_a\oldman1_020_eve_dancera_go_away_a_DANCERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_020_eve_dancera_go_away_a_DANCERA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\020_eve_dancera_go_away_a\oldman1_020_eve_dancera_go_away_a_DANCERA_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_020_eve_dancera_go_away_a_DANCERA_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\020_eve_dancera_go_away_a\oldman1_020_eve_dancera_go_away_a_DANCERA_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_dancera_go_away_b
+class oldman1_021_eve_dancera_go_away_b_DANCERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\021_eve_dancera_go_away_b\oldman1_021_eve_dancera_go_away_b_DANCERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_dancera_go_away_c
+class oldman1_022_eve_dancera_go_away_c_DANCERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\022_eve_dancera_go_away_c\oldman1_022_eve_dancera_go_away_c_DANCERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_dancera_afraid_in
+class oldman1_023_eve_dancera_afraid_in_DANCERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\023_eve_dancera_afraid_in\oldman1_023_eve_dancera_afraid_in_DANCERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_023_eve_dancera_afraid_in_DANCERA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\023_eve_dancera_afraid_in\oldman1_023_eve_dancera_afraid_in_DANCERA_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_dancera_afraid_out
+class oldman1_024_eve_dancera_afraid_out_DANCERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\024_eve_dancera_afraid_out\oldman1_024_eve_dancera_afraid_out_DANCERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_024_eve_dancera_afraid_out_DANCERA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\024_eve_dancera_afraid_out\oldman1_024_eve_dancera_afraid_out_DANCERA_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_plane_delivered_call
+class oldman1_025_ta_plane_delivered_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\025_ta_plane_delivered_call\oldman1_025_ta_plane_delivered_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_025_ta_plane_delivered_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\025_ta_plane_delivered_call\oldman1_025_ta_plane_delivered_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_025_ta_plane_delivered_call_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\025_ta_plane_delivered_call\oldman1_025_ta_plane_delivered_call_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_gendarme_bribe
+class oldman1_026_eve_gendarme_bribe_GENDARME_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\026_eve_gendarme_bribe\oldman1_026_eve_gendarme_bribe_GENDARME_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_026_eve_gendarme_bribe_GENDARME_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\026_eve_gendarme_bribe\oldman1_026_eve_gendarme_bribe_GENDARME_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_026_eve_gendarme_bribe_GENDARME_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\026_eve_gendarme_bribe\oldman1_026_eve_gendarme_bribe_GENDARME_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_gendarme_bribe_accepted_a
+class oldman1_027_eve_gendarme_bribe_accepted_a_GENDARME_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\027_eve_gendarme_bribe_accepted_a\oldman1_027_eve_gendarme_bribe_accepted_a_GENDARME_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_027_eve_gendarme_bribe_accepted_a_GENDARME_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\027_eve_gendarme_bribe_accepted_a\oldman1_027_eve_gendarme_bribe_accepted_a_GENDARME_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_disco_dancer
+class oldman1_028_eve_disco_dancer_DANCERB_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\028_eve_disco_dancer\oldman1_028_eve_disco_dancer_DANCERB_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_028_eve_disco_dancer_DANCERB_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\028_eve_disco_dancer\oldman1_028_eve_disco_dancer_DANCERB_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_plane_destroyed
+class oldman1_029_ex_plane_destroyed_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\029_ex_plane_destroyed\oldman1_029_ex_plane_destroyed_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_029_ex_plane_destroyed_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\029_ex_plane_destroyed\oldman1_029_ex_plane_destroyed_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_029_ex_plane_destroyed_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\029_ex_plane_destroyed\oldman1_029_ex_plane_destroyed_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_029_ex_plane_destroyed_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\029_ex_plane_destroyed\oldman1_029_ex_plane_destroyed_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_029_ex_plane_destroyed_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\029_ex_plane_destroyed\oldman1_029_ex_plane_destroyed_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_gun_runners
+class oldman1_030_eve_gun_runners_PILOT_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_PILOT_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_030_eve_gun_runners_PILOT_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_PILOT_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_030_eve_gun_runners_SMUGGLERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_SMUGGLERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_030_eve_gun_runners_SMUGGLERA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_SMUGGLERA_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_030_eve_gun_runners_PILOT_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_PILOT_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_030_eve_gun_runners_SMUGGLERA_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_SMUGGLERA_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_030_eve_gun_runners_SMUGGLERA_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_SMUGGLERA_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_030_eve_gun_runners_PILOT_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_PILOT_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_030_eve_gun_runners_PILOT_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_PILOT_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_030_eve_gun_runners_PILOT_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_PILOT_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_030_eve_gun_runners_SMUGGLERA_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\030_eve_gun_runners\oldman1_030_eve_gun_runners_SMUGGLERA_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_plane_work_offer
+class oldman1_031_ta_plane_work_offer_SMUGGLERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\031_ta_plane_work_offer\oldman1_031_ta_plane_work_offer_SMUGGLERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_031_ta_plane_work_offer_SMUGGLERA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\031_ta_plane_work_offer\oldman1_031_ta_plane_work_offer_SMUGGLERA_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_031_ta_plane_work_offer_SMUGGLERA_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\031_ta_plane_work_offer\oldman1_031_ta_plane_work_offer_SMUGGLERA_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_031_ta_plane_work_offer_SMUGGLERA_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\031_ta_plane_work_offer\oldman1_031_ta_plane_work_offer_SMUGGLERA_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_031_ta_plane_work_offer_SMUGGLERA_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\031_ta_plane_work_offer\oldman1_031_ta_plane_work_offer_SMUGGLERA_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_031_ta_plane_work_offer_SMUGGLERA_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\031_ta_plane_work_offer\oldman1_031_ta_plane_work_offer_SMUGGLERA_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_031_ta_plane_work_offer_SMUGGLERA_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\031_ta_plane_work_offer\oldman1_031_ta_plane_work_offer_SMUGGLERA_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_player_lands_plane_call
+class oldman1_032_eve_player_lands_plane_call_SMUGGLERB_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\032_eve_player_lands_plane_call\oldman1_032_eve_player_lands_plane_call_SMUGGLERB_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_032_eve_player_lands_plane_call_SMUGGLERB_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\032_eve_player_lands_plane_call\oldman1_032_eve_player_lands_plane_call_SMUGGLERB_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_032_eve_player_lands_plane_call_SMUGGLERB_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\032_eve_player_lands_plane_call\oldman1_032_eve_player_lands_plane_call_SMUGGLERB_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_loading_plane_call
+class oldman1_033_eve_loading_plane_call_SMUGGLERB_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\033_eve_loading_plane_call\oldman1_033_eve_loading_plane_call_SMUGGLERB_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_033_eve_loading_plane_call_SMUGGLERB_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\033_eve_loading_plane_call\oldman1_033_eve_loading_plane_call_SMUGGLERB_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_gendarme_attack_call
+class oldman1_034_eve_gendarme_attack_call_SMUGGLERB_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\034_eve_gendarme_attack_call\oldman1_034_eve_gendarme_attack_call_SMUGGLERB_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_034_eve_gendarme_attack_call_SMUGGLERB_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\034_eve_gendarme_attack_call\oldman1_034_eve_gendarme_attack_call_SMUGGLERB_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_plane_fully_loaded_call
+class oldman1_035_eve_plane_fully_loaded_call_SMUGGLERB_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\035_eve_plane_fully_loaded_call\oldman1_035_eve_plane_fully_loaded_call_SMUGGLERB_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_035_eve_plane_fully_loaded_call_SMUGGLERB_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\035_eve_plane_fully_loaded_call\oldman1_035_eve_plane_fully_loaded_call_SMUGGLERB_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_035_eve_plane_fully_loaded_call_SMUGGLERB_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\035_eve_plane_fully_loaded_call\oldman1_035_eve_plane_fully_loaded_call_SMUGGLERB_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_loaders_kia_call
+class oldman1_036_eve_loaders_kia_call_SMUGGLERB_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\036_eve_loaders_kia_call\oldman1_036_eve_loaders_kia_call_SMUGGLERB_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_036_eve_loaders_kia_call_SMUGGLERB_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\036_eve_loaders_kia_call\oldman1_036_eve_loaders_kia_call_SMUGGLERB_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_loaded_plane_delivered_call
+class oldman1_037_ta_loaded_plane_delivered_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\037_ta_loaded_plane_delivered_call\oldman1_037_ta_loaded_plane_delivered_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_037_ta_loaded_plane_delivered_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\037_ta_loaded_plane_delivered_call\oldman1_037_ta_loaded_plane_delivered_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_037_ta_loaded_plane_delivered_call_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\037_ta_loaded_plane_delivered_call\oldman1_037_ta_loaded_plane_delivered_call_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_037_ta_loaded_plane_delivered_call_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\037_ta_loaded_plane_delivered_call\oldman1_037_ta_loaded_plane_delivered_call_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_037_ta_loaded_plane_delivered_call_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\037_ta_loaded_plane_delivered_call\oldman1_037_ta_loaded_plane_delivered_call_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_timeout_traitor_alt
+class oldman1_038_ex_timeout_traitor_alt_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\038_ex_timeout_traitor_alt\oldman1_038_ex_timeout_traitor_alt_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_038_ex_timeout_traitor_alt_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\038_ex_timeout_traitor_alt\oldman1_038_ex_timeout_traitor_alt_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_038_ex_timeout_traitor_alt_UNKNOWN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\038_ex_timeout_traitor_alt\oldman1_038_ex_timeout_traitor_alt_UNKNOWN_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_038_ex_timeout_traitor_alt_UNKNOWN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\038_ex_timeout_traitor_alt\oldman1_038_ex_timeout_traitor_alt_UNKNOWN_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_038_ex_timeout_traitor_alt_UNKNOWN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\038_ex_timeout_traitor_alt\oldman1_038_ex_timeout_traitor_alt_UNKNOWN_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_no_parking
+class oldman1_039_ex_no_parking_GENDARME_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\039_ex_no_parking\oldman1_039_ex_no_parking_GENDARME_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_no_parking_angry
+class oldman1_040_ex_no_parking_angry_GENDARME_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\040_ex_no_parking_angry\oldman1_040_ex_no_parking_angry_GENDARME_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_approaching_van_syndikat_boss
+class oldman1_041_eve_approaching_van_syndikat_boss_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\041_eve_approaching_van_syndikat_boss\oldman1_041_eve_approaching_van_syndikat_boss_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_in_georgetown_syndikat_boss
+class oldman1_042_eve_in_georgetown_syndikat_boss_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\042_eve_in_georgetown_syndikat_boss\oldman1_042_eve_in_georgetown_syndikat_boss_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_042_eve_in_georgetown_syndikat_boss_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\042_eve_in_georgetown_syndikat_boss\oldman1_042_eve_in_georgetown_syndikat_boss_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_counteragent_in_van
+class oldman1_043_ta_counteragent_in_van_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\043_ta_counteragent_in_van\oldman1_043_ta_counteragent_in_van_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_043_ta_counteragent_in_van_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\043_ta_counteragent_in_van\oldman1_043_ta_counteragent_in_van_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_sample_taken_to_van_alt_in_call
+class oldman1_044_ta_sample_taken_to_van_alt_in_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\044_ta_sample_taken_to_van_alt_in_call\oldman1_044_ta_sample_taken_to_van_alt_in_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_044_ta_sample_taken_to_van_alt_in_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\044_ta_sample_taken_to_van_alt_in_call\oldman1_044_ta_sample_taken_to_van_alt_in_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_sample_taken_to_van_alt_doctor_call
+class oldman1_045_ta_sample_taken_to_van_alt_doctor_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\045_ta_sample_taken_to_van_alt_doctor_call\oldman1_045_ta_sample_taken_to_van_alt_doctor_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_045_ta_sample_taken_to_van_alt_doctor_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\045_ta_sample_taken_to_van_alt_doctor_call\oldman1_045_ta_sample_taken_to_van_alt_doctor_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_sample_taken_to_van_alt_out_call
+class oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\046_ta_sample_taken_to_van_alt_out_call\oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\046_ta_sample_taken_to_van_alt_out_call\oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\046_ta_sample_taken_to_van_alt_out_call\oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\046_ta_sample_taken_to_van_alt_out_call\oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\046_ta_sample_taken_to_van_alt_out_call\oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\046_ta_sample_taken_to_van_alt_out_call\oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\046_ta_sample_taken_to_van_alt_out_call\oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\046_ta_sample_taken_to_van_alt_out_call\oldman1_046_ta_sample_taken_to_van_alt_out_call_BOSS_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_sample_taken_to_van_alt_bad_rep_in_call
+class oldman1_047_ta_sample_taken_to_van_alt_bad_rep_in_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\047_ta_sample_taken_to_van_alt_bad_rep_in_call\oldman1_047_ta_sample_taken_to_van_alt_bad_rep_in_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_047_ta_sample_taken_to_van_alt_bad_rep_in_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\047_ta_sample_taken_to_van_alt_bad_rep_in_call\oldman1_047_ta_sample_taken_to_van_alt_bad_rep_in_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_sample_taken_to_van_alt_bad_rep_doctor_call
+class oldman1_048_ta_sample_taken_to_van_alt_bad_rep_doctor_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\048_ta_sample_taken_to_van_alt_bad_rep_doctor_call\oldman1_048_ta_sample_taken_to_van_alt_bad_rep_doctor_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_048_ta_sample_taken_to_van_alt_bad_rep_doctor_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\048_ta_sample_taken_to_van_alt_bad_rep_doctor_call\oldman1_048_ta_sample_taken_to_van_alt_bad_rep_doctor_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_sample_taken_to_van_alt_bad_rep_out_call
+class oldman1_049_ta_sample_taken_to_van_alt_bad_rep_out_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\049_ta_sample_taken_to_van_alt_bad_rep_out_call\oldman1_049_ta_sample_taken_to_van_alt_bad_rep_out_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_049_ta_sample_taken_to_van_alt_bad_rep_out_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\049_ta_sample_taken_to_van_alt_bad_rep_out_call\oldman1_049_ta_sample_taken_to_van_alt_bad_rep_out_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_049_ta_sample_taken_to_van_alt_bad_rep_out_call_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\049_ta_sample_taken_to_van_alt_bad_rep_out_call\oldman1_049_ta_sample_taken_to_van_alt_bad_rep_out_call_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_rescued
+class oldman1_050_eve_doctor_rescued_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\050_eve_doctor_rescued\oldman1_050_eve_doctor_rescued_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_050_eve_doctor_rescued_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\050_eve_doctor_rescued\oldman1_050_eve_doctor_rescued_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_050_eve_doctor_rescued_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\050_eve_doctor_rescued\oldman1_050_eve_doctor_rescued_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_aa_intel_airstrike
+class oldman1_051_in_aa_intel_airstrike_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\051_in_aa_intel_airstrike\oldman1_051_in_aa_intel_airstrike_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_051_in_aa_intel_airstrike_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\051_in_aa_intel_airstrike\oldman1_051_in_aa_intel_airstrike_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_051_in_aa_intel_airstrike_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\051_in_aa_intel_airstrike\oldman1_051_in_aa_intel_airstrike_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_051_in_aa_intel_airstrike_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\051_in_aa_intel_airstrike\oldman1_051_in_aa_intel_airstrike_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_051_in_aa_intel_airstrike_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\051_in_aa_intel_airstrike\oldman1_051_in_aa_intel_airstrike_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman1_051_in_aa_intel_airstrike_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman1\051_in_aa_intel_airstrike\oldman1_051_in_aa_intel_airstrike_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+

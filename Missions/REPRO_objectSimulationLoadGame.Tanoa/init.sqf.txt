@@ -1,0 +1,4 @@
+[] spawn
+{
+	while {true} do {hint format ["Status:%1", simulationEnabled BIS_obj]; sleep 0.01};
+}

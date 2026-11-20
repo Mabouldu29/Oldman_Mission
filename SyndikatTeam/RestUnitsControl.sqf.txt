@@ -1,0 +1,30 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+private _position = (_this select 0) select 1;
+
+waitUntil {!isnull findDisplay 667};
+private _display = findDisplay 667;
+private _ctrlW = _display displayCtrl 7115;
+private _ctrlButtonText = _display displayCtrl 7779;
+private _unitsSelected = CEIL(_position*(BIS_SYNDIKATTEAM_LOGIC getVariable "poolNumber"));
+private _priceForSyndikatTeamService = (["I_G_Soldier_AR_F"] call BIS_fnc_OM_ModuleEconomy_getEquipmentPrice)*_unitsSelected*0.2;
+/* ["Price: %1", _priceForSyndikatTeamService] call BIS_fnc_logFormat; */
+
+
+BIS_SYNDIKATTEAM_LOGIC setVariable ["unitsSelectedFromUI", _unitsSelected];
+BIS_SYNDIKATTEAM_LOGIC setVariable ["priceForSyndikatTeamService", _priceForSyndikatTeamService];
+
+_ctrlW ctrlsettext (format [localize "str_a3_om_system_syndiaktteam_units" + ": %1 | " localize "str_a3_om_system_syndiaktteam_price" + ": %2 $",_unitsSelected, _priceForSyndikatTeamService,Localize "STR_A3_OM_System_SyndiaktTeam_Units" ,Localize "STR_A3_OM_System_SyndiaktTeam_Price" ]);
+
+if([MODE_HAS_ENOUGH_MONEY,[_priceForSyndikatTeamService]] call BIS_fnc_OM_moduleEconomy) then
+{
+	BIS_SYNDIKATTEAM_LOGIC setVariable ["enoughMoney", true];
+	_ctrlButtonText ctrlSetText UI_BUTTON_CONFIRM_OK;
+	_ctrlButtonText ctrlEnable true;
+}
+else
+{
+	BIS_SYNDIKATTEAM_LOGIC setVariable ["enoughMoney", false];
+	_ctrlButtonText ctrlSetText UI_BUTTON_CONFIRM_NOMONEY;
+	_ctrlButtonText ctrlEnable false;
+};

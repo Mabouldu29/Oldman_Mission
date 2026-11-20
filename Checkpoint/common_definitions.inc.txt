@@ -1,0 +1,26 @@
+#define CHECKPOINT_SPEED_LIMIT                  300           //if the vehicle speed is exceeded over the value, the alarm is forced
+#define CHECKPOINT_THREAT_THRESHOLD             10            //if the threat goes over 10(player->checkpoint owner), alarm is forced, player is being hunted
+#define CHECKPOINT_CONTROL_PARKED_TIMEOUT       25            //how long the control should take
+#define CHECKPOINT_ALARM_END_TIMEOUT						30						//the timeout after the checkpoint alarm is over
+
+
+//FSM
+#define STATE_CHECKPOINT_IDLE                   0             // the checkpoint is closed
+#define STATE_CHECKPOINT_CONTROLACTIVE          1             // checkpoint is actually active, soldiers are checking every vehicle
+#define STATE_CHECKPOINT_VEHICLEENTERED         2             // vehicle (player) entered the checkpoint (depends what zone he arrived to as first), now the rules are vert strict
+#define STATE_CHECKPOINT_ALARMED                3             // general alarm
+#define STATE_CHECKPOINT_ALARMED_SPEED          4             // vehicle exceeded the max speed limit
+#define STATE_CHECKPOINT_ALARMED_WEAPON         5             // subject has a weapon (threat has raised over the threshold)
+#define STATE_CHECKPOINT_PARKED_CONTROLPOINT    6             // subject parked the vehicle to the control point
+#define STATE_CHECKPOINT_CONTROL_DONE_OK        7             // the control finished with good result - subject can leave the control point and checkpoint (rules are still applied)
+#define STATE_CHECKPOINT_CONTROL_DONE_ALARM     8             // the control finished with negative result - subject is being hunted
+#define STATE_CHECKPOINT_VEHICLE_LEFT_PREMAT    9             // prematurely left the control point
+#define STATE_CHECKPOINT_VEHICLE_LEFT           10            // subject properly left the checkpoint
+#define STATE_CHECKPOINT_SYSTEM_SKIP            11            // used for the delayed jumps to the other states
+#define STATE_CHECKPOINT_CONTROL_IN_PROGRESS    12            //
+#define STATE_CHECKPOINT_OPEN                   13            // checkpoint is open (vehicles can pass through, they won't be checked, but rules are still active-speed, zones, etc )
+#define STATE_CHECKPOINT_CONTROLINACTIVE        14            // the checkpoint is inactive, player can go through with no worries
+#define STATE_CHECKPOINT_SUBJECT_LEFT_VEHICLE		15
+#define STATE_CHECKPOINT_INIT										16						//very first state
+#define STATE_CHECKPOINT_SYSTEM_INTERRUPT_FSM		17						//very last state
+#define STATE_CHECKPOINT_UNDEFINED              20

@@ -1,0 +1,808 @@
+// Exported by kerbervac, 04.12.2019 18:10:56
+// Include to local CfgSounds config
+
+// am_radio_broadcast_segue_a
+class radio_dialogues_001_am_radio_broadcast_segue_a_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\001_am_radio_broadcast_segue_a\radio_dialogues_001_am_radio_broadcast_segue_a_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_segue_b
+class radio_dialogues_002_am_radio_broadcast_segue_b_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\002_am_radio_broadcast_segue_b\radio_dialogues_002_am_radio_broadcast_segue_b_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_in_a
+class radio_dialogues_003_am_radio_broadcast_in_a_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\003_am_radio_broadcast_in_a\radio_dialogues_003_am_radio_broadcast_in_a_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_003_am_radio_broadcast_in_a_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\003_am_radio_broadcast_in_a\radio_dialogues_003_am_radio_broadcast_in_a_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_in_b
+class radio_dialogues_004_am_radio_broadcast_in_b_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\004_am_radio_broadcast_in_b\radio_dialogues_004_am_radio_broadcast_in_b_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_004_am_radio_broadcast_in_b_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\004_am_radio_broadcast_in_b\radio_dialogues_004_am_radio_broadcast_in_b_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_in_c
+class radio_dialogues_005_am_radio_broadcast_in_c_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\005_am_radio_broadcast_in_c\radio_dialogues_005_am_radio_broadcast_in_c_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_005_am_radio_broadcast_in_c_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\005_am_radio_broadcast_in_c\radio_dialogues_005_am_radio_broadcast_in_c_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_out_a
+class radio_dialogues_006_am_radio_broadcast_out_a_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\006_am_radio_broadcast_out_a\radio_dialogues_006_am_radio_broadcast_out_a_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_out_b
+class radio_dialogues_007_am_radio_broadcast_out_b_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\007_am_radio_broadcast_out_b\radio_dialogues_007_am_radio_broadcast_out_b_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_out_c
+class radio_dialogues_008_am_radio_broadcast_out_c_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\008_am_radio_broadcast_out_c\radio_dialogues_008_am_radio_broadcast_out_c_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_out_d
+class radio_dialogues_009_am_radio_broadcast_out_d_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\009_am_radio_broadcast_out_d\radio_dialogues_009_am_radio_broadcast_out_d_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_day_clear
+class radio_dialogues_010_am_radio_broadcast_day_clear_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\010_am_radio_broadcast_day_clear\radio_dialogues_010_am_radio_broadcast_day_clear_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_010_am_radio_broadcast_day_clear_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\010_am_radio_broadcast_day_clear\radio_dialogues_010_am_radio_broadcast_day_clear_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_day_some_cloud
+class radio_dialogues_011_am_radio_broadcast_day_some_cloud_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\011_am_radio_broadcast_day_some_cloud\radio_dialogues_011_am_radio_broadcast_day_some_cloud_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_day_cloudy
+class radio_dialogues_012_am_radio_broadcast_day_cloudy_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\012_am_radio_broadcast_day_cloudy\radio_dialogues_012_am_radio_broadcast_day_cloudy_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_day_very_cloudy
+class radio_dialogues_013_am_radio_broadcast_day_very_cloudy_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\013_am_radio_broadcast_day_very_cloudy\radio_dialogues_013_am_radio_broadcast_day_very_cloudy_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_day_stormy
+class radio_dialogues_014_am_radio_broadcast_day_stormy_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\014_am_radio_broadcast_day_stormy\radio_dialogues_014_am_radio_broadcast_day_stormy_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_night_clear
+class radio_dialogues_015_am_radio_broadcast_night_clear_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\015_am_radio_broadcast_night_clear\radio_dialogues_015_am_radio_broadcast_night_clear_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_night_some_cloud
+class radio_dialogues_016_am_radio_broadcast_night_some_cloud_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\016_am_radio_broadcast_night_some_cloud\radio_dialogues_016_am_radio_broadcast_night_some_cloud_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_night_cloudy
+class radio_dialogues_017_am_radio_broadcast_night_cloudy_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\017_am_radio_broadcast_night_cloudy\radio_dialogues_017_am_radio_broadcast_night_cloudy_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_night_very_cloudy
+class radio_dialogues_018_am_radio_broadcast_night_very_cloudy_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\018_am_radio_broadcast_night_very_cloudy\radio_dialogues_018_am_radio_broadcast_night_very_cloudy_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_night_stormy
+class radio_dialogues_019_am_radio_broadcast_night_stormy_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\019_am_radio_broadcast_night_stormy\radio_dialogues_019_am_radio_broadcast_night_stormy_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_rain_a
+class radio_dialogues_020_am_radio_broadcast_rain_a_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\020_am_radio_broadcast_rain_a\radio_dialogues_020_am_radio_broadcast_rain_a_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_rain_b
+class radio_dialogues_021_am_radio_broadcast_rain_b_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\021_am_radio_broadcast_rain_b\radio_dialogues_021_am_radio_broadcast_rain_b_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_cloud_clearing
+class radio_dialogues_022_am_radio_broadcast_forecast_cloud_clearing_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\022_am_radio_broadcast_forecast_cloud_clearing\radio_dialogues_022_am_radio_broadcast_forecast_cloud_clearing_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_cloud_uncertain
+class radio_dialogues_023_am_radio_broadcast_forecast_cloud_uncertain_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\023_am_radio_broadcast_forecast_cloud_uncertain\radio_dialogues_023_am_radio_broadcast_forecast_cloud_uncertain_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_cloud_staying
+class radio_dialogues_024_am_radio_broadcast_forecast_cloud_staying_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\024_am_radio_broadcast_forecast_cloud_staying\radio_dialogues_024_am_radio_broadcast_forecast_cloud_staying_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_rain_a
+class radio_dialogues_025_am_radio_broadcast_forecast_rain_a_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\025_am_radio_broadcast_forecast_rain_a\radio_dialogues_025_am_radio_broadcast_forecast_rain_a_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_rain_b
+class radio_dialogues_026_am_radio_broadcast_forecast_rain_b_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\026_am_radio_broadcast_forecast_rain_b\radio_dialogues_026_am_radio_broadcast_forecast_rain_b_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_rain_c
+class radio_dialogues_027_am_radio_broadcast_forecast_rain_c_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\027_am_radio_broadcast_forecast_rain_c\radio_dialogues_027_am_radio_broadcast_forecast_rain_c_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_rain_d
+class radio_dialogues_028_am_radio_broadcast_forecast_rain_d_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\028_am_radio_broadcast_forecast_rain_d\radio_dialogues_028_am_radio_broadcast_forecast_rain_d_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_028_am_radio_broadcast_forecast_rain_d_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\028_am_radio_broadcast_forecast_rain_d\radio_dialogues_028_am_radio_broadcast_forecast_rain_d_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_storm_a
+class radio_dialogues_029_am_radio_broadcast_forecast_storm_a_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\029_am_radio_broadcast_forecast_storm_a\radio_dialogues_029_am_radio_broadcast_forecast_storm_a_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_storm_b
+class radio_dialogues_030_am_radio_broadcast_forecast_storm_b_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\030_am_radio_broadcast_forecast_storm_b\radio_dialogues_030_am_radio_broadcast_forecast_storm_b_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_storm_c
+class radio_dialogues_031_am_radio_broadcast_forecast_storm_c_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\031_am_radio_broadcast_forecast_storm_c\radio_dialogues_031_am_radio_broadcast_forecast_storm_c_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_storm_d
+class radio_dialogues_032_am_radio_broadcast_forecast_storm_d_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\032_am_radio_broadcast_forecast_storm_d\radio_dialogues_032_am_radio_broadcast_forecast_storm_d_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_032_am_radio_broadcast_forecast_storm_d_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\032_am_radio_broadcast_forecast_storm_d\radio_dialogues_032_am_radio_broadcast_forecast_storm_d_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_temp_a
+class radio_dialogues_033_am_radio_broadcast_forecast_temp_a_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\033_am_radio_broadcast_forecast_temp_a\radio_dialogues_033_am_radio_broadcast_forecast_temp_a_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_temp_b
+class radio_dialogues_034_am_radio_broadcast_forecast_temp_b_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\034_am_radio_broadcast_forecast_temp_b\radio_dialogues_034_am_radio_broadcast_forecast_temp_b_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_temp_c
+class radio_dialogues_035_am_radio_broadcast_forecast_temp_c_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\035_am_radio_broadcast_forecast_temp_c\radio_dialogues_035_am_radio_broadcast_forecast_temp_c_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_temp_d
+class radio_dialogues_036_am_radio_broadcast_forecast_temp_d_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\036_am_radio_broadcast_forecast_temp_d\radio_dialogues_036_am_radio_broadcast_forecast_temp_d_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_temp_e
+class radio_dialogues_037_am_radio_broadcast_forecast_temp_e_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\037_am_radio_broadcast_forecast_temp_e\radio_dialogues_037_am_radio_broadcast_forecast_temp_e_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_out_a
+class radio_dialogues_038_am_radio_broadcast_forecast_out_a_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\038_am_radio_broadcast_forecast_out_a\radio_dialogues_038_am_radio_broadcast_forecast_out_a_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_out_b
+class radio_dialogues_039_am_radio_broadcast_forecast_out_b_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\039_am_radio_broadcast_forecast_out_b\radio_dialogues_039_am_radio_broadcast_forecast_out_b_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_out_c
+class radio_dialogues_040_am_radio_broadcast_forecast_out_c_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\040_am_radio_broadcast_forecast_out_c\radio_dialogues_040_am_radio_broadcast_forecast_out_c_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_forecast_out_d
+class radio_dialogues_041_am_radio_broadcast_forecast_out_d_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\041_am_radio_broadcast_forecast_out_d\radio_dialogues_041_am_radio_broadcast_forecast_out_d_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_first_in
+class radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\042_am_radio_broadcast_news_first_in\radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\042_am_radio_broadcast_news_first_in\radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\042_am_radio_broadcast_news_first_in\radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\042_am_radio_broadcast_news_first_in\radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_3.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\042_am_radio_broadcast_news_first_in\radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_4.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\042_am_radio_broadcast_news_first_in\radio_dialogues_042_am_radio_broadcast_news_first_in_BROADCASTER_5.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_malaria_luganville
+class radio_dialogues_043_am_radio_broadcast_news_malaria_luganville_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\043_am_radio_broadcast_news_malaria_luganville\radio_dialogues_043_am_radio_broadcast_news_malaria_luganville_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_043_am_radio_broadcast_news_malaria_luganville_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\043_am_radio_broadcast_news_malaria_luganville\radio_dialogues_043_am_radio_broadcast_news_malaria_luganville_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_043_am_radio_broadcast_news_malaria_luganville_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\043_am_radio_broadcast_news_malaria_luganville\radio_dialogues_043_am_radio_broadcast_news_malaria_luganville_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_043_am_radio_broadcast_news_malaria_luganville_BROADCASTER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\043_am_radio_broadcast_news_malaria_luganville\radio_dialogues_043_am_radio_broadcast_news_malaria_luganville_BROADCASTER_3.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_malaria_luganville_secured
+class radio_dialogues_044_am_radio_broadcast_news_malaria_luganville_secured_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\044_am_radio_broadcast_news_malaria_luganville_secured\radio_dialogues_044_am_radio_broadcast_news_malaria_luganville_secured_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_044_am_radio_broadcast_news_malaria_luganville_secured_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\044_am_radio_broadcast_news_malaria_luganville_secured\radio_dialogues_044_am_radio_broadcast_news_malaria_luganville_secured_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_044_am_radio_broadcast_news_malaria_luganville_secured_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\044_am_radio_broadcast_news_malaria_luganville_secured\radio_dialogues_044_am_radio_broadcast_news_malaria_luganville_secured_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_malaria_savaka
+class radio_dialogues_045_am_radio_broadcast_news_malaria_savaka_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\045_am_radio_broadcast_news_malaria_savaka\radio_dialogues_045_am_radio_broadcast_news_malaria_savaka_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_045_am_radio_broadcast_news_malaria_savaka_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\045_am_radio_broadcast_news_malaria_savaka\radio_dialogues_045_am_radio_broadcast_news_malaria_savaka_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_045_am_radio_broadcast_news_malaria_savaka_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\045_am_radio_broadcast_news_malaria_savaka\radio_dialogues_045_am_radio_broadcast_news_malaria_savaka_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_malaria_savaka_secured
+class radio_dialogues_046_am_radio_broadcast_news_malaria_savaka_secured_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\046_am_radio_broadcast_news_malaria_savaka_secured\radio_dialogues_046_am_radio_broadcast_news_malaria_savaka_secured_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_046_am_radio_broadcast_news_malaria_savaka_secured_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\046_am_radio_broadcast_news_malaria_savaka_secured\radio_dialogues_046_am_radio_broadcast_news_malaria_savaka_secured_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_046_am_radio_broadcast_news_malaria_savaka_secured_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\046_am_radio_broadcast_news_malaria_savaka_secured\radio_dialogues_046_am_radio_broadcast_news_malaria_savaka_secured_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_malaria_galili
+class radio_dialogues_047_am_radio_broadcast_news_malaria_galili_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\047_am_radio_broadcast_news_malaria_galili\radio_dialogues_047_am_radio_broadcast_news_malaria_galili_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_047_am_radio_broadcast_news_malaria_galili_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\047_am_radio_broadcast_news_malaria_galili\radio_dialogues_047_am_radio_broadcast_news_malaria_galili_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_047_am_radio_broadcast_news_malaria_galili_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\047_am_radio_broadcast_news_malaria_galili\radio_dialogues_047_am_radio_broadcast_news_malaria_galili_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_malaria_galili_secured
+class radio_dialogues_048_am_radio_broadcast_news_malaria_galili_secured_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\048_am_radio_broadcast_news_malaria_galili_secured\radio_dialogues_048_am_radio_broadcast_news_malaria_galili_secured_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_048_am_radio_broadcast_news_malaria_galili_secured_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\048_am_radio_broadcast_news_malaria_galili_secured\radio_dialogues_048_am_radio_broadcast_news_malaria_galili_secured_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_048_am_radio_broadcast_news_malaria_galili_secured_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\048_am_radio_broadcast_news_malaria_galili_secured\radio_dialogues_048_am_radio_broadcast_news_malaria_galili_secured_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_malaria_boise
+class radio_dialogues_049_am_radio_broadcast_news_malaria_boise_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\049_am_radio_broadcast_news_malaria_boise\radio_dialogues_049_am_radio_broadcast_news_malaria_boise_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_049_am_radio_broadcast_news_malaria_boise_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\049_am_radio_broadcast_news_malaria_boise\radio_dialogues_049_am_radio_broadcast_news_malaria_boise_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_049_am_radio_broadcast_news_malaria_boise_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\049_am_radio_broadcast_news_malaria_boise\radio_dialogues_049_am_radio_broadcast_news_malaria_boise_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_malaria_boise_secured
+class radio_dialogues_050_am_radio_broadcast_news_malaria_boise_secured_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\050_am_radio_broadcast_news_malaria_boise_secured\radio_dialogues_050_am_radio_broadcast_news_malaria_boise_secured_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_050_am_radio_broadcast_news_malaria_boise_secured_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\050_am_radio_broadcast_news_malaria_boise_secured\radio_dialogues_050_am_radio_broadcast_news_malaria_boise_secured_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_050_am_radio_broadcast_news_malaria_boise_secured_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\050_am_radio_broadcast_news_malaria_boise_secured\radio_dialogues_050_am_radio_broadcast_news_malaria_boise_secured_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_arrest
+class radio_dialogues_051_am_radio_broadcast_news_arrest_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\051_am_radio_broadcast_news_arrest\radio_dialogues_051_am_radio_broadcast_news_arrest_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_051_am_radio_broadcast_news_arrest_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\051_am_radio_broadcast_news_arrest\radio_dialogues_051_am_radio_broadcast_news_arrest_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_051_am_radio_broadcast_news_arrest_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\051_am_radio_broadcast_news_arrest\radio_dialogues_051_am_radio_broadcast_news_arrest_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_051_am_radio_broadcast_news_arrest_BROADCASTER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\051_am_radio_broadcast_news_arrest\radio_dialogues_051_am_radio_broadcast_news_arrest_BROADCASTER_3.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_execution
+class radio_dialogues_052_am_radio_broadcast_news_execution_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\052_am_radio_broadcast_news_execution\radio_dialogues_052_am_radio_broadcast_news_execution_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_052_am_radio_broadcast_news_execution_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\052_am_radio_broadcast_news_execution\radio_dialogues_052_am_radio_broadcast_news_execution_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_052_am_radio_broadcast_news_execution_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\052_am_radio_broadcast_news_execution\radio_dialogues_052_am_radio_broadcast_news_execution_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_rescued
+class radio_dialogues_053_am_radio_broadcast_news_rescued_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\053_am_radio_broadcast_news_rescued\radio_dialogues_053_am_radio_broadcast_news_rescued_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_053_am_radio_broadcast_news_rescued_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\053_am_radio_broadcast_news_rescued\radio_dialogues_053_am_radio_broadcast_news_rescued_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_053_am_radio_broadcast_news_rescued_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\053_am_radio_broadcast_news_rescued\radio_dialogues_053_am_radio_broadcast_news_rescued_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_house_destroyed
+class radio_dialogues_054_am_radio_broadcast_news_house_destroyed_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\054_am_radio_broadcast_news_house_destroyed\radio_dialogues_054_am_radio_broadcast_news_house_destroyed_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_054_am_radio_broadcast_news_house_destroyed_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\054_am_radio_broadcast_news_house_destroyed\radio_dialogues_054_am_radio_broadcast_news_house_destroyed_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_054_am_radio_broadcast_news_house_destroyed_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\054_am_radio_broadcast_news_house_destroyed\radio_dialogues_054_am_radio_broadcast_news_house_destroyed_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_depot_fail
+class radio_dialogues_055_am_radio_broadcast_news_depot_fail_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\055_am_radio_broadcast_news_depot_fail\radio_dialogues_055_am_radio_broadcast_news_depot_fail_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_055_am_radio_broadcast_news_depot_fail_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\055_am_radio_broadcast_news_depot_fail\radio_dialogues_055_am_radio_broadcast_news_depot_fail_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_055_am_radio_broadcast_news_depot_fail_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\055_am_radio_broadcast_news_depot_fail\radio_dialogues_055_am_radio_broadcast_news_depot_fail_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_depot_success
+class radio_dialogues_056_am_radio_broadcast_news_depot_success_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\056_am_radio_broadcast_news_depot_success\radio_dialogues_056_am_radio_broadcast_news_depot_success_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_056_am_radio_broadcast_news_depot_success_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\056_am_radio_broadcast_news_depot_success\radio_dialogues_056_am_radio_broadcast_news_depot_success_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_056_am_radio_broadcast_news_depot_success_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\056_am_radio_broadcast_news_depot_success\radio_dialogues_056_am_radio_broadcast_news_depot_success_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_depot_success_alone
+class radio_dialogues_057_am_radio_broadcast_news_depot_success_alone_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\057_am_radio_broadcast_news_depot_success_alone\radio_dialogues_057_am_radio_broadcast_news_depot_success_alone_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_057_am_radio_broadcast_news_depot_success_alone_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\057_am_radio_broadcast_news_depot_success_alone\radio_dialogues_057_am_radio_broadcast_news_depot_success_alone_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_057_am_radio_broadcast_news_depot_success_alone_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\057_am_radio_broadcast_news_depot_success_alone\radio_dialogues_057_am_radio_broadcast_news_depot_success_alone_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_057_am_radio_broadcast_news_depot_success_alone_BROADCASTER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\057_am_radio_broadcast_news_depot_success_alone\radio_dialogues_057_am_radio_broadcast_news_depot_success_alone_BROADCASTER_3.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_radar_destroyed
+class radio_dialogues_058_am_radio_broadcast_news_radar_destroyed_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\058_am_radio_broadcast_news_radar_destroyed\radio_dialogues_058_am_radio_broadcast_news_radar_destroyed_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_058_am_radio_broadcast_news_radar_destroyed_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\058_am_radio_broadcast_news_radar_destroyed\radio_dialogues_058_am_radio_broadcast_news_radar_destroyed_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_aircraft
+class radio_dialogues_059_am_radio_broadcast_news_aircraft_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\059_am_radio_broadcast_news_aircraft\radio_dialogues_059_am_radio_broadcast_news_aircraft_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_059_am_radio_broadcast_news_aircraft_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\059_am_radio_broadcast_news_aircraft\radio_dialogues_059_am_radio_broadcast_news_aircraft_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_059_am_radio_broadcast_news_aircraft_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\059_am_radio_broadcast_news_aircraft\radio_dialogues_059_am_radio_broadcast_news_aircraft_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_checkpoints
+class radio_dialogues_060_am_radio_broadcast_news_checkpoints_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\060_am_radio_broadcast_news_checkpoints\radio_dialogues_060_am_radio_broadcast_news_checkpoints_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_warnings_a
+class radio_dialogues_061_am_radio_broadcast_news_warnings_a_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\061_am_radio_broadcast_news_warnings_a\radio_dialogues_061_am_radio_broadcast_news_warnings_a_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_061_am_radio_broadcast_news_warnings_a_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\061_am_radio_broadcast_news_warnings_a\radio_dialogues_061_am_radio_broadcast_news_warnings_a_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_061_am_radio_broadcast_news_warnings_a_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\061_am_radio_broadcast_news_warnings_a\radio_dialogues_061_am_radio_broadcast_news_warnings_a_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_061_am_radio_broadcast_news_warnings_a_BROADCASTER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\061_am_radio_broadcast_news_warnings_a\radio_dialogues_061_am_radio_broadcast_news_warnings_a_BROADCASTER_3.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_warnings_b
+class radio_dialogues_062_am_radio_broadcast_news_warnings_b_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\062_am_radio_broadcast_news_warnings_b\radio_dialogues_062_am_radio_broadcast_news_warnings_b_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_062_am_radio_broadcast_news_warnings_b_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\062_am_radio_broadcast_news_warnings_b\radio_dialogues_062_am_radio_broadcast_news_warnings_b_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_062_am_radio_broadcast_news_warnings_b_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\062_am_radio_broadcast_news_warnings_b\radio_dialogues_062_am_radio_broadcast_news_warnings_b_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_warnings_c
+class radio_dialogues_063_am_radio_broadcast_news_warnings_c_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\063_am_radio_broadcast_news_warnings_c\radio_dialogues_063_am_radio_broadcast_news_warnings_c_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_063_am_radio_broadcast_news_warnings_c_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\063_am_radio_broadcast_news_warnings_c\radio_dialogues_063_am_radio_broadcast_news_warnings_c_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_063_am_radio_broadcast_news_warnings_c_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\063_am_radio_broadcast_news_warnings_c\radio_dialogues_063_am_radio_broadcast_news_warnings_c_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_weapons
+class radio_dialogues_064_am_radio_broadcast_news_weapons_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\064_am_radio_broadcast_news_weapons\radio_dialogues_064_am_radio_broadcast_news_weapons_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_064_am_radio_broadcast_news_weapons_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\064_am_radio_broadcast_news_weapons\radio_dialogues_064_am_radio_broadcast_news_weapons_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_064_am_radio_broadcast_news_weapons_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\064_am_radio_broadcast_news_weapons\radio_dialogues_064_am_radio_broadcast_news_weapons_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_hostels
+class radio_dialogues_065_am_radio_broadcast_news_hostels_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\065_am_radio_broadcast_news_hostels\radio_dialogues_065_am_radio_broadcast_news_hostels_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_065_am_radio_broadcast_news_hostels_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\065_am_radio_broadcast_news_hostels\radio_dialogues_065_am_radio_broadcast_news_hostels_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_065_am_radio_broadcast_news_hostels_BROADCASTER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\065_am_radio_broadcast_news_hostels\radio_dialogues_065_am_radio_broadcast_news_hostels_BROADCASTER_2.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_idap
+class radio_dialogues_066_am_radio_broadcast_news_idap_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\066_am_radio_broadcast_news_idap\radio_dialogues_066_am_radio_broadcast_news_idap_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_066_am_radio_broadcast_news_idap_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\066_am_radio_broadcast_news_idap\radio_dialogues_066_am_radio_broadcast_news_idap_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_power_plant
+class radio_dialogues_067_am_radio_broadcast_news_power_plant_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\067_am_radio_broadcast_news_power_plant\radio_dialogues_067_am_radio_broadcast_news_power_plant_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_067_am_radio_broadcast_news_power_plant_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\067_am_radio_broadcast_news_power_plant\radio_dialogues_067_am_radio_broadcast_news_power_plant_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_smugglers
+class radio_dialogues_068_am_radio_broadcast_news_smugglers_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\068_am_radio_broadcast_news_smugglers\radio_dialogues_068_am_radio_broadcast_news_smugglers_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_068_am_radio_broadcast_news_smugglers_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\068_am_radio_broadcast_news_smugglers\radio_dialogues_068_am_radio_broadcast_news_smugglers_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_ied
+class radio_dialogues_069_am_radio_broadcast_news_ied_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\069_am_radio_broadcast_news_ied\radio_dialogues_069_am_radio_broadcast_news_ied_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_069_am_radio_broadcast_news_ied_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\069_am_radio_broadcast_news_ied\radio_dialogues_069_am_radio_broadcast_news_ied_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+
+// am_radio_broadcast_news_sugar_company
+class radio_dialogues_070_am_radio_broadcast_news_sugar_company_BROADCASTER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\070_am_radio_broadcast_news_sugar_company\radio_dialogues_070_am_radio_broadcast_news_sugar_company_BROADCASTER_0.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+class radio_dialogues_070_am_radio_broadcast_news_sugar_company_BROADCASTER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\radio_dialogues\070_am_radio_broadcast_news_sugar_company\radio_dialogues_070_am_radio_broadcast_news_sugar_company_BROADCASTER_1.ogg", db+0, 1};
+	titles[] = {0, ""};
+};
+

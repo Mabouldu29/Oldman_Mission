@@ -1,0 +1,102 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\FastTravel\definitions.inc"
+
+addMissionEventHandler ["Loaded", {call BIS_fnc_OM_handleTouchOffs}];
+
+addMissionEventHandler
+[	
+	"Loaded",
+	{
+		params ["_saveType"];
+		[] spawn
+		{
+			scriptname "FastTravel_init.sqf: Loaded";
+			waituntil {!isnull finddisplay 12};
+			waitUntil {!isNil "BIS_fnc_OM_handleMapControls"};
+			["FASTTRAVEL: OnLoad event", 1] call BIS_fnc_logFormat;
+			if(!isNil "BIS_OM_FastTravel_condition" && { call BIS_OM_FastTravel_condition }) then { SET_CALLBACK_ACTIVE(false) } else { SET_CALLBACK_INACTIVE(true) };
+		};
+	}
+];
+
+addMissionEventhandler 
+[
+	"Loaded",
+	{
+		[] spawn {
+			scriptname "reskinUI.sqf: Loaded";
+			waituntil {!isnull finddisplay 12};
+			["PHONE: reskinning UI", 1] call BIS_fnc_logFormat;
+			[(finddisplay 12), false] execVM "\a3\Missions_F_Oldman\Systems\Scripts\Phone\reskinUI.sqf";
+		};
+	}
+];
+
+addMissionEventHandler 
+[
+	"Loaded",
+	{
+		[] spawn {
+			waitUntil {!isNull findDisplay 46};
+			if (!isNil "BIS_OM_unreadMessagesCnt" && { BIS_OM_unreadMessagesCnt == 0 }) then {
+				(findDisplay 46 displayCtrl 9999013) ctrlShow FALSE;
+			};
+		};
+	}
+];
+
+addMissionEventHandler ["Loaded", {	params ["_saveType"]; [] call BIS_fnc_OM_moduleSmartMarkers_RegisterEventhandlers}]; //workaround, autosave doesn't serialize the map display ID
+
+addMissionEventHandler 
+[
+	"Loaded",
+	{
+		scriptName "addMissionEventHandler/Loaded(loadingScreen)";
+		uiNamespace setVariable ["BIS_RscDisplayLoadingScreen_fromLoad", true];			//tell the loadingscreen the LOAD event has happened, therefore we need to use the another method for animations;
+		endLoadingScreen;
+		startLoadingScreen ["","RscDisplayLoadingOM"];
+		[] spawn
+		{
+			BIS_OM_preloadHandler = addMissionEventHandler
+			["PreloadFinished",
+				{
+					scriptName "addMissionEventHandler/PreloadFinished(loadingScreen)";
+					["LOADINGSCREEN:  setting to false %1", 1] call BIS_fnc_logFormat;
+					uiNamespace setVariable ["BIS_RscDisplayLoadingScreen_fromLoad", false];
+					uiNamespace setVariable ["BIS_RscDisplayLoadingScreen_fromLoaded", false];
+					removeMissionEventHandler ["PreloadFinished", BIS_OM_preloadHandler];
+					endLoadingScreen;
+				}
+			];
+		};
+	}
+];
+
+addMissionEventHandler ["Loaded", { [false] execVM "\A3\Missions_F_Oldman\Systems\UI\CenterDot\initCenterDot.sqf"; }];
+
+addMissionEventHandler
+[	
+	"Loaded",
+	{
+		params ["_saveType"];
+		[] spawn
+		{
+			scriptname "fn_OM_HandleMapControls.sqf: Loaded";
+			waituntil {!isnull finddisplay 12};
+			if (!(isNil {uiNamespace getVariable "BIS_OM_HandleMapControls_customEventHandlers"})) then
+			{
+				{
+					private _eventHandlers = _x;
+					if( count _eventHandlers == 0 ) exitWith {};
+					{
+							disableSerialization;
+							// ["MAPHANDLER: Removing eventhandler: %1 | %2", _eventHandlers select 1 select 0 select 0, _eventHandlers select 1 select 0 select 1] call BIS_fnc_logFormat;
+							(UINamespace getvariable "BIS_OM_HandleMapControls_mapHandler") ctrlRemoveEventHandler [_eventHandlers select 1 select 0 select 0, _eventHandlers select 1 select 0 select 1];
+					} forEach _eventHandlers;
+				} forEach (uiNamespace getVariable "BIS_OM_HandleMapControls_customEventHandlers");
+				UINamespace setvariable [ "BIS_OM_HandleMapControls_customEventHandlers", [] ];
+				missionNameSpace setVariable ["BIS_OM_HandleMapControls_customCallbacks", [] ];
+			};
+		}
+	}
+];

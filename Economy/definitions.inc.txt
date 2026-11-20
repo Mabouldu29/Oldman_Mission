@@ -1,0 +1,39 @@
+#include "common_definitions.inc"
+#include "prices_definitions.inc"
+
+#define FUNCTIONS_PATH "\a3\Missions_F_Oldman\Systems\Scripts\Economy\"
+#define FUNCTIONS_NAMES ["DecreaseMoney","IncreaseMoney","GetStatus","ChangeIncome","BuyEquipment","HasEnoughMoney", "HasEnoughStorage","SellEquipment","Pay"]
+#define FUNCTIONS_PREFIX "BIS_fnc_OM_moduleEconomy_"
+
+#define WeaponNoSlot		          0	          // dummy weapons
+#define WeaponSlotPrimary	        1	          // primary weapons
+#define WeaponSlotHandGun	        2	          // HandGun
+#define WeaponSlotSecondary	      4	          // secondary weapons
+#define WeaponSlotHandGunItem	    16          // HandGun magazines
+#define WeaponSlotItem		        256	        // items
+#define WeaponSlotUnknown         512         // unknown type (perhaps glasses, respirators, etc)
+#define WeaponSlotBinocular	      4096	      // binocular
+#define WeaponHardMounted	        65536
+#define WeaponSlotInventory       131072      // inventory items
+#define SLOT_TYPES [WeaponSlotPrimary ,WeaponSlotHandGun, WeaponSlotSecondary, WeaponSlotHandGunItem, WeaponSlotItem, WeaponSlotBinocular, WeaponHardMounted, WeaponSlotInventory, WeaponSlotUnknown]
+
+#define EQUIP_PRICES \
+[ \
+  [WeaponNoSlot, 200], \
+  [WeaponSlotPrimary, 300],\
+  [WeaponSlotSecondary, 500],\
+  [WeaponSlotHandGun, 050],\
+  [WeaponSlotHandGunItem, 020], \
+  [WeaponSlotItem, 100], \
+  [WeaponSlotBinocular, 200], \
+  [WeaponHardMounted, 1000],\
+  [WeaponSlotInventory, 100],\
+  [WeaponSlotUnknown, 50]\
+]
+#define Ln2(X) private _ln=0; while{X=X>1} do {X/2,_ln=_ln+1}; _ln
+#define TO_BINARY(NUMBER,BITS) [NUMBER,BITS] call BIS_fnc_convertToBinary
+#define TO_DECIMAL(NUMBER) [NUMBER] call BIS_fnc_convertToDecimal
+#define LOG_AND(NUMBER1, NUMBER2) [TO_BINARY(NUMBER1,32), TO_BINARY(NUMBER2,32)] call BIS_fnc_LogicalAnd
+#define LOG_AND_DECIMAL(NUMBER1, NUMBER2) TO_DECIMAL(LOG_AND(NUMBER1, NUMBER2))
+
+#define GET_PRICES_TABLE (BIS_OM_ECONOMY_LOGIC getVariable "BIS_prices")

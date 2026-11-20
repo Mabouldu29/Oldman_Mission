@@ -1,0 +1,504 @@
+#include "..\defines.inc"
+#include "DefinesSyndikatPool.inc"
+/* #include "\a3\Ui_f\hpp\Common\RscEdit.hpp" */
+
+class AbstractUI
+{
+	type = CT_STATIC;
+	style = ST_LEFT;
+	colorText[] = {0.66,0.75,0.9,0.83};
+	colorBackground[] = {0.23,0.35,0.42,0.1};
+	colorActive[] = {0.23,0.35,0.42,0.9};
+	font = GUI_FONT_NORMAL;
+	sizeEx = 0.03;
+	text = "";
+};
+class AbstractUIValue: AbstractUI
+{
+	style = ST_LEFT + ST_FRAME;
+	type = CT_EDIT;
+	colorText[] = {0.92, 0.99, 1.0, 0.92};
+	colorDisabled[] = {0.47, 0.49, 0.47, 0.93};
+	colorSelection[] = {0.47, 0.49, 0.47, 0.93};
+	canModify = true;
+	autocomplete = false;
+	onChar = "['GetNumbersFromUI', [missionNameSpace getVariable 'BIS_OM_SyndikatAgent_logic', _this] ] call BIS_fnc_OM_ModuleSyndikatAgent";
+};
+
+class RscSyndikatPool
+{
+
+	idd = IDC_SYNDIKATPOOL;
+	movingEnable = false;
+	enableSimulation = 1;
+	enableDisplay = 1;
+
+	/* onLoad = "_this call BIS_fnc_log;"; */
+	onLoad = "_this call compile preprocessFileLineNumbers '\a3\Missions_F_Oldman\Systems\UI\SyndikatPool\RscSyndikatAgentUIHandler.sqf';";
+	/* onLoad = "_this call compile preprocessFileLineNumbers 'RscTestControlTypes.sqf';"; */
+	//onUnload = "systemChat str ['onUnload',_this]; false";
+	//onChildDestroyed = "systemChat str ['onChildDestroyed',_this]; false";
+
+	class ControlsBackground // Background controls (placed behind Controls)
+	{
+		colorText[] = {0.66,0.75,0.9,0.83};
+		colorBackground[] = {0.23,0.35,0.42,0.05};
+		colorActive[] = {0.23,0.35,0.42,0.9};
+		font = GUI_FONT_NORMAL;
+		sizeEx = 0.03;
+		text = "";
+		class Background
+		{
+			idc = -1;
+			type = CT_STATIC;
+			style = ST_LEFT;
+			colorText[] = {0.33,0.46,0.69,0.8};
+			colorBackground[] = {0.23,0.35,0.42,0.75};
+			colorActive[] = {0.23,0.35,0.42,0.9};
+			font = GUI_FONT_NORMAL;
+			sizeEx = 0.03;
+			x = 0.0244788 * safezoneW + safezoneX;
+			y = 0.744614 * safezoneH + safezoneY;
+			w = 0.269271 * safezoneW;
+			h = 0.212923 * safezoneH;
+			text = "";
+		};
+  };
+  class Controls
+  {
+
+
+		class FrameSyndikatPool: AbstractUI
+		{
+			type = CT_STATIC;
+			style = ST_FRAME;
+			idc = IDC_SYNDIKATPOOL_FRAMESYNDIKATPOOL;
+			text = $STR_A3_OM_System_SyndikatPool_FrameSyndikatPool; //--- ToDo: Localize;
+			x = 0.0244788 * safezoneW + safezoneX;
+			y = 0.729914 * safezoneH + safezoneY;
+			w = 0.269271 * safezoneW;
+			h = 0.227923 * safezoneH;
+			colorText[] = {0.33,0.46,0.69,0.8};
+			colorBackground[] = {0.23,0.35,0.42,0.5};
+			colorActive[] = {0.23,0.35,0.42,0.9};
+		};
+		class TextActualPool: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTACTUALPOOL;
+			text = $STR_A3_OM_System_SyndikatPool_TextActualPool; //--- ToDo: Localize;
+			x = 0.0359375 * safezoneW + safezoneX;
+			y = 0.785888 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextTeamPower: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTTEAMPOWER;
+			text = $STR_A3_OM_System_SyndikatPool_TextTeamPower; //--- ToDo: Localize;
+			x = 0.0359375 * safezoneW + safezoneX;
+			y = 0.80788 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextPoolCap: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTPOOLCAP;
+			text = $STR_A3_OM_System_SyndikatPool_TextPoolCap; //--- ToDo: Localize;
+			x = 0.0359375 * safezoneW + safezoneX;
+			y = 0.829871 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextPoolIncome: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTPOOLINCOME;
+			text = $STR_A3_OM_System_SyndikatPool_TextPoolIncome; //--- ToDo: Localize;
+			x = 0.0359375 * safezoneW + safezoneX;
+			y = 0.851863 * safezoneH + safezoneY;
+			w = 0.0902083 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextNextEventDate: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTNEXTEVENTDATE;
+			text = $STR_A3_OM_System_SyndikatPool_TextNextEventDate; //--- ToDo: Localize;
+			x = 0.161979 * safezoneW + safezoneX;
+			y = 0.829871 * safezoneH + safezoneY;
+			w = 0.06875 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			tooltip = $STR_A3_OM_System_SyndikatPool_TextNextEventDateTooltip; //--- ToDo: Localize;
+		};
+		class TextBasePower: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTBASEPOWER;
+			text = $STR_A3_OM_System_SyndikatPool_TextBasePower; //--- ToDo: Localize;
+			x = 0.161979 * safezoneW + safezoneX;
+			y = 0.851863 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextBaseSelected: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTBASESELECTED;
+			text = $STR_A3_OM_System_SyndikatPool_TextBaseSelected; //--- ToDo: Localize;
+			x = 0.161979 * safezoneW + safezoneX;
+			y = 0.873854 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextBaseCooldown: AbstractUI
+		{
+			idc = -1;
+			text = $STR_A3_OM_System_SyndikatPool_TextBaseCooldown; //--- ToDo: Localize;
+			x = 0.161979 * safezoneW + safezoneX;
+			y = 0.8958458 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextBaseCooldown2: AbstractUI
+		{
+			idc = -1;
+			text = $STR_A3_OM_System_SyndikatPool_TextBaseCooldown2; //--- ToDo: Localize;
+			x = 0.2580205 * safezoneW + safezoneX;
+			y = 0.8958458 * safezoneH + safezoneY;
+			w = 0.03275 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			tooltip = ""; //--- ToDo: Localize;
+		};
+		class TextBaseCooldownValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTBASECOOLDOWNVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.226458 * safezoneW + safezoneX;
+			y = 0.8958458 * safezoneH + safezoneY;
+			w = 0.0329167 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextNextEventDateValue: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTNEXTEVENTDATEVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.236458 * safezoneW + safezoneX;
+			y = 0.829871 * safezoneH + safezoneY;
+			w = 0.0215625 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextNextEventDate2: AbstractUI
+		{
+			idc = -1;
+			text = $STR_A3_OM_System_SyndikatPool_TextNextEventDate2; //--- ToDo: Localize;
+			x = 0.2580205 * safezoneW + safezoneX;
+			y = 0.829871 * safezoneH + safezoneY;
+			w = 0.03275 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			tooltip = ""; //--- ToDo: Localize;
+		};
+		class TextBasePowerValue: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTBASEPOWERVALUE;
+			text = "0.0"; //--- ToDo: Localize;
+			x = 0.236458 * safezoneW + safezoneX;
+			y = 0.851863 * safezoneH + safezoneY;
+			w = 0.0401042 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextBaseSelectedValue: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTBASESELECTEDVALUE;
+			text = $STR_A3_OM_System_SyndikatPool_TextBaseSelectedValue; //--- ToDo: Localize;
+			x = 0.219271 * safezoneW + safezoneX;
+			y = 0.873854 * safezoneH + safezoneY;
+			w = 0.0630208 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class RscText_1016: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_RSCTEXT_1016;
+			text = "/"; //--- ToDo: Localize;
+			x = 0.0703125 * safezoneW + safezoneX;
+			y = 0.873854 * safezoneH + safezoneY;
+			w = 0.0114583 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class RscText_1017: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_RSCTEXT_1017;
+			text = "/"; //--- ToDo: Localize;
+			x = 0.110417 * safezoneW + safezoneX;
+			y = 0.829871 * safezoneH + safezoneY;
+			w = 0.0114583 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class FramePoolInfo: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_FRAMEPOOLINFO;
+			text = $STR_A3_OM_System_SyndikatPool_FramePoolInfo; //--- ToDo: Localize;
+			x = 0.0359375 * safezoneW + safezoneX;
+			y = 0.752901 * safezoneH + safezoneY;
+			w = 0.103125 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			colorText[] = {0.66,0.75,0.9,0.83};
+		};
+		class FrameEventInfo: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_FRAMEEVENTINFO;
+			text = $STR_A3_OM_System_SyndikatPool_FrameEventInfo; //--- ToDo: Localize;
+			x = 0.167708 * safezoneW + safezoneX;
+			y = 0.752901 * safezoneH + safezoneY;
+			w = 0.108854 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			colorText[] = {0.66,0.75,0.9,0.83};
+		};
+		class TextActualPoolValue: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTACTUALPOOLVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.119146 * safezoneW + safezoneX;
+			y = 0.785888 * safezoneH + safezoneY;
+			w = 0.034375 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextTeamPowerValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTTEAMPOWERVALUE;
+			text = "0.0"; //--- ToDo: Localize;
+			x = 0.119146 * safezoneW + safezoneX;
+			y = 0.80788 * safezoneH + safezoneY;
+			w = 0.034375 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextPoolMinValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTPOOLMINVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.0915 * safezoneW + safezoneX;
+			y = 0.829871 * safezoneH + safezoneY;
+			w = 0.0219167 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextPoolMaxValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTPOOLMAXVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.119146 * safezoneW + safezoneX;
+			y = 0.829871 * safezoneH + safezoneY;
+			w = 0.034375 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextIncomeUnitsValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTINCOMEUNITSVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.0416667 * safezoneW + safezoneX;
+			y = 0.873854 * safezoneH + safezoneY;
+			w = 0.0286458 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextIncomeTimeValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTINCOMETIMEVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.0817708 * safezoneW + safezoneX;
+			y = 0.873854 * safezoneH + safezoneY;
+			w = 0.0359167 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class TextNextEventOffset: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTNEXTEVENTOFFSET;
+			text = $STR_A3_OM_System_SyndikatPool_TextNextEventOffset; //--- ToDo: Localize;
+			x = 0.161979 * safezoneW + safezoneX;
+			y = 0.80788 * safezoneH + safezoneY;
+			w = 0.06875 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			colorText[] = {0.66,0.75,0.9,0.83};
+			tooltip = $STR_A3_OM_System_SyndikatPool_TextNextEventOffsetTooltip; //--- ToDo: Localize;
+			sizeEx = 0.75 * GUI_GRID_H;
+		};
+		class TextNextEventDateOffsetValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTNEXTEVENTDATEOFFSETVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.226458 * safezoneW + safezoneX;
+			y = 0.80788 * safezoneH + safezoneY;
+			w = 0.0329167 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			sizeEx = 0.75 * GUI_GRID_H;
+		};
+		class TextNextEventOffset2: AbstractUI
+		{
+			idc = -1;
+			text = $STR_A3_OM_System_SyndikatPool_TextBaseCooldown2; //--- ToDo: Localize;
+			x = 0.2580205 * safezoneW + safezoneX;
+			y = 0.80788 * safezoneH + safezoneY;
+			w = 0.03275 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			tooltip = ""; //--- ToDo: Localize;
+		};
+	};
+};
+
+class RscSyndikatPoolEdit
+{
+	idd = -1;
+	movingEnable = true;
+	enableSimulation = 1;
+	enableDisplay = 1;
+
+	class ControlsBackground // Background controls (placed behind Controls)
+	{
+		colorText[] = {0.66,0.75,0.9,0.83};
+		colorBackground[] = {0.23,0.35,0.42,0.05};
+		colorActive[] = {0.23,0.35,0.42,0.9};
+		font = GUI_FONT_NORMAL;
+		sizeEx = 0.03;
+		text = "";
+  };
+  class Controls
+  {
+		////////////////////////////////////////////////////////
+		// GUI EDITOR OUTPUT START (by zozo, v1.063, #Sijajo)
+		////////////////////////////////////////////////////////
+
+		class FrameSyndikatPool: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_FRAMESYNDIKATPOOL;
+			type = CT_STATIC;
+			style = ST_FRAME;
+			text = $STR_A3_OM_System_SyndikatPool_FrameSyndikatPool; //--- ToDo: Localize;
+			x = 0.368229 * safezoneW + safezoneX;
+			y = 0.258094 * safezoneH + safezoneY;
+			w = 0.211979 * safezoneW;
+			h = 0.164936 * safezoneH;
+			colorText[] = {0.33,0.46,0.69,0.8};
+			colorBackground[] = {0.23,0.35,0.42,0.9};
+			colorActive[] = {0.23,0.35,0.42,0.9};
+			sizeEx = 0.85 * GUI_GRID_H;
+		};
+		class TextActualPool: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTACTUALPOOL;
+			text = $STR_A3_OM_System_SyndikatPool_TextActualPool; //--- ToDo: Localize;
+			x = 0.379688 * safezoneW + safezoneX;
+			y = 0.291081 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			colorText[] = {0.66,0.75,0.9,0.83};
+			sizeEx = 0.75 * GUI_GRID_H;
+		};
+		class TextPoolCap: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTPOOLCAP;
+			text = $STR_A3_OM_System_SyndikatPool_TextPoolCap; //--- ToDo: Localize;
+			x = 0.379688 * safezoneW + safezoneX;
+			y = 0.313073 * safezoneH + safezoneY;
+			w = 0.0572917 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			colorText[] = {0.66,0.75,0.9,0.83};
+			sizeEx = 0.75 * GUI_GRID_H;
+		};
+		class TextPoolIncome: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_TEXTPOOLINCOME;
+			text = $STR_A3_OM_System_SyndikatPool_TextPoolIncome; //--- ToDo: Localize;
+			x = 0.379688 * safezoneW + safezoneX;
+			y = 0.335064 * safezoneH + safezoneY;
+			w = 0.0802083 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			colorText[] = {0.66,0.75,0.9,0.83};
+			sizeEx = 0.75 * GUI_GRID_H;
+		};
+		class RscText_1016: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_RSCTEXT_1016;
+			text = "/"; //--- ToDo: Localize;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.335064 * safezoneH + safezoneY;
+			w = 0.0114583 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			sizeEx = 0.75 * GUI_GRID_H;
+		};
+		class RscText_1017: AbstractUI
+		{
+			idc = IDC_SYNDIKATPOOL_RSCTEXT_1017;
+			text = "/"; //--- ToDo: Localize;
+			x = 0.5 * safezoneW + safezoneX;
+			y = 0.313073 * safezoneH + safezoneY;
+			w = 0.0114583 * safezoneW;
+			h = 0.0219914 * safezoneH;
+			sizeEx = 0.75 * GUI_GRID_H;
+		};
+		class EditActualPoolValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_EDITACTUALPOOLVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.477083 * safezoneW + safezoneX;
+			y = 0.291081 * safezoneH + safezoneY;
+			w = 0.0229167 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class EditPoolMinValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_EDITPOOLMINVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.477083 * safezoneW + safezoneX;
+			y = 0.313073 * safezoneH + safezoneY;
+			w = 0.0229167 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class EditPoolMaxValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_EDITPOOLMAXVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.511458 * safezoneW + safezoneX;
+			y = 0.313073 * safezoneH + safezoneY;
+			w = 0.0286458 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class EditIncomeUnitsValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_EDITINCOMEUNITSVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.477083 * safezoneW + safezoneX;
+			y = 0.335064 * safezoneH + safezoneY;
+			w = 0.0286458 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class EditIncomeTimeValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_EDITINCOMETIMEVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.511458 * safezoneW + safezoneX;
+			y = 0.335064 * safezoneH + safezoneY;
+			w = 0.0286458 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		class ButtSyndikatPool: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_BUTTSYNDIKATPOOL;
+			type = CT_BUTTON;
+			text = $STR_A3_OM_System_SyndikatPool_ButtSyndikatPool; //--- ToDo: Localize;
+			x = 21 * GUI_GRID_W + GUI_GRID_X;
+			y = 7.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 5.5 * GUI_GRID_W;
+			h = 1 * GUI_GRID_H;
+			colorText[] = {0.92,0.99,1,0.92};
+			colorBackground[] = {0.23,0.35,0.42,0.5};
+			colorActive[] = {0.23,0.35,0.42,0.5};
+			action = "BIS_SyndikatAgent setVariable ['State', 1];";
+			//action = "(missionNameSpace getVariable 'BIS_OM_SyndikatAgent_logic') setVariable ['State', 1]";
+		};
+		class EditSyndikatPoolEventTimeValue: AbstractUIValue
+		{
+			idc = IDC_SYNDIKATPOOL_EDITSYNDIKATPOOLEVENTTIMEVALUE;
+			text = "0"; //--- ToDo: Localize;
+			x = 0.477083 * safezoneW + safezoneX;
+			y = 0.357056 * safezoneH + safezoneY;
+			w = 0.0286458 * safezoneW;
+			h = 0.0219914 * safezoneH;
+		};
+		////////////////////////////////////////////////////////
+		// GUI EDITOR OUTPUT END
+		////////////////////////////////////////////////////////
+	};
+};

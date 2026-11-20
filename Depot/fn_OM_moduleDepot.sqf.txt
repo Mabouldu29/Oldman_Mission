@@ -1,0 +1,169 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+if (isNil "BIS_OM_globalEquipBox") then {
+	BIS_OM_globalEquipBox = "VirtualReammoBox_F" createVehicle [100,100,0];
+	BIS_OM_globalEquipBox setPos [100,100,500];
+	BIS_OM_globalEquipBox hideObject TRUE;
+	BIS_OM_globalEquipBox enableSimulation FALSE;
+	BIS_OM_globalEquipBox setVariable ["ContainersLink", []];
+};
+
+if ((_this # 0) != "init") exitWith {};
+
+_module = ((_this # 1) # 0);
+BIS_OM_sellingEquip = FALSE;
+waitUntil {!isNull (findDisplay 46)};
+private _cond = _module getVariable ["DepotCondition", "TRUE"];
+
+private _cHandleDropPointBoxes = format
+["
+	[_this] spawn
+	{
+		scriptName '_cHandleDropPointBoxes';
+		private _boxObject = _this select 0;
+		waitUntil {sleep 1; call {%2} && !isNull _boxObject};
+		if (isNull (uiNamespace getVariable ['BIS_OM_gearTransfer', controlNull])) then
+		{
+			uiNamespace setVariable ['BIS_OM_gearTransfer', (findDisplay 46) ctrlCreate ['RscStructuredText', 9999014]];
+		};
+		_gearTransfer = uiNamespace getVariable 'BIS_OM_gearTransfer';
+		_gearTransfer ctrlShow FALSE;
+		_gearTransfer ctrlSetBackgroundColor [0,0,0,0];
+		_gearTransfer ctrlCommit 0;
+		private _contOpenHndl = _boxObject addEventHandler
+		[
+			'ContainerOpened',
+			{
+				if( !call {%2} ) exitWith {};
+				(_this select 0) spawn
+				{
+					scriptName 'moduleDepot/ContainerOpenedEventhandler';
+					waitUntil {!isNull (findDisplay 602)};
+					if (isNull (uiNamespace getVariable ['BIS_OM_gearTransfer', controlNull])) then
+					{
+						uiNamespace setVariable ['BIS_OM_gearTransfer', (findDisplay 46) ctrlCreate ['RscStructuredText', 9999014]];
+					};
+					_gearTransfer = uiNamespace getVariable 'BIS_OM_gearTransfer';
+					_gearTransfer ctrlSetPosition ctrlPosition (findDisplay 602 displayCtrl 6307);
+					_gearTransfer ctrlCommit 0;
+					_gearTransfer ctrlShow TRUE;
+					_gearTransfer ctrlSetStructuredText parseText ('<t align = ''left''>' + (localize 'STR_A3_moduleDepot_close') + '</t><t align = ''right'' color = ''#61af64''>$0</t>');
+					_totalItemsLoaded = [];
+					while {ctrlShown _gearTransfer} do
+					{
+						waitUntil {sleep 0.5; !(_totalItemsLoaded isEqualTo [itemCargo _this, weaponCargo _this, magazineCargo _this, backpackCargo _this])};
+						_totalItemsLoaded = +[itemCargo _this, weaponCargo _this, magazineCargo _this, backpackCargo _this];
+						_gearTransfer ctrlSetStructuredText parseText ('<t align = ''left''>' + (localize 'STR_A3_moduleDepot_close') + '</t><t align = ''right'' color = ''#61af64''>' + (str([_this, FALSE] call BIS_fnc_OM_sellEquipment)) + '</t>');
+					};
+				};
+			}
+		];
+		private _contCloseHndl = _boxObject addEventHandler
+		['ContainerClosed',
+			{
+				if( !call {%2} ) exitWith {};
+				(uiNamespace getVariable ['BIS_OM_gearTransfer', controlNull]) ctrlShow FALSE;
+				[(_this select 0), TRUE] spawn BIS_fnc_OM_sellEquipment;
+			}
+		];
+		waitUntil {sleep 1; isNull _boxObject};
+		_boxObject removeEventHandler ['ContainerOpened', _contOpenHndl];
+		_boxObject removeEventHandler ['ContainerClosed', _contCloseHndl];
+	};
+	", "%1", _cond
+];
+
+
+
+//pro kazdy modul, handluje holdakci - pridat do initu
+
+private _transferAction = -1;
+private _areaParams = _module getVariable ["objectArea", [100, 100, FALSE, -1]];
+private _area = [position _module];
+_area append _areaParams;
+_area set [5, -1];
+["SAVEPOINTS: AREA: %1", _area] call BIS_fnc_logFormat;
+// condition cursortarget "|| (cursorObject isKindOf ''LandVehicle'' && !(cursorObject isKindOf ''StaticWeapon'')))""
+private _cHandleDropPointHoldAction = format
+["
+ [_this] spawn
+ {
+	 	scriptName '_cHandleDropPointHoldAction';
+	  private _stash = _this select 0;
+	  if !(isNull _stash) then
+	  { 'DROPPOINTS: adding HA' call BIS_fnc_Log;
+	   _transferAction =
+		 [
+		    player,
+		    localize 'STR_A3_moduleDepot_Unload',
+		    '\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa',
+		    '\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa',
+		    'call {%2} && (vehicle player != player && {abs speed vehicle player < 1}) && !BIS_OM_sellingEquip && (player inArea %3)',
+		    'call {%2} && (vehicle player != player && {abs speed vehicle player < 1}) && !BIS_OM_sellingEquip && (player inArea %3)',
+		    {
+		     BIS_OM_sellingEquipFrom = (if ((vehicle player) != player) then {vehicle player} else {cursorObject}); hint localize 'STR_A3_moduleDepot_Hint' },
+		    {
+
+		    },
+		    {
+		     hintSilent '';
+		     [BIS_OM_sellingEquipFrom, TRUE] spawn BIS_fnc_OM_sellEquipment;
+		    },
+		    {
+
+		    },
+		    [],
+		    5,
+		    nil,
+		    FALSE,
+		    FALSE
+	   ] call BIS_fnc_holdActionAdd;
+		 waituntil{ isNull _stash };
+		 'DROPPOINTS: REMOVING hold action' call BIS_fnc_Log;
+		 [ player, _transferAction ] call BIS_fnc_holdActionRemove;
+	  };
+	};", "%1", _cond, _area
+];
+
+{
+	if(side _x == sideLogic) exitWith {};
+	private _special = _x getVariable ["#spc",[]];
+	_special pushBack ["#init",[_cHandleDropPointHoldAction]];
+	_special pushBack ["#init",[_cHandleDropPointBoxes]];
+	_x setVariable ["#spc",_special];
+} forEach synchronizedObjects _module;
+
+private _codeInit = "";
+if!( uiNamespace getVariable ["OM_restPointMarkersExportStarted", false] ) then
+{
+	uiNamespace setVariable ["OM_restPointMarkersExportStarted", true];
+	_codeInit =
+	";
+		[] spawn
+		{
+			scriptName '_codeInit';
+			waitUntil {sleep 1; !isNil 'BIS_OM_SmartMarkers_mrkHndl'};
+			private _markerID = '';
+	";
+}
+else
+{
+	_codeInit = "";
+};
+
+_name = "";
+EXPORTER_EXPORT_MODULE_NAME();
+
+
+private _cHandleDropPointMarkers = format
+["	%7
+		_markerID = [0, ['%3', '%6', %5, TRUE, [['name', %4]], TRUE, %2]] call BIS_fnc_OM_moduleSmartMarkers;",
+		"%1", compile ( _module getVariable ["DepotCondition", "TRUE"] ), _module getVariable ["SmartMarker", ""], _name, position _module, 'BIS_OM_' + (call BIS_fnc_OM_generateHash), _codeInit
+];
+
+EXPORTER_EXPORT_MODULE_DATA(_cHandleDropPointMarkers);
+
+//--- if run from not exported mission, run the code now;
+waitUntil {sleep 1; !isNil 'BIS_OM_SmartMarkers_mrkHndl'};
+call compile _cHandleDropPointMarkers;
+deleteVehicle _module;

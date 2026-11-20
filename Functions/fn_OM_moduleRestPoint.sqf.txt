@@ -1,0 +1,79 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc";
+#define LOC_PREFIX 								"STR_A3_"
+
+_mode = _this # 0;
+
+if (_mode == "init") then
+{
+	_module = (_this # 1) # 0;
+	_name = "";
+	EXPORTER_EXPORT_MODULE_NAME();
+	//_name = _module getVariable ["Name", "Safehouse"];
+	_cond = _module getVariable ["RestCondition", "TRUE"];
+	_condMarker = (_module getVariable ["MarkerCondition", "TRUE"]);
+	_marker = _module getVariable ["SmartMarker", "SmartMarker_C_Sleep_F"];
+	_paid = _module getVariable ["Paid", FALSE];
+	_owner = _module getVariable ["Owner", 0];
+
+	if (_paid) then {_paid = 1} else {_paid = 0};
+
+		//--- this code is gonna be added to the entity #init in the sector's data
+	private _cHandleRestPointAvailability = format
+	["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (%2) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', %3];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select %4 ];
+				private _id = [_bed, %5, [CIVILIAN, WEST, EAST, RESISTANCE] select %4 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(%2) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};", "%1", _cond, _name, _owner, _paid
+	];
+
+	{
+		if(side _x == sideLogic) exitWith {};
+		private _special = _x getVariable ["#spc",[]];
+		_special pushBack ["#init",[_cHandleRestPointAvailability]];
+		_x setVariable ["#spc",_special];
+	} forEach synchronizedObjects _module;
+
+
+	private _codeInit = "";
+	if!( uiNamespace getVariable ["OM_restPointMarkersExportStarted", false] ) then
+	{
+		uiNamespace setVariable ["OM_restPointMarkersExportStarted", true];
+		_codeInit =
+		";
+			[] spawn
+			{
+				scriptName '_codeInit';
+				waitUntil {sleep 1; !isNil 'BIS_OM_SmartMarkers_mrkHndl'};
+				private _markerID = '';
+		";
+	}
+	else
+	{
+		_codeInit = "";
+	};
+
+	private _cHandleRestPointMarkers = format
+	["	%8
+			_markerID = [0, ['%3', '%7', %5, TRUE, [['name', %4]], TRUE, %2]] call BIS_fnc_OM_moduleSmartMarkers;",
+			"%1", compile format [ "( %1 ) && ( %2 )", _cond, _condMarker ], _marker, _name, position _module, compile _condMarker, 'BIS_OM_' + (call BIS_fnc_OM_generateHash), _codeInit
+	];
+
+	EXPORTER_EXPORT_MODULE_DATA(_cHandleRestPointMarkers);
+
+	//--- if run from not exported mission, run the code now;
+	waitUntil {sleep 1; !isNil 'BIS_OM_SmartMarkers_mrkHndl'};
+	call compile _cHandleRestPointMarkers;
+	deleteVehicle _module;
+};

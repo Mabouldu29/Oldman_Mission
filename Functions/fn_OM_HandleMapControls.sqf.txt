@@ -1,0 +1,151 @@
+#define MOUSE_LMB               0
+#define MOUSE_RMB               1
+#define EVENT_DESTROY           4
+#define EVENT_INIT							3
+#define EVENT_DRAW              2
+#define EVENT_MOUSE_BUTT_DOWN   1
+#define EVENT_MOUSE_BUTT_UP     0
+
+disableSerialization;
+
+/*addMissionEventHandler
+[	"Loaded",
+	{
+		params ["_saveType"];
+		[] spawn
+		{
+			scriptname "fn_OM_HandleMapControls.sqf: Loaded";
+			waituntil {!isnull finddisplay 12};
+			if (!(isNil {uiNamespace getVariable "BIS_OM_HandleMapControls_customEventHandlers"})) then
+			{
+				{
+					private _eventHandlers = _x;
+					if( count _eventHandlers == 0 ) exitWith {};
+					{
+							disableSerialization;
+							// ["MAPHANDLER: Removing eventhandler: %1 | %2", _eventHandlers select 1 select 0 select 0, _eventHandlers select 1 select 0 select 1] call BIS_fnc_logFormat;
+							(UINamespace getvariable "BIS_OM_HandleMapControls_mapHandler") ctrlRemoveEventHandler [_eventHandlers select 1 select 0 select 0, _eventHandlers select 1 select 0 select 1];
+					} forEach _eventHandlers;
+				} forEach (uiNamespace getVariable "BIS_OM_HandleMapControls_customEventHandlers");
+				UINamespace setvariable [ "BIS_OM_HandleMapControls_customEventHandlers", [] ];
+				missionNameSpace setVariable ["BIS_OM_HandleMapControls_customCallbacks", [] ];
+			};
+		}
+	}
+];*/ //moved to fn_om_addLoadedEH
+params ["_eventType", ["_eventData", ["","","",""], [[], -1] ], "_code", "_handlerType" ];
+_eventData params ["_map","_mouseButton", "_cursorPosX", "_cursorPosY"];
+
+/* [ "MAPHANDLER: eventype: %1 | eventData: %2", _eventType, _eventData ] call BIS_fnc_logFormat; */
+//TODO: register just handlers passed as parameter
+private _ret = -1;
+private _callBacks = (missionNameSpace getVariable "BIS_OM_HandleMapControls_customCallbacks") select { _x select 1 select 1 == _eventType };
+switch (_eventType) do
+{
+
+	// ITIALIZATION OF THE MAP HANDLER
+	case EVENT_INIT:
+	{
+		disableSerialization;
+		waitUntil {!isNull ([] call BIS_fnc_displayMission)};
+		private _map = findDisplay 12 displayCtrl 51;
+		UINamespace setvariable ["BIS_OM_HandleMapControls_mapHandler", _map];
+		if!(missionNameSpace getVariable ["BIS_alreadyInitiated", false]) then	//the mission was perhaps restarted in case the variable is not initiated yet
+		{
+			//if we loaded the mission from save, then this won't happen, if mission was restarted (or just started) we initiate the variables
+			missionNameSpace setVariable ["BIS_alreadyInitiated", true];
+			UINamespace setVariable [ "BIS_OM_HandleMapControls_customEventHandlers", []];
+			UINamespace setVariable [ "BIS_OM_HandleMapControls_customCallbacks", []];
+			UINamespace setVariable [ "BIS_OM_HandleMapControls_ID", -1];
+		};
+
+		/* missionNamespace setVariable ["BIS_OM_HandleMapControls_logic", _logic]; */
+		_ret = ( uiNameSpace getVariable [ "BIS_OM_HandleMapControls_ID", -1 ] ) + 1;
+		private _eventHandlers = [];
+
+		switch (_handlerType) do
+		{
+		    case (EVENT_DRAW):
+		    {
+					_eventHandlers pushBack ["Draw", (_map ctrlAddEventHandler [ "Draw",{[EVENT_DRAW, _this] call BIS_fnc_OM_handleMapControls}]) ];
+		    };
+				case (EVENT_MOUSE_BUTT_DOWN):
+		    {
+		    	_eventHandlers pushBack ["MouseButtonDown", (_map ctrlAddEventHandler [ "MouseButtonDown", {[EVENT_MOUSE_BUTT_DOWN, _this ] call BIS_fnc_OM_handleMapControls}])];
+		    };
+				case (EVENT_MOUSE_BUTT_UP):
+		    {
+		    	_eventHandlers pushBack ["MouseButtonUp", (_map ctrlAddEventHandler [ "MouseButtonUp", {[EVENT_MOUSE_BUTT_UP, _this ] call BIS_fnc_OM_handleMapControls}])];
+		    };
+		};
+
+		UINamespace setVariable [ "BIS_OM_HandleMapControls_customEventHandlers", (UINamespace getVariable ["BIS_OM_HandleMapControls_customEventHandlers", []]) + [[_ret, _eventHandlers]] ];
+		if(!isNil "_code") then
+		{
+			missionNameSpace setVariable ["BIS_OM_HandleMapControls_customCallbacks", (missionNameSpace getVariable [ "BIS_OM_HandleMapControls_customCallbacks", [] ]) + [[_ret,[_code, _handlerType]]] ];
+		};
+		/* ["MAPHANDLER: Initializing map handler with ID: %1", _ret] call BIS_fnc_logFormat; */
+		uiNameSpace setVariable [ "BIS_OM_HandleMapControls_ID", _ret ];
+	};
+
+	// DEINITIALIZATION OF THE MAP HANDLER
+	case EVENT_DESTROY:
+	{
+		/* ["MAPHANDLER: Destroying map handler with ID: %1", _eventData] call BIS_fnc_logFormat; */
+		private _customEventHandlers = (UINamespace getVariable "BIS_OM_HandleMapControls_customEventHandlers");
+		if( isNil "_customEventHandlers" ) exitWith {};
+		if( count _customEventHandlers == 0 ) exitWith {};
+		private _eventHandlers = (_customEventHandlers select { _x select 0 == _eventData }) param [0, []] param [1, []];
+
+		{
+				disableSerialization;
+				(UINamespace getvariable "BIS_OM_HandleMapControls_mapHandler") ctrlRemoveEventHandler [_x select 0, _x select 1];
+		} forEach _eventHandlers;
+		private _index = _customEventHandlers findIf { _x select 0 == _eventData };
+		_customEventHandlers deleteAt _index;
+		(missionNameSpace getVariable "BIS_OM_HandleMapControls_customCallbacks") deleteAt _index;
+
+		uiNameSpace setVariable [ "BIS_OM_HandleMapControls_ID", ( uiNameSpace getVariable [ "BIS_OM_HandleMapControls_ID", -1 ] ) - 1 ];
+	};
+
+
+	//LMB Mouse down pressed
+  case EVENT_MOUSE_BUTT_DOWN:
+  {
+		/* ["MAPHANDLER: Mouse button pressed: %1", _eventData] call BIS_fnc_logFormat; */
+    if( _mouseButton == MOUSE_LMB ) then
+    {
+			disableSerialization;
+			private _map = (UINamespace getvariable "BIS_OM_HandleMapControls_mapHandler");
+      private _coords = _map posScreenToWorld [_cursorPosX, _cursorPosY];
+      /* _logic setVariable ["_mouseStartCoordinates", _coords];
+      BIS_fetchMouseMoving = true;	//TODO: solve global variable (it may collide with another map handler) */
+			private _controlUnderMouseArr = ctrlMapMouseOver _map;
+
+			/* ["MAPHANDLER: Callbacks: %1", _callBacks] call BIS_fnc_logFormat; */
+			{
+				private _hndl =
+				[
+					EVENT_MOUSE_BUTT_DOWN, _map,
+					_coords, [_cursorPosX, _cursorPosY],
+					_controlUnderMouseArr
+				] spawn (_x select 1 select 0);
+			} forEach _callBacks;
+			/* [ EVENT_MOUSE_BUTT_DOWN, _map, _logic, _coords, [_cursorPosX, _cursorPosY], _controlUnderMouseArr] call _callback; */
+    };
+  };
+	case EVENT_MOUSE_BUTT_UP:
+	{
+		//[_map, _logic, _coords, EVENT_MOUSE_BUTT_DOWN] call _callback;
+	};
+	case EVENT_DRAW:
+	{
+		{
+			/* ["MAPHANDLER: Event draw happens, calling %1", (_x select 1 select 0)] call BIS_fnc_logFormat; */
+			[	EVENT_DRAW, _map ] call (_x select 1 select 0);
+		} forEach _callBacks;
+	};
+  default {};
+};
+
+_ret

@@ -1,0 +1,23 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+
+
+params[ "_obj1", "_obj2" ];
+
+/* BIS_debugCheckpoint = true; */
+if(!isNil "BIS_debugCheckpoint") then
+{
+  BIS_posObj1 =  _obj1;
+  BIS_posObj2 =  _obj2;
+  onEachFrame { if(BIS_debugCheckpoint) then { drawLine3D [getposASL BIS_posObj1, getposASL BIS_posObj2, [1,1,1,1]] } };
+};
+private _relDir = _obj1 getreldir _obj2;
+private _relPos = OBJ_ON_BACK;
+switch (true) do
+{
+  case (270 <= _relDir && _relDir <= 359.9): { _relPos = OBJ_ON_RIGHT  };
+  case (0 <= _relDir && _relDir <= 90): { _relPos = OBJ_ON_LEFT  };
+};
+
+
+[_relDir, _relPos]

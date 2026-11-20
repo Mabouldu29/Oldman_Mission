@@ -1,0 +1,13 @@
+//check free space in inventory
+#include "definitions.inc"
+PROFILE_INFO("sellEquip","sellEquip",1);
+params["_logic", "_param1", "_param2"];
+/* if([getUnitLoadout player, _param1] call BIS_fnc_OM_findInArrayRecursive > 0) then
+{ */
+private _equipPrice = [_param1,true] call BIS_fnc_OM_ModuleEconomy_getEquipmentPrice;
+if(isNil "_equipPrice") exitWith {RETURN_CODE_EQUIPMENT_NOT_EXISTS};
+[_logic, _equipPrice] call BIS_fnc_OM_moduleEconomy_IncreaseMoney;
+RETURN_CODE_SUCCESS
+/* }
+else
+{RETURN_CODE_EQUIPMENT_NOT_EXISTS} */

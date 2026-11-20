@@ -1,0 +1,21 @@
+#include "defines.inc"
+#define TIME_FLOAT_CONVERT 	0.000114155			// 1/(365*24)
+params [ ["_data", [], [[]] ] ];
+_data params [ ["_control", controlNull, [controlNull] ], ["_value", 1, [999] ] ];
+
+waitUntil {!isnull _control};
+private _display = ctrlParent _control;
+
+// Catch display
+private _ctrlDate = _display displayCtrl 5543;
+private _ctrlTime = _display displayCtrl 5544;
+
+private _newDate = numberToDate [date select 0, ((dateToNumber date)+ (_value * TIME_FLOAT_CONVERT) )];
+
+private _hours = if( _newDate select 3 < 10 ) then [ {format ["0%1", _newDate select 3 ]}, {_newDate select 3}];
+private _minutes = if( _newDate select 4 < 10 ) then [ {format ["0%1", _newDate select 4 ]}, {_newDate select 4}];
+
+_ctrlDate ctrlsetText ( format ["%1.%2.%3", _newDate select 2, _newDate select 1, _newDate select 0] );
+_ctrlTime ctrlsetText ( format ["%1.%2", _hours, _minutes] );
+
+missionNamespace setVariable ["BIS_SyndikatTeam_eventStart", _newDate];

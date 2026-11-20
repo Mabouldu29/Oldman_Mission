@@ -1,0 +1,1 @@
+missionnamespace getvariable ["bis_enableSaving",true];

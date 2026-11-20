@@ -1,0 +1,126 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+//HELPERS
+#define QUEST_TASK_ID(id) (format["quest%1", id])
+#define QUEST_TASK_ID_CURRENT(quest) QUEST_TASK_ID(GVAR(quest, "questid"))
+#define QUEST_PERCENTAGE_AMMOUNT(total) (100/total)
+
+#define QUEST_POOL() QUEST_POOL_FOR(player)
+#define QUEST_POOL_SET(data) QUEST_POOL_SET_FOR(player,data)
+
+#define DEBUG_LOG(text) text call bis_fnc_logFormat;
+
+#define QUEST_POOL_SET_FOR(owner,data) SVAR(owner,QUEST_POOL_NAME,data)
+#define QUEST_POOL_FOR(owner) GVARS(owner,QUEST_POOL_NAME, [])
+#define QUEST_POOL_NAME         "questPool"
+
+#define QUEST_POOL_ACTIVE() QUEST_POOL_ACTIVE_FOR(player)
+#define QUEST_POOL_ACTIVE_SET(data) QUEST_POOL_ACTIVE_SET_FOR(player,data)
+#define QUEST_POOL_ACTIVE_SET_FOR(owner,data) SVAR(owner, QUEST_POOL_ACTIVE_NAME, data)
+#define QUEST_POOL_ACTIVE_FOR(owner) GVARS(owner,QUEST_POOL_ACTIVE_NAME, [])
+#define QUEST_POOL_ACTIVE_NAME  "questPoolActive"
+
+#define WAITUNTIL_SPAWNED(vehicleName, vehicleObject) waitUntil {vehicleObject = MGVARS(vehicleName, objNull); !isNull vehicleObject};
+
+#define QUEST_STATE_NAME(state) ("questState_"+str state) //used from script
+
+#define QUEST_TYPE_FETCH 	  	      0
+#define QUEST_TYPE_SUPPORT  		    1
+#define QUEST_TYPE_DESTROY          2
+#define QUEST_TYPE_TRANSPORT        3
+#define QUEST_TYPE_TRANSPORT_PERSON 4
+#define QUEST_TYPE_LOCATION         5
+#define QUEST_TYPE_ATTACK           6
+#define QUEST_TYPE_DEFEND           7
+#define QUEST_TYPE_HOSTAGE_RESCUE   8
+#define QUEST_TYPE_HOLDACTION       9
+#define QUEST_TYPE_GET 	            10
+
+#define QUEST_TYPE_DEFAULT          98
+#define QUEST_TYPE_DEFAULTP         99
+
+#define QUEST_TYPE_STR(index) ["fetch", "destroy"] select index
+
+//QUEST STATES
+#define QUEST_NOT_EXIST			-2
+#define QUEST_ADDED					-1
+#define QUEST_CREATED				0
+#define QUEST_ASSIGNED 	    1
+#define QUEST_PROGRESSING 	2
+#define QUEST_COMPLETED     3
+
+#define QUEST_ELAPSED 		4
+#define QUEST_FAILED     	5
+#define QUEST_CANCELED 		6
+
+#define QUEST_STATES_STR    ["CREATED", "ASSIGNED", "PROGRESSING",  "COMPLETED",  "ELAPSED",  "FAILED",  "CANCELED"]
+#define QUEST_STATES_STR_GET_INDEX(stateString) QUEST_STATES_STR find stateString
+#define QUEST_STATES_STR_FROM_INDEX(stateIndex) QUEST_STATES_STR select stateIndex
+
+
+#define QUEST_CODE_FINISHED 100
+#define QUEST_CODE_CANCELED QUEST_CODE_FINISHED + QUEST_CANCELED
+#define QUEST_CODE_FAILED   MAX_LIMIT
+
+// #define QUEST_SUCCESSFULL 	2
+// #define QUEST_CANCELED 		4
+
+
+//QUEST TEMPLATE FNC
+
+
+#define QUEST_FNC_NAME(type, state) ("bis_fnc_"+type+state)
+
+#define QUEST_FNC(type, name) (MGVAR(QUEST_FNC_NAME(type, name)))
+#define QUEST_STATE_FNC(state) (MGVAR(QUEST_STATE_FNC_NAME(state)))
+#define QUEST_STATE_FNC_ALIAS(state, functionName) SMGVAR(QUEST_STATE_FNC_NAME(state), MGVAR(functionName))
+#define QUEST_STATE_FNC_NAME(state) ("bis_fnc_questState_"+str state)  //used from script
+
+#define QUEST_INIT(type) QUEST_FNC(type, "questInit")
+#define QUEST_PROGRESS(type) (QUEST_FNC(type, "questProgress"))
+#define QUEST_FINISHED(type) (QUEST_FNC(type, "questFinished"))
+
+#define QUESTCOMP(questLogic)\
+[GVAR(questLogic, "questId"),\
+    [\
+        GVAR(questLogic,"type"),\
+        GVAR(questLogic,"title"),\
+        GVAR(questLogic,"questMarkerSettings"),\
+        GVAR(questLogic,"timeoutMinutes"),\
+        GVAR(questLogic,"description"),\
+        GVAR(questLogic,"questModifiersAndNames"),\
+        GVAR(questLogic,"specificProperties"),\
+        GVAR(questLogic,"progressPercentage"),\
+        GVAR(questLogic,"currentProgress"),\
+        GVAR(questLogic,"_questProperties"),\
+        GVAR(questLogic,"_questModifiers")\
+    ],\
+GVAR(questLogic, "currentTemplateName"),\
+GVAR(questLogic, "allObjects"),\
+GVAR(questLogic, "questType")\
+]
+
+
+#define QUEST_UNPACK(quest) QUEST_UNPACK_BASE(QUESTCOMP(quest));QUEST_DATA_UNPACK(_questData)
+#define QUEST_UNPACK_BASE(quest) quest params["_questId", "_questData", "_currentTemplateName", "_allObjects", "_questType"]
+#define QUEST_DATA_UNPACK(questData) questData params ["_type", "_title","_questMarkerSettings", "_timeoutMinutes", "_description", "_questModifiersAndNames", "_specificProperties", "_progressPercentage", "_currentProgress"];\
+                                        QUEST_DATA_UNPACK_MODIFER(_questModifiersAndNames)
+
+
+#define QUEST_DATA_UNPACK_MODIFER(questModifiersAndNames) questModifiersAndNames params["_questProperties", "_questModifiers"]
+
+#define STATE_UNPACK(questData) questData params["_quest", "_questId" ,"_taskStringId", "_eventData"];
+
+
+#define QUEST_INDEX_INCREMENT() if (isNil "QuestIndex") then {QuestIndex=0;QuestIndex} else {QuestIndex=QuestIndex+1;QuestIndex}
+
+
+// #define QUEST_SUPPORT_SHORT     1
+// #define QUEST_SUPPORT_MID       5-8
+// #define QUEST_SUPPORT_LONG      s
+
+//QUEST DESTROY
+#define DEFEND_MODE_ENTRANCE		0
+#define DEFEND_MODE_PRESERVE		1
+#define DEFEND_MODE_OBJECTS			2
+#define DEFEND_MODE_AREA 	        3

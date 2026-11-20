@@ -1,0 +1,29 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+
+params ["_soldier", "_anims", ["_mode", PLAY_SIMPLE, [9] ], [ "_switchMove", true, [false] ] ];
+/* ["soldier: %1, anims: %2, mode %3", _soldier, _anims, _mode] call BIS_fnc_logFormat; */
+if(_anims isEqualType "") then { _anims = [_anims, "", ""] };
+private _anim = "";
+switch (_mode) do
+{
+  case (PLAY_SIMPLE): { _anim = _anims select 0 };
+  case (PLAY_LOOP):
+  {
+    _anim = _anims select 1 ;
+  };
+  case (PLAY_OUT):
+  {
+    /* _anim = _anims select 2; */
+    _anim = MARSHALL_DEFAULT_ANIMPOSE;
+  };
+};
+if((animationState _soldier) != _anim) then
+{
+  if(_soldier getVariable ["waitingForTransitionTo", ""] != _anim) then
+  {
+    _soldier setVariable ["waitingForTransitionTo", _anim];
+    /* ["WILL PLAY %1", _anim] call BIS_fnc_logFormat; */
+    SET_ANIMATION(_switchMove, _soldier, _anim);
+  };
+};

@@ -1,0 +1,16 @@
+
+class RscStandardDisplay;
+class RscDisplayEmpty;
+class RscButtonMenu;
+
+class RscDisplayInterrupt: RscStandardDisplay
+{
+	class Controls
+	{
+		class ButtonSave: RscButtonMenu
+		{
+			show = 1;
+			onLoad = "_this spawn {(_this # 0) ctrlenable (ctrlenabled (_this # 0) && {[] call bis_fnc_OM_savingEnabled})};";
+		};
+	};
+};

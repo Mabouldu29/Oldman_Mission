@@ -1,0 +1,75 @@
+#include "\a3\Missions_F_Oldman\Functions\fn_OM_AnimatedOpening.inc"
+
+/*
+	It supposes the Animated Screen framework is already initialized
+	#define STYLE_TITLE_BIG                 0
+	#define STYLE_TITLE			1
+	#define STYLE_TITLE_AND_SENTENCE        2
+	#define STYLE_ONE_SENTENCE              3
+	#define STYLE_TWO_SENTENCES             4
+	#define STYLE_TWO_SENTENCES_DELAY       5
+*/
+
+params
+[
+	["_show", true, [true]],
+	["_texts", ["LOREM IPSUM"], [[]] ],
+	["_cssStyle", STYLE_ONE_SENTENCE, [1] ]
+];
+
+
+if(_show) then
+{
+	switch (_cssStyle) do
+	{
+		case STYLE_TITLE_BIG:
+		{
+			[ MODE_TEXT_CREATE, 	0, _texts select 0, FULL_CONFIG_STATIC_TEXT_BIGA ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_CREATE, 	1, _texts select 1, FULL_CONFIG_STATIC_TEXT_BIGB ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_CREATE, 	2, _texts select 0, POSITION_TEXT_STATIC_BIGA, ALIGN_BOTTOM,COLOR_TEXT_STATIC_A1,0,SIZE_TEXT_STATIC_TITTLE,0,FONT_TEXT_STATIC ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_CREATE, 	3, _texts select 1, POSITION_TEXT_STATIC_BIGB, ALIGN_TOP,COLOR_TEXT_STATIC_A1,0,SIZE_TEXT_STATIC_TITTLE,0,FONT_TEXT_STATIC ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_ANIMATE, 	0, TIME_TEXT_STATIC_A, nil, nil, 0.6 ] call BIS_fnc_AnimatedScreen;
+			uisleep 1;
+			[ MODE_TEXT_ANIMATE, 	1, TIME_TEXT_STATIC_B, nil, nil, 0.6 ] call BIS_fnc_AnimatedScreen;
+			uisleep 1;
+			[ MODE_TEXT_ANIMATE, 	2, TIME_TEXT_STATIC_A, nil, nil, 1 ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_ANIMATE, 	3, TIME_TEXT_STATIC_B, nil, nil, 1 ] call BIS_fnc_AnimatedScreen;
+		};
+		case STYLE_TITLE:
+		{
+			[ MODE_TEXT_CREATE, LAYER_TEXT_STATIC, _texts select 0, FULL_CONFIG_STATIC_TEXT ] call BIS_fnc_AnimatedScreen;
+   			[ MODE_TEXT_ANIMATE, LAYER_TEXT_STATIC, TIME_TEXT_STATIC, nil, nil, 1 ] call BIS_fnc_AnimatedScreen;
+		};
+		case STYLE_TITLE_AND_SENTENCE:
+		{
+			[ MODE_TEXT_CREATE, LAYER_TEXT_STATIC_A, _texts select 0, FULL_CONFIG_STATIC_TEXT_A ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_CREATE, LAYER_TEXT_STATIC_B, _texts select 1, FULL_CONFIG_STATIC_TEXT_B2 ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_ANIMATE, LAYER_TEXT_STATIC_A, TIME_TEXT_STATIC_A, nil, nil, 1 ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_ANIMATE, LAYER_TEXT_STATIC_B, TIME_TEXT_STATIC_B, nil, nil, 1 ] call BIS_fnc_AnimatedScreen;
+		};
+		case STYLE_ONE_SENTENCE:
+		{
+   			[ MODE_TEXT_CREATE, LAYER_TEXT_STATIC_A, _texts select 0, FULL_CONFIG_STATIC_TEXT_B ] call BIS_fnc_AnimatedScreen;
+   			[ MODE_TEXT_ANIMATE, LAYER_TEXT_STATIC_A, TIME_TEXT_STATIC_B, nil, nil, 1 ] call BIS_fnc_AnimatedScreen;
+		};
+		case STYLE_TWO_SENTENCES:
+		{
+   			[ MODE_TEXT_CREATE, LAYER_TEXT_STATIC_B, _texts select 0, FULL_CONFIG_STATIC_TEXT_B ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_CREATE, LAYER_TEXT_STATIC_B2, _texts select 1, FULL_CONFIG_STATIC_TEXT_B2 ] call BIS_fnc_AnimatedScreen;
+   			[ MODE_TEXT_ANIMATE, LAYER_TEXT_STATIC_B, TIME_TEXT_STATIC_B, nil, nil, 1 ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_ANIMATE, LAYER_TEXT_STATIC_B2, TIME_TEXT_STATIC_B2, nil, nil, 1 ] call BIS_fnc_AnimatedScreen;
+		};
+		case STYLE_TWO_SENTENCES_DELAY:
+		{
+   			[ MODE_TEXT_CREATE, LAYER_TEXT_STATIC_B, _texts select 0, FULL_CONFIG_STATIC_TEXT_B ] call BIS_fnc_AnimatedScreen;
+			[ MODE_TEXT_CREATE, LAYER_TEXT_STATIC_B2, _texts select 1, FULL_CONFIG_STATIC_TEXT_B2 ] call BIS_fnc_AnimatedScreen;
+   			[ MODE_TEXT_ANIMATE, LAYER_TEXT_STATIC_B, TIME_TEXT_STATIC_B, nil, nil, 1 ] call BIS_fnc_AnimatedScreen;
+			uisleep 2;
+			[ MODE_TEXT_ANIMATE, LAYER_TEXT_STATIC_B2, TIME_TEXT_STATIC_B2, nil, nil, 1 ] call BIS_fnc_AnimatedScreen;
+		};
+
+		default
+		{
+		};
+	};
+};

@@ -1,0 +1,81 @@
+/*
+Description:
+Draw bounding box around given objects
+
+Parameter(s):
+_this select 0: ARRAY of objects
+_this select 1: ARRAY in format of COLOR (R,G,B,A) 
+_this select 2: BOOL  whether the function should draw or not
+	
+Returns:
+Bool status
+
+Example: 
+[[BIS_building],  [1,0,1,1], true] call bis_fnc_drawBoundingBox; to add
+[[], [], false] call bis_fnc_drawBoundingBox; to remove
+*/
+
+params[["_objects",  [objNull], [ [objNull] ]], ["_highlightColor", [1,0,1,1], [[0,0,0,0]] ], ["_toggleOn", nil, [true]] ]; 
+
+if (isNil "_toggleOn" && {_objects isEqualTypeParams [objNull]} && {!(isNull (_objects#0))} ) exitWith {
+	private _object = _objects#0;
+	private _bbox = boundingBoxReal _object;
+	_bbox params ["_point1","_point2"];
+
+	_point1 params ["_x1","_y1","_z1"];
+	_point2 params ["_x2","_y2","_z2"];
+
+	#define A		(_object modelToWorldVisual [_x1,_y1,_z1])
+	#define B		(_object modelToWorldVisual [_x2,_y1,_z1])
+	#define C		(_object modelToWorldVisual [_x2,_y1,_z2])
+	#define D		(_object modelToWorldVisual [_x1,_y1,_z2])
+	#define E		(_object modelToWorldVisual [_x1,_y2,_z1])
+	#define F		(_object modelToWorldVisual [_x2,_y2,_z1])
+	#define G		(_object modelToWorldVisual [_x2,_y2,_z2])
+	#define H		(_object modelToWorldVisual [_x1,_y2,_z2])
+
+	private _edges =
+	[
+		[A, B, _highlightColor],
+		[B, C, _highlightColor],
+		[C, D, _highlightColor],
+		[D, A, _highlightColor],
+		[E, F, _highlightColor],
+		[F, G, _highlightColor],
+		[G, H, _highlightColor],
+		[H, E, _highlightColor],
+		[A, E, _highlightColor],
+		[B, F, _highlightColor],
+		[C, G, _highlightColor],
+		[D, H, _highlightColor] 
+	];
+	{drawLine3D _x} forEach _edges;
+	true
+};
+if (_toggleOn && {_objects isEqualTypeParams [objNull]} && {!(isNull (_objects#0))} ) exitWith {
+	//TODO FIX this wont support multiple calls over multuple sets of objects
+	missionNamespace setVariable ["drawBoundingBox_objects", _objects];
+	missionNamespace setVariable ["drawBoundingBox_highlightColor", _highlightColor];
+	private _ehDraw3D =  missionNamespace getVariable ["drawBoundingBox_ehDraw3D", -1];
+	if (_ehDraw3D == -1) then {
+		_ehDraw3D = addMissionEventHandler ["Draw3D", {
+			private _objects = missionNamespace getVariable ["drawBoundingBox_objects", []];
+			private _highlightColor = missionNamespace getVariable "drawBoundingBox_highlightColor";
+			{ [[_x], _highlightColor] call bis_fnc_drawBoundingBox; } forEach _objects;
+		}];
+		missionNamespace setVariable ["drawBoundingBox_ehDraw3D",_ehDraw3D];
+	};
+	true
+};
+if (!_toggleOn) exitWith {
+	private _ehDraw3D = missionNamespace getVariable ["drawBoundingBox_ehDraw3D",-1];
+	if (_ehDraw3D != -1) then
+	{
+		removeMissionEventHandler ["Draw3D",_ehDraw3D];
+		missionNamespace setVariable ["drawBoundingBox_ehDraw3D", -1];
+		missionNamespace setVariable ["drawBoundingBox_objects", nil];
+		missionNamespace setVariable ["drawBoundingBox_highlightColor", nil];
+	};
+	true	
+};
+false

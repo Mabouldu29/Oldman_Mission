@@ -1,0 +1,16 @@
+#define QRF_STATE_GET_READY                     0
+#define QRF_STATE_SENT						    1
+#define QRF_STATE_SEARCH_FINISHED		        2
+#define QRF_STATE_ALL_UNITS_MIA	                3
+#define QRF_STATE_ALL_UNITS_KIA	                4
+#define QRF_STATE_FAILED_TO_REACH_DESTINATION	5
+                                                                
+#define QRF_STATE_GET_READY_MESSAGE                    "%1 QRF units, get ready for action!" //type   
+#define QRF_STATE_SENT_MESSAGE                         "Sending %1 QRF units to grid %2."          //[type, pos]
+#define QRF_STATE_SEARCH_FINISHED_MESSAGE              "QRF Units finished searching. Target lost!"
+#define QRF_STATE_ALL_UNITS_MIA_MESSAGE                "All QRF units are M.I.A!"
+#define QRF_STATE_ALL_UNITS_KIA_MESSAGE                "All QRF units are K.I.A!"
+#define QRF_STATE_FAILED_TO_REACH_DESTINATION_MESSAGE  "QRF Units failed to reach target destination!"
+
+#define QRF_STATE_MESSAGES [QRF_STATE_GET_READY_MESSAGE, QRF_STATE_SENT_MESSAGE, QRF_STATE_SEARCH_FINISHED_MESSAGE, QRF_STATE_ALL_UNITS_MIA_MESSAGE, QRF_STATE_ALL_UNITS_KIA_MESSAGE, QRF_STATE_FAILED_TO_REACH_DESTINATION_MESSAGE]
+#define QRF_STATE_MESSAGE(state) (QRF_STATE_MESSAGES select state)  

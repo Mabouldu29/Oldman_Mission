@@ -1,0 +1,45 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+
+params [ ["_mode", "init", ["", 999]], ["_input", [], [[]] ] ];
+_input params [ "_param1", ["_param2", 0, [999, objNull, [], "", true]] ];
+private "_logic";
+
+
+if(typename _mode == "STRING" && {_mode == MODE_INIT}) then
+{
+	_logic = _param1;
+	missionNamespace setVariable ["BIS_OM_Radio_logic", _logic];
+}
+else
+{
+	_logic = missionNamespace getVariable  "BIS_OM_Radio_logic";
+};
+
+switch _mode do
+{
+	case MODE_INIT:
+	{
+		WaitUntil{!isNil "BIS_missionInitDone"};
+		[true, ""] call BIS_fnc_OM_loadingScreenWrapper;
+		/* ["OM_Radio","RscDisplayLoadingOM"] call bis_fnc_startloadingscreen; */
+		"BOOT: Radio init" call BIS_fnc_Log;
+		#ifdef DEBUG_RADIO
+		  ["RADIO: %1", 1] call BIS_fnc_logFormat;
+		#endif
+		[FUNCTIONS_PATH, FUNCTIONS_PREFIX, FUNCTIONS_NAMES] call BIS_fnc_LoadFunctions;
+		[_logic] spawn BIS_fnc_OM_moduleRadio_Radio_Init;
+	};
+	case MODE_PLAY:
+	{
+		[_logic, _param1, _param2] spawn BIS_fnc_OM_moduleRadio_Radio_Play;
+	};
+	case MODE_ENQUEUE:
+	{
+		[_logic, _param1, _param2] call BIS_fnc_OM_moduleRadio_Radio_Enqueue;
+	};
+	case MODE_STOP:
+	{
+		[_logic, _param1, _param2] spawn BIS_fnc_OM_moduleRadio_Radio_Stop;
+	};
+};

@@ -1,0 +1,182 @@
+/* #include "prices_definitions.inc" */
+
+BIS_fnc_OM_ModuleEconomy_getEquipmentPriceFromList =
+{
+	params ["_equipmentClass"];
+	PROFILE_INFO("getEquipmentPriceFromList","getEquipmentPriceFromList",1);
+	GET_PRICES_TABLE select {_x#0 == _equipmentClass} select 0 select 1;
+};
+
+BIS_fnc_OM_ModuleEconomy_getEquipmentProbabilityFromList =
+{
+	params ["_equipmentClass"];
+	PROFILE_INFO("getEquipmentProbabilityFromList","getEquipmentProbabilityFromList",1);
+	private _prob = GET_PRICES_TABLE findIf {_x#0 isEqualTo _equipmentClass};
+	if(_prob != -1) then {GET_PRICES_TABLE select _prob select 2} else {_prob}
+};
+BIS_fnc_OM_ModuleEconomy_getEquipmentPurchaseFactor =
+{
+	params ["_equipmentClass"];
+	PROFILE_INFO("getEquipmentPurchaseFactor","getEquipmentPurchaseFactor",1);
+	private _prob = GET_PRICES_TABLE findIf {_x#0 == _equipmentClass};
+	if(_prob != -1) then {GET_PRICES_TABLE select _prob select 2} else {_prob}
+};
+
+BIS_fnc_OM_ModuleEconomy_getEquipmentType =
+{
+	params["_equipmentClass"];
+	PROFILE_INFO("getEquipmentType","getEquipmentType",1);
+	private "_equipType";
+	private _found = false;
+	{
+		if( toLower configName (configFile >> _x >> _equipmentClass) isEqualTo toLower _equipmentClass ) then
+		{
+			_equipType = [(configFile >> _x >> _equipmentClass),"type"] call BIS_fnc_returnConfigEntry;
+			if(isNil "_equipType") then {_equipType = WeaponSlotUnknown};
+		};
+		if(!isNil "_equipType") exitWith {_equipType};
+	} forEach CFGS;
+
+	private _ret = [];
+	/* if(typeName _equipType == "STRING") then {call compile format ["_equipType = %1", _equipType]}; */
+	if(!isNil "_equipType") then
+	{
+		if(_equipType isEqualType "") then {_equipType = WeaponSlotItem};
+
+		if(_equipType == 0) then
+		{
+			_ret pushBack 0;
+		}
+		else
+		{
+			{
+				if(LOG_AND_DECIMAL(_equipType, _x) == _x) then {_ret pushBack _x};
+			} forEach SLOT_TYPES;
+		};
+	};
+	_ret
+};
+
+BIS_fnc_OM_ModuleEconomy_getEquipmentSubType =
+{
+	params["_equipmentClass"];
+	PROFILE_INFO("getEquipmentSubType","getEquipmentSubType",1);
+	private "_equipSubType";
+	{
+		[(configFile >> "_x" >> _equipmentClass),"cursor"] call BIS_fnc_returnConfigEntry;
+		if(!isNil "_equipSubType") exitWith {_equipSubType};
+	} forEach CFGS;
+};
+
+BIS_fnc_OM_ModuleEconomy_getBaseWeapon =
+{
+	params["_equipmentClass"];
+	PROFILE_INFO("getBaseWeapon","getBaseWeapon",1);
+	private _baseWeapon = [(configFile >> "CfgWeapons" >> _equipmentClass),"baseWeapon"] call BIS_fnc_returnConfigEntry;
+	if(!isNil "_baseWeapon") then {_baseWeapon} else {""};
+};
+
+BIS_fnc_OM_ModuleEconomy_getEquipmentPrice =
+{
+	/*
+		The final price depends on the following factors:
+	 		• cost / purchase - if player buys or sells the item
+	 		• reputation - better == lower cost price and higher selling price
+	 		• purchase factor - how much the shopkeeper is interested in the item player will try to sell him
+	*/
+	PROFILE_INFO("getEquipmentPrice","getEquipmentPrice",1);
+	params[ ["_equipmentClass","",[""] ], [ "_purchasePrice", false, [false] ] ];
+	/* if(typeName _equipmentClass == "ARRAY") then {_equipmentClass == _equipmentClass select  */
+	private _price = [_equipmentClass] call BIS_fnc_OM_ModuleEconomy_getEquipmentPriceFromList;
+	if( !isNil "_price" ) exitWith
+	{
+		_price = (CALCULATE_DISCOUNT(_price, _purchasePrice));
+		if(_purchasePrice) then
+		{
+			_price = _price * ([_equipmentClass] call BIS_fnc_OM_ModuleEconomy_getEquipmentPurchaseFactor);
+		};
+		_price
+	};
+	private _equipmentType = [_equipmentClass] call BIS_fnc_OM_ModuleEconomy_getEquipmentType;
+	if(!isNil "_equipmentType" && {count _equipmentType > 0}) then
+	{
+		{ if(_x#0 == (_equipmentType#0)) exitWith { CALCULATE_DISCOUNT(_x#1, _purchasePrice) } } forEach EQUIP_PRICES;
+	}
+	else
+	{
+		""
+	};
+};
+
+BIS_fnc_convertToBinary =
+{
+	params["_number", ["_size",8,[99] ] ];
+	PROFILE_INFO("BIS_fnc_convertToBinary","BIS_fnc_convertToBinary",1);
+	private _remainder = 0;
+	private _result = [];
+	for "_iLoop" from 1 to _size do
+	{ _result = _result + [0]	};
+
+	{
+		_remainder = _number % 2;
+		_number = floor (_number / 2);
+		if(_remainder != 0) then {_result set [_size - _forEachIndex - 1, 1]};
+	} forEach _result;
+	_result
+};
+
+BIS_fnc_convertToDecimal =
+{
+	params["_number"];
+	PROFILE_INFO("BIS_fnc_convertToDecimal","BIS_fnc_convertToDecimal",1);
+	private _size = count _number - 1;
+	private _result = 0;
+	{
+		_result = _result + (_x*2^(_size - _forEachIndex));
+	} forEach _number;
+	_result
+};
+
+BIS_fnc_LogicalAnd =
+{
+	params ["_operand1", "_operand2"];
+	PROFILE_INFO("BIS_fnc_LogicalAnd","BIS_fnc_LogicalAnd",1);
+	private _result = [];
+	private _size = (count _operand1) - 1;
+	for "_iLoop" from 0 to _size do
+	{ _result = _result + [0]	};
+	{
+		if ( _x == 1 && {_operand2#_forEachIndex == 1}) then {_result set [_forEachIndex, 1]};
+	} forEach _operand1;
+	_result;
+};
+
+BIS_fnc_OM_findInArrayRecursive =
+{
+	params["_array", "_item", ["_ret", 0, [9999]] ];
+	PROFILE_INFO("BIS_fnc_OM_findInArrayRecursive","BIS_fnc_OM_findInArrayRecursive",1);
+		{
+			if(typeName _x == "ARRAY") then
+			{
+				_ret = [_x, _item, _ret] call BIS_fnc_OM_findInArrayRecursive
+			}
+			else
+			{
+				if(str _x == str _item ) exitWith {_ret = _ret + 1};
+			};
+	} forEach _array;
+	_ret
+};
+
+BIS_fnc_OM_randomArrayOfItems =
+{
+	params[ "_item", [ "_range", [1,2,3],[[]] ] ];
+	PROFILE_INFO("BIS_fnc_OM_randomArrayOfItems","BIS_fnc_OM_randomArrayOfItems",1);
+	private _arr = [];
+	private _rnd = round random _range;
+	for "_iLoop" from 1 to _rnd do
+	{
+	    _arr = _arr + [_item];
+	};
+	_arr
+};

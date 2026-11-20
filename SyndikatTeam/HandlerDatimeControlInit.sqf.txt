@@ -1,0 +1,8 @@
+#include "..\defines.inc"
+
+_display = _this select 0;
+_CT_SLIDER = _display displayctrl CT_SLIDER;
+// _CT_SLIDER
+_CT_SLIDER slidersetposition 5;
+// CT_XSLIDER
+_CT_XSLIDER slidersetposition 5;

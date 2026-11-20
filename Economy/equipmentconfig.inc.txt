@@ -1,0 +1,13 @@
+class OldmanEconomy
+{
+  enum
+  {
+    ARifle,
+    SRifle,
+    MG,
+    Missiles,
+    HGun,
+    LaserDesignator
+  };
+
+};

@@ -1,0 +1,121 @@
+// Exported by kerbervac, 04.12.2019 17:43:43
+// Include to global CfgSentences config
+
+	// ["eve_reputation_minus_three_neg","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_minus_three_neg
+	{
+		id = 1;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_001_eve_reputation_minus_three_neg.bikb";
+		#include "oldman3_001_eve_reputation_minus_three_neg.bikb"
+	};
+
+	// ["eve_reputation_minus_two_neg","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_minus_two_neg
+	{
+		id = 2;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_002_eve_reputation_minus_two_neg.bikb";
+		#include "oldman3_002_eve_reputation_minus_two_neg.bikb"
+	};
+
+	// ["eve_reputation_minus_one_neg","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_minus_one_neg
+	{
+		id = 3;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_003_eve_reputation_minus_one_neg.bikb";
+		#include "oldman3_003_eve_reputation_minus_one_neg.bikb"
+	};
+
+	// ["eve_reputation_zero_neg","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_zero_neg
+	{
+		id = 4;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_004_eve_reputation_zero_neg.bikb";
+		#include "oldman3_004_eve_reputation_zero_neg.bikb"
+	};
+
+	// ["eve_reputation_plus_one_neg","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_plus_one_neg
+	{
+		id = 5;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_005_eve_reputation_plus_one_neg.bikb";
+		#include "oldman3_005_eve_reputation_plus_one_neg.bikb"
+	};
+
+	// ["eve_reputation_plus_two_neg","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_plus_two_neg
+	{
+		id = 6;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_006_eve_reputation_plus_two_neg.bikb";
+		#include "oldman3_006_eve_reputation_plus_two_neg.bikb"
+	};
+
+	// ["eve_reputation_minus_two_pos","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_minus_two_pos
+	{
+		id = 7;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_007_eve_reputation_minus_two_pos.bikb";
+		#include "oldman3_007_eve_reputation_minus_two_pos.bikb"
+	};
+
+	// ["eve_reputation_minus_one_pos","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_minus_one_pos
+	{
+		id = 8;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_008_eve_reputation_minus_one_pos.bikb";
+		#include "oldman3_008_eve_reputation_minus_one_pos.bikb"
+	};
+
+	// ["eve_reputation_zero_pos","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_zero_pos
+	{
+		id = 9;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_009_eve_reputation_zero_pos.bikb";
+		#include "oldman3_009_eve_reputation_zero_pos.bikb"
+	};
+
+	// ["eve_reputation_plus_one_pos","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_plus_one_pos
+	{
+		id = 10;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_010_eve_reputation_plus_one_pos.bikb";
+		#include "oldman3_010_eve_reputation_plus_one_pos.bikb"
+	};
+
+	// ["eve_reputation_plus_two_pos","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_plus_two_pos
+	{
+		id = 11;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_011_eve_reputation_plus_two_pos.bikb";
+		#include "oldman3_011_eve_reputation_plus_two_pos.bikb"
+	};
+
+	// ["eve_reputation_plus_three_pos","oldman3"] call BIS_fnc_kbTell;
+	class eve_reputation_plus_three_pos
+	{
+		id = 12;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_012_eve_reputation_plus_three_pos.bikb";
+		#include "oldman3_012_eve_reputation_plus_three_pos.bikb"
+	};
+
+	// ["ex_silo_destroyed_no_operation","oldman3"] call BIS_fnc_kbTell;
+	class ex_silo_destroyed_no_operation
+	{
+		id = 13;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman3\oldman3_013_ex_silo_destroyed_no_operation.bikb";
+		#include "oldman3_013_ex_silo_destroyed_no_operation.bikb"
+	};
+
+

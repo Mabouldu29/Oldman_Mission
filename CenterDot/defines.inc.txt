@@ -1,0 +1,38 @@
+#define pixelScale                      0.5
+
+#define GRID_W                          (pixelW * pixelGrid * pixelScale)
+#define GRID_H                          (pixelH * pixelGrid * pixelScale)
+
+#define CENTER_X                        0.5
+#define CENTER_Y                        0.5
+
+#define SIZE_M                          4
+#define TILE_W                          (GRID_W * SIZE_M)
+#define TILE_H                          (GRID_H * SIZE_M)
+
+#define COLOR_RGB_MAIN_FOREGROUND                   1,1,1
+#define COLOR_RGB_MAIN_BACKGROUND                   0,0,0
+#define COLOR_RGBA_MAIN_FOREGROUND                  COLOR_RGB_MAIN_FOREGROUND,1
+#define COLOR_RGBA_MAIN_BACKGROUND                  COLOR_RGB_MAIN_BACKGROUND,0.75
+
+//config
+#define CLASS_DISPLAY(idd)              CenterDotPointerDisplay##idd##
+#define CLASS_DISPLAY_STR(idd)          'CenterDotPointerDisplay##idd##'
+#define INIT_DISPLAY(idd)               onLoad = uiNamespace setVariable ['centerDotPointerDisplay##idd##',_this select 0]
+
+#define DISPLAY(idd)                    (uiNamespace getVariable ['centerDotPointerDisplay##idd##',displayNull])
+#define GET_CTRL(display,idc)           (display displayCtrl idc)
+#define CREATE_DISPLAY(idd,time,map)    (idd cutRsc [CLASS_DISPLAY_STR(idd),"PLAIN",time,map])
+
+//control types
+#define CT_STATIC                       0
+//static styles
+#define ST_PICTURE                      0x30
+
+//CenterDotPointerDisplay defines
+#define IDC_CENTER_DOT_POINTER                 1
+#define IDC_CENTER_DOT_POINTER_DOT             2
+
+#define IDD_CENTER_DOT                         777
+
+#define TEXTURE_CENTER_DOT_DOT                 "\A3\Ui_f\data\IGUI\Cfg\simpleTasks\interaction_pointer1_ca.paa"

@@ -1,0 +1,14 @@
+waitUntil {!isnull findDisplay 998};
+_display = findDisplay 998;
+
+// Catch display
+_W = _display displayCtrl 5540;
+_text = _display displayCtrl 5539;
+
+// Grab values from syndicats pool and replace old values
+_actualNumber = (floor ((BIS_HowManyRecruits#1) * BIS_currentManPower));
+// x out of y (x/y)
+_w ctrlsettext (format ["%1/%2",_actualNumber,BIS_currentManPower]);
+// warrior/s
+if (_actualNumber >= 2) then {_text ctrlsettext "warriors"} else {_text ctrlsettext "warrior"};
+

@@ -1,0 +1,12 @@
+#include "DefinesSyndikatPool.inc"
+
+_this call BIS_fnc_log;
+
+/* (xx displayCtrl 7928) ctrlSetText "5"
+TextActualPoolValue */
+
+params [ ["_SyndikatAgentDebugUI", displayNull, [displayNull] ] ];
+/* private _SyndikatAgentDebugUI = _this; */
+
+
+//_SyndikatAgentDebugUI displayCtrl IDC_SYNDIKATPOOL_TEXTACTUALPOOLVALUE ctrlSetText "6";

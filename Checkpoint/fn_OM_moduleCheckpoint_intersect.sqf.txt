@@ -1,0 +1,25 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+
+
+params[ "_obj1", "_obj2", ["_vertOffsetMultiplier", 1, [999]] ];
+private _startPosATL = getposATL _obj1;
+private _endPos = [getposATL _obj2 select 0, getposATL _obj2 select 1, (1*_vertOffsetMultiplier)];
+
+_endPos = ((_startPosATL vectorFromTo _endPos) vectorMultiply 50) vectorAdd (getPosATL _obj1);
+private _intrsect = lineIntersectsSurfaces [ATLToASL(_startPosATL), ATLToASL(_endPos), _obj1, objNull, true, 1, "FIRE", "NONE"];
+
+
+/* BIS_debugCheckpoint = true; */
+if(!isNil "BIS_debugCheckpoint") then
+{
+  BIS_startPosATL = _startPosATL; BIS_endPos = _endPos;
+  onEachFrame { if(BIS_debugCheckpoint) then { drawLine3D [BIS_startPosATL, BIS_endPos, [1,1,1,1]]; } };
+  if(isNil "BIS_sphere") then { BIS_sphere = "Sign_Sphere10cm_F" createVehicle [0,0,0] };
+  if (_intrsect isEqualTo []) exitWith {BIS_sphere setPosASL [0,0,0]};
+  (_intrsect select 0) params ["_pos", "_norm", "_obj", "_parent"];
+  if !(getModelInfo _parent select 2) exitWith {BIS_sphere setPosASL [0,0,0]};
+  BIS_sphere setposASL _pos;
+};
+
+_intrsect

@@ -1,0 +1,319 @@
+// Exported by kerbervac, 04.12.2019 17:43:43
+// Include to local CfgSounds config
+
+// eve_reputation_minus_three_neg
+class oldman3_001_eve_reputation_minus_three_neg_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\001_eve_reputation_minus_three_neg\oldman3_001_eve_reputation_minus_three_neg_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_001_eve_reputation_minus_three_neg_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\001_eve_reputation_minus_three_neg\oldman3_001_eve_reputation_minus_three_neg_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_001_eve_reputation_minus_three_neg_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\001_eve_reputation_minus_three_neg\oldman3_001_eve_reputation_minus_three_neg_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_001_eve_reputation_minus_three_neg_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\001_eve_reputation_minus_three_neg\oldman3_001_eve_reputation_minus_three_neg_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_minus_two_neg
+class oldman3_002_eve_reputation_minus_two_neg_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\002_eve_reputation_minus_two_neg\oldman3_002_eve_reputation_minus_two_neg_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_002_eve_reputation_minus_two_neg_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\002_eve_reputation_minus_two_neg\oldman3_002_eve_reputation_minus_two_neg_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_002_eve_reputation_minus_two_neg_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\002_eve_reputation_minus_two_neg\oldman3_002_eve_reputation_minus_two_neg_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_002_eve_reputation_minus_two_neg_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\002_eve_reputation_minus_two_neg\oldman3_002_eve_reputation_minus_two_neg_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_002_eve_reputation_minus_two_neg_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\002_eve_reputation_minus_two_neg\oldman3_002_eve_reputation_minus_two_neg_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_minus_one_neg
+class oldman3_003_eve_reputation_minus_one_neg_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\003_eve_reputation_minus_one_neg\oldman3_003_eve_reputation_minus_one_neg_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_003_eve_reputation_minus_one_neg_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\003_eve_reputation_minus_one_neg\oldman3_003_eve_reputation_minus_one_neg_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_003_eve_reputation_minus_one_neg_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\003_eve_reputation_minus_one_neg\oldman3_003_eve_reputation_minus_one_neg_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_zero_neg
+class oldman3_004_eve_reputation_zero_neg_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\004_eve_reputation_zero_neg\oldman3_004_eve_reputation_zero_neg_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_004_eve_reputation_zero_neg_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\004_eve_reputation_zero_neg\oldman3_004_eve_reputation_zero_neg_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_004_eve_reputation_zero_neg_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\004_eve_reputation_zero_neg\oldman3_004_eve_reputation_zero_neg_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_plus_one_neg
+class oldman3_005_eve_reputation_plus_one_neg_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\005_eve_reputation_plus_one_neg\oldman3_005_eve_reputation_plus_one_neg_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_005_eve_reputation_plus_one_neg_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\005_eve_reputation_plus_one_neg\oldman3_005_eve_reputation_plus_one_neg_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_005_eve_reputation_plus_one_neg_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\005_eve_reputation_plus_one_neg\oldman3_005_eve_reputation_plus_one_neg_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_005_eve_reputation_plus_one_neg_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\005_eve_reputation_plus_one_neg\oldman3_005_eve_reputation_plus_one_neg_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_plus_two_neg
+class oldman3_006_eve_reputation_plus_two_neg_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\006_eve_reputation_plus_two_neg\oldman3_006_eve_reputation_plus_two_neg_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_006_eve_reputation_plus_two_neg_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\006_eve_reputation_plus_two_neg\oldman3_006_eve_reputation_plus_two_neg_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_006_eve_reputation_plus_two_neg_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\006_eve_reputation_plus_two_neg\oldman3_006_eve_reputation_plus_two_neg_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_006_eve_reputation_plus_two_neg_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\006_eve_reputation_plus_two_neg\oldman3_006_eve_reputation_plus_two_neg_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_006_eve_reputation_plus_two_neg_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\006_eve_reputation_plus_two_neg\oldman3_006_eve_reputation_plus_two_neg_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_006_eve_reputation_plus_two_neg_BOSS_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\006_eve_reputation_plus_two_neg\oldman3_006_eve_reputation_plus_two_neg_BOSS_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_minus_two_pos
+class oldman3_007_eve_reputation_minus_two_pos_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\007_eve_reputation_minus_two_pos\oldman3_007_eve_reputation_minus_two_pos_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_007_eve_reputation_minus_two_pos_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\007_eve_reputation_minus_two_pos\oldman3_007_eve_reputation_minus_two_pos_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_007_eve_reputation_minus_two_pos_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\007_eve_reputation_minus_two_pos\oldman3_007_eve_reputation_minus_two_pos_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_007_eve_reputation_minus_two_pos_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\007_eve_reputation_minus_two_pos\oldman3_007_eve_reputation_minus_two_pos_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_007_eve_reputation_minus_two_pos_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\007_eve_reputation_minus_two_pos\oldman3_007_eve_reputation_minus_two_pos_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_minus_one_pos
+class oldman3_008_eve_reputation_minus_one_pos_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\008_eve_reputation_minus_one_pos\oldman3_008_eve_reputation_minus_one_pos_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_008_eve_reputation_minus_one_pos_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\008_eve_reputation_minus_one_pos\oldman3_008_eve_reputation_minus_one_pos_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_008_eve_reputation_minus_one_pos_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\008_eve_reputation_minus_one_pos\oldman3_008_eve_reputation_minus_one_pos_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_zero_pos
+class oldman3_009_eve_reputation_zero_pos_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\009_eve_reputation_zero_pos\oldman3_009_eve_reputation_zero_pos_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_009_eve_reputation_zero_pos_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\009_eve_reputation_zero_pos\oldman3_009_eve_reputation_zero_pos_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_009_eve_reputation_zero_pos_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\009_eve_reputation_zero_pos\oldman3_009_eve_reputation_zero_pos_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_009_eve_reputation_zero_pos_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\009_eve_reputation_zero_pos\oldman3_009_eve_reputation_zero_pos_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_009_eve_reputation_zero_pos_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\009_eve_reputation_zero_pos\oldman3_009_eve_reputation_zero_pos_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_plus_one_pos
+class oldman3_010_eve_reputation_plus_one_pos_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\010_eve_reputation_plus_one_pos\oldman3_010_eve_reputation_plus_one_pos_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_010_eve_reputation_plus_one_pos_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\010_eve_reputation_plus_one_pos\oldman3_010_eve_reputation_plus_one_pos_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_010_eve_reputation_plus_one_pos_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\010_eve_reputation_plus_one_pos\oldman3_010_eve_reputation_plus_one_pos_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_010_eve_reputation_plus_one_pos_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\010_eve_reputation_plus_one_pos\oldman3_010_eve_reputation_plus_one_pos_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_plus_two_pos
+class oldman3_011_eve_reputation_plus_two_pos_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\011_eve_reputation_plus_two_pos\oldman3_011_eve_reputation_plus_two_pos_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_011_eve_reputation_plus_two_pos_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\011_eve_reputation_plus_two_pos\oldman3_011_eve_reputation_plus_two_pos_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_011_eve_reputation_plus_two_pos_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\011_eve_reputation_plus_two_pos\oldman3_011_eve_reputation_plus_two_pos_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_011_eve_reputation_plus_two_pos_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\011_eve_reputation_plus_two_pos\oldman3_011_eve_reputation_plus_two_pos_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_011_eve_reputation_plus_two_pos_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\011_eve_reputation_plus_two_pos\oldman3_011_eve_reputation_plus_two_pos_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reputation_plus_three_pos
+class oldman3_012_eve_reputation_plus_three_pos_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\012_eve_reputation_plus_three_pos\oldman3_012_eve_reputation_plus_three_pos_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_012_eve_reputation_plus_three_pos_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\012_eve_reputation_plus_three_pos\oldman3_012_eve_reputation_plus_three_pos_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_012_eve_reputation_plus_three_pos_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\012_eve_reputation_plus_three_pos\oldman3_012_eve_reputation_plus_three_pos_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_012_eve_reputation_plus_three_pos_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\012_eve_reputation_plus_three_pos\oldman3_012_eve_reputation_plus_three_pos_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_012_eve_reputation_plus_three_pos_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\012_eve_reputation_plus_three_pos\oldman3_012_eve_reputation_plus_three_pos_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_silo_destroyed_no_operation
+class oldman3_013_ex_silo_destroyed_no_operation_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\013_ex_silo_destroyed_no_operation\oldman3_013_ex_silo_destroyed_no_operation_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_013_ex_silo_destroyed_no_operation_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\013_ex_silo_destroyed_no_operation\oldman3_013_ex_silo_destroyed_no_operation_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_013_ex_silo_destroyed_no_operation_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\013_ex_silo_destroyed_no_operation\oldman3_013_ex_silo_destroyed_no_operation_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_013_ex_silo_destroyed_no_operation_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\013_ex_silo_destroyed_no_operation\oldman3_013_ex_silo_destroyed_no_operation_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_013_ex_silo_destroyed_no_operation_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\013_ex_silo_destroyed_no_operation\oldman3_013_ex_silo_destroyed_no_operation_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman3_013_ex_silo_destroyed_no_operation_BOSS_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman3\013_ex_silo_destroyed_no_operation\oldman3_013_ex_silo_destroyed_no_operation_BOSS_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+

@@ -1,0 +1,90 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+//#ifndef QRF_DEBUG
+#define QRF_DEBUG                   false
+//#endif 
+
+//MODULE_DEFAULTS
+#define QRF_AREA_SIZE               100            
+#define QRF_AREA_DEFENSE_LIMIT      70
+#define QRF_WAVE_DEFENSE_LIMIT      60
+
+#define QRF_RANGE                   300
+#define QRF_COOLDOWN                1
+#define QRF_COOLDOWN_FIRST          1
+#define QRF_AREA_COOLDOWN           600
+#define QRF_ARRIVAL_TIMEOUT         5
+#define QRF_RADIUS                  10
+
+#define QRF_VEHICLE_SPEED           60
+#define QRF_AIR_SPEED               200
+#define QRF_ARIVAL_FAILSAFE_TIMEOUT 4
+#define QRF_WAYPOINT_RADIUS         250
+#define QRF_VEHICLE_SPEED           60
+
+#define QRF_AIR_POS_OBJECT_DISTANCE 20
+#define QRF_AIR_LANDING_FINDPOS_RADIUS  500
+
+#define QRF_WAVE_PLAYER_DISTANCE_AREA   500
+#define QRF_WAVE_DEFENSE_LIMIT          40
+#define QRF_WAVE_TIMEOUT                2
+#define QRF_UNITS                   ["O_Soldier_TL_F", "O_Soldier_AR_F", "O_Soldier_GL_F", "O_Soldier_LAT_F", "C_Offroad_01_F"]
+#define INITIAL_ROAD_DISTANCE       300
+
+#define QRF_UNIT_MULTIPLIER                 2
+#define QRF_UNIT_MULTIPLIER_LEVEL_THRESHOLD 1
+
+//TIME_FNC
+#define QRF_ELAPSED_TIME(lastTime) time - lastTime
+#define QRF_TIMEOUT_TIME(elapsedTime, cooldownSec) elapsedTime >= cooldownSec
+#define QRF_IS_TIMEOUT(lastTime, cooldownSec) QRF_TIMEOUT_TIME(QRF_ELAPSED_TIME(lastTime), cooldownSec)
+
+#define QRF_CHECK_OWNAGE(vehicles, ownedObjectsArray, pid) pid = vehicles findIf {vehicle player isEqualTo _x};if (FOUND(pid)) then {ownedObjectsArray pushBackUnique ( vehicles select pid ); };ownedObjectsArray
+
+#define POS_TO_ID(pos) round((pos select 0)*(pos select 1)*(pos select 2))
+
+//OnlyInDefines
+#define QRF_TIMEOUT_CHECK_DELAY             10
+#define QRF_INSTIGATOR_VICINITY_DISTANCE    400
+
+#define QRF_DESPAWN_DISTANCE                400
+#define QRF_DESPAWN_DISTANCE_AIR            2000
+
+#define QRF_DESPAWN_RESISTANCE              100
+#define QRF_DESPAWN_FAILSAFE_TIMEOUT        3
+
+#define QRF_SEARCH_TIMEOUT                  8
+
+#define QRF_AIR_HUNT_TIMEOUT                10		
+
+#define QRF_AIR_ALTITUDE                    100
+
+#define QRF_VEHICLE_POS_RADIUS              100
+#define QRF_DISTANCE_TO_PLAYER              200
+
+#define QRF_AIR_POS_RADIUS                  100
+#define QRF_AIR_DISTANCE_TO_PLAYER          200
+
+#define QRF_AIR_UNITS_GETOUT_MIN_HEIGHT     3
+
+#define QRF_AIR_SPAWN_ALTITUDE              300
+
+#define QRF_SPAWN_DESTPOS_MAX_DIST          10
+#define QRF_SPAWN_DESTPOS_MAX_DIST_INFANTRY 20
+
+#define QRF_SPAWN_DESTPOS_MAX_DIST_INFANTRY 20
+
+#define QRF_SPAWN_OBJ_DIST_MOTORIZED        5 
+#define QRF_SPAWN_POS_RADIUS                10
+#define QRF_SPAWN_POS_RADIUS_MOTORIZED      10
+
+#define QRF_SPAWN_RANGE_MODIFIER            50
+#define QRF_SPAWN_RANGE_MODIFIER_MOTORIZED  1
+#define QRF_SPAWN_RANGE_MODIFIER_INFANTRY   0.8         
+#define QRF_SPAWN_RANGE_MODIFIER_AIR        4     
+
+#define QRF_RADIO_BROADCAST_DELAY               10
+#define QRF_RADIO_BROADCAST_DELAY_RANDOM_OFFSET 6
+
+//QRF STATES
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_status_defines.inc"

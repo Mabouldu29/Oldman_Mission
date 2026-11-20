@@ -1,0 +1,4063 @@
+// Exported by kerbervac, 21.11.2019 16:14:09
+// Include to local CfgSounds config
+
+// cut_camera_placement_call
+class oldman_001_cut_camera_placement_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\001_cut_camera_placement_call\oldman_001_cut_camera_placement_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_001_cut_camera_placement_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\001_cut_camera_placement_call\oldman_001_cut_camera_placement_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_001_cut_camera_placement_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\001_cut_camera_placement_call\oldman_001_cut_camera_placement_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_001_cut_camera_placement_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\001_cut_camera_placement_call\oldman_001_cut_camera_placement_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_001_cut_camera_placement_call_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\001_cut_camera_placement_call\oldman_001_cut_camera_placement_call_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_001_cut_camera_placement_call_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\001_cut_camera_placement_call\oldman_001_cut_camera_placement_call_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_001_cut_camera_placement_call_MILLER_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\001_cut_camera_placement_call\oldman_001_cut_camera_placement_call_MILLER_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_001_cut_camera_placement_call_MILLER_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\001_cut_camera_placement_call\oldman_001_cut_camera_placement_call_MILLER_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_meet_arthur_call
+class oldman_002_ta_meet_arthur_call_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\002_ta_meet_arthur_call\oldman_002_ta_meet_arthur_call_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_002_ta_meet_arthur_call_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\002_ta_meet_arthur_call\oldman_002_ta_meet_arthur_call_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_002_ta_meet_arthur_call_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\002_ta_meet_arthur_call\oldman_002_ta_meet_arthur_call_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_002_ta_meet_arthur_call_ARTHUR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\002_ta_meet_arthur_call\oldman_002_ta_meet_arthur_call_ARTHUR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_002_ta_meet_arthur_call_ARTHUR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\002_ta_meet_arthur_call\oldman_002_ta_meet_arthur_call_ARTHUR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_002_ta_meet_arthur_call_ARTHUR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\002_ta_meet_arthur_call\oldman_002_ta_meet_arthur_call_ARTHUR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_go_to_village
+class oldman_003_ta_go_to_village_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\003_ta_go_to_village\oldman_003_ta_go_to_village_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_003_ta_go_to_village_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\003_ta_go_to_village\oldman_003_ta_go_to_village_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_003_ta_go_to_village_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\003_ta_go_to_village\oldman_003_ta_go_to_village_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// fil_driving_situation_a
+class oldman_004_fil_driving_situation_a_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\004_fil_driving_situation_a\oldman_004_fil_driving_situation_a_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_004_fil_driving_situation_a_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\004_fil_driving_situation_a\oldman_004_fil_driving_situation_a_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_004_fil_driving_situation_a_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\004_fil_driving_situation_a\oldman_004_fil_driving_situation_a_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_004_fil_driving_situation_a_ARTHUR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\004_fil_driving_situation_a\oldman_004_fil_driving_situation_a_ARTHUR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_004_fil_driving_situation_a_ARTHUR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\004_fil_driving_situation_a\oldman_004_fil_driving_situation_a_ARTHUR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_004_fil_driving_situation_a_ARTHUR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\004_fil_driving_situation_a\oldman_004_fil_driving_situation_a_ARTHUR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_004_fil_driving_situation_a_ARTHUR_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\004_fil_driving_situation_a\oldman_004_fil_driving_situation_a_ARTHUR_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_004_fil_driving_situation_a_ARTHUR_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\004_fil_driving_situation_a\oldman_004_fil_driving_situation_a_ARTHUR_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// fil_driving_situation_b
+class oldman_005_fil_driving_situation_b_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_9
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_9.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_10
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_10.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_11
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_11.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_005_fil_driving_situation_b_ARTHUR_12
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\005_fil_driving_situation_b\oldman_005_fil_driving_situation_b_ARTHUR_12.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// fil_driving_situation_c
+class oldman_006_fil_driving_situation_c_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\006_fil_driving_situation_c\oldman_006_fil_driving_situation_c_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_006_fil_driving_situation_c_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\006_fil_driving_situation_c\oldman_006_fil_driving_situation_c_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_006_fil_driving_situation_c_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\006_fil_driving_situation_c\oldman_006_fil_driving_situation_c_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_006_fil_driving_situation_c_ARTHUR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\006_fil_driving_situation_c\oldman_006_fil_driving_situation_c_ARTHUR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_006_fil_driving_situation_c_ARTHUR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\006_fil_driving_situation_c\oldman_006_fil_driving_situation_c_ARTHUR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_006_fil_driving_situation_c_ARTHUR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\006_fil_driving_situation_c\oldman_006_fil_driving_situation_c_ARTHUR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_006_fil_driving_situation_c_ARTHUR_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\006_fil_driving_situation_c\oldman_006_fil_driving_situation_c_ARTHUR_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_006_fil_driving_situation_c_ARTHUR_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\006_fil_driving_situation_c\oldman_006_fil_driving_situation_c_ARTHUR_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_006_fil_driving_situation_c_ARTHUR_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\006_fil_driving_situation_c\oldman_006_fil_driving_situation_c_ARTHUR_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_006_fil_driving_situation_c_ARTHUR_9
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\006_fil_driving_situation_c\oldman_006_fil_driving_situation_c_ARTHUR_9.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// fil_driving_profiteers
+class oldman_007_fil_driving_profiteers_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\007_fil_driving_profiteers\oldman_007_fil_driving_profiteers_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_007_fil_driving_profiteers_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\007_fil_driving_profiteers\oldman_007_fil_driving_profiteers_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_007_fil_driving_profiteers_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\007_fil_driving_profiteers\oldman_007_fil_driving_profiteers_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_driving_checkpoint
+class oldman_008_ta_driving_checkpoint_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\008_ta_driving_checkpoint\oldman_008_ta_driving_checkpoint_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_008_ta_driving_checkpoint_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\008_ta_driving_checkpoint\oldman_008_ta_driving_checkpoint_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_driving_follow_instructions
+class oldman_009_in_driving_follow_instructions_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\009_in_driving_follow_instructions\oldman_009_in_driving_follow_instructions_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_009_in_driving_follow_instructions_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\009_in_driving_follow_instructions\oldman_009_in_driving_follow_instructions_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_driving_looking_for_weapons
+class oldman_010_in_driving_looking_for_weapons_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\010_in_driving_looking_for_weapons\oldman_010_in_driving_looking_for_weapons_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_010_in_driving_looking_for_weapons_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\010_in_driving_looking_for_weapons\oldman_010_in_driving_looking_for_weapons_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_010_in_driving_looking_for_weapons_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\010_in_driving_looking_for_weapons\oldman_010_in_driving_looking_for_weapons_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_010_in_driving_looking_for_weapons_ARTHUR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\010_in_driving_looking_for_weapons\oldman_010_in_driving_looking_for_weapons_ARTHUR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_driving_doing_good
+class oldman_011_in_driving_doing_good_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\011_in_driving_doing_good\oldman_011_in_driving_doing_good_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_011_in_driving_doing_good_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\011_in_driving_doing_good\oldman_011_in_driving_doing_good_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_driving_drive_on
+class oldman_012_ta_driving_drive_on_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\012_ta_driving_drive_on\oldman_012_ta_driving_drive_on_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_driving_csat_situation
+class oldman_013_in_driving_csat_situation_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\013_in_driving_csat_situation\oldman_013_in_driving_csat_situation_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_013_in_driving_csat_situation_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\013_in_driving_csat_situation\oldman_013_in_driving_csat_situation_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_013_in_driving_csat_situation_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\013_in_driving_csat_situation\oldman_013_in_driving_csat_situation_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_013_in_driving_csat_situation_ARTHUR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\013_in_driving_csat_situation\oldman_013_in_driving_csat_situation_ARTHUR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_013_in_driving_csat_situation_ARTHUR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\013_in_driving_csat_situation\oldman_013_in_driving_csat_situation_ARTHUR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_driving_escape
+class oldman_014_ex_driving_escape_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\014_ex_driving_escape\oldman_014_ex_driving_escape_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// fil_driving_idap
+class oldman_015_fil_driving_idap_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\015_fil_driving_idap\oldman_015_fil_driving_idap_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_015_fil_driving_idap_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\015_fil_driving_idap\oldman_015_fil_driving_idap_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_015_fil_driving_idap_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\015_fil_driving_idap\oldman_015_fil_driving_idap_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_015_fil_driving_idap_ARTHUR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\015_fil_driving_idap\oldman_015_fil_driving_idap_ARTHUR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_015_fil_driving_idap_ARTHUR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\015_fil_driving_idap\oldman_015_fil_driving_idap_ARTHUR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_015_fil_driving_idap_ARTHUR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\015_fil_driving_idap\oldman_015_fil_driving_idap_ARTHUR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_015_fil_driving_idap_ARTHUR_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\015_fil_driving_idap\oldman_015_fil_driving_idap_ARTHUR_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_015_fil_driving_idap_ARTHUR_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\015_fil_driving_idap\oldman_015_fil_driving_idap_ARTHUR_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// fil_driving_tractor
+class oldman_016_fil_driving_tractor_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\016_fil_driving_tractor\oldman_016_fil_driving_tractor_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_016_fil_driving_tractor_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\016_fil_driving_tractor\oldman_016_fil_driving_tractor_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// fil_arrival
+class oldman_017_fil_arrival_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\017_fil_arrival\oldman_017_fil_arrival_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_walking_to_the_shed
+class oldman_018_ta_walking_to_the_shed_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\018_ta_walking_to_the_shed\oldman_018_ta_walking_to_the_shed_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_at_shed
+class oldman_019_eve_at_shed_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\019_eve_at_shed\oldman_019_eve_at_shed_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_explosives_taken
+class oldman_020_ta_explosives_taken_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\020_ta_explosives_taken\oldman_020_ta_explosives_taken_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_020_ta_explosives_taken_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\020_ta_explosives_taken\oldman_020_ta_explosives_taken_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_020_ta_explosives_taken_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\020_ta_explosives_taken\oldman_020_ta_explosives_taken_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_020_ta_explosives_taken_ARTHUR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\020_ta_explosives_taken\oldman_020_ta_explosives_taken_ARTHUR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_020_ta_explosives_taken_ARTHUR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\020_ta_explosives_taken\oldman_020_ta_explosives_taken_ARTHUR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_020_ta_explosives_taken_ARTHUR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\020_ta_explosives_taken\oldman_020_ta_explosives_taken_ARTHUR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_miller_intel_available_call
+class oldman_021_ta_miller_intel_available_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\021_ta_miller_intel_available_call\oldman_021_ta_miller_intel_available_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_021_ta_miller_intel_available_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\021_ta_miller_intel_available_call\oldman_021_ta_miller_intel_available_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_021_ta_miller_intel_available_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\021_ta_miller_intel_available_call\oldman_021_ta_miller_intel_available_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_021_ta_miller_intel_available_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\021_ta_miller_intel_available_call\oldman_021_ta_miller_intel_available_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_021_ta_miller_intel_available_call_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\021_ta_miller_intel_available_call\oldman_021_ta_miller_intel_available_call_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_021_ta_miller_intel_available_call_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\021_ta_miller_intel_available_call\oldman_021_ta_miller_intel_available_call_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_computer_accessed_call
+class oldman_022_eve_computer_accessed_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_9
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_9.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_10
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_10.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_11
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_11.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_12
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_12.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_022_eve_computer_accessed_call_MILLER_13
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\022_eve_computer_accessed_call\oldman_022_eve_computer_accessed_call_MILLER_13.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_jungle_rv
+class oldman_023_eve_jungle_rv_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\023_eve_jungle_rv\oldman_023_eve_jungle_rv_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_023_eve_jungle_rv_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\023_eve_jungle_rv\oldman_023_eve_jungle_rv_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_at_rv_greeting
+class oldman_024_eve_at_rv_greeting_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\024_eve_at_rv_greeting\oldman_024_eve_at_rv_greeting_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_at_rv_wake_up
+class oldman_025_eve_at_rv_wake_up_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\025_eve_at_rv_wake_up\oldman_025_eve_at_rv_wake_up_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_at_rv_location
+class oldman_026_ta_at_rv_location_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_9
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_9.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_10
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_10.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_026_ta_at_rv_location_MILLER_11
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\026_ta_at_rv_location\oldman_026_ta_at_rv_location_MILLER_11.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_app_tutorial_in
+class oldman_027_in_app_tutorial_in_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\027_in_app_tutorial_in\oldman_027_in_app_tutorial_in_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_app_downloaded
+class oldman_028_ta_app_downloaded_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\028_ta_app_downloaded\oldman_028_ta_app_downloaded_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_028_ta_app_downloaded_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\028_ta_app_downloaded\oldman_028_ta_app_downloaded_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_028_ta_app_downloaded_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\028_ta_app_downloaded\oldman_028_ta_app_downloaded_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_app_downloaded_pack_found
+class oldman_029_ex_app_downloaded_pack_found_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\029_ex_app_downloaded_pack_found\oldman_029_ex_app_downloaded_pack_found_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_029_ex_app_downloaded_pack_found_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\029_ex_app_downloaded_pack_found\oldman_029_ex_app_downloaded_pack_found_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_029_ex_app_downloaded_pack_found_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\029_ex_app_downloaded_pack_found\oldman_029_ex_app_downloaded_pack_found_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_app_reminder
+class oldman_030_ex_app_reminder_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\030_ex_app_reminder\oldman_030_ex_app_reminder_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_030_ex_app_reminder_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\030_ex_app_reminder\oldman_030_ex_app_reminder_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_download_reminder
+class oldman_031_ex_download_reminder_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\031_ex_download_reminder\oldman_031_ex_download_reminder_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_031_ex_download_reminder_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\031_ex_download_reminder\oldman_031_ex_download_reminder_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_sleeping_bag_found
+class oldman_032_ta_sleeping_bag_found_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\032_ta_sleeping_bag_found\oldman_032_ta_sleeping_bag_found_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_032_ta_sleeping_bag_found_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\032_ta_sleeping_bag_found\oldman_032_ta_sleeping_bag_found_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_032_ta_sleeping_bag_found_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\032_ta_sleeping_bag_found\oldman_032_ta_sleeping_bag_found_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_a_in
+class oldman_033_eve_syndikat_webcam_a_in_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\033_eve_syndikat_webcam_a_in\oldman_033_eve_syndikat_webcam_a_in_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_033_eve_syndikat_webcam_a_in_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\033_eve_syndikat_webcam_a_in\oldman_033_eve_syndikat_webcam_a_in_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_033_eve_syndikat_webcam_a_in_UNKNOWN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\033_eve_syndikat_webcam_a_in\oldman_033_eve_syndikat_webcam_a_in_UNKNOWN_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_033_eve_syndikat_webcam_a_in_UNKNOWN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\033_eve_syndikat_webcam_a_in\oldman_033_eve_syndikat_webcam_a_in_UNKNOWN_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_b
+class oldman_034_eve_syndikat_webcam_b_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\034_eve_syndikat_webcam_b\oldman_034_eve_syndikat_webcam_b_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_c
+class oldman_035_eve_syndikat_webcam_c_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\035_eve_syndikat_webcam_c\oldman_035_eve_syndikat_webcam_c_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_d
+class oldman_036_eve_syndikat_webcam_d_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\036_eve_syndikat_webcam_d\oldman_036_eve_syndikat_webcam_d_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_036_eve_syndikat_webcam_d_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\036_eve_syndikat_webcam_d\oldman_036_eve_syndikat_webcam_d_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_036_eve_syndikat_webcam_d_UNKNOWN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\036_eve_syndikat_webcam_d\oldman_036_eve_syndikat_webcam_d_UNKNOWN_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_e
+class oldman_037_eve_syndikat_webcam_e_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\037_eve_syndikat_webcam_e\oldman_037_eve_syndikat_webcam_e_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_037_eve_syndikat_webcam_e_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\037_eve_syndikat_webcam_e\oldman_037_eve_syndikat_webcam_e_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_webcam_f
+class oldman_038_ta_syndikat_webcam_f_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\038_ta_syndikat_webcam_f\oldman_038_ta_syndikat_webcam_f_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_038_ta_syndikat_webcam_f_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\038_ta_syndikat_webcam_f\oldman_038_ta_syndikat_webcam_f_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_webcam_g
+class oldman_039_ta_syndikat_webcam_g_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\039_ta_syndikat_webcam_g\oldman_039_ta_syndikat_webcam_g_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_039_ta_syndikat_webcam_g_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\039_ta_syndikat_webcam_g\oldman_039_ta_syndikat_webcam_g_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_webcam_h
+class oldman_040_ta_syndikat_webcam_h_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\040_ta_syndikat_webcam_h\oldman_040_ta_syndikat_webcam_h_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_040_ta_syndikat_webcam_h_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\040_ta_syndikat_webcam_h\oldman_040_ta_syndikat_webcam_h_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_webcam_i
+class oldman_041_ta_syndikat_webcam_i_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\041_ta_syndikat_webcam_i\oldman_041_ta_syndikat_webcam_i_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_041_ta_syndikat_webcam_i_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\041_ta_syndikat_webcam_i\oldman_041_ta_syndikat_webcam_i_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_webcam_j
+class oldman_042_ta_syndikat_webcam_j_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\042_ta_syndikat_webcam_j\oldman_042_ta_syndikat_webcam_j_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_042_ta_syndikat_webcam_j_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\042_ta_syndikat_webcam_j\oldman_042_ta_syndikat_webcam_j_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_k
+class oldman_043_eve_syndikat_webcam_k_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\043_eve_syndikat_webcam_k\oldman_043_eve_syndikat_webcam_k_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_l
+class oldman_044_eve_syndikat_webcam_l_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\044_eve_syndikat_webcam_l\oldman_044_eve_syndikat_webcam_l_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_044_eve_syndikat_webcam_l_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\044_eve_syndikat_webcam_l\oldman_044_eve_syndikat_webcam_l_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_044_eve_syndikat_webcam_l_UNKNOWN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\044_eve_syndikat_webcam_l\oldman_044_eve_syndikat_webcam_l_UNKNOWN_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_m
+class oldman_045_eve_syndikat_webcam_m_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\045_eve_syndikat_webcam_m\oldman_045_eve_syndikat_webcam_m_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_n_out
+class oldman_046_eve_syndikat_webcam_n_out_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\046_eve_syndikat_webcam_n_out\oldman_046_eve_syndikat_webcam_n_out_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_046_eve_syndikat_webcam_n_out_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\046_eve_syndikat_webcam_n_out\oldman_046_eve_syndikat_webcam_n_out_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_o_out
+class oldman_047_eve_syndikat_webcam_o_out_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\047_eve_syndikat_webcam_o_out\oldman_047_eve_syndikat_webcam_o_out_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_p
+class oldman_048_eve_syndikat_webcam_p_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\048_eve_syndikat_webcam_p\oldman_048_eve_syndikat_webcam_p_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_webcam_q_out
+class oldman_049_eve_syndikat_webcam_q_out_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\049_eve_syndikat_webcam_q_out\oldman_049_eve_syndikat_webcam_q_out_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_049_eve_syndikat_webcam_q_out_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\049_eve_syndikat_webcam_q_out\oldman_049_eve_syndikat_webcam_q_out_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_evidence_received
+class oldman_050_ta_evidence_received_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\050_ta_evidence_received\oldman_050_ta_evidence_received_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_050_ta_evidence_received_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\050_ta_evidence_received\oldman_050_ta_evidence_received_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_050_ta_evidence_received_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\050_ta_evidence_received\oldman_050_ta_evidence_received_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_050_ta_evidence_received_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\050_ta_evidence_received\oldman_050_ta_evidence_received_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_house_destroyed
+class oldman_051_ta_house_destroyed_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\051_ta_house_destroyed\oldman_051_ta_house_destroyed_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_051_ta_house_destroyed_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\051_ta_house_destroyed\oldman_051_ta_house_destroyed_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_051_ta_house_destroyed_UNKNOWN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\051_ta_house_destroyed\oldman_051_ta_house_destroyed_UNKNOWN_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_051_ta_house_destroyed_UNKNOWN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\051_ta_house_destroyed\oldman_051_ta_house_destroyed_UNKNOWN_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_black_market_prices
+class oldman_052_in_black_market_prices_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\052_in_black_market_prices\oldman_052_in_black_market_prices_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_052_in_black_market_prices_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\052_in_black_market_prices\oldman_052_in_black_market_prices_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_052_in_black_market_prices_UNKNOWN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\052_in_black_market_prices\oldman_052_in_black_market_prices_UNKNOWN_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_052_in_black_market_prices_UNKNOWN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\052_in_black_market_prices\oldman_052_in_black_market_prices_UNKNOWN_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_052_in_black_market_prices_UNKNOWN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\052_in_black_market_prices\oldman_052_in_black_market_prices_UNKNOWN_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_052_in_black_market_prices_UNKNOWN_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\052_in_black_market_prices\oldman_052_in_black_market_prices_UNKNOWN_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_photo_taken
+class oldman_053_ta_photo_taken_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\053_ta_photo_taken\oldman_053_ta_photo_taken_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_053_ta_photo_taken_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\053_ta_photo_taken\oldman_053_ta_photo_taken_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_053_ta_photo_taken_UNKNOWN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\053_ta_photo_taken\oldman_053_ta_photo_taken_UNKNOWN_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_traitor_found
+class oldman_054_eve_traitor_found_TRAITOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\054_eve_traitor_found\oldman_054_eve_traitor_found_TRAITOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_traitor_untied
+class oldman_055_eve_traitor_untied_TRAITOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\055_eve_traitor_untied\oldman_055_eve_traitor_untied_TRAITOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_traitor_untied_guards
+class oldman_056_eve_traitor_untied_guards_TRAITOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\056_eve_traitor_untied_guards\oldman_056_eve_traitor_untied_guards_TRAITOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_traitor_untied_no_guards
+class oldman_057_eve_traitor_untied_no_guards_TRAITOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\057_eve_traitor_untied_no_guards\oldman_057_eve_traitor_untied_no_guards_TRAITOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_traitor_escape
+class oldman_058_eve_traitor_escape_TRAITOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\058_eve_traitor_escape\oldman_058_eve_traitor_escape_TRAITOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_058_eve_traitor_escape_TRAITOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\058_eve_traitor_escape\oldman_058_eve_traitor_escape_TRAITOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_058_eve_traitor_escape_TRAITOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\058_eve_traitor_escape\oldman_058_eve_traitor_escape_TRAITOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_058_eve_traitor_escape_TRAITOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\058_eve_traitor_escape\oldman_058_eve_traitor_escape_TRAITOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_058_eve_traitor_escape_TRAITOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\058_eve_traitor_escape\oldman_058_eve_traitor_escape_TRAITOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_058_eve_traitor_escape_TRAITOR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\058_eve_traitor_escape\oldman_058_eve_traitor_escape_TRAITOR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_058_eve_traitor_escape_TRAITOR_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\058_eve_traitor_escape\oldman_058_eve_traitor_escape_TRAITOR_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_058_eve_traitor_escape_TRAITOR_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\058_eve_traitor_escape\oldman_058_eve_traitor_escape_TRAITOR_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_traitor_reward
+class oldman_059_in_traitor_reward_TRAITOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\059_in_traitor_reward\oldman_059_in_traitor_reward_TRAITOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_059_in_traitor_reward_TRAITOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\059_in_traitor_reward\oldman_059_in_traitor_reward_TRAITOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_059_in_traitor_reward_TRAITOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\059_in_traitor_reward\oldman_059_in_traitor_reward_TRAITOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_intel_found_a_call
+class oldman_060_eve_intel_found_a_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\060_eve_intel_found_a_call\oldman_060_eve_intel_found_a_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_060_eve_intel_found_a_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\060_eve_intel_found_a_call\oldman_060_eve_intel_found_a_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_060_eve_intel_found_a_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\060_eve_intel_found_a_call\oldman_060_eve_intel_found_a_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_intel_found_b_call
+class oldman_061_eve_intel_found_b_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\061_eve_intel_found_b_call\oldman_061_eve_intel_found_b_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_061_eve_intel_found_b_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\061_eve_intel_found_b_call\oldman_061_eve_intel_found_b_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_061_eve_intel_found_b_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\061_eve_intel_found_b_call\oldman_061_eve_intel_found_b_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_061_eve_intel_found_b_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\061_eve_intel_found_b_call\oldman_061_eve_intel_found_b_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_intel_found_c_call
+class oldman_062_eve_intel_found_c_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\062_eve_intel_found_c_call\oldman_062_eve_intel_found_c_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_062_eve_intel_found_c_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\062_eve_intel_found_c_call\oldman_062_eve_intel_found_c_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_062_eve_intel_found_c_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\062_eve_intel_found_c_call\oldman_062_eve_intel_found_c_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_intel_found_d_call
+class oldman_063_eve_intel_found_d_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\063_eve_intel_found_d_call\oldman_063_eve_intel_found_d_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_063_eve_intel_found_d_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\063_eve_intel_found_d_call\oldman_063_eve_intel_found_d_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_intel_found_e_call
+class oldman_064_eve_intel_found_e_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\064_eve_intel_found_e_call\oldman_064_eve_intel_found_e_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_064_eve_intel_found_e_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\064_eve_intel_found_e_call\oldman_064_eve_intel_found_e_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_intel_found_f_call
+class oldman_065_eve_intel_found_f_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\065_eve_intel_found_f_call\oldman_065_eve_intel_found_f_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_keep_searching_a
+class oldman_066_eve_keep_searching_a_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\066_eve_keep_searching_a\oldman_066_eve_keep_searching_a_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_keep_searching_b
+class oldman_067_eve_keep_searching_b_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\067_eve_keep_searching_b\oldman_067_eve_keep_searching_b_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_keep_searching_c
+class oldman_068_eve_keep_searching_c_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\068_eve_keep_searching_c\oldman_068_eve_keep_searching_c_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_documents_recovered
+class oldman_069_ta_documents_recovered_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\069_ta_documents_recovered\oldman_069_ta_documents_recovered_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_069_ta_documents_recovered_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\069_ta_documents_recovered\oldman_069_ta_documents_recovered_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_alarm_raised
+class oldman_070_eve_alarm_raised_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\070_eve_alarm_raised\oldman_070_eve_alarm_raised_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_070_eve_alarm_raised_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\070_eve_alarm_raised\oldman_070_eve_alarm_raised_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_070_eve_alarm_raised_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\070_eve_alarm_raised\oldman_070_eve_alarm_raised_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_greeting_quest_complete_a
+class oldman_071_eve_greeting_quest_complete_a_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\071_eve_greeting_quest_complete_a\oldman_071_eve_greeting_quest_complete_a_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_greeting_quest_complete_b
+class oldman_072_eve_greeting_quest_complete_b_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\072_eve_greeting_quest_complete_b\oldman_072_eve_greeting_quest_complete_b_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_greeting_quest_complete_c
+class oldman_073_eve_greeting_quest_complete_c_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\073_eve_greeting_quest_complete_c\oldman_073_eve_greeting_quest_complete_c_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_situation_explained
+class oldman_074_ta_situation_explained_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_9
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_9.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_10
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_10.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_11
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_11.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_12
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_12.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_13
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_13.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_074_ta_situation_explained_MILLER_14
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\074_ta_situation_explained\oldman_074_ta_situation_explained_MILLER_14.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// br_situation_explained_syndikat_meeting
+class oldman_075_br_situation_explained_syndikat_meeting_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\075_br_situation_explained_syndikat_meeting\oldman_075_br_situation_explained_syndikat_meeting_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_situation_explained_out
+class oldman_076_ta_situation_explained_out_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\076_ta_situation_explained_out\oldman_076_ta_situation_explained_out_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_076_ta_situation_explained_out_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\076_ta_situation_explained_out\oldman_076_ta_situation_explained_out_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_additional_information_call
+class oldman_077_in_additional_information_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\077_in_additional_information_call\oldman_077_in_additional_information_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_077_in_additional_information_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\077_in_additional_information_call\oldman_077_in_additional_information_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_077_in_additional_information_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\077_in_additional_information_call\oldman_077_in_additional_information_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_collect_plane_intel_call
+class oldman_078_ta_collect_plane_intel_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\078_ta_collect_plane_intel_call\oldman_078_ta_collect_plane_intel_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_078_ta_collect_plane_intel_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\078_ta_collect_plane_intel_call\oldman_078_ta_collect_plane_intel_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_078_ta_collect_plane_intel_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\078_ta_collect_plane_intel_call\oldman_078_ta_collect_plane_intel_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_078_ta_collect_plane_intel_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\078_ta_collect_plane_intel_call\oldman_078_ta_collect_plane_intel_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_078_ta_collect_plane_intel_call_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\078_ta_collect_plane_intel_call\oldman_078_ta_collect_plane_intel_call_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_078_ta_collect_plane_intel_call_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\078_ta_collect_plane_intel_call\oldman_078_ta_collect_plane_intel_call_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_collect_plane_intel_gear_call
+class oldman_079_ta_collect_plane_intel_gear_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\079_ta_collect_plane_intel_gear_call\oldman_079_ta_collect_plane_intel_gear_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_plane_intel_collected_call
+class oldman_080_ta_plane_intel_collected_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\080_ta_plane_intel_collected_call\oldman_080_ta_plane_intel_collected_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_080_ta_plane_intel_collected_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\080_ta_plane_intel_collected_call\oldman_080_ta_plane_intel_collected_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_080_ta_plane_intel_collected_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\080_ta_plane_intel_collected_call\oldman_080_ta_plane_intel_collected_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_080_ta_plane_intel_collected_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\080_ta_plane_intel_collected_call\oldman_080_ta_plane_intel_collected_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_autonomous_turrets_in_call
+class oldman_081_ta_autonomous_turrets_in_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\081_ta_autonomous_turrets_in_call\oldman_081_ta_autonomous_turrets_in_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_081_ta_autonomous_turrets_in_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\081_ta_autonomous_turrets_in_call\oldman_081_ta_autonomous_turrets_in_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_081_ta_autonomous_turrets_in_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\081_ta_autonomous_turrets_in_call\oldman_081_ta_autonomous_turrets_in_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_081_ta_autonomous_turrets_in_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\081_ta_autonomous_turrets_in_call\oldman_081_ta_autonomous_turrets_in_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_autonomous_turrets_out_call
+class oldman_082_ta_autonomous_turrets_out_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\082_ta_autonomous_turrets_out_call\oldman_082_ta_autonomous_turrets_out_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_082_ta_autonomous_turrets_out_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\082_ta_autonomous_turrets_out_call\oldman_082_ta_autonomous_turrets_out_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_082_ta_autonomous_turrets_out_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\082_ta_autonomous_turrets_out_call\oldman_082_ta_autonomous_turrets_out_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_082_ta_autonomous_turrets_out_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\082_ta_autonomous_turrets_out_call\oldman_082_ta_autonomous_turrets_out_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_082_ta_autonomous_turrets_out_call_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\082_ta_autonomous_turrets_out_call\oldman_082_ta_autonomous_turrets_out_call_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_082_ta_autonomous_turrets_out_call_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\082_ta_autonomous_turrets_out_call\oldman_082_ta_autonomous_turrets_out_call_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_network_intel_call
+class oldman_083_ta_network_intel_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\083_ta_network_intel_call\oldman_083_ta_network_intel_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_083_ta_network_intel_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\083_ta_network_intel_call\oldman_083_ta_network_intel_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_network_intel
+class oldman_084_ta_network_intel_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\084_ta_network_intel\oldman_084_ta_network_intel_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_084_ta_network_intel_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\084_ta_network_intel\oldman_084_ta_network_intel_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_084_ta_network_intel_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\084_ta_network_intel\oldman_084_ta_network_intel_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_084_ta_network_intel_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\084_ta_network_intel\oldman_084_ta_network_intel_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_network_intel_early_call
+class oldman_085_eve_network_intel_early_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\085_eve_network_intel_early_call\oldman_085_eve_network_intel_early_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_085_eve_network_intel_early_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\085_eve_network_intel_early_call\oldman_085_eve_network_intel_early_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_085_eve_network_intel_early_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\085_eve_network_intel_early_call\oldman_085_eve_network_intel_early_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_network_intel_early
+class oldman_086_eve_network_intel_early_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\086_eve_network_intel_early\oldman_086_eve_network_intel_early_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_086_eve_network_intel_early_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\086_eve_network_intel_early\oldman_086_eve_network_intel_early_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_086_eve_network_intel_early_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\086_eve_network_intel_early\oldman_086_eve_network_intel_early_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_086_eve_network_intel_early_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\086_eve_network_intel_early\oldman_086_eve_network_intel_early_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_autonomous_turrets_early_out_call
+class oldman_087_ta_autonomous_turrets_early_out_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\087_ta_autonomous_turrets_early_out_call\oldman_087_ta_autonomous_turrets_early_out_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_087_ta_autonomous_turrets_early_out_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\087_ta_autonomous_turrets_early_out_call\oldman_087_ta_autonomous_turrets_early_out_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_087_ta_autonomous_turrets_early_out_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\087_ta_autonomous_turrets_early_out_call\oldman_087_ta_autonomous_turrets_early_out_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_087_ta_autonomous_turrets_early_out_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\087_ta_autonomous_turrets_early_out_call\oldman_087_ta_autonomous_turrets_early_out_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_virus_prepared_call
+class oldman_088_ta_virus_prepared_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\088_ta_virus_prepared_call\oldman_088_ta_virus_prepared_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_088_ta_virus_prepared_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\088_ta_virus_prepared_call\oldman_088_ta_virus_prepared_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_upload_virus
+class oldman_089_eve_upload_virus_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\089_eve_upload_virus\oldman_089_eve_upload_virus_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_089_eve_upload_virus_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\089_eve_upload_virus\oldman_089_eve_upload_virus_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_089_eve_upload_virus_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\089_eve_upload_virus\oldman_089_eve_upload_virus_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_089_eve_upload_virus_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\089_eve_upload_virus\oldman_089_eve_upload_virus_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_089_eve_upload_virus_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\089_eve_upload_virus\oldman_089_eve_upload_virus_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_089_eve_upload_virus_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\089_eve_upload_virus\oldman_089_eve_upload_virus_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_089_eve_upload_virus_MILLER_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\089_eve_upload_virus\oldman_089_eve_upload_virus_MILLER_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_virus_collected
+class oldman_090_ta_virus_collected_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\090_ta_virus_collected\oldman_090_ta_virus_collected_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_090_ta_virus_collected_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\090_ta_virus_collected\oldman_090_ta_virus_collected_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_090_ta_virus_collected_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\090_ta_virus_collected\oldman_090_ta_virus_collected_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_090_ta_virus_collected_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\090_ta_virus_collected\oldman_090_ta_virus_collected_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_miller_focus_on_task_call
+class oldman_091_eve_miller_focus_on_task_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\091_eve_miller_focus_on_task_call\oldman_091_eve_miller_focus_on_task_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_091_eve_miller_focus_on_task_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\091_eve_miller_focus_on_task_call\oldman_091_eve_miller_focus_on_task_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_091_eve_miller_focus_on_task_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\091_eve_miller_focus_on_task_call\oldman_091_eve_miller_focus_on_task_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_091_eve_miller_focus_on_task_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\091_eve_miller_focus_on_task_call\oldman_091_eve_miller_focus_on_task_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_091_eve_miller_focus_on_task_call_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\091_eve_miller_focus_on_task_call\oldman_091_eve_miller_focus_on_task_call_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_091_eve_miller_focus_on_task_call_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\091_eve_miller_focus_on_task_call\oldman_091_eve_miller_focus_on_task_call_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_miller_focus_on_task_angry_call
+class oldman_092_eve_miller_focus_on_task_angry_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\092_eve_miller_focus_on_task_angry_call\oldman_092_eve_miller_focus_on_task_angry_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_092_eve_miller_focus_on_task_angry_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\092_eve_miller_focus_on_task_angry_call\oldman_092_eve_miller_focus_on_task_angry_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_flashdrive_inserted_call
+class oldman_093_eve_flashdrive_inserted_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\093_eve_flashdrive_inserted_call\oldman_093_eve_flashdrive_inserted_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_093_eve_flashdrive_inserted_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\093_eve_flashdrive_inserted_call\oldman_093_eve_flashdrive_inserted_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reboot_starts_call
+class oldman_094_eve_reboot_starts_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\094_eve_reboot_starts_call\oldman_094_eve_reboot_starts_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reboot_starts_alarm_call
+class oldman_095_eve_reboot_starts_alarm_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\095_eve_reboot_starts_alarm_call\oldman_095_eve_reboot_starts_alarm_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_095_eve_reboot_starts_alarm_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\095_eve_reboot_starts_alarm_call\oldman_095_eve_reboot_starts_alarm_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_095_eve_reboot_starts_alarm_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\095_eve_reboot_starts_alarm_call\oldman_095_eve_reboot_starts_alarm_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_095_eve_reboot_starts_alarm_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\095_eve_reboot_starts_alarm_call\oldman_095_eve_reboot_starts_alarm_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reboot_alarm_call
+class oldman_096_eve_reboot_alarm_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\096_eve_reboot_alarm_call\oldman_096_eve_reboot_alarm_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_096_eve_reboot_alarm_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\096_eve_reboot_alarm_call\oldman_096_eve_reboot_alarm_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reboot_a
+class oldman_097_eve_reboot_a_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\097_eve_reboot_a\oldman_097_eve_reboot_a_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reboot_b
+class oldman_098_eve_reboot_b_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\098_eve_reboot_b\oldman_098_eve_reboot_b_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reboot_c
+class oldman_099_eve_reboot_c_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\099_eve_reboot_c\oldman_099_eve_reboot_c_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reboot_a_urgent
+class oldman_100_eve_reboot_a_urgent_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\100_eve_reboot_a_urgent\oldman_100_eve_reboot_a_urgent_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reboot_b_urgent
+class oldman_101_eve_reboot_b_urgent_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\101_eve_reboot_b_urgent\oldman_101_eve_reboot_b_urgent_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_reboot_c_urgent
+class oldman_102_eve_reboot_c_urgent_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\102_eve_reboot_c_urgent\oldman_102_eve_reboot_c_urgent_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_reboot_complete
+class oldman_103_ta_reboot_complete_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\103_ta_reboot_complete\oldman_103_ta_reboot_complete_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_reboot_complete_urgent
+class oldman_104_ta_reboot_complete_urgent_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\104_ta_reboot_complete_urgent\oldman_104_ta_reboot_complete_urgent_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_reboot_fail
+class oldman_105_ta_reboot_fail_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\105_ta_reboot_fail\oldman_105_ta_reboot_fail_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_105_ta_reboot_fail_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\105_ta_reboot_fail\oldman_105_ta_reboot_fail_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_105_ta_reboot_fail_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\105_ta_reboot_fail\oldman_105_ta_reboot_fail_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_destroy_radar_a_call
+class oldman_106_ta_destroy_radar_a_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\106_ta_destroy_radar_a_call\oldman_106_ta_destroy_radar_a_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_106_ta_destroy_radar_a_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\106_ta_destroy_radar_a_call\oldman_106_ta_destroy_radar_a_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_106_ta_destroy_radar_a_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\106_ta_destroy_radar_a_call\oldman_106_ta_destroy_radar_a_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_106_ta_destroy_radar_a_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\106_ta_destroy_radar_a_call\oldman_106_ta_destroy_radar_a_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_106_ta_destroy_radar_a_call_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\106_ta_destroy_radar_a_call\oldman_106_ta_destroy_radar_a_call_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_106_ta_destroy_radar_a_call_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\106_ta_destroy_radar_a_call\oldman_106_ta_destroy_radar_a_call_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_destroy_radar_main_intel_call
+class oldman_107_ta_destroy_radar_main_intel_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\107_ta_destroy_radar_main_intel_call\oldman_107_ta_destroy_radar_main_intel_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_107_ta_destroy_radar_main_intel_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\107_ta_destroy_radar_main_intel_call\oldman_107_ta_destroy_radar_main_intel_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_107_ta_destroy_radar_main_intel_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\107_ta_destroy_radar_main_intel_call\oldman_107_ta_destroy_radar_main_intel_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_107_ta_destroy_radar_main_intel_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\107_ta_destroy_radar_main_intel_call\oldman_107_ta_destroy_radar_main_intel_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_second_radar_found_in_call
+class oldman_108_ta_second_radar_found_in_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\108_ta_second_radar_found_in_call\oldman_108_ta_second_radar_found_in_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_108_ta_second_radar_found_in_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\108_ta_second_radar_found_in_call\oldman_108_ta_second_radar_found_in_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_second_radar_found_main_known_call
+class oldman_109_ta_second_radar_found_main_known_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\109_ta_second_radar_found_main_known_call\oldman_109_ta_second_radar_found_main_known_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_second_radar_found_main_call
+class oldman_110_ta_second_radar_found_main_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\110_ta_second_radar_found_main_call\oldman_110_ta_second_radar_found_main_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_110_ta_second_radar_found_main_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\110_ta_second_radar_found_main_call\oldman_110_ta_second_radar_found_main_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_110_ta_second_radar_found_main_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\110_ta_second_radar_found_main_call\oldman_110_ta_second_radar_found_main_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_radar_destroyed_in_call
+class oldman_111_eve_radar_destroyed_in_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\111_eve_radar_destroyed_in_call\oldman_111_eve_radar_destroyed_in_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_main_radar_destroyed_call
+class oldman_112_eve_main_radar_destroyed_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\112_eve_main_radar_destroyed_call\oldman_112_eve_main_radar_destroyed_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_second_radar_destroyed_call
+class oldman_113_eve_second_radar_destroyed_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\113_eve_second_radar_destroyed_call\oldman_113_eve_second_radar_destroyed_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_radar_station_out_call
+class oldman_114_eve_radar_station_out_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\114_eve_radar_station_out_call\oldman_114_eve_radar_station_out_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_114_eve_radar_station_out_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\114_eve_radar_station_out_call\oldman_114_eve_radar_station_out_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_all_radar_sites_destroyed_call
+class oldman_115_ta_all_radar_sites_destroyed_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\115_ta_all_radar_sites_destroyed_call\oldman_115_ta_all_radar_sites_destroyed_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_115_ta_all_radar_sites_destroyed_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\115_ta_all_radar_sites_destroyed_call\oldman_115_ta_all_radar_sites_destroyed_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_115_ta_all_radar_sites_destroyed_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\115_ta_all_radar_sites_destroyed_call\oldman_115_ta_all_radar_sites_destroyed_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_115_ta_all_radar_sites_destroyed_call_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\115_ta_all_radar_sites_destroyed_call\oldman_115_ta_all_radar_sites_destroyed_call_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_115_ta_all_radar_sites_destroyed_call_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\115_ta_all_radar_sites_destroyed_call\oldman_115_ta_all_radar_sites_destroyed_call_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_115_ta_all_radar_sites_destroyed_call_MILLER_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\115_ta_all_radar_sites_destroyed_call\oldman_115_ta_all_radar_sites_destroyed_call_MILLER_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_lab_destroyed_in_call
+class oldman_116_ta_lab_destroyed_in_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\116_ta_lab_destroyed_in_call\oldman_116_ta_lab_destroyed_in_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_lab_destroyed_not_known_call
+class oldman_117_ta_lab_destroyed_not_known_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\117_ta_lab_destroyed_not_known_call\oldman_117_ta_lab_destroyed_not_known_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_117_ta_lab_destroyed_not_known_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\117_ta_lab_destroyed_not_known_call\oldman_117_ta_lab_destroyed_not_known_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_117_ta_lab_destroyed_not_known_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\117_ta_lab_destroyed_not_known_call\oldman_117_ta_lab_destroyed_not_known_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_lab_destroyed_call
+class oldman_118_ta_lab_destroyed_call_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\118_ta_lab_destroyed_call\oldman_118_ta_lab_destroyed_call_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_118_ta_lab_destroyed_call_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\118_ta_lab_destroyed_call\oldman_118_ta_lab_destroyed_call_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_118_ta_lab_destroyed_call_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\118_ta_lab_destroyed_call\oldman_118_ta_lab_destroyed_call_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_escape_rv_in
+class oldman_119_ta_escape_rv_in_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\119_ta_escape_rv_in\oldman_119_ta_escape_rv_in_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_escape_rv_malaria_info_a
+class oldman_120_ta_escape_rv_malaria_info_a_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\120_ta_escape_rv_malaria_info_a\oldman_120_ta_escape_rv_malaria_info_a_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_120_ta_escape_rv_malaria_info_a_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\120_ta_escape_rv_malaria_info_a\oldman_120_ta_escape_rv_malaria_info_a_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_120_ta_escape_rv_malaria_info_a_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\120_ta_escape_rv_malaria_info_a\oldman_120_ta_escape_rv_malaria_info_a_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_120_ta_escape_rv_malaria_info_a_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\120_ta_escape_rv_malaria_info_a\oldman_120_ta_escape_rv_malaria_info_a_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_escape_rv_malaria_info_b
+class oldman_121_ta_escape_rv_malaria_info_b_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\121_ta_escape_rv_malaria_info_b\oldman_121_ta_escape_rv_malaria_info_b_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_escape_rv_malaria_info_c
+class oldman_122_ta_escape_rv_malaria_info_c_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\122_ta_escape_rv_malaria_info_c\oldman_122_ta_escape_rv_malaria_info_c_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_escape_rv_malaria_info_d
+class oldman_123_ta_escape_rv_malaria_info_d_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\123_ta_escape_rv_malaria_info_d\oldman_123_ta_escape_rv_malaria_info_d_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_escape_rv_malaria_info_e
+class oldman_124_ta_escape_rv_malaria_info_e_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\124_ta_escape_rv_malaria_info_e\oldman_124_ta_escape_rv_malaria_info_e_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_escape_rv_malaria_info_h
+class oldman_125_ta_escape_rv_malaria_info_h_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\125_ta_escape_rv_malaria_info_h\oldman_125_ta_escape_rv_malaria_info_h_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_escape_rv_resumed
+class oldman_126_ta_escape_rv_resumed_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\126_ta_escape_rv_resumed\oldman_126_ta_escape_rv_resumed_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_escape_rv_a
+class oldman_127_ta_escape_rv_a_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\127_ta_escape_rv_a\oldman_127_ta_escape_rv_a_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_127_ta_escape_rv_a_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\127_ta_escape_rv_a\oldman_127_ta_escape_rv_a_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_miller_threatened
+class oldman_128_eve_miller_threatened_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\128_eve_miller_threatened\oldman_128_eve_miller_threatened_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_miller_drop_the_gun
+class oldman_129_eve_miller_drop_the_gun_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\129_eve_miller_drop_the_gun\oldman_129_eve_miller_drop_the_gun_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_129_eve_miller_drop_the_gun_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\129_eve_miller_drop_the_gun\oldman_129_eve_miller_drop_the_gun_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_miller_attacks
+class oldman_130_eve_miller_attacks_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\130_eve_miller_attacks\oldman_130_eve_miller_attacks_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_miller_threatened_continued
+class oldman_131_eve_miller_threatened_continued_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\131_eve_miller_threatened_continued\oldman_131_eve_miller_threatened_continued_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_miller_angry
+class oldman_132_eve_miller_angry_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\132_eve_miller_angry\oldman_132_eve_miller_angry_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_escape_on_beach
+class oldman_133_eve_escape_on_beach_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\133_eve_escape_on_beach\oldman_133_eve_escape_on_beach_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_escape_on_beach_diving_gear
+class oldman_134_eve_escape_on_beach_diving_gear_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\134_eve_escape_on_beach_diving_gear\oldman_134_eve_escape_on_beach_diving_gear_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_escape_departure
+class oldman_135_eve_escape_departure_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\135_eve_escape_departure\oldman_135_eve_escape_departure_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_135_eve_escape_departure_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\135_eve_escape_departure\oldman_135_eve_escape_departure_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_nvgs
+class oldman_136_ta_syndikat_nvgs_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\136_ta_syndikat_nvgs\oldman_136_ta_syndikat_nvgs_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_136_ta_syndikat_nvgs_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\136_ta_syndikat_nvgs\oldman_136_ta_syndikat_nvgs_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_136_ta_syndikat_nvgs_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\136_ta_syndikat_nvgs\oldman_136_ta_syndikat_nvgs_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_136_ta_syndikat_nvgs_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\136_ta_syndikat_nvgs\oldman_136_ta_syndikat_nvgs_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_136_ta_syndikat_nvgs_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\136_ta_syndikat_nvgs\oldman_136_ta_syndikat_nvgs_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_136_ta_syndikat_nvgs_BOSS_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\136_ta_syndikat_nvgs\oldman_136_ta_syndikat_nvgs_BOSS_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_136_ta_syndikat_nvgs_BOSS_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\136_ta_syndikat_nvgs\oldman_136_ta_syndikat_nvgs_BOSS_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_136_ta_syndikat_nvgs_BOSS_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\136_ta_syndikat_nvgs\oldman_136_ta_syndikat_nvgs_BOSS_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_nvgs_later
+class oldman_137_ta_syndikat_nvgs_later_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\137_ta_syndikat_nvgs_later\oldman_137_ta_syndikat_nvgs_later_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_nvgs_tomorrow
+class oldman_138_ta_syndikat_nvgs_tomorrow_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\138_ta_syndikat_nvgs_tomorrow\oldman_138_ta_syndikat_nvgs_tomorrow_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_nvgs_meeting_out
+class oldman_139_ta_syndikat_nvgs_meeting_out_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\139_ta_syndikat_nvgs_meeting_out\oldman_139_ta_syndikat_nvgs_meeting_out_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_139_ta_syndikat_nvgs_meeting_out_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\139_ta_syndikat_nvgs_meeting_out\oldman_139_ta_syndikat_nvgs_meeting_out_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_nvgs_done
+class oldman_140_ta_syndikat_nvgs_done_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\140_ta_syndikat_nvgs_done\oldman_140_ta_syndikat_nvgs_done_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_140_ta_syndikat_nvgs_done_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\140_ta_syndikat_nvgs_done\oldman_140_ta_syndikat_nvgs_done_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_140_ta_syndikat_nvgs_done_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\140_ta_syndikat_nvgs_done\oldman_140_ta_syndikat_nvgs_done_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_140_ta_syndikat_nvgs_done_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\140_ta_syndikat_nvgs_done\oldman_140_ta_syndikat_nvgs_done_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_140_ta_syndikat_nvgs_done_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\140_ta_syndikat_nvgs_done\oldman_140_ta_syndikat_nvgs_done_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_nvgs_timeout
+class oldman_141_ta_syndikat_nvgs_timeout_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\141_ta_syndikat_nvgs_timeout\oldman_141_ta_syndikat_nvgs_timeout_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_141_ta_syndikat_nvgs_timeout_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\141_ta_syndikat_nvgs_timeout\oldman_141_ta_syndikat_nvgs_timeout_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_141_ta_syndikat_nvgs_timeout_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\141_ta_syndikat_nvgs_timeout\oldman_141_ta_syndikat_nvgs_timeout_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_141_ta_syndikat_nvgs_timeout_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\141_ta_syndikat_nvgs_timeout\oldman_141_ta_syndikat_nvgs_timeout_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_nvgs_out
+class oldman_142_ta_syndikat_nvgs_out_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\142_ta_syndikat_nvgs_out\oldman_142_ta_syndikat_nvgs_out_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_142_ta_syndikat_nvgs_out_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\142_ta_syndikat_nvgs_out\oldman_142_ta_syndikat_nvgs_out_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_nvgs_done_out
+class oldman_143_ta_syndikat_nvgs_done_out_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\143_ta_syndikat_nvgs_done_out\oldman_143_ta_syndikat_nvgs_done_out_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_143_ta_syndikat_nvgs_done_out_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\143_ta_syndikat_nvgs_done_out\oldman_143_ta_syndikat_nvgs_done_out_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_operation_fail
+class oldman_144_ta_syndikat_operation_fail_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\144_ta_syndikat_operation_fail\oldman_144_ta_syndikat_operation_fail_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_144_ta_syndikat_operation_fail_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\144_ta_syndikat_operation_fail\oldman_144_ta_syndikat_operation_fail_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_opertaion_success
+class oldman_145_ta_syndikat_opertaion_success_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\145_ta_syndikat_opertaion_success\oldman_145_ta_syndikat_opertaion_success_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_145_ta_syndikat_opertaion_success_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\145_ta_syndikat_opertaion_success\oldman_145_ta_syndikat_opertaion_success_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_145_ta_syndikat_opertaion_success_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\145_ta_syndikat_opertaion_success\oldman_145_ta_syndikat_opertaion_success_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_assault
+class oldman_146_ta_syndikat_assault_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\146_ta_syndikat_assault\oldman_146_ta_syndikat_assault_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_146_ta_syndikat_assault_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\146_ta_syndikat_assault\oldman_146_ta_syndikat_assault_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_assault_ready
+class oldman_147_ta_syndikat_assault_ready_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\147_ta_syndikat_assault_ready\oldman_147_ta_syndikat_assault_ready_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_assault_moved
+class oldman_148_ta_syndikat_assault_moved_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\148_ta_syndikat_assault_moved\oldman_148_ta_syndikat_assault_moved_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_148_ta_syndikat_assault_moved_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\148_ta_syndikat_assault_moved\oldman_148_ta_syndikat_assault_moved_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_148_ta_syndikat_assault_moved_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\148_ta_syndikat_assault_moved\oldman_148_ta_syndikat_assault_moved_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_148_ta_syndikat_assault_moved_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\148_ta_syndikat_assault_moved\oldman_148_ta_syndikat_assault_moved_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_at_syndikat_boat
+class oldman_149_eve_at_syndikat_boat_SOLDIERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\149_eve_at_syndikat_boat\oldman_149_eve_at_syndikat_boat_SOLDIERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_149_eve_at_syndikat_boat_SOLDIERA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\149_eve_at_syndikat_boat\oldman_149_eve_at_syndikat_boat_SOLDIERA_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_149_eve_at_syndikat_boat_SOLDIERA_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\149_eve_at_syndikat_boat\oldman_149_eve_at_syndikat_boat_SOLDIERA_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_at_syndikat_en_route
+class oldman_150_eve_at_syndikat_en_route_SOLDIERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\150_eve_at_syndikat_en_route\oldman_150_eve_at_syndikat_en_route_SOLDIERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_150_eve_at_syndikat_en_route_SOLDIERA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\150_eve_at_syndikat_en_route\oldman_150_eve_at_syndikat_en_route_SOLDIERA_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_150_eve_at_syndikat_en_route_SOLDIERA_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\150_eve_at_syndikat_en_route\oldman_150_eve_at_syndikat_en_route_SOLDIERA_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_150_eve_at_syndikat_en_route_SOLDIERA_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\150_eve_at_syndikat_en_route\oldman_150_eve_at_syndikat_en_route_SOLDIERA_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_150_eve_at_syndikat_en_route_SOLDIERA_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\150_eve_at_syndikat_en_route\oldman_150_eve_at_syndikat_en_route_SOLDIERA_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_150_eve_at_syndikat_en_route_SOLDIERA_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\150_eve_at_syndikat_en_route\oldman_150_eve_at_syndikat_en_route_SOLDIERA_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_150_eve_at_syndikat_en_route_SOLDIERA_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\150_eve_at_syndikat_en_route\oldman_150_eve_at_syndikat_en_route_SOLDIERA_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_150_eve_at_syndikat_en_route_SOLDIERA_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\150_eve_at_syndikat_en_route\oldman_150_eve_at_syndikat_en_route_SOLDIERA_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_150_eve_at_syndikat_en_route_SOLDIERA_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\150_eve_at_syndikat_en_route\oldman_150_eve_at_syndikat_en_route_SOLDIERA_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_150_eve_at_syndikat_en_route_SOLDIERA_9
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\150_eve_at_syndikat_en_route\oldman_150_eve_at_syndikat_en_route_SOLDIERA_9.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_syndikat_assault_prepare
+class oldman_151_in_syndikat_assault_prepare_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\151_in_syndikat_assault_prepare\oldman_151_in_syndikat_assault_prepare_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_assault_begins
+class oldman_152_eve_syndikat_assault_begins_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\152_eve_syndikat_assault_begins\oldman_152_eve_syndikat_assault_begins_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// am_syndikat_soldier_attack
+class oldman_153_am_syndikat_soldier_attack_SOLDIERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\153_am_syndikat_soldier_attack\oldman_153_am_syndikat_soldier_attack_SOLDIERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_assault_fail
+class oldman_154_eve_syndikat_assault_fail_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\154_eve_syndikat_assault_fail\oldman_154_eve_syndikat_assault_fail_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_154_eve_syndikat_assault_fail_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\154_eve_syndikat_assault_fail\oldman_154_eve_syndikat_assault_fail_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// am_syndikat_soldier_retreat
+class oldman_155_am_syndikat_soldier_retreat_SOLDIERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\155_am_syndikat_soldier_retreat\oldman_155_am_syndikat_soldier_retreat_SOLDIERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_155_am_syndikat_soldier_retreat_SOLDIERA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\155_am_syndikat_soldier_retreat\oldman_155_am_syndikat_soldier_retreat_SOLDIERA_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_assault_success_charge
+class oldman_156_ta_syndikat_assault_success_charge_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\156_ta_syndikat_assault_success_charge\oldman_156_ta_syndikat_assault_success_charge_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_156_ta_syndikat_assault_success_charge_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\156_ta_syndikat_assault_success_charge\oldman_156_ta_syndikat_assault_success_charge_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_156_ta_syndikat_assault_success_charge_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\156_ta_syndikat_assault_success_charge\oldman_156_ta_syndikat_assault_success_charge_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_assault_charge
+class oldman_157_eve_syndikat_assault_charge_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\157_eve_syndikat_assault_charge\oldman_157_eve_syndikat_assault_charge_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_syndikat_assault_alone
+class oldman_158_ta_syndikat_assault_alone_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\158_ta_syndikat_assault_alone\oldman_158_ta_syndikat_assault_alone_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_158_ta_syndikat_assault_alone_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\158_ta_syndikat_assault_alone\oldman_158_ta_syndikat_assault_alone_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_158_ta_syndikat_assault_alone_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\158_ta_syndikat_assault_alone\oldman_158_ta_syndikat_assault_alone_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_158_ta_syndikat_assault_alone_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\158_ta_syndikat_assault_alone\oldman_158_ta_syndikat_assault_alone_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_158_ta_syndikat_assault_alone_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\158_ta_syndikat_assault_alone\oldman_158_ta_syndikat_assault_alone_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_end_in
+class oldman_159_eve_syndikat_end_in_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\159_eve_syndikat_end_in\oldman_159_eve_syndikat_end_in_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_end_in_unknown
+class oldman_160_eve_syndikat_end_in_unknown_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\160_eve_syndikat_end_in_unknown\oldman_160_eve_syndikat_end_in_unknown_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_160_eve_syndikat_end_in_unknown_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\160_eve_syndikat_end_in_unknown\oldman_160_eve_syndikat_end_in_unknown_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_160_eve_syndikat_end_in_unknown_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\160_eve_syndikat_end_in_unknown\oldman_160_eve_syndikat_end_in_unknown_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_end_a
+class oldman_161_eve_syndikat_end_a_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\161_eve_syndikat_end_a\oldman_161_eve_syndikat_end_a_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_end_b
+class oldman_162_eve_syndikat_end_b_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\162_eve_syndikat_end_b\oldman_162_eve_syndikat_end_b_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_end_c
+class oldman_163_eve_syndikat_end_c_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\163_eve_syndikat_end_c\oldman_163_eve_syndikat_end_c_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_end_d
+class oldman_164_eve_syndikat_end_d_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\164_eve_syndikat_end_d\oldman_164_eve_syndikat_end_d_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_end_e
+class oldman_165_eve_syndikat_end_e_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\165_eve_syndikat_end_e\oldman_165_eve_syndikat_end_e_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_end_f
+class oldman_166_eve_syndikat_end_f_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\166_eve_syndikat_end_f\oldman_166_eve_syndikat_end_f_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_166_eve_syndikat_end_f_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\166_eve_syndikat_end_f\oldman_166_eve_syndikat_end_f_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_166_eve_syndikat_end_f_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\166_eve_syndikat_end_f\oldman_166_eve_syndikat_end_f_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_166_eve_syndikat_end_f_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\166_eve_syndikat_end_f\oldman_166_eve_syndikat_end_f_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_end_g
+class oldman_167_eve_syndikat_end_g_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\167_eve_syndikat_end_g\oldman_167_eve_syndikat_end_g_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_167_eve_syndikat_end_g_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\167_eve_syndikat_end_g\oldman_167_eve_syndikat_end_g_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_syndikat_end_h
+class oldman_168_eve_syndikat_end_h_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\168_eve_syndikat_end_h\oldman_168_eve_syndikat_end_h_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_meeting
+class oldman_169_eve_doctor_meeting_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\169_eve_doctor_meeting\oldman_169_eve_doctor_meeting_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_knocking_at_door_spec
+class oldman_170_eve_doctor_knocking_at_door_spec_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\170_eve_doctor_knocking_at_door_spec\oldman_170_eve_doctor_knocking_at_door_spec_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_170_eve_doctor_knocking_at_door_spec_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\170_eve_doctor_knocking_at_door_spec\oldman_170_eve_doctor_knocking_at_door_spec_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_170_eve_doctor_knocking_at_door_spec_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\170_eve_doctor_knocking_at_door_spec\oldman_170_eve_doctor_knocking_at_door_spec_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_knocking_at_door_delay_a_spec
+class oldman_171_eve_doctor_knocking_at_door_delay_a_spec_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\171_eve_doctor_knocking_at_door_delay_a_spec\oldman_171_eve_doctor_knocking_at_door_delay_a_spec_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_knocking_at_door_delay_b_spec
+class oldman_172_eve_doctor_knocking_at_door_delay_b_spec_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\172_eve_doctor_knocking_at_door_delay_b_spec\oldman_172_eve_doctor_knocking_at_door_delay_b_spec_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_knocking_at_door_delay_c_spec
+class oldman_173_eve_doctor_knocking_at_door_delay_c_spec_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\173_eve_doctor_knocking_at_door_delay_c_spec\oldman_173_eve_doctor_knocking_at_door_delay_c_spec_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_csat
+class oldman_174_eve_doctor_csat_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_9
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_9.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_10
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_10.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_11
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_11.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_174_eve_doctor_csat_DOCTOR_12
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\174_eve_doctor_csat\oldman_174_eve_doctor_csat_DOCTOR_12.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_medicine_in
+class oldman_175_eve_doctor_medicine_in_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\175_eve_doctor_medicine_in\oldman_175_eve_doctor_medicine_in_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_medicine_not_home
+class oldman_176_eve_doctor_medicine_not_home_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\176_eve_doctor_medicine_not_home\oldman_176_eve_doctor_medicine_not_home_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_medicine
+class oldman_177_eve_doctor_medicine_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_9
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_9.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_10
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_10.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_11
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_11.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_12
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_12.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_13
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_13.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_14
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_14.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_15
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_15.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_177_eve_doctor_medicine_DOCTOR_16
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\177_eve_doctor_medicine\oldman_177_eve_doctor_medicine_DOCTOR_16.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_medicine_lucas_arrested
+class oldman_178_eve_doctor_medicine_lucas_arrested_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\178_eve_doctor_medicine_lucas_arrested\oldman_178_eve_doctor_medicine_lucas_arrested_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_178_eve_doctor_medicine_lucas_arrested_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\178_eve_doctor_medicine_lucas_arrested\oldman_178_eve_doctor_medicine_lucas_arrested_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_178_eve_doctor_medicine_lucas_arrested_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\178_eve_doctor_medicine_lucas_arrested\oldman_178_eve_doctor_medicine_lucas_arrested_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_178_eve_doctor_medicine_lucas_arrested_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\178_eve_doctor_medicine_lucas_arrested\oldman_178_eve_doctor_medicine_lucas_arrested_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_medicine_out
+class oldman_179_eve_doctor_medicine_out_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\179_eve_doctor_medicine_out\oldman_179_eve_doctor_medicine_out_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_179_eve_doctor_medicine_out_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\179_eve_doctor_medicine_out\oldman_179_eve_doctor_medicine_out_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_vehicle_instructions
+class oldman_180_ta_vehicle_instructions_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\180_ta_vehicle_instructions\oldman_180_ta_vehicle_instructions_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_180_ta_vehicle_instructions_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\180_ta_vehicle_instructions\oldman_180_ta_vehicle_instructions_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_180_ta_vehicle_instructions_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\180_ta_vehicle_instructions\oldman_180_ta_vehicle_instructions_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_vehicle_received
+class oldman_181_ta_vehicle_received_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\181_ta_vehicle_received\oldman_181_ta_vehicle_received_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_181_ta_vehicle_received_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\181_ta_vehicle_received\oldman_181_ta_vehicle_received_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_181_ta_vehicle_received_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\181_ta_vehicle_received\oldman_181_ta_vehicle_received_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_location_change
+class oldman_182_eve_location_change_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\182_eve_location_change\oldman_182_eve_location_change_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_182_eve_location_change_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\182_eve_location_change\oldman_182_eve_location_change_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_182_eve_location_change_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\182_eve_location_change\oldman_182_eve_location_change_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_182_eve_location_change_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\182_eve_location_change\oldman_182_eve_location_change_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_182_eve_location_change_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\182_eve_location_change\oldman_182_eve_location_change_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_182_eve_location_change_DOCTOR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\182_eve_location_change\oldman_182_eve_location_change_DOCTOR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_leaves_tanoa
+class oldman_183_eve_doctor_leaves_tanoa_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\183_eve_doctor_leaves_tanoa\oldman_183_eve_doctor_leaves_tanoa_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_183_eve_doctor_leaves_tanoa_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\183_eve_doctor_leaves_tanoa\oldman_183_eve_doctor_leaves_tanoa_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_183_eve_doctor_leaves_tanoa_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\183_eve_doctor_leaves_tanoa\oldman_183_eve_doctor_leaves_tanoa_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_183_eve_doctor_leaves_tanoa_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\183_eve_doctor_leaves_tanoa\oldman_183_eve_doctor_leaves_tanoa_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_183_eve_doctor_leaves_tanoa_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\183_eve_doctor_leaves_tanoa\oldman_183_eve_doctor_leaves_tanoa_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_183_eve_doctor_leaves_tanoa_DOCTOR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\183_eve_doctor_leaves_tanoa\oldman_183_eve_doctor_leaves_tanoa_DOCTOR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_medicine_reminder_a
+class oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\184_eve_doctor_medicine_reminder_a\oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\184_eve_doctor_medicine_reminder_a\oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\184_eve_doctor_medicine_reminder_a\oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\184_eve_doctor_medicine_reminder_a\oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\184_eve_doctor_medicine_reminder_a\oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\184_eve_doctor_medicine_reminder_a\oldman_184_eve_doctor_medicine_reminder_a_DOCTOR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_doctor_medicine_reminder_b
+class oldman_185_ex_doctor_medicine_reminder_b_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\185_ex_doctor_medicine_reminder_b\oldman_185_ex_doctor_medicine_reminder_b_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_185_ex_doctor_medicine_reminder_b_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\185_ex_doctor_medicine_reminder_b\oldman_185_ex_doctor_medicine_reminder_b_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_medicine_received
+class oldman_186_eve_medicine_received_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\186_eve_medicine_received\oldman_186_eve_medicine_received_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_186_eve_medicine_received_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\186_eve_medicine_received\oldman_186_eve_medicine_received_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_186_eve_medicine_received_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\186_eve_medicine_received\oldman_186_eve_medicine_received_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_186_eve_medicine_received_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\186_eve_medicine_received\oldman_186_eve_medicine_received_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_186_eve_medicine_received_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\186_eve_medicine_received\oldman_186_eve_medicine_received_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_vehicle_required
+class oldman_187_ta_vehicle_required_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\187_ta_vehicle_required\oldman_187_ta_vehicle_required_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_187_ta_vehicle_required_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\187_ta_vehicle_required\oldman_187_ta_vehicle_required_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_187_ta_vehicle_required_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\187_ta_vehicle_required\oldman_187_ta_vehicle_required_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_187_ta_vehicle_required_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\187_ta_vehicle_required\oldman_187_ta_vehicle_required_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_187_ta_vehicle_required_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\187_ta_vehicle_required\oldman_187_ta_vehicle_required_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_set_free_in
+class oldman_188_eve_doctor_set_free_in_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\188_eve_doctor_set_free_in\oldman_188_eve_doctor_set_free_in_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_188_eve_doctor_set_free_in_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\188_eve_doctor_set_free_in\oldman_188_eve_doctor_set_free_in_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_set_free_danger
+class oldman_189_eve_doctor_set_free_danger_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\189_eve_doctor_set_free_danger\oldman_189_eve_doctor_set_free_danger_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_189_eve_doctor_set_free_danger_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\189_eve_doctor_set_free_danger\oldman_189_eve_doctor_set_free_danger_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_189_eve_doctor_set_free_danger_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\189_eve_doctor_set_free_danger\oldman_189_eve_doctor_set_free_danger_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_set_free_safe
+class oldman_190_eve_doctor_set_free_safe_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\190_eve_doctor_set_free_safe\oldman_190_eve_doctor_set_free_safe_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_190_eve_doctor_set_free_safe_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\190_eve_doctor_set_free_safe\oldman_190_eve_doctor_set_free_safe_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_get_the_key
+class oldman_191_eve_doctor_get_the_key_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\191_eve_doctor_get_the_key\oldman_191_eve_doctor_get_the_key_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_191_eve_doctor_get_the_key_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\191_eve_doctor_get_the_key\oldman_191_eve_doctor_get_the_key_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_191_eve_doctor_get_the_key_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\191_eve_doctor_get_the_key\oldman_191_eve_doctor_get_the_key_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_191_eve_doctor_get_the_key_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\191_eve_doctor_get_the_key\oldman_191_eve_doctor_get_the_key_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_set_free
+class oldman_192_eve_doctor_set_free_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\192_eve_doctor_set_free\oldman_192_eve_doctor_set_free_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_192_eve_doctor_set_free_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\192_eve_doctor_set_free\oldman_192_eve_doctor_set_free_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_192_eve_doctor_set_free_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\192_eve_doctor_set_free\oldman_192_eve_doctor_set_free_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_192_eve_doctor_set_free_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\192_eve_doctor_set_free\oldman_192_eve_doctor_set_free_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_192_eve_doctor_set_free_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\192_eve_doctor_set_free\oldman_192_eve_doctor_set_free_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_192_eve_doctor_set_free_DOCTOR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\192_eve_doctor_set_free\oldman_192_eve_doctor_set_free_DOCTOR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_192_eve_doctor_set_free_DOCTOR_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\192_eve_doctor_set_free\oldman_192_eve_doctor_set_free_DOCTOR_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_192_eve_doctor_set_free_DOCTOR_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\192_eve_doctor_set_free\oldman_192_eve_doctor_set_free_DOCTOR_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_192_eve_doctor_set_free_DOCTOR_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\192_eve_doctor_set_free\oldman_192_eve_doctor_set_free_DOCTOR_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_sample_taken_to_van_call
+class oldman_193_ta_sample_taken_to_van_call_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\193_ta_sample_taken_to_van_call\oldman_193_ta_sample_taken_to_van_call_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_193_ta_sample_taken_to_van_call_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\193_ta_sample_taken_to_van_call\oldman_193_ta_sample_taken_to_van_call_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_193_ta_sample_taken_to_van_call_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\193_ta_sample_taken_to_van_call\oldman_193_ta_sample_taken_to_van_call_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_193_ta_sample_taken_to_van_call_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\193_ta_sample_taken_to_van_call\oldman_193_ta_sample_taken_to_van_call_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_193_ta_sample_taken_to_van_call_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\193_ta_sample_taken_to_van_call\oldman_193_ta_sample_taken_to_van_call_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_193_ta_sample_taken_to_van_call_BOSS_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\193_ta_sample_taken_to_van_call\oldman_193_ta_sample_taken_to_van_call_BOSS_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_193_ta_sample_taken_to_van_call_BOSS_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\193_ta_sample_taken_to_van_call\oldman_193_ta_sample_taken_to_van_call_BOSS_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_193_ta_sample_taken_to_van_call_BOSS_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\193_ta_sample_taken_to_van_call\oldman_193_ta_sample_taken_to_van_call_BOSS_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_193_ta_sample_taken_to_van_call_BOSS_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\193_ta_sample_taken_to_van_call\oldman_193_ta_sample_taken_to_van_call_BOSS_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_goodbye
+class oldman_194_eve_doctor_goodbye_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\194_eve_doctor_goodbye\oldman_194_eve_doctor_goodbye_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_a
+class oldman_195_in_doctor_report_a_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\195_in_doctor_report_a\oldman_195_in_doctor_report_a_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_b
+class oldman_196_in_doctor_report_b_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\196_in_doctor_report_b\oldman_196_in_doctor_report_b_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_c
+class oldman_197_in_doctor_report_c_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\197_in_doctor_report_c\oldman_197_in_doctor_report_c_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_d
+class oldman_198_in_doctor_report_d_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\198_in_doctor_report_d\oldman_198_in_doctor_report_d_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_casuality_a
+class oldman_199_in_doctor_report_casuality_a_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\199_in_doctor_report_casuality_a\oldman_199_in_doctor_report_casuality_a_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_199_in_doctor_report_casuality_a_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\199_in_doctor_report_casuality_a\oldman_199_in_doctor_report_casuality_a_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_casuality_b
+class oldman_200_in_doctor_report_casuality_b_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\200_in_doctor_report_casuality_b\oldman_200_in_doctor_report_casuality_b_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_casuality_c
+class oldman_201_in_doctor_report_casuality_c_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\201_in_doctor_report_casuality_c\oldman_201_in_doctor_report_casuality_c_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_casuality_d
+class oldman_202_in_doctor_report_casuality_d_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\202_in_doctor_report_casuality_d\oldman_202_in_doctor_report_casuality_d_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_casuality_e
+class oldman_203_in_doctor_report_casuality_e_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\203_in_doctor_report_casuality_e\oldman_203_in_doctor_report_casuality_e_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_casualties
+class oldman_204_in_doctor_report_casualties_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\204_in_doctor_report_casualties\oldman_204_in_doctor_report_casualties_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_arthur_dying_a
+class oldman_205_in_doctor_arthur_dying_a_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\205_in_doctor_arthur_dying_a\oldman_205_in_doctor_arthur_dying_a_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_dying_b
+class oldman_206_in_doctor_report_dying_b_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\206_in_doctor_report_dying_b\oldman_206_in_doctor_report_dying_b_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_dying_c
+class oldman_207_in_doctor_report_dying_c_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\207_in_doctor_report_dying_c\oldman_207_in_doctor_report_dying_c_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_dying_d
+class oldman_208_in_doctor_report_dying_d_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\208_in_doctor_report_dying_d\oldman_208_in_doctor_report_dying_d_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_dying_e
+class oldman_209_in_doctor_report_dying_e_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\209_in_doctor_report_dying_e\oldman_209_in_doctor_report_dying_e_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_dying_f
+class oldman_210_in_doctor_report_dying_f_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\210_in_doctor_report_dying_f\oldman_210_in_doctor_report_dying_f_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_drugs_out
+class oldman_211_in_doctor_report_drugs_out_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\211_in_doctor_report_drugs_out\oldman_211_in_doctor_report_drugs_out_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_drugs_running_out
+class oldman_212_in_doctor_report_drugs_running_out_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\212_in_doctor_report_drugs_running_out\oldman_212_in_doctor_report_drugs_running_out_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_drugs_running_low
+class oldman_213_in_doctor_report_drugs_running_low_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\213_in_doctor_report_drugs_running_low\oldman_213_in_doctor_report_drugs_running_low_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_a_out
+class oldman_214_in_doctor_report_a_out_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\214_in_doctor_report_a_out\oldman_214_in_doctor_report_a_out_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_b_out
+class oldman_215_in_doctor_report_b_out_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\215_in_doctor_report_b_out\oldman_215_in_doctor_report_b_out_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_215_in_doctor_report_b_out_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\215_in_doctor_report_b_out\oldman_215_in_doctor_report_b_out_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_c_out
+class oldman_216_in_doctor_report_c_out_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\216_in_doctor_report_c_out\oldman_216_in_doctor_report_c_out_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_doctor_report_d_out
+class oldman_217_in_doctor_report_d_out_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\217_in_doctor_report_d_out\oldman_217_in_doctor_report_d_out_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_217_in_doctor_report_d_out_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\217_in_doctor_report_d_out\oldman_217_in_doctor_report_d_out_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_doctor_captured_call
+class oldman_218_eve_doctor_captured_call_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\218_eve_doctor_captured_call\oldman_218_eve_doctor_captured_call_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_218_eve_doctor_captured_call_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\218_eve_doctor_captured_call\oldman_218_eve_doctor_captured_call_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_218_eve_doctor_captured_call_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\218_eve_doctor_captured_call\oldman_218_eve_doctor_captured_call_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_218_eve_doctor_captured_call_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\218_eve_doctor_captured_call\oldman_218_eve_doctor_captured_call_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_218_eve_doctor_captured_call_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\218_eve_doctor_captured_call\oldman_218_eve_doctor_captured_call_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_218_eve_doctor_captured_call_DOCTOR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\218_eve_doctor_captured_call\oldman_218_eve_doctor_captured_call_DOCTOR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_howard_no_good
+class oldman_219_eve_howard_no_good_HOWARD_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\219_eve_howard_no_good\oldman_219_eve_howard_no_good_HOWARD_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_219_eve_howard_no_good_HOWARD_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\219_eve_howard_no_good\oldman_219_eve_howard_no_good_HOWARD_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_jean_no_good
+class oldman_220_eve_jean_no_good_JEAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\220_eve_jean_no_good\oldman_220_eve_jean_no_good_JEAN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_lucas_no_good
+class oldman_221_eve_lucas_no_good_LUCAS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\221_eve_lucas_no_good\oldman_221_eve_lucas_no_good_LUCAS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_221_eve_lucas_no_good_LUCAS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\221_eve_lucas_no_good\oldman_221_eve_lucas_no_good_LUCAS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_221_eve_lucas_no_good_LUCAS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\221_eve_lucas_no_good\oldman_221_eve_lucas_no_good_LUCAS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_renly_no_good
+class oldman_222_eve_renly_no_good_RENLY_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\222_eve_renly_no_good\oldman_222_eve_renly_no_good_RENLY_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_222_eve_renly_no_good_RENLY_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\222_eve_renly_no_good\oldman_222_eve_renly_no_good_RENLY_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_mechanic
+class oldman_223_eve_mechanic_MECHANIC_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\223_eve_mechanic\oldman_223_eve_mechanic_MECHANIC_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_223_eve_mechanic_MECHANIC_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\223_eve_mechanic\oldman_223_eve_mechanic_MECHANIC_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_223_eve_mechanic_MECHANIC_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\223_eve_mechanic\oldman_223_eve_mechanic_MECHANIC_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_smuggler
+class oldman_224_eve_smuggler_SMUGGLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\224_eve_smuggler\oldman_224_eve_smuggler_SMUGGLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_rescue_lucas
+class oldman_225_ta_rescue_lucas_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\225_ta_rescue_lucas\oldman_225_ta_rescue_lucas_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_225_ta_rescue_lucas_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\225_ta_rescue_lucas\oldman_225_ta_rescue_lucas_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_225_ta_rescue_lucas_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\225_ta_rescue_lucas\oldman_225_ta_rescue_lucas_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_225_ta_rescue_lucas_ARTHUR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\225_ta_rescue_lucas\oldman_225_ta_rescue_lucas_ARTHUR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_225_ta_rescue_lucas_ARTHUR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\225_ta_rescue_lucas\oldman_225_ta_rescue_lucas_ARTHUR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_225_ta_rescue_lucas_ARTHUR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\225_ta_rescue_lucas\oldman_225_ta_rescue_lucas_ARTHUR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_225_ta_rescue_lucas_ARTHUR_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\225_ta_rescue_lucas\oldman_225_ta_rescue_lucas_ARTHUR_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_lucas_rescued
+class oldman_226_ta_lucas_rescued_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\226_ta_lucas_rescued\oldman_226_ta_lucas_rescued_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_226_ta_lucas_rescued_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\226_ta_lucas_rescued\oldman_226_ta_lucas_rescued_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_226_ta_lucas_rescued_ARTHUR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\226_ta_lucas_rescued\oldman_226_ta_lucas_rescued_ARTHUR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_226_ta_lucas_rescued_ARTHUR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\226_ta_lucas_rescued\oldman_226_ta_lucas_rescued_ARTHUR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_medicine_available
+class oldman_227_eve_medicine_available_SOLDIERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\227_eve_medicine_available\oldman_227_eve_medicine_available_SOLDIERA_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_227_eve_medicine_available_SOLDIERA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\227_eve_medicine_available\oldman_227_eve_medicine_available_SOLDIERA_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_227_eve_medicine_available_SOLDIERA_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\227_eve_medicine_available\oldman_227_eve_medicine_available_SOLDIERA_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_threat_level_warning_miller
+class oldman_228_eve_threat_level_warning_miller_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\228_eve_threat_level_warning_miller\oldman_228_eve_threat_level_warning_miller_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_228_eve_threat_level_warning_miller_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\228_eve_threat_level_warning_miller\oldman_228_eve_threat_level_warning_miller_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_228_eve_threat_level_warning_miller_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\228_eve_threat_level_warning_miller\oldman_228_eve_threat_level_warning_miller_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_threat_level_warning_syndikat_boss
+class oldman_229_eve_threat_level_warning_syndikat_boss_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\229_eve_threat_level_warning_syndikat_boss\oldman_229_eve_threat_level_warning_syndikat_boss_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_229_eve_threat_level_warning_syndikat_boss_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\229_eve_threat_level_warning_syndikat_boss\oldman_229_eve_threat_level_warning_syndikat_boss_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_229_eve_threat_level_warning_syndikat_boss_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\229_eve_threat_level_warning_syndikat_boss\oldman_229_eve_threat_level_warning_syndikat_boss_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_229_eve_threat_level_warning_syndikat_boss_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\229_eve_threat_level_warning_syndikat_boss\oldman_229_eve_threat_level_warning_syndikat_boss_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_229_eve_threat_level_warning_syndikat_boss_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\229_eve_threat_level_warning_syndikat_boss\oldman_229_eve_threat_level_warning_syndikat_boss_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_threat_level_safe_miller
+class oldman_230_eve_threat_level_safe_miller_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\230_eve_threat_level_safe_miller\oldman_230_eve_threat_level_safe_miller_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// eve_threat_level_safe_syndikat_boss
+class oldman_231_eve_threat_level_safe_syndikat_boss_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\231_eve_threat_level_safe_syndikat_boss\oldman_231_eve_threat_level_safe_syndikat_boss_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_231_eve_threat_level_safe_syndikat_boss_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\231_eve_threat_level_safe_syndikat_boss\oldman_231_eve_threat_level_safe_syndikat_boss_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ta_research_papers
+class oldman_232_ta_research_papers_HOWARD_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_9
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_9.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_10
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_10.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_11
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_11.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_12
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_12.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_232_ta_research_papers_HOWARD_13
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\232_ta_research_papers\oldman_232_ta_research_papers_HOWARD_13.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_vehicle_destroyed
+class oldman_233_ex_vehicle_destroyed_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_PLAYER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_PLAYER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_DOCTOR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_DOCTOR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_PLAYER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_PLAYER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_DOCTOR_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_DOCTOR_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_PLAYER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_PLAYER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_DOCTOR_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_DOCTOR_7.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_233_ex_vehicle_destroyed_DOCTOR_8
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\233_ex_vehicle_destroyed\oldman_233_ex_vehicle_destroyed_DOCTOR_8.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_location_change_call
+class oldman_234_ex_location_change_call_DOCTOR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\234_ex_location_change_call\oldman_234_ex_location_change_call_DOCTOR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_234_ex_location_change_call_DOCTOR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\234_ex_location_change_call\oldman_234_ex_location_change_call_DOCTOR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_234_ex_location_change_call_DOCTOR_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\234_ex_location_change_call\oldman_234_ex_location_change_call_DOCTOR_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_234_ex_location_change_call_DOCTOR_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\234_ex_location_change_call\oldman_234_ex_location_change_call_DOCTOR_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_234_ex_location_change_call_DOCTOR_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\234_ex_location_change_call\oldman_234_ex_location_change_call_DOCTOR_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_234_ex_location_change_call_DOCTOR_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\234_ex_location_change_call\oldman_234_ex_location_change_call_DOCTOR_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_syndikat_friendly_fire
+class oldman_235_ex_syndikat_friendly_fire_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\235_ex_syndikat_friendly_fire\oldman_235_ex_syndikat_friendly_fire_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_235_ex_syndikat_friendly_fire_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\235_ex_syndikat_friendly_fire\oldman_235_ex_syndikat_friendly_fire_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_235_ex_syndikat_friendly_fire_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\235_ex_syndikat_friendly_fire\oldman_235_ex_syndikat_friendly_fire_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_235_ex_syndikat_friendly_fire_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\235_ex_syndikat_friendly_fire\oldman_235_ex_syndikat_friendly_fire_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_target_destroyed
+class oldman_236_ex_target_destroyed_BOSS_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\236_ex_target_destroyed\oldman_236_ex_target_destroyed_BOSS_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_236_ex_target_destroyed_BOSS_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\236_ex_target_destroyed\oldman_236_ex_target_destroyed_BOSS_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_236_ex_target_destroyed_BOSS_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\236_ex_target_destroyed\oldman_236_ex_target_destroyed_BOSS_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_236_ex_target_destroyed_BOSS_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\236_ex_target_destroyed\oldman_236_ex_target_destroyed_BOSS_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_236_ex_target_destroyed_BOSS_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\236_ex_target_destroyed\oldman_236_ex_target_destroyed_BOSS_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_236_ex_target_destroyed_BOSS_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\236_ex_target_destroyed\oldman_236_ex_target_destroyed_BOSS_5.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_236_ex_target_destroyed_BOSS_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\236_ex_target_destroyed\oldman_236_ex_target_destroyed_BOSS_6.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_timeout_traitor
+class oldman_237_ex_timeout_traitor_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\237_ex_timeout_traitor\oldman_237_ex_timeout_traitor_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_237_ex_timeout_traitor_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\237_ex_timeout_traitor\oldman_237_ex_timeout_traitor_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_237_ex_timeout_traitor_UNKNOWN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\237_ex_timeout_traitor\oldman_237_ex_timeout_traitor_UNKNOWN_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_237_ex_timeout_traitor_UNKNOWN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\237_ex_timeout_traitor\oldman_237_ex_timeout_traitor_UNKNOWN_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_miller_where_are_you_a
+class oldman_238_ex_miller_where_are_you_a_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\238_ex_miller_where_are_you_a\oldman_238_ex_miller_where_are_you_a_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_238_ex_miller_where_are_you_a_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\238_ex_miller_where_are_you_a\oldman_238_ex_miller_where_are_you_a_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_238_ex_miller_where_are_you_a_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\238_ex_miller_where_are_you_a\oldman_238_ex_miller_where_are_you_a_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_238_ex_miller_where_are_you_a_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\238_ex_miller_where_are_you_a\oldman_238_ex_miller_where_are_you_a_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_miller_where_are_you_b
+class oldman_239_ex_miller_where_are_you_b_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\239_ex_miller_where_are_you_b\oldman_239_ex_miller_where_are_you_b_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_239_ex_miller_where_are_you_b_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\239_ex_miller_where_are_you_b\oldman_239_ex_miller_where_are_you_b_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_miller_where_are_you_c
+class oldman_240_ex_miller_where_are_you_c_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\240_ex_miller_where_are_you_c\oldman_240_ex_miller_where_are_you_c_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_240_ex_miller_where_are_you_c_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\240_ex_miller_where_are_you_c\oldman_240_ex_miller_where_are_you_c_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_miller_where_are_you_d
+class oldman_241_ex_miller_where_are_you_d_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\241_ex_miller_where_are_you_d\oldman_241_ex_miller_where_are_you_d_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_241_ex_miller_where_are_you_d_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\241_ex_miller_where_are_you_d\oldman_241_ex_miller_where_are_you_d_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_steals_hat
+class oldman_242_ex_steals_hat_FARMER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\242_ex_steals_hat\oldman_242_ex_steals_hat_FARMER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_242_ex_steals_hat_FARMER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\242_ex_steals_hat\oldman_242_ex_steals_hat_FARMER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_first_aid_not_effective
+class oldman_243_ex_first_aid_not_effective_ARTHUR_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\243_ex_first_aid_not_effective\oldman_243_ex_first_aid_not_effective_ARTHUR_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_243_ex_first_aid_not_effective_ARTHUR_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\243_ex_first_aid_not_effective\oldman_243_ex_first_aid_not_effective_ARTHUR_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// ex_virus_upload_fail_new_plan
+class oldman_244_ex_virus_upload_fail_new_plan_MILLER_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\244_ex_virus_upload_fail_new_plan\oldman_244_ex_virus_upload_fail_new_plan_MILLER_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_244_ex_virus_upload_fail_new_plan_MILLER_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\244_ex_virus_upload_fail_new_plan\oldman_244_ex_virus_upload_fail_new_plan_MILLER_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_244_ex_virus_upload_fail_new_plan_MILLER_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\244_ex_virus_upload_fail_new_plan\oldman_244_ex_virus_upload_fail_new_plan_MILLER_2.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_244_ex_virus_upload_fail_new_plan_MILLER_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\244_ex_virus_upload_fail_new_plan\oldman_244_ex_virus_upload_fail_new_plan_MILLER_3.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_244_ex_virus_upload_fail_new_plan_MILLER_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\244_ex_virus_upload_fail_new_plan\oldman_244_ex_virus_upload_fail_new_plan_MILLER_4.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+
+// in_black_market_prices_laptop
+class oldman_245_in_black_market_prices_laptop_UNKNOWN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\245_in_black_market_prices_laptop\oldman_245_in_black_market_prices_laptop_UNKNOWN_0.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+class oldman_245_in_black_market_prices_laptop_UNKNOWN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman\245_in_black_market_prices_laptop\oldman_245_in_black_market_prices_laptop_UNKNOWN_1.ogg", db+10, 1};
+	titles[] = {0, ""};
+};
+

@@ -1,0 +1,11 @@
+#include "definitions.inc"
+
+params["_logic", "_param1"];
+
+if([_logic, _param1] call BIS_fnc_OM_moduleEconomy_HasEnoughMoney) then
+{
+  [_logic, _param1] call BIS_fnc_OM_moduleEconomy_DecreaseMoney;
+  RETURN_CODE_SUCCESS
+}
+else
+{RETURN_CODE_NOT_ENOUGH_MONEY};

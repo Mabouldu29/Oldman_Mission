@@ -1,0 +1,45 @@
+private _mode = param [0,"",[""]];
+private _input = param [1,[],[[]]];
+_module = _input param [0,objNull,[objNull]];
+
+private _terrainBuildingRadius = 10;
+
+switch _mode do {
+	case "init": {
+		if (!is3DEN) then {	
+			if ((_module getVariable ["useTerrainObject", false])) then {
+				private _objects = (nearestTerrainObjects [_module, [], _terrainBuildingRadius, true, true]);  		
+				_module setVariable ["terrainObjects", [_objects#0]];
+			} else {
+				_module setVariable ["syncedObjects" , (synchronizedObjects _module) apply {vehicleVarName _x}];
+			};	
+		};
+	};
+	case "attributesChanged3DEN": { // When some attributes were changed (including position and` rotation)
+		[[], [], false] call bis_fnc_drawBoundingBox;	
+		if (!(_module getVariable ["useTerrainObject", false])) exitWith {};
+		
+		private _objects = (nearestTerrainObjects [_module, [], _terrainBuildingRadius, true, true]);  
+		
+		if (count _objects > 0) then {
+			private _object = _objects#0;
+			[_module, _object] call BIS_fnc_snapToObject;
+			[[_object], [0, 0, 1, 1], true] call bis_fnc_drawBoundingBox;
+		};
+	};
+	case "unregisteredFromWorld3DEN": {// When removed from the world (i.e., by deletion or undoing creation)
+		if ((_module getVariable ["useTerrainObject", false])) then {[[], [], false] call bis_fnc_drawBoundingBox;};
+		
+	};
+	// case "connectionChanged3DEN": {
+	// 	params ["_object"];
+	// 	["quest DEFEND %1 %2 %3", _object, ([_module, "All"] call BIS_fnc_synchronizedObjects), ([_module, "All"] call BIS_fnc_allSynchronizedObjects) ] call bis_fnc_logFormat;	
+	// };
+};
+
+BIS_fnc_snapToObject = {
+	params["_module", "_object"];
+	//snap module to building	
+	private _buildingPos = getPos _object; _buildingPos set [2,0];
+	_module set3DENAttribute ["position",_buildingPos];
+};

@@ -1,0 +1,8 @@
+#define DEFAULT_TIME_OFFSET	-31536000	//last attacks on a base - in seconds
+
+private _restrictedAreas = ([false] call BIS_fnc_OM_SectorGetSectors) select 0;
+private _sectors = [];
+{
+	_sectors pushback [_x, [_x] call BIS_fnc_OM_getSectorPower, [date, DEFAULT_TIME_OFFSET ] call BIS_fnc_CalculateDateTime ];
+} forEach _restrictedAreas;
+_sectors

@@ -1,0 +1,150 @@
+class RscRecruitSyndicats
+{
+
+	idd = 998; // Display identification
+	enableSimulation = 1; // 1 (true) to allow world simulation to be running in the background, 0 to freeze it
+	enableDisplay = 0; // 1 (true) to allow scene rendering in the background
+	//Fadein = 2;
+
+	//onLoad = "_this call compile preprocessFileLineNumbers 'RscRecruitSyndicats.sqf';";
+	//onUnload = "systemChat str ['onUnload',_this]; false";
+	//onChildDestroyed = "systemChat str ['onChildDestroyed',_this]; false";
+
+	class ControlsBackground // Background controls (placed behind Controls)
+	{
+		class Background
+		{
+			idc = -1;
+			type = CT_STATIC;
+			style = ST_LEFT;
+			//["0.823109 * safezoneW + safezoneX","0.631549 * safezoneH + safezoneY","0.186033 * safezoneW","0.122152 * safezoneH"]
+			x = 0.823109 * safezoneW + safezoneX;
+			y = 0.631549 * safezoneH + safezoneY;
+			w = 0.186033 * safezoneW;
+			h = 0.122152 * safezoneH;
+			colorBackground[] = {0,0,0,0.3};
+			colorText[] = {0,0,0,0};
+			font = GUI_FONT_NORMAL;
+			sizeEx = GUI_GRID_CENTER_H;
+			text = "";
+			moving = 1;
+		};
+	};
+	class Controls // Main controls
+	{
+		class Header
+		{
+			idc = -1;
+			type = CT_STATIC;
+			style = ST_LEFT;
+			//["0.823109 * safezoneW + safezoneX","0.753701 * safezoneH + safezoneY","0.186033 * safezoneW","0.028189 * safezoneH"]
+			x = 0.823109 * safezoneW + safezoneX;
+			y = 0.753701 * safezoneH + safezoneY;
+			w = 0.186033 * safezoneW;
+			h = 0.028189 * safezoneH;
+			colorBackground[] = {0,0,0,0.7};
+			colorText[] = {0,0,0,0};
+			font = GUI_FONT_NORMAL;
+			sizeEx = GUI_GRID_CENTER_H;
+			text = "";
+			moving = 1;
+		};
+		class GoSleepAT
+		{
+			idc = -1;
+			type = CT_ACTIVETEXT;
+			style = ST_CENTER;
+			blinkingPeriod = 2.5;
+			//["0.91123 * safezoneW + safezoneX","0.753701 * safezoneH + safezoneY","0.0979118 * safezoneW","0.028189 * safezoneH"]
+			x = 0.91123 * safezoneW + safezoneX;
+			y = 0.753701 * safezoneH + safezoneY;
+			w = 0.0979118 * safezoneW;
+			h = 0.028189 * safezoneH;
+			color[] = {1,1,1,1};
+			ColorActive[] = {1, 0.7, 0.1, 1};
+			ColorDisabled[] = {0,0,0,0.3};
+			soundEnter[] = {"a3\UI_f\data\Sound\ReadOut\ReadoutHideClick2.wss", 0.5, 1.3};
+			soundPush[] = {"", 0.5, 1};
+			soundClick[] = {"a3\UI_f\data\Sound\RscButtonMenu\soundClick.wss", 0.5, 1.3};
+			soundEscape[] = {"", 0.5, 1};
+			font = GUI_FONT_NORMAL;
+			sizeEx = GUI_GRID_CENTER_H;
+			text = "RECRUIT";
+			action = "closeDialog 998;[] spawn BIS_fnc_om_PH_AddSyndicats";
+			default = false;
+		};
+		class MySlider
+		{
+		    idc = -1;
+		    type = CT_SLIDER;
+		    style = SL_HORZ;
+		    //["0.860366 * safezoneW + safezoneX","0.67853 * safezoneH + safezoneY","0.0979118 * safezoneW","0.0187927 * safezoneH"]
+		    x = 0.860366 * safezoneW + safezoneX;
+		    y = 0.67853 * safezoneH + safezoneY;
+		    w = 0.126059 * safezoneW;
+		    h = 0.0187927 * safezoneH;
+		    color[] = { 1, 1, 1, 1 };
+		    coloractive[] = { 1, 0.7, 0.1, 1 };
+		    // This is an ctrlEventHandler to show you some response if you move the sliderpointer.
+		    sliderposition = 0;
+		    linesize = 1/12;
+		    sliderrange[] = {0,1};
+		    sliderstep = 1/12;
+		    onSliderPosChanged = "BIS_HowManyRecruits = _this;[] execvm '\a3\Missions_F_Oldman\Systems\UI\RecruitGroup\UI.SQF'";//;hint format['%1',_this];
+		};
+		class Sleep
+		{
+			type = 0;
+			IDC = 5538;
+			style = ST_LEFT;
+			shadow = 1;
+			//["0.860366 * safezoneW + safezoneX","0.640945 * safezoneH + safezoneY","0.0979118 * safezoneW","0.028189 * safezoneH"]
+			x = 0.860366 * safezoneW + safezoneX;
+			y = 0.640945 * safezoneH + safezoneY;
+			w = 0.132811 * safezoneW;
+			h = 0.028189 * safezoneH;
+			text = "Recruit Syndicats";
+			LineSpacing = 1.000000;
+			ColorBackground[] = {0,0,0,0};
+			ColorText[] = {1,1,1,1};
+			font = "PuristaMedium";
+			SizeEx = 0.04;
+		};
+		class number
+		{
+			type = 0;
+			IDC = 5540;
+			style = ST_LEFT;
+			shadow = 1;
+			//["0.881856 * safezoneW + safezoneX","0.706719 * safezoneH + safezoneY","0.0587471 * safezoneW","0.0375853 * safezoneH"]//0.860366 * safezoneW + safezoneX
+			x = 0.860366 * safezoneW + safezoneX;
+			y = 0.706719 * safezoneH + safezoneY;
+			w = 0.0796868 * safezoneW;
+			h = 0.0375853 * safezoneH;
+			text = "";
+			LineSpacing = 1.000000;
+			ColorBackground[] = {0,0,0,0};
+			ColorText[] = {1,1,1,1};
+			font = "PuristaBold";
+			SizeEx = 0.06;
+		};
+		class hours
+		{
+			type = 0;
+			IDC = 5539;
+			style = ST_CENTER;
+			shadow = 1;
+			// ["0.940603 * safezoneW + safezoneX","0.706719 * safezoneH + safezoneY","0.0587471 * safezoneW","0.0375853 * safezoneH"]
+			x = 0.940603 * safezoneW + safezoneX;
+			y = 0.706719 * safezoneH + safezoneY;
+			w = 0.0587471 * safezoneW;
+			h = 0.0375853 * safezoneH;
+			text = "warrior";
+			LineSpacing = 1.000000;
+			ColorBackground[] = {0,0,0,0};
+			ColorText[] = {1,1,1,1};
+			font = "PuristaMedium";
+			SizeEx = 0.04;
+		};
+	};
+};

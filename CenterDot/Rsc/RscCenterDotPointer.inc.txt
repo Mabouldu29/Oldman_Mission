@@ -1,0 +1,12 @@
+#define SCALE                   1
+
+#define FRAME_DOT_W             TILE_W * SCALE * 0.75
+#define FRAME_DOT_H             TILE_H * SCALE * 0.75
+
+#define GROUP_W                 TILE_W * SCALE * 2.5
+#define GROUP_H                 TILE_H * SCALE * 2.5
+
+#define FONT_SIZE               0
+
+#define GROUP_CENTER_X          GROUP_W/2
+#define GROUP_CENTER_Y          GROUP_H/2

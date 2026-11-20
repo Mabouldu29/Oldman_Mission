@@ -1,0 +1,37 @@
+#define MODE_INIT                   "init"
+#define MODE_INCREASE_MONEY         1
+#define MODE_REDUCE_MONEY           2
+#define MODE_GET_STATUS             3
+#define MODE_CHANGE_INCOME          4
+#define MODE_BUY_EQUIP              5
+#define MODE_HAS_ENOUGH_MONEY       6
+#define MODE_HAS_ENOUGH_STORAGE     7
+#define MODE_SELL_EQUIP             8
+#define MODE_GET_EQUIP_PRICE        9
+#define MODE_PAY                    10
+
+#define FUEL_VALUE				35
+#define REPAIR_VALUE			500
+#define ATTACH_BOMB_TO_CAR		1000
+
+#define RETURN_CODE_SUCCESS                   0
+#define RETURN_CODE_NOT_ENOUGH_MONEY          1
+#define RETURN_CODE_EQUIPMENT_NOT_EXISTS      2
+#define RETURN_CODE_NOT_ENOUGH_SPACE          3
+#define BIS_OM_ECONOMY_LOGIC                  (missionNamespace getVariable "BIS_OM_Economy_logic")
+
+//COST PRICE EXTRA CHARGE: POSITIVE == ITEM IS MORE EXPENSIVE, NEGATIVE NUMBERS == DISCOUNT ON THE ITEM
+#define ECONOMY_GET_ITEM_EXTRACHARGE_COST                       (BIS_OM_ECONOMY_LOGIC getVariable ["economyExtraChargeCost", 0])
+#define ECONOMY_SET_ITEM_EXTRACHARGE_COST(CHARGE)               (BIS_OM_ECONOMY_LOGIC setVariable ["economyExtraChargeCost", CHARGE])
+//PURCHASE PRICE EXTRA CHARGE: POSITIVE == MORE MONEY FOR THE ITEM, NEGATIVE NUMBERS == LESS MONEY FOR THE ITEM - it's the PRICE the player can sell an item for
+#define ECONOMY_GET_ITEM_EXTRACHARGE_PURCHASE                   (BIS_OM_ECONOMY_LOGIC getVariable ["economyExtraChargePurchase", 0])
+#define ECONOMY_SET_ITEM_EXTRACHARGE_PURCHASE(CHARGE)           (BIS_OM_ECONOMY_LOGIC setVariable ["economyExtraChargePurchase", CHARGE])
+
+#define CALCULATE_DISCOUNT(PRICE, COSTPRICE) \
+if(COSTPRICE) then {PRICE + (ECONOMY_GET_ITEM_EXTRACHARGE_PURCHASE*(PRICE/100))} else {PRICE + (ECONOMY_GET_ITEM_EXTRACHARGE_COST*(PRICE/100))}
+
+#define CFGS  ["CfgWeapons", "CfgMagazines", "CfgVehicles", "CfgGlasses"]
+
+#define UI_BUTTON_CONFIRM_OK					"CONFIRM"
+#define UI_BUTTON_CONFIRM_NOMONEY			"NOT ENOUGH MONEY"
+#define UI_BUTTON_CONFIRM_NOUNITS 		"NO UNITS AVAILABLE"

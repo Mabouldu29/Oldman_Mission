@@ -1,0 +1,910 @@
+
+class Music_Default
+{
+	 //name="Music_Default";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_01.ogg, db + 9, 1 };
+	 duration=177.967896;
+	 musicClass="";
+};
+
+class Track_C_01
+{
+	 //name="Track_C_01";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_01.ogg, db + 9, 1 };
+	 duration=177.967896;
+	 musicClass="";
+};
+class Track_C_02
+{
+	 //name="Track_C_02";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_02.ogg, db + 9, 1 };
+	 duration=197.929796;
+	 musicClass="";
+};
+class Track_C_03
+{
+	 //name="Track_C_03";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_03.ogg, db + 9, 1 };
+	 duration=88.618042;
+	 musicClass="";
+};
+class Track_C_04
+{
+	 //name="Track_C_04";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_04.ogg, db + 9, 1 };
+	 duration=129.201633;
+	 musicClass="";
+};
+class Track_C_05
+{
+	 //name="Track_C_05";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_05.ogg, db + 9, 1 };
+	 duration=155.769208;
+	 musicClass="";
+};
+class Track_C_06
+{
+	 //name="Track_C_06";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_06.ogg, db + 9, 1 };
+	 duration=130.344812;
+	 musicClass="";
+};
+class Track_C_07
+{
+	 //name="Track_C_07";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_07.ogg, db + 9, 1 };
+	 duration=96.000000;
+	 musicClass="";
+};
+class Track_C_08
+{
+	 //name="Track_C_08";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_08.ogg, db + 9, 1 };
+	 duration=111.520687;
+	 musicClass="";
+};
+class Track_C_09
+{
+	 //name="Track_C_09";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_09.ogg, db + 9, 1 };
+	 duration=112.065306;
+	 musicClass="";
+};
+class Track_C_10
+{
+	 //name="Track_C_10";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_10.ogg, db + 9, 1 };
+	 duration=65.645714;
+	 musicClass="";
+};
+class Track_C_11
+{
+	 //name="Track_C_11";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_11.ogg, db + 9, 1 };
+	 duration=93.858662;
+	 musicClass="";
+};
+class Track_C_12
+{
+	 //name="Track_C_12";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_12.ogg, db + 9, 1 };
+	 duration=160.057562;
+	 musicClass="";
+};
+class Track_C_13
+{
+	 //name="Track_C_13";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_13.ogg, db + 9, 1 };
+	 duration=168.801333;
+	 musicClass="";
+};
+class Track_C_14
+{
+	 //name="Track_C_14";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_14.ogg, db + 9, 1 };
+	 duration=37.561188;
+	 musicClass="";
+};
+class Track_C_15
+{
+	 //name="Track_C_15";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_15.ogg, db + 9, 1 };
+	 duration=79.647959;
+	 musicClass="";
+};
+class Track_C_16
+{
+	 //name="Track_C_16";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_16.ogg, db + 9, 1 };
+	 duration=137.430204;
+	 musicClass="";
+};
+class Track_C_17
+{
+	 //name="Track_C_17";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_17.ogg, db + 9, 1 };
+	 duration=87.656122;
+	 musicClass="";
+};
+class Track_C_18
+{
+	 //name="Track_C_18";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_18.ogg, db + 9, 1 };
+	 duration=167.026939;
+	 musicClass="";
+};
+class Track_C_19
+{
+	 //name="Track_C_19";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_19.ogg, db + 9, 1 };
+	 duration=259.343673;
+	 musicClass="";
+};
+class Track_C_20
+{
+	 //name="Track_C_20";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_20.ogg, db + 9, 1 };
+	 duration=92.232000;
+	 musicClass="";
+};
+/* class Track_C_21
+{
+	 //name="Track_C_21";
+	 sound[]={\a3\Music_F_Oldman\music\radio\chillout\Track_C_21.ogg, db + 9, 1 };
+	 duration=68.075102;
+	 musicClass="";
+}; */
+class Track_D_01
+{
+	 //name="Track_D_01";
+	 sound[]={\a3\Music_F_Oldman\music\radio\dance\Track_D_01.ogg, db + 9, 1 };
+	 duration=249.782857;
+	 musicClass="";
+};
+class Track_D_02
+{
+	 //name="Track_D_02";
+	 sound[]={\a3\Music_F_Oldman\music\radio\dance\Track_D_02.ogg, db + 9, 1 };
+	 duration=387.578776;
+	 musicClass="";
+};
+class Track_D_03
+{
+	 //name="Track_D_03";
+	 sound[]={\a3\Music_F_Oldman\music\radio\dance\Track_D_03.ogg, db + 9, 1 };
+	 duration=250.514286;
+	 musicClass="";
+};
+class Track_M_01
+{
+	 //name="Track_M_01";
+	 sound[]={\a3\Music_F_Oldman\music\radio\metal\Track_M_01.ogg, db + 9, 1 };
+	 duration=246.595918;
+	 musicClass="";
+};
+class Track_M_02
+{
+	 //name="Track_M_02";
+	 sound[]={\a3\Music_F_Oldman\music\radio\metal\Track_M_02.ogg, db + 9, 1 };
+	 duration=239.647347;
+	 musicClass="";
+};
+class Track_M_03
+{
+	 //name="Track_M_03";
+	 sound[]={\a3\Music_F_Oldman\music\radio\metal\Track_M_03.ogg, db + 9, 1 };
+	 duration=273.136327;
+	 musicClass="";
+};
+/* class Track_M_04
+{
+	 //name="Track_M_04";
+	 sound[]={\a3\Music_F_Oldman\music\radio\metal\Track_M_04.ogg, db + 9, 1 };
+	 duration=128.600816;
+	 musicClass="";
+};
+class Track_M_05
+{
+	 //name="Track_M_05";
+	 sound[]={\a3\Music_F_Oldman\music\radio\metal\Track_M_05.ogg, db + 9, 1 };
+	 duration=247.666939;
+	 musicClass="";
+};
+class Track_M_06
+{
+	 //name="Track_M_06";
+	 sound[]={\a3\Music_F_Oldman\music\radio\metal\Track_M_06.ogg, db + 9, 1 };
+	 duration=149.342041;
+	 musicClass="";
+};
+class Track_M_07
+{
+	 //name="Track_M_07";
+	 sound[]={\a3\Music_F_Oldman\music\radio\metal\Track_M_07.ogg, db + 9, 1 };
+	 duration=180.114286;
+	 musicClass="";
+}; */
+/* class News_Abuse01
+{
+	 //name="News_Abuse01";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_Abuse01.ogg, db + 9, 1 };
+	 duration=26.087619;
+	 musicClass="";
+}; */
+class News_BackOnline
+{
+	 //name="News_BackOnline";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_BackOnline.ogg, db + 15, 1 };
+	 duration=38;
+	 musicClass="";
+};
+class News_CSAT_convoy_attacked
+{
+	 //name="News_CSAT_convoy_attacked";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_CSAT_convoy_attacked.ogg, db + 15, 1 };
+	 duration=24.380952;
+	 musicClass="";
+};
+class News_Infection01
+{
+	 //name="News_Infection01";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_Infection01.ogg, db + 15, 1 };
+	 duration=18;
+	 musicClass="";
+};
+class News_Jingle
+{
+	 //name="News_Jingle";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_Jingle.ogg, db + 9, 1 };
+	 duration=8.048209;
+	 musicClass="";
+};
+ class News_outbreak_Boise
+{
+	 //name="News_outbreak_Boise";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_outbreak_Boise.ogg, db + 15, 1 };
+	 duration=17.5;
+	 musicClass="";
+}; 
+class News_outbreak_Galili
+{
+	 //name="News_outbreak_Galili";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_outbreak_Galili.ogg, db + 15, 1 };
+	 duration=13;
+	 musicClass="";
+};
+class News_outbreak_Oumere
+{
+	 //name="News_outbreak_Oumere";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_outbreak_Oumere.ogg, db + 15, 1 };
+	 duration=3.471383;
+	 musicClass="";
+};
+class News_outbreak_Savaka
+{
+	 //name="News_outbreak_Savaka";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_outbreak_Savaka.ogg, db + 15, 1 };
+	 duration=13.7;
+	 musicClass="";
+};
+class News_rebels_attack_Lugganville
+{
+	 //name="News_rebels_attack_Lugganville";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_rebels_attack_Lugganville.ogg, db + 15, 1 };
+	 duration=29;
+	 musicClass="";
+};
+class News_weapons_prohibited
+{
+	 //name="News_weapons_prohibited";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_weapons_prohibited.ogg, db + 15, 1 };
+	 duration=30.5;
+	 musicClass="";
+};
+class News_checkpoints
+{
+	 //name="News_checkpoints";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_checkpoints.ogg, db + 15, 1 };
+	 duration=17.9;
+	 musicClass="";
+};
+class News_aircraft
+{
+	 //name="News_aircraft";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_aircraft.ogg, db + 15, 1 };
+	 duration= 13;	 
+	 musicClass="";
+};
+class News_arrest
+{
+	 //name="News_arrest";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_arrest.ogg, db + 15, 1 };
+	 duration= 20;	 
+	 musicClass="";
+};
+class News_depot_fail
+{
+	 //name="News_depot_fail";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_depot_fail.ogg, db + 15, 1 };
+	 duration= 16;	 
+	 musicClass="";
+};
+class News_depot_success
+{
+	 //name="News_depot_success";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_depot_success.ogg, db + 15, 1 };
+	 duration= 17;	 
+	 musicClass="";
+};
+class News_depot_success_alone
+{
+	 //name="News_depot_success_alone";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_depot_success_alone.ogg, db + 15, 1 };
+	 duration= 22.5;	 
+	 musicClass="";
+};
+class News_execution
+{
+	 //name="News_execution";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_execution.ogg, db + 15, 1 };
+	 duration= 23.8;	 
+	 musicClass="";
+};
+class News_hostels
+{
+	 //name="News_hostels";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_hostels.ogg, db + 15, 1 };
+	 duration= 21.7;	 
+	 musicClass="";
+};
+class News_house_destroyed
+{
+	 //name="News_house_destroyed";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_house_destroyed.ogg, db + 15, 1 };
+	 duration= 15.3;	 
+	 musicClass="";
+};
+class News_idap
+{
+	 //name="News_idap";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_idap.ogg, db + 15, 1 };
+	 duration= 15.5;	 
+	 musicClass="";
+};
+class News_malaria_boise_secured
+{
+	 //name="News_malaria_boise_secured";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_malaria_boise_secured.ogg, db + 15, 1 };
+	 duration= 19;	 
+	 musicClass="";
+};
+class News_malaria_galili_secured
+{
+	 //name="News_malaria_galili_secured";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_malaria_galili_secured.ogg, db + 15, 1 };
+	 duration= 16.5;	 
+	 musicClass="";
+};
+class News_malaria_luganville_secured
+{
+	 //name="News_malaria_luganville_secured";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_malaria_luganville_secured.ogg, db + 15, 1 };
+	 duration= 15.7;	 
+	 musicClass="";
+};
+class News_malaria_savaka_secured
+{
+	 //name="News_malaria_savaka_secured";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_malaria_savaka_secured.ogg, db + 15, 1 };
+	 duration= 15.7;	 
+	 musicClass="";
+};
+class News_power_plant
+{
+	 //name="News_power_plant";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_power_plant.ogg, db + 15, 1 };
+	 duration= 11.3;	 
+	 musicClass="";
+};
+class News_radar_destroyed
+{
+	 //name="News_radar_destroyed";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_radar_destroyed.ogg, db + 15, 1 };
+	 duration= 17;	 
+	 musicClass="";
+};
+class News_rescued
+{
+	 //name="News_rescued";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_rescued.ogg, db + 15, 1 };
+	 duration= 16.7;	 
+	 musicClass="";
+};
+class News_sugar_company
+{
+	 //name="News_sugar_company";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_sugar_company.ogg, db + 15, 1 };
+	 duration= 15;	 
+	 musicClass="";
+};
+class News_weapons
+{
+	 //name="News_weapons";
+	 sound[]={\a3\Music_F_Oldman\music\radio\news\News_weapons.ogg, db + 15, 1 };
+	 duration= 23;	 
+	 musicClass="";
+};
+
+
+
+
+
+class Track_O_01
+{
+	 //name="Track_O_01";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_01.ogg, db + 9, 1 };
+	 duration=221.753469;
+	 musicClass="";
+};
+class Track_O_02
+{
+	 //name="Track_O_02";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_02.ogg, db + 9, 1 };
+	 duration=118.814208;
+	 musicClass="";
+};
+class Track_O_03
+{
+	 //name="Track_O_03";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_03.ogg, db + 9, 1 };
+	 duration=128.554626;
+	 musicClass="";
+};
+class Track_O_04
+{
+	 //name="Track_O_04";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_04.ogg, db + 9, 1 };
+	 duration=180.924082;
+	 musicClass="";
+};
+class Track_O_05
+{
+	 //name="Track_O_05";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_05.ogg, db + 9, 1 };
+	 duration=148.010794;
+	 musicClass="";
+};
+class Track_O_06
+{
+	 //name="Track_O_06";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_06.ogg, db + 9, 1 };
+	 duration=150.047347;
+	 musicClass="";
+};
+class Track_O_07
+{
+	 //name="Track_O_07";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_07.ogg, db + 9, 1 };
+	 duration=113.946122;
+	 musicClass="";
+};
+class Track_O_08
+{
+	 //name="Track_O_08";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_08.ogg, db + 9, 1 };
+	 duration=89.469388;
+	 musicClass="";
+};
+class Track_O_09
+{
+	 //name="Track_O_09";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_09.ogg, db + 9, 1 };
+	 duration=110.933333;
+	 musicClass="";
+};
+class Track_O_10
+{
+	 //name="Track_O_10";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_10.ogg, db + 9, 1 };
+	 duration=86.848435;
+	 musicClass="";
+};
+class Track_O_11
+{
+	 //name="Track_O_11";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_11.ogg, db + 9, 1 };
+	 duration=162.888000;
+	 musicClass="";
+};
+class Track_O_12
+{
+	 //name="Track_O_12";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_12.ogg, db + 9, 1 };
+	 duration=38.582857;
+	 musicClass="";
+};
+class Track_O_13
+{
+	 //name="Track_O_13";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_13.ogg, db + 9, 1 };
+	 duration=138.581333;
+	 musicClass="";
+};
+class Track_O_14
+{
+	 //name="Track_O_14";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_14.ogg, db + 9, 1 };
+	 duration=184.309333;
+	 musicClass="";
+};
+class Track_O_15
+{
+	 //name="Track_O_15";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_15.ogg, db + 9, 1 };
+	 duration=106.752000;
+	 musicClass="";
+};
+class Track_O_16
+{
+	 //name="Track_O_16";
+	 sound[]={\a3\Music_F_Oldman\music\radio\ost\Track_O_16.ogg, db + 9, 1 };
+	 duration=137.938667;
+	 musicClass="";
+};
+class Track_P_01
+{
+	 //name="Track_P_01";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_01.ogg, db + 9, 1 };
+	 duration=96.037729;
+	 musicClass="";
+};
+class Track_P_02
+{
+	 //name="Track_P_02";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_02.ogg, db + 9, 1 };
+	 duration=242.272000;
+	 musicClass="";
+};
+class Track_P_03
+{
+	 //name="Track_P_03";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_03.ogg, db + 9, 1 };
+	 duration=97.864059;
+	 musicClass="";
+};
+class Track_P_04
+{
+	 //name="Track_P_04";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_04.ogg, db + 9, 1 };
+	 duration=146.653333;
+	 musicClass="";
+};
+class Track_P_05
+{
+	 //name="Track_P_05";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_05.ogg, db + 9, 1 };
+	 duration=252.839184;
+	 musicClass="";
+};
+class Track_P_06
+{
+	 //name="Track_P_06";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_06.ogg, db + 9, 1 };
+	 duration=95.467042;
+	 musicClass="";
+};
+class Track_P_07
+{
+	 //name="Track_P_07";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_07.ogg, db + 9, 1 };
+	 duration=102.164898;
+	 musicClass="";
+};
+class Track_P_08
+{
+	 //name="Track_P_08";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_08.ogg, db + 9, 1 };
+	 duration=47.213084;
+	 musicClass="";
+};
+class Track_P_09
+{
+	 //name="Track_P_09";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_09.ogg, db + 9, 1 };
+	 duration=176.065306;
+	 musicClass="";
+};
+class Track_P_10
+{
+	 //name="Track_P_10";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_10.ogg, db + 9, 1 };
+	 duration=97.663104;
+	 musicClass="";
+};
+class Track_P_11
+{
+	 //name="Track_P_11";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_11.ogg, db + 9, 1 };
+	 duration=202.501224;
+	 musicClass="";
+};
+class Track_P_12
+{
+	 //name="Track_P_12";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_12.ogg, db + 9, 1 };
+	 duration=132.250521;
+	 musicClass="";
+};
+class Track_P_13
+{
+	 //name="Track_P_13";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_13.ogg, db + 9, 1 };
+	 duration=134.452245;
+	 musicClass="";
+};
+class Track_P_14
+{
+	 //name="Track_P_14";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_14.ogg, db + 9, 1 };
+	 duration=41.355104;
+	 musicClass="";
+};
+class Track_P_15
+{
+	 //name="Track_P_15";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_15.ogg, db + 9, 1 };
+	 duration=155.794286;
+	 musicClass="";
+};
+class Track_P_16
+{
+	 //name="Track_P_16";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_16.ogg, db + 9, 1 };
+	 duration=86.909388;
+	 musicClass="";
+};
+class Track_P_17
+{
+	 //name="Track_P_17";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_17.ogg, db + 9, 1 };
+	 duration=53.890612;
+	 musicClass="";
+};
+class Track_P_18
+{
+	 //name="Track_P_18";
+	 sound[]={\a3\Music_F_Oldman\music\radio\pop\Track_P_18.ogg, db + 9, 1 };
+	 duration=44.068571;
+	 musicClass="";
+};
+class Track_R_01
+{
+	 //name="Track_R_01";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_01.ogg, db + 9, 1 };
+	 duration=101.955918;
+	 musicClass="";
+};
+class Track_R_02
+{
+	 //name="Track_R_02";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_02.ogg, db + 9, 1 };
+	 duration=157.868396;
+	 musicClass="";
+};
+class Track_R_03
+{
+	 //name="Track_R_03";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_03.ogg, db + 9, 1 };
+	 duration=58.749388;
+	 musicClass="";
+};
+class Track_R_04
+{
+	 //name="Track_R_04";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_04.ogg, db + 9, 1 };
+	 duration=162.899592;
+	 musicClass="";
+};
+class Track_R_05
+{
+	 //name="Track_R_05";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_05.ogg, db + 9, 1 };
+	 duration=171.538479;
+	 musicClass="";
+};
+class Track_R_06
+{
+	 //name="Track_R_06";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_06.ogg, db + 9, 1 };
+	 duration=92.525714;
+	 musicClass="";
+};
+class Track_R_07
+{
+	 //name="Track_R_07";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_07.ogg, db + 9, 1 };
+	 duration=264.124082;
+	 musicClass="";
+};
+class Track_R_08
+{
+	 //name="Track_R_08";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_08.ogg, db + 9, 1 };
+	 duration=69.067755;
+	 musicClass="";
+};
+class Track_R_09
+{
+	 //name="Track_R_09";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_09.ogg, db + 9, 1 };
+	 duration=72.672653;
+	 musicClass="";
+};
+class Track_R_10
+{
+	 //name="Track_R_10";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_10.ogg, db + 9, 1 };
+	 duration=148.819592;
+	 musicClass="";
+};
+class Track_R_11
+{
+	 //name="Track_R_11";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_11.ogg, db + 9, 1 };
+	 duration=176.718367;
+	 musicClass="";
+};
+class Track_R_12
+{
+	 //name="Track_R_12";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_12.ogg, db + 9, 1 };
+	 duration=181.002449;
+	 musicClass="";
+};
+class Track_R_13
+{
+	 //name="Track_R_13";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_13.ogg, db + 9, 1 };
+	 duration=114.360000;
+	 musicClass="";
+};
+class Track_R_14
+{
+	 //name="Track_R_14";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_14.ogg, db + 9, 1 };
+	 duration=181.446531;
+	 musicClass="";
+};
+class Track_R_15
+{
+	 //name="Track_R_15";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_15.ogg, db + 9, 1 };
+	 duration=102.74;
+	 musicClass="";
+};
+class Track_R_16
+{
+	 //name="Track_R_16";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_16.ogg, db + 9, 1 };
+	 duration=110.393;
+	 musicClass="";
+};
+class Track_R_17
+{
+	 //name="Track_R_17";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_17.ogg, db + 9, 1 };
+	 duration=102.739592;
+	 musicClass="";
+};
+class Track_R_18
+{
+	 //name="Track_R_18";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_18.ogg, db + 9, 1 };
+	 duration=110.393469;
+	 musicClass="";
+};
+class Track_R_19
+{
+	 //name="Track_R_19";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_19.ogg, db + 9, 1 };
+	 duration=105.691429;
+	 musicClass="";
+};
+class Track_R_20
+{
+	 //name="Track_R_20";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_20.ogg, db + 9, 1 };
+	 duration=100.466939;
+	 musicClass="";
+};
+class Track_R_21
+{
+	 //name="Track_R_21";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_21.ogg, db + 9, 1 };
+	 duration=245.159184;
+	 musicClass="";
+};
+class Track_R_22
+{
+	 //name="Track_R_22";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_22.ogg, db + 9, 1 };
+	 duration=149.498776;
+	 musicClass="";
+};
+class Track_R_23
+{
+	 //name="Track_R_23";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_23.ogg, db + 9, 1 };
+	 duration=160.26;
+	 musicClass="";
+};
+class Track_R_24
+{
+	 //name="Track_R_24";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_24.ogg, db + 9, 1 };
+	 duration=175.203265;
+	 musicClass="";
+};
+/* class Track_R_25
+{
+	 //name="Track_R_25";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_25.ogg, db + 9, 1 };
+	 duration=114.337959;
+	 musicClass="";
+};
+class Track_R_26
+{
+	 //name="Track_R_26";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_26.ogg, db + 9, 1 };
+	 duration=160.026122;
+	 musicClass="";
+};
+class Track_R_27
+{
+	 //name="Track_R_27";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_27.ogg, db + 9, 1 };
+	 duration=144.065306;
+	 musicClass="";
+};
+class Track_R_28
+{
+	 //name="Track_R_28";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_28.ogg, db + 9, 1 };
+	 duration=177.293061;
+	 musicClass="";
+};
+class Track_R_29
+{
+	 //name="Track_R_29";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_29.ogg, db + 9, 1 };
+	 duration=66.089796;
+	 musicClass="";
+};
+class Track_R_30
+{
+	 //name="Track_R_30";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_30.ogg, db + 9, 1 };
+	 duration=36.571429;
+	 musicClass="";
+};
+class Track_R_31
+{
+	 //name="Track_R_31";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_31.ogg, db + 9, 1 };
+	 duration=45.740408;
+	 musicClass="";
+};
+class Track_R_32
+{
+	 //name="Track_R_32";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_32.ogg, db + 9, 1 };
+	 duration=62.406531;
+	 musicClass="";
+};
+class Track_R_33
+{
+	 //name="Track_R_33";
+	 sound[]={\a3\Music_F_Oldman\music\radio\rock\Track_R_33.ogg, db + 9, 1 };
+	 duration=79.307755;
+	 musicClass="";
+}; */

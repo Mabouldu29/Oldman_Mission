@@ -1,0 +1,462 @@
+// Exported by kerbervac, 15.11.2019 18:38:37
+// Include to global CfgSentences config
+
+	// ["ta_destroy_police_station_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_destroy_police_station_call
+	{
+		id = 1;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_001_ta_destroy_police_station_call.bikb";
+		#include "oldman1_001_ta_destroy_police_station_call.bikb"
+	};
+
+	// ["ta_police_station_destroyed_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_police_station_destroyed_call
+	{
+		id = 2;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_002_ta_police_station_destroyed_call.bikb";
+		#include "oldman1_002_ta_police_station_destroyed_call.bikb"
+	};
+
+	// ["eve_mechanic_rigging_car","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_rigging_car
+	{
+		id = 3;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_003_eve_mechanic_rigging_car.bikb";
+		#include "oldman1_003_eve_mechanic_rigging_car.bikb"
+	};
+
+	// ["eve_mechanic_which_car_a","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_which_car_a
+	{
+		id = 4;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_004_eve_mechanic_which_car_a.bikb";
+		#include "oldman1_004_eve_mechanic_which_car_a.bikb"
+	};
+
+	// ["eve_mechanic_which_car_b","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_which_car_b
+	{
+		id = 5;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_005_eve_mechanic_which_car_b.bikb";
+		#include "oldman1_005_eve_mechanic_which_car_b.bikb"
+	};
+
+	// ["eve_mechanic_which_car_c","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_which_car_c
+	{
+		id = 6;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_006_eve_mechanic_which_car_c.bikb";
+		#include "oldman1_006_eve_mechanic_which_car_c.bikb"
+	};
+
+	// ["eve_mechanic_car_select_wait_a","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_car_select_wait_a
+	{
+		id = 7;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_007_eve_mechanic_car_select_wait_a.bikb";
+		#include "oldman1_007_eve_mechanic_car_select_wait_a.bikb"
+	};
+
+	// ["eve_mechanic_car_select_wait_b","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_car_select_wait_b
+	{
+		id = 8;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_008_eve_mechanic_car_select_wait_b.bikb";
+		#include "oldman1_008_eve_mechanic_car_select_wait_b.bikb"
+	};
+
+	// ["eve_mechanic_car_select_wait_c","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_car_select_wait_c
+	{
+		id = 9;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_009_eve_mechanic_car_select_wait_c.bikb";
+		#include "oldman1_009_eve_mechanic_car_select_wait_c.bikb"
+	};
+
+	// ["eve_mechanic_welcome_a","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_welcome_a
+	{
+		id = 10;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_010_eve_mechanic_welcome_a.bikb";
+		#include "oldman1_010_eve_mechanic_welcome_a.bikb"
+	};
+
+	// ["eve_mechanic_welcome_b","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_welcome_b
+	{
+		id = 11;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_011_eve_mechanic_welcome_b.bikb";
+		#include "oldman1_011_eve_mechanic_welcome_b.bikb"
+	};
+
+	// ["eve_mechanic_welcome_c","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_welcome_c
+	{
+		id = 12;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_012_eve_mechanic_welcome_c.bikb";
+		#include "oldman1_012_eve_mechanic_welcome_c.bikb"
+	};
+
+	// ["eve_mechanic_goodbye_a","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_goodbye_a
+	{
+		id = 13;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_013_eve_mechanic_goodbye_a.bikb";
+		#include "oldman1_013_eve_mechanic_goodbye_a.bikb"
+	};
+
+	// ["eve_mechanic_goodbye_b","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_goodbye_b
+	{
+		id = 14;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_014_eve_mechanic_goodbye_b.bikb";
+		#include "oldman1_014_eve_mechanic_goodbye_b.bikb"
+	};
+
+	// ["eve_mechanic_goodbye_c","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_goodbye_c
+	{
+		id = 15;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_015_eve_mechanic_goodbye_c.bikb";
+		#include "oldman1_015_eve_mechanic_goodbye_c.bikb"
+	};
+
+	// ["eve_mechanic_car_ready_a","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_car_ready_a
+	{
+		id = 16;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_016_eve_mechanic_car_ready_a.bikb";
+		#include "oldman1_016_eve_mechanic_car_ready_a.bikb"
+	};
+
+	// ["eve_mechanic_car_ready_b","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_car_ready_b
+	{
+		id = 17;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_017_eve_mechanic_car_ready_b.bikb";
+		#include "oldman1_017_eve_mechanic_car_ready_b.bikb"
+	};
+
+	// ["eve_mechanic_car_ready_c","oldman1"] call BIS_fnc_kbTell;
+	class eve_mechanic_car_ready_c
+	{
+		id = 18;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_018_eve_mechanic_car_ready_c.bikb";
+		#include "oldman1_018_eve_mechanic_car_ready_c.bikb"
+	};
+
+	// ["ta_get_plane_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_get_plane_call
+	{
+		id = 19;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_019_ta_get_plane_call.bikb";
+		#include "oldman1_019_ta_get_plane_call.bikb"
+	};
+
+	// ["eve_dancera_go_away_a","oldman1"] call BIS_fnc_kbTell;
+	class eve_dancera_go_away_a
+	{
+		id = 20;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_020_eve_dancera_go_away_a.bikb";
+		#include "oldman1_020_eve_dancera_go_away_a.bikb"
+	};
+
+	// ["eve_dancera_go_away_b","oldman1"] call BIS_fnc_kbTell;
+	class eve_dancera_go_away_b
+	{
+		id = 21;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_021_eve_dancera_go_away_b.bikb";
+		#include "oldman1_021_eve_dancera_go_away_b.bikb"
+	};
+
+	// ["eve_dancera_go_away_c","oldman1"] call BIS_fnc_kbTell;
+	class eve_dancera_go_away_c
+	{
+		id = 22;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_022_eve_dancera_go_away_c.bikb";
+		#include "oldman1_022_eve_dancera_go_away_c.bikb"
+	};
+
+	// ["eve_dancera_afraid_in","oldman1"] call BIS_fnc_kbTell;
+	class eve_dancera_afraid_in
+	{
+		id = 23;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_023_eve_dancera_afraid_in.bikb";
+		#include "oldman1_023_eve_dancera_afraid_in.bikb"
+	};
+
+	// ["eve_dancera_afraid_out","oldman1"] call BIS_fnc_kbTell;
+	class eve_dancera_afraid_out
+	{
+		id = 24;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_024_eve_dancera_afraid_out.bikb";
+		#include "oldman1_024_eve_dancera_afraid_out.bikb"
+	};
+
+	// ["ta_plane_delivered_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_plane_delivered_call
+	{
+		id = 25;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_025_ta_plane_delivered_call.bikb";
+		#include "oldman1_025_ta_plane_delivered_call.bikb"
+	};
+
+	// ["eve_gendarme_bribe","oldman1"] call BIS_fnc_kbTell;
+	class eve_gendarme_bribe
+	{
+		id = 26;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_026_eve_gendarme_bribe.bikb";
+		#include "oldman1_026_eve_gendarme_bribe.bikb"
+	};
+
+	// ["eve_gendarme_bribe_accepted_a","oldman1"] call BIS_fnc_kbTell;
+	class eve_gendarme_bribe_accepted_a
+	{
+		id = 27;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_027_eve_gendarme_bribe_accepted_a.bikb";
+		#include "oldman1_027_eve_gendarme_bribe_accepted_a.bikb"
+	};
+
+	// ["eve_disco_dancer","oldman1"] call BIS_fnc_kbTell;
+	class eve_disco_dancer
+	{
+		id = 28;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_028_eve_disco_dancer.bikb";
+		#include "oldman1_028_eve_disco_dancer.bikb"
+	};
+
+	// ["ex_plane_destroyed","oldman1"] call BIS_fnc_kbTell;
+	class ex_plane_destroyed
+	{
+		id = 29;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_029_ex_plane_destroyed.bikb";
+		#include "oldman1_029_ex_plane_destroyed.bikb"
+	};
+
+	// ["eve_gun_runners","oldman1"] call BIS_fnc_kbTell;
+	class eve_gun_runners
+	{
+		id = 30;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_030_eve_gun_runners.bikb";
+		#include "oldman1_030_eve_gun_runners.bikb"
+	};
+
+	// ["ta_plane_work_offer","oldman1"] call BIS_fnc_kbTell;
+	class ta_plane_work_offer
+	{
+		id = 31;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_031_ta_plane_work_offer.bikb";
+		#include "oldman1_031_ta_plane_work_offer.bikb"
+	};
+
+	// ["eve_player_lands_plane_call","oldman1"] call BIS_fnc_kbTell;
+	class eve_player_lands_plane_call
+	{
+		id = 32;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_032_eve_player_lands_plane_call.bikb";
+		#include "oldman1_032_eve_player_lands_plane_call.bikb"
+	};
+
+	// ["eve_loading_plane_call","oldman1"] call BIS_fnc_kbTell;
+	class eve_loading_plane_call
+	{
+		id = 33;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_033_eve_loading_plane_call.bikb";
+		#include "oldman1_033_eve_loading_plane_call.bikb"
+	};
+
+	// ["eve_gendarme_attack_call","oldman1"] call BIS_fnc_kbTell;
+	class eve_gendarme_attack_call
+	{
+		id = 34;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_034_eve_gendarme_attack_call.bikb";
+		#include "oldman1_034_eve_gendarme_attack_call.bikb"
+	};
+
+	// ["eve_plane_fully_loaded_call","oldman1"] call BIS_fnc_kbTell;
+	class eve_plane_fully_loaded_call
+	{
+		id = 35;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_035_eve_plane_fully_loaded_call.bikb";
+		#include "oldman1_035_eve_plane_fully_loaded_call.bikb"
+	};
+
+	// ["eve_loaders_kia_call","oldman1"] call BIS_fnc_kbTell;
+	class eve_loaders_kia_call
+	{
+		id = 36;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_036_eve_loaders_kia_call.bikb";
+		#include "oldman1_036_eve_loaders_kia_call.bikb"
+	};
+
+	// ["ta_loaded_plane_delivered_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_loaded_plane_delivered_call
+	{
+		id = 37;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_037_ta_loaded_plane_delivered_call.bikb";
+		#include "oldman1_037_ta_loaded_plane_delivered_call.bikb"
+	};
+
+	// ["ex_timeout_traitor_alt","oldman1"] call BIS_fnc_kbTell;
+	class ex_timeout_traitor_alt
+	{
+		id = 38;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_038_ex_timeout_traitor_alt.bikb";
+		#include "oldman1_038_ex_timeout_traitor_alt.bikb"
+	};
+
+	// ["ex_no_parking","oldman1"] call BIS_fnc_kbTell;
+	class ex_no_parking
+	{
+		id = 39;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_039_ex_no_parking.bikb";
+		#include "oldman1_039_ex_no_parking.bikb"
+	};
+
+	// ["ex_no_parking_angry","oldman1"] call BIS_fnc_kbTell;
+	class ex_no_parking_angry
+	{
+		id = 40;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_040_ex_no_parking_angry.bikb";
+		#include "oldman1_040_ex_no_parking_angry.bikb"
+	};
+
+	// ["eve_approaching_van_syndikat_boss","oldman1"] call BIS_fnc_kbTell;
+	class eve_approaching_van_syndikat_boss
+	{
+		id = 41;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_041_eve_approaching_van_syndikat_boss.bikb";
+		#include "oldman1_041_eve_approaching_van_syndikat_boss.bikb"
+	};
+
+	// ["eve_in_georgetown_syndikat_boss","oldman1"] call BIS_fnc_kbTell;
+	class eve_in_georgetown_syndikat_boss
+	{
+		id = 42;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_042_eve_in_georgetown_syndikat_boss.bikb";
+		#include "oldman1_042_eve_in_georgetown_syndikat_boss.bikb"
+	};
+
+	// ["ta_counteragent_in_van","oldman1"] call BIS_fnc_kbTell;
+	class ta_counteragent_in_van
+	{
+		id = 43;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_043_ta_counteragent_in_van.bikb";
+		#include "oldman1_043_ta_counteragent_in_van.bikb"
+	};
+
+	// ["ta_sample_taken_to_van_alt_in_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_sample_taken_to_van_alt_in_call
+	{
+		id = 44;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_044_ta_sample_taken_to_van_alt_in_call.bikb";
+		#include "oldman1_044_ta_sample_taken_to_van_alt_in_call.bikb"
+	};
+
+	// ["ta_sample_taken_to_van_alt_doctor_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_sample_taken_to_van_alt_doctor_call
+	{
+		id = 45;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_045_ta_sample_taken_to_van_alt_doctor_call.bikb";
+		#include "oldman1_045_ta_sample_taken_to_van_alt_doctor_call.bikb"
+	};
+
+	// ["ta_sample_taken_to_van_alt_out_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_sample_taken_to_van_alt_out_call
+	{
+		id = 46;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_046_ta_sample_taken_to_van_alt_out_call.bikb";
+		#include "oldman1_046_ta_sample_taken_to_van_alt_out_call.bikb"
+	};
+
+	// ["ta_sample_taken_to_van_alt_bad_rep_in_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_sample_taken_to_van_alt_bad_rep_in_call
+	{
+		id = 47;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_047_ta_sample_taken_to_van_alt_bad_rep_in_call.bikb";
+		#include "oldman1_047_ta_sample_taken_to_van_alt_bad_rep_in_call.bikb"
+	};
+
+	// ["ta_sample_taken_to_van_alt_bad_rep_doctor_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_sample_taken_to_van_alt_bad_rep_doctor_call
+	{
+		id = 48;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_048_ta_sample_taken_to_van_alt_bad_rep_doctor_call.bikb";
+		#include "oldman1_048_ta_sample_taken_to_van_alt_bad_rep_doctor_call.bikb"
+	};
+
+	// ["ta_sample_taken_to_van_alt_bad_rep_out_call","oldman1"] call BIS_fnc_kbTell;
+	class ta_sample_taken_to_van_alt_bad_rep_out_call
+	{
+		id = 49;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_049_ta_sample_taken_to_van_alt_bad_rep_out_call.bikb";
+		#include "oldman1_049_ta_sample_taken_to_van_alt_bad_rep_out_call.bikb"
+	};
+
+	// ["eve_doctor_rescued","oldman1"] call BIS_fnc_kbTell;
+	class eve_doctor_rescued
+	{
+		id = 50;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_050_eve_doctor_rescued.bikb";
+		#include "oldman1_050_eve_doctor_rescued.bikb"
+	};
+
+	// ["in_aa_intel_airstrike","oldman1"] call BIS_fnc_kbTell;
+	class in_aa_intel_airstrike
+	{
+		id = 51;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman1\oldman1_051_in_aa_intel_airstrike.bikb";
+		#include "oldman1_051_in_aa_intel_airstrike.bikb"
+	};
+

@@ -1,0 +1,112 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+// --- _veh : container to grab
+// --- _sell : bool, true to actually sell the equip, false to just check price
+
+params ["_veh", "_sell"];
+
+if (_sell) then {
+	BIS_OM_sellingEquip = TRUE;
+	sleep 0.25;
+};
+
+_summaryPrice = 0;
+_somethingToSell = FALSE;
+
+// --- get proper lists of various types of stuff to sell
+
+_items = itemCargo _veh;
+_mags = magazinesAmmoCargo _veh;
+_weapons = weaponsItemsCargo _veh;	// --- returns an array with all attachments listed
+_backpacks = backpackCargo _veh;
+
+// --- grab all stuff from backpacks, vests etc.
+
+{
+	_container = _x # 1;
+	_items append itemCargo _container;
+	_mags append magazinesAmmoCargo _container;
+	_weapons append weaponsItemsCargo _container;
+} forEach everyContainer _veh;
+
+_cfgWeapons = configFile >> "CfgWeapons";
+
+// --- separate attachments from weapons, add them to proper list (items)
+
+{
+	_arr = _x;
+	_wpn = _arr # 0;
+	_supp = _arr # 1;
+	_laser = _arr # 2;
+	_opt = _arr # 3;
+	_mag = _arr # 4;
+	_bipod = _arr # 5;
+	if (typeName _bipod == typeName []) then {_bipod = _arr # 6};
+	_parent = inheritsFrom (_cfgWeapons >> _wpn);
+	if (getNumber (_parent >> "scope") == 2) then {
+		_wpn = configName _parent;	// --- load the parent weapon (some weapons have their own class with attachments included, we need "bare" weapons
+	};
+	if ([_supp, _laser, _opt, _bipod] findIf {_x != ""} != -1) then {	// --- don't save non-existing attachments
+		{
+			if (_x != "") then {_items pushBack _x};
+		} forEach [_supp, _laser, _opt, _bipod];
+	};
+	if (count _mag > 0) then {_mags pushBack _mag};
+	_weapons set [_forEachIndex, _wpn];	// --- replace the original weapon class with its "bare" version
+} forEach _weapons;
+
+// --- get the price of all items, add to global pool
+
+{
+	_summaryPrice = _summaryPrice + ([MODE_GET_EQUIP_PRICE, [_x, true]] call BIS_fnc_OM_ModuleEconomy);
+	if (_sell) then {_somethingToSell = TRUE; BIS_OM_globalEquipBox addItemCargo [_x, 1]};
+} foreach _items;
+
+_cfgMagazines = configFile >> "CfgMagazines";
+
+// --- get the price of all magazines, drop the price for non-full mags
+
+{
+	_class = _x # 0;
+	_ammoCnt = _x # 1;
+	_defaultAmmoCnt = getNumber (_cfgMagazines >> _class >> "count");
+	_summaryPrice = _summaryPrice + round (([MODE_GET_EQUIP_PRICE, [_class,true]] call BIS_fnc_OM_ModuleEconomy) * (_ammoCnt / _defaultAmmoCnt));
+	if (_sell) then {_somethingToSell = TRUE; BIS_OM_globalEquipBox addMagazineCargo [_class, 1]};
+} foreach _mags;
+
+// --- get the price of all weapons
+
+{
+	_summaryPrice = _summaryPrice + ([MODE_GET_EQUIP_PRICE, [_x,true]] call BIS_fnc_OM_ModuleEconomy);
+	if (_sell) then {_somethingToSell = TRUE; BIS_OM_globalEquipBox addWeaponCargo [_x, 1]};
+} foreach _weapons;
+
+// --- get the price of all backpacks
+
+{
+	_summaryPrice = _summaryPrice + ([MODE_GET_EQUIP_PRICE, [_x,true]] call BIS_fnc_OM_ModuleEconomy);
+	if (_sell) then {_somethingToSell = TRUE; BIS_OM_globalEquipBox addBackpackCargo [_x, 1]};
+} foreach _backpacks;
+
+_summaryPrice = round (_summaryPrice * 0.5);
+
+// --- sell or return final price
+
+if (_sell) then {
+	if (_somethingToSell) then {
+		clearMagazineCargo _veh;
+		clearItemCargo _veh;
+		clearWeaponCargo _veh;
+		clearBackpackCargo _veh;
+		if (_summaryPrice > 0) then {
+			[MODE_INCREASE_MONEY, [_summaryPrice]] call BIS_fnc_OM_ModuleEconomy;
+			_null = ["OMMoneyTransfer", [format ["<t color = '#61af64' size = '1.15'>%1 $</t>", _summaryPrice]]] call BIS_fnc_shownotification;
+			[MODE_INCREASE_LEVEL, [_summaryPrice/(REPUTATION_POSITIVE_BONUS_SMALL/100) min REPUTATION_POSITIVE_BONUS_GREAT]] call BIS_fnc_OM_moduleReputation;
+			LEVEL_ADD_STASH_EQUIP(_summaryPrice);
+		};
+		BIS_OM_recalculateFetchDropOff = TRUE;
+	};
+	BIS_OM_sellingEquip = FALSE;
+} else {
+	_summaryPrice
+};

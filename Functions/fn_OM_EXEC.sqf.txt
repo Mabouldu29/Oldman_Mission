@@ -1,0 +1,40 @@
+/*
+ * Author: zozo
+   Calls a script from a different folder than it is the actual folder
+
+ *Parameters:
+ * 0: Argument Name <TYPE>
+ *
+ * Return Value:
+ * _scriptName FILE
+ *
+ * Example:
+  *
+ */
+
+#include "dev.inc"
+//#define __EXECX(x) _scriptHandler = _parameters execVM _fullPath;
+
+params[
+        ["_missionName", "", [""] ],
+        ["_scriptName", "", [""] ],
+        ["_parameters", [], [[]] ]
+      ];
+
+if(_scriptname == "") exitWith { "Warning: Script name cannot be empty. Exiting..." call BIS_fnc_Log; };
+private _fullPath = format [ "%1%2\%3", MISSION_FOLDER, _missionName, _scriptName];
+private _scriptHandler = -1;
+
+[ "Calling: %1", _fullPath ] call BIS_fnc_LogFormat;
+
+
+if ( (toUpper _scriptName find ".SQF") > -1 ) then
+{
+   _scriptHandler = _parameters execVM _fullPath;
+}
+else
+{
+    _scriptHandler = _parameters execFSM _fullPath;
+};
+
+if (isNil "_scriptHandler") then {-1} else {_scriptHandler};

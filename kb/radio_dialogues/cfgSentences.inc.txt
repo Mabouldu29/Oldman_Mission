@@ -1,0 +1,633 @@
+// Exported by kerbervac, 04.12.2019 18:10:56
+// Include to global CfgSentences config
+
+	// ["am_radio_broadcast_segue_a","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_segue_a
+	{
+		id = 1;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_001_radio_broadcast_segue_a.bikb";
+		#include "radio_dialogues_001_radio_broadcast_segue_a.bikb"
+	};
+
+	// ["am_radio_broadcast_segue_b","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_segue_b
+	{
+		id = 2;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_002_radio_broadcast_segue_b.bikb";
+		#include "radio_dialogues_002_radio_broadcast_segue_b.bikb"
+	};
+
+	// ["am_radio_broadcast_in_a","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_in_a
+	{
+		id = 3;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_003_radio_broadcast_in_a.bikb";
+		#include "radio_dialogues_003_radio_broadcast_in_a.bikb"
+	};
+
+	// ["am_radio_broadcast_in_b","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_in_b
+	{
+		id = 4;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_004_radio_broadcast_in_b.bikb";
+		#include "radio_dialogues_004_radio_broadcast_in_b.bikb"
+	};
+
+	// ["am_radio_broadcast_in_c","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_in_c
+	{
+		id = 5;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_005_radio_broadcast_in_c.bikb";
+		#include "radio_dialogues_005_radio_broadcast_in_c.bikb"
+	};
+
+	// ["am_radio_broadcast_out_a","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_out_a
+	{
+		id = 6;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_006_radio_broadcast_out_a.bikb";
+		#include "radio_dialogues_006_radio_broadcast_out_a.bikb"
+	};
+	// ["am_radio_broadcast_out_b","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_out_b
+	{
+		id = 7;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_007_radio_broadcast_out_b.bikb";
+		#include "radio_dialogues_007_radio_broadcast_out_b.bikb"
+	};
+
+	// ["am_radio_broadcast_out_c","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_out_c
+	{
+		id = 8;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_008_radio_broadcast_out_c.bikb";
+		#include "radio_dialogues_008_radio_broadcast_out_c.bikb"
+	};
+
+	// ["am_radio_broadcast_out_d","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_out_d
+	{
+		id = 9;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_009_radio_broadcast_out_d.bikb";
+		#include "radio_dialogues_009_radio_broadcast_out_d.bikb"
+	};
+
+	// ["am_radio_broadcast_day_clear","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_day_clear
+	{
+		id = 10;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_010_radio_broadcast_day_clear.bikb";
+		#include "radio_dialogues_010_radio_broadcast_day_clear.bikb"
+	};
+
+	// ["am_radio_broadcast_day_some_cloud","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_day_some_cloud
+	{
+		id = 11;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_011_radio_broadcast_day_some_cloud.bikb";
+		#include "radio_dialogues_011_radio_broadcast_day_some_cloud.bikb"
+	};
+
+	// ["am_radio_broadcast_day_cloudy","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_day_cloudy
+	{
+		id = 12;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_012_radio_broadcast_day_cloudy.bikb";
+		#include "radio_dialogues_012_radio_broadcast_day_cloudy.bikb"
+	};
+
+	// ["am_radio_broadcast_day_very_cloudy","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_day_very_cloudy
+	{
+		id = 13;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_013_radio_broadcast_day_very_cloudy.bikb";
+		#include "radio_dialogues_013_radio_broadcast_day_very_cloudy.bikb"
+	};
+
+	// ["am_radio_broadcast_day_stormy","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_day_stormy
+	{
+		id = 14;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_014_radio_broadcast_day_stormy.bikb";
+		#include "radio_dialogues_014_radio_broadcast_day_stormy.bikb"
+	};
+
+	// ["am_radio_broadcast_night_clear","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_night_clear
+	{
+		id = 15;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_015_radio_broadcast_night_clear.bikb";
+		#include "radio_dialogues_015_radio_broadcast_night_clear.bikb"
+	};
+
+	// ["am_radio_broadcast_night_some_cloud","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_night_some_cloud
+	{
+		id = 16;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_016_radio_broadcast_night_some_cloud.bikb";
+		#include "radio_dialogues_016_radio_broadcast_night_some_cloud.bikb"
+	};
+
+	// ["am_radio_broadcast_night_cloudy","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_night_cloudy
+	{
+		id = 17;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_017_radio_broadcast_night_cloudy.bikb";
+		#include "radio_dialogues_017_radio_broadcast_night_cloudy.bikb"
+	};
+
+	// ["am_radio_broadcast_night_very_cloudy","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_night_very_cloudy
+	{
+		id = 18;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_018_radio_broadcast_night_very_cloudy.bikb";
+		#include "radio_dialogues_018_radio_broadcast_night_very_cloudy.bikb"
+	};
+
+	// ["am_radio_broadcast_night_stormy","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_night_stormy
+	{
+		id = 19;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_019_radio_broadcast_night_stormy.bikb";
+		#include "radio_dialogues_019_radio_broadcast_night_stormy.bikb"
+	};
+
+	// ["am_radio_broadcast_rain_a","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_rain_a
+	{
+		id = 20;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_020_radio_broadcast_rain_a.bikb";
+		#include "radio_dialogues_020_radio_broadcast_rain_a.bikb"
+	};
+
+	// ["am_radio_broadcast_rain_b","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_rain_b
+	{
+		id = 21;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_021_radio_broadcast_rain_b.bikb";
+		#include "radio_dialogues_021_radio_broadcast_rain_b.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_cloud_clearing","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_cloud_clearing
+	{
+		id = 22;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_022_radio_broadcast_forecast_cloud_clearing.bikb";
+		#include "radio_dialogues_022_radio_broadcast_forecast_cloud_clearing.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_cloud_uncertain","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_cloud_uncertain
+	{
+		id = 23;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_023_radio_broadcast_forecast_cloud_uncertain.bikb";
+		#include "radio_dialogues_023_radio_broadcast_forecast_cloud_uncertain.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_cloud_staying","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_cloud_staying
+	{
+		id = 24;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_024_radio_broadcast_forecast_cloud_staying.bikb";
+		#include "radio_dialogues_024_radio_broadcast_forecast_cloud_staying.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_rain_a","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_rain_a
+	{
+		id = 25;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_025_radio_broadcast_forecast_rain_a.bikb";
+		#include "radio_dialogues_025_radio_broadcast_forecast_rain_a.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_rain_b","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_rain_b
+	{
+		id = 26;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_026_radio_broadcast_forecast_rain_b.bikb";
+		#include "radio_dialogues_026_radio_broadcast_forecast_rain_b.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_rain_c","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_rain_c
+	{
+		id = 27;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_027_radio_broadcast_forecast_rain_c.bikb";
+		#include "radio_dialogues_027_radio_broadcast_forecast_rain_c.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_rain_d","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_rain_d
+	{
+		id = 28;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_028_radio_broadcast_forecast_rain_d.bikb";
+		#include "radio_dialogues_028_radio_broadcast_forecast_rain_d.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_storm_a","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_storm_a
+	{
+		id = 29;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_029_radio_broadcast_forecast_storm_a.bikb";
+		#include "radio_dialogues_029_radio_broadcast_forecast_storm_a.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_storm_b","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_storm_b
+	{
+		id = 30;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_030_radio_broadcast_forecast_storm_b.bikb";
+		#include "radio_dialogues_030_radio_broadcast_forecast_storm_b.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_storm_c","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_storm_c
+	{
+		id = 31;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_031_radio_broadcast_forecast_storm_c.bikb";
+		#include "radio_dialogues_031_radio_broadcast_forecast_storm_c.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_storm_d","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_storm_d
+	{
+		id = 32;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_032_radio_broadcast_forecast_storm_d.bikb";
+		#include "radio_dialogues_032_radio_broadcast_forecast_storm_d.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_temp_a","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_temp_a
+	{
+		id = 33;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_033_radio_broadcast_forecast_temp_a.bikb";
+		#include "radio_dialogues_033_radio_broadcast_forecast_temp_a.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_temp_b","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_temp_b
+	{
+		id = 34;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_034_radio_broadcast_forecast_temp_b.bikb";
+		#include "radio_dialogues_034_radio_broadcast_forecast_temp_b.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_temp_c","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_temp_c
+	{
+		id = 35;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_035_radio_broadcast_forecast_temp_c.bikb";
+		#include "radio_dialogues_035_radio_broadcast_forecast_temp_c.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_temp_d","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_temp_d
+	{
+		id = 36;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_036_radio_broadcast_forecast_temp_d.bikb";
+		#include "radio_dialogues_036_radio_broadcast_forecast_temp_d.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_temp_e","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_temp_e
+	{
+		id = 37;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_037_radio_broadcast_forecast_temp_e.bikb";
+		#include "radio_dialogues_037_radio_broadcast_forecast_temp_e.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_out_a","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_out_a
+	{
+		id = 38;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_038_radio_broadcast_forecast_out_a.bikb";
+		#include "radio_dialogues_038_radio_broadcast_forecast_out_a.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_out_b","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_out_b
+	{
+		id = 39;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_039_radio_broadcast_forecast_out_b.bikb";
+		#include "radio_dialogues_039_radio_broadcast_forecast_out_b.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_out_c","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_out_c
+	{
+		id = 40;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_040_radio_broadcast_forecast_out_c.bikb";
+		#include "radio_dialogues_040_radio_broadcast_forecast_out_c.bikb"
+	};
+
+	// ["am_radio_broadcast_forecast_out_d","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_forecast_out_d
+	{
+		id = 41;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_041_radio_broadcast_forecast_out_d.bikb";
+		#include "radio_dialogues_041_radio_broadcast_forecast_out_d.bikb"
+	};
+
+	// ["am_radio_broadcast_news_first_in","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_first_in
+	{
+		id = 42;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_042_radio_broadcast_news_first_in.bikb";
+		#include "radio_dialogues_042_radio_broadcast_news_first_in.bikb"
+	};
+
+	// ["am_radio_broadcast_news_malaria_luganville","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_malaria_luganville
+	{
+		id = 43;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_043_radio_broadcast_news_malaria_luganville.bikb";
+		#include "radio_dialogues_043_radio_broadcast_news_malaria_luganville.bikb"
+	};
+
+	// ["am_radio_broadcast_news_malaria_luganville_secured","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_malaria_luganville_secured
+	{
+		id = 44;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_044_radio_broadcast_news_malaria_luganville_secured.bikb";
+		#include "radio_dialogues_044_radio_broadcast_news_malaria_luganville_secured.bikb"
+	};
+
+	// ["am_radio_broadcast_news_malaria_savaka","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_malaria_savaka
+	{
+		id = 45;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_045_radio_broadcast_news_malaria_savaka.bikb";
+		#include "radio_dialogues_045_radio_broadcast_news_malaria_savaka.bikb"
+	};
+
+	// ["am_radio_broadcast_news_malaria_savaka_secured","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_malaria_savaka_secured
+	{
+		id = 46;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_046_radio_broadcast_news_malaria_savaka_secured.bikb";
+		#include "radio_dialogues_046_radio_broadcast_news_malaria_savaka_secured.bikb"
+	};
+
+	// ["am_radio_broadcast_news_malaria_galili","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_malaria_galili
+	{
+		id = 47;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_047_radio_broadcast_news_malaria_galili.bikb";
+		#include "radio_dialogues_047_radio_broadcast_news_malaria_galili.bikb"
+	};
+
+	// ["am_radio_broadcast_news_malaria_galili_secured","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_malaria_galili_secured
+	{
+		id = 48;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_048_radio_broadcast_news_malaria_galili_secured.bikb";
+		#include "radio_dialogues_048_radio_broadcast_news_malaria_galili_secured.bikb"
+	};
+
+	// ["am_radio_broadcast_news_malaria_boise","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_malaria_boise
+	{
+		id = 49;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_049_radio_broadcast_news_malaria_boise.bikb";
+		#include "radio_dialogues_049_radio_broadcast_news_malaria_boise.bikb"
+	};
+
+	// ["am_radio_broadcast_news_malaria_boise_secured","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_malaria_boise_secured
+	{
+		id = 50;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_050_radio_broadcast_news_malaria_boise_secured.bikb";
+		#include "radio_dialogues_050_radio_broadcast_news_malaria_boise_secured.bikb"
+	};
+
+	// ["am_radio_broadcast_news_arrest","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_arrest
+	{
+		id = 51;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_051_radio_broadcast_news_arrest.bikb";
+		#include "radio_dialogues_051_radio_broadcast_news_arrest.bikb"
+	};
+
+	// ["am_radio_broadcast_news_execution","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_execution
+	{
+		id = 52;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_052_radio_broadcast_news_execution.bikb";
+		#include "radio_dialogues_052_radio_broadcast_news_execution.bikb"
+	};
+
+	// ["am_radio_broadcast_news_rescued","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_rescued
+	{
+		id = 53;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_053_radio_broadcast_news_rescued.bikb";
+		#include "radio_dialogues_053_radio_broadcast_news_rescued.bikb"
+	};
+
+	// ["am_radio_broadcast_news_house_destroyed","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_house_destroyed
+	{
+		id = 54;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_054_radio_broadcast_news_house_destroyed.bikb";
+		#include "radio_dialogues_054_radio_broadcast_news_house_destroyed.bikb"
+	};
+
+	// ["am_radio_broadcast_news_depot_fail","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_depot_fail
+	{
+		id = 55;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_055_radio_broadcast_news_depot_fail.bikb";
+		#include "radio_dialogues_055_radio_broadcast_news_depot_fail.bikb"
+	};
+
+	// ["am_radio_broadcast_news_depot_success","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_depot_success
+	{
+		id = 56;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_056_radio_broadcast_news_depot_success.bikb";
+		#include "radio_dialogues_056_radio_broadcast_news_depot_success.bikb"
+	};
+
+	// ["am_radio_broadcast_news_depot_success_alone","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_depot_success_alone
+	{
+		id = 57;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_057_radio_broadcast_news_depot_success_alone.bikb";
+		#include "radio_dialogues_057_radio_broadcast_news_depot_success_alone.bikb"
+	};
+
+	// ["am_radio_broadcast_news_radar_destroyed","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_radar_destroyed
+	{
+		id = 58;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_058_radio_broadcast_news_radar_destroyed.bikb";
+		#include "radio_dialogues_058_radio_broadcast_news_radar_destroyed.bikb"
+	};
+
+	// ["am_radio_broadcast_news_aircraft","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_aircraft
+	{
+		id = 59;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_059_radio_broadcast_news_aircraft.bikb";
+		#include "radio_dialogues_059_radio_broadcast_news_aircraft.bikb"
+	};
+
+	// ["am_radio_broadcast_news_checkpoints","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_checkpoints
+	{
+		id = 60;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_060_radio_broadcast_news_checkpoints.bikb";
+		#include "radio_dialogues_060_radio_broadcast_news_checkpoints.bikb"
+	};
+
+	// ["am_radio_broadcast_news_warnings_a","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_warnings_a
+	{
+		id = 61;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_061_radio_broadcast_news_warnings_a.bikb";
+		#include "radio_dialogues_061_radio_broadcast_news_warnings_a.bikb"
+	};
+
+	// ["am_radio_broadcast_news_warnings_b","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_warnings_b
+	{
+		id = 62;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_062_radio_broadcast_news_warnings_b.bikb";
+		#include "radio_dialogues_062_radio_broadcast_news_warnings_b.bikb"
+	};
+
+	// ["am_radio_broadcast_news_warnings_c","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_warnings_c
+	{
+		id = 63;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_063_radio_broadcast_news_warnings_c.bikb";
+		#include "radio_dialogues_063_radio_broadcast_news_warnings_c.bikb"
+	};
+
+	// ["am_radio_broadcast_news_weapons","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_weapons
+	{
+		id = 64;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_064_radio_broadcast_news_weapons.bikb";
+		#include "radio_dialogues_064_radio_broadcast_news_weapons.bikb"
+	};
+
+	// ["am_radio_broadcast_news_hostels","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_hostels
+	{
+		id = 65;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_065_radio_broadcast_news_hostels.bikb";
+		#include "radio_dialogues_065_radio_broadcast_news_hostels.bikb"
+	};
+
+	// ["am_radio_broadcast_news_idap","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_idap
+	{
+		id = 66;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_066_radio_broadcast_news_idap.bikb";
+		#include "radio_dialogues_066_radio_broadcast_news_idap.bikb"
+	};
+
+	// ["am_radio_broadcast_news_power_plant","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_power_plant
+	{
+		id = 67;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_067_radio_broadcast_news_power_plant.bikb";
+		#include "radio_dialogues_067_radio_broadcast_news_power_plant.bikb"
+	};
+
+	// ["am_radio_broadcast_news_smugglers","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_smugglers
+	{
+		id = 68;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_068_radio_broadcast_news_smugglers.bikb";
+		#include "radio_dialogues_068_radio_broadcast_news_smugglers.bikb"
+	};
+
+	// ["am_radio_broadcast_news_ied","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_ied
+	{
+		id = 69;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_069_radio_broadcast_news_ied.bikb";
+		#include "radio_dialogues_069_radio_broadcast_news_ied.bikb"
+	};
+
+	// ["am_radio_broadcast_news_sugar_company","radio_dialogues"] call BIS_fnc_kbTell;
+	class radio_broadcast_news_sugar_company
+	{
+		id = 70;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\radio_dialogues\radio_dialogues_070_radio_broadcast_news_sugar_company.bikb";
+		#include "radio_dialogues_070_radio_broadcast_news_sugar_company.bikb"
+	};
+
+

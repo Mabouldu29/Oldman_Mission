@@ -1,0 +1,35 @@
+#include "Economy_Common.sqf"
+
+_logic setVariable ["BIS_actualSum", _logic getVariable "initialSum"];
+_logic setVariable ["BIS_prices", _prices];
+
+
+[FUNCTIONS_PATH, FUNCTIONS_PREFIX, FUNCTIONS_NAMES] call BIS_fnc_LoadFunctions;
+
+
+[_logic] spawn
+{
+	params ["_logic"];
+	while {true} do
+	{
+		private _originalDate = date;
+		private _originalPeriod = _logic getVariable "IncomeTime";
+		private _newDate = [_originalDate, _originalPeriod, "m"] call BIS_fnc_CalculateDateTime;
+		WaitUntil
+		{
+			Sleep 1;
+			if(_originalPeriod != _logic getVariable "IncomeTime") then
+			{
+				_originalDate = date;
+				_originalPeriod = _logic getVariable "IncomeTime";
+				_newDate = [_originalDate, _logic getVariable "IncomeTime"] call BIS_fnc_CalculateDateTime;
+			}; //value updated, reset the datetime the new event will be computed from
+
+			([date, _newDate] call BIS_fnc_IsDateTimeNewer)
+			||
+			(([date, _newDate] call BIS_fnc_CompareDateTimes) isEqualType true)
+		};
+		private _sumToAdd = (round ((([ _originalDate, date ] call BIS_fnc_CalculateDatetime))/(_originalPeriod*60))) * (_logic getVariable "incomeSum");
+		[MODE_INCREASE_MONEY, [_sumToAdd]] call BIS_fnc_OM_moduleEconomy;
+	};
+};

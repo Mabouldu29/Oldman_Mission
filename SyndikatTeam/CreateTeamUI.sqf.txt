@@ -1,0 +1,14 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "\a3\Missions_F_Oldman\Systems\defines\questDefines.inc"
+#define TIME_FLOAT_CONVERT 	0.000114155
+
+// create dialog
+//createdialog "RscSendAttack";
+BIS_OM_waitDialogMode = "ambush";
+_null = (findDisplay 46) createDisplay "RscDisplayOMRest";
+BIS_fnc_OM_moduleSyndikatTeam_orderTeam =
+{
+	BIS_SYNDIKATTEAM_LOGIC setVariable ['playerConfirmedAssault', true];
+	[ MODE_REDUCE_MONEY, [BIS_SYNDIKATTEAM_LOGIC getVariable "priceForSyndikatTeamService"] ] call BIS_fnc_OM_moduleEconomy;
+	[MODE_DEACTIVATE_CAMP] call BIS_fnc_OM_moduleSyndikatTeam;
+};

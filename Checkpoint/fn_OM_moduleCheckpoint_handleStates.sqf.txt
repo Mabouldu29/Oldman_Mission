@@ -1,0 +1,353 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+#include "moduleCheckpoint_common.sqf"
+
+//TODO: subject muze vycouvat pote co vjel do zony (resetnout? Nebo alarm?)
+//TODO: do checkpointu vejdu, ale nastoupim do auta, ktere je na checkpointu. Maji me vubec pustit dovnitr jako pesiho?
+
+params [ "_checkpoint", [ "_vehicle", vehicle player, [objNull] ]];
+_checkpoint setVariable ["vehicle", _vehicle];
+private _objZoneA = call compile(_checkpoint getVariable "ControlZoneA");
+private _objZoneB = call compile(_checkpoint getVariable "ControlZoneB");
+private _soldierZoneA = call compile(_checkpoint getVariable "ZoneASoldier");
+private _soldierZoneB = call compile(_checkpoint getVariable "ZoneBSoldier");
+private _zoneA = call compile(_checkpoint getVariable "ZoneA");
+private _zoneB = call compile(_checkpoint getVariable "ZoneB");
+private _sectorArea = _checkpoint getVariable "objectArea";
+private _droneTimelineA = call compile (_checkpoint getVariable "DroneTimelineA");
+private _droneTimelineB = call compile (_checkpoint getVariable "DroneTimelineB");
+private _defaultState = _checkpoint getVariable "DefaultState";
+private _customCode = compile(_checkpoint getVariable "OnStartCustomCode");
+_sectorArea params ["_x", "_y"]; _checkpointSize = _x max _y;
+private ["_soldier", "_obj", "_droneTimeline"];
+private _time = 0; private _delay = 0; private _forceState = false;
+private _state_checkpoint_vehicleentered2 = false; // for one time check
+private _gate = (nearestObjects [_checkpoint, ["Land_RoadBarrier_01_F", "Land_BarGate_F"], 50] select 0);
+private _soldierAInitPos = [getposASL _soldierZoneA, getDir _soldierZoneA];
+private _soldierBInitPos = [getposASL _soldierZoneB, getDir _soldierZoneB];
+_checkpoint setVariable ["subject", _vehicle];
+_checkpoint setVariable ["Condition", format ["{triggerActivated _x} count %1 == 0 && {triggerActivated _x} count %2 == 0", (_checkpoint getVariable "ZoneA"),(_checkpoint getVariable "ZoneB")]];
+/* _checkpoint setVariable ["Condition",  format ["{triggerActivated _x} count%1 == 0", _zoneA+_zoneB] ]; */
+{ _x setTriggerActivation ["ANYPLAYER", "PRESENT", true] } forEach _zoneA+_zoneB;
+{_x hideObject true} forEach [_objZoneA, _objZoneB];
+SET_STATE(_checkpoint, STATE_CHECKPOINT_INIT, 0, false);
+private _prevState = STATE_CHECKPOINT_UNDEFINED; private _actualState = _defaultState; private _nextState = STATE_CHECKPOINT_UNDEFINED;
+_checkpoint setVariable ["execOnceGuard", []];
+_checkpoint setVariable ["FSMrunning", true];
+{_x setVariable ["doNotRemove", true]} forEach [_soldierZoneA, _soldierZoneB];	//preserve removing from sector if they die
+_checkpoint setVariable ["RestrictedArea", 1];
+while{_checkpoint getVariable "FSMrunning"} do
+{
+  if(GET_STATE(_checkpoint) != _prevState) then
+  {
+    _prevState = GET_STATE(_checkpoint);
+		__EXEC_ONCE_IN_STATE_RESET__;
+#ifdef DEBUG_CHECKPOINT
+      ["◙ CHKPOINT FSM: Checkpoint |%1|: State: %2-%3", _checkpoint, _prevState, GET_STATE_NAME(_prevState)] call BIS_fnc_logFormat;
+#endif
+  };
+  switch (GET_STATE(_checkpoint)) do
+  {
+			case (STATE_CHECKPOINT_INIT): //-------------------------------------------------------------------------------------------------
+      {
+					/* _objZoneA = call compile(_checkpoint getVariable "ControlZoneA");
+					_objZoneB = call compile(_checkpoint getVariable "ControlZoneB");
+					_soldierZoneA = call compile(_checkpoint getVariable "ZoneASoldier");
+					_soldierZoneB = call compile(_checkpoint getVariable "ZoneBSoldier");
+					_zoneA = call compile(_checkpoint getVariable "ZoneA");
+					_zoneB = call compile(_checkpoint getVariable "ZoneB");
+					_sectorArea = _checkpoint getVariable "objectArea";
+					_droneTimelineA = call compile (_checkpoint getVariable "DroneTimelineA");
+					_droneTimelineB = call compile (_checkpoint getVariable "DroneTimelineB");
+					_defaultState = _checkpoint getVariable "DefaultState";
+					_customCode = compile(_checkpoint getVariable "OnStartCustomCode"); */
+					EXEC_ONCE_RESET();
+					OPEN_ZONE(_zoneA);
+					OPEN_ZONE(_zoneB);
+					if(!isNil "_customCode") then {call _customCode};
+					SET_STATE(_checkpoint,STATE_CHECKPOINT_CONTROLACTIVE, 0, false);
+					["◙ CHKPOINT FSM: ------------------------------------------------------", _objZoneA] call BIS_fnc_logFormat;
+					["◙ CHKPOINT FSM: Subject: %1", _checkpoint getVariable "subject"] call BIS_fnc_logFormat;
+          ["◙ CHKPOINT FSM: Vehicle: %1", _vehicle ] call BIS_fnc_logFormat;
+					["◙ CHKPOINT FSM: _objZoneA: %1", _objZoneA] call BIS_fnc_logFormat;
+					["◙ CHKPOINT FSM: _zoneA: %1", _zoneA] call BIS_fnc_logFormat;
+					["◙ CHKPOINT FSM: _soldierZoneA: %1", _soldierZoneA] call BIS_fnc_logFormat;
+					["◙ CHKPOINT FSM: _objZoneB: %1", _objZoneB] call BIS_fnc_logFormat;
+					["◙ CHKPOINT FSM: _soldierZoneB: %1", _soldierZoneB] call BIS_fnc_logFormat;
+					["◙ CHKPOINT FSM: _zoneB: %1", _zoneB] call BIS_fnc_logFormat;
+					["◙ CHKPOINT FSM: ------------------------------------------------------", _objZoneA] call BIS_fnc_logFormat;
+			};
+      case (STATE_CHECKPOINT_IDLE): //-------------------------------------------------------------------------------------------------
+      {
+        if( IN_ZONE(_zoneA) ) then
+        {
+          _vehicle = vehicle (list (_zoneA select {triggerActivated _x} select 0) select 0);
+          _checkpoint setVariable ["subject", _vehicle];
+          if( _vehicle in vehicle _vehicle ) then
+          {
+            _checkpoint setVariable ["ApproachingFromZone", "zoneA"];
+            OPEN_ZONE(_zoneA);
+            CLOSE_ZONE(_zoneB);
+            SET_STATE(_checkpoint, _defaultState, 0, false);
+            _obj = _objZoneA;
+            _soldier = _soldierZoneA;
+            _droneTimeline = GET_DRONE_TIMELINE(_droneTimelineA);
+          }
+        };
+        if( IN_ZONE(_zoneB)) then
+        {
+          _vehicle = vehicle (list (_zoneB select {triggerActivated _x} select 0) select 0);
+          _checkpoint setVariable ["subject", _vehicle];
+          if(_vehicle in vehicle _vehicle) then
+          {
+            _checkpoint setVariable ["ApproachingFromZone", "zoneB"];
+            OPEN_ZONE(_zoneB);
+            CLOSE_ZONE(_zoneA);
+            SET_STATE(_checkpoint, STATE_CHECKPOINT_VEHICLEENTERED, 0, false);
+            _obj = _objZoneB;
+            _soldier = _soldierZoneB;
+            _droneTimeline = GET_DRONE_TIMELINE(_droneTimelineB);
+          };
+        };
+      };
+      case (STATE_CHECKPOINT_CONTROLINACTIVE)://-------------------------------------------------------------------------------------------------
+      {
+        __EXEC_ONCE_START__
+        OPEN_GATE();
+        RESET_SOLDIERS_POSITIONS();
+        __EXEC_ONCE_END__
+        /* ["CHKPOINT: INACTIVE _vehicle: %1 | side: ", _vehicle, side _vehicle] call BIS_fnc_LogFormat; */
+        if( CHECKPOINT_RELATIONSHIP_WARNED(side _vehicle) ) then
+        {
+          SET_STATE(_checkpoint, STATE_CHECKPOINT_CONTROLACTIVE, 0, false);
+        };
+        if( IN_ZONE(_zoneA) && (_vehicle in vehicle _vehicle) ) then
+        {
+          _checkpoint setVariable ["ApproachingFromZone", "zoneA"];
+          _obj = _objZoneA;
+          _soldier = _soldierZoneA;
+          _droneTimeline = GET_DRONE_TIMELINE(_droneTimelineA);
+          SET_STATE(_checkpoint, STATE_CHECKPOINT_VEHICLEENTERED, 0, false);
+        };
+        if( IN_ZONE(_zoneB) && (_vehicle in vehicle _vehicle) ) then
+        {
+          _checkpoint setVariable ["ApproachingFromZone", "zoneB"];
+          _obj = _objZoneB;
+          _soldier = _soldierZoneB;
+          _droneTimeline = GET_DRONE_TIMELINE(_droneTimelineB);
+          SET_STATE(_checkpoint, STATE_CHECKPOINT_VEHICLEENTERED, 0, false);
+        };
+      };
+      case (STATE_CHECKPOINT_CONTROLACTIVE)://-------------------------------------------------------------------------------------------------
+      {
+        if({alive (call compile _x)} count [_checkpoint getVariable "ZoneASoldier", _checkpoint getVariable "ZoneBSoldier"] < 2) then
+        {
+          SET_STATE(_checkpoint, STATE_CHECKPOINT_CONTROLINACTIVE, 0, false); //if we are missing the crew, set the inactive state
+        };
+        __EXEC_ONCE_START__
+        CLOSE_GATE();
+        RESET_SOLDIERS_POSITIONS();
+        __EXEC_ONCE_END__
+        if( IN_ZONE(_zoneA) ) then
+        {
+          _vehicle = vehicle (list (_zoneA select {triggerActivated _x} select 0) select 0);
+          _checkpoint setVariable ["subject", _vehicle];
+          /* ["CHKPOINT: ZONE A _vehicle: %1 | side: ", _vehicle, side _vehicle] call BIS_fnc_LogFormat; */
+          if( _vehicle in vehicle _vehicle ) then
+          {
+            _checkpoint setVariable ["ApproachingFromZone", "zoneA"];
+            OPEN_ZONE(_zoneA);
+            CLOSE_ZONE(_zoneB);
+            SET_STATE(_checkpoint, STATE_CHECKPOINT_VEHICLEENTERED, 0, false);
+            _obj = _objZoneA;
+            _soldier = _soldierZoneA;
+            _droneTimeline = GET_DRONE_TIMELINE(_droneTimelineA);
+          }
+        };
+        if( IN_ZONE(_zoneB)) then
+        {
+          _vehicle = vehicle (list (_zoneB select {triggerActivated _x} select 0) select 0);
+          _checkpoint setVariable ["subject", _vehicle];
+          /* ["CHKPOINT: ZONE B _vehicle: %1 | side: ", _vehicle, side _vehicle] call BIS_fnc_LogFormat; */
+          if(_vehicle in vehicle _vehicle) then
+          {
+            _checkpoint setVariable ["ApproachingFromZone", "zoneB"];
+            OPEN_ZONE(_zoneB);
+            CLOSE_ZONE(_zoneA);
+            SET_STATE(_checkpoint, STATE_CHECKPOINT_VEHICLEENTERED, 0, false);
+            _obj = _objZoneB;
+            _soldier = _soldierZoneB;
+            _droneTimeline = GET_DRONE_TIMELINE(_droneTimelineB);
+          };
+        };
+      };
+
+      case (STATE_CHECKPOINT_VEHICLEENTERED)://-------------------------------------------------------------------------------------------------
+      {
+        CHECKPOINT_CHECK_RULES();
+        switch (GET_PREVSTATE(_checkpoint)) do
+        {
+            case (STATE_CHECKPOINT_CONTROLACTIVE):  //control was active
+            {
+              __EXEC_ONCE_START__
+    						MAKE_CHECKPOINT_OWNER_MORE_FRIENDLY;
+    						"run navigate to check" call BIS_fnc_log;
+    						[_obj, _soldier, vehicle player, _checkpoint] spawn BIS_fnc_OM_moduleCheckpoint_navigateVehicleToCheck;
+    						[ localize "STR_A3_OM_fn_OM_moduleCheckpoint_handleStates.sqf0",  localize "STR_A3_OM_fn_OM_moduleCheckpoint_handleStates.sqf1", localize "STR_A3_OM_fn_OM_moduleCheckpoint_handleStates.sqf2",5] call _fnc_OM_moduleCheckpoint_ShowInfo;
+    					__EXEC_ONCE_END__
+
+              private _dist = [_obj, _vehicle] call BIS_fnc_OM_moduleCheckpoint_checkDistanceFromObject;
+              if(_dist <= VEHICLE_DISTANCE_FROM_MARSHALL) then
+              {
+    						/* ["_state_checkpoint_vehicleentered2: %1", _state_checkpoint_vehicleentered2] call BIS_fnc_LogFormat; */
+    						  if( (([_obj, _vehicle] call BIS_fnc_OM_moduleCheckpoint_checkAngleToObject select 0) < VEHICLE_MAX_ANGLE_FROM_MARSHALL) && (  abs (getdir _obj - ((getdir _vehicle)+180) mod 360) < VEHICLE_MAX_ANGLE_FROM_MARSHALL) and (speed _vehicle > 0) ) then
+                  {
+    								if!(_state_checkpoint_vehicleentered2) then
+    								{
+    									_state_checkpoint_vehicleentered2 = true;
+    									SET_STATE(_checkpoint, STATE_CHECKPOINT_PARKED_CONTROLPOINT, 0, false);
+    								};
+                  };
+              };
+            };
+            case (STATE_CHECKPOINT_CONTROLINACTIVE): //checkpoint was open
+            {
+              SET_STATE(_checkpoint, STATE_CHECKPOINT_CONTROL_DONE_OK, 0, false);
+              [_obj, _soldier, vehicle player, _checkpoint] spawn BIS_fnc_OM_moduleCheckpoint_navigateVehicleToCheck;
+            };
+            case (STATE_CHECKPOINT_IDLE):
+            {
+              __EXEC_ONCE_START__
+    						[ localize "STR_A3_OM_fn_OM_moduleCheckpoint_handleStates.sqf3",  localize "STR_A3_OM_fn_OM_moduleCheckpoint_handleStates.sqf4","",5] call _fnc_OM_moduleCheckpoint_ShowInfo;
+    					__EXEC_ONCE_END__
+              CHECKPOINT_CHECK_RULES();
+              if!( IN_ZONE(_zoneA) || IN_ZONE(_zoneB) ) then
+              {
+                SET_STATE(_checkpoint, STATE_CHECKPOINT_VEHICLE_LEFT, 0, false);
+              };
+            };
+        };
+      };
+      case (STATE_CHECKPOINT_PARKED_CONTROLPOINT)://-------------------------------------------------------------------------------------------------
+      {
+        CHECKPOINT_CHECK_RULES();
+				__EXEC_ONCE_START__
+        SET_STATE(_checkpoint, STATE_CHECKPOINT_CONTROL_IN_PROGRESS, 3, false);	//give player a tolerance time
+				[Localize "STR_A3_OM_Systems_Checkpoint_CheckState01", Localize "STR_A3_OM_Systems_Checkpoint_CheckState02", Localize "STR_A3_OM_Systems_Checkpoint_CheckState03", CHECKPOINT_CONTROL_PARKED_TIMEOUT] call _fnc_OM_moduleCheckpoint_ShowInfo;
+        _checkpoint setVariable ["controlStarted", time];
+        //send drone if available
+        if(_droneTimeline isEqualType objNull) then
+        {
+          ["CHKPOINT: Drone Timeline Exists, starting the drone", true] call BIS_fnc_LogFormat;
+          private _curve = [_droneTimeline] call _fnc_OM_moduleCheckpoint_GetCurve;
+          if(!isNil "_curve") then
+          {
+            [_curve, true] call BIS_fnc_richCurve_compute;
+            private _wps = [_curve] call _fnc_OM_moduleCheckpoint_GetKeys;
+            private _drone = [_curve] call _fnc_OM_moduleCheckpoint_PrepareDrone;
+            if(!isNil "_drone") then
+            {
+              [_vehicle, _wps, [2.0,1.3]] spawn _fnc_OM_moduleCheckpoint_SetDroneWaypoints;
+              [_droneTimeline] call BIS_fnc_timeline_play;
+            };
+          };
+        };
+				__EXEC_ONCE_END__
+      };
+      case (STATE_CHECKPOINT_CONTROL_IN_PROGRESS)://-------------------------------------------------------------------------------------------------
+      {
+				CHECKPOINT_CHECK_RULES();
+        __EXEC_ONCE_START__
+        SET_STATE(_checkpoint, STATE_CHECKPOINT_CONTROL_DONE_OK, CHECKPOINT_CONTROL_PARKED_TIMEOUT, false);
+        _checkpoint setVariable ["SubjectPosOnceParked", getpos (_checkpoint getVariable "Subject")];
+				__EXEC_ONCE_END__
+        CHECKPOINT_CHECK_MOVEMENT();
+      };
+      case (STATE_CHECKPOINT_CONTROL_DONE_OK)://-------------------------------------------------------------------------------------------------
+      {
+				__EXEC_ONCE_START__
+				[ localize "STR_A3_OM_fn_OM_moduleCheckpoint_handleStates.sqf6",  localize "STR_A3_OM_fn_OM_moduleCheckpoint_handleStates.sqf7", localize "STR_A3_OM_fn_OM_moduleCheckpoint_handleStates.sqf8", 7] call _fnc_OM_moduleCheckpoint_ShowInfo;
+        OPEN_ZONE(_zoneA);
+        OPEN_ZONE(_zoneB);
+        OPEN_GATE();
+        __EXEC_ONCE_END__
+
+        CHECKPOINT_CHECK_RULES();
+        if!( IN_ZONE(_zoneA) || IN_ZONE(_zoneB) ) then
+        {
+          SET_STATE(_checkpoint, STATE_CHECKPOINT_VEHICLE_LEFT, 0, false);
+        };
+      };
+			case (STATE_CHECKPOINT_CONTROL_DONE_ALARM)://-------------------------------------------------------------------------------------------------
+      {
+				//handle state where the control wasn't successful
+				SET_STATE(_checkpoint, STATE_CHECKPOINT_ALARMED_WEAPON, 0, false);
+      };
+			case (STATE_CHECKPOINT_ALARMED_SPEED);//-------------------------------------------------------------------------------------------------
+      case (STATE_CHECKPOINT_ALARMED_WEAPON)://-------------------------------------------------------------------------------------------------
+      {
+        CLOSE_ZONE(_zoneA);
+        CLOSE_ZONE(_zoneB);
+        MAKE_CHECKPOINT_OWNER_DEFAULT_FRIENDLY();
+        ATTACK_SUBJECT(_vehicle, SOLDIERS_ON_CHECKPOINT(_checkpoint, _checkpointSize));
+				__EXEC_ONCE_START__
+				SET_STATE(_checkpoint, STATE_CHECKPOINT_VEHICLE_LEFT, CHECKPOINT_ALARM_END_TIMEOUT, true);
+        DETACH_DRONE_WAYPOINTS;
+        CLOSE_GATE();
+				__EXEC_ONCE_END__
+      };
+			case (STATE_CHECKPOINT_SUBJECT_LEFT_VEHICLE)://-------------------------------------------------------------------------------------------------
+			{
+				SET_STATE(_checkpoint, STATE_CHECKPOINT_ALARMED_WEAPON, 0, true);
+			};
+      case (STATE_CHECKPOINT_VEHICLE_LEFT)://-------------------------------------------------------------------------------------------------
+      {
+				__EXEC_ONCE_START__
+        OPEN_ZONE(_zoneA);
+        OPEN_ZONE(_zoneB);
+				SET_STATE(_checkpoint, STATE_CHECKPOINT_INIT, 0, false);
+        MAKE_CHECKPOINT_OWNER_DEFAULT_FRIENDLY();
+        DETACH_DRONE_WAYPOINTS;
+        _state_checkpoint_idle = false;
+        _state_checkpoint_vehicleentered = false;
+        _state_checkpoint_control_done_ok = false;
+				_state_checkpoint_control_in_progress = false;
+				_state_checkpoint_vehicleentered2 = false;
+
+				__EXEC_ONCE_END__
+      };
+      case (STATE_CHECKPOINT_SYSTEM_SKIP)://-------------------------------------------------------------------------------------------------
+      {
+				private _lastKnownState = GET_PREVSTATE(_checkpoint);
+        ["_time: %1 | _delay: %2 | _lastKnownState: %3 _nextState: %4", _time, _delay, _lastKnownState, _nextState] call BIS_fnc_LogFormat;
+				SET_STATE(_checkpoint, _lastKnownState, 0, false);
+				/* if(_forceState) then
+				{
+					SET_STATE(_checkpoint, GET_PREVSTATE(_checkpoint), 0, false);
+				}; */
+
+				[_time, _delay, _checkpoint, _nextState, _lastKnownState, _forceState] spawn
+				{
+					params ["_time", "_delay", "_checkpoint", "_nextState", "_lastKnownState", "_forceState"];
+					["Waiting for delay %1", 1] call BIS_fnc_logFormat;
+					waitUntil{ time > (_time + _delay) };                                   //if timeout
+
+					["time elapsed since time is: %1", time] call BIS_fnc_logFormat;
+					["actualState: %1 | _lastKnownState:%2", GET_STATE(_checkpoint), _lastKnownState] call BIS_fnc_logFormat;
+					if( GET_STATE(_checkpoint) == _lastKnownState || _forceState ) then				//if the state hasn't change (we are in the same state as we where when fsm entered this state)
+					{																																												//or if meanwhile the state has already changed and we don't care, skip to the delayed one anyway
+						SET_STATE(_checkpoint, _nextState, 0, false);                              						//set the wanted state which has been set as delayed
+						["Setting state %1", _nextState] call BIS_fnc_logFormat;
+					}
+					else {["We don't want to skip %1", 1] call BIS_fnc_logFormat;};
+				};
+      };
+			case (STATE_CHECKPOINT_SYSTEM_INTERRUPT_FSM)://-------------------------------------------------------------------------------------------------
+      {
+				_checkpoint setVariable ["FSMrunning", false];
+				["◙ CHKPOINT FSM: Interrupting FSM for Checkpoint |%1|", _checkpoint ] call BIS_fnc_logFormat;
+			};
+  };
+
+  sleep 0.2;
+};

@@ -1,0 +1,18 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+//#ifndef SYNDIKATCAMP_DEBUG
+#define SYNDICATCAMP_DEBUG                    true
+//#endif
+
+#define POSITION_TYPE_STANDARD                0
+#define POSITION_TYPE_RIFLEMAN                1
+#define POSITION_TYPE_MG                      2
+#define POSITION_TYPE_SNIPER                  3
+#define POSITION_TYPE_AT                      4
+#define POSITION_TYPE_ENGINEER                5
+#define POSITION_TYPE_MEDIC                   6
+
+#define POSITION_BEHAVIOR_STANDARD            0
+#define POSITION_BEHAVIOR_ANIM                1
+
+#define DISTANCE_TO_DISAPPEAR                 200

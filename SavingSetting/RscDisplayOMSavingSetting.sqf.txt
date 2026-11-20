@@ -1,0 +1,32 @@
+disableSerialization;
+params ["_mode", "_params", "_class"];
+
+_params params ["_display"];
+
+if (_mode == "onLoad") exitWith {
+	(_display displayCtrl 1001) cbSetChecked TRUE;
+	
+	(_display displayCtrl 1001) ctrlAddEventHandler ["CheckedChanged", {
+		params ["_control", "_checked"];
+		_display = ctrlParent _control;
+		if (_checked == 1) then {
+			(_display displayCtrl 1003) cbSetChecked FALSE;
+		} else {
+			(_display displayCtrl 1001) cbSetChecked TRUE;
+		};
+	}];
+
+	(_display displayCtrl 1003) ctrlAddEventHandler ["CheckedChanged", {
+		params ["_control", "_checked"];
+		_display = ctrlParent _control;
+		if (_checked == 1) then {
+			(_display displayCtrl 1001) cbSetChecked FALSE;
+		} else {
+			(_display displayCtrl 1003) cbSetChecked TRUE;
+		};
+	}];
+};
+
+if (_mode == "onUnload") exitWith {
+	if (cbChecked (_display displayCtrl 1001)) then {BIS_specialSaving = TRUE} else {BIS_specialSaving = FALSE};
+};

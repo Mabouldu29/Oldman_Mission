@@ -1,0 +1,576 @@
+// Exported by kerbervac, 19.11.2019 16:56:13
+// Include to local CfgSounds config
+
+// am_oreokastro_priest
+class oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANB_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\001_am_oreokastro_priest\oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANB_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANB_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\001_am_oreokastro_priest\oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANB_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\001_am_oreokastro_priest\oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANA_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANB_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\001_am_oreokastro_priest\oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANB_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\001_am_oreokastro_priest\oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANA_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANB_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\001_am_oreokastro_priest\oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANB_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANB_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\001_am_oreokastro_priest\oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANB_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANA_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\001_am_oreokastro_priest\oldman_ambient_dialogues_001_am_oreokastro_priest_CIVILIANA_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_idap_worker_c
+class oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\002_am_idap_worker_c\oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\002_am_idap_worker_c\oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_002_am_idap_worker_c_WORKERB_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\002_am_idap_worker_c\oldman_ambient_dialogues_002_am_idap_worker_c_WORKERB_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\002_am_idap_worker_c\oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_002_am_idap_worker_c_WORKERB_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\002_am_idap_worker_c\oldman_ambient_dialogues_002_am_idap_worker_c_WORKERB_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\002_am_idap_worker_c\oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\002_am_idap_worker_c\oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\002_am_idap_worker_c\oldman_ambient_dialogues_002_am_idap_worker_c_WORKERA_5.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_002_am_idap_worker_c_WORKERB_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\002_am_idap_worker_c\oldman_ambient_dialogues_002_am_idap_worker_c_WORKERB_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_idap_worker_greeting_a
+class oldman_ambient_dialogues_003_am_idap_worker_greeting_a_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\003_am_idap_worker_greeting_a\oldman_ambient_dialogues_003_am_idap_worker_greeting_a_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_idap_worker_greeting_b
+class oldman_ambient_dialogues_004_am_idap_worker_greeting_b_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\004_am_idap_worker_greeting_b\oldman_ambient_dialogues_004_am_idap_worker_greeting_b_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_idap_worker_greeting_c
+class oldman_ambient_dialogues_005_am_idap_worker_greeting_c_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\005_am_idap_worker_greeting_c\oldman_ambient_dialogues_005_am_idap_worker_greeting_c_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_idap_worker_greeting_d
+class oldman_ambient_dialogues_006_am_idap_worker_greeting_d_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\006_am_idap_worker_greeting_d\oldman_ambient_dialogues_006_am_idap_worker_greeting_d_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_syndikat_greeting_a
+class oldman_ambient_dialogues_007_am_syndikat_greeting_a_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\007_am_syndikat_greeting_a\oldman_ambient_dialogues_007_am_syndikat_greeting_a_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_syndikat_greeting_b
+class oldman_ambient_dialogues_008_am_syndikat_greeting_b_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\008_am_syndikat_greeting_b\oldman_ambient_dialogues_008_am_syndikat_greeting_b_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_syndikat_greeting_c
+class oldman_ambient_dialogues_009_am_syndikat_greeting_c_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\009_am_syndikat_greeting_c\oldman_ambient_dialogues_009_am_syndikat_greeting_c_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_009_am_syndikat_greeting_c_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\009_am_syndikat_greeting_c\oldman_ambient_dialogues_009_am_syndikat_greeting_c_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_syndikat_greeting_d
+class oldman_ambient_dialogues_010_am_syndikat_greeting_d_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\010_am_syndikat_greeting_d\oldman_ambient_dialogues_010_am_syndikat_greeting_d_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_gendarme_greeting_a
+class oldman_ambient_dialogues_011_am_gendarme_greeting_a_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\011_am_gendarme_greeting_a\oldman_ambient_dialogues_011_am_gendarme_greeting_a_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_gendarme_greeting_b
+class oldman_ambient_dialogues_012_am_gendarme_greeting_b_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\012_am_gendarme_greeting_b\oldman_ambient_dialogues_012_am_gendarme_greeting_b_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_gendarme_greeting_c
+class oldman_ambient_dialogues_013_am_gendarme_greeting_c_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\013_am_gendarme_greeting_c\oldman_ambient_dialogues_013_am_gendarme_greeting_c_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_gendarme_greeting_d
+class oldman_ambient_dialogues_014_am_gendarme_greeting_d_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\014_am_gendarme_greeting_d\oldman_ambient_dialogues_014_am_gendarme_greeting_d_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_syndikat_dialogue_a
+class oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\015_am_syndikat_dialogue_a\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\015_am_syndikat_dialogue_a\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\015_am_syndikat_dialogue_a\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\015_am_syndikat_dialogue_a\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\015_am_syndikat_dialogue_a\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\015_am_syndikat_dialogue_a\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_5.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\015_am_syndikat_dialogue_a\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_AMBCIVILIAN_6.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_syndikat_dialogue_b
+class oldman_ambient_dialogues_016_am_syndikat_dialogue_b_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\016_am_syndikat_dialogue_b\oldman_ambient_dialogues_016_am_syndikat_dialogue_b_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_016_am_syndikat_dialogue_b_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\016_am_syndikat_dialogue_b\oldman_ambient_dialogues_016_am_syndikat_dialogue_b_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_016_am_syndikat_dialogue_b_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\016_am_syndikat_dialogue_b\oldman_ambient_dialogues_016_am_syndikat_dialogue_b_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_016_am_syndikat_dialogue_b_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\016_am_syndikat_dialogue_b\oldman_ambient_dialogues_016_am_syndikat_dialogue_b_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_syndikat_dialogue_c
+class oldman_ambient_dialogues_017_am_syndikat_dialogue_c_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\017_am_syndikat_dialogue_c\oldman_ambient_dialogues_017_am_syndikat_dialogue_c_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_017_am_syndikat_dialogue_c_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\017_am_syndikat_dialogue_c\oldman_ambient_dialogues_017_am_syndikat_dialogue_c_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_017_am_syndikat_dialogue_c_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\017_am_syndikat_dialogue_c\oldman_ambient_dialogues_017_am_syndikat_dialogue_c_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_017_am_syndikat_dialogue_c_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\017_am_syndikat_dialogue_c\oldman_ambient_dialogues_017_am_syndikat_dialogue_c_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_syndikat_dialogue_d
+class oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\018_am_syndikat_dialogue_d\oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\018_am_syndikat_dialogue_d\oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\018_am_syndikat_dialogue_d\oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\018_am_syndikat_dialogue_d\oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\018_am_syndikat_dialogue_d\oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\018_am_syndikat_dialogue_d\oldman_ambient_dialogues_018_am_syndikat_dialogue_d_AMBCIVILIAN_5.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_political_dialogue_a
+class oldman_ambient_dialogues_019_am_political_dialogue_a_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\019_am_political_dialogue_a\oldman_ambient_dialogues_019_am_political_dialogue_a_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_019_am_political_dialogue_a_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\019_am_political_dialogue_a\oldman_ambient_dialogues_019_am_political_dialogue_a_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_019_am_political_dialogue_a_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\019_am_political_dialogue_a\oldman_ambient_dialogues_019_am_political_dialogue_a_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_019_am_political_dialogue_a_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\019_am_political_dialogue_a\oldman_ambient_dialogues_019_am_political_dialogue_a_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_019_am_political_dialogue_a_AMBCIVILIAN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\019_am_political_dialogue_a\oldman_ambient_dialogues_019_am_political_dialogue_a_AMBCIVILIAN_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_political_dialogue_b
+class oldman_ambient_dialogues_020_am_political_dialogue_b_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\020_am_political_dialogue_b\oldman_ambient_dialogues_020_am_political_dialogue_b_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_020_am_political_dialogue_b_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\020_am_political_dialogue_b\oldman_ambient_dialogues_020_am_political_dialogue_b_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_political_dialogue_c
+class oldman_ambient_dialogues_021_am_political_dialogue_c_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\021_am_political_dialogue_c\oldman_ambient_dialogues_021_am_political_dialogue_c_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_021_am_political_dialogue_c_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\021_am_political_dialogue_c\oldman_ambient_dialogues_021_am_political_dialogue_c_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_021_am_political_dialogue_c_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\021_am_political_dialogue_c\oldman_ambient_dialogues_021_am_political_dialogue_c_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_021_am_political_dialogue_c_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\021_am_political_dialogue_c\oldman_ambient_dialogues_021_am_political_dialogue_c_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_021_am_political_dialogue_c_AMBCIVILIAN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\021_am_political_dialogue_c\oldman_ambient_dialogues_021_am_political_dialogue_c_AMBCIVILIAN_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_political_dialogue_d
+class oldman_ambient_dialogues_022_am_political_dialogue_d_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\022_am_political_dialogue_d\oldman_ambient_dialogues_022_am_political_dialogue_d_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_022_am_political_dialogue_d_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\022_am_political_dialogue_d\oldman_ambient_dialogues_022_am_political_dialogue_d_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_022_am_political_dialogue_d_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\022_am_political_dialogue_d\oldman_ambient_dialogues_022_am_political_dialogue_d_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_022_am_political_dialogue_d_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\022_am_political_dialogue_d\oldman_ambient_dialogues_022_am_political_dialogue_d_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_022_am_political_dialogue_d_AMBCIVILIAN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\022_am_political_dialogue_d\oldman_ambient_dialogues_022_am_political_dialogue_d_AMBCIVILIAN_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_idap_worker_a
+class oldman_ambient_dialogues_023_am_idap_worker_a_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\023_am_idap_worker_a\oldman_ambient_dialogues_023_am_idap_worker_a_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_023_am_idap_worker_a_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\023_am_idap_worker_a\oldman_ambient_dialogues_023_am_idap_worker_a_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_023_am_idap_worker_a_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\023_am_idap_worker_a\oldman_ambient_dialogues_023_am_idap_worker_a_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_023_am_idap_worker_a_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\023_am_idap_worker_a\oldman_ambient_dialogues_023_am_idap_worker_a_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_idap_worker_b
+class oldman_ambient_dialogues_024_am_idap_worker_b_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\024_am_idap_worker_b\oldman_ambient_dialogues_024_am_idap_worker_b_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_024_am_idap_worker_b_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\024_am_idap_worker_b\oldman_ambient_dialogues_024_am_idap_worker_b_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_024_am_idap_worker_b_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\024_am_idap_worker_b\oldman_ambient_dialogues_024_am_idap_worker_b_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_024_am_idap_worker_b_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\024_am_idap_worker_b\oldman_ambient_dialogues_024_am_idap_worker_b_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_024_am_idap_worker_b_AMBCIVILIAN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\024_am_idap_worker_b\oldman_ambient_dialogues_024_am_idap_worker_b_AMBCIVILIAN_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_night_club
+class oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\025_am_night_club\oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\025_am_night_club\oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\025_am_night_club\oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\025_am_night_club\oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\025_am_night_club\oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\025_am_night_club\oldman_ambient_dialogues_025_am_night_club_AMBCIVILIAN_5.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_vagalala_house_destroyed
+class oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\026_am_vagalala_house_destroyed\oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\026_am_vagalala_house_destroyed\oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\026_am_vagalala_house_destroyed\oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\026_am_vagalala_house_destroyed\oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\026_am_vagalala_house_destroyed\oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\026_am_vagalala_house_destroyed\oldman_ambient_dialogues_026_am_vagalala_house_destroyed_AMBCIVILIAN_5.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_radar_destroyed
+class oldman_ambient_dialogues_027_am_radar_destroyed_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\027_am_radar_destroyed\oldman_ambient_dialogues_027_am_radar_destroyed_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_027_am_radar_destroyed_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\027_am_radar_destroyed\oldman_ambient_dialogues_027_am_radar_destroyed_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_facility_destroyed
+class oldman_ambient_dialogues_028_am_facility_destroyed_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\028_am_facility_destroyed\oldman_ambient_dialogues_028_am_facility_destroyed_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_028_am_facility_destroyed_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\028_am_facility_destroyed\oldman_ambient_dialogues_028_am_facility_destroyed_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_028_am_facility_destroyed_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\028_am_facility_destroyed\oldman_ambient_dialogues_028_am_facility_destroyed_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_028_am_facility_destroyed_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\028_am_facility_destroyed\oldman_ambient_dialogues_028_am_facility_destroyed_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+
+// am_landing_on_airstrip
+class oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_0
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\029_am_landing_on_airstrip\oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_0.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_1
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\029_am_landing_on_airstrip\oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_1.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_2
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\029_am_landing_on_airstrip\oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_2.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_3
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\029_am_landing_on_airstrip\oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_3.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_4
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\029_am_landing_on_airstrip\oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_4.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_5
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\029_am_landing_on_airstrip\oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_5.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_6
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\029_am_landing_on_airstrip\oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_6.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+class oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_7
+{
+	sound[] = {"@a3\dubbing_f_Oldman\oldman_ambient_dialogues\029_am_landing_on_airstrip\oldman_ambient_dialogues_029_am_landing_on_airstrip_AMBCIVILIAN_7.ogg", db+20, 1};
+	titles[] = {0, ""};
+};
+

@@ -1,0 +1,368 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "\a3\Missions_F_Oldman\Systems\defines\questDefines.inc"
+
+#define SET_WAIT_REST()	\
+	{	\
+		_ctlr = _display displayCtrl _x;	\
+		_ctlr ctrlEnable FALSE; \
+		_ctlr ctrlShow FALSE; \
+	} forEach [1006, 1007]; \
+	(_display displayCtrl 1) ctrlAddEventHandler ["ButtonClick", {[] spawn BIS_fnc_om_GoSleep; BIS_SleepTimeSelected = TRUE}]
+
+disableSerialization;
+params ["_mode", "_params", "_class"];
+
+openMap [FALSE, FALSE];
+hintSilent "";
+
+if (_mode == "onLoad") exitWith {
+	_params params ["_display"];
+
+	BIS_SleepTimeSelected = FALSE;
+
+	_context = missionNamespace getVariable ["BIS_OM_waitDialogMode", "wait"];
+
+	_ctrlButtonOK = _display displayCtrl 1;
+
+	switch (_context) do {
+		case "wait": {
+			if (player getvariable ["BIS_IsSleeping",false]) then {
+				(_display displayCtrl 1004) ctrlSetText Localize "STR_A3_OM_System_Rest_Resting";
+				(_display displayCtrl 1005) ctrlSetText Localize "STR_A3_OM_System_Rest_RestingDescr";
+			} else {
+				(_display displayCtrl 1004) ctrlSetText Localize "STR_A3_OM_System_Rest_Wait";
+				(_display displayCtrl 1005) ctrlSetText Localize "STR_A3_OM_System_Rest_WaitDescr";
+				(_display displayCtrl 1008) ctrlSetText Localize "STR_A3_OM_System_Rest_WaitUntil";
+			};
+			SET_WAIT_REST();
+		};
+		/*case "rest": {
+			(_display displayCtrl 1004) ctrlSetText "Resting";
+			(_display displayCtrl 1005) ctrlSetText "Advance time by resting, heal your injuries and save\nthe game.";
+			SET_WAIT_REST();
+		};*/
+		case "travel":
+		{
+			(_display displayCtrl 1004) ctrlSetText Localize "STR_A3_OM_System_Rest_Travel";
+			(_display displayCtrl 1005) ctrlSetText Localize "STR_A3_OM_System_Rest_TravelDescr";
+			(_display displayCtrl 1008) ctrlSetText Localize "STR_A3_OM_System_Rest_ArriveAt";
+			SET_WAIT_REST();
+		};
+		case "ambush": {
+			{ _x ctrlEnable FALSE; _x ctrlShow FALSE } forEach [_display displayCtrl 1099, _display displayCtrl 1100]; // disable sleeping bag tickbox
+			BIS_SYNDIKATTEAM_LOGIC setVariable ["playerConfirmedAssault", FALSE];
+			(_display displayCtrl 1008) ctrlSetText Localize "STR_A3_OM_System_Rest_AttackStart";
+			(_display displayCtrl 1) ctrlAddEventHandler ["ButtonClick", {
+				(missionNamespace getVariable "BIS_OM_SyndikatTeam_logic") setVariable ["eventStart", numberToDate [date # 0, (dateToNumber date) + (((findDisplay 666) getVariable ["BIS_OM_assaultDelay", 0]) * 0.000114155)]];
+				[] call BIS_fnc_OM_moduleSyndikatTeam_orderTeam;
+			}];
+
+			_ctrlAmbushInfo = _display displayCtrl 1007;
+			_ctrlAmbushInfo ctrlSetTextColor [1,1,1,0.45];
+			_ctrlAmbushSlider = _display displayCtrl 1006;
+
+			_unitsPool = BIS_SYNDIKATTEAM_LOGIC getVariable "poolNumber";
+			_costPerUnit = (["I_G_Soldier_AR_F"] call BIS_fnc_OM_ModuleEconomy_getEquipmentPrice) * 0.2;
+			_currentMoney = [3] call BIS_fnc_OM_ModuleEconomy;
+
+			private _logic = MGVAR("BIS_OM_SyndikatTeam_logic");
+			SVAR( _logic, "estimatedTimeToSector", (missionNamespace getVariable "BIS_OM_SyndikatTeam_logic") getVariable "estimatedTimeToSector");
+
+			if (_costPerUnit > _currentMoney || _unitsPool == 0) then {
+				_ctrlAmbushSlider ctrlEnable FALSE;
+				_ctrlAmbushSlider ctrlShow FALSE;
+				if (_unitsPool == 0) then {
+					_ctrlAmbushInfo ctrlSetStructuredText parseText format ["<t font = 'RobotoCondensedLight' shadow = '0' align = 'right' color = '#8a3737'>%1</t>", Localize "STR_A3_OM_System_Rest_NoUnits"];
+				} else {
+					_ctrlAmbushInfo ctrlSetStructuredText parseText format ["<t font = 'RobotoCondensedLight' shadow = '0' align = 'right' color = '#8a3737'>%1</t>", Localize "STR_A3_OM_SysteM_Rest_NoFunds"];
+				};
+				(_display displayCtrl 1) ctrlEnable FALSE;
+			} else {
+				_ctrlAmbushSlider sliderSetRange [0, (floor (_currentMoney / _costPerUnit)) min _unitsPool];
+				_ctrlAmbushSlider sliderSetPosition ((floor (_currentMoney / _costPerUnit)) min _unitsPool);
+
+				BIS_fnc_OM_ambushSliderHandle = {
+					params ["_control", "_value"];
+					_costPerUnit = (["I_G_Soldier_AR_F"] call BIS_fnc_OM_ModuleEconomy_getEquipmentPrice) * 0.2;
+					_currentMoney = [3] call BIS_fnc_OM_ModuleEconomy;
+					(findDisplay 666 displayCtrl 1007) ctrlSetStructuredText parseText format ["<t font = 'RobotoCondensedLight' shadow = '0'>" + localize "str_a3_om_system_syndiaktteam_units" + ": <t color = '#95802e'>%1</t><t align = 'right'>%3<t color = '#95802e'> %2 $</t></t></t>", _value, _value * _costPerUnit, Localize "STR_A3_OM_SysteM_Rest_Cost"];
+					(missionNamespace getVariable "BIS_OM_SyndikatTeam_logic") setVariable ["unitsSelectedFromUI", _value];
+					(missionNamespace getVariable "BIS_OM_SyndikatTeam_logic") setVariable ["priceForSyndikatTeamService", _value * _costPerUnit];
+					if (_value == 0) then {
+						(findDisplay 666 displayCtrl 1) ctrlEnable FALSE;
+					} else {
+						(findDisplay 666 displayCtrl 1) ctrlEnable TRUE;
+					};
+				};
+
+				[] spawn {
+					_unitsPool = BIS_SYNDIKATTEAM_LOGIC getVariable "poolNumber";
+					_costPerUnit = (["I_G_Soldier_AR_F"] call BIS_fnc_OM_ModuleEconomy_getEquipmentPrice) * 0.2;
+					_currentMoney = [3] call BIS_fnc_OM_ModuleEconomy;
+					waitUntil {!isNull (findDisplay 666 displayCtrl 1007)};
+					[controlNull, (floor (_currentMoney / _costPerUnit)) min _unitsPool] call BIS_fnc_OM_ambushSliderHandle;
+				};
+			};
+		};
+	};
+
+	if (player getVariable "BIS_playerSavingUsingBag") then {
+		player setVariable ["BIS_playerSavingUsingBag", FALSE];
+		(_display displayCtrl 1099) ctrlAddEventHandler ["CheckedChanged", {
+			params ["_control", "_checked"];
+			_display = ctrlParent _control;
+			if (_checked == 1) then {
+				player setVariable ["BIS_playerSavingUsingBag", TRUE];
+				(_display displayCtrl 1004) ctrlSetText Localize "STR_A3_OM_System_Rest_Resting";
+				(_display displayCtrl 1005) ctrlSetText Localize "STR_A3_OM_System_Rest_RestingDescr";
+				(_display displayCtrl 1008) ctrlSetText Localize "STR_A3_OM_System_Rest_RestUntil";
+				player setVariable ["BIS_IsSleeping", TRUE];
+				/*if (BIS_TimeToSkipWhileSleeping < 2) then {
+					BIS_TimeToSkipWhileSleeping = 2;
+					_ctrlWatch = _display displayCtrl 1000;
+					_dayTimeNew = daytime + 2;
+					if (_dayTimeNew > 24) then {_dayTimeNew = _dayTimeNew - 24};
+					_ctrlWatch ctrlAnimateModel ["WatchSecond", linearConversion [0, 60, floor ((_dayTimeNew * 3600) % 60), 0, 1]];
+					_ctrlWatch ctrlAnimateModel ["WatchHour", (_dayTimeNew / 12) % 1];
+					_ctrlWatch ctrlAnimateModel ["WatchMinute", _dayTimeNew % 1];
+					for [{_i = 1010}, {!isNull (_display displayCtrl _i)}, {_i = _i + 1}] do {
+						_ctrl = _display displayCtrl _i;
+						_ctrl2 =  _display displayCtrl (_i + 10);
+						_timepoint = BIS_OM_eventsTimeList # (_i - 1010);
+						if (daytime > 12) then {
+							if (_timepoint > 12) then {
+								_timepoint = _timepoint - 12;
+							} else {
+								_timepoint = _timepoint + 12;
+							};
+						};
+						if (_dayTimeNew <= _timepoint) then {
+							{_x ctrlSetTextColor [1, 1, 1, 0.65]} forEach [_ctrl, _ctrl2];
+						} else {
+							{_x ctrlSetTextColor [1, 1, 1, 0.15]} forEach [_ctrl, _ctrl2];
+						};
+					};
+					_ctrlTimeArrival = _display displayCtrl 1003;
+					_ctrlTimeArrival ctrlSetText ([_dayTimeNew % 24, "HH:MM"] call BIS_fnc_timeToString);
+				};*/
+			} else {
+				player setVariable ["BIS_playerSavingUsingBag", FALSE];
+				(_display displayCtrl 1004) ctrlSetText Localize "STR_A3_OM_System_Rest_Wait";
+				(_display displayCtrl 1005) ctrlSetText Localize "STR_A3_OM_System_Rest_WaitDescr";
+				(_display displayCtrl 1008) ctrlSetText Localize "STR_A3_OM_System_Rest_WaitUntil";
+				player setVariable ["BIS_IsSleeping", FALSE];
+			};
+		}];
+	} else {
+		(_display displayCtrl 1099) ctrlEnable FALSE;
+		(_display displayCtrl 1099) ctrlShow FALSE;
+		(_display displayCtrl 1100) ctrlEnable FALSE;
+		(_display displayCtrl 1100) ctrlShow FALSE;
+	};
+
+	_ctrlWatch = _display displayCtrl 1000;
+	_ctrlWatch ctrlSetPosition [safeZoneX + (safeZoneW * 0.325), (ctrlPosition _ctrlWatch) # 1, (ctrlPosition _ctrlWatch) # 2];
+	_ctrlWatch ctrlCommit 0;
+
+	_ctrlWatch ctrlAnimateModel ["WatchSecond", linearConversion [0, 60, floor ((daytime * 3600) % 60), 0, 1]];
+	_ctrlWatch ctrlAnimateModel ["WatchHour", (daytime / 12) % 1];
+	_ctrlWatch ctrlAnimateModel ["WatchMinute", daytime % 1];
+
+	_ctrlTimeNow = _display displayCtrl 1002;
+	_ctrlTimeNow ctrlSetText ([daytime % 24, "HH:MM"] call bis_fnc_timeToString);
+
+	_ctrlButtonOK ctrlSetStructuredText parseText format ["<t align = 'center' shadow = '2'>%1</t>", Localize "STR_A3_OM_System_Rest_Confirm"];
+
+	_ctrlButtonCancel = _display displayCtrl 2;
+	_ctrlButtonCancel ctrlAddEventHandler ["ButtonClick", uiNamespace getVariable ["RscDisplayTravel_onCancel", {FALSE}]];
+	_ctrlButtonCancel ctrlSetStructuredText parseText format ["<t align = 'center' shadow = '2'>%1</t>", Localize "STR_A3_OM_System_Rest_Cancel"];
+
+	_watchCenter = [((ctrlPosition _ctrlWatch) # 0) - 0.0275, (ctrlPosition _ctrlWatch) # 2];
+
+	_lineLength = safeZoneW * 0.14;
+	_infoLength = safeZoneW * 0.1;
+	_i = 4/3;
+
+	setMousePosition [0.5,0.5];
+
+	BIS_TimeToSkipWhileSleeping = 0;
+	BIS_OM_eventsTimeList = [];
+	if(isNil "BIS_OM_customWatchEvents") then {BIS_OM_customWatchEvents = []};
+	{
+		_date = _x # 0;
+		_type = _x # 2;
+		_icon = "";
+		_desc = "";
+		if (typeName _type == typeName "") then {_icon = _type; _desc = _x # 1} else {
+			_icon = switch (_type) do {
+				case QUEST_TYPE_DESTROY:
+				{
+					"a3\Ui_f\data\IGUI\Cfg\simpleTasks\types\Destroy_ca.paa";
+				};
+				case QUEST_TYPE_SUPPORT:
+				{
+					"a3\Ui_f\data\IGUI\Cfg\simpleTasks\types\Rifle_ca.paa";
+				};
+				case QUEST_TYPE_ATTACK:
+				{
+					"a3\Ui_f\data\IGUI\Cfg\simpleTasks\types\Rifle_ca.paa";
+				};
+				default
+				{
+					"a3\Ui_f\data\IGUI\Cfg\simpleTasks\types\Unknown_ca.paa";
+				};
+			};
+		};
+		_daytimeExact = (_date # 3) + ((_date # 4) / 60);
+
+		BIS_OM_eventsTimeList pushBack _daytimeExact;
+
+		_daytime = _daytimeExact % 12;
+		_dir = (360 / 12) * _daytime;
+
+		_offset = [[0, 0], safeZoneW * 0.165, _dir] call BIS_fnc_relPos;
+		_offset = [_offset # 0, (_offset # 1) * _i];
+
+		_offsetLine = [(_offset # 0) - (_lineLength / 2), (_offset # 1) + ((_lineLength * _i) / 2)];
+
+		_offsetInfo = [[0, 0], safeZoneW * 0.24, _dir] call BIS_fnc_relPos;
+		_offsetInfo = [_offsetInfo # 0, ((_offsetInfo # 1) * _i) + ((safeZoneH * 0.0125) * (getResolution # 4))];
+
+		if (_dir > 180) then {_offsetInfo set [0, (_offsetInfo # 0) - _infoLength]};
+
+		_ctrlLine = _display ctrlCreate ["RscPictureKeepAspect", 1010 + _forEachIndex];
+		_ctrlLine ctrlSetText "A3\Missions_F_Oldman\Data\img\256x4_v2_ca.paa";
+		_ctrlLine ctrlSetTextColor [1,1,1,0.65];
+		_ctrlLine ctrlSetPosition [(_watchCenter # 0) + (_offsetLine # 0), (_watchCenter # 1) - (_offsetLine # 1), _lineLength, _lineLength * _i];
+		_ctrlLine ctrlCommit 0;
+		_ctrlLine ctrlSetAngle [_dir, 0.5, 0.5];
+
+		_ctrlBox = _display ctrlCreate ["RscStructuredText", 1020 + _forEachIndex];
+		_ctrlBox ctrlSetPosition [(_watchCenter # 0) + (_offsetInfo # 0), (_watchCenter # 1) - (_offsetInfo # 1), _infoLength, (safeZoneH * 0.025) * (getResolution # 4)];
+		_ctrlBox ctrlSetTextColor [1,1,1,0.65];
+		_ctrlBox ctrlCommit 0;
+		_ctrlBox ctrlSetStructuredText parseText format ["<t size = '1.25' shadow = '0' align = '%2'><img image = '%3'></img> %1</t>", [_daytimeExact, "HH:MM"] call BIS_fnc_timeToString, if (_dir <= 180) then {"left"} else {"right"}, _icon];
+		_ctrlBox ctrlSetTooltip _desc;
+	} forEach (BIS_OM_customWatchEvents + (([] call BIS_fnc_OM_GetActiveEventsTimes) select {_dateEvent = (dateToNumber (_x # 0)); _dateNow = dateToNumber date; _dateEvent > _dateNow && _dateEvent < (_dateNow + 0.00136989)}));
+
+	_display setVariable ["draggingLeft", FALSE];
+	_display setVariable ["draggingRight", FALSE];
+
+	_fnc_setClock = {
+		params ["_display"];
+		_deltaAngle = 0;
+		_mousePos = getMousePosition;
+
+		if (inputAction "defaultAction" > 0 && (_mousePos # 0) < 0.5 && !(_display getVariable "draggingRight")) then {
+			_display setVariable ["draggingLeft", TRUE];
+		} else {
+			if (inputAction "defaultAction" <= 0) then {
+				_display setVariable ["draggingLeft", FALSE];
+				ctrlSetFocus (_display displayCtrl 1000);
+			};
+		};
+
+		if (inputAction "defaultAction" > 0 && (_mousePos # 0) >= 0.5 && !(_display getVariable "draggingLeft")) then {
+			_display setVariable ["draggingRight", TRUE];
+		} else {
+			if (inputAction "defaultAction" <= 0) then {
+				_display setVariable ["draggingRight", FALSE];
+				ctrlSetFocus (_display displayCtrl 1000);
+			};
+		};
+
+		_timeToTarget = switch (BIS_OM_waitDialogMode) do {
+			case "ambush": {(missionNamespace getVariable "BIS_OM_SyndikatTeam_logic") getVariable ["estimatedTimeToSector", -1]};
+			case "travel": {(missionNamespace getVariable "BIS_OM_FastTravel_logic") getVariable ["estimatedTimeToSector", -1]};
+			//default {if (player getVariable ["BIS_IsSleeping", FALSE]) then {2 * 3600} else {0}};
+			default {0};
+		};
+
+		_timeToTarget = _timeToTarget / 3600;
+
+		if (_display getVariable "draggingLeft") then {
+			_ctrlWatch = _display displayCtrl 1000;
+			_watchPosArr = [-(((ctrlPosition _ctrlWatch) # 0) - 0.0275), -((ctrlPosition _ctrlWatch) # 2), 0];
+			_angle = -([0, 0] getDir ([_mousePos # 0, _mousePos # 1, 0] vectorAdd _watchPosArr));
+
+			_prevAngle = _display getVariable ["prevAngle", _angle];
+			_display setVariable ["prevAngle", _angle];
+
+			_deltaAngle = _angle - _prevAngle;
+			_deltaAngle = sin _deltaAngle atan2 cos _deltaAngle;
+		} else {
+			_display setVariable ["prevAngle", nil];
+		};
+
+		_daytimeNow = daytime + _timeToTarget;
+		if (_daytimeNow >= 24) then {_daytimeNow = _daytimeNow - 24};
+		_daytimeMax = _daytimeNow + 12;
+
+		_daytime = _display getVariable ["daytime", _daytimeNow];
+
+		_daytime = (_daytime + _deltaAngle / 360);
+		if (_daytime < _daytimeNow) then {_daytime = linearConversion [0, 1, 0.75, _daytime, _daytimeNow, TRUE]};
+		if (_daytime > _daytimeMax) then {_daytime = linearConversion [0, 1, 0.75, _daytime, _daytimeMax, TRUE]};
+
+		_display setVariable ["daytime", _daytime];
+
+		_toSkip = _daytime - _daytimeNow;
+		if (_toSkip < 0) then {
+			_toSkip = 24 - _toSkip;
+		};
+		BIS_TimeToSkipWhileSleeping = _toSkip + _timeToTarget;
+		_display setVariable ["BIS_OM_assaultDelay", _toSkip + _timeToTarget];
+
+		_ctrlWatch = _display displayCtrl 1000;
+		_ctrlWatch ctrlAnimateModel ["WatchHour", (_daytime / 12) % 1];
+		_ctrlWatch ctrlAnimateModel ["WatchMinute", _daytime % 1];
+
+		_ctrlTimeArrival = _display displayCtrl 1003;
+		_ctrlTimeArrival ctrlSetText ([(_daytime max _daytimeNow min _daytimeMax) % 24, "HH:MM"] call BIS_fnc_timeToString);
+
+		_dayTimeIncon = _daytime;
+		if (_dayTimeIncon >= 24) then {_dayTimeIncon = _dayTimeIncon - 24};
+
+		_ctrlDaynight = _display displayCtrl 1101;
+		_ctrlDaynight ctrlSetText (if (_dayTimeIncon > 6.15 && _dayTimeIncon < 19.25) then {"\A3\Missions_F_Oldman\Data\img\WeatherManager\weather_day_0_ca.paa"} else {"\A3\Missions_F_Oldman\Data\img\WeatherManager\weather_night_0_ca.paa"});
+
+		if (daytime > 12) then {
+			_daytime = _daytime - 12;
+		};
+
+		for [{_i = 1010}, {!isNull (_display displayCtrl _i)}, {_i = _i + 1}] do {
+			_ctrl = _display displayCtrl _i;
+			_ctrl2 =  _display displayCtrl (_i + 10);
+			_timepoint = BIS_OM_eventsTimeList # (_i - 1010);
+			if (daytime > 12) then {
+				if (_timepoint > 12) then {
+					_timepoint = _timepoint - 12;
+				} else {
+					_timepoint = _timepoint + 12;
+				};
+			};
+			if (_daytime <= _timepoint) then {
+				{_x ctrlSetTextColor [1, 1, 1, 0.65]} forEach [_ctrl, _ctrl2];
+			} else {
+				{_x ctrlSetTextColor [1, 1, 1, 0.15]} forEach [_ctrl, _ctrl2];
+			};
+		};
+	};
+
+	{
+		_display displayAddEventHandler [_x, _fnc_setClock];
+	} foreach ["MouseMoving","MouseHolding"];
+	_params call _fnc_setClock;
+
+	setAccTime 0;
+};
+
+if (_mode == "onUnload") exitWith {
+	if !(BIS_SleepTimeSelected) then {
+		_class cutText ["", "BLACK IN", 1];
+		player setVariable ["BIS_IsSleeping", FALSE];
+		player setVariable ["BIS_IsWaiting", FALSE];
+	};
+	setAccTime 1;
+	openMap [FALSE, FALSE];
+};

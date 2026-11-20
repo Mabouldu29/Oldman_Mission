@@ -1,0 +1,24 @@
+//DEBUG STUFF
+#ifdef INTERNAL_VERSION
+    #define PROFILE_START(blockName)                                    profilingStart blockName
+    #define PROFILE_START_INFO(blockName,string,val)                    profilingStart blockName; profilingSetInfo format [string,val]
+    #define PROFILE_START_INFO2(blockName,string,val1,val2)             profilingStart blockName; profilingSetInfo format [string,val1,val2]
+    #define PROFILE_START_INFO3(blockName,string,val1,val2,val3)        profilingStart blockName; profilingSetInfo format [string,val1,val2,val3]
+    #define PROFILE_INFO(blockName,string,val)                          profilingSetInfo format [string,val]
+    #define PROFILE_INFO2(blockName,string,val1,val2)                   profilingSetInfo format [string,val1,val2]
+    #define PROFILE_INFO3(blockName,string,val1,val2,val3)              profilingSetInfo format [string,val1,val2,val3]
+    #define PROFILE_WATCH(var,val)                                      profilingWatch [var,val]
+    #define PROFILE_WATCH_CATEGORY(var,val,cat)                         profilingWatch [var,val,cat]
+    #define PROFILE_STOP(blockName)                                     profilingStop blockName
+#else
+    #define PROFILE_START(blockName)
+    #define PROFILE_START_INFO(blockName,string)
+    #define PROFILE_START_INFO2(blockName,string,val1,val2)
+    #define PROFILE_START_INFO3(blockName,string,val1,val2,val3)
+    #define PROFILE_INFO(blockName,string,val)
+    #define PROFILE_INFO2(blockName,string,val1,val2)
+    #define PROFILE_INFO3(blockName,string,val1,val2,val3)
+    #define PROFILE_WATCH(var,val)
+    #define PROFILE_WATCH_CATEGORY(var,val,cat)
+    #define PROFILE_STOP(blockName)
+#endif

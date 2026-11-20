@@ -1,0 +1,1 @@
+  #define MISSION_FOLDER "\a3\Missions_F_Oldman\Campaign\Missions\"

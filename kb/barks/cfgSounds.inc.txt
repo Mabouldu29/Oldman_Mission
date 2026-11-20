@@ -1,0 +1,1923 @@
+class Civilain_MarketExit_Merchant_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketExit_Merchant_A_01_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketExit_Merchant_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketExit_Merchant_A_Ahmeed_01.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketInventory_Merchant_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketInventory_Merchant_A_01_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketInventory_Merchant_A_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketInventory_Merchant_A_02_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketInventory_Merchant_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketInventory_Merchant_A_Ahmeed_01.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketInventory_Merchant_A_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketInventory_Merchant_A_Ahmeed_02.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketInventory_Merchant_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketInventory_Merchant_B_01_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketInventory_Merchant_B_02_A_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketInventory_Merchant_B_02_A_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketInventory_Merchant_B_02_B_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketInventory_Merchant_B_02_B_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketInventory_Merchant_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketInventory_Merchant_B_Ahmeed_01.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketInventory_Merchant_B_Ahmeed_02_A
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketInventory_Merchant_B_Ahmeed_02_A.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilain_MarketInventory_Merchant_B_Ahmeed_02_B
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilain_MarketInventory_Merchant_B_Ahmeed_02_B.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToLand_A_01_Filip
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToLand_A_01_Filip.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToLand_A_01_Filip_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToLand_A_01_Filip_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToLand_A_02_Filip
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToLand_A_02_Filip.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToLand_A_02_Filip_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToLand_A_02_Filip_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToLand_A_03_Filip
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToLand_A_03_Filip.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToLand_A_03_Filip_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToLand_A_03_Filip_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToTakeOff_A_01_Filip
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToTakeOff_A_01_Filip.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToTakeOff_A_01_Filip_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToTakeOff_A_01_Filip_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToTakeOff_A_02_Filip
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToTakeOff_A_02_Filip.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToTakeOff_A_02_Filip_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToTakeOff_A_02_Filip_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToTakeOff_A_03_Filip
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToTakeOff_A_03_Filip.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_FreeToTakeOff_A_03_Filip_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_FreeToTakeOff_A_03_Filip_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_NoAccess_A_01_Filip
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_NoAccess_A_01_Filip.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_NoAccess_A_01_Filip_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_NoAccess_A_01_Filip_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_NoAccess_A_02_Filip
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_NoAccess_A_02_Filip.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_NoAccess_A_02_Filip_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_NoAccess_A_02_Filip_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_NoAccess_A_03_Filip
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_NoAccess_A_03_Filip.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_ControlTower_NoAccess_A_03_Filip_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_ControlTower_NoAccess_A_03_Filip_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketEnter_Merchant_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketEnter_Merchant_A_01_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketEnter_Merchant_A_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketEnter_Merchant_A_02_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketEnter_Merchant_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketEnter_Merchant_A_Ahmeed_01.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketEnter_Merchant_A_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketEnter_Merchant_A_Ahmeed_02.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketEnter_Merchant_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketEnter_Merchant_B_01_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketEnter_Merchant_B_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketEnter_Merchant_B_02_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketEnter_Merchant_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketEnter_Merchant_B_Ahmeed_01.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketEnter_Merchant_B_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketEnter_Merchant_B_Ahmeed_02.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketExit_Merchant_A_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketExit_Merchant_A_02_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketExit_Merchant_A_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketExit_Merchant_A_Ahmeed_02.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketExit_Merchant_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketExit_Merchant_B_01_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketExit_Merchant_B_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketExit_Merchant_B_02_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketExit_Merchant_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketExit_Merchant_B_Ahmeed_01.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketExit_Merchant_B_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketExit_Merchant_B_Ahmeed_02.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketInvite_Merchant_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketInvite_Merchant_A_01_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketInvite_Merchant_A_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketInvite_Merchant_A_02_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketInvite_Merchant_A_04_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketInvite_Merchant_A_04_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketInvite_Merchant_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketInvite_Merchant_A_Ahmeed_01.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketInvite_Merchant_A_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketInvite_Merchant_A_Ahmeed_02.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketInvite_Merchant_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketInvite_Merchant_B_01_Vincent.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketInvite_Merchant_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketInvite_Merchant_B_Ahmeed_01.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class Civilian_MarketInvite_Merchant_B_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Civilian_MarketInvite_Merchant_B_Ahmeed_02.WSS, 10, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_A_02_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_A_02_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_A_02_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_A_02_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_A_02_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_A_02_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_A_02_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_A_02_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_02_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_02_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_02_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_02_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_02_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_02_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_02_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_02_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_03_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_03_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_03_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_03_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_03_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_03_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Soldier_B_03_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Soldier_B_03_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Spy_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Spy_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Spy_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Spy_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Spy_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Spy_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Spy_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Spy_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Spy_Soldier_B_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Spy_Soldier_B_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Spy_Soldier_B_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Spy_Soldier_B_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Spy_Soldier_B_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Spy_Soldier_B_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_AttackWarning_Spy_Soldier_B_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_AttackWarning_Spy_Soldier_B_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_MilitaryIsland_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_MilitaryIsland_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_MilitaryIsland_A_01_Chinese01_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_MilitaryIsland_A_01_Chinese01_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_MilitaryIsland_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_MilitaryIsland_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_MilitaryIsland_A_01_Chinese02_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_MilitaryIsland_A_01_Chinese02_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_MilitaryIsland_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_MilitaryIsland_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_MilitaryIsland_A_01_Chinese03_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_MilitaryIsland_A_01_Chinese03_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_MilitaryIsland_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_MilitaryIsland_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_MilitaryIsland_A_01_Chinese04_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_MilitaryIsland_A_01_Chinese04_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_NoAccess_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_NoAccess_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_NoAccess_A_01_Chinese01_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_NoAccess_A_01_Chinese01_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_NoAccess_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_NoAccess_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_NoAccess_A_01_Chinese02_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_NoAccess_A_01_Chinese02_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_NoAccess_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_NoAccess_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_NoAccess_A_01_Chinese03_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_NoAccess_A_01_Chinese03_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_NoAccess_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_NoAccess_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_NoAccess_A_01_Chinese04_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_NoAccess_A_01_Chinese04_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_Radars_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_Radars_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_Radars_A_01_Chinese01_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_Radars_A_01_Chinese01_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_Radars_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_Radars_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_Radars_A_01_Chinese02_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_Radars_A_01_Chinese02_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_Radars_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_Radars_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_Radars_A_01_Chinese03_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_Radars_A_01_Chinese03_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_Radars_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_Radars_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_ControlTower_Radars_A_01_Chinese04_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_ControlTower_Radars_A_01_Chinese04_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+//-----
+//________________________________________________WARNINGS
+//-----
+class CSAT_EnemyWarning_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};//
+class CSAT_EnemyWarning_Soldier_A_02_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_02_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_02_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_02_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_02_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_02_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_02_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_02_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};//
+class CSAT_EnemyWarning_Soldier_A_03_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_03_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_03_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_03_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_03_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_03_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_03_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_03_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};//
+class CSAT_EnemyWarning_Soldier_A_04_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_04_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_04_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_04_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_04_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_04_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_04_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_04_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};//
+class CSAT_EnemyWarning_Soldier_A_04_02_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_04_02_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_04_02_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_04_02_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_04_02_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_04_02_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_A_04_02_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_A_04_02_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};//
+class CSAT_EnemyWarning_Soldier_B_01_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_01_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_01_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_01_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_01_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_01_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_01_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_01_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};//
+class CSAT_EnemyWarning_Soldier_B_01_02_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_01_02_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_01_02_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_01_02_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_01_02_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_01_02_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_01_02_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_01_02_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};///
+class CSAT_EnemyWarning_Soldier_B_02_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_02_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_02_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_02_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_02_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_02_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_02_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_02_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_03_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_03_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_03_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_03_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_03_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_03_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_03_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_03_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_04_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_04_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_04_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_04_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_04_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_04_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Soldier_B_04_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Soldier_B_04_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+
+//-----
+//________________________________________________WARNINGS SPY
+//-----
+class CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Spy_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_EnemyWarning_Spy_Soldier_B_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+//-----
+//________________________________________________PLAYER HAS WEAPON
+//-----
+class CSAT_PlayerWeapon_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_PlayerWeapon_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_PlayerWeapon_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_PlayerWeapon_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_PlayerWeapon_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_PlayerWeapon_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_PlayerWeapon_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_PlayerWeapon_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_PlayerWeapon_Soldier_B_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_PlayerWeapon_Soldier_B_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_PlayerWeapon_Soldier_B_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_PlayerWeapon_Soldier_B_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_PlayerWeapon_Soldier_B_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_PlayerWeapon_Soldier_B_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_PlayerWeapon_Soldier_B_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_PlayerWeapon_Soldier_B_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+//-----
+//________________________________________________RESTRICTED AREA ATTACK!
+//-----
+class CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_A_02_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaAlarm_Soldier_B_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+//-----
+//________________________________________________RESTRICTED AREA VEHICLE
+//-----
+class CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNightVehicle_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNightVehicle_Soldier_B_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+//-----
+//________________________________________________NIGHT RESTRICTED AREA
+//-----
+class CSAT_RestrictedAreaNight_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNight_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNight_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNight_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNight_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNight_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNight_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNight_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNight_Soldier_B_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNight_Soldier_B_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNight_Soldier_B_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNight_Soldier_B_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNight_Soldier_B_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNight_Soldier_B_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedAreaNight_Soldier_B_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedAreaNight_Soldier_B_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+//-----
+//________________________________________________ALARM!!! RESTRICTED AREA
+//-----
+class CSAT_RestrictedArea_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_A_02_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_A_02_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_A_02_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_A_02_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_A_02_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_A_02_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_A_02_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_A_02_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_B_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_B_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_B_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_B_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_B_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_B_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_RestrictedArea_Soldier_B_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_RestrictedArea_Soldier_B_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+//-----
+//________________________________________________PLAYER IN VEHICLE ATTACK
+class CSAT_VehicleAttack_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleAttack_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleAttack_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleAttack_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleAttack_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleAttack_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleAttack_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleAttack_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleAttack_Soldier_B_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleAttack_Soldier_B_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleAttack_Soldier_B_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleAttack_Soldier_B_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleAttack_Soldier_B_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleAttack_Soldier_B_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleAttack_Soldier_B_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleAttack_Soldier_B_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+//-----
+//________________________________________________PLAYER IN VEHICLE WARNINGS
+//-----
+class CSAT_VehicleWarning_Soldier_A_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleWarning_Soldier_A_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleWarning_Soldier_A_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleWarning_Soldier_A_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleWarning_Soldier_A_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleWarning_Soldier_A_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleWarning_Soldier_A_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleWarning_Soldier_A_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleWarning_Soldier_B_01_Chinese01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleWarning_Soldier_B_01_Chinese01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleWarning_Soldier_B_01_Chinese02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleWarning_Soldier_B_01_Chinese02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleWarning_Soldier_B_01_Chinese03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleWarning_Soldier_B_01_Chinese03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class CSAT_VehicleWarning_Soldier_B_01_Chinese04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\CSAT_VehicleWarning_Soldier_B_01_Chinese04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+//-----
+//________________________________________________GENDARMERIES
+//-----
+//-----
+//________________________________________________WARNINGS
+//-----
+class Gendarmerie_AttackWarning_Gendarme_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Gendarme_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Gendarme_A_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Gendarme_A_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Gendarme_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Gendarme_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Gendarme_A_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Gendarme_A_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Gendarme_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Gendarme_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Gendarme_B_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Gendarme_B_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Gendarme_B_03_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Gendarme_B_03_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Gendarme_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Gendarme_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Gendarme_B_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Gendarme_B_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Gendarme_B_Ahmeed_03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Gendarme_B_Ahmeed_03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Spy_Gendarme_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Spy_Gendarme_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Spy_Gendarme_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Spy_Gendarme_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Spy_Gendarme_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Spy_Gendarme_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_AttackWarning_Spy_Gendarme_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_AttackWarning_Spy_Gendarme_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};//
+class Gendarmerie_EnemyWarning_Gendarme_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_A_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_A_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_A_03_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_A_03_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_A_04_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_A_04_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_A_Ahmeed_04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_B_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_B_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_B_03_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_B_03_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_B_04_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_B_04_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Gendarme_B_Ahmeed_04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Spy_Gendarme_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Spy_Gendarme_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Spy_Gendarme_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Spy_Gendarme_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Spy_Gendarme_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Spy_Gendarme_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_EnemyWarning_Spy_Gendarme_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_EnemyWarning_Spy_Gendarme_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_PlayerWeapon_Gendarme_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_PlayerWeapon_Gendarme_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_PlayerWeapon_Gendarme_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_PlayerWeapon_Gendarme_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_PlayerWeapon_Gendarme_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_PlayerWeapon_Gendarme_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_PlayerWeapon_Gendarme_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_PlayerWeapon_Gendarme_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaAlarm_Gendarme_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaAlarm_Gendarme_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaAlarm_Gendarme_A_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaAlarm_Gendarme_A_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaAlarm_Gendarme_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaAlarm_Gendarme_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaAlarm_Gendarme_A_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaAlarm_Gendarme_A_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaAlarm_Gendarme_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaAlarm_Gendarme_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaAlarm_Gendarme_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaAlarm_Gendarme_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaNightVehicle_Gendarme_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaNightVehicle_Gendarme_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaNightVehicle_Gendarme_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaNightVehicle_Gendarme_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaNightVehicle_Gendarme_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaNightVehicle_Gendarme_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaNightVehicle_Gendarme_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaNightVehicle_Gendarme_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaNight_Gendarme_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaNight_Gendarme_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaNight_Gendarme_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaNight_Gendarme_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaNight_Gendarme_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaNight_Gendarme_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedAreaNight_Gendarme_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedAreaNight_Gendarme_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_A_01_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_A_01_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_A_01_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_A_01_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_A_01_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_A_01_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_A_01_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_A_01_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_A_02_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_A_02_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_A_02_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_A_02_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_A_02_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_A_02_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_A_02_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_A_02_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_B_01_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_B_01_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_B_01_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_B_01_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_B_01_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_B_01_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_RestrictedArea_Gendarme_B_01_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_RestrictedArea_Gendarme_B_01_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_VehicleAttack_Gendarme_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_VehicleAttack_Gendarme_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_VehicleAttack_Gendarme_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_VehicleAttack_Gendarme_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_VehicleAttack_Gendarme_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_VehicleAttack_Gendarme_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_VehicleAttack_Gendarme_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_VehicleAttack_Gendarme_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_VehicleWarning_Gendarme_A_01_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_VehicleWarning_Gendarme_A_01_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_VehicleWarning_Gendarme_A_01_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_VehicleWarning_Gendarme_A_01_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_VehicleWarning_Gendarme_A_01_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_VehicleWarning_Gendarme_A_01_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_VehicleWarning_Gendarme_A_01_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_VehicleWarning_Gendarme_A_01_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_VehicleWarning_Gendarme_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_VehicleWarning_Gendarme_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Gendarmerie_VehicleWarning_Gendarme_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Gendarmerie_VehicleWarning_Gendarme_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class OM_QRF_CSAT_report_Soldier_A_03_Chinese01_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\OM_QRF_CSAT_report_Soldier_A_03_Chinese01_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class OM_QRF_CSAT_report_Soldier_A_03_Chinese02_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\OM_QRF_CSAT_report_Soldier_A_03_Chinese02_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class OM_QRF_CSAT_report_Soldier_A_03_Chinese03_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\OM_QRF_CSAT_report_Soldier_A_03_Chinese03_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class OM_QRF_CSAT_report_Soldier_A_03_Chinese04_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\OM_QRF_CSAT_report_Soldier_A_03_Chinese04_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_01_Chinese01_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_01_Chinese01_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_01_Chinese02_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_01_Chinese02_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_01_Chinese03_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_01_Chinese03_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_01_Chinese04_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_01_Chinese04_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_02_Chinese01_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_02_Chinese01_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_02_Chinese02_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_02_Chinese02_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_02_Chinese03_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_02_Chinese03_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_02_Chinese04_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_02_Chinese04_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_03_Chinese01_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_03_Chinese01_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_03_Chinese02_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_03_Chinese02_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_03_Chinese03_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_03_Chinese03_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_CSAT_report_Soldier_A_03_Chinese04_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_CSAT_report_Soldier_A_03_Chinese04_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_Gendarmerie_report_Gendarme_A_01_Vincent_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_Gendarmerie_report_Gendarme_A_01_Vincent_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_Gendarmerie_report_Gendarme_A_02_Vincent_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_Gendarmerie_report_Gendarme_A_02_Vincent_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_Gendarmerie_report_Gendarme_A_Ahmeed_01_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_Gendarmerie_report_Gendarme_A_Ahmeed_01_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class QRF_Gendarmerie_report_Gendarme_A_Ahmeed_02_Processed
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\QRF_Gendarmerie_report_Gendarme_A_Ahmeed_02_Processed.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Soldier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Soldier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Soldier_A_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Soldier_A_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Soldier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Soldier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Soldier_A_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Soldier_A_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Soldier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Soldier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Soldier_B_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Soldier_B_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Soldier_B_03_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Soldier_B_03_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Soldier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Soldier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Soldier_B_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Soldier_B_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Soldier_B_Ahmeed_03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Soldier_B_Ahmeed_03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Spy_Sodlier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Spy_Sodlier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Spy_Sodlier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Spy_Sodlier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Spy_Sodlier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Spy_Sodlier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_AttackWarning_Spy_Sodlier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_AttackWarning_Spy_Sodlier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarining_Spy_Soldier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarining_Spy_Soldier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarining_Spy_Soldier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarining_Spy_Soldier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarining_Spy_Soldier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarining_Spy_Soldier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarining_Spy_Soldier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarining_Spy_Soldier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_A_02_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_A_02_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_A_02_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_A_02_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_A_02_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_A_02_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_A_02_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_A_02_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_A_03_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_A_03_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_A_04_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_A_04_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_A_Ahmeed_03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_A_Ahmeed_03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_A_Ahmeed_04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_A_Ahmeed_04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_B_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_B_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_B_03_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_B_03_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_B_04_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_B_04_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_B_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_B_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_B_Ahmeed_03
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_B_Ahmeed_03.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_EnemyWarning_Soldier_B_Ahmeed_04
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_EnemyWarning_Soldier_B_Ahmeed_04.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_PlayerWeapon_Soldier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_PlayerWeapon_Soldier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_PlayerWeapon_Soldier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_PlayerWeapon_Soldier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_PlayerWeapon_Soldier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_PlayerWeapon_Soldier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_PlayerWeapon_Soldier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_PlayerWeapon_Soldier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaAlarm_Soldier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaAlarm_Soldier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaAlarm_Soldier_A_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaAlarm_Soldier_A_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaAlarm_Soldier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaAlarm_Soldier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaAlarm_Soldier_A_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaAlarm_Soldier_A_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaAlarm_Soldier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaAlarm_Soldier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaAlarm_Soldier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaAlarm_Soldier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaNightVehicle_Soldier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaNightVehicle_Soldier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaNightVehicle_Soldier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaNightVehicle_Soldier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaNightVehicle_Soldier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaNightVehicle_Soldier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaNightVehicle_Soldier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaNightVehicle_Soldier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaNight_Soldier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaNight_Soldier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaNight_Soldier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaNight_Soldier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaNight_Soldier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaNight_Soldier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedAreaNight_Soldier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedAreaNight_Soldier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedArea_Soldier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedArea_Soldier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedArea_Soldier_A_02_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedArea_Soldier_A_02_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedArea_Soldier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedArea_Soldier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedArea_Soldier_A_Ahmeed_02
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedArea_Soldier_A_Ahmeed_02.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedArea_Soldier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedArea_Soldier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_RestrictedArea_Soldier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_RestrictedArea_Soldier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_VehicleAttack_Soldier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_VehicleAttack_Soldier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_VehicleAttack_Soldier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_VehicleAttack_Soldier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_VehicleAttack_Soldier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_VehicleAttack_Soldier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_VehicleAttack_Soldier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_VehicleAttack_Soldier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_VehicleWarning_Soldier_A_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_VehicleWarning_Soldier_A_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_VehicleWarning_Soldier_A_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_VehicleWarning_Soldier_A_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_VehicleWarning_Soldier_B_01_Vincent
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_VehicleWarning_Soldier_B_01_Vincent.WSS, 1, 1 };
+	 titles[] = {0,""};
+};
+class Syndikat_VehicleWarning_Soldier_B_Ahmeed_01
+{
+	 sound[]={\a3\Dubbing_F_Oldman\barks\Syndikat_VehicleWarning_Soldier_B_Ahmeed_01.WSS, 1, 1 };
+	 titles[] = {0,""};
+};

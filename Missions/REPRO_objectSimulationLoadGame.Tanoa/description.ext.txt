@@ -1,0 +1,6 @@
+//SECTOR MODUL INIT.
+#include "\a3\Missions_F_Oldman\Systems\commonDescription.inc"
+#include "\a3\Missions_F_Oldman\Systems\UI\defines.inc"
+#include "\a3\Missions_F_Oldman\Systems\UI\Sleeping\RscTestControlTypes.inc"
+#include "\a3\Missions_F_Oldman\Systems\UI\Sleeping\RscRestUI.inc"
+#include "\a3\Missions_F_Oldman\Systems\UI\RecruitGroup\RscRecruitSyndicatsTypes.inc"

@@ -1,0 +1,33 @@
+#define MARKER_TYPE         "mil_box"
+
+params [ ["_createMarkers", true, [true] ], [ "_attribute", "CanAttack", [""] ] ];
+
+/* ((missionNamespace getVariable "BIS_allSectors") select 0) getVariable "RestrictedArea" */
+_CreateMarker =
+{
+  params ["_markerName", "_pos", ["_markerType", MARKER_TYPE, [""] ], ["_alpha", 0.1, [0.1]] ];
+	private "_marker";
+  //["_deadPos: %1", _deadPos] call BIS_fnc_logFormat;
+  _marker = createMarker [_markerName, _pos];
+  _markerName setMarkerType _markerType;
+  _markerName setMarkerAlpha _alpha;
+  _markerName
+};
+
+
+private _enemyBases = [];
+private _sectors = (missionNamespace getVariable "BIS_allSectors");
+private _sectorsMarkers = [];
+{ //TODO: check proper data type
+  if (_x getVariable [_attribute, false]) then
+  {
+		["%1, %2", _x, _x getVariable _attribute ] call BIS_fnc_LogFormat;
+    _enemyBases pushBack _x;
+    if(_createMarkers) then {_sectorsMarkers pushBack ([str _x, getpos _x, nil, 0.5] call _CreateMarker)};
+  };
+} forEach _sectors;
+
+/* missionNamespace setVariable ["BIS_SyndikatTeam_sectorsMarkers", _sectorsMarkers];
+missionNamespace setVariable ["BIS_SyndikatTeam_sectors", _sectors]; */
+
+[_enemyBases, _sectorsMarkers]

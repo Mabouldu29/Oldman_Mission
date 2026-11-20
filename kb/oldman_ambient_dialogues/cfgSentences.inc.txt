@@ -1,0 +1,544 @@
+// Exported by kerbervac, 19.11.2019 16:56:13
+// Include to global CfgSentences config
+/*
+// ["am_oreokastro_priest","oldman_ambient_dialogues"] call BIS_fnc_kbTell;
+class am_oreokastro_priest
+{
+	id = 1;
+	priority = 0;
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_001_am_oreokastro_priest.bikb";
+	#include "oldman_ambient_dialogues_001_am_oreokastro_priest.bikb"
+};
+
+// ["am_idap_worker_c","oldman_ambient_dialogues"] call BIS_fnc_kbTell;
+class am_idap_worker_c
+{
+	id = 2;
+	priority = 0;
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_002_am_idap_worker_c.bikb";
+	#include "oldman_ambient_dialogues_002_am_idap_worker_c.bikb"
+};
+*/
+/*
+class am_idap_worker_a_actor1   // --- all ambient conversations must have both OM_amb_ prefix and actor suffix (_actor1, _actor2 etc) based on the voice actor
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;       // --- conversation priority (AMBIENT_CONVO_PRIO_LOW, AMBIENT_CONVO_PRIO_MEDIUM, AMBIENT_CONVO_PRIO_HIGH)
+	repeats = -1;        // --- how many times this conversation can be repeated (0 = play only once, -1 = no limit)
+	condition = "TRUE";      // --- condition must return true in order to queue this conversation (_this = NPC speaker)
+	animation = "";     // --- WIP
+	intel[] = {};    // --- intel title to be added if player listens to the NPC; sentence class after which to receive the intel is optional, the last one is used by default
+	singleSpeaker = 1;      // --- default is 0, use 1 for convos that have only one NPC speaking to player
+	side = "CIV"; // --- by default, NPC of any side can use this convo; use "CIV", "GUER" or "EAST" to whitelist this convo only for civilians, Synkikat or Gendarmarie
+	file = file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_003_am_idap_worker_greeting_a.bikb";
+	#include "oldman_ambient_dialogues_003_am_idap_worker_greeting_a.bikb"
+};
+/*
+class am_idap_worker_x_actor1  
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;    
+	repeats = -1;       
+	condition = "TRUE";     
+	animation = "";    
+	intel[] = {};  
+	singleSpeaker = 1;  
+	side = "CIV";  
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_004_am_idap_worker_greeting_b.bikb";
+	#include "oldman_ambient_dialogues_004_am_idap_worker_greeting_b.bikb"
+};
+*/
+class am_idap_worker_greeting_d_actor1  
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;    
+	repeats = -1;       
+	condition = "TRUE";     
+	animation = "";    
+	intel[] = {};  
+	singleSpeaker = 1;  
+	side = "CIV"; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_006_am_idap_worker_greeting_d_Dan.bikb";
+	#include "oldman_ambient_dialogues_006_am_idap_worker_greeting_d_Dan.bikb"
+};
+
+class am_syndikat_greeting_a_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {}; 
+	singleSpeaker = 1; 
+	side = "GUER";  
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_007_am_syndikat_greeting_a_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_007_am_syndikat_greeting_a_Ahmeed.bikb"
+};
+class am_syndikat_greeting_a_actor2: am_syndikat_greeting_a_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_007_am_syndikat_greeting_a_Vincent.bikb";
+	#include "oldman_ambient_dialogues_007_am_syndikat_greeting_a_Vincent.bikb"
+}
+
+class am_syndikat_greeting_b_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 1; 
+	side = "GUER";
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_008_am_syndikat_greeting_b_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_008_am_syndikat_greeting_b_Ahmeed.bikb"
+};
+class am_syndikat_greeting_b_actor2: am_syndikat_greeting_b_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_008_am_syndikat_greeting_b_Vincent.bikb";
+	#include "oldman_ambient_dialogues_008_am_syndikat_greeting_b_Vincent.bikb"
+}
+
+/* --- KEEP THIS DISABLE, AUDIO DIDN'T MATCH THE SUBTITLES
+class am_syndikat_greeting_c_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 1; 
+	side = "GUER"; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_009_am_syndikat_greeting_c_Gael.bikb";
+	#include "oldman_ambient_dialogues_009_am_syndikat_greeting_c_Gael.bikb"
+};
+*/
+class am_syndikat_greeting_d_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};  
+	singleSpeaker = 1;  
+	side = "GUER"; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_010_am_syndikat_greeting_d_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_010_am_syndikat_greeting_d_Ahmeed.bikb"
+};
+class am_syndikat_greeting_d_actor2: am_syndikat_greeting_d_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_010_am_syndikat_greeting_d_Vincent.bikb";
+	#include "oldman_ambient_dialogues_010_am_syndikat_greeting_d_Vincent.bikb"
+}
+
+class am_gendarme_greeting_a_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};  
+	singleSpeaker = 1; 
+	side = "EAST";  
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_011_am_gendarme_greeting_a_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_011_am_gendarme_greeting_a_Ahmeed.bikb"
+};
+class am_gendarme_greeting_a_actor2: am_gendarme_greeting_a_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_011_am_gendarme_greeting_a_Vincent.bikb";
+	#include "oldman_ambient_dialogues_011_am_gendarme_greeting_a_Vincent.bikb"
+}
+
+class am_gendarme_greeting_b_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {}; 
+	singleSpeaker = 1;   
+	side = "EAST";
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_012_am_gendarme_greeting_b_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_012_am_gendarme_greeting_b_Ahmeed.bikb"
+};
+class am_gendarme_greeting_b_actor2: am_gendarme_greeting_b_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_012_am_gendarme_greeting_b_Vincent.bikb";
+	#include "oldman_ambient_dialogues_012_am_gendarme_greeting_b_Vincent.bikb"
+}
+class am_gendarme_greeting_c_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 1; 
+	side = "EAST";
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_013_am_gendarme_greeting_c_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_013_am_gendarme_greeting_c_Ahmeed.bikb"
+};
+class am_gendarme_greeting_c_actor2: am_gendarme_greeting_c_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_013_am_gendarme_greeting_c_Vincent.bikb";
+	#include "oldman_ambient_dialogues_013_am_gendarme_greeting_c_Vincent.bikb"
+}
+
+class am_gendarme_greeting_d_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 1; 
+	side = "EAST";
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_014_am_gendarme_greeting_d_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_014_am_gendarme_greeting_d_Ahmeed.bikb"
+};
+class am_gendarme_greeting_d_actor2: am_gendarme_greeting_d_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_014_am_gendarme_greeting_d_Vincent.bikb";
+	#include "oldman_ambient_dialogues_014_am_gendarme_greeting_d_Vincent.bikb"
+}
+
+//--- talk about destroyed fuel tanks
+class am_syndikat_dialogue_a_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "missionNamespace getVariable ['BIS_ambtCon_fuelDepo',false]";    
+	animation = "";     
+	intel[] = {};  
+	singleSpeaker = 0;  
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_015_am_syndikat_dialogue_a_Ahmeed.bikb"
+};
+class am_syndikat_dialogue_a_actor2: am_syndikat_dialogue_a_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_Vincent.bikb";
+	#include "oldman_ambient_dialogues_015_am_syndikat_dialogue_a_Vincent.bikb"
+}
+class am_syndikat_dialogue_a_actor3: am_syndikat_dialogue_a_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_015_am_syndikat_dialogue_a_Vratislav.bikb"
+}
+class am_syndikat_dialogue_a_actor4: am_syndikat_dialogue_a_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_015_am_syndikat_dialogue_a_Filip.bikb";
+	#include "oldman_ambient_dialogues_015_am_syndikat_dialogue_a_Filip.bikb"
+}
+
+//--- talk about destroyed radio tower
+class am_syndikat_dialogue_b_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_016_am_syndikat_dialogue_b_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_016_am_syndikat_dialogue_b_Ahmeed.bikb"
+};
+class am_syndikat_dialogue_b_actor2: am_syndikat_dialogue_b_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_016_am_syndikat_dialogue_b_Vincent.bikb";
+	#include "oldman_ambient_dialogues_016_am_syndikat_dialogue_b_Vincent.bikb"
+}
+class am_syndikat_dialogue_b_actor3: am_syndikat_dialogue_b_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_016_am_syndikat_dialogue_b_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_016_am_syndikat_dialogue_b_Vratislav.bikb"
+}
+
+//--- talk about Noveaux Horizons
+class am_syndikat_dialogue_c_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_017_am_syndikat_dialogue_c_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_017_am_syndikat_dialogue_c_Ahmeed.bikb"
+};
+class am_syndikat_dialogue_c_actor2: am_syndikat_dialogue_c_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_017_am_syndikat_dialogue_c_Vincent.bikb";
+	#include "oldman_ambient_dialogues_017_am_syndikat_dialogue_c_Vincent.bikb"
+}
+class am_syndikat_dialogue_c_actor3: am_syndikat_dialogue_c_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_017_am_syndikat_dialogue_c_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_017_am_syndikat_dialogue_c_Vratislav.bikb"
+}
+
+//--- talk about prisoned traitor
+class am_syndikat_dialogue_d_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1; 
+	//--- ToDo: only in village next to the farm?       
+	condition = "([date, ([BIS_StartMissionDate, 12, 'h'] call BIS_fnc_CalculateDateTime)] call BIS_fnc_IsDateTimeNewer && [([BIS_StartMissionDate, 3, 'd'] call BIS_fnc_CalculateDateTime),date] call BIS_fnc_IsDateTimeNewer) && (isNil 'BIS_SQ0_R_Traitor' || (!isNil 'BIS_SQ0_R_Traitor' && !(['T_SQ0_R_Traitor'] call bis_fnc_questGetState == 3)))";    
+	animation = "";     
+	intel[] = {"GENDARMARIE: Syndikat fighter"};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_018_am_syndikat_dialogue_d_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_018_am_syndikat_dialogue_d_Ahmeed.bikb"
+};
+class am_syndikat_dialogue_d_actor2: am_syndikat_dialogue_d_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_018_am_syndikat_dialogue_d_Vincent.bikb";
+	#include "oldman_ambient_dialogues_018_am_syndikat_dialogue_d_Vincent.bikb"
+}
+class am_syndikat_dialogue_d_actor3: am_syndikat_dialogue_d_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_018_am_syndikat_dialogue_d_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_018_am_syndikat_dialogue_d_Vratislav.bikb"
+}
+
+class am_political_dialogue_a_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "missionNamespace getVariable ['BIS_ambtCon_playerHasStolenMoney',true]";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_019_am_political_dialogue_a_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_019_am_political_dialogue_a_Ahmeed.bikb"
+};
+class am_political_dialogue_a_actor2: am_political_dialogue_a_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_019_am_political_dialogue_a_Vincent.bikb";
+	#include "oldman_ambient_dialogues_019_am_political_dialogue_a_Vincent.bikb"
+}
+class am_political_dialogue_a_actor3: am_political_dialogue_a_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_019_am_political_dialogue_a_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_019_am_political_dialogue_a_Vratislav.bikb"
+}
+
+class am_political_dialogue_b_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_020_am_political_dialogue_b_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_020_am_political_dialogue_b_Ahmeed.bikb"
+};
+class am_political_dialogue_b_actor2: am_political_dialogue_b_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_020_am_political_dialogue_b_Filip.bikb";
+	#include "oldman_ambient_dialogues_020_am_political_dialogue_b_Filip.bikb"
+}
+class am_political_dialogue_b_actor3: am_political_dialogue_b_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_020_am_political_dialogue_b_Vincent.bikb";
+	#include "oldman_ambient_dialogues_020_am_political_dialogue_b_Vincent.bikb"
+}
+class am_political_dialogue_b_actor4: am_political_dialogue_b_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_020_am_political_dialogue_b_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_020_am_political_dialogue_b_Vratislav.bikb"
+}
+
+class am_political_dialogue_c_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};  
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_021_am_political_dialogue_c_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_021_am_political_dialogue_c_Ahmeed.bikb"
+};
+class am_political_dialogue_c_actor2: am_political_dialogue_c_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_021_am_political_dialogue_c_Vincent.bikb";
+	#include "oldman_ambient_dialogues_021_am_political_dialogue_c_Vincent.bikb"
+}
+class am_political_dialogue_c_actor3: am_political_dialogue_c_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_021_am_political_dialogue_c_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_021_am_political_dialogue_c_Vratislav.bikb"
+}
+//--- talk about crashed plane
+class am_political_dialogue_d_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = 3;        
+	condition = "!isNil 'BIS_T_SQ2_G_Photos'";    
+	animation = "";     
+	intel[] = {};  
+	singleSpeaker = 0;  
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_022_am_political_dialogue_d_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_022_am_political_dialogue_d_Ahmeed.bikb"
+};
+class am_political_dialogue_d_actor2: am_political_dialogue_d_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_022_am_political_dialogue_d_Vincent.bikb";
+	#include "oldman_ambient_dialogues_022_am_political_dialogue_d_Vincent.bikb"
+}
+class am_political_dialogue_d_actor3: am_political_dialogue_d_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_022_am_political_dialogue_d_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_022_am_political_dialogue_d_Vratislav.bikb"
+}
+class am_idap_worker_a_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = 1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_023_am_idap_worker_a_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_023_am_idap_worker_a_Ahmeed.bikb"
+};
+class am_idap_worker_a_actor2: am_idap_worker_a_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_023_am_idap_worker_a_Vincent.bikb";
+	#include "oldman_ambient_dialogues_023_am_idap_worker_a_Vincent.bikb"
+}
+class am_idap_worker_a_actor3: am_idap_worker_a_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_023_am_idap_worker_a_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_023_am_idap_worker_a_Vratislav.bikb"
+}
+
+class am_idap_worker_b_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = 1;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_024_am_idap_worker_b_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_024_am_idap_worker_b_Ahmeed.bikb"
+};
+class am_idap_worker_b_actor2: am_idap_worker_b_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_024_am_idap_worker_b_Vincent.bikb";
+	#include "oldman_ambient_dialogues_024_am_idap_worker_b_Vincent.bikb"
+}
+class am_idap_worker_b_actor3: am_idap_worker_b_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_024_am_idap_worker_b_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_024_am_idap_worker_b_Vratislav.bikb"
+}
+
+class am_night_club_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = 2;        
+	condition = "TRUE";    
+	animation = "";     
+	intel[] = {"CIVILIAN: Disco"};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_025_am_night_club_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_025_am_night_club_Ahmeed.bikb"
+};
+class am_night_club_actor2: am_night_club_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_025_am_night_club_Vincent.bikb";
+	#include "oldman_ambient_dialogues_025_am_night_club_Vincent.bikb"
+}
+class am_night_club_actor3: am_night_club_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_025_am_night_club_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_025_am_night_club_Vratislav.bikb"
+}
+//--- talk about traitors house
+class am_vagalala_house_destroyed_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "!isNil 'BIS_SQ0_D_TraitorHouse' && ['T_SQ0_D_TraitorHouse'] call bis_fnc_questGetState == 3";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_026_am_vagalala_house_destroyed_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_026_am_vagalala_house_destroyed_Ahmeed.bikb"
+};
+class am_vagalala_house_destroyed_actor2: am_vagalala_house_destroyed_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_026_am_vagalala_house_destroyed_Vincent.bikb";
+	#include "oldman_ambient_dialogues_026_am_vagalala_house_destroyed_Vincent.bikb"
+}
+class am_vagalala_house_destroyed_actor3: am_vagalala_house_destroyed_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_026_am_vagalala_house_destroyed_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_026_am_vagalala_house_destroyed_Vratislav.bikb"
+}
+//--- talk about destroyed AA radars
+
+class am_radar_destroyed_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "['T_SQ4_D_primaryRadar'] call bis_fnc_questGetState == 3 && ['T_SQ4_D_backupRadar'] call bis_fnc_questGetState == 3";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_027_am_radar_destroyed_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_027_am_radar_destroyed_Ahmeed.bikb"
+};
+class am_radar_destroyed_actor2: am_radar_destroyed_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_027_am_radar_destroyed_Vincent.bikb";
+	#include "oldman_ambient_dialogues_027_am_radar_destroyed_Vincent.bikb"
+}
+
+class am_facility_destroyed_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "['T_SQ_D_Facility'] call bis_fnc_questGetState == 3";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_028_am_facility_destroyed_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_028_am_facility_destroyed_Ahmeed.bikb"
+};
+class am_facility_destroyed_actor2: am_facility_destroyed_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_028_am_facility_destroyed_Vincent.bikb";
+	#include "oldman_ambient_dialogues_028_am_facility_destroyed_Vincent.bikb"
+}
+class am_facility_destroyed_actor3: am_facility_destroyed_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_028_am_facility_destroyed_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_028_am_facility_destroyed_Vratislav.bikb"
+}
+
+class am_landing_on_airstrip_actor1
+{
+	infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;      
+	repeats = -1;        
+	condition = "['T_SQ7_L_Airport'] call bis_fnc_questGetState == 3";    
+	animation = "";     
+	intel[] = {};   
+	singleSpeaker = 0; 
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_029_am_landing_on_airstrip_Ahmeed.bikb";
+	#include "oldman_ambient_dialogues_029_am_landing_on_airstrip_Ahmeed.bikb"
+};
+class am_landing_on_airstrip_actor2: am_landing_on_airstrip_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_029_am_landing_on_airstrip_Filip.bikb";
+	#include "oldman_ambient_dialogues_029_am_landing_on_airstrip_Filip.bikb"
+}
+class am_landing_on_airstrip_actor3: am_landing_on_airstrip_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_029_am_landing_on_airstrip_Vincent.bikb";
+	#include "oldman_ambient_dialogues_029_am_landing_on_airstrip_Vincent.bikb"
+}
+class am_landing_on_airstrip_actor4: am_landing_on_airstrip_actor1
+{
+	file = "\a3\missions_f_Oldman\kb\oldman_ambient_dialogues\oldman_ambient_dialogues_029_am_landing_on_airstrip_Vratislav.bikb";
+	#include "oldman_ambient_dialogues_029_am_landing_on_airstrip_Vratislav.bikb"
+}

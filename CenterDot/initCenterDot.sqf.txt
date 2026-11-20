@@ -1,0 +1,21 @@
+scriptName "CenterDot";
+disableSerialization;
+params[["_addLoadedHandler", true]];
+#include "defines.inc";
+//re-add function execution as this is not serialized
+//if (_addLoadedHandler) then {addMissionEventHandler ["Loaded", { [false] execVM "\A3\Missions_F_Oldman\Systems\UI\CenterDot\initCenterDot.sqf"; }];}; //moved to fn_om_addLoadedEH
+CREATE_DISPLAY(IDD_CENTER_DOT,1,false);
+private _ctrlPointer = GET_CTRL(DISPLAY(IDD_CENTER_DOT), IDC_CENTER_DOT_POINTER);
+player setVariable ["BIS_OM_ShowCenterDot", true];
+while {alive player} do	{
+	//check whether the player is unarmed and is still alive
+
+	WaitUntil {sleep 2; (isNull (objectParent player) && {( (currentWeapon player) isEqualTo "" && player getVariable ["BIS_OM_ShowCenterDot", false] ) })};
+		//fadein pointer
+		_ctrlPointer ctrlSetFade 0;
+		_ctrlPointer ctrlCommit 0.25;
+	WaitUntil {sleep 2; !(isNull (objectParent player) && {( (currentWeapon player) isEqualTo "" && player getVariable ["BIS_OM_ShowCenterDot", false] ) })};
+		//fadeout pointer
+		_ctrlPointer ctrlSetFade 1;
+		_ctrlPointer ctrlCommit 0.25;
+};

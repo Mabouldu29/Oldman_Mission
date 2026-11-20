@@ -1,0 +1,30 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#define TIME_FLOAT_CONVERT 	0.000114155			// 1/(365*24)
+
+params [ ["_data", [], [[]] ] ];
+_data params [ ["_control", controlNull, [controlNull, displayNull] ], ["_value", 0, [999]] ];
+private _logic = MGVAR("BIS_OM_SyndikatTeam_logic");
+
+waitUntil {!isnull findDisplay 667};
+_display = findDisplay 667;
+
+// Catch display
+private _ctrlDate = _display displayCtrl 7114;//5543
+
+private _newDate = numberToDate [date select 0, ((dateToNumber date)+ ((_value + GVAR(_logic, "estimatedTimeToSector")/3600) * TIME_FLOAT_CONVERT) )];
+
+private _hours = if( _newDate select 3 < 10 ) then [ {format ["0%1", _newDate select 3 ]}, {_newDate select 3}];
+private _minutes = if( _newDate select 4 < 10 ) then [ {format ["0%1", _newDate select 4 ]}, {_newDate select 4}];
+
+_ctrlDate ctrlsettext format
+[
+	"%6:\n%1.%2. %3, %4:%5",
+	_newDate select 2,
+	_newDate select 1,
+	_newDate select 0,
+	_hours,
+	_minutes,
+	Localize "STR_A3_OM_System_SyndikatTeam_AttackStartDate"
+];
+
+SVAR( _logic, "eventStart", _newDate );

@@ -1,0 +1,79 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+
+params["_obj1", "_soldier", "_vehicle", "_checkpoint"];
+private _navigate = true;
+private _state_checkpoint_control_done_ok = false;
+_soldier disableAI "ANIM";
+/* ["Navigation| Soldier: %1", _soldier] call BIS_fnc_logFormat; */
+while{ _navigate } do
+{
+  switch (GET_STATE(_checkpoint)) do
+  {
+      case (STATE_CHECKPOINT_VEHICLEENTERED):
+      {
+        private _dist = [_obj1, _vehicle] call BIS_fnc_OM_moduleCheckpoint_checkDistanceFromObject;
+        /* ["CHKPOINT: _obj1: %1,_vehicle: %2 | DISTANCE: %3", _obj1,_vehicle, _dist] call BIS_fnc_logFormat; */
+        private _ret = [_obj1, _vehicle] call BIS_fnc_OM_moduleCheckpoint_checkAngleToObject;
+        /* ["CHKPOINT: _angle: %1", _ret] call BIS_fnc_logFormat; */
+        private _angle = _ret select 0;
+        private _relPos = _ret select 1;
+        _soldier setDir (getDir _obj1);
+        if( VEHICLE_DISTANCE_FROM_MARSHALL_MEDIUM <= _dist && _dist < VEHICLE_DISTANCE_FROM_MARSHALL_FAR ) then
+        {
+          /* ["CHKPOINT: going to play the animation %1, on soldier %2", ANIMSET_NAVIGATE_STRAIGHT, _soldier] call BIS_fnc_logFormat; */
+          [_soldier, ANIMSET_NAVIGATE_STRAIGHT, PLAY_LOOP, true] call BIS_fnc_OM_moduleCheckpoint_playAnim
+        };
+
+        //enough distace to navigate in detail (left right)
+        if (_dist <= VEHICLE_DISTANCE_FROM_MARSHALL_MEDIUM) then
+        {
+          if(_relPos == OBJ_ON_RIGHT && _angle > VEHICLE_MAX_ANGLE_FROM_MARSHALL) then
+          {
+            [_soldier, ANIMSET_NAVIGATE_LEFT, PLAY_LOOP, true] call BIS_fnc_OM_moduleCheckpoint_playAnim;
+          }
+          else
+          {
+            if(_relPos == OBJ_ON_LEFT && _angle > VEHICLE_MAX_ANGLE_FROM_MARSHALL ) then
+            {
+              [_soldier, ANIMSET_NAVIGATE_RIGHT, PLAY_LOOP, true] call BIS_fnc_OM_moduleCheckpoint_playAnim;
+            }
+            else
+            {
+              [_soldier, ANIMSET_NAVIGATE_STRAIGHT, PLAY_LOOP, true] call BIS_fnc_OM_moduleCheckpoint_playAnim;
+            };
+          };
+        };
+      };
+      case (STATE_CHECKPOINT_PARKED_CONTROLPOINT);
+      case (STATE_CHECKPOINT_CONTROL_IN_PROGRESS):
+      {
+        [_soldier, ANIMSET_NAVIGATE_STRAIGHT, PLAY_OUT, false] call BIS_fnc_OM_moduleCheckpoint_playAnim;
+      };
+
+      case(STATE_CHECKPOINT_CONTROL_DONE_OK):
+      {
+        if!(_state_checkpoint_control_done_ok) then
+        {
+          _state_checkpoint_control_done_ok = true;
+          [_soldier, ANIMSET_NAVIGATE_LEAVE, PLAY_LOOP, false] call BIS_fnc_OM_moduleCheckpoint_playAnim;
+        };
+      };
+
+      case (STATE_CHECKPOINT_IDLE);
+      case (STATE_CHECKPOINT_CONTROLACTIVE):
+      {
+        [_soldier, ANIMSET_NAVIGATE_LEAVE, PLAY_OUT, false] call BIS_fnc_OM_moduleCheckpoint_playAnim;
+        _navigate = false;
+        _state_checkpoint_control_done_ok = false;
+      };
+
+      case (STATE_CHECKPOINT_ALARMED_WEAPON):
+      {
+        _soldier enableAI "ANIM";
+        [_soldier, ANIMSET_NAVIGATE_LEAVE, PLAY_OUT, true] call BIS_fnc_OM_moduleCheckpoint_playAnim;
+      };
+  };
+  Sleep 0.1;
+};
+"leaving navigate loop" call BIS_fnc_log;

@@ -1,0 +1,3 @@
+params["_logic", "_param1", "_param2"];
+if(!isNil "_param1") then { _logic setVariable ["incomeTime", _param1] };
+if(!isNil "_param2") then { _logic setVariable ["incomeSum", _param2] };

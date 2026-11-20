@@ -1,0 +1,83 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc";
+
+if ( (_this # 0) != "init") exitWith {};
+
+_module = (_this # 1) # 0;
+//--- check if the name of market is localized or not and set the name
+_name = "";
+_nameAction = GVAR(_module, "Name");
+EXPORTER_EXPORT_MODULE_NAME();
+
+_cond = _module getVariable ["ShopCondition", "TRUE"];
+_condMarker = _module getVariable ["MarkerCondition", "TRUE"];
+_marker = _module getVariable ["SmartMarker", "SmartMarker_C_Armory_F"];
+_owner = _module getVariable ["Owner", 0];
+
+private _savedBox = (synchronizedObjects _module) select {!(_x isKindOf "Man")};
+if ((count _savedBox) > 0) then {	_savedBox = _savedBox # 0 } else { _savedBox = "" };
+
+private _savedShopkeeper = (synchronizedObjects _module) select {(_x isKindOf "Man")};
+if ((count _savedShopkeeper) > 0) then {	_savedShopkeeper = _savedShopkeeper # 0 } else { _savedShopkeeper = "" };
+
+private _cHandleShopKeeperAvailability = format
+["
+	[_this] spawn
+	{
+		scriptName '_cHandleShopKeeperAvailability';
+		private _shopkeeper = _this select 0;
+		private _cond = {(!isNull _shopkeeper && {alive _shopkeeper && (behaviour _shopkeeper != 'COMBAT') && call {%2} })} ;
+   'MARKETS: starting' call BIS_fnc_Log;
+  	while { !isNull _shopkeeper && alive _shopkeeper } do
+  	{
+		   'MARKETS: waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; call _cond };
+		   _shopkeeper setVariable ['BIS_Market', '%5'];
+		   _shopkeeper setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select %6];
+		   [_shopkeeper, %4] spawn BIS_fnc_OM_addKaufMan;
+		   'MARKETS: running kaufman and waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; !(call _cond) };
+			 ['MARKETS: keeper %1 is not available!', _shopkeeper] call BIS_fnc_logFormat;
+  	}
+	};
+	",
+	"%1", _cond, nil, _savedBox, _nameAction, _owner
+];
+
+{
+	private _special = _x getVariable ["#spc",[]];
+	_special pushBack ["#init",[_cHandleShopKeeperAvailability]];
+	_x setVariable ["#spc",_special];
+} forEach ( synchronizedObjects _module ) select { _x isKindOf "Man" };
+/* private _condToHide = { ( !isNull %7 && !alive %7 ) || !call {%2} || !call {%6} }; */
+
+private _codeInit = "";
+if!( uiNamespace getVariable ["OM_restPointMarkersExportStarted", false] ) then
+{
+	uiNamespace setVariable ["OM_restPointMarkersExportStarted", true];
+	_codeInit =
+	";
+		[] spawn
+		{
+			scriptName '_codeInit';
+			waitUntil {sleep 1; !isNil 'BIS_OM_SmartMarkers_mrkHndl'};
+			private _markerID = '';
+	";
+}
+else
+{
+	_codeInit = "";
+};
+
+private _cHandleShopKeeperMarkers = format
+["	%8
+		_markerID = [0, ['%3', '%7', %5, TRUE, [['name', %4]], TRUE, %2]] call BIS_fnc_OM_moduleSmartMarkers;
+		if( isNil '%6' ) then { %6 = objNull };",
+		"%1", compile format [ "!( !isNull %3 && !alive %3 ) && (( %1 ) && ( %2 ))", _cond, _condMarker, _savedShopkeeper ], _marker, _name, position _module, _savedShopkeeper, 'BIS_OM_' + (call BIS_fnc_OM_generateHash), _codeInit
+];
+
+EXPORTER_EXPORT_MODULE_DATA(_cHandleShopKeeperMarkers);
+
+
+waitUntil {sleep 1; !isNil "BIS_missionInitDone" && !isNil "BIS_OM_SmartMarkers_mrkHndl"};
+call compile _cHandleShopKeeperMarkers;
+deleteVehicle _module;

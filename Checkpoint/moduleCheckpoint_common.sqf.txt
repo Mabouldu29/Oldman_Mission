@@ -1,0 +1,117 @@
+BIS_fnc_OM_moduleCheckpoint_calculateBoxExtremes =
+{
+	params["_veh", ["_offset", [1.0, 1.0], [[]] ] ];
+	private _bbox = 0 boundingBoxReal _veh;
+
+	private _x1 = (BOX_P1(_bbox) select 0)*(_offset select 0);
+	private _y1 = (BOX_P1(_bbox) select 1)*(_offset select 1);
+
+	private _x2 = (BOX_P2(_bbox) select 0)*(_offset select 0);
+	private _y2 = (BOX_P2(_bbox) select 1)*(_offset select 1);
+
+	private _corners = [ [_x2, _y1, 0], [_x1, _y1, 0], [_x1, _y2, 0], [_x2, _y2, 0] ];
+	private _verticalCenter = _y2/2;
+	[_corners, _verticalCenter];
+};
+
+private _fnc_OM_moduleCheckpoint_ShowInfo =
+{
+  params["_subject", "_body", "_footnote", ["_time", 3, [999] ] ];
+  [
+  parseText format
+  [
+  "<t font='PuristaBold' size='1.6' color='#f2a832'>%3</t><br /><t font='PuristaMedium' size='1.5'>%1</t><br />
+  <t font='PuristaMedium' size='1.0'>%2</t>",_body,_footnote,_subject
+  ], true, nil, _time, 0.7, 0] spawn BIS_fnc_textTiles;
+};
+
+private _fnc_OM_moduleCheckpoint_GetTimeline =
+{
+  params["_checkpoint"];
+  private _timeline = nearestObjects [_checkpoint, ["Timeline_F"], 100];
+  if!(_timeline isEqualTo []) then {_timeline select 0} else {nil};
+};
+
+private _fnc_OM_moduleCheckpoint_GetCurve =
+{
+  params["_timeline"];
+	private _curve = (synchronizedObjects _timeline) select {_x isKindOf "Curve_F"};
+  if!(_curve isEqualTo []) then {_curve select 0} else {nil};
+};
+
+private _fnc_OM_moduleCheckpoint_GetKeys =
+{
+  //waypoints 0,1 and before last and last are unmovable
+  params["_curve"];
+  /* private _keys = (synchronizedObjects _curve) select {typeOf _x == "Key_F"}; */
+	private _keys = +(_curve call BIS_fnc_richCurve_getKeys);
+  private _keysNr = count _keys;
+  if(_keysNr > 3) then
+  {
+    _keys deleteAt (_keysNr-1);
+    _keys deleteAt (_keysNr-2);
+    _keys deleteAt 0;
+    _keys deleteAt 0;
+  };
+  ["keys: %1", _keys] call BIS_fnc_logFormat;
+  _keys
+};
+
+
+private _fnc_OM_moduleCheckpoint_SetDroneWaypoints =
+{
+
+    params[ "_veh", "_droneWPs", ["_offset",[1.0, 1.0],[[]]] ];
+    private _wpPos = [_veh, _offset] call BIS_fnc_OM_moduleCheckpoint_calculateBoxExtremes;
+    {
+      (_droneWPs select _forEachIndex) attachTo [_veh, _x];
+    } forEach [FRONT_RIGHT_MID(_wpPos), FRONT_LEFT_MID(_wpPos), BACK_LEFT_MID(_wpPos), CENTER_BACK_TOP(_wpPos)];
+};
+
+private _fnc_OM_moduleCheckpoint_PrepareDrone =
+{
+  params ["_checkpoint"];
+  private "_drone";
+  //find the curve first
+  private _curve = nearestObjects [_checkpoint, ["Curve_F"], 100];
+  if( count _curve > 0 ) then
+  {
+    _curve = _curve select 0;
+    //curve exists, look for the drone
+    _drone = nearestObjects [_curve, [DRONE_TYPES], 50];
+    if( count _drone > 0 ) then
+    {
+      _drone = _drone select 0;
+      //add it to the curve simulated objects
+      _curve setVariable ["SimulatedObjects", [_drone]];
+			_drone enableSimulation true;
+			_drone allowDamage true;
+      _drone engineOn true;
+    };
+  };
+  _drone
+};
+
+BIS_fnc_GetRevealProbability =
+{
+	params["_vehicleLoad"];
+	rnd1 = (1-_vehicleLoad);
+	rnd2 = random [0,0.3,1];
+	rnd3 = 1-((rnd1-rnd2) max 0);
+	private _threat = rnd3;
+	if( _threat > (missionNamespace getVariable ["BIS_chkpointChanceOfReveal",0])) then
+	{
+		missionNamespace setVariable ["BIS_chkpointChanceOfReveal",_threat];
+	};
+	missionNamespace getVariable ["BIS_chkpointChanceOfReveal",0]
+};
+
+
+/* params ["_vehicle"];
+private _threat = (([_vehicle] call BIS_fnc_OM_getVehicleWeaponLoad)^(1/2))* random [0,0.5,0.8];
+if( _threat > (missionNamespace getVariable ["BIS_chkpointChanceOfReveal",0])) then
+{
+missionNamespace setVariable ["BIS_chkpointChanceOfReveal",_threat];
+};
+missionNamespace getVariable ["BIS_chkpointChanceOfReveal",0] */
+ /* [vehicle player, nil, [2.0,1.3]] spawn BIS_fnc_OM_moduleCheckpoint_SetDroneWaypoints3; [BIS_timeline1] call BIS_fnc_timeline_play */

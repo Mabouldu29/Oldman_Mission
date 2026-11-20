@@ -1,0 +1,131 @@
+//--- Start credits
+disableserialization;
+
+cutText ["","BLACK OUT", 0.001];
+enableEnvironment [false, false];
+
+//--- Display
+_fnc_scriptname cutrsc ["RscTitleDisplayEmpty","plain"];
+_display = displaynull;
+waituntil {
+	_display = uiNamespace getVariable ["RscTitleDisplayEmpty",displaynull];
+	!isnull _display
+};
+
+#define TIME_FADE	0.3
+#define TIME_STAY	3
+#define TIME_STAY_NAME	0.2
+#define TIME_STAY_TITLE	5
+#define TIME_DELAY	0.5
+
+_fnc_showTitle = {
+	params ["_title","_columns","_duration"];
+	_ctrls = [];
+	_posX = 0;
+	_posW = 1 / (count _columns);
+	_posY = 0.5;
+	{
+		_ctrl = _display ctrlcreate ["RscStructuredText",-1];
+		_ctrl ctrlsetfade 1;
+		_ctrl ctrlsetposition [_posX,0.5,_posW,1];
+		_ctrl ctrlcommit 0;
+		_ctrl ctrlsetstructuredtext parsetext _x;
+		_posH = ctrltextheight _ctrl;
+		_pos = [_posX + _posW * _foreachindex,0.5 - _posH / 2,_posW,_posH];
+		_ctrl ctrlsetposition _pos;
+		_ctrl ctrlcommit 0;
+		_ctrl ctrlsetfade 0;
+		_ctrl ctrlcommit TIME_FADE;
+		_ctrls pushback _ctrl;
+		_posY = _posY min (_pos select 1);
+	} foreach _columns;
+
+	if (_title != "") then {
+		_ctrlTitle = _display ctrlcreate ["RscStructuredText",-1];
+		_ctrlTitle ctrlsetfade 1;
+		_ctrlTitle ctrlsetposition [_posX,0.5,_posW,1];
+		_ctrlTitle ctrlcommit 0;
+		_ctrlTitle ctrlsetstructuredtext parsetext _title;
+		_posH = ctrltextheight _ctrlTitle;
+		_ctrlTitle ctrlsetposition [0,_posY - _posH,1,_posH];
+		_ctrlTitle ctrlcommit 0;
+		_ctrlTitle ctrlsetfade 0;
+		_ctrlTitle ctrlcommit TIME_FADE;
+		_ctrls pushback _ctrlTitle;
+	};
+	
+	_time = time + _duration;
+	waituntil {time > (_time - TIME_FADE)};
+	{
+		_x ctrlsetfade 1;
+		_x ctrlcommit TIME_FADE;
+	} foreach _ctrls;
+
+	waituntil {time > (_time + TIME_DELAY)};
+	{ctrldelete _x;} foreach _ctrls;
+};
+
+_br = "<br />";
+_formatProject =	"<t align='center' size='3.5' color='#f2a832' font='RobotoCondensedBold'>%1</t><br />";
+_formatTitle =		"<t align='center' size='1.5' color='#f2a832' font='RobotoCondensedBold'>%1</t><br />";
+_formatTitleEmpty =	"<t align='center' size='1.5' color='#000000'>.</t><br />";
+_formatNameSingle =	"<t align='center' size='2' font='RobotoCondensedLight'>%1</t>";
+_formatNameMulti =	"<t align='center' size='1.5' font='RobotoCondensedLight'>%1</t>";
+_formatCastLeft =	"<t align='right' size='2' color='#999999' font='RobotoCondensedLight'>%1</t>";
+_formatCastRight =	"<t align='left' size='2' font='RobotoCondensedLight'>%1</t>";
+
+
+_startTime = time;
+{
+	_title = gettext (_x >> "title");
+	if (_title != "") then {
+		_text =  format [_formatProject,toupper _title];
+		["",[_text],TIME_STAY_TITLE] call _fnc_showTitle;
+	};
+	{
+		_title = if (isarray (_x >> "title")) then {format getarray (_x >> "title");} else {gettext (_x >> "title");};
+		_namesLeft = "";
+		_namesCenter = "";
+		_namesRight = "";
+		_texts = [];
+		_names = "";
+		_namesArray = getarray (_x >> "names");
+		_isCast = getnumber (_x >> "isCast") > 0;
+		_columns = if (_isCast) then {2} else {getnumber (_x >> "columns");};
+		if (_columns > 1) then {
+			//--- Multi-column
+			_texts = ["",""];
+			_namesRows = [];
+			_namesRow = [];
+			{
+				_name = if (_x isequaltype []) then {format _x} else {_x};
+				_id = _foreachindex % _columns;
+				_format = if (_isCast) then {[_formatCastLeft,_formatCastRight] select (_foreachindex % 2)} else {_formatNameMulti};
+				_texts set [_id,(_texts select _id) + format [_format,_name] + _br];
+			} foreach _namesArray;
+
+			_countMod = (count _namesArray) % _columns;
+			if (_countMod > 0) then {
+				for "_id" from _countMod to (_columns - 1) do {
+					_texts set [_id,(_texts select _id) + format [_formatNameMulti,""] + _br];
+				};
+			};
+		} else {
+			//--- Single column
+			_texts = [""];
+			{
+				_name = if (_x isequaltype []) then {format _x} else {_x};
+				_texts set [0,(_texts select 0) + format [_formatNameSingle,_name] + _br];
+			} foreach _namesArray;
+		};
+		_text = format ["<t color='#fc5b00' align='center' size='1.5'>%1</t><br /><t align='center'>%2</t>",_title,_names];
+		[format [_formatTitle,_title],_texts,TIME_STAY + TIME_STAY_NAME * count _namesArray] call _fnc_showTitle;
+
+	} foreach configproperties [_x,"isclass _x"];
+} foreach configproperties [missionconfigfile >> "CfgCredits"];
+
+[time - _startTime] call bis_fnc_log;
+
+_fnc_scriptname cuttext ["","plain"];
+3 fademusic 0;
+sleep 3;

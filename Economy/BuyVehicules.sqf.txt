@@ -1,0 +1,19 @@
+#include "definitions.inc"
+
+PROFILE_INFO("BuyVehicle", "BuyVehicle", 1);
+params ["_logic", "_vehicleClass"];
+
+// Prix du véhicule
+private _vehPrice = [_vehicleClass, false] call BIS_fnc_OM_ModuleEconomy_getVehiclePrice;
+if (isNil "_vehPrice") exitWith { RETURN_CODE_EQUIPMENT_NOT_EXISTS };
+
+// Vérification des fonds
+if ([_logic, _vehPrice] call BIS_fnc_OM_moduleEconomy_HasEnoughMoney) then {
+    // Déduction de l'argent
+    [_logic, _vehPrice] call BIS_fnc_OM_moduleEconomy_DecreaseMoney;
+    
+    // Le véhicule sera spawné par la fonction appelante, ici on ne fait que confirmer l’achat
+    RETURN_CODE_SUCCESS
+} else {
+    RETURN_CODE_NOT_ENOUGH_MONEY
+};

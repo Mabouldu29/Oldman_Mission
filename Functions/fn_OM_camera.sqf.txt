@@ -1,0 +1,198 @@
+#define CHECK_ID (_sceneId != ("bis_orange_fnc_camera_id" call bis_fnc_counter))
+
+disableserialization;
+scopename _fnc_scriptName;
+params [
+	["_objStart",objnull,[objnull,[],{}]],
+	["_objEnd",objnull,[objnull,[],0]],
+	["_duration",5,[0]],
+	["_fov",0.75,[0]],
+	["_code",{},[{}]],
+	["_fade",1,[0]]
+];
+
+waituntil {!isnull (finddisplay 46)};
+
+//--- Reset skip variables
+_camera = missionnamespace getvariable ["BIS_camera",objnull];
+if (isnull _camera) then {
+	bis_orange_cameraDone = if (time < 1) then {
+		(finddisplay 46) getvariable ["BIS_cameraPlayed",false]
+	} else {
+		(time - bis_orange_cameraDoneTime) < 1
+	};
+};
+
+//--- Terminate when manually skipped
+private _fnc_skip = {
+	if (
+		bis_orange_cameraDone
+		||
+		cheat0 //--- Dev cheat
+	) exitwith {
+		call _fnc_terminate;
+		breakout _fnc_scriptname;
+	};
+};
+private _fnc_terminate = {
+	player hideobject false;
+	player enablesimulation true;
+	_camera cameraeffect ["terminate","back"];
+	camdestroy _camera;
+	enablesaving [true,false];
+	enablesentences true;
+	enableradio true;
+	[1, 0, false] call BIS_fnc_cinemaBorder;
+	//"RscCinemaBorder" cuttext ["","plain"];
+	"BIS_skip" cuttext ["","plain"];
+	if (isnil "_noBlackIn") then {"BIS_cameraBlack" cuttext ["","black in"];};
+	//bis_fnc_kbTell_load = true;
+	bis_orange_cameraDone = true;
+	bis_orange_cameraDoneTime = time;
+};
+call _fnc_skip;
+
+//--- No camera, just waiting
+if (_objStart isequaltype {}) exitwith {
+	params [
+		["_code",{},[{}]],
+		["_duration",5,[0]]
+	];
+	"BIS_cameraBlack" cuttext ["","plain"]; //--- Register
+
+	[] call _code;
+	_time = time + _duration;
+	waituntil {
+		call _fnc_skip;
+		time > _time
+	};
+};
+
+//--- Create camera
+if (isnull _camera) then {
+
+	//--- Fade out (not for intro)
+	if (time > 20 && _fade >= 0) then {
+		"BIS_cameraBlack" cuttext ["","black out",_fade];
+		_time = time + _fade;
+		waituntil {time > _time};
+	};
+
+	//--- Create camera
+	_camera = "camera" camcreate [10,10,10];
+	_camera cameraeffect ["internal","back"];
+	_camera campreparetarget [0,0,0];
+	_camera campreparefocus [-1,-1];
+	_camera campreparefov _fov;
+	_camera camcommitprepared 0;
+	showcinemaborder false;
+	missionnamespace setvariable ["BIS_camera",_camera];
+
+	//--- Create black borders
+	[0, 0, false] call BIS_fnc_cinemaBorder;
+	/*"RscCinemaBorder" cutrsc ["RscCinemaBorder","plain"];
+	_display = uinamespace getvariable ["RscCinemaBorder",displaynull];
+	_borderTop = _display displayctrl 100001;
+	_borderTop ctrlsetposition [safezoneX,safezoneY,safezoneW,safezoneH * 0.125];
+	_borderTop ctrlcommit 0;
+	_borderBottom = _display displayctrl 100002;
+	_borderBottom ctrlsetposition [safezoneX,safezoneY + safezoneH * 0.875,safezoneW,safezoneH * 0.125];
+	_borderBottom ctrlcommit 0;
+	uinamespace setvariable ["BIS_cameraBorders",[_borderTop,_borderBottom]];*/
+	
+	player setfatigue 0;
+	setacctime 1;
+	enablesaving [false,false];
+	enablesentences false;
+	//enableradio false;
+	//clearradio;
+	[] call bis_fnc_OM_skip;
+};
+
+//--- Camera start pos
+_cameraTargetDis = if (isnil "_cameraTargetDis") then {1000} else {_cameraTargetDis};
+private _3pp = difficultyoption "thirdPersonView";
+if (_3pp == 2) then 
+{
+	if ((vehicle player) == player) then {_3pp = 0} else {_3pp = 1};
+};
+if (_objStart isequaltype []) then {_objStart = _objStart select _3pp;};
+_camera campreparepos (getposatl _objStart);
+_camera campreparetarget (_objStart modeltoworld [0,_cameraTargetDis,0]);
+_camera campreparefov _fov;
+_camera camcommitprepared 0;
+private _sceneID = ["bis_orange_fnc_camera_id",+1] call bis_fnc_counter;
+
+[_camera] call _code;
+
+"BIS_cameraBlack" cuttext ["",if (_fade > 0) then {"black in"} else {"plain"},_fade];
+
+_isFinalShot = false;
+if (_objEnd isequaltype []) then {
+	_objEnd = _objEnd select _3pp;
+	_isFinalShot = true;
+};
+
+//--- Camera end pos
+if (_objEnd != player) then {
+	_camera campreparepos (getposatl _objEnd);
+	_camera campreparetarget (_objEnd modeltoworld [0,_cameraTargetDis,0]);
+	_camera campreparefov _fov;
+	_camera camcommitprepared _duration;
+} else {
+
+	//--- Final transition to player's camera
+	if (_3pp > 0) then {
+		player switchcamera "external";
+		player enablesimulation true;
+	} else {
+		player switchcamera "internal";
+		player enablesimulation false;
+	};
+	if (_3pp > 0) then {player enablesimulation true;};
+	_camera cameraeffect ["terminate","back"];
+	sleep 0.05;
+	_camera campreparepos (positionCameraToWorld [0,0,0]);
+	_camera campreparetarget (positionCameraToWorld [0,0,10]);
+	_camera campreparefov 0.75;
+	_camera camcommitprepared _duration;
+	_camera cameraeffect ["internal","back"];
+	_isFinalShot = true;
+};
+
+_time = time + _duration;
+if (_isFinalShot) then {
+	player switchcamera (if (_3pp > 0) then {"external"} else {"internal"});
+	showcinemaborder false;
+	waituntil {
+		call _fnc_skip;
+		time > (_time - 1) || {CHECK_ID}
+	};
+	if (_3pp == 0) then {player hideobject true;};
+	/*(uinamespace getvariable ["BIS_cameraBorders",[]]) params [["_borderTop",controlnull],["_borderBottom",controlnull]];
+	_borderTop ctrlsetfade 1;
+	_borderTop ctrlcommit 1;
+	_borderBottom ctrlsetfade 1;
+	_borderBottom ctrlcommit 1;*/
+	[1, 1, false] call BIS_fnc_cinemaBorder;
+} else {
+	if (_fade >= 0) then {
+		waituntil {
+			call _fnc_skip;
+			time > (_time - _fade) || {CHECK_ID}
+		};
+		if !(CHECK_ID) then {"BIS_cameraBlack" cuttext ["","black out",_fade];};
+	};
+};
+
+waituntil {
+	sleep 0.1;
+	call _fnc_skip;
+	camcommitted _camera || time > _time || {CHECK_ID}
+};
+if (_isFinalShot) then {
+	_noBlackIn = true;
+	call _fnc_terminate;
+
+	(finddisplay 46) setvariable ["BIS_cameraPlayed",true]; //--- Mark as played, so it won't repear upon mission restart
+};

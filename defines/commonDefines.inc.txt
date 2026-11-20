@@ -1,0 +1,182 @@
+// General defines:
+#define TICK_TIME 1
+
+// General macros
+#define CLAMP(var,minv,maxv) var = ((var max minv) min maxv)
+
+// Relationship defines
+#define M_CALM      0
+#define M_PREPARE   1
+#define M_AGRESSIVE 2
+#define M_ALLIED    3
+#define RELATION_DEFAULT_RANGE_FOR_UNARMED_PLAYER 10
+#define RELATION_DEFAULT_RATE_FOR_UNARMED_PLAYER  0.8
+#define RELATION_RANGE_LOOTING_DEAD_BODY 35
+#define RELATION_RATE_LOOTING_DEAD_BODY 4
+
+// Sector system: Defaults for spawning and despawning
+#define SPAWN_RANGE 400
+#define SPAWN_RANGE_VEH 1000
+#define DESPAWN_RANGE SPAWN_RANGE + 150
+
+#define ENTITY_SIZE_TINY    0
+#define ENTITY_SIZE_SMALL   1
+#define ENTITY_SIZE_MEDIUM  2
+#define ENTITY_SIZE_LARGE   3
+#define ENTITY_SIZE_UNKNOWN -1
+
+// Relationship - units that knew about player x seconds ago still actively knows about him
+#define AWARE_TIMEOUT 5
+
+/////////////////////////////////
+
+// Variable handling macros
+#define GVAR(obj,variable) (obj getVariable variable)
+#define GVARS(obj,variable,defaultValue) (obj getVariable [variable,defaultValue])
+#define SVAR(obj,variable,value) (obj setVariable [variable,value])
+#define MGVAR(str) (missionNamespace getVariable str)
+#define MGVARS(str,defaultValue) (missionNamespace getVariable [str,defaultValue])
+#define SMGVAR(variable,value) (missionNamespace setVariable [variable,value])
+#define USVAR(variable,value) (uiNamespace setVariable [variable,value])
+#define UGVAR(str) (uiNamespace getVariable str)
+
+// Sector states
+#define S_DESPAWNED         0
+#define S_BUSY              1
+#define S_SPAWNED           2
+#define S_SPAWNED_VEHICLES  3
+
+// Debug system macro
+#define DEBUG_INFO(varName) (BIS_debugArray pushBack varName)
+
+// Threat system macros
+#define RAISE_THREAT(module,number) (SVAR(module,"threat", GVAR(module,"threat") + number))
+#define LOWER_THREAT(module,number) (SVAR(module,"threat", GVAR(module,"threat") - number))
+
+#define MAX_LIMIT           10e10
+
+// Events
+#define EVENT_TYPE_QUEST  1
+#define EVENT_TYPE_OTHER  2
+
+#define NEW(var) var=createAgent ["Logic", [0,0,0], [], 0, "CAN_COLLIDE"]
+#define COPY(fr0m, t0) NEW(t0);{ SVAR(t0, _x, GVAR(fr0m, _x)) } forEach allVariables fr0m;t0
+
+#define NOT_FOUND(index) index isEqualTo -1
+#define FOUND(index) !(NOT_FOUND(index))
+
+#ifdef INTERNAL_VERSION
+	#define FILE_CREATE_OR_APPEND 						1
+	#define FILE_CREATE_OR_REWRITE 						2
+	#define DEBUG_QUEST_ABUSE     						true
+  #define DEBUG_RADIO           						1
+  /* #define DEBUG_SECTOR_MARKERS  						true      //DRAW MAP MARKERS TO SEE THEIR SIZES AND DETAILED INFO */
+	/* #define MODE_EXPORT_SECTOR_DATA_TO_FILES	true */		//obsolete
+#endif
+
+#define STRINGIFY(MAKRO) #MAKRO
+#define vec4(R,G,B,ALPHA) [R,G,B,ALPHA]
+
+#define SLEEPING_BAGS [ "Sleeping_bag_folded_01" ]					//all possible items allowing player to save the game progress
+
+//--- loading the mission's data macros
+#define COMPOSE_FILE_NAME_SECTOR(PATH,MISSIONNAME,SECTORNAME)		(if(PATH == "") then {"a3\Missions_F_Oldman\Campaign\Missions\"}) + MISSIONNAME + '.' + worldName + "\" + MISSIONNAME + "_" + SECTORNAME + ".sqf"
+#define COMPOSE_FILE_NAME_BLACKLIST(PATH,MISSIONNAME)						(if(PATH == "") then {"a3\Missions_F_Oldman\Campaign\Missions\"}) + MISSIONNAME + '.' + worldName + "\" + MISSIONNAME + "_layerBlacklist.sqf"
+#define COMPOSE_FILE_NAME(PATH,MISSIONNAME)											(if(PATH == "") then {"a3\Missions_F_Oldman\Campaign\Missions\"}) + MISSIONNAME + '.' + worldName + "\" + MISSIONNAME + ".sqf"
+
+#include "\a3\Missions_F_Oldman\Systems\scripts\Economy\common_definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\SmartMarkers\common_definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\ActionQueue\common_definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\Reputation\common_definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\SyndikatAgent\common_definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\SyndikatTeam\common_definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\SyndikatCommon\common_definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\Medicine\defines.inc"
+#include "\a3\Missions_F_Oldman\Systems\UI\UIcommonDefines.inc"
+#include "\a3\Missions_F_Oldman\Systems\scripts\FastTravel\common_definitions.inc"
+
+#include "profilingDefines.inc"
+
+#ifdef INTERNAL_VERSION
+  //FOR THE DEBUGING PURPOSES
+  #define DEBUG_ACTIVE_TEXT_COLOR			'#f1e104'
+  #define DEBUG_INACTIVE_TEXT_COLOR 	'#7e7e7e'
+  #define DEBUG_CRITICAL_TEXT_COLOR 	'#ff7373'
+
+  #define DISTANCE_TO_SHOW_SECTORS_INFO             2000
+  #define DISTANCE_TO_SHOW_SECTORS_INFO_3D           600
+
+  #define MARKER_AREA_COLOR													"colorBLUFOR"
+  #define MARKER_AREA_ALPHA													0.15
+  #define MARKER_AREA_BRUSH													"SolidBorder"
+
+  #define MARKER_AREA_ACTIVE_PART_COLOR							"ColorOrange"
+  #define MARKER_AREA_ACTIVE_PART_ALPHA							0.7
+  #define MARKER_AREA_ACTIVE_PART_BRUSH							"Grid"
+
+  #define MARKER_AREA_ACTIVE_FULL_COLOR							"ColorOrange"
+  #define MARKER_AREA_ACTIVE_FULL_ALPHA							1.0
+  #define MARKER_AREA_ACTIVE_FULL_BRUSH							"SolidBorder"
+
+  #define MARKER_SPAWN_DISTANCE_COLOR								"colorBLUFOR"
+  #define MARKER_SPAWN_DISTANCE_ALPHA								0.15
+  #define MARKER_SPAWN_DISTANCE_BRUSH								"Border"
+  #define MARKER_DESPAWN_DISTANCE_COLOR							"colorBlack"
+  #define MARKER_DESPAWN_DISTANCE_ALPHA							0.15
+  #define MARKER_DESPAWN_DISTANCE_BRUSH							"Border"
+
+  #define MARKER_SPAWN_DISTANCE_ACTIVE_COLOR			 "colorBLUFOR"
+  #define MARKER_SPAWN_DISTANCE_ACTIVE_ALPHA		    1.0
+  #define MARKER_SPAWN_DISTANCE_ACTIVE_BRUSH			 "Border"
+  #define MARKER_DESPAWN_DISTANCE_ACTIVE_COLOR		  "colorBlack"
+  #define MARKER_DESPAWN_DISTANCE_ACTIVE_ALPHA		  1.0
+  #define MARKER_DESPAWN_DISTANCE_ACTIVE_BRUSH		  "Border"
+
+  #define MARKER_SPAWN_VEHICLE_DISTANCE_COLOR				"colorBLUFOR"
+  #define MARKER_SPAWN_VEHICLE_DISTANCE_ALPHA				0.15
+  #define MARKER_SPAWN_VEHICLE_DISTANCE_BRUSH				"Border"
+  #define MARKER_DESPAWN_VEHICLE_DISTANCE_COLOR			"colorBlack"
+  #define MARKER_DESPAWN_VEHICLE_DISTANCE_ALPHA			0.15
+  #define MARKER_DESPAWN_VEHICLE_DISTANCE_BRUSH			"Border"
+
+  #define MARKER_SPAWN_VEHICLE_DISTANCE_ACTIVE_COLOR				"ColorBlue"
+  #define MARKER_SPAWN_VEHICLE_DISTANCE_ACTIVE_ALPHA				1.00
+  #define MARKER_SPAWN_VEHICLE_DISTANCE_ACTIVE_BRUSH				"Border"
+  #define MARKER_DESPAWN_VEHICLE_DISTANCE_ACTIVE_COLOR			"ColorBrown"
+  #define MARKER_DESPAWN_VEHICLE_DISTANCE_ACTIVE_ALPHA			1.00
+  #define MARKER_DESPAWN_VEHICLE_DISTANCE_ACTIVE_BRUSH			"Border"
+
+  #define DYNTEXT_OFFSET_X  0.5
+  #define DYNTEXT_OFFSET_Y  0.54
+  #define KEY_SHOWMARKERS	  31
+  #define KEY_SHOWTEXT      32
+#endif
+
+#define SHOW_SLEEP_TRAVEL_NOTIFICATION(MESSAGE)	\
+	[parseText format ["<t font='PuristaBold' size='1' color='#cc3300'>%1</t>", MESSAGE], true, nil, 7, 0.7, 0] spawn BIS_fnc_textTiles;	\
+	playsound "additemfailed";	\
+	player setvariable ["BIS_IsWaiting",false];	\
+	player setvariable ["BIS_IsSleeping",false]
+
+#ifdef INTERNAL_VERSION
+	#define EXPORTER_EXPORT_MODULE_DATA(DATA)	\
+		if( uiNamespace getVariable [ 'BIS_OM_3DEN_exportMission', false ] ) then \
+		{ \
+			diag_saveTextFile[ COMPOSE_FILE_NAME("", missionName ), DATA, FILE_CREATE_OR_APPEND]; \
+			uiNamespace setVariable [ 'modulesCount', ( uiNamespace getVariable 'modulesCount' ) - 1 ];	\
+			if( uiNamespace getVariable ['modulesCount', 0] == 0 ) then { diag_saveTextFile[ COMPOSE_FILE_NAME("", missionName ), "\n};", FILE_CREATE_OR_APPEND] } \
+		}
+#else
+	#define EXPORTER_EXPORT_MODULE_DATA(DATA)
+#endif
+#define LOC_PREFIX 								"STR_A3_"
+#define EXPORTER_EXPORT_MODULE_NAME() \
+	if( GVAR(_module,"Name") select [0,7] != LOC_PREFIX ) then {_name = format [ "'%1'", GVAR(_module, "Name") ] } else {_name = format[ "localize '%1'", (GVAR(_module, "Name")) ] };
+
+
+
+
+//---radio classes
+#define EMITOR_CLASSES          ["Land_SurvivalRadio_F", "Land_FMradio_F"];
+
+#define STRING_SPACE " "

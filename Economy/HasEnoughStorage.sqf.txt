@@ -1,0 +1,34 @@
+//param - either scalar (price) or string (item)
+#include "definitions.inc"
+PROFILE_INFO("hasEnoughStorage","hasEnoughStorage",1);
+params["_logic", "_param1"];
+private _ret = false;
+private _equipType = [_param1] call BIS_fnc_OM_ModuleEconomy_getEquipmentType;
+/* if(isNil "_equipType") exitWith {RETURN_CODE_EQUIPMENT_NOT_EXISTS};
+if(typeName _equipType == "STRING") then {(call compile _equipType)/2}; */
+
+{
+  if(count _equipType == 0) exitWith {RETURN_CODE_EQUIPMENT_NOT_EXISTS};
+  if(typeName _x == "STRING") then {_x = WeaponSlotInventory};
+  switch (true) do
+  {
+    case (_x == WeaponSlotItem || _x == WeaponSlotInventory):
+    {
+      _ret = player canAdd _param1;
+    };
+    case (_x in [WeaponSlotPrimary, WeaponSlotSecondary, WeaponSlotHandGun, WeaponSlotBinocular, WeaponSlotHandGunItem]):
+    {
+      _ret = true;
+    };
+    case (_x in [WeaponSlotPrimary, WeaponSlotSecondary, WeaponSlotHandGun, WeaponSlotUnknown]):
+    {
+      _ret = true;
+    };
+    case (_x in [WeaponHardMounted]):
+    {
+      _ret = false;
+    };
+  };
+} forEach _equipType;
+
+_ret

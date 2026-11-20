@@ -1,0 +1,2326 @@
+// Exported by kerbervac, 21.11.2019 16:14:09
+// Include to global CfgSentences config
+
+/*
+	class OM_amb_test1_actor1    // --- all ambient conversations must have both OM_amb_ prefix and actor suffix (_actor1, _actor2 etc) based on the voice actor
+        {
+            infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;       // --- conversation priority (AMBIENT_CONVO_PRIO_LOW, AMBIENT_CONVO_PRIO_MEDIUM, AMBIENT_CONVO_PRIO_HIGH)
+            repeats = 1;        // --- how many times this conversation can be repeated (0 = play only once, -1 = no limit)
+            condition = "TRUE";      // --- condition must return true in order to queue this conversation (_this = NPC speaker)
+            animation = "";     // --- WIP
+            intel[] = {};    // --- intel title to be added if player listens to the NPC; sentence class after which to receive the intel is optional, the last one is used by default
+            file = "\a3\missions_f_oldman\kb\Oldman\oldman_018_ta_walking_to_the_shed.bikb";
+            #include "oldman_018_ta_walking_to_the_shed.bikb"
+        };
+        
+        class OM_amb_test1_actor2    // --- all ambient conversations must have both OM_amb_ prefix and actor suffix (_actor1, _actor2 etc) based on the voice actor
+        {
+            infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;       // --- conversation priority (AMBIENT_CONVO_PRIO_LOW, AMBIENT_CONVO_PRIO_MEDIUM, AMBIENT_CONVO_PRIO_HIGH)
+            repeats = 1;        // --- how many times this conversation can be repeated (0 = play only once, -1 = no limit)
+            condition = "TRUE";      // --- condition must return true in order to queue this conversation (_this = NPC speaker)
+            animation = "";     // --- WIP
+            intel[] = {};    // --- intel title to be added if player listens to the NPC; sentence class after which to receive the intel is optional, the last one is used by default
+            file = "\a3\missions_f_oldman\kb\Oldman\oldman_018_ta_walking_to_the_shed.bikb";
+            #include "oldman_018_ta_walking_to_the_shed.bikb"
+        };
+        
+        class OM_amb_test1_actor3    // --- all ambient conversations must have both OM_amb_ prefix and actor suffix (_actor1, _actor2 etc) based on the voice actor
+        {
+            infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;       // --- conversation priority (AMBIENT_CONVO_PRIO_LOW, AMBIENT_CONVO_PRIO_MEDIUM, AMBIENT_CONVO_PRIO_HIGH)
+            repeats = 1;        // --- how many times this conversation can be repeated (0 = play only once, -1 = no limit)
+            condition = "TRUE";      // --- condition must return true in order to queue this conversation (_this = NPC speaker)
+            animation = "";     // --- WIP
+            intel[] = {};    // --- intel title to be added if player listens to the NPC; sentence class after which to receive the intel is optional, the last one is used by default
+            file = "\a3\missions_f_oldman\kb\Oldman\oldman_018_ta_walking_to_the_shed.bikb";
+            #include "oldman_018_ta_walking_to_the_shed.bikb"
+        };
+        
+        class OM_amb_test1_actor4    // --- all ambient conversations must have both OM_amb_ prefix and actor suffix (_actor1, _actor2 etc) based on the voice actor
+        {
+            infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;       // --- conversation priority (AMBIENT_CONVO_PRIO_LOW, AMBIENT_CONVO_PRIO_MEDIUM, AMBIENT_CONVO_PRIO_HIGH)
+            repeats = 1;        // --- how many times this conversation can be repeated (0 = play only once, -1 = no limit)
+            condition = "TRUE";      // --- condition must return true in order to queue this conversation (_this = NPC speaker)
+            animation = "";     // --- WIP
+            intel[] = {};    // --- intel title to be added if player listens to the NPC; sentence class after which to receive the intel is optional, the last one is used by default
+            file = "\a3\missions_f_oldman\kb\Oldman\oldman_018_ta_walking_to_the_shed.bikb";
+            #include "oldman_018_ta_walking_to_the_shed.bikb"
+        };
+        
+        class OM_amb_test2_actor1    // --- all ambient conversations must have both OM_amb_ prefix and actor suffix (_actor1, _actor2 etc) based on the voice actor
+        {
+            infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;       // --- conversation priority (AMBIENT_CONVO_PRIO_LOW, AMBIENT_CONVO_PRIO_MEDIUM, AMBIENT_CONVO_PRIO_HIGH)
+            repeats = 1;        // --- how many times this conversation can be repeated (0 = play only once, -1 = no limit)
+            condition = "TRUE";      // --- condition must return true in order to queue this conversation (_this = NPC speaker)
+            animation = "";     // --- WIP
+            intel[] = {};    // --- intel title to be added if player listens to the NPC; sentence class after which to receive the intel is optional, the last one is used by default
+            file = "\a3\missions_f_oldman\kb\Oldman\oldman_032_ta_sleeping_bag_found.bikb";
+            #include "oldman_032_ta_sleeping_bag_found.bikb"
+        };
+        
+        class OM_amb_test2_actor2    // --- all ambient conversations must have both OM_amb_ prefix and actor suffix (_actor1, _actor2 etc) based on the voice actor
+        {
+            infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;       // --- conversation priority (AMBIENT_CONVO_PRIO_LOW, AMBIENT_CONVO_PRIO_MEDIUM, AMBIENT_CONVO_PRIO_HIGH)
+            repeats = 1;        // --- how many times this conversation can be repeated (0 = play only once, -1 = no limit)
+            condition = "TRUE";      // --- condition must return true in order to queue this conversation (_this = NPC speaker)
+            animation = "";     // --- WIP
+            intel[] = {};    // --- intel title to be added if player listens to the NPC; sentence class after which to receive the intel is optional, the last one is used by default
+            file = "\a3\missions_f_oldman\kb\Oldman\oldman_032_ta_sleeping_bag_found.bikb";
+            #include "oldman_032_ta_sleeping_bag_found.bikb"
+        };
+        
+        class OM_amb_test2_actor3    // --- all ambient conversations must have both OM_amb_ prefix and actor suffix (_actor1, _actor2 etc) based on the voice actor
+        {
+            infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;       // --- conversation priority (AMBIENT_CONVO_PRIO_LOW, AMBIENT_CONVO_PRIO_MEDIUM, AMBIENT_CONVO_PRIO_HIGH)
+            repeats = 1;        // --- how many times this conversation can be repeated (0 = play only once, -1 = no limit)
+            condition = "TRUE";      // --- condition must return true in order to queue this conversation (_this = NPC speaker)
+            animation = "";     // --- WIP
+            intel[] = {};    // --- intel title to be added if player listens to the NPC; sentence class after which to receive the intel is optional, the last one is used by default
+            file = "\a3\missions_f_oldman\kb\Oldman\oldman_032_ta_sleeping_bag_found.bikb";
+            #include "oldman_032_ta_sleeping_bag_found.bikb"
+        };
+        
+        
+        class OM_amb_test3_actor1    // --- all ambient conversations must have both OM_amb_ prefix and actor suffix (_actor1, _actor2 etc) based on the voice actor
+        {
+            infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;       // --- conversation priority (AMBIENT_CONVO_PRIO_LOW, AMBIENT_CONVO_PRIO_MEDIUM, AMBIENT_CONVO_PRIO_HIGH)
+            repeats = 1;        // --- how many times this conversation can be repeated (0 = play only once, -1 = no limit)
+            condition = "TRUE";      // --- condition must return true in order to queue this conversation (_this = NPC speaker)
+            animation = "";     // --- WIP
+            intel[] = {};    // --- intel title to be added if player listens to the NPC; sentence class after which to receive the intel is optional, the last one is used by default
+            file = "\a3\missions_f_oldman\kb\Oldman\oldman_028_ta_app_downloaded.bikb";
+            #include "oldman_028_ta_app_downloaded.bikb"
+        };
+        
+        class OM_amb_test3_actor2    // --- all ambient conversations must have both OM_amb_ prefix and actor suffix (_actor1, _actor2 etc) based on the voice actor
+        {
+            infoPriority = AMBIENT_CONVO_PRIO_MEDIUM;       // --- conversation priority (AMBIENT_CONVO_PRIO_LOW, AMBIENT_CONVO_PRIO_MEDIUM, AMBIENT_CONVO_PRIO_HIGH)
+            repeats = 1;        // --- how many times this conversation can be repeated (0 = play only once, -1 = no limit)
+            condition = "TRUE";      // --- condition must return true in order to queue this conversation (_this = NPC speaker)
+            animation = "";     // --- WIP
+            intel[] = {};    // --- intel title to be added if player listens to the NPC; sentence class after which to receive the intel is optional, the last one is used by default
+            file = "\a3\missions_f_oldman\kb\Oldman\oldman_028_ta_app_downloaded.bikb";
+            #include "oldman_028_ta_app_downloaded.bikb"
+        };
+*/
+
+
+
+	// ["cut_camera_placement_call","oldman"] call BIS_fnc_kbTell;
+	class cut_camera_placement_call
+	{
+		id = 1;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_001_cut_camera_placement_call.bikb";
+		#include "oldman_001_cut_camera_placement_call.bikb"
+	};
+
+	class cut_camera_placement_call_1st_part
+	{
+		id = 1;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_001_cut_camera_placement_call_1st_part.bikb";
+		#include "oldman_001_cut_camera_placement_call_1st_part.bikb"
+	};
+
+	class cut_camera_placement_call_2nd_part
+	{
+		id = 1;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_001_cut_camera_placement_call_2nd_part.bikb";
+		#include "oldman_001_cut_camera_placement_call_2nd_part.bikb"
+	};
+
+	// ["ta_meet_arthur_call","oldman"] call BIS_fnc_kbTell;
+	class ta_meet_arthur_call
+	{
+		id = 2;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_002_ta_meet_arthur_call.bikb";
+		#include "oldman_002_ta_meet_arthur_call.bikb"
+	};
+
+	// ["ta_go_to_village","oldman"] call BIS_fnc_kbTell;
+	class ta_go_to_village
+	{
+		id = 3;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_003_ta_go_to_village.bikb";
+		#include "oldman_003_ta_go_to_village.bikb"
+	};
+
+	// ["fil_driving_situation_a","oldman"] call BIS_fnc_kbTell;
+	class fil_driving_situation_a
+	{
+		id = 4;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_004_fil_driving_situation_a.bikb";
+		#include "oldman_004_fil_driving_situation_a.bikb"
+	};
+
+	// ["fil_driving_situation_b","oldman"] call BIS_fnc_kbTell;
+	class fil_driving_situation_b
+	{
+		id = 5;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_005_fil_driving_situation_b.bikb";
+		#include "oldman_005_fil_driving_situation_b.bikb"
+	};
+
+	// ["fil_driving_situation_c","oldman"] call BIS_fnc_kbTell;
+	class fil_driving_situation_c
+	{
+		id = 6;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_006_fil_driving_situation_c.bikb";
+		#include "oldman_006_fil_driving_situation_c.bikb"
+	};
+
+	// ["fil_driving_profiteers","oldman"] call BIS_fnc_kbTell;
+	class fil_driving_profiteers
+	{
+		id = 7;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_007_fil_driving_profiteers.bikb";
+		#include "oldman_007_fil_driving_profiteers.bikb"
+	};
+
+	// ["ta_driving_checkpoint","oldman"] call BIS_fnc_kbTell;
+	class ta_driving_checkpoint
+	{
+		id = 8;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_008_ta_driving_checkpoint.bikb";
+		#include "oldman_008_ta_driving_checkpoint.bikb"
+	};
+
+	// ["in_driving_follow_instructions","oldman"] call BIS_fnc_kbTell;
+	class in_driving_follow_instructions
+	{
+		id = 9;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_009_in_driving_follow_instructions.bikb";
+		#include "oldman_009_in_driving_follow_instructions.bikb"
+	};
+
+	// ["in_driving_looking_for_weapons","oldman"] call BIS_fnc_kbTell;
+	class in_driving_looking_for_weapons
+	{
+		id = 10;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_010_in_driving_looking_for_weapons.bikb";
+		#include "oldman_010_in_driving_looking_for_weapons.bikb"
+	};
+
+	// ["in_driving_doing_good","oldman"] call BIS_fnc_kbTell;
+	class in_driving_doing_good
+	{
+		id = 11;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_011_in_driving_doing_good.bikb";
+		#include "oldman_011_in_driving_doing_good.bikb"
+	};
+
+	// ["ta_driving_drive_on","oldman"] call BIS_fnc_kbTell;
+	class ta_driving_drive_on
+	{
+		id = 12;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_012_ta_driving_drive_on.bikb";
+		#include "oldman_012_ta_driving_drive_on.bikb"
+	};
+
+	// ["in_driving_csat_situation","oldman"] call BIS_fnc_kbTell;
+	class in_driving_csat_situation
+	{
+		id = 13;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_013_in_driving_csat_situation.bikb";
+		#include "oldman_013_in_driving_csat_situation.bikb"
+	};
+
+	// ["ex_driving_escape","oldman"] call BIS_fnc_kbTell;
+	class ex_driving_escape
+	{
+		id = 14;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_014_ex_driving_escape.bikb";
+		#include "oldman_014_ex_driving_escape.bikb"
+	};
+
+	// ["fil_driving_idap","oldman"] call BIS_fnc_kbTell;
+	class fil_driving_idap
+	{
+		id = 15;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_015_fil_driving_idap.bikb";
+		#include "oldman_015_fil_driving_idap.bikb"
+	};
+
+	// ["fil_driving_tractor","oldman"] call BIS_fnc_kbTell;
+	class fil_driving_tractor
+	{
+		id = 16;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_016_fil_driving_tractor.bikb";
+		#include "oldman_016_fil_driving_tractor.bikb"
+	};
+
+	// ["fil_arrival","oldman"] call BIS_fnc_kbTell;
+	class fil_arrival
+	{
+		id = 17;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_017_fil_arrival.bikb";
+		#include "oldman_017_fil_arrival.bikb"
+	};
+
+	// ["ta_walking_to_the_shed","oldman"] call BIS_fnc_kbTell;
+	class ta_walking_to_the_shed
+	{
+		id = 18;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_018_ta_walking_to_the_shed.bikb";
+		#include "oldman_018_ta_walking_to_the_shed.bikb"
+	};
+
+	// ["eve_at_shed","oldman"] call BIS_fnc_kbTell;
+	class eve_at_shed
+	{
+		id = 19;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_019_eve_at_shed.bikb";
+		#include "oldman_019_eve_at_shed.bikb"
+	};
+
+	// ["ta_explosives_taken","oldman"] call BIS_fnc_kbTell;
+	class ta_explosives_taken
+	{
+		id = 20;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_020_ta_explosives_taken.bikb";
+		#include "oldman_020_ta_explosives_taken.bikb"
+	};
+
+	// ["ta_miller_intel_available_call","oldman"] call BIS_fnc_kbTell;
+	class ta_miller_intel_available_call
+	{
+		id = 21;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_021_ta_miller_intel_available_call.bikb";
+		#include "oldman_021_ta_miller_intel_available_call.bikb"
+	};
+
+	// ["eve_computer_accessed_call","oldman"] call BIS_fnc_kbTell;
+	class eve_computer_accessed_call
+	{
+		id = 22;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_022_eve_computer_accessed_call.bikb";
+		#include "oldman_022_eve_computer_accessed_call.bikb"
+	};
+
+	// ["eve_jungle_rv","oldman"] call BIS_fnc_kbTell;
+	class eve_jungle_rv
+	{
+		id = 23;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_023_eve_jungle_rv.bikb";
+		#include "oldman_023_eve_jungle_rv.bikb"
+	};
+
+	// ["eve_at_rv_greeting","oldman"] call BIS_fnc_kbTell;
+	class eve_at_rv_greeting
+	{
+		id = 24;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_024_eve_at_rv_greeting.bikb";
+		#include "oldman_024_eve_at_rv_greeting.bikb"
+	};
+
+	// ["eve_at_rv_wake_up","oldman"] call BIS_fnc_kbTell;
+	class eve_at_rv_wake_up
+	{
+		id = 25;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_025_eve_at_rv_wake_up.bikb";
+		#include "oldman_025_eve_at_rv_wake_up.bikb"
+	};
+
+	// ["ta_at_rv_location","oldman"] call BIS_fnc_kbTell;
+	class ta_at_rv_location
+	{
+		id = 26;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_026_ta_at_rv_location.bikb";
+		#include "oldman_026_ta_at_rv_location.bikb"
+	};
+
+	// ["in_app_tutorial_in","oldman"] call BIS_fnc_kbTell;
+	class in_app_tutorial_in
+	{
+		id = 27;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_027_in_app_tutorial_in.bikb";
+		#include "oldman_027_in_app_tutorial_in.bikb"
+	};
+
+	// ["ta_app_downloaded","oldman"] call BIS_fnc_kbTell;
+	class ta_app_downloaded
+	{
+		id = 28;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_028_ta_app_downloaded.bikb";
+		#include "oldman_028_ta_app_downloaded.bikb"
+	};
+
+	// ["ex_app_downloaded_pack_found","oldman"] call BIS_fnc_kbTell;
+	class ex_app_downloaded_pack_found
+	{
+		id = 29;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_029_ex_app_downloaded_pack_found.bikb";
+		#include "oldman_029_ex_app_downloaded_pack_found.bikb"
+	};
+
+	// ["ex_app_reminder","oldman"] call BIS_fnc_kbTell;
+	class ex_app_reminder
+	{
+		id = 30;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_030_ex_app_reminder.bikb";
+		#include "oldman_030_ex_app_reminder.bikb"
+	};
+
+	// ["ex_download_reminder","oldman"] call BIS_fnc_kbTell;
+	class ex_download_reminder
+	{
+		id = 31;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_031_ex_download_reminder.bikb";
+		#include "oldman_031_ex_download_reminder.bikb"
+	};
+
+	// ["ta_sleeping_bag_found","oldman"] call BIS_fnc_kbTell;
+	class ta_sleeping_bag_found
+	{
+		id = 32;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_032_ta_sleeping_bag_found.bikb";
+		#include "oldman_032_ta_sleeping_bag_found.bikb"
+	};
+
+	// ["eve_syndikat_webcam_a_in","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_a_in
+	{
+		id = 33;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_033_eve_syndikat_webcam_a_in.bikb";
+		#include "oldman_033_eve_syndikat_webcam_a_in.bikb"
+	};
+
+	// ["eve_syndikat_webcam_b","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_b
+	{
+		id = 34;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_034_eve_syndikat_webcam_b.bikb";
+		#include "oldman_034_eve_syndikat_webcam_b.bikb"
+	};
+
+	// ["eve_syndikat_webcam_c","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_c
+	{
+		id = 35;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_035_eve_syndikat_webcam_c.bikb";
+		#include "oldman_035_eve_syndikat_webcam_c.bikb"
+	};
+
+	// ["eve_syndikat_webcam_d","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_d
+	{
+		id = 36;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_036_eve_syndikat_webcam_d.bikb";
+		#include "oldman_036_eve_syndikat_webcam_d.bikb"
+	};
+
+	// ["eve_syndikat_webcam_e","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_e
+	{
+		id = 37;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_037_eve_syndikat_webcam_e.bikb";
+		#include "oldman_037_eve_syndikat_webcam_e.bikb"
+	};
+
+	// ["ta_syndikat_webcam_f","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_webcam_f
+	{
+		id = 38;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_038_ta_syndikat_webcam_f.bikb";
+		#include "oldman_038_ta_syndikat_webcam_f.bikb"
+	};
+
+	// ["ta_syndikat_webcam_g","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_webcam_g
+	{
+		id = 39;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_039_ta_syndikat_webcam_g.bikb";
+		#include "oldman_039_ta_syndikat_webcam_g.bikb"
+	};
+
+	// ["ta_syndikat_webcam_h","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_webcam_h
+	{
+		id = 40;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_040_ta_syndikat_webcam_h.bikb";
+		#include "oldman_040_ta_syndikat_webcam_h.bikb"
+	};
+
+	// ["ta_syndikat_webcam_i","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_webcam_i
+	{
+		id = 41;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_041_ta_syndikat_webcam_i.bikb";
+		#include "oldman_041_ta_syndikat_webcam_i.bikb"
+	};
+
+	// ["ta_syndikat_webcam_j","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_webcam_j
+	{
+		id = 42;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_042_ta_syndikat_webcam_j.bikb";
+		#include "oldman_042_ta_syndikat_webcam_j.bikb"
+	};
+
+	// ["eve_syndikat_webcam_k","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_k
+	{
+		id = 43;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_043_eve_syndikat_webcam_k.bikb";
+		#include "oldman_043_eve_syndikat_webcam_k.bikb"
+	};
+
+	// ["eve_syndikat_webcam_l","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_l
+	{
+		id = 44;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_044_eve_syndikat_webcam_l.bikb";
+		#include "oldman_044_eve_syndikat_webcam_l.bikb"
+	};
+
+	// ["eve_syndikat_webcam_m","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_m
+	{
+		id = 45;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_045_eve_syndikat_webcam_m.bikb";
+		#include "oldman_045_eve_syndikat_webcam_m.bikb"
+	};
+
+	// ["eve_syndikat_webcam_n_out","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_n_out
+	{
+		id = 46;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_046_eve_syndikat_webcam_n_out.bikb";
+		#include "oldman_046_eve_syndikat_webcam_n_out.bikb"
+	};
+
+	// ["eve_syndikat_webcam_o_out","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_o_out
+	{
+		id = 47;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_047_eve_syndikat_webcam_o_out.bikb";
+		#include "oldman_047_eve_syndikat_webcam_o_out.bikb"
+	};
+
+	// ["eve_syndikat_webcam_p","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_p
+	{
+		id = 48;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_048_eve_syndikat_webcam_p.bikb";
+		#include "oldman_048_eve_syndikat_webcam_p.bikb"
+	};
+
+	// ["eve_syndikat_webcam_q_out","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_webcam_q_out
+	{
+		id = 49;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_049_eve_syndikat_webcam_q_out.bikb";
+		#include "oldman_049_eve_syndikat_webcam_q_out.bikb"
+	};
+
+	// ["ta_evidence_received","oldman"] call BIS_fnc_kbTell;
+	class ta_evidence_received
+	{
+		id = 50;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_050_ta_evidence_received.bikb";
+		#include "oldman_050_ta_evidence_received.bikb"
+	};
+
+	// ["ta_house_destroyed","oldman"] call BIS_fnc_kbTell;
+	class ta_house_destroyed
+	{
+		id = 51;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_051_ta_house_destroyed.bikb";
+		#include "oldman_051_ta_house_destroyed.bikb"
+	};
+
+	// ["in_black_market_prices","oldman"] call BIS_fnc_kbTell;
+	class in_black_market_prices
+	{
+		id = 52;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_052_in_black_market_prices.bikb";
+		#include "oldman_052_in_black_market_prices.bikb"
+	};
+
+	// ["ta_photo_taken","oldman"] call BIS_fnc_kbTell;
+	class ta_photo_taken
+	{
+		id = 53;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_053_ta_photo_taken.bikb";
+		#include "oldman_053_ta_photo_taken.bikb"
+	};
+
+	// ["eve_traitor_found","oldman"] call BIS_fnc_kbTell;
+	class eve_traitor_found
+	{
+		id = 54;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_054_eve_traitor_found.bikb";
+		#include "oldman_054_eve_traitor_found.bikb"
+	};
+
+	// ["eve_traitor_untied","oldman"] call BIS_fnc_kbTell;
+	class eve_traitor_untied
+	{
+		id = 55;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_055_eve_traitor_untied.bikb";
+		#include "oldman_055_eve_traitor_untied.bikb"
+	};
+
+	// ["eve_traitor_untied_guards","oldman"] call BIS_fnc_kbTell;
+	class eve_traitor_untied_guards
+	{
+		id = 56;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_056_eve_traitor_untied_guards.bikb";
+		#include "oldman_056_eve_traitor_untied_guards.bikb"
+	};
+
+	// ["eve_traitor_untied_no_guards","oldman"] call BIS_fnc_kbTell;
+	class eve_traitor_untied_no_guards
+	{
+		id = 57;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_057_eve_traitor_untied_no_guards.bikb";
+		#include "oldman_057_eve_traitor_untied_no_guards.bikb"
+	};
+
+	// ["eve_traitor_escape","oldman"] call BIS_fnc_kbTell;
+	class eve_traitor_escape
+	{
+		id = 58;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_058_eve_traitor_escape.bikb";
+		#include "oldman_058_eve_traitor_escape.bikb"
+	};
+
+	// ["in_traitor_reward","oldman"] call BIS_fnc_kbTell;
+	class in_traitor_reward
+	{
+		id = 59;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_059_in_traitor_reward.bikb";
+		#include "oldman_059_in_traitor_reward.bikb"
+	};
+
+	// ["eve_intel_found_a_call","oldman"] call BIS_fnc_kbTell;
+	class eve_intel_found_a_call
+	{
+		id = 60;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_060_eve_intel_found_a_call.bikb";
+		#include "oldman_060_eve_intel_found_a_call.bikb"
+	};
+
+	// ["eve_intel_found_b_call","oldman"] call BIS_fnc_kbTell;
+	class eve_intel_found_b_call
+	{
+		id = 61;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_061_eve_intel_found_b_call.bikb";
+		#include "oldman_061_eve_intel_found_b_call.bikb"
+	};
+
+	// ["eve_intel_found_c_call","oldman"] call BIS_fnc_kbTell;
+	class eve_intel_found_c_call
+	{
+		id = 62;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_062_eve_intel_found_c_call.bikb";
+		#include "oldman_062_eve_intel_found_c_call.bikb"
+	};
+
+	// ["eve_intel_found_d_call","oldman"] call BIS_fnc_kbTell;
+	class eve_intel_found_d_call
+	{
+		id = 63;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_063_eve_intel_found_d_call.bikb";
+		#include "oldman_063_eve_intel_found_d_call.bikb"
+	};
+
+	// ["eve_intel_found_e_call","oldman"] call BIS_fnc_kbTell;
+	class eve_intel_found_e_call
+	{
+		id = 64;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_064_eve_intel_found_e_call.bikb";
+		#include "oldman_064_eve_intel_found_e_call.bikb"
+	};
+
+	// ["eve_intel_found_f_call","oldman"] call BIS_fnc_kbTell;
+	class eve_intel_found_f_call
+	{
+		id = 65;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_065_eve_intel_found_f_call.bikb";
+		#include "oldman_065_eve_intel_found_f_call.bikb"
+	};
+
+	// ["eve_keep_searching_a","oldman"] call BIS_fnc_kbTell;
+	class eve_keep_searching_a
+	{
+		id = 66;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_066_eve_keep_searching_a.bikb";
+		#include "oldman_066_eve_keep_searching_a.bikb"
+	};
+
+	// ["eve_keep_searching_b","oldman"] call BIS_fnc_kbTell;
+	class eve_keep_searching_b
+	{
+		id = 67;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_067_eve_keep_searching_b.bikb";
+		#include "oldman_067_eve_keep_searching_b.bikb"
+	};
+
+	// ["eve_keep_searching_c","oldman"] call BIS_fnc_kbTell;
+	class eve_keep_searching_c
+	{
+		id = 68;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_068_eve_keep_searching_c.bikb";
+		#include "oldman_068_eve_keep_searching_c.bikb"
+	};
+
+	// ["ta_documents_recovered","oldman"] call BIS_fnc_kbTell;
+	class ta_documents_recovered
+	{
+		id = 69;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_069_ta_documents_recovered.bikb";
+		#include "oldman_069_ta_documents_recovered.bikb"
+	};
+
+	// ["eve_alarm_raised","oldman"] call BIS_fnc_kbTell;
+	class eve_alarm_raised
+	{
+		id = 70;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_070_eve_alarm_raised.bikb";
+		#include "oldman_070_eve_alarm_raised.bikb"
+	};
+
+	// ["eve_greeting_quest_complete_a","oldman"] call BIS_fnc_kbTell;
+	class eve_greeting_quest_complete_a
+	{
+		id = 71;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_071_eve_greeting_quest_complete_a.bikb";
+		#include "oldman_071_eve_greeting_quest_complete_a.bikb"
+	};
+
+	// ["eve_greeting_quest_complete_b","oldman"] call BIS_fnc_kbTell;
+	class eve_greeting_quest_complete_b
+	{
+		id = 72;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_072_eve_greeting_quest_complete_b.bikb";
+		#include "oldman_072_eve_greeting_quest_complete_b.bikb"
+	};
+
+	// ["eve_greeting_quest_complete_c","oldman"] call BIS_fnc_kbTell;
+	class eve_greeting_quest_complete_c
+	{
+		id = 73;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_073_eve_greeting_quest_complete_c.bikb";
+		#include "oldman_073_eve_greeting_quest_complete_c.bikb"
+	};
+
+	// ["ta_situation_explained","oldman"] call BIS_fnc_kbTell;
+	class ta_situation_explained
+	{
+		id = 74;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_074_ta_situation_explained.bikb";
+		#include "oldman_074_ta_situation_explained.bikb"
+	};
+
+	// ["br_situation_explained_syndikat_meeting","oldman"] call BIS_fnc_kbTell;
+	class br_situation_explained_syndikat_meeting
+	{
+		id = 75;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_075_br_situation_explained_syndikat_meeting.bikb";
+		#include "oldman_075_br_situation_explained_syndikat_meeting.bikb"
+	};
+
+	// ["ta_situation_explained_out","oldman"] call BIS_fnc_kbTell;
+	class ta_situation_explained_out
+	{
+		id = 76;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_076_ta_situation_explained_out.bikb";
+		#include "oldman_076_ta_situation_explained_out.bikb"
+	};
+
+	// ["in_additional_information_call","oldman"] call BIS_fnc_kbTell;
+	class in_additional_information_call
+	{
+		id = 77;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_077_in_additional_information_call.bikb";
+		#include "oldman_077_in_additional_information_call.bikb"
+	};
+
+	// ["ta_collect_plane_intel_call","oldman"] call BIS_fnc_kbTell;
+	class ta_collect_plane_intel_call
+	{
+		id = 78;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_078_ta_collect_plane_intel_call.bikb";
+		#include "oldman_078_ta_collect_plane_intel_call.bikb"
+	};
+
+	// ["ta_collect_plane_intel_gear_call","oldman"] call BIS_fnc_kbTell;
+	class ta_collect_plane_intel_gear_call
+	{
+		id = 79;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_079_ta_collect_plane_intel_gear_call.bikb";
+		#include "oldman_079_ta_collect_plane_intel_gear_call.bikb"
+	};
+
+	// ["ta_plane_intel_collected_call","oldman"] call BIS_fnc_kbTell;
+	class ta_plane_intel_collected_call
+	{
+		id = 80;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_080_ta_plane_intel_collected_call.bikb";
+		#include "oldman_080_ta_plane_intel_collected_call.bikb"
+	};
+
+	// ["ta_autonomous_turrets_in_call","oldman"] call BIS_fnc_kbTell;
+	class ta_autonomous_turrets_in_call
+	{
+		id = 81;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_081_ta_autonomous_turrets_in_call.bikb";
+		#include "oldman_081_ta_autonomous_turrets_in_call.bikb"
+	};
+
+	// ["ta_autonomous_turrets_out_call","oldman"] call BIS_fnc_kbTell;
+	class ta_autonomous_turrets_out_call
+	{
+		id = 82;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_082_ta_autonomous_turrets_out_call.bikb";
+		#include "oldman_082_ta_autonomous_turrets_out_call.bikb"
+	};
+
+	// ["ta_network_intel_call","oldman"] call BIS_fnc_kbTell;
+	class ta_network_intel_call
+	{
+		id = 83;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_083_ta_network_intel_call.bikb";
+		#include "oldman_083_ta_network_intel_call.bikb"
+	};
+
+	// ["ta_network_intel","oldman"] call BIS_fnc_kbTell;
+	class ta_network_intel
+	{
+		id = 84;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_084_ta_network_intel.bikb";
+		#include "oldman_084_ta_network_intel.bikb"
+	};
+
+	// ["eve_network_intel_early_call","oldman"] call BIS_fnc_kbTell;
+	class eve_network_intel_early_call
+	{
+		id = 85;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_085_eve_network_intel_early_call.bikb";
+		#include "oldman_085_eve_network_intel_early_call.bikb"
+	};
+
+	// ["eve_network_intel_early","oldman"] call BIS_fnc_kbTell;
+	class eve_network_intel_early
+	{
+		id = 86;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_086_eve_network_intel_early.bikb";
+		#include "oldman_086_eve_network_intel_early.bikb"
+	};
+
+	// ["ta_autonomous_turrets_early_out_call","oldman"] call BIS_fnc_kbTell;
+	class ta_autonomous_turrets_early_out_call
+	{
+		id = 87;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_087_ta_autonomous_turrets_early_out_call.bikb";
+		#include "oldman_087_ta_autonomous_turrets_early_out_call.bikb"
+	};
+
+	// ["ta_virus_prepared_call","oldman"] call BIS_fnc_kbTell;
+	class ta_virus_prepared_call
+	{
+		id = 88;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_088_ta_virus_prepared_call.bikb";
+		#include "oldman_088_ta_virus_prepared_call.bikb"
+	};
+
+	// ["eve_upload_virus","oldman"] call BIS_fnc_kbTell;
+	class eve_upload_virus
+	{
+		id = 89;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_089_eve_upload_virus.bikb";
+		#include "oldman_089_eve_upload_virus.bikb"
+	};
+
+	// ["ta_virus_collected","oldman"] call BIS_fnc_kbTell;
+	class ta_virus_collected
+	{
+		id = 90;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_090_ta_virus_collected.bikb";
+		#include "oldman_090_ta_virus_collected.bikb"
+	};
+
+	// ["eve_miller_focus_on_task_call","oldman"] call BIS_fnc_kbTell;
+	class eve_miller_focus_on_task_call
+	{
+		id = 91;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_091_eve_miller_focus_on_task_call.bikb";
+		#include "oldman_091_eve_miller_focus_on_task_call.bikb"
+	};
+
+	// ["eve_miller_focus_on_task_angry_call","oldman"] call BIS_fnc_kbTell;
+	class eve_miller_focus_on_task_angry_call
+	{
+		id = 92;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_092_eve_miller_focus_on_task_angry_call.bikb";
+		#include "oldman_092_eve_miller_focus_on_task_angry_call.bikb"
+	};
+
+	// ["eve_flashdrive_inserted_call","oldman"] call BIS_fnc_kbTell;
+	class eve_flashdrive_inserted_call
+	{
+		id = 93;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_093_eve_flashdrive_inserted_call.bikb";
+		#include "oldman_093_eve_flashdrive_inserted_call.bikb"
+	};
+
+	// ["eve_reboot_starts_call","oldman"] call BIS_fnc_kbTell;
+	class eve_reboot_starts_call
+	{
+		id = 94;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_094_eve_reboot_starts_call.bikb";
+		#include "oldman_094_eve_reboot_starts_call.bikb"
+	};
+
+	// ["eve_reboot_starts_alarm_call","oldman"] call BIS_fnc_kbTell;
+	class eve_reboot_starts_alarm_call
+	{
+		id = 95;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_095_eve_reboot_starts_alarm_call.bikb";
+		#include "oldman_095_eve_reboot_starts_alarm_call.bikb"
+	};
+
+	// ["eve_reboot_alarm_call","oldman"] call BIS_fnc_kbTell;
+	class eve_reboot_alarm_call
+	{
+		id = 96;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_096_eve_reboot_alarm_call.bikb";
+		#include "oldman_096_eve_reboot_alarm_call.bikb"
+	};
+
+	// ["eve_reboot_a","oldman"] call BIS_fnc_kbTell;
+	class eve_reboot_a
+	{
+		id = 97;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_097_eve_reboot_a.bikb";
+		#include "oldman_097_eve_reboot_a.bikb"
+	};
+
+	// ["eve_reboot_b","oldman"] call BIS_fnc_kbTell;
+	class eve_reboot_b
+	{
+		id = 98;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_098_eve_reboot_b.bikb";
+		#include "oldman_098_eve_reboot_b.bikb"
+	};
+
+	// ["eve_reboot_c","oldman"] call BIS_fnc_kbTell;
+	class eve_reboot_c
+	{
+		id = 99;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_099_eve_reboot_c.bikb";
+		#include "oldman_099_eve_reboot_c.bikb"
+	};
+
+	// ["eve_reboot_a_urgent","oldman"] call BIS_fnc_kbTell;
+	class eve_reboot_a_urgent
+	{
+		id = 100;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_100_eve_reboot_a_urgent.bikb";
+		#include "oldman_100_eve_reboot_a_urgent.bikb"
+	};
+
+	// ["eve_reboot_b_urgent","oldman"] call BIS_fnc_kbTell;
+	class eve_reboot_b_urgent
+	{
+		id = 101;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_101_eve_reboot_b_urgent.bikb";
+		#include "oldman_101_eve_reboot_b_urgent.bikb"
+	};
+
+	// ["eve_reboot_c_urgent","oldman"] call BIS_fnc_kbTell;
+	class eve_reboot_c_urgent
+	{
+		id = 102;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_102_eve_reboot_c_urgent.bikb";
+		#include "oldman_102_eve_reboot_c_urgent.bikb"
+	};
+
+	// ["ta_reboot_complete","oldman"] call BIS_fnc_kbTell;
+	class ta_reboot_complete
+	{
+		id = 103;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_103_ta_reboot_complete.bikb";
+		#include "oldman_103_ta_reboot_complete.bikb"
+	};
+
+	// ["ta_reboot_complete_urgent","oldman"] call BIS_fnc_kbTell;
+	class ta_reboot_complete_urgent
+	{
+		id = 104;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_104_ta_reboot_complete_urgent.bikb";
+		#include "oldman_104_ta_reboot_complete_urgent.bikb"
+	};
+
+	// ["ta_reboot_fail","oldman"] call BIS_fnc_kbTell;
+	class ta_reboot_fail
+	{
+		id = 105;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_105_ta_reboot_fail.bikb";
+		#include "oldman_105_ta_reboot_fail.bikb"
+	};
+
+	// ["ta_destroy_radar_a_call","oldman"] call BIS_fnc_kbTell;
+	class ta_destroy_radar_a_call
+	{
+		id = 106;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_106_ta_destroy_radar_a_call.bikb";
+		#include "oldman_106_ta_destroy_radar_a_call.bikb"
+	};
+
+	// ["ta_destroy_radar_main_intel_call","oldman"] call BIS_fnc_kbTell;
+	class ta_destroy_radar_main_intel_call
+	{
+		id = 107;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_107_ta_destroy_radar_main_intel_call.bikb";
+		#include "oldman_107_ta_destroy_radar_main_intel_call.bikb"
+	};
+
+	// ["ta_second_radar_found_in_call","oldman"] call BIS_fnc_kbTell;
+	class ta_second_radar_found_in_call
+	{
+		id = 108;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_108_ta_second_radar_found_in_call.bikb";
+		#include "oldman_108_ta_second_radar_found_in_call.bikb"
+	};
+
+	// ["ta_second_radar_found_main_known_call","oldman"] call BIS_fnc_kbTell;
+	class ta_second_radar_found_main_known_call
+	{
+		id = 109;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_109_ta_second_radar_found_main_known_call.bikb";
+		#include "oldman_109_ta_second_radar_found_main_known_call.bikb"
+	};
+
+	// ["ta_second_radar_found_main_call","oldman"] call BIS_fnc_kbTell;
+	class ta_second_radar_found_main_call
+	{
+		id = 110;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_110_ta_second_radar_found_main_call.bikb";
+		#include "oldman_110_ta_second_radar_found_main_call.bikb"
+	};
+
+	// ["eve_radar_destroyed_in_call","oldman"] call BIS_fnc_kbTell;
+	class eve_radar_destroyed_in_call
+	{
+		id = 111;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_111_eve_radar_destroyed_in_call.bikb";
+		#include "oldman_111_eve_radar_destroyed_in_call.bikb"
+	};
+
+	// ["eve_main_radar_destroyed_call","oldman"] call BIS_fnc_kbTell;
+	class eve_main_radar_destroyed_call
+	{
+		id = 112;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_112_eve_main_radar_destroyed_call.bikb";
+		#include "oldman_112_eve_main_radar_destroyed_call.bikb"
+	};
+
+	// ["eve_second_radar_destroyed_call","oldman"] call BIS_fnc_kbTell;
+	class eve_second_radar_destroyed_call
+	{
+		id = 113;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_113_eve_second_radar_destroyed_call.bikb";
+		#include "oldman_113_eve_second_radar_destroyed_call.bikb"
+	};
+
+	// ["eve_radar_station_out_call","oldman"] call BIS_fnc_kbTell;
+	class eve_radar_station_out_call
+	{
+		id = 114;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_114_eve_radar_station_out_call.bikb";
+		#include "oldman_114_eve_radar_station_out_call.bikb"
+	};
+
+	// ["ta_all_radar_sites_destroyed_call","oldman"] call BIS_fnc_kbTell;
+	class ta_all_radar_sites_destroyed_call
+	{
+		id = 115;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_115_ta_all_radar_sites_destroyed_call.bikb";
+		#include "oldman_115_ta_all_radar_sites_destroyed_call.bikb"
+	};
+
+	// ["ta_lab_destroyed_in_call","oldman"] call BIS_fnc_kbTell;
+	class ta_lab_destroyed_in_call
+	{
+		id = 116;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_116_ta_lab_destroyed_in_call.bikb";
+		#include "oldman_116_ta_lab_destroyed_in_call.bikb"
+	};
+
+	// ["ta_lab_destroyed_not_known_call","oldman"] call BIS_fnc_kbTell;
+	class ta_lab_destroyed_not_known_call
+	{
+		id = 117;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_117_ta_lab_destroyed_not_known_call.bikb";
+		#include "oldman_117_ta_lab_destroyed_not_known_call.bikb"
+	};
+
+	// ["ta_lab_destroyed_call","oldman"] call BIS_fnc_kbTell;
+	class ta_lab_destroyed_call
+	{
+		id = 118;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_118_ta_lab_destroyed_call.bikb";
+		#include "oldman_118_ta_lab_destroyed_call.bikb"
+	};
+
+	// ["ta_escape_rv_in","oldman"] call BIS_fnc_kbTell;
+	class ta_escape_rv_in
+	{
+		id = 119;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_119_ta_escape_rv_in.bikb";
+		#include "oldman_119_ta_escape_rv_in.bikb"
+	};
+
+	// ["ta_escape_rv_malaria_info_a","oldman"] call BIS_fnc_kbTell;
+	class ta_escape_rv_malaria_info_a
+	{
+		id = 120;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_120_ta_escape_rv_malaria_info_a.bikb";
+		#include "oldman_120_ta_escape_rv_malaria_info_a.bikb"
+	};
+
+	// ["ta_escape_rv_malaria_info_b","oldman"] call BIS_fnc_kbTell;
+	class ta_escape_rv_malaria_info_b
+	{
+		id = 121;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_121_ta_escape_rv_malaria_info_b.bikb";
+		#include "oldman_121_ta_escape_rv_malaria_info_b.bikb"
+	};
+
+	// ["ta_escape_rv_malaria_info_c","oldman"] call BIS_fnc_kbTell;
+	class ta_escape_rv_malaria_info_c
+	{
+		id = 122;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_122_ta_escape_rv_malaria_info_c.bikb";
+		#include "oldman_122_ta_escape_rv_malaria_info_c.bikb"
+	};
+
+	// ["ta_escape_rv_malaria_info_d","oldman"] call BIS_fnc_kbTell;
+	class ta_escape_rv_malaria_info_d
+	{
+		id = 123;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_123_ta_escape_rv_malaria_info_d.bikb";
+		#include "oldman_123_ta_escape_rv_malaria_info_d.bikb"
+	};
+
+	// ["ta_escape_rv_malaria_info_e","oldman"] call BIS_fnc_kbTell;
+	class ta_escape_rv_malaria_info_e
+	{
+		id = 124;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_124_ta_escape_rv_malaria_info_e.bikb";
+		#include "oldman_124_ta_escape_rv_malaria_info_e.bikb"
+	};
+
+	// ["ta_escape_rv_malaria_info_h","oldman"] call BIS_fnc_kbTell;
+	class ta_escape_rv_malaria_info_h
+	{
+		id = 125;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_125_ta_escape_rv_malaria_info_h.bikb";
+		#include "oldman_125_ta_escape_rv_malaria_info_h.bikb"
+	};
+
+	// ["ta_escape_rv_resumed","oldman"] call BIS_fnc_kbTell;
+	class ta_escape_rv_resumed
+	{
+		id = 126;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_126_ta_escape_rv_resumed.bikb";
+		#include "oldman_126_ta_escape_rv_resumed.bikb"
+	};
+
+	// ["ta_escape_rv_a","oldman"] call BIS_fnc_kbTell;
+	class ta_escape_rv_a
+	{
+		id = 127;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_127_ta_escape_rv_a.bikb";
+		#include "oldman_127_ta_escape_rv_a.bikb"
+	};
+
+	// ["eve_miller_threatened","oldman"] call BIS_fnc_kbTell;
+	class eve_miller_threatened
+	{
+		id = 128;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_128_eve_miller_threatened.bikb";
+		#include "oldman_128_eve_miller_threatened.bikb"
+	};
+
+	// ["eve_miller_drop_the_gun","oldman"] call BIS_fnc_kbTell;
+	class eve_miller_drop_the_gun
+	{
+		id = 129;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_129_eve_miller_drop_the_gun.bikb";
+		#include "oldman_129_eve_miller_drop_the_gun.bikb"
+	};
+
+	// ["eve_miller_attacks","oldman"] call BIS_fnc_kbTell;
+	class eve_miller_attacks
+	{
+		id = 130;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_130_eve_miller_attacks.bikb";
+		#include "oldman_130_eve_miller_attacks.bikb"
+	};
+
+	// ["eve_miller_threatened_continued","oldman"] call BIS_fnc_kbTell;
+	class eve_miller_threatened_continued
+	{
+		id = 131;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_131_eve_miller_threatened_continued.bikb";
+		#include "oldman_131_eve_miller_threatened_continued.bikb"
+	};
+
+	// ["eve_miller_angry","oldman"] call BIS_fnc_kbTell;
+	class eve_miller_angry
+	{
+		id = 132;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_132_eve_miller_angry.bikb";
+		#include "oldman_132_eve_miller_angry.bikb"
+	};
+
+	// ["eve_escape_on_beach","oldman"] call BIS_fnc_kbTell;
+	class eve_escape_on_beach
+	{
+		id = 133;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_133_eve_escape_on_beach.bikb";
+		#include "oldman_133_eve_escape_on_beach.bikb"
+	};
+
+	// ["eve_escape_on_beach_diving_gear","oldman"] call BIS_fnc_kbTell;
+	class eve_escape_on_beach_diving_gear
+	{
+		id = 134;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_134_eve_escape_on_beach_diving_gear.bikb";
+		#include "oldman_134_eve_escape_on_beach_diving_gear.bikb"
+	};
+
+	// ["eve_escape_departure","oldman"] call BIS_fnc_kbTell;
+	class eve_escape_departure
+	{
+		id = 135;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_135_eve_escape_departure.bikb";
+		#include "oldman_135_eve_escape_departure.bikb"
+	};
+
+	// ["ta_syndikat_nvgs","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_nvgs
+	{
+		id = 136;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_136_ta_syndikat_nvgs.bikb";
+		#include "oldman_136_ta_syndikat_nvgs.bikb"
+	};
+
+	// ["ta_syndikat_nvgs_later","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_nvgs_later
+	{
+		id = 137;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_137_ta_syndikat_nvgs_later.bikb";
+		#include "oldman_137_ta_syndikat_nvgs_later.bikb"
+	};
+
+	// ["ta_syndikat_nvgs_tomorrow","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_nvgs_tomorrow
+	{
+		id = 138;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_138_ta_syndikat_nvgs_tomorrow.bikb";
+		#include "oldman_138_ta_syndikat_nvgs_tomorrow.bikb"
+	};
+
+	// ["ta_syndikat_nvgs_meeting_out","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_nvgs_meeting_out
+	{
+		id = 139;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_139_ta_syndikat_nvgs_meeting_out.bikb";
+		#include "oldman_139_ta_syndikat_nvgs_meeting_out.bikb"
+	};
+
+	// ["ta_syndikat_nvgs_done","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_nvgs_done
+	{
+		id = 140;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_140_ta_syndikat_nvgs_done.bikb";
+		#include "oldman_140_ta_syndikat_nvgs_done.bikb"
+	};
+
+	// ["ta_syndikat_nvgs_timeout","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_nvgs_timeout
+	{
+		id = 141;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_141_ta_syndikat_nvgs_timeout.bikb";
+		#include "oldman_141_ta_syndikat_nvgs_timeout.bikb"
+	};
+
+	// ["ta_syndikat_nvgs_out","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_nvgs_out
+	{
+		id = 142;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_142_ta_syndikat_nvgs_out.bikb";
+		#include "oldman_142_ta_syndikat_nvgs_out.bikb"
+	};
+
+	// ["ta_syndikat_nvgs_done_out","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_nvgs_done_out
+	{
+		id = 143;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_143_ta_syndikat_nvgs_done_out.bikb";
+		#include "oldman_143_ta_syndikat_nvgs_done_out.bikb"
+	};
+
+	// ["ta_syndikat_operation_fail","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_operation_fail
+	{
+		id = 144;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_144_ta_syndikat_operation_fail.bikb";
+		#include "oldman_144_ta_syndikat_operation_fail.bikb"
+	};
+
+	// ["ta_syndikat_opertaion_success","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_opertaion_success
+	{
+		id = 145;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_145_ta_syndikat_opertaion_success.bikb";
+		#include "oldman_145_ta_syndikat_opertaion_success.bikb"
+	};
+
+	// ["ta_syndikat_assault","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_assault
+	{
+		id = 146;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_146_ta_syndikat_assault.bikb";
+		#include "oldman_146_ta_syndikat_assault.bikb"
+	};
+
+	// ["ta_syndikat_assault_ready","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_assault_ready
+	{
+		id = 147;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_147_ta_syndikat_assault_ready.bikb";
+		#include "oldman_147_ta_syndikat_assault_ready.bikb"
+	};
+
+	// ["ta_syndikat_assault_moved","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_assault_moved
+	{
+		id = 148;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_148_ta_syndikat_assault_moved.bikb";
+		#include "oldman_148_ta_syndikat_assault_moved.bikb"
+	};
+
+	// ["eve_at_syndikat_boat","oldman"] call BIS_fnc_kbTell;
+	class eve_at_syndikat_boat
+	{
+		id = 149;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_149_eve_at_syndikat_boat.bikb";
+		#include "oldman_149_eve_at_syndikat_boat.bikb"
+	};
+
+	// ["eve_at_syndikat_en_route","oldman"] call BIS_fnc_kbTell;
+	class eve_at_syndikat_en_route
+	{
+		id = 150;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_150_eve_at_syndikat_en_route.bikb";
+		#include "oldman_150_eve_at_syndikat_en_route.bikb"
+	};
+
+	// ["in_syndikat_assault_prepare","oldman"] call BIS_fnc_kbTell;
+	class in_syndikat_assault_prepare
+	{
+		id = 151;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_151_in_syndikat_assault_prepare.bikb";
+		#include "oldman_151_in_syndikat_assault_prepare.bikb"
+	};
+
+	// ["eve_syndikat_assault_begins","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_assault_begins
+	{
+		id = 152;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_152_eve_syndikat_assault_begins.bikb";
+		#include "oldman_152_eve_syndikat_assault_begins.bikb"
+	};
+
+	// ["am_syndikat_soldier_attack","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_soldier_attack
+	{
+		id = 153;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_153_am_syndikat_soldier_attack.bikb";
+		#include "oldman_153_am_syndikat_soldier_attack.bikb"
+	};
+
+	// ["eve_syndikat_assault_fail","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_assault_fail
+	{
+		id = 154;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_154_eve_syndikat_assault_fail.bikb";
+		#include "oldman_154_eve_syndikat_assault_fail.bikb"
+	};
+	// ["am_syndikat_soldier_retreat","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_soldier_retreat
+	{
+		id = 155;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_155_am_syndikat_soldier_retreat.bikb";
+		#include "oldman_155_am_syndikat_soldier_retreat.bikb"
+	};
+
+	// ["ta_syndikat_assault_success_charge","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_assault_success_charge
+	{
+		id = 156;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_156_ta_syndikat_assault_success_charge.bikb";
+		#include "oldman_156_ta_syndikat_assault_success_charge.bikb"
+	};
+
+	// ["eve_syndikat_assault_charge","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_assault_charge
+	{
+		id = 157;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_157_eve_syndikat_assault_charge.bikb";
+		#include "oldman_157_eve_syndikat_assault_charge.bikb"
+	};
+
+	// ["ta_syndikat_assault_alone","oldman"] call BIS_fnc_kbTell;
+	class ta_syndikat_assault_alone
+	{
+		id = 158;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_158_ta_syndikat_assault_alone.bikb";
+		#include "oldman_158_ta_syndikat_assault_alone.bikb"
+	};
+
+	// ["eve_syndikat_end_in","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_end_in
+	{
+		id = 159;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_159_eve_syndikat_end_in.bikb";
+		#include "oldman_159_eve_syndikat_end_in.bikb"
+	};
+
+	// ["eve_syndikat_end_in_unknown","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_end_in_unknown
+	{
+		id = 160;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_160_eve_syndikat_end_in_unknown.bikb";
+		#include "oldman_160_eve_syndikat_end_in_unknown.bikb"
+	};
+
+	// ["eve_syndikat_end_a","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_end_a
+	{
+		id = 161;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_161_eve_syndikat_end_a.bikb";
+		#include "oldman_161_eve_syndikat_end_a.bikb"
+	};
+
+	// ["eve_syndikat_end_b","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_end_b
+	{
+		id = 162;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_162_eve_syndikat_end_b.bikb";
+		#include "oldman_162_eve_syndikat_end_b.bikb"
+	};
+
+	// ["eve_syndikat_end_c","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_end_c
+	{
+		id = 163;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_163_eve_syndikat_end_c.bikb";
+		#include "oldman_163_eve_syndikat_end_c.bikb"
+	};
+
+	// ["eve_syndikat_end_d","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_end_d
+	{
+		id = 164;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_164_eve_syndikat_end_d.bikb";
+		#include "oldman_164_eve_syndikat_end_d.bikb"
+	};
+
+	// ["eve_syndikat_end_e","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_end_e
+	{
+		id = 165;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_165_eve_syndikat_end_e.bikb";
+		#include "oldman_165_eve_syndikat_end_e.bikb"
+	};
+
+	// ["eve_syndikat_end_f","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_end_f
+	{
+		id = 166;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_166_eve_syndikat_end_f.bikb";
+		#include "oldman_166_eve_syndikat_end_f.bikb"
+	};
+
+	// ["eve_syndikat_end_g","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_end_g
+	{
+		id = 167;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_167_eve_syndikat_end_g.bikb";
+		#include "oldman_167_eve_syndikat_end_g.bikb"
+	};
+
+	// ["eve_syndikat_end_h","oldman"] call BIS_fnc_kbTell;
+	class eve_syndikat_end_h
+	{
+		id = 168;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_168_eve_syndikat_end_h.bikb";
+		#include "oldman_168_eve_syndikat_end_h.bikb"
+	};
+
+	// ["eve_doctor_meeting","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_meeting
+	{
+		id = 169;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_169_eve_doctor_meeting.bikb";
+		#include "oldman_169_eve_doctor_meeting.bikb"
+	};
+
+	// ["eve_doctor_knocking_at_door_spec","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_knocking_at_door_spec
+	{
+		id = 170;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_170_eve_doctor_knocking_at_door_spec.bikb";
+		#include "oldman_170_eve_doctor_knocking_at_door_spec.bikb"
+	};
+
+	// ["eve_doctor_knocking_at_door_delay_a_spec","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_knocking_at_door_delay_a_spec
+	{
+		id = 171;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_171_eve_doctor_knocking_at_door_delay_a_spec.bikb";
+		#include "oldman_171_eve_doctor_knocking_at_door_delay_a_spec.bikb"
+	};
+
+	// ["eve_doctor_knocking_at_door_delay_b_spec","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_knocking_at_door_delay_b_spec
+	{
+		id = 172;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_172_eve_doctor_knocking_at_door_delay_b_spec.bikb";
+		#include "oldman_172_eve_doctor_knocking_at_door_delay_b_spec.bikb"
+	};
+
+	// ["eve_doctor_knocking_at_door_delay_c_spec","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_knocking_at_door_delay_c_spec
+	{
+		id = 173;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_173_eve_doctor_knocking_at_door_delay_c_spec.bikb";
+		#include "oldman_173_eve_doctor_knocking_at_door_delay_c_spec.bikb"
+	};
+
+	// ["eve_doctor_csat","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_csat
+	{
+		id = 174;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_174_eve_doctor_csat.bikb";
+		#include "oldman_174_eve_doctor_csat.bikb"
+	};
+
+	// ["eve_doctor_medicine_in","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_medicine_in
+	{
+		id = 175;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_175_eve_doctor_medicine_in.bikb";
+		#include "oldman_175_eve_doctor_medicine_in.bikb"
+	};
+
+	// ["eve_doctor_medicine_not_home","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_medicine_not_home
+	{
+		id = 176;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_176_eve_doctor_medicine_not_home.bikb";
+		#include "oldman_176_eve_doctor_medicine_not_home.bikb"
+	};
+
+	// ["eve_doctor_medicine","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_medicine
+	{
+		id = 177;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_177_eve_doctor_medicine.bikb";
+		#include "oldman_177_eve_doctor_medicine.bikb"
+	};
+
+	// ["eve_doctor_medicine_lucas_arrested","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_medicine_lucas_arrested
+	{
+		id = 178;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_178_eve_doctor_medicine_lucas_arrested.bikb";
+		#include "oldman_178_eve_doctor_medicine_lucas_arrested.bikb"
+	};
+
+	// ["eve_doctor_medicine_out","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_medicine_out
+	{
+		id = 179;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_179_eve_doctor_medicine_out.bikb";
+		#include "oldman_179_eve_doctor_medicine_out.bikb"
+	};
+
+	// ["ta_vehicle_instructions","oldman"] call BIS_fnc_kbTell;
+	class ta_vehicle_instructions
+	{
+		id = 180;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_180_ta_vehicle_instructions.bikb";
+		#include "oldman_180_ta_vehicle_instructions.bikb"
+	};
+
+	// ["ta_vehicle_received","oldman"] call BIS_fnc_kbTell;
+	class ta_vehicle_received
+	{
+		id = 181;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_181_ta_vehicle_received.bikb";
+		#include "oldman_181_ta_vehicle_received.bikb"
+	};
+
+	// ["eve_location_change","oldman"] call BIS_fnc_kbTell;
+	class eve_location_change
+	{
+		id = 182;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_182_eve_location_change.bikb";
+		#include "oldman_182_eve_location_change.bikb"
+	};
+
+	// ["eve_doctor_leaves_tanoa","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_leaves_tanoa
+	{
+		id = 183;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_183_eve_doctor_leaves_tanoa.bikb";
+		#include "oldman_183_eve_doctor_leaves_tanoa.bikb"
+	};
+
+	// ["eve_doctor_medicine_reminder_a","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_medicine_reminder_a
+	{
+		id = 184;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_184_eve_doctor_medicine_reminder_a.bikb";
+		#include "oldman_184_eve_doctor_medicine_reminder_a.bikb"
+	};
+
+	// ["ex_doctor_medicine_reminder_b","oldman"] call BIS_fnc_kbTell;
+	class ex_doctor_medicine_reminder_b
+	{
+		id = 185;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_185_ex_doctor_medicine_reminder_b.bikb";
+		#include "oldman_185_ex_doctor_medicine_reminder_b.bikb"
+	};
+
+	// ["eve_medicine_received","oldman"] call BIS_fnc_kbTell;
+	class eve_medicine_received
+	{
+		id = 186;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_186_eve_medicine_received.bikb";
+		#include "oldman_186_eve_medicine_received.bikb"
+	};
+
+	// ["ta_vehicle_required","oldman"] call BIS_fnc_kbTell;
+	class ta_vehicle_required
+	{
+		id = 187;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_187_ta_vehicle_required.bikb";
+		#include "oldman_187_ta_vehicle_required.bikb"
+	};
+
+	// ["eve_doctor_set_free_in","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_set_free_in
+	{
+		id = 188;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_188_eve_doctor_set_free_in.bikb";
+		#include "oldman_188_eve_doctor_set_free_in.bikb"
+	};
+
+	// ["eve_doctor_set_free_danger","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_set_free_danger
+	{
+		id = 189;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_189_eve_doctor_set_free_danger.bikb";
+		#include "oldman_189_eve_doctor_set_free_danger.bikb"
+	};
+
+	// ["eve_doctor_set_free_safe","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_set_free_safe
+	{
+		id = 190;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_190_eve_doctor_set_free_safe.bikb";
+		#include "oldman_190_eve_doctor_set_free_safe.bikb"
+	};
+
+	// ["eve_doctor_get_the_key","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_get_the_key
+	{
+		id = 191;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_191_eve_doctor_get_the_key.bikb";
+		#include "oldman_191_eve_doctor_get_the_key.bikb"
+	};
+
+	// ["eve_doctor_set_free","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_set_free
+	{
+		id = 192;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_192_eve_doctor_set_free.bikb";
+		#include "oldman_192_eve_doctor_set_free.bikb"
+	};
+
+	// ["ta_sample_taken_to_van_call","oldman"] call BIS_fnc_kbTell;
+	class ta_sample_taken_to_van_call
+	{
+		id = 193;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_193_ta_sample_taken_to_van_call.bikb";
+		#include "oldman_193_ta_sample_taken_to_van_call.bikb"
+	};
+
+	// ["eve_doctor_goodbye","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_goodbye
+	{
+		id = 194;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_194_eve_doctor_goodbye.bikb";
+		#include "oldman_194_eve_doctor_goodbye.bikb"
+	};
+
+	// ["in_doctor_report_a","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_a
+	{
+		id = 195;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_195_in_doctor_report_a.bikb";
+		#include "oldman_195_in_doctor_report_a.bikb"
+	};
+
+	// ["in_doctor_report_b","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_b
+	{
+		id = 196;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_196_in_doctor_report_b.bikb";
+		#include "oldman_196_in_doctor_report_b.bikb"
+	};
+
+	// ["in_doctor_report_c","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_c
+	{
+		id = 197;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_197_in_doctor_report_c.bikb";
+		#include "oldman_197_in_doctor_report_c.bikb"
+	};
+
+	// ["in_doctor_report_d","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_d
+	{
+		id = 198;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_198_in_doctor_report_d.bikb";
+		#include "oldman_198_in_doctor_report_d.bikb"
+	};
+
+	// ["in_doctor_report_casuality_a","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_casuality_a
+	{
+		id = 199;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_199_in_doctor_report_casuality_a.bikb";
+		#include "oldman_199_in_doctor_report_casuality_a.bikb"
+	};
+
+	// ["in_doctor_report_casuality_b","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_casuality_b
+	{
+		id = 200;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_200_in_doctor_report_casuality_b.bikb";
+		#include "oldman_200_in_doctor_report_casuality_b.bikb"
+	};
+
+	// ["in_doctor_report_casuality_c","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_casuality_c
+	{
+		id = 201;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_201_in_doctor_report_casuality_c.bikb";
+		#include "oldman_201_in_doctor_report_casuality_c.bikb"
+	};
+
+	// ["in_doctor_report_casuality_d","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_casuality_d
+	{
+		id = 202;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_202_in_doctor_report_casuality_d.bikb";
+		#include "oldman_202_in_doctor_report_casuality_d.bikb"
+	};
+
+	// ["in_doctor_report_casuality_e","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_casuality_e
+	{
+		id = 203;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_203_in_doctor_report_casuality_e.bikb";
+		#include "oldman_203_in_doctor_report_casuality_e.bikb"
+	};
+
+	// ["in_doctor_report_casualties","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_casualties
+	{
+		id = 204;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_204_in_doctor_report_casualties.bikb";
+		#include "oldman_204_in_doctor_report_casualties.bikb"
+	};
+
+	// ["in_doctor_arthur_dying_a","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_arthur_dying_a
+	{
+		id = 205;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_205_in_doctor_arthur_dying_a.bikb";
+		#include "oldman_205_in_doctor_arthur_dying_a.bikb"
+	};
+
+	// ["in_doctor_report_dying_b","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_dying_b
+	{
+		id = 206;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_206_in_doctor_report_dying_b.bikb";
+		#include "oldman_206_in_doctor_report_dying_b.bikb"
+	};
+
+	// ["in_doctor_report_dying_c","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_dying_c
+	{
+		id = 207;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_207_in_doctor_report_dying_c.bikb";
+		#include "oldman_207_in_doctor_report_dying_c.bikb"
+	};
+
+	// ["in_doctor_report_dying_d","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_dying_d
+	{
+		id = 208;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_208_in_doctor_report_dying_d.bikb";
+		#include "oldman_208_in_doctor_report_dying_d.bikb"
+	};
+
+	// ["in_doctor_report_dying_e","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_dying_e
+	{
+		id = 209;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_209_in_doctor_report_dying_e.bikb";
+		#include "oldman_209_in_doctor_report_dying_e.bikb"
+	};
+
+	// ["in_doctor_report_dying_f","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_dying_f
+	{
+		id = 210;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_210_in_doctor_report_dying_f.bikb";
+		#include "oldman_210_in_doctor_report_dying_f.bikb"
+	};
+
+	// ["in_doctor_report_drugs_out","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_drugs_out
+	{
+		id = 211;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_211_in_doctor_report_drugs_out.bikb";
+		#include "oldman_211_in_doctor_report_drugs_out.bikb"
+	};
+
+	// ["in_doctor_report_drugs_running_out","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_drugs_running_out
+	{
+		id = 212;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_212_in_doctor_report_drugs_running_out.bikb";
+		#include "oldman_212_in_doctor_report_drugs_running_out.bikb"
+	};
+
+	// ["in_doctor_report_drugs_running_low","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_drugs_running_low
+	{
+		id = 213;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_213_in_doctor_report_drugs_running_low.bikb";
+		#include "oldman_213_in_doctor_report_drugs_running_low.bikb"
+	};
+
+	// ["in_doctor_report_a_out","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_a_out
+	{
+		id = 214;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_214_in_doctor_report_a_out.bikb";
+		#include "oldman_214_in_doctor_report_a_out.bikb"
+	};
+
+	// ["in_doctor_report_b_out","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_b_out
+	{
+		id = 215;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_215_in_doctor_report_b_out.bikb";
+		#include "oldman_215_in_doctor_report_b_out.bikb"
+	};
+
+	// ["in_doctor_report_c_out","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_c_out
+	{
+		id = 216;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_216_in_doctor_report_c_out.bikb";
+		#include "oldman_216_in_doctor_report_c_out.bikb"
+	};
+
+	// ["in_doctor_report_d_out","oldman"] call BIS_fnc_kbTell;
+	class in_doctor_report_d_out
+	{
+		id = 217;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_217_in_doctor_report_d_out.bikb";
+		#include "oldman_217_in_doctor_report_d_out.bikb"
+	};
+
+	// ["eve_doctor_captured_call","oldman"] call BIS_fnc_kbTell;
+	class eve_doctor_captured_call
+	{
+		id = 218;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_218_eve_doctor_captured_call.bikb";
+		#include "oldman_218_eve_doctor_captured_call.bikb"
+	};
+
+	// ["eve_howard_no_good","oldman"] call BIS_fnc_kbTell;
+	class eve_howard_no_good
+	{
+		id = 219;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_219_eve_howard_no_good.bikb";
+		#include "oldman_219_eve_howard_no_good.bikb"
+	};
+
+	// ["eve_jean_no_good","oldman"] call BIS_fnc_kbTell;
+	class eve_jean_no_good
+	{
+		id = 220;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_220_eve_jean_no_good.bikb";
+		#include "oldman_220_eve_jean_no_good.bikb"
+	};
+
+	// ["eve_lucas_no_good","oldman"] call BIS_fnc_kbTell;
+	class eve_lucas_no_good
+	{
+		id = 221;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_221_eve_lucas_no_good.bikb";
+		#include "oldman_221_eve_lucas_no_good.bikb"
+	};
+
+	// ["eve_renly_no_good","oldman"] call BIS_fnc_kbTell;
+	class eve_renly_no_good
+	{
+		id = 222;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_222_eve_renly_no_good.bikb";
+		#include "oldman_222_eve_renly_no_good.bikb"
+	};
+
+	// ["eve_mechanic","oldman"] call BIS_fnc_kbTell;
+	class eve_mechanic
+	{
+		id = 223;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_223_eve_mechanic.bikb";
+		#include "oldman_223_eve_mechanic.bikb"
+	};
+
+	// ["eve_smuggler","oldman"] call BIS_fnc_kbTell;
+	class eve_smuggler
+	{
+		id = 224;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_224_eve_smuggler.bikb";
+		#include "oldman_224_eve_smuggler.bikb"
+	};
+
+	// ["ta_rescue_lucas","oldman"] call BIS_fnc_kbTell;
+	class ta_rescue_lucas
+	{
+		id = 225;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_225_ta_rescue_lucas.bikb";
+		#include "oldman_225_ta_rescue_lucas.bikb"
+	};
+
+	// ["ta_lucas_rescued","oldman"] call BIS_fnc_kbTell;
+	class ta_lucas_rescued
+	{
+		id = 226;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_226_ta_lucas_rescued.bikb";
+		#include "oldman_226_ta_lucas_rescued.bikb"
+	};
+
+	// ["eve_medicine_available","oldman"] call BIS_fnc_kbTell;
+	class eve_medicine_available
+	{
+		id = 227;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_227_eve_medicine_available.bikb";
+		#include "oldman_227_eve_medicine_available.bikb"
+	};
+
+	// ["eve_threat_level_warning_miller","oldman"] call BIS_fnc_kbTell;
+	class eve_threat_level_warning_miller
+	{
+		id = 228;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_228_eve_threat_level_warning_miller.bikb";
+		#include "oldman_228_eve_threat_level_warning_miller.bikb"
+	};
+
+	// ["eve_threat_level_warning_syndikat_boss","oldman"] call BIS_fnc_kbTell;
+	class eve_threat_level_warning_syndikat_boss
+	{
+		id = 229;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_229_eve_threat_level_warning_syndikat_boss.bikb";
+		#include "oldman_229_eve_threat_level_warning_syndikat_boss.bikb"
+	};
+
+	// ["eve_threat_level_safe_miller","oldman"] call BIS_fnc_kbTell;
+	class eve_threat_level_safe_miller
+	{
+		id = 230;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_230_eve_threat_level_safe_miller.bikb";
+		#include "oldman_230_eve_threat_level_safe_miller.bikb"
+	};
+
+	// ["eve_threat_level_safe_syndikat_boss","oldman"] call BIS_fnc_kbTell;
+	class eve_threat_level_safe_syndikat_boss
+	{
+		id = 231;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_231_eve_threat_level_safe_syndikat_boss.bikb";
+		#include "oldman_231_eve_threat_level_safe_syndikat_boss.bikb"
+	};
+
+	// ["ta_research_papers","oldman"] call BIS_fnc_kbTell;
+	class ta_research_papers
+	{
+		id = 232;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_232_ta_research_papers.bikb";
+		#include "oldman_232_ta_research_papers.bikb"
+	};
+
+	// ["ex_vehicle_destroyed","oldman"] call BIS_fnc_kbTell;
+	class ex_vehicle_destroyed
+	{
+		id = 233;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_233_ex_vehicle_destroyed.bikb";
+		#include "oldman_233_ex_vehicle_destroyed.bikb"
+	};
+
+	// ["ex_location_change_call","oldman"] call BIS_fnc_kbTell;
+	class ex_location_change_call
+	{
+		id = 234;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_234_ex_location_change_call.bikb";
+		#include "oldman_234_ex_location_change_call.bikb"
+	};
+
+	// ["ex_syndikat_friendly_fire","oldman"] call BIS_fnc_kbTell;
+	class ex_syndikat_friendly_fire
+	{
+		id = 235;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_235_ex_syndikat_friendly_fire.bikb";
+		#include "oldman_235_ex_syndikat_friendly_fire.bikb"
+	};
+
+	// ["ex_target_destroyed","oldman"] call BIS_fnc_kbTell;
+	class ex_target_destroyed
+	{
+		id = 236;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_236_ex_target_destroyed.bikb";
+		#include "oldman_236_ex_target_destroyed.bikb"
+	};
+
+	// ["ex_timeout_traitor","oldman"] call BIS_fnc_kbTell;
+	class ex_timeout_traitor
+	{
+		id = 237;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_237_ex_timeout_traitor.bikb";
+		#include "oldman_237_ex_timeout_traitor.bikb"
+	};
+
+	// ["ex_miller_where_are_you_a","oldman"] call BIS_fnc_kbTell;
+	class ex_miller_where_are_you_a
+	{
+		id = 238;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_238_ex_miller_where_are_you_a.bikb";
+		#include "oldman_238_ex_miller_where_are_you_a.bikb"
+	};
+
+	// ["ex_miller_where_are_you_b","oldman"] call BIS_fnc_kbTell;
+	class ex_miller_where_are_you_b
+	{
+		id = 239;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_239_ex_miller_where_are_you_b.bikb";
+		#include "oldman_239_ex_miller_where_are_you_b.bikb"
+	};
+
+	// ["ex_miller_where_are_you_c","oldman"] call BIS_fnc_kbTell;
+	class ex_miller_where_are_you_c
+	{
+		id = 240;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_240_ex_miller_where_are_you_c.bikb";
+		#include "oldman_240_ex_miller_where_are_you_c.bikb"
+	};
+
+	// ["ex_miller_where_are_you_d","oldman"] call BIS_fnc_kbTell;
+	class ex_miller_where_are_you_d
+	{
+		id = 241;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_241_ex_miller_where_are_you_d.bikb";
+		#include "oldman_241_ex_miller_where_are_you_d.bikb"
+	};
+
+	// ["ex_steals_hat","oldman"] call BIS_fnc_kbTell;
+	class ex_steals_hat
+	{
+		id = 242;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_242_ex_steals_hat.bikb";
+		#include "oldman_242_ex_steals_hat.bikb"
+	};
+
+	// ["ex_first_aid_not_effective","oldman"] call BIS_fnc_kbTell;
+	class ex_first_aid_not_effective
+	{
+		id = 243;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_243_ex_first_aid_not_effective.bikb";
+		#include "oldman_243_ex_first_aid_not_effective.bikb"
+	};
+
+	// ["ex_virus_upload_fail_new_plan","oldman"] call BIS_fnc_kbTell;
+	class ex_virus_upload_fail_new_plan
+	{
+		id = 244;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_244_ex_virus_upload_fail_new_plan.bikb";
+		#include "oldman_244_ex_virus_upload_fail_new_plan.bikb"
+	};
+
+	// ["in_black_market_prices_laptop","oldman"] call BIS_fnc_kbTell;
+	class in_black_market_prices_laptop
+	{
+		id = 245;
+		priority = 0;
+		file = "\a3\missions_f_Oldman\kb\oldman\oldman_245_in_black_market_prices_laptop.bikb";
+		#include "oldman_245_in_black_market_prices_laptop.bikb"
+	};

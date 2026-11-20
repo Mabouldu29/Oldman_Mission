@@ -1,0 +1,3 @@
+if (missionNamespace getVariable ["BIS_specialSaving", TRUE]) then {
+	((_this # 0) displayCtrl 103) ctrlShow FALSE;
+};

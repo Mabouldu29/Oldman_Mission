@@ -1,0 +1,22 @@
+//check free space in inventory
+#include "definitions.inc"
+PROFILE_INFO("BuyEquip","BuyEquip",1);
+params["_logic", "_param1"];
+private _equipPrice = [_param1, false] call BIS_fnc_OM_ModuleEconomy_getEquipmentPrice;
+if(isNil "_equipPrice") exitWith {RETURN_CODE_EQUIPMENT_NOT_EXISTS};
+if([_logic, _equipPrice] call BIS_fnc_OM_moduleEconomy_HasEnoughMoney) then
+{
+  if([_logic, _param1] call BIS_fnc_OM_moduleEconomy_HasEnoughStorage) then
+  {
+    [_logic, _equipPrice] call BIS_fnc_OM_moduleEconomy_DecreaseMoney;
+    RETURN_CODE_SUCCESS
+  }
+  else
+  {
+    RETURN_CODE_NOT_ENOUGH_SPACE
+  };
+}
+else
+{
+  RETURN_CODE_NOT_ENOUGH_MONEY
+};

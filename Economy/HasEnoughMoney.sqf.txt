@@ -1,0 +1,10 @@
+//param - either scalar (price) or string (item)
+
+params["_logic", "_param1"];
+PROFILE_INFO("hasEnoughMoney","hasEnoughMoney",1);
+if(typeName _param1 == "STRING") then
+{
+  _param1 = [_param1] call BIS_fnc_OM_ModuleEconomy_getEquipmentPrice;
+  /* if(isNil "_param1") exitWith {RETURN_CODE_EQUIPMENT_NOT_EXISTS}; */
+};
+if([_logic] call BIS_fnc_OM_moduleEconomy_GetStatus >= _param1 ) then {true} else {false}
