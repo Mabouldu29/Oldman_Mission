@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Rubberboat","",[5248.78,10150.4,5.53118],[[-0.666212,-0.744583,0.0419279],[0.0221074,0.0364788,0.99909]],0,1,[],["a3\boat_f\boat_transport_01\data\boat_transport_01_civilian_co.paa"],false,[],[true,false]],["C_Boat_Civil_01_rescue_F","",[5239.56,10147.6,4.77244],[[0.999456,0.0211154,-0.0253229],[0.0252149,0.00536456,0.999668]],0,1,[],["a3\boat_f_gamma\boat_civil_01\data\boat_civil_01_ext_rescue_co.paa","a3\boat_f_gamma\boat_civil_01\data\boat_civil_01_int_rescue_co.paa"],false,[],[true,false]],["C_Scooter_Transport_01_F","",[5587.93,10445.3,5.9633],[[0.797935,0.602599,-0.0132198],[0.0107736,0.0076702,0.999913]],0,1,[],["a3\boat_f_exp\scooter_transport_01\data\scooter_transport_01_blue_co.paa","a3\boat_f_exp\scooter_transport_01\data\scooter_transport_01_vp_blue_co.paa"],false,[],[true,false]],["C_Boat_Transport_02_F","",[5606.91,10396.5,3.12796],[[-0.469066,-0.882819,0.0246426],[0.0107471,0.0221948,0.999696]],0,1,[],["a3\boat_f_exp\boat_transport_02\data\boat_transport_02_exterior_civilian_co.paa","a3\boat_f_exp\boat_transport_02\data\boat_transport_02_interior_2_civilian_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["C_Boat_Civil_04_F",[5518.56,10219.6,0.824318],[[0.177153,0.984183,0],[0,0,1]],0,"",false,false,[],false,3],["C_Boat_Civil_04_F",[5556.39,10435.8,4.65862],[[-0.584717,0.811237,0],[0,0,1]],0,"",false,false,[],false,3],["C_Boat_Civil_04_F",[5425.71,10592.7,14.0231],[[0,1,0],[0,0,1]],0,"",false,false,[],false,3],["C_Boat_Civil_04_F",[5370.41,10404,13.4332],[[0.0626686,-0.998034,0],[0,0,1]],0,"",false,false,[],false,3]]
+		,
+		//--- #size
+		20
+]

@@ -1,0 +1,32 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Quadbike_01_F","",[7047.01,4135.13,0.0113633],[[-0.770357,0.637461,0.0138982],[-0.00362624,-0.0261771,0.999651]],0,0.7,[],["a3\soft_f_beta\quadbike_01\data\quadbike_01_civ_white_co.paa","a3\soft_f_beta\quadbike_01\data\quadbike_01_wheel_civwhite_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Rug_01_F",[7049.09,4141.87,0.749501],[[0.661374,-0.750057,0],[0,0,1]],0,"",false,false,[],false,2,0],["Land_Stretcher_01_olive_F",[7049.07,4141.88,0.749869],[[-0.667413,0.744688,0],[0,0,1]],0,"",false,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_smartmarkers_smartmarker_i_deliverypoint_f_sections_markertext0'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 0, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,1],["Land_OfficeCabinet_02_F",[7051.29,4141.61,0.721227],[[0.66665,-0.745371,0],[0,0,1]],0,"",true,false,[],true,-1,2],["Land_WoodenCrate_01_stack_x5_F",[7055.7,4143.47,0.711879],[[0.712295,0.70188,0],[0,0,1]],0,"",false,false,[],false,2,3],["Land_WoodenCrate_01_stack_x3_F",[7053.65,4137.23,0.776907],[[0.712296,0.70188,0],[0,0,1]],0,"",false,false,[],false,2,4],["Land_OfficeCabinet_02_F",[7050.07,4145.29,0.761726],[[-0.651177,0.758926,0],[0,0,1]],0,"",true,false,[],true,-1,5],["OfficeTable_01_old_F",[7051.61,4146.44,0.768225],[[-0.651172,0.75893,0],[0,0,1]],0,"",true,false,[],true,-1,6],["BloodPool_01_Large_New_F",[7026.8,4098.82,0.326618],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,7],["BloodTrail_01_New_F",[7026.69,4094.43,0.305169],[[0.0197094,-0.999806,0],[0,0,1]],0,"",false,false,[],false,2,8],["BloodTrail_01_New_F",[7027.01,4093.97,0.244906],[[-0.0251975,0.999682,0],[0,0,1]],0,"",false,false,[],false,2,9],["Land_WoodenCrate_01_stack_x3_F",[7024.72,4098.48,0.223747],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,10],["BloodSplatter_01_Large_New_F",[7026.66,4097.02,0.228942],[[-0.526893,0.849691,0.0202155],[0.00251323,-0.0222271,0.99975]],0,"",false,false,[],false,2,11],["Land_BarrelEmpty_grey_F",[7022.24,4101.17,0.980091],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1,12],["Land_BarrelWater_F",[7022.92,4101.13,1.08517],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1,13],["Land_BarrelEmpty_grey_F",[7023.28,4099.88,2.11318],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1,14],["Land_ChairWood_F",[7051.77,4145.96,0.758529],[[0.624695,-0.780869,0],[0,0,1]],0,"",true,false,[],true,-1,15],["Land_BarrelEmpty_grey_F",[7023.5,4100.95,1.17795],[[0.819142,-0.573591,0],[0,0,1]],0,"",true,false,[],true,-1,16],["Item_Sleeping_bag_folded_01",[7049.04,4142.72,0.786755],[[-0.939971,0.341254,0],[0,0,1]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,17]]
+		,
+		//--- #size
+		2
+]

@@ -1,0 +1,20 @@
+#ifndef OM_MAIN_MISSION
+	waituntil {!isNil "BIS_missionInitDone"};
+	#include "\a3\Missions_F_Oldman\Campaign\Missions\Oldman.tanoa\init_systemExec.sqf"
+#else
+    // select randomly sawmill cache
+    switch (floor random 2) do
+    {
+        case 0:
+        {
+            BIS_SE_Cache_Sawmil01 = true;
+            deleteVehicle BIS_SE_Cache_SawmilBox02; 
+        };
+
+        case 1:
+        {
+            BIS_SE_Cache_Sawmil02 = true;
+            deleteVehicle BIS_SE_Cache_SawmilBox01;
+        };
+    };
+#endif

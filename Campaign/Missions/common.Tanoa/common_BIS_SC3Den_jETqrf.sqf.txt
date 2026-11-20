@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["O_Plane_CAS_02_dynamicLoadout_F","",[1472.95,12550.5,955.3],[[0.791242,-0.611503,-7.52509e-007],[0.147858,0.191317,0.970328]],0,0.999953,[],["a3\air_f_epc\plane_cas_02\data\fighter02_ext01_co.paa","a3\air_f_epc\plane_cas_02\data\fighter02_ext02_co.paa"],false,[["#init",["_this setVelocity [100,-100,200]"]]],[true,false]]]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_Fighter_Pilot_F","",[1472.95,12550.5,957.26],127.698,0.5,0,"Auto",[[],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_PilotCoveralls",[["FirstAidKit",1],["16Rnd_9x21_Mag",3,16],["SmokeShellOrange",1,1],["Chemlight_green",2,1]]],[],[],"H_PilotHelmetFighter_O","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"O_Plane_CAS_02_dynamicLoadout_F",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		100
+]

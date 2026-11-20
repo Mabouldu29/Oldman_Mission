@@ -1,0 +1,33 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Cliff_boulder_F",[11833,7201.45,0.00764465],[[0.91023,-0.413616,0.0200835],[-0.00267442,0.0426261,0.999088]],0,"",false,false,[],false,3,0],["Land_Cliff_boulder_F",[11842.7,7197.72,1.86998],[[0.910233,-0.414096,0],[0,0,1]],0,"",false,false,[],false,3,1],["Land_Cliff_boulder_F",[11844.2,7222,-0.132637],[[0.971616,-0.0654698,0.227322],[-0.228462,-0.0103821,0.973498]],0,"",false,false,[],false,3,2],["Land_Cliff_boulder_F",[11837.7,7244.56,3.08328],[[0.934411,-0.0966874,-0.342824],[0.0592317,0.991232,-0.118116]],0,"",false,false,[],false,3,3],["Land_Cliff_boulder_F",[11827,7227.18,-0.000358582],[[0.0719761,-0.996653,0.0387456],[-0.02133,0.0372994,0.999076]],0,"",false,false,[],false,3,4],["Land_Cliff_boulder_F",[11838.2,7222.34,4.2756],[[0.997204,-0.07414,0.00935333],[-0.0686875,-0.95869,-0.276037]],0,"",false,false,[],false,3,5],["Land_Cliff_boulder_F",[11828.9,7229.83,3.28505],[[0.156026,-0.987557,0.0196766],[-0.987594,-0.155612,0.0210365]],0,"",false,false,[],false,3,6],["Land_Cliff_boulder_F",[11828.9,7241.55,3.1263],[[-0.28731,-0.957792,0.00935823],[-0.921359,0.273684,-0.276034]],0,"",false,false,[],false,3,7],["Land_Cliff_boulder_F",[11828.1,7221.78,0.0495529],[[-0.286942,-0.956167,0.0583944],[0.00800059,0.0585637,0.998252]],0,"",false,false,[],false,3,8],["Land_Cliff_boulder_F",[11837.9,7226.87,7.2997],[[0.997204,-0.0209873,0.07172],[-0.0686875,-0.635436,0.769092]],0,"",false,false,[],false,3,9],["Land_Cliff_boulder_F",[11839,7232.03,8.40018],[[0.997204,0.0393283,0.0635414],[-0.0686875,0.147493,0.986675]],0,"",false,false,[],false,3,10],["Land_Cliff_boulder_F",[11832.3,7235.18,7.9469],[[0.227943,-0.97019,0.0822948],[-0.296068,0.0114543,0.955098]],0,"",false,false,[],false,3,11],["Land_Cliff_boulder_F",[11837,7242.31,8.75568],[[0.997204,0.0155837,0.0730847],[-0.0686875,-0.194054,0.978583]],0,"",false,false,[],false,3,12],["Land_Cliff_boulder_F",[11841.9,7237.63,9.61926],[[0.997204,-0.0209873,0.07172],[-0.0686875,-0.635436,0.769092]],0,"",false,false,[],false,3,13],["Land_Cliff_boulder_F",[11844.7,7235.53,3.51015],[[0.438532,-0.889801,0.126267],[0.884745,0.402758,-0.234546]],0,"",false,false,[],false,3,14],["Campfire_burning_F",[11836.3,7235.57,8.39233e-005],[[0,0.998974,0.0452934],[-0.0718108,-0.0451765,0.996395]],0,"",false,false,[],false,2,15],["Land_Ground_sheet_khaki_F",[11837.4,7236.46,-0.013382],[[0.164303,-0.986166,-0.0219144],[-0.0585666,-0.03193,0.997773]],0,"",true,false,[],false,2,16],["Land_Ground_sheet_khaki_F",[11837.9,7236.55,0.00667572],[[0.164303,-0.986166,-0.0219144],[-0.0585666,-0.03193,0.997773]],0,"",true,false,[],false,2,17],["Land_Sleeping_bag_brown_F",[11837.7,7236.57,0.0345154],[[-0.139314,0.989969,0.0235037],[-0.0585746,-0.0319319,0.997772]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_smartmarkers_smartmarker_i_deliverypoint_f_sections_markertext0'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 0, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,18],["Land_TentLamp_01_suspended_red_F",[11839.7,7234.62,0.476463],[[0.71806,0.654122,0.237727],[-0.372816,0.0730768,0.925023]],0,"",true,false,[],false,1,19],["Item_Sleeping_bag_folded_01",[11833.9,7237.48,-0.000579834],[[-0.139244,0.989619,0.0355701],[-0.0665191,-0.0451864,0.996761]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,20],["Item_Sleeping_bag_folded_01",[11834,7237.98,0.000747681],[[0.990122,-0.125582,0.0623529],[-0.0665191,-0.0292552,0.997356]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,21]]
+		,
+		//--- #size
+		1
+]

@@ -1,0 +1,32 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Sleeping_bag_F",[3995.06,6128.08,0.396004],[[0.974683,0.22359,0],[0,0,1]],0,"",false,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_smartmarkers_smartmarker_i_deliverypoint_f_sections_markertext0'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 0, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,0],["Land_Ground_sheet_folded_khaki_F",[3995.29,6129.11,0.449707],[[0.385531,0.922695,0],[0,0,1]],0,"",true,false,[],true,-1,1],["Land_Ground_sheet_folded_blue_F",[3994.86,6129.1,0.441071],[[-0.835274,0.549834,0],[0,0,1]],0,"",true,false,[],true,-1,2],["Land_Garbage_square3_F",[3995.43,6126.45,0.351997],[[-0.0552462,0.998473,0],[0,0,1]],0,"",false,false,[],false,2,3],["Land_WaterBottle_01_pack_F",[3996.63,6128.58,0.438011],[[0.847847,0.530241,0],[0,0,1]],0,"",true,false,[],true,-1,4],["Land_CanisterPlastic_F",[3994.73,6126.4,0.338585],[[-0.95787,-0.287203,0],[0,0,1]],0,"",true,false,[],true,-1,5],["Land_FoodContainer_01_F",[3996.67,6128.23,0.436928],[[0.94051,-0.339765,0],[0,0,1]],0,"",true,false,[],true,-1,6],["MedicalGarbage_01_Bandage_F",[3996.6,6127.22,0.820999],[[-0.98387,-0.178885,0],[0,0,1]],0,"",false,false,[],false,0,7],["MedicalGarbage_01_FirstAidKit_F",[3996.39,6127.23,0.817459],[[0.903191,0.429239,0],[0,0,1]],0,"",false,false,[],false,1,8],["Land_BottlePlastic_V2_F",[3995.36,6127.42,0.72567],[[0.582984,-0.812484,0],[0,0,1]],0,"",true,false,[],true,-1,9],["Item_Sleeping_bag_folded_01",[3994.5,6129.14,0.441002],[[-0.83527,0.549839,0],[0,0,1]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,10]]
+		,
+		//--- #size
+		2
+]

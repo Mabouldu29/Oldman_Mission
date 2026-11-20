@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Garbage_square5_F",[5588.71,10982.8,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,3],["Land_Pallets_stack_F",[5580.96,10978.3,-2.14577e-006],[[-0.836677,0.547697,1.18774e-005],[1.51114e-005,1.39856e-006,1]],0,"",true,false,[],false,2],["BloodPool_01_Medium_Old_F",[5589.42,10982.4,0.732628],[[0,1,0],[0,0,1]],0,"",true,false,[],false,1],["MedicalGarbage_01_1x1_v2_F",[5590.02,10982,0.747102],[[0,1,0],[0,0,1]],0,"",true,false,[],false,1],["Tire_Van_02_Cargo_F",[5591.02,10985.5,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PaperBox_01_open_empty_F",[5594.61,10985.9,2.38419e-007],[[0.478968,0.877833,0],[0,0,1]],0,"",false,false,[["#init",["if (!isNil ""BIS_gendarmeVanWreck"" && {BIS_gendarmeVanWreck != objNull}) then {_this attachTo [BIS_gendarmeVanWreck,[0,0,-0.29]]} "]]],false,2],["Oil_Spill_F",[5589.35,10984.8,0],[[-0.991958,0.126566,0],[0,0,1]],0,"",false,false,[],false,2],["Land_Pallet_F",[5587.64,10983.3,-0.000682354],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1]]
+		,
+		//--- #size
+		1
+]

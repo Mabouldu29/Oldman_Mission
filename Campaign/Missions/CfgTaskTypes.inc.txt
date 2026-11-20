@@ -1,0 +1,19 @@
+class CfgTaskTypes
+{
+	class Fetch
+	{
+		icon = \A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\box_ca.paa;
+	};
+	class Transport
+	{
+		icon = \A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\truck_ca.paa;
+	};
+	class Support
+	{
+		icon = \A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\attack_ca.paa;//target_ca
+	};
+	class Distraction //Syndikat attack
+	{
+		icon = \A3\Ui_f\data\IGUI\Cfg\simpleTasks\types\destroy_ca.paa;
+	};
+};

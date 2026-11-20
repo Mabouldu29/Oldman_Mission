@@ -1,0 +1,32 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Sleeping_bag_F",[12040.3,5052.42,0.0827026],[[0.565063,-0.810686,0.153273],[-0.0638705,0.142234,0.98777]],0,"",false,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_smartmarkers_smartmarker_i_deliverypoint_f_sections_markertext0'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 0, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,0],["Land_FirePlace_F",[12038.7,5052.07,-2.28882e-005],[[0,0.99256,-0.121754],[-0.0850241,0.121313,0.988966]],0,"",true,false,[],false,1,1],["Land_ClothShelter_02_F",[12040.2,5052.1,-0.254936],[[0.566219,-0.824255,0],[0,0,1]],0,"",false,false,[],false,3,2],["Item_Sleeping_bag_folded_01",[12039.7,5050.53,0.00434113],[[-0.878096,-0.478451,0.0056465],[-0.085017,0.167622,0.982179]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,3]]
+		,
+		//--- #size
+		2
+]

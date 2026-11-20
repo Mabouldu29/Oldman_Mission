@@ -1,0 +1,577 @@
+#include "\a3\Missions_F_Oldman\cfgDev.inc"
+#include "\A3\Missions_F_Oldman\Systems\defines\questDefines.inc"
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+
+#define COMPLETE_CODE_SAVE [1,  \
+ [  \
+  [{sleep 3; saveGame}, [], 2, 9999999999, {}, {}, false, 4, false, 'SAVE GAME WHEN QUEST IS FINISHED' ]  \
+ ]  \
+] call BIS_fnc_OM_moduleActionQueue
+
+class cfgQuests
+{
+	class itemTypess
+	{
+		class MedicalItems
+		{
+			types[] = {"Medikit", "FirstAidKit"};
+		};
+	};
+
+  class Quest
+	{
+		title = "TASK_TITLE";
+		description[] = {"TASK_DESCRIPTION"};
+		markerDescription = "";
+		markerPicture = "";
+
+		timeoutMinutes = [];
+		timeoutFromStartInMinutes = 2; //TODO - currently only used for DEFEND quest
+
+		questNPC = "";
+		parentTemplate = "";
+		isMandatory = false;
+		keepInDiary = true;
+		subQuestsFinishingTheParent = true;
+
+		class QuestSmartMarker {
+			markerTitle = "";
+			markerTooltipTitle = "";
+			markerTooltipText = "";
+		};
+
+		typeName = "default";
+		smartMarkerPrefix = "T";
+		iconType = typeName;
+		questFunctionsType = typeName; //this is usually the same, eq. for SyndiAttack, the functions are currently same, but type is different
+		type = QUEST_TYPE_DEFAULT;
+
+		questParentClass = "";
+		canBeCompletedWithoutAssigning = true; //TODO move to module !?!
+
+		isParent = false;
+
+		class StateModifiers {
+			states[] = {"Created", "Assigned" ,"Progressing","Completed","Elapsed", "Failed", "Canceled"};
+			properties[] = {"customCondition", "code", "conversations"};
+
+			class Created {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+
+			class Assigned {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+			class Progressing {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+
+			class Completed {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+
+			class Elapsed {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+
+			class Failed {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+			class Canceled {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+		};
+
+		progressSteps[] = 	//TODO
+		{
+			{10, "hint 'slunciko'", "BIS_CONVERSATION"},
+			{12, "", ""}
+		};
+
+		noProg = 1;
+		progressPercentage = noProg;
+		defaultCompletitionParams[] = {"className", "objectVariableName"}; //TODO rename functionInputs
+		specificProperties[] = {"className", "objectVariableName"};
+	};
+
+	class FetchQuest: Quest
+    {
+		typeName = "fetch";
+		type = QUEST_TYPE_FETCH;
+		className = "ReammoBox_F";
+		itemTypes[] = {"All"};
+		itemCategory = "";
+		itemCount = 0;
+		progressPercentage = itemCount;
+		continuous = false;
+		defaultCompletitionParams[] = {"itemCategory", "itemTypes", "itemCount", "continuous"}; //tODO rename functionInputs
+
+		specificProperties[] = {"itemCategory", "itemTypes", "itemCount", "continuous"};
+	};
+
+	class GetQuest: Quest
+	{
+		typeName = "get";
+		type = QUEST_TYPE_GET;
+		questNPC = "player";
+		iconType = "fetch"; //TODO add own type ?
+
+		itemTypes[] = {"All"};
+		itemCategory = "";
+		itemCount = 0;
+		progressPercentage = itemCount;
+
+		defaultCompletitionParams[] = {"itemCategory", "itemTypes", "itemCount"}; //tODO rename functionInputs
+		specificProperties[] = {"itemCategory", "itemTypes", "itemCount"};
+	};
+
+	class SupportQuest: Quest
+    {
+		typeName = "support";
+		type = QUEST_TYPE_SUPPORT;
+
+		supportCount = 0;
+		enemyCount = 0;
+		enemyDistanceFromArea = 500;
+
+		timeoutFromStartInMinutes = 30;
+
+		onStartedConversation[] = {};
+
+		noProg = 1;
+		progressPercentage = noProg;
+		defaultCompletitionParams[] = {"supportCount", "enemyCount", "enemyDistanceFromArea", "onStartedConversation"}; //tODO rename functionInputs
+
+		specificProperties[] = {"supportCount", "enemyCount", "enemyDistanceFromArea", "onStartedConversation"};
+		keepInDiary = false;
+		subQuestsFinishingTheParent = false;
+		canBeCompletedWithoutAssigning = false;
+		//parentTemplate = SupportParent;
+	};
+
+	class QuestHoldAction: Quest
+	{
+		typeName = "holdAction";
+		type = QUEST_TYPE_HOLDACTION;
+		//special holdAction params
+		// conditionHoldActionShown = "true";
+		// conditionHoldActionStarts = "true";
+		holdActionIcon = "";
+		holdActionDistance = 6;
+		holdActionEndedQuestState = "COMPLETED";
+		holdActionAdditionalCondition = "true";
+		holdActionProgressingCondition = "true";
+
+		holdActionCode = "";
+
+		holdActionOnPlayer = false;
+
+		noProg = 1;
+		progressPercentage = noProg;
+
+		specificProperties[] = {"holdActionIcon", "holdActionEndedQuestState", "holdActionDistance", "holdActionAdditionalCondition", "holdActionProgressingCondition", "holdActionCode", "holdActionOnPlayer"};
+	};
+	class QuestInspectTemplate: QuestHoldAction
+	{
+		title = "Inspect";
+		questNPC = "";
+		holdActionIcon = "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_search_ca.paa";
+	};
+	class QuestDefend: Quest
+	{
+		typeName = "defend";
+		type = QUEST_TYPE_DEFEND;
+
+		unitsToBeDefendedPercentage = 100;
+		unitsToDefend[] =  {};
+		onStartedConversation[] = {};
+
+		noProg = 1;
+		progressPercentage = noProg;
+
+		defendSubType = DEFEND_MODE_OBJECTS;
+		specificProperties[] = {"defendSubType", "unitsToBeDefendedPercentage", "unitsToDefend"};
+		keepInDiary = true;
+	};
+
+	class SyndikatTeamQuest: SupportQuest
+	{
+		typeName = "attack";
+		type = QUEST_TYPE_ATTACK;
+		questFunctionsType = "support";
+		iconType = "Distraction";
+	};
+
+
+	class DestroyQuest: Quest
+    {
+		typeName = "destroy";
+		type = QUEST_TYPE_DESTROY;
+		className = "House"; //TODO
+		targetObject = "All"; //TODO
+		damageNeeded = 1;
+		progressPercentage = damageNeeded;
+		defaultCompletitionParams[] = {"damageNeeded"}; //TODO rename functionInputs
+		specificProperties[] = {"damageNeeded"};
+	};
+	class TransportQuest: Quest
+    {
+		typeName = "transport";
+		type = QUEST_TYPE_TRANSPORT;
+		className = "LandVehicle";
+		objectVariableName = "";
+		questNPC = "";
+
+		noProg = 1;
+		progressPercentage = noProg;
+		defaultCompletitionParams[] = {"className", "objectVariableName"}; //TODO rename functionInputs
+		specificProperties[] = {"className", "objectVariableName"};
+
+		// parentTemplate = TransportCarsParent;
+		subQuestsFinishingTheParent = false;
+	};
+
+	class TransportPersonQuest: Quest
+	{
+		typeName = "transportPerson";
+		type = QUEST_TYPE_TRANSPORT_PERSON;
+		className = "LandVehicle";
+		objectVariableName = "";
+
+		noProg = 1;
+		progressPercentage = noProg;
+		defaultCompletitionParams[] = {"className", "objectVariableName"}; //TODO rename functionInputs
+		specificProperties[] = {"className", "objectVariableName"};
+
+		// parentTemplate = TransportCarsParent;
+		subQuestsFinishingTheParent = false;
+	};
+
+	class HostageRescueQuest: Quest
+	{
+		title = "FREE HOSTAGE";
+		description[] = {"FREE HOSTAGE"};
+
+		typeName = "hostageRescue";
+		type = QUEST_TYPE_HOSTAGE_RESCUE;
+		iconType  = "Default";
+
+		questNPC = "";
+
+		noProg = 1;
+		progressPercentage = noProg;
+	};
+	class LocationQuest: Quest
+	{
+		typeName = "location";
+		type = QUEST_TYPE_LOCATION;
+		noProg = 1;
+		progressPercentage = noProg;
+		// defaultCompletitionParams[] = {"className", "objectVariableName"}; //TODO rename functionInputs
+		// specificProperties[] = {"className", "objectVariableName"};
+		// parentTemplate = TransportCarsParent;
+		subQuestsFinishingTheParent = false;
+	};
+
+	templates[] = {"FetchQuest","GetQuest" , "TransportQuest", "TransportPersonQuest", "DestroyQuest", "SupportQuest", "ParentQuest", "LocationQuest", "QuestDefend", "HostageRescueQuest", "QuestHoldAction"};
+
+	class TransportQuestMarker: TransportQuest{};
+
+	////// TEMPLATES
+
+	class HostageRescueQuestTemplate: HostageRescueQuest{};
+	class QuestDefendTemplate: QuestDefend
+	{
+		title = "QUEST DEFEND";
+		description[] = {"QUEST DEFEND"};
+		iconType  = "Defend";
+		keepInDiary = false;
+		subQuestsFinishingTheParent = true;
+
+		unitsToBeDefendedPercentage = 50;
+		unitsToDefend[] = {"BIS_Tractor", "BIS_Tractor_1", "BIS_Tractor_2"};
+	};
+
+	class QuestDefendEntranceTemplate: QuestDefend
+	{
+		title = "QUEST DEFEND ENTRANCE";
+		description[] = {"QUEST DEFEND ENTRANCE"};
+		typeName = "defend";
+		type = QUEST_TYPE_DEFEND;
+		defendSubType = DEFEND_MODE_ENTRANCE;
+
+		//TODO defendSubype params
+
+		sideToEntrance = EAST;
+		unitsNumbers = 0;
+
+		unitsToDefend[] =  {};
+		onStartedConversation[] = {};
+
+		noProg = 1;
+		progressPercentage = noProg;
+		delayToFailSec = 10;
+		specificProperties[] = {"defendSubType", "sideToEntrance", "unitsNumbers", "delayToFailSec"};
+		keepInDiary = true;
+	};
+
+	class QuestDefendArea: QuestDefend
+	{
+		title = "QUEST DEFEND AREA";
+		description[] = {"QUEST DEFEND AREA"};
+		typeName = "defend";
+		type = QUEST_TYPE_DEFEND;
+		defendSubType = DEFEND_MODE_AREA;
+
+		//TODO defendSubype params
+
+		leavingAreaTimeout = 30;
+		noProg = 1;
+		progressPercentage = noProg;
+		specificProperties[] = {"defendSubType", "leavingAreaTimeout"};
+	};
+
+	class TransportPersonQuestTemplate: TransportPersonQuest
+	{
+			title = "TRANSPORT PERSON";
+			description[] = {"You can help Syndikat's by finishing these quests!"};
+			questNPC = "TRANSPORTME";
+	};
+
+	class ParentQuest: Quest
+    {
+		typeName = "defaultParent";
+		type = QUEST_TYPE_DEFAULTP;
+		iconType  = "default";
+		isParent = true;
+		canBeCompletedWithoutAssigning = false;
+		percentageOfMandatoryQuestsNeeded = 100;
+
+		mandatoryQuestsFinishedState = QUEST_COMPLETED;
+		optionalQuestsFinishedState = QUEST_CANCELED;
+	};
+
+	class SupportParent: ParentQuest
+    {
+		title = "SYNDIKAT QUESTS";
+        description[] = {"You can help Syndikat's by finishing these quests!"};
+		iconType  = "Support";
+		keepInDiary = false;
+		subQuestsFinishingTheParent = true;
+	};
+	class TransportCarsParent: ParentQuest
+    {
+		title = "Transport some cars";
+        description[] = {"Transport some cars"};
+		iconType  = "transport";
+		percentageOfMandatoryQuestsNeeded = 50;
+	};
+
+	class DestroyQuestMarker: DestroyQuest{};
+
+	class DestroyChurchTemplate: DestroyQuest
+    {
+		title = "Destroy the church!";
+        description[] = {""};
+
+		class QuestSmartMarker: QuestSmartMarker {
+			markerTitle = "Rescue";
+			markerTooltipTitle = "Rescue Syndikat (optional)";
+			markerTooltipText = "Try to rescue Syndikat, prisoned on this farm.";
+		};
+
+	};
+	class DestroyBuildingQuestTemplate: DestroyQuestMarker
+    {
+		title = "Destroy the building!";
+        description[] = {""};
+	};
+
+	class KillQuestTemplate: FetchQuest
+    {
+  		title = "Destroy";
+        description[] = {""};
+
+        createCondition =  "true";
+
+      	targetObject = "Medikit";
+		damageNeeded = 1;
+	};
+	class SupportQuestTemplate: SupportQuest
+    {
+  		title = "Support sindi";
+        description[] = {""};
+
+		enemyCount = 0;
+		enemyDistanceFromArea = 500;
+		supportCount = 0;
+	};
+
+	class TransportQuestTemplate: TransportQuest
+    {
+  		title = "TRANSPORT";
+        description[] = {"TAXI TAXI"};
+	};
+	class FetchQuestTemplate: FetchQuest
+    {
+  		title = "Medi medi";
+        description[] = {""};
+
+      	itemTypes[] = {"Medikit"};
+		itemCount = 2;
+
+		//itemTypes[] =  { {Medikit, 5},{Box, 5}, }
+	};
+
+	class GetQuestTemplate: GetQuest
+	{
+		title = "Medi medi";
+		description[] = {""};
+
+		itemTypes[] = {"Medikit"};
+		itemCount = 2;
+	};
+	///////	SPECIFIC QUESTS
+
+	class SupportTask: SupportQuestTemplate
+    {
+		title = "Support Syndikats";
+  	description[] = {"Syndikats are attacking on <marker name = '%1'>enemy base</marker>. at %2",_markerName, _timeoutMinutes};
+
+		enemyCount = 0;
+		enemyDistanceFromArea = 500;
+		supportCount = 0;
+
+
+		class StateModifiers: StateModifiers
+		{
+			class Created: Created
+			{
+				customCondition = "time > 60";
+				code = "";
+				conversations[] = {};
+			};
+		};
+	};
+
+// TEST CASE missions
+
+	#ifdef DEV_FOLDER_NOT_PACKED
+		#include "\A3\Missions_F_Oldman\Dev\SYSTEM_Quest_FetchTest.VR\questDefines.inc"
+		#include "\A3\Missions_F_Oldman\Dev\SYSTEM_Quest_GetTest.VR\questDefines.inc"
+		#include "\A3\Missions_F_Oldman\Dev\SYSTEM_Quest_ParentQuestTest.Tanoa\questDefines.inc"
+		#include "\A3\Missions_F_Oldman\Dev\SYSTEM_Quest_Transport.Tanoa\questDefines.inc"
+		#include "\A3\Missions_F_Oldman\Dev\SYSTEM_Quest_Location.Tanoa\questDefines.inc"
+		#include "\A3\Missions_F_Oldman\Dev\SYSTEM_Quest_FreeHostage.Tanoa\questDefines.inc"
+	#endif
+
+
+	//------------------------------------
+	// Parent quest config
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\cfgQuestsParents.inc"
+
+	//------------------------------------
+	// SQ0 Deliver charge
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ0_G_Pistol.Tanoa\questDefines.inc"
+	// SQ0 Take Arthur to his village
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ0_T_Arthur.Tanoa\questDefines.inc"
+	// SQ0 Destroy Traitor house and kill Traitor
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ0_K_Traitor.Tanoa\questDefines.inc"
+	// SQ0 Locations
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ0_L_Locations.Tanoa\questDefines.inc"
+	// SQ1 CSAT activity evidence Fetch to Miller
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ1_F_Evidence.Tanoa\questDefines.inc"
+	// SQ2 Facility photos
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ2_F_Photos.Tanoa\questDefines.inc"
+	// SQ3 Facility photos
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ3_F_AutonomousTurrets.Tanoa\questDefines.inc"
+	// SQ4 AA radar
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ4_D_AARadar.Tanoa\questDefines.inc"
+	// SQ6 NVGs
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ6_F_NVGs.Tanoa\questDefines.inc"
+
+	// SQ9 Money
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ9_G_Money.Tanoa\questDefines.inc"
+	// SQ10 Massacre
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ10_L_Massacre.Tanoa\questDefines.inc"
+
+	// SQc Fetch medicine
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQc_F_Medicine.Tanoa\questDefines.inc"
+	// SQc Truck for injured civilians
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQc_F_Truck.Tanoa\questDefines.inc"
+	// SQc Vaccine for civils or IDAP
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQc_F_Vaccine.Tanoa\questDefines.inc"
+	// SQc Help Arthur - find Lucas
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQc_R_Lucas.Tanoa\questDefines.inc"
+	// SQc Help Howard - bring some research material or artefact to marchent
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQc_F_Research.Tanoa\questDefines.inc"
+
+	// Plane transport
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ_T_Plane.Tanoa\questDefines.inc"
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ7_T_PlaneVIP.Tanoa\questDefines.inc"
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ8_GEN_Station.Tanoa\questDefines.inc"
+
+	// SQ MAIN Destroy facility
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_IslandFacility.Tanoa\questDefines.inc"
+	// SQ Finale
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\T_SQ99_F_Finale.Tanoa\questDefines.inc"
+	//------------------------------------
+
+	//REPRO
+
+	#ifdef DEV_FOLDER_NOT_PACKED
+		#include "\A3\Missions_F_Oldman\DEV\REPRO_doubleHoldAction.Tanoa\questDefines.inc"
+	#endif
+
+	//Syndikat Support and team
+	#include "\A3\Missions_F_Oldman\Campaign\Missions\cfgQuests_Syndikat.inc"
+
+	class FetchQuestWeapons: FetchQuestTemplate
+    {
+  		title = "Weapons";
+        description[] = {"Bring some rifles"};
+
+      	itemTypes[] = {"Rifle"};
+		itemCount = 1;
+
+		class StateModifiers: StateModifiers {
+			class Created: Created {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+
+			class Progressing: Progressing {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+
+			class Completed: Completed {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+
+			class Elapsed: Elapsed {
+				customCondition = "true";
+				code = "";
+				conversations[] = {};
+			};
+		};
+	};
+};

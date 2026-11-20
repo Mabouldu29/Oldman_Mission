@@ -1,0 +1,104 @@
+#define COMPLETE_CODE_T_SUPPORTQUESTSYNDIKATAGENT setStatValue ['Om_SupportQuestTemplate_SyndikatAgent_done',1];
+#define COMPLETE_CODE_T_SUPPORTQUESTSYNDIKATTEAM setStatValue ['Om_SupportQuestTemplate_SyndikatTeam_done',1];
+
+class SupportQuestTemplate_SyndikatAgent: SupportQuest
+{
+  title =  $STR_A3_Missions_cfgQuests_Syndikat.incSupportQuestTemplate_SyndikatAgent0;
+  description[] = { $STR_A3_Missions_cfgQuests_Syndikat.incSupportQuestTemplate_SyndikatAgent1,
+   _markerName, _timeoutMinutes, (str ((missionNamespace getVariable 'BIS_OM_SyndikatAgent_logic') getVariable 'poolNumberCopy'))};
+
+  enemyCount = 0;
+  enemyDistanceFromArea = 500;
+  supportCount = 0;
+  parentTemplate = GetSyndikatTrust;
+
+  onStartedConversation[] = {"in_syndikat_assault_prepare"};
+
+  class StateModifiers: StateModifiers
+  {
+    class Assigned {
+      customCondition = "true";
+      code = "['SYNDIKATAGENT: Assault quest state: %1', [_this select 0] call bis_fnc_questGetState] call BIS_fnc_logFormat;";
+      conversations[] = {};
+    };
+    class Progressing {
+      customCondition = "true";
+      code = "['SYNDIKATAGENT: Assault quest state: %1', [_this select 0] call bis_fnc_questGetState] call BIS_fnc_logFormat;";
+      conversations[] = {};
+    };
+    class Created: Created
+    {
+      code = \
+      " \
+        ['SYNDIKATAGENT: Assault quest state: %1', [_this select 0] call bis_fnc_questGetState] call BIS_fnc_logFormat; \
+      ";
+      conversations[] = {};
+    };
+
+    class Completed: Completed
+    {
+      code = STRINGIFY(COMPLETE_CODE_T_SUPPORTQUESTSYNDIKATAGENT TMP_GET_AGENT_UNITS_BACK_AFTER_ASSAULT TMP_SET_FLAG_FIRST_TIME_ATTACK_FINISHED(1) GIVE_PLAYER_MORE_RECRUITS(1) ADD_REPUTATION_POINTS(REPUTATION_POSITIVE_BONUS_MEDIUM) LEVEL_ADD_WIN);
+      conversations[] = {"eve_syndikat_assault_begins"};
+    };
+
+    class Failed: Failed
+    {
+      /* code = ""; */
+      code = STRINGIFY(TMP_GET_AGENT_UNITS_BACK_AFTER_ASSAULT TMP_SET_FLAG_FIRST_TIME_ATTACK_FINISHED(2) GIVE_PLAYER_MORE_RECRUITS(2) ADD_REPUTATION_POINTS(REPUTATION_POSITIVE_BONUS_SMALL));
+      conversations[] = {"eve_syndikat_assault_fail"};
+    };
+
+    class Canceled: Canceled
+    {
+      /* code = ""; */
+      code = STRINGIFY(TMP_GET_AGENT_UNITS_BACK_AFTER_ASSAULT GIVE_PLAYER_MORE_RECRUITS(2) LEVEL_ADD_WIN);
+      conversations[] = {};
+    };
+  };
+};
+class SupportQuestTemplate_SyndikatTeam: SyndikatTeamQuest
+{
+  title = $STR_A3_Missions_cfgQuests_Syndikat.incSupportQuestTemplate_SyndikatTeam0;
+  description[] = {
+                    $STR_A3_SyndikatTeamAssaultTaskDescription,
+                    _markerName, _timeoutMinutes, (str ((missionNamespace getVariable 'BIS_OM_SyndikatTeam_logic') getVariable 'unitsSelectedFromUI'))
+                  };
+
+  enemyCount = 0;
+  enemyDistanceFromArea = 500;
+  supportCount = 0;
+
+  onStartedConversation[] = {"in_syndikat_assault_prepare"};
+
+  class StateModifiers: StateModifiers
+  {
+    class Created: Created
+    {
+      conversations[] = {};
+    };
+    class Completed: Completed
+    {
+      code = STRINGIFY(COMPLETE_CODE_T_SUPPORTQUESTSYNDIKATTEAM GET_UNITS_BACK_AFTER_ASSAULT(_this select 0) LEVEL_ADD_WIN);  //TODO: use parameter which will be passed instead of the 0 number
+      conversations[] = {"eve_syndikat_assault_begins"};
+    };
+
+    class Elapsed: Elapsed
+    {
+      code = "";
+    };
+
+    class Failed: Failed
+    {
+      code = STRINGIFY(GET_UNITS_BACK_AFTER_ASSAULT(_this select 0)); //TODO: use parameter which will be passed instead of the 0 number
+      conversations[] = {"eve_syndikat_assault_fail"};
+    };
+
+    class Canceled: Failed
+    {
+      code = STRINGIFY(GET_UNITS_BACK_AFTER_ASSAULT(_this select 0) LEVEL_ADD_WIN); //TODO: use parameter which will be passed instead of the 0 number
+      conversations[] = {};
+    };
+
+  };
+
+};

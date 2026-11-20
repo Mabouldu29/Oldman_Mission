@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["C_Boat_Civil_04_F",[3950.59,7471.47,10.7511],[[0.39934,0.916792,0.00439893],[-0.000296216,-0.0046691,0.999989]],0,"",true,false,[],false,3]]
+		,
+		//--- #size
+		100
+]

@@ -1,0 +1,32 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_FirePlace_F",[2595.16,7722,0.000291348],[[-0.992134,0.0334906,0.120614],[0.121754,0.0343878,0.991964]],0,"",true,false,[],false,1,0],["Land_Garbage_square3_F",[2595.73,7722.5,0.0203928],[[-0.76682,-0.631294,0.115995],[0.121748,0.0343802,0.991965]],0,"",false,false,[],false,2,1],["Land_WaterBottle_01_pack_F",[2594.57,7720.92,0.00152975],[[0.64956,-0.760087,-0.0184387],[0.0902955,0.0530399,0.994502]],0,"",true,false,[],true,-1,2],["Item_Sleeping_bag_folded_01",[2596.28,7720.98,-0.000674903],[[0.601239,-0.798182,-0.0376431],[0.121753,0.0449499,0.991542]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,3],["Land_Ground_sheet_khaki_F",[2595.76,7722.98,0.000164032],[[-0.983523,-0.130384,0.125231],[0.121748,0.0343802,0.991965]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_smartmarkers_smartmarker_i_deliverypoint_f_sections_markertext0'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 0, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,4]]
+		,
+		//--- #size
+		2
+]

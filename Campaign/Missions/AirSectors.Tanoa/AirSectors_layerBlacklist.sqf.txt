@@ -1,0 +1,2 @@
+
+["bis_loc_airbasecsat","bis_loc_airport_larochelle","bis_sc_importantplane","bis_sc_mainairportentrance","bis_dutchs_airport","bis_lijnhaven_gas"]

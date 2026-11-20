@@ -1,0 +1,17 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Item_Sleeping_bag_folded_01",[11824.6,11874.3,0.000732422],[[-0.736489,0.676078,0.0224121],[0.0426276,0.0133195,0.999002]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,0],["Item_Sleeping_bag_folded_01",[11825,11874.6,0.000366211],[[-0.937405,-0.345374,0.044604],[0.0426276,0.0133195,0.999002]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,1]]
+		,
+		//--- #size
+		2
+]

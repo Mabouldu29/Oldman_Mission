@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["O_T_Truck_03_repair_ghex_F","",[5589.54,10192,-0.00130033],[[0.237435,0.9714,-0.00274614],[0.000828208,0.00262455,0.999996]],0,1,[],["a3\soft_f_exp\truck_03\data\truck_03_ext01_ghex_co.paa","a3\soft_f_exp\truck_03\data\truck_03_ext02_ghex_co.paa","a3\soft_f_exp\truck_03\data\truck_03_ammo_ghex_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_soldierU_F","",[5617.44,10235.4,0.165043],7.51798,0.5,0,"Auto",[["arifle_Katiba_ACO_pointer_F","","acc_pointer_IR","optic_ACO_grn",["30Rnd_65x39_caseless_green",30],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_CombatUniform_oucamo",[["FirstAidKit",1],["30Rnd_65x39_caseless_green",2,30],["Chemlight_red",1,1]]],["V_HarnessO_gry",[["30Rnd_65x39_caseless_green",7,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",2,1],["SmokeShell",1,1],["SmokeShellRed",1,1],["Chemlight_red",1,1]]],[],"H_HelmetO_oucamo","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_OPFOR"]],"",false,[]]]],[EAST,["SAFE","LIMITED","WEDGE","YELLOW"],[[[5518.48,10099.9,0],"MOVE","SAFE","LIMITED","NO CHANGE","NO CHANGE",[0,0,0],0],[[5619.84,10210.8,0.252432],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[5515.43,10102.5,0.00399756],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["O_soldierU_M_F","",[5531.74,10103.9,0.00144982],279.59,0.5,0,"Auto",[["srifle_DMR_01_DMS_F","","","optic_DMS",["10Rnd_762x54_Mag",10],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_CombatUniform_oucamo",[["FirstAidKit",1],["10Rnd_762x54_Mag",3,10]]],["V_TacVest_blk",[["10Rnd_762x54_Mag",6,10],["16Rnd_9x21_Mag",2,16],["HandGrenade",2,1],["SmokeShell",1,1],["SmokeShellRed",1,1],["Chemlight_red",2,1]]],[],"H_HelmetO_oucamo","",["Rangefinder","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_OPFOR"]],"",false,[]],["O_SoldierU_SL_F","",[5531.36,10102.6,0.00144005],0,0.5,0,"Auto",[["arifle_Katiba_ARCO_pointer_F","","acc_pointer_IR","optic_Arco_blk_F",["30Rnd_65x39_caseless_green",30],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_CombatUniform_oucamo",[["FirstAidKit",1],["30Rnd_65x39_caseless_green",2,30],["Chemlight_red",2,1]]],["V_TacVest_blk",[["30Rnd_65x39_caseless_green",1,30],["30Rnd_65x39_caseless_green_mag_Tracer",2,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",2,1],["O_IR_Grenade",2,1],["SmokeShell",1,1],["SmokeShellRed",1,1],["SmokeShellOrange",1,1],["SmokeShellYellow",1,1]]],[],"H_HelmetLeaderO_oucamo","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch","NVGoggles_OPFOR"]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		83.608
+]

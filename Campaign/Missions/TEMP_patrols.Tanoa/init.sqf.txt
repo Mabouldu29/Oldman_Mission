@@ -1,0 +1,16 @@
+waituntil {!isNil "BIS_missionInitDone"};
+
+#ifndef OM_MAIN_MISSION
+
+#include "\a3\Missions_F_Oldman\Campaign\Missions\Oldman.tanoa\init_systemExec.sqf"
+0 = [] spawn 
+{
+	sleep 5; 
+	BIS_SQc_R_Lucas = ["T_SQc_R_Lucas", [T_R_Lucas]] call bis_fnc_questCreateManualy;
+};
+
+#else
+
+
+
+#endif 

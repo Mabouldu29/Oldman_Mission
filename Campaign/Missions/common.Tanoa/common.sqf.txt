@@ -1,0 +1,3187 @@
+// Export of 'common.Tanoa' by C.J. on v0.9
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Init
+params [["_layerWhiteList",[],[[]]],["_layerBlacklist",[],[[]]],["_posCenter",[0,0,0],[[]]],["_dir",0,[0]],["_idBlacklist",[],[[]]]];
+private _allWhitelisted = _layerWhiteList isEqualTo [];
+private _layerRoot = (_allWhitelisted || {true in _layerWhiteList}) && {!(true in _layerBlackList)};
+private _layer2789 = (_allWhitelisted || {"bis_sc3den_jetqrf" in _layerWhiteList}) && {!("bis_sc3den_jetqrf" in _layerBlackList)};
+private _layer120 = (_allWhitelisted || {"noexport" in _layerWhiteList}) && {!("noexport" in _layerBlackList)};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Markers
+private _markers = [];
+private _markerIDs = [];
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Groups
+private _groups = [];
+private _groupIDs = [];
+
+private _item449 = grpNull;
+if (_layer120) then {
+	_item449 = createGroup west;
+	_this = _item449;
+	_groups pushback _this;
+	_groupIDs pushback 449;
+};
+
+private _item152 = grpNull;
+if (_layerRoot) then {
+	_item152 = createGroup resistance;
+	_this = _item152;
+	_groups pushback _this;
+	_groupIDs pushback 152;
+};
+
+private _item463 = grpNull;
+if (_layerRoot) then {
+	_item463 = createGroup east;
+	_this = _item463;
+	_groups pushback _this;
+	_groupIDs pushback 463;
+};
+
+private _item488 = grpNull;
+if (_layerRoot) then {
+	_item488 = createGroup east;
+	_this = _item488;
+	_groups pushback _this;
+	_groupIDs pushback 488;
+};
+
+private _item494 = grpNull;
+if (_layerRoot) then {
+	_item494 = createGroup east;
+	_this = _item494;
+	_groups pushback _this;
+	_groupIDs pushback 494;
+};
+
+private _item526 = grpNull;
+if (_layerRoot) then {
+	_item526 = createGroup east;
+	_this = _item526;
+	_groups pushback _this;
+	_groupIDs pushback 526;
+};
+
+private _item530 = grpNull;
+if (_layerRoot) then {
+	_item530 = createGroup east;
+	_this = _item530;
+	_groups pushback _this;
+	_groupIDs pushback 530;
+};
+
+private _item549 = grpNull;
+if (_layerRoot) then {
+	_item549 = createGroup east;
+	_this = _item549;
+	_groups pushback _this;
+	_groupIDs pushback 549;
+};
+
+private _item554 = grpNull;
+if (_layerRoot) then {
+	_item554 = createGroup east;
+	_this = _item554;
+	_groups pushback _this;
+	_groupIDs pushback 554;
+};
+
+private _item559 = grpNull;
+if (_layerRoot) then {
+	_item559 = createGroup east;
+	_this = _item559;
+	_groups pushback _this;
+	_groupIDs pushback 559;
+};
+
+private _item562 = grpNull;
+if (_layerRoot) then {
+	_item562 = createGroup east;
+	_this = _item562;
+	_groups pushback _this;
+	_groupIDs pushback 562;
+};
+
+private _item577 = grpNull;
+if (_layerRoot) then {
+	_item577 = createGroup east;
+	_this = _item577;
+	_groups pushback _this;
+	_groupIDs pushback 577;
+};
+
+private _item586 = grpNull;
+if (_layerRoot) then {
+	_item586 = createGroup east;
+	_this = _item586;
+	_groups pushback _this;
+	_groupIDs pushback 586;
+};
+
+private _item639 = grpNull;
+if (_layerRoot) then {
+	_item639 = createGroup east;
+	_this = _item639;
+	_groups pushback _this;
+	_groupIDs pushback 639;
+};
+
+private _item647 = grpNull;
+if (_layerRoot) then {
+	_item647 = createGroup east;
+	_this = _item647;
+	_groups pushback _this;
+	_groupIDs pushback 647;
+};
+
+private _item678 = grpNull;
+if (_layerRoot) then {
+	_item678 = createGroup east;
+	_this = _item678;
+	_groups pushback _this;
+	_groupIDs pushback 678;
+};
+
+private _item683 = grpNull;
+if (_layerRoot) then {
+	_item683 = createGroup east;
+	_this = _item683;
+	_groups pushback _this;
+	_groupIDs pushback 683;
+};
+
+private _item710 = grpNull;
+if (_layerRoot) then {
+	_item710 = createGroup east;
+	_this = _item710;
+	_groups pushback _this;
+	_groupIDs pushback 710;
+};
+
+private _item717 = grpNull;
+if (_layerRoot) then {
+	_item717 = createGroup east;
+	_this = _item717;
+	_groups pushback _this;
+	_groupIDs pushback 717;
+};
+
+private _item725 = grpNull;
+if (_layerRoot) then {
+	_item725 = createGroup east;
+	_this = _item725;
+	_groups pushback _this;
+	_groupIDs pushback 725;
+};
+
+private _item505 = grpNull;
+if (_layerRoot) then {
+	_item505 = createGroup east;
+	_this = _item505;
+	_groups pushback _this;
+	_groupIDs pushback 505;
+};
+
+private _item727 = grpNull;
+if (_layerRoot) then {
+	_item727 = createGroup east;
+	_this = _item727;
+	_groups pushback _this;
+	_groupIDs pushback 727;
+};
+
+private _item729 = grpNull;
+if (_layerRoot) then {
+	_item729 = createGroup east;
+	_this = _item729;
+	_groups pushback _this;
+	_groupIDs pushback 729;
+};
+
+private _item731 = grpNull;
+if (_layerRoot) then {
+	_item731 = createGroup east;
+	_this = _item731;
+	_groups pushback _this;
+	_groupIDs pushback 731;
+};
+
+private _item735 = grpNull;
+if (_layerRoot) then {
+	_item735 = createGroup east;
+	_this = _item735;
+	_groups pushback _this;
+	_groupIDs pushback 735;
+};
+
+private _item741 = grpNull;
+if (_layerRoot) then {
+	_item741 = createGroup east;
+	_this = _item741;
+	_groups pushback _this;
+	_groupIDs pushback 741;
+};
+
+private _item2676 = grpNull;
+if (_layerRoot) then {
+	_item2676 = createGroup east;
+	_this = _item2676;
+	_groups pushback _this;
+	_groupIDs pushback 2676;
+};
+
+private _item2697 = grpNull;
+if (_layerRoot) then {
+	_item2697 = createGroup east;
+	_this = _item2697;
+	_groups pushback _this;
+	_groupIDs pushback 2697;
+};
+
+private _item2725 = grpNull;
+if (_layerRoot) then {
+	_item2725 = createGroup east;
+	_this = _item2725;
+	_groups pushback _this;
+	_groupIDs pushback 2725;
+};
+
+private _item2726 = grpNull;
+if (_layerRoot) then {
+	_item2726 = createGroup east;
+	_this = _item2726;
+	_groups pushback _this;
+	_groupIDs pushback 2726;
+};
+
+private _item2729 = grpNull;
+if (_layerRoot) then {
+	_item2729 = createGroup east;
+	_this = _item2729;
+	_groups pushback _this;
+	_groupIDs pushback 2729;
+};
+
+private _item2734 = grpNull;
+if (_layerRoot) then {
+	_item2734 = createGroup east;
+	_this = _item2734;
+	_groups pushback _this;
+	_groupIDs pushback 2734;
+};
+
+private _item2753 = grpNull;
+if (_layerRoot) then {
+	_item2753 = createGroup east;
+	_this = _item2753;
+	_groups pushback _this;
+	_groupIDs pushback 2753;
+};
+
+private _item2758 = grpNull;
+if (_layerRoot) then {
+	_item2758 = createGroup east;
+	_this = _item2758;
+	_groups pushback _this;
+	_groupIDs pushback 2758;
+};
+
+private _item2763 = grpNull;
+if (_layerRoot) then {
+	_item2763 = createGroup east;
+	_this = _item2763;
+	_groups pushback _this;
+	_groupIDs pushback 2763;
+};
+
+private _item2768 = grpNull;
+if (_layerRoot) then {
+	_item2768 = createGroup east;
+	_this = _item2768;
+	_groups pushback _this;
+	_groupIDs pushback 2768;
+};
+
+private _item2774 = grpNull;
+if (_layer2789) then {
+	_item2774 = createGroup east;
+	_this = _item2774;
+	_groups pushback _this;
+	_groupIDs pushback 2774;
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Objects
+private _objects = [];
+private _objectIDs = [];
+
+private _item450 = objNull;
+if (_layer120) then {
+	_item450 = _item449 createUnit ["B_Soldier_F",[12693.4,2466.56,1.90735e-006],[],0,"CAN_COLLIDE"];
+	_item449 selectLeader _item450;
+	_this = _item450;
+	_objects pushback _this;
+	_objectIDs pushback 450;
+	_this setPosWorld [12693.4,2466.61,20.5337];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_BG_Guerilla3_1",[["30Rnd_545x39_Mag_F",3,30]]],[],["B_AssaultPack_cbr",[]],"H_Booniehat_khk_hs","G_Combat",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	selectPlayer _this;
+	_this setname "Callum Wood";;
+	_this setface "WhiteHead_13";;
+	_this setspeaker "male10eng";;
+	_this setpitch 1.0045;;
+};
+
+private _item153 = objNull;
+if (_layerRoot) then {
+	_item153 = _item152 createUnit ["I_C_Soldier_Para_2_F",[11066.7,8549.9,0],[],0,"CAN_COLLIDE"];
+	_item152 selectLeader _item153;
+	_this = _item153;
+	_objects pushback _this;
+	_objectIDs pushback 153;
+	_this setPosWorld [11066.7,8549.95,268.657];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Tua Duvuduvukulu";;
+	_this setface "TanoanHead_A3_04";;
+	_this setspeaker "male03fre";;
+	_this setpitch 1.03586;;
+};
+
+private _item154 = objNull;
+if (_layerRoot) then {
+	_item154 = _item152 createUnit ["I_C_Soldier_Para_4_F",[11071.7,8544.9,-3.05176e-005],[],0,"CAN_COLLIDE"];
+	_this = _item154;
+	_objects pushback _this;
+	_objectIDs pushback 154;
+	_this setPosWorld [11071.7,8544.95,267.395];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Hoaka Mikaere";;
+	_this setface "TanoanHead_A3_02";;
+	_this setspeaker "male03fre";;
+	_this setpitch 0.954752;;
+};
+
+private _item155 = objNull;
+if (_layerRoot) then {
+	_item155 = _item152 createUnit ["I_C_Soldier_Para_6_F",[11061.7,8544.9,0],[],0,"CAN_COLLIDE"];
+	_this = _item155;
+	_objects pushback _this;
+	_objectIDs pushback 155;
+	_this setPosWorld [11061.7,8544.95,266.296];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Siaki Nakaunicina";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "male03fre";;
+	_this setpitch 0.998271;;
+};
+
+private _item156 = objNull;
+if (_layerRoot) then {
+	_item156 = _item152 createUnit ["I_C_Soldier_Para_1_F",[11076.7,8539.9,3.05176e-005],[],0,"CAN_COLLIDE"];
+	_this = _item156;
+	_objects pushback _this;
+	_objectIDs pushback 156;
+	_this setPosWorld [11076.7,8539.95,265.502];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Keb Duvuduvukulu";;
+	_this setface "TanoanHead_A3_08";;
+	_this setspeaker "male01fre";;
+	_this setpitch 0.989631;;
+};
+
+private _item157 = objNull;
+if (_layerRoot) then {
+	_item157 = _item152 createUnit ["I_C_Soldier_Para_7_F",[11056.7,8539.9,0],[],0,"CAN_COLLIDE"];
+	_this = _item157;
+	_objects pushback _this;
+	_objectIDs pushback 157;
+	_this setPosWorld [11056.7,8539.95,260.937];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Wainani Tonono";;
+	_this setface "TanoanHead_A3_07";;
+	_this setspeaker "male01fre";;
+	_this setpitch 1.01737;;
+};
+
+private _item158 = objNull;
+if (_layerRoot) then {
+	_item158 = _item152 createUnit ["I_C_Soldier_Para_5_F",[11081.7,8534.9,-3.05176e-005],[],0,"CAN_COLLIDE"];
+	_this = _item158;
+	_objects pushback _this;
+	_objectIDs pushback 158;
+	_this setPosWorld [11081.7,8534.95,263.33];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Ihu Potaka";;
+	_this setface "TanoanHead_A3_08";;
+	_this setspeaker "male03fre";;
+	_this setpitch 0.970069;;
+};
+
+private _item159 = objNull;
+if (_layerRoot) then {
+	_item159 = _item152 createUnit ["I_C_Soldier_Para_8_F",[11051.7,8534.9,-1.52588e-005],[],0,"CAN_COLLIDE"];
+	_this = _item159;
+	_objects pushback _this;
+	_objectIDs pushback 159;
+	_this setPosWorld [11051.7,8534.95,234.652];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Lagi Deli";;
+	_this setface "TanoanHead_A3_01";;
+	_this setspeaker "male02fre";;
+	_this setpitch 0.95484;;
+};
+
+private _item160 = objNull;
+if (_layerRoot) then {
+	_item160 = _item152 createUnit ["I_C_Soldier_Para_3_F",[11086.7,8529.9,-3.05176e-005],[],0,"CAN_COLLIDE"];
+	_this = _item160;
+	_objects pushback _this;
+	_objectIDs pushback 160;
+	_this setPosWorld [11086.7,8529.95,259.956];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Tua Veitayaki";;
+	_this setface "TanoanHead_A3_01";;
+	_this setspeaker "male03fre";;
+	_this setpitch 0.950275;;
+};
+
+private _item464 = objNull;
+if (_layerRoot) then {
+	_item464 = _item463 createUnit ["O_T_Pilot_F",[12533.1,2537.58,381.098],[],0,"CAN_COLLIDE"];
+	_item463 selectLeader _item464;
+	_this = _item464;
+	_objects pushback _this;
+	_objectIDs pushback 464;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.132819,0.99114,0],[0,0,1]];
+	_this setSkill 0.2;
+	_this setname "Xin Hou";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "Male02CHI";;
+	_this setpitch 0.99;;
+};
+
+private _item465 = objNull;
+if (_layerRoot) then {
+	_item465 = _item463 createUnit ["O_T_Pilot_F",[12533.1,2537.58,381.098],[],0,"CAN_COLLIDE"];
+	_this = _item465;
+	_objects pushback _this;
+	_objectIDs pushback 465;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.132819,0.99114,0],[0,0,1]];
+	_this setSkill 0.2;
+	_this setname "Xiaobo Han";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "Male01CHI";;
+	_this setpitch 1.04;;
+};
+
+private _item466 = objNull;
+if (_layerRoot) then {
+	_item466 = createVehicle ["O_T_VTOL_02_infantry_dynamicLoadout_F",[12533.1,2537.58,381.098],[],0,"FLY"];
+	_this = _item466;
+	_objects pushback _this;
+	_objectIDs pushback 466;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.132819,0.99114,0],[0,0,1]];
+	[_this,"GreenHex"] call bis_fnc_initVehicle;
+	_this setPylonLoadout [1,"PylonRack_19Rnd_Rocket_Skyfire"];
+	_this setPylonLoadout [2,"PylonMissile_1Rnd_Bomb_03_F"];
+	_this setPylonLoadout [3,"PylonMissile_1Rnd_Bomb_03_F"];
+	_this setPylonLoadout [4,"PylonRack_19Rnd_Rocket_Skyfire"];
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit"",""ToolKit"",""Medikit""],[10,1,1]],[[""B_Parachute""],[18]]],false]"] call bis_fnc_initAmmoBox;;
+	_this setVehicleReportRemoteTargets true;
+	_this setVehicleReceiveRemoteTargets true;
+	_this setVehicleReportOwnPosition true;
+};
+
+private _item2813 = objNull;
+if (_layerRoot) then {
+	_item2813 = _item488 createUnit ["O_T_Soldier_LAT_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_this = _item2813;
+	_objects pushback _this;
+	_objectIDs pushback 2813;
+	_this setPosWorld [12550.5,2516.32,5.95532];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Wen Tse";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "Male01PER";;
+	_this setpitch 1;;
+};
+
+private _item2814 = objNull;
+if (_layerRoot) then {
+	_item2814 = _item488 createUnit ["O_T_Soldier_TL_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_item488 selectLeader _item2814;
+	_this = _item2814;
+	_objects pushback _this;
+	_objectIDs pushback 2814;
+	_this setPosWorld [12549.5,2516.26,5.85781];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Ying Wu";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "Male03PER";;
+	_this setpitch 1.03;;
+};
+
+private _item2815 = objNull;
+if (_layerRoot) then {
+	_item2815 = _item488 createUnit ["O_T_Soldier_AR_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_this = _item2815;
+	_objects pushback _this;
+	_objectIDs pushback 2815;
+	_this setPosWorld [12550.5,2517.57,5.93248];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Tao Chou";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "Male01PER";;
+	_this setpitch 0.96;;
+};
+
+private _item2816 = objNull;
+if (_layerRoot) then {
+	_item2816 = _item488 createUnit ["O_T_Soldier_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_this = _item2816;
+	_objects pushback _this;
+	_objectIDs pushback 2816;
+	_this setPosWorld [12549.5,2517.48,5.84368];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Peng Yang";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "Male03PER";;
+	_this setpitch 0.99;;
+};
+
+private _item618 = objNull;
+if (_layerRoot) then {
+	_item618 = _item488 createUnit ["O_T_Soldier_AR_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_this = _item618;
+	_objects pushback _this;
+	_objectIDs pushback 618;
+	_this setPosWorld [12550.5,2516.93,5.85696];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Zhen Choi";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.955371;;
+};
+
+private _item619 = objNull;
+if (_layerRoot) then {
+	_item619 = _item488 createUnit ["O_T_Soldier_GL_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_this = _item619;
+	_objects pushback _this;
+	_objectIDs pushback 619;
+	_this setPosWorld [12549.6,2516.93,5.94742];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Liu Jao";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.04177;;
+};
+
+private _item620 = objNull;
+if (_layerRoot) then {
+	_item620 = _item488 createUnit ["O_T_Soldier_M_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_this = _item620;
+	_objects pushback _this;
+	_objectIDs pushback 620;
+	_this setPosWorld [12550.5,2518.14,5.96878];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Zhong Tse";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.955762;;
+};
+
+private _item617 = objNull;
+if (_layerRoot) then {
+	_item617 = _item488 createUnit ["O_T_Soldier_SL_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_this = _item617;
+	_objects pushback _this;
+	_objectIDs pushback 617;
+	_this setPosWorld [12549.5,2518.14,6.01463];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Jiayi Tse";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.982768;;
+};
+
+private _item493 = objNull;
+if (_layerRoot) then {
+	_item493 = createVehicle ["O_T_APC_Wheeled_02_rcws_v2_ghex_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_this = _item493;
+	_objects pushback _this;
+	_objectIDs pushback 493;
+	_this setPosWorld [12549.8,2520.18,6.97684];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	[_this,"[[[[""arifle_CTAR_blk_F""],[2]],[[""30Rnd_580x42_Mag_F"",""100Rnd_580x42_Mag_F"",""HandGrenade"",""MiniGrenade"",""SmokeShell"",""SmokeShellRed"",""SmokeShellYellow"",""SmokeShellOrange"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""RPG32_F"",""RPG32_HE_F"",""Titan_AT"",""Titan_AA""],[12,6,6,6,8,8,8,8,6,3,3,3,3,5,2,2,2]],[[""FirstAidKit""],[10]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item2667 = objNull;
+if (_layerRoot) then {
+	_item2667 = _item494 createUnit ["O_helipilot_F",[12499.5,2444.65,244.172],[],0,"CAN_COLLIDE"];
+	_item494 selectLeader _item2667;
+	_this = _item2667;
+	_objects pushback _this;
+	_objectIDs pushback 2667;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.0505058,0.998724,0],[0,0,1]];
+	_this setname "Mufid Mohammadi";;
+	_this setface "PersianHead_A3_02";;
+	_this setspeaker "male03per";;
+	_this setpitch 0.992827;;
+};
+
+private _item2668 = objNull;
+if (_layerRoot) then {
+	_item2668 = _item494 createUnit ["O_helipilot_F",[12499.5,2444.65,244.172],[],0,"CAN_COLLIDE"];
+	_this = _item2668;
+	_objects pushback _this;
+	_objectIDs pushback 2668;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.0505058,0.998724,0],[0,0,1]];
+	_this setname "Jamal Ahmed-Khan";;
+	_this setface "PersianHead_A3_01";;
+	_this setspeaker "male02per";;
+	_this setpitch 0.963614;;
+};
+
+private _item2651 = objNull;
+if (_layerRoot) then {
+	_item2651 = _item526 createUnit ["O_GEN_Commander_F",[12509.9,2436.81,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_item526 selectLeader _item2651;
+	_this = _item2651;
+	_objects pushback _this;
+	_objectIDs pushback 2651;
+	_this setPosWorld [12509.5,2437.06,6.32344];
+	_this setVectorDirAndUp [[0,0.99615,-0.0876609],[-0.0506016,0.0875486,0.994874]];
+	_this setSkill 1;
+	_this setname "Tane Semiti";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.01;;
+};
+
+private _item2649 = objNull;
+if (_layerRoot) then {
+	_item2649 = _item530 createUnit ["O_GEN_Soldier_F",[12509.9,2436.81,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item2649;
+	_objects pushback _this;
+	_objectIDs pushback 2649;
+	_this setPosWorld [12510.1,2434.43,6.41255];
+	_this setVectorDirAndUp [[0,0.99615,-0.0876609],[-0.0506016,0.0875486,0.994874]];
+	_this setUnitLoadout [["hgun_PDW2000_F","muzzle_snds_L","","optic_ACO_grn_smg",["30Rnd_9x21_Mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",1,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setSkill 1;
+	_this setname "Haloa Tuikabe";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.01;;
+};
+
+private _item2650 = objNull;
+if (_layerRoot) then {
+	_item2650 = _item530 createUnit ["O_GEN_Soldier_F",[12509.9,2436.81,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_item530 selectLeader _item2650;
+	_this = _item2650;
+	_objects pushback _this;
+	_objectIDs pushback 2650;
+	_this setPosWorld [12509.5,2434.49,6.42176];
+	_this setVectorDirAndUp [[0,0.99615,-0.0876609],[-0.0506016,0.0875486,0.994874]];
+	_this setUnitLoadout [["SMG_02_F","","acc_flashlight","optic_ACO_grn",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setSkill 1;
+	_this setname "Alika Heke";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.01;;
+};
+
+private _item2653 = objNull;
+if (_layerRoot) then {
+	_item2653 = _item530 createUnit ["O_GEN_Soldier_F",[12509.9,2436.81,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item2653;
+	_objects pushback _this;
+	_objectIDs pushback 2653;
+	_this setPosWorld [12510.1,2435.79,6.2719];
+	_this setVectorDirAndUp [[0,0.99615,-0.0876609],[-0.0506016,0.0875486,0.994874]];
+	_this setUnitLoadout [["srifle_DMR_06_hunter_F","","","optic_KHS_old",["10Rnd_Mk14_762x51_Mag",10],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["10Rnd_Mk14_762x51_Mag",3,10]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setSkill 1;
+	_this setname "Malo Duvuduvukulu";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.01;;
+};
+
+private _item2818 = objNull;
+if (_layerRoot) then {
+	_item2818 = _item530 createUnit ["O_GEN_Soldier_F",[12509.9,2436.81,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item2818;
+	_objects pushback _this;
+	_objectIDs pushback 2818;
+	_this setPosWorld [12509.5,2435.74,6.24684];
+	_this setVectorDirAndUp [[0,0.99615,-0.0876609],[-0.0506016,0.0875486,0.994874]];
+	_this setUnitLoadout [["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],["launch_RPG7_F","","","",["RPG7_F",1],[],""],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_F",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",1,16],["HandGrenade",1,1],["SmokeShell",1,1]]],["B_AssaultPack_blk",[["RPG7_F",3,1]]],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setSkill 1;
+	_this setname "Qiomars Timoci";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.01;;
+};
+
+private _item532 = objNull;
+if (_layerRoot) then {
+	_item532 = createVehicle ["B_GEN_Offroad_01_gen_F",[12510,2436.67,-0.00560141],[],0,"CAN_COLLIDE"];
+	_this = _item532;
+	_objects pushback _this;
+	_objectIDs pushback 532;
+	_this setPosWorld [12509.9,2436.84,6.77603];
+	_this setVectorDirAndUp [[0,0.99615,-0.0876609],[-0.0506016,0.0875486,0.994874]];
+	[_this,"Gendarmerie"] call bis_fnc_initVehicle;
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit""],[4]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+	if (local _this) then {if (isSimpleObject _this) then {_this setVariable ['bis_fnc_initVehicle_customization',[[],["HideDoor1",0,"HideDoor2",0,"HideDoor3",0,"HideBackpacks",0,"HideBumper1",1,"HideBumper2",1,"HideConstruction",0,"hidePolice",0,"HideServices",1,"BeaconsStart",1,"BeaconsServicesStart",1]]]} else {([_this] + [[],["HideDoor1",0,"HideDoor2",0,"HideDoor3",0,"HideBackpacks",0,"HideBumper1",1,"HideBumper2",1,"HideConstruction",0,"hidePolice",0,"HideServices",1,"BeaconsStart",1,"BeaconsServicesStart",1]] + [true]) call (uinamespace getvariable 'bis_fnc_initVehicle');};};;
+};
+
+private _item550 = objNull;
+if (_layerRoot) then {
+	_item550 = _item549 createUnit ["O_T_Recon_TL_F",[12555.9,2468.89,0],[],0,"CAN_COLLIDE"];
+	_item549 selectLeader _item550;
+	_this = _item550;
+	_objects pushback _this;
+	_objectIDs pushback 550;
+	_this setPosWorld [12555.9,2468.94,4.42144];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Yan Yeung";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.04404;;
+};
+
+private _item551 = objNull;
+if (_layerRoot) then {
+	_item551 = _item549 createUnit ["O_T_Recon_M_F",[12564.6,2463.45,-4.76837e-007],[],0,"CAN_COLLIDE"];
+	_this = _item551;
+	_objects pushback _this;
+	_objectIDs pushback 551;
+	_this setPosWorld [12564.6,2463.5,4.42144];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Ai Hou";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.04968;;
+};
+
+private _item552 = objNull;
+if (_layerRoot) then {
+	_item552 = _item549 createUnit ["O_T_Recon_Medic_F",[12553.1,2463.32,0],[],0,"CAN_COLLIDE"];
+	_this = _item552;
+	_objects pushback _this;
+	_objectIDs pushback 552;
+	_this setPosWorld [12553.1,2463.37,4.42144];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Tengfei Han";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.97411;;
+};
+
+private _item553 = objNull;
+if (_layerRoot) then {
+	_item553 = _item549 createUnit ["O_T_Recon_F",[12567.7,2457.83,8.58307e-006],[],0,"CAN_COLLIDE"];
+	_this = _item553;
+	_objects pushback _this;
+	_objectIDs pushback 553;
+	_this setPosWorld [12567.7,2457.88,4.42145];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Tengfei Lu";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.00332;;
+};
+
+private _item555 = objNull;
+if (_layerRoot) then {
+	_item555 = _item554 createUnit ["O_T_Soldier_TL_F",[12558.8,2478.09,0],[],0,"CAN_COLLIDE"];
+	_item554 selectLeader _item555;
+	_this = _item555;
+	_objects pushback _this;
+	_objectIDs pushback 555;
+	_this setPosWorld [12558.8,2478.14,4.42144];
+	_this setVectorDirAndUp [[-0.369619,-0.929184,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Peng Wong";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.01914;;
+};
+
+private _item556 = objNull;
+if (_layerRoot) then {
+	_item556 = _item554 createUnit ["O_T_Soldier_AR_F",[12553.1,2480.82,0],[],0,"CAN_COLLIDE"];
+	_this = _item556;
+	_objects pushback _this;
+	_objectIDs pushback 556;
+	_this setPosWorld [12553.1,2480.87,4.42144];
+	_this setVectorDirAndUp [[-0.369619,-0.929184,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Xiaobo Kuo";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.04968;;
+};
+
+private _item557 = objNull;
+if (_layerRoot) then {
+	_item557 = _item554 createUnit ["O_T_Soldier_GL_F",[12567.3,2479.68,0],[],0,"CAN_COLLIDE"];
+	_this = _item557;
+	_objects pushback _this;
+	_objectIDs pushback 557;
+	_this setPosWorld [12567.3,2479.73,4.42144];
+	_this setVectorDirAndUp [[-0.369619,-0.929184,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Shan Le";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.996754;;
+};
+
+private _item558 = objNull;
+if (_layerRoot) then {
+	_item558 = _item554 createUnit ["O_T_Soldier_LAT_F",[12555.6,2488.69,0],[],0,"CAN_COLLIDE"];
+	_this = _item558;
+	_objects pushback _this;
+	_objectIDs pushback 558;
+	_this setPosWorld [12555.6,2488.74,4.42144];
+	_this setVectorDirAndUp [[-0.369619,-0.929184,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Zhen Fu";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.963495;;
+};
+
+private _item560 = objNull;
+if (_layerRoot) then {
+	_item560 = _item559 createUnit ["O_helipilot_F",[12505.7,2536.74,377.742],[],0,"CAN_COLLIDE"];
+	_item559 selectLeader _item560;
+	_this = _item560;
+	_objects pushback _this;
+	_objectIDs pushback 560;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setname "Luqman Sangeen";;
+	_this setface "PersianHead_A3_03";;
+	_this setspeaker "male01per";;
+	_this setpitch 1.0194;;
+};
+
+private _item561 = objNull;
+if (_layerRoot) then {
+	_item561 = _item559 createUnit ["O_helipilot_F",[12505.7,2536.74,377.742],[],0,"CAN_COLLIDE"];
+	_this = _item561;
+	_objects pushback _this;
+	_objectIDs pushback 561;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setname "Abdul-Latif Wardak";;
+	_this setface "PersianHead_A3_02";;
+	_this setspeaker "male02per";;
+	_this setpitch 0.992561;;
+};
+
+private _item563 = objNull;
+if (_layerRoot) then {
+	_item563 = _item562 createUnit ["O_T_Soldier_TL_F",[12505.7,2536.74,377.742],[],0,"CAN_COLLIDE"];
+	_item562 selectLeader _item563;
+	_this = _item563;
+	_objects pushback _this;
+	_objectIDs pushback 563;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Zhen Tou";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.999947;;
+};
+
+private _item564 = objNull;
+if (_layerRoot) then {
+	_item564 = _item562 createUnit ["O_T_Soldier_AR_F",[12505.7,2536.74,377.742],[],0,"CAN_COLLIDE"];
+	_this = _item564;
+	_objects pushback _this;
+	_objectIDs pushback 564;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Ying Wu";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.962754;;
+};
+
+private _item565 = objNull;
+if (_layerRoot) then {
+	_item565 = _item562 createUnit ["O_T_Soldier_GL_F",[12505.7,2536.74,377.742],[],0,"CAN_COLLIDE"];
+	_this = _item565;
+	_objects pushback _this;
+	_objectIDs pushback 565;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Zixin Lianjie";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.02132;;
+};
+
+private _item566 = objNull;
+if (_layerRoot) then {
+	_item566 = _item562 createUnit ["O_T_Soldier_LAT_F",[12505.7,2536.74,377.742],[],0,"CAN_COLLIDE"];
+	_this = _item566;
+	_objects pushback _this;
+	_objectIDs pushback 566;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Weizhe Wong";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.00987;;
+};
+
+private _item567 = objNull;
+if (_layerRoot) then {
+	_item567 = createVehicle ["O_Heli_Attack_02_dynamicLoadout_F",[12505.7,2536.74,377.742],[],0,"FLY"];
+	_this = _item567;
+	_objects pushback _this;
+	_objectIDs pushback 567;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	[_this,"Black"] call bis_fnc_initVehicle;
+	_this setPylonLoadout [1,"PylonRack_4Rnd_LG_scalpel"];
+	_this setPylonLoadout [2,"PylonRack_19Rnd_Rocket_Skyfire"];
+	_this setPylonLoadout [3,"PylonRack_19Rnd_Rocket_Skyfire"];
+	_this setPylonLoadout [4,"PylonRack_4Rnd_LG_scalpel"];
+	[_this,"[[[[""arifle_Katiba_C_F""],[2]],[[""SmokeShell"",""SmokeShellRed"",""30Rnd_65x39_caseless_green""],[2,2,4]],[[""FirstAidKit"",""ToolKit"",""ItemGPS""],[8,1,1]],[[""B_Parachute""],[8]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item579 = objNull;
+if (_layerRoot) then {
+	_item579 = _item577 createUnit ["O_T_Soldier_AR_F",[12495.6,2436.35,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item579;
+	_objects pushback _this;
+	_objectIDs pushback 579;
+	_this setPosWorld [12494.7,2433.12,7.28473];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.00265204,0.0929291,0.995669]];
+	_this setSkill 0.4;
+	_this setname "Yang Hou";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.998085;;
+};
+
+private _item580 = objNull;
+if (_layerRoot) then {
+	_item580 = _item577 createUnit ["O_T_Soldier_GL_F",[12495.6,2436.35,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_item577 selectLeader _item580;
+	_this = _item580;
+	_objects pushback _this;
+	_objectIDs pushback 580;
+	_this setPosWorld [12496.5,2433.11,7.30245];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.00265204,0.0929291,0.995669]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Da Tung";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.02716;;
+};
+
+private _item581 = objNull;
+if (_layerRoot) then {
+	_item581 = _item577 createUnit ["O_T_Soldier_M_F",[12495.6,2436.35,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item581;
+	_objects pushback _this;
+	_objectIDs pushback 581;
+	_this setPosWorld [12495.8,2439.03,6.51395];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.00265204,0.0929291,0.995669]];
+	_this setRank "SERGEANT";
+	_this setname "Zhen Lu";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.01275;;
+};
+
+private _item582 = objNull;
+if (_layerRoot) then {
+	_item582 = _item577 createUnit ["O_T_Soldier_AT_F",[12495.6,2436.35,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item582;
+	_objects pushback _this;
+	_objectIDs pushback 582;
+	_this setPosWorld [12496.3,2438.96,6.53923];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.00265204,0.0929291,0.995669]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Qiu Shi";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.983924;;
+};
+
+private _item584 = objNull;
+if (_layerRoot) then {
+	_item584 = _item577 createUnit ["O_T_Soldier_A_F",[12495.6,2436.35,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item584;
+	_objects pushback _this;
+	_objectIDs pushback 584;
+	_this setPosWorld [12494.7,2437.2,6.88108];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.00265204,0.0929291,0.995669]];
+	_this setSkill 0.4;
+	_this setname "Qiu Yang";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.04689;;
+};
+
+private _item2751 = objNull;
+if (_layerRoot) then {
+	_item2751 = _item577 createUnit ["O_T_Soldier_TL_F",[12495.6,2436.35,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item2751;
+	_objects pushback _this;
+	_objectIDs pushback 2751;
+	_this setPosWorld [12496.5,2437.17,6.94981];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.00265204,0.0929291,0.995669]];
+	_this setSkill 0.4;
+	_this setname "Ai Chang";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "Male02CHI";;
+	_this setpitch 0.99;;
+};
+
+private _item2752 = objNull;
+if (_layerRoot) then {
+	_item2752 = _item577 createUnit ["O_T_Soldier_GL_F",[12495.6,2436.35,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item2752;
+	_objects pushback _this;
+	_objectIDs pushback 2752;
+	_this setPosWorld [12494.7,2436.52,6.91513];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.00265204,0.0929291,0.995669]];
+	_this setSkill 0.4;
+	_this setname "Ying Chen";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "Male01CHI";;
+	_this setpitch 0.95;;
+};
+
+private _item2673 = objNull;
+if (_layerRoot) then {
+	_item2673 = _item586 createUnit ["O_helipilot_F",[12447.6,2447.36,243.775],[],0,"CAN_COLLIDE"];
+	_item586 selectLeader _item2673;
+	_this = _item2673;
+	_objects pushback _this;
+	_objectIDs pushback 2673;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Haikal Kakar";;
+	_this setface "PersianHead_A3_02";;
+	_this setspeaker "male03per";;
+	_this setpitch 0.965854;;
+};
+
+private _item2674 = objNull;
+if (_layerRoot) then {
+	_item2674 = _item586 createUnit ["O_helipilot_F",[12447.6,2447.36,243.775],[],0,"CAN_COLLIDE"];
+	_this = _item2674;
+	_objects pushback _this;
+	_objectIDs pushback 2674;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Sibhatullah Zamani";;
+	_this setface "PersianHead_A3_01";;
+	_this setspeaker "male01per";;
+	_this setpitch 1.03442;;
+};
+
+private _item640 = objNull;
+if (_layerRoot) then {
+	_item640 = _item639 createUnit ["O_V_Soldier_TL_ghex_F",[12505.7,2536.74,377.742],[],0,"CAN_COLLIDE"];
+	_item639 selectLeader _item640;
+	_this = _item640;
+	_objects pushback _this;
+	_objectIDs pushback 640;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Qi Choi";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.01497;;
+};
+
+private _item641 = objNull;
+if (_layerRoot) then {
+	_item641 = _item639 createUnit ["O_V_Soldier_JTAC_ghex_F",[12505.7,2536.74,377.742],[],0,"CAN_COLLIDE"];
+	_this = _item641;
+	_objects pushback _this;
+	_objectIDs pushback 641;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Zhong Lu";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.00088;;
+};
+
+private _item642 = objNull;
+if (_layerRoot) then {
+	_item642 = _item639 createUnit ["O_V_Soldier_M_ghex_F",[12505.7,2536.74,377.742],[],0,"CAN_COLLIDE"];
+	_this = _item642;
+	_objects pushback _this;
+	_objectIDs pushback 642;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Liu Tan";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.964664;;
+};
+
+private _item643 = objNull;
+if (_layerRoot) then {
+	_item643 = _item639 createUnit ["O_V_Soldier_Exp_ghex_F",[12505.7,2536.74,377.742],[],0,"CAN_COLLIDE"];
+	_this = _item643;
+	_objects pushback _this;
+	_objectIDs pushback 643;
+	_this setPosWorld [12505.7,2536.73,385.382];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Weimin Lo";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.952258;;
+};
+
+private _item646 = objNull;
+if (_layerRoot) then {
+	_item646 = createVehicle ["O_T_Truck_03_covered_ghex_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_this = _item646;
+	_objects pushback _this;
+	_objectIDs pushback 646;
+	_this setPosWorld [12483.4,2470.28,6.8365];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit""],[10]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item649 = objNull;
+if (_layerRoot) then {
+	_item649 = _item647 createUnit ["O_T_Soldier_AR_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_this = _item649;
+	_objects pushback _this;
+	_objectIDs pushback 649;
+	_this setPosWorld [12482.5,2465.78,7.02699];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Liu Meng";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.968848;;
+};
+
+private _item650 = objNull;
+if (_layerRoot) then {
+	_item650 = _item647 createUnit ["O_T_Soldier_GL_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_item647 selectLeader _item650;
+	_this = _item650;
+	_objects pushback _this;
+	_objectIDs pushback 650;
+	_this setPosWorld [12484.4,2465.74,7.03502];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Zhong Jin";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.988511;;
+};
+
+private _item651 = objNull;
+if (_layerRoot) then {
+	_item651 = _item647 createUnit ["O_T_Soldier_M_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_this = _item651;
+	_objects pushback _this;
+	_objectIDs pushback 651;
+	_this setPosWorld [12484.2,2472.82,6.61329];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Qing Tang";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.950494;;
+};
+
+private _item652 = objNull;
+if (_layerRoot) then {
+	_item652 = _item647 createUnit ["O_T_Soldier_AT_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_this = _item652;
+	_objects pushback _this;
+	_objectIDs pushback 652;
+	_this setPosWorld [12482.5,2469.71,6.93574];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Bo Chou";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.00744;;
+};
+
+private _item653 = objNull;
+if (_layerRoot) then {
+	_item653 = _item647 createUnit ["O_T_Soldier_AAT_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_this = _item653;
+	_objects pushback _this;
+	_objectIDs pushback 653;
+	_this setPosWorld [12482.6,2468.13,6.93122];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Xing Chui";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.969248;;
+};
+
+private _item654 = objNull;
+if (_layerRoot) then {
+	_item654 = _item647 createUnit ["O_T_Soldier_A_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_this = _item654;
+	_objects pushback _this;
+	_objectIDs pushback 654;
+	_this setPosWorld [12482.5,2467.37,7.01784];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Tingfeng Hou";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.0412;;
+};
+
+private _item655 = objNull;
+if (_layerRoot) then {
+	_item655 = _item647 createUnit ["O_T_Medic_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_this = _item655;
+	_objects pushback _this;
+	_objectIDs pushback 655;
+	_this setPosWorld [12482.6,2466.64,6.99766];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Peng Tan";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.04434;;
+};
+
+private _item657 = objNull;
+if (_layerRoot) then {
+	_item657 = _item647 createUnit ["O_T_Soldier_LAT_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_this = _item657;
+	_objects pushback _this;
+	_objectIDs pushback 657;
+	_this setPosWorld [12484.4,2469.73,7.05301];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Zixin Jao";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.979093;;
+};
+
+private _item658 = objNull;
+if (_layerRoot) then {
+	_item658 = _item647 createUnit ["O_T_Soldier_LAT_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_this = _item658;
+	_objects pushback _this;
+	_objectIDs pushback 658;
+	_this setPosWorld [12484.2,2468.88,6.99072];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Qiu Pun";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.00064;;
+};
+
+private _item679 = objNull;
+if (_layerRoot) then {
+	_item679 = _item678 createUnit ["O_T_Soldier_TL_F",[12533.1,2537.58,381.098],[],0,"CAN_COLLIDE"];
+	_item678 selectLeader _item679;
+	_this = _item679;
+	_objects pushback _this;
+	_objectIDs pushback 679;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Fu Chao";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.973252;;
+};
+
+private _item680 = objNull;
+if (_layerRoot) then {
+	_item680 = _item678 createUnit ["O_T_Soldier_AR_F",[12533.1,2537.58,381.098],[],0,"CAN_COLLIDE"];
+	_this = _item680;
+	_objects pushback _this;
+	_objectIDs pushback 680;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Bo Lo";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.01829;;
+};
+
+private _item681 = objNull;
+if (_layerRoot) then {
+	_item681 = _item678 createUnit ["O_T_Soldier_GL_F",[12533.1,2537.58,381.098],[],0,"CAN_COLLIDE"];
+	_this = _item681;
+	_objects pushback _this;
+	_objectIDs pushback 681;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Zhong Tuan";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.975529;;
+};
+
+private _item682 = objNull;
+if (_layerRoot) then {
+	_item682 = _item678 createUnit ["O_T_Soldier_LAT_F",[12533.1,2537.58,381.098],[],0,"CAN_COLLIDE"];
+	_this = _item682;
+	_objects pushback _this;
+	_objectIDs pushback 682;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Bo Fan";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.966428;;
+};
+
+private _item684 = objNull;
+if (_layerRoot) then {
+	_item684 = _item683 createUnit ["O_V_Soldier_TL_ghex_F",[12533.1,2537.58,381.098],[],0,"CAN_COLLIDE"];
+	_item683 selectLeader _item684;
+	_this = _item684;
+	_objects pushback _this;
+	_objectIDs pushback 684;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Xiaobo Chui";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.966688;;
+};
+
+private _item685 = objNull;
+if (_layerRoot) then {
+	_item685 = _item683 createUnit ["O_V_Soldier_JTAC_ghex_F",[12533.1,2537.58,381.098],[],0,"CAN_COLLIDE"];
+	_this = _item685;
+	_objects pushback _this;
+	_objectIDs pushback 685;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Feng Lo";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.995256;;
+};
+
+private _item686 = objNull;
+if (_layerRoot) then {
+	_item686 = _item683 createUnit ["O_V_Soldier_M_ghex_F",[12533.1,2537.58,381.098],[],0,"CAN_COLLIDE"];
+	_this = _item686;
+	_objects pushback _this;
+	_objectIDs pushback 686;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Qi Lam";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.99471;;
+};
+
+private _item687 = objNull;
+if (_layerRoot) then {
+	_item687 = _item683 createUnit ["O_V_Soldier_Exp_ghex_F",[12533.1,2537.58,381.098],[],0,"CAN_COLLIDE"];
+	_this = _item687;
+	_objects pushback _this;
+	_objectIDs pushback 687;
+	_this setPosWorld [12533.1,2537.59,388.713];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Song Jin";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.04711;;
+};
+
+private _item525 = objNull;
+if (_layerRoot) then {
+	_item525 = createVehicle ["B_GEN_Van_02_transport_F",[12487,2427.37,-0.0153756],[],0,"CAN_COLLIDE"];
+	_this = _item525;
+	_objects pushback _this;
+	_objectIDs pushback 525;
+	_this setPosWorld [12487,2427.61,7.53041];
+	_this setVectorDirAndUp [[0,0.990522,-0.137352],[-0.0080009,0.137348,0.990491]];
+	[_this,"Gendarmerie"] call bis_fnc_initVehicle;
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit""],[4]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+	if (local _this) then {if (isSimpleObject _this) then {_this setVariable ['bis_fnc_initVehicle_customization',[[],["Door_1_source",0,"Door_2_source",0,"Door_3_source",1,"Door_4_source",0,"Hide_Door_1_source",0,"Hide_Door_2_source",0,"Hide_Door_3_source",0,"Hide_Door_4_source",0,"lights_em_hide",1,"ladder_hide",1,"spare_tyre_holder_hide",1,"spare_tyre_hide",1,"reflective_tape_hide",0,"roof_rack_hide",1,"LED_lights_hide",0,"sidesteps_hide",1,"rearsteps_hide",1,"side_protective_frame_hide",0,"front_protective_frame_hide",1,"beacon_front_hide",0,"beacon_rear_hide",0]]]} else {([_this] + [[],["Door_1_source",0,"Door_2_source",0,"Door_3_source",1,"Door_4_source",0,"Hide_Door_1_source",0,"Hide_Door_2_source",0,"Hide_Door_3_source",0,"Hide_Door_4_source",0,"lights_em_hide",1,"ladder_hide",1,"spare_tyre_holder_hide",1,"spare_tyre_hide",1,"reflective_tape_hide",0,"roof_rack_hide",1,"LED_lights_hide",0,"sidesteps_hide",1,"rearsteps_hide",1,"side_protective_frame_hide",0,"front_protective_frame_hide",1,"beacon_front_hide",0,"beacon_rear_hide",0]] + [true]) call (uinamespace getvariable 'bis_fnc_initVehicle');};};;
+};
+
+private _item2655 = objNull;
+if (_layerRoot) then {
+	_item2655 = _item710 createUnit ["O_GEN_Soldier_F",[12487,2427.6,9.53674e-007],[],0,"CAN_COLLIDE"];
+	_item710 selectLeader _item2655;
+	_this = _item2655;
+	_objects pushback _this;
+	_objectIDs pushback 2655;
+	_this setPosWorld [12486.5,2429.73,6.79048];
+	_this setVectorDirAndUp [[0,0.990522,-0.137352],[-0.0080009,0.137348,0.990491]];
+	_this setUnitLoadout [["SMG_05_F","muzzle_snds_L","","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setSkill 0.4;
+	_this setname "Pio Bari";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.01;;
+};
+
+private _item2654 = objNull;
+if (_layerRoot) then {
+	_item2654 = _item717 createUnit ["O_GEN_Soldier_F",[12487,2427.6,9.53674e-007],[],0,"CAN_COLLIDE"];
+	_item717 selectLeader _item2654;
+	_this = _item2654;
+	_objects pushback _this;
+	_objectIDs pushback 2654;
+	_this setPosWorld [12487.6,2429.02,6.48074];
+	_this setVectorDirAndUp [[0,0.990522,-0.137352],[-0.0080009,0.137348,0.990491]];
+	_this setUnitLoadout [["srifle_DMR_06_hunter_F","","","optic_KHS_old",["10Rnd_Mk14_762x51_Mag",10],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["10Rnd_Mk14_762x51_Mag",3,10]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setSkill 0.4;
+	_this setname "Wehilani Karetu";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.01;;
+};
+
+private _item2656 = objNull;
+if (_layerRoot) then {
+	_item2656 = _item717 createUnit ["O_GEN_Soldier_F",[12487,2427.6,9.53674e-007],[],0,"CAN_COLLIDE"];
+	_this = _item2656;
+	_objects pushback _this;
+	_objectIDs pushback 2656;
+	_this setPosWorld [12487.4,2425.3,6.99245];
+	_this setVectorDirAndUp [[0,0.990522,-0.137352],[-0.0080009,0.137348,0.990491]];
+	_this setUnitLoadout [["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setSkill 0.4;
+	_this setname "Hahona Deli";;
+	_this setface "TanoanHead_A3_08";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.02;;
+};
+
+private _item2657 = objNull;
+if (_layerRoot) then {
+	_item2657 = _item717 createUnit ["O_GEN_Soldier_F",[12487,2427.6,9.53674e-007],[],0,"CAN_COLLIDE"];
+	_this = _item2657;
+	_objects pushback _this;
+	_objectIDs pushback 2657;
+	_this setPosWorld [12486.5,2425.4,6.97006];
+	_this setVectorDirAndUp [[0,0.990522,-0.137352],[-0.0080009,0.137348,0.990491]];
+	_this setUnitLoadout [["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],["launch_RPG7_F","","","",["RPG7_F",1],[],""],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_F",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],["B_AssaultPack_blk",[["RPG7_F",3,1]]],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setSkill 0.4;
+	_this setname "Ruru Nakaunicina";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.01;;
+};
+
+private _item2658 = objNull;
+if (_layerRoot) then {
+	_item2658 = _item717 createUnit ["O_GEN_Soldier_F",[12487,2427.6,9.53674e-007],[],0,"CAN_COLLIDE"];
+	_this = _item2658;
+	_objects pushback _this;
+	_objectIDs pushback 2658;
+	_this setPosWorld [12487.5,2429.69,6.79336];
+	_this setVectorDirAndUp [[0,0.990522,-0.137352],[-0.0080009,0.137348,0.990491]];
+	_this setUnitLoadout [["SMG_05_F","","acc_flashlight","optic_Aco_smg",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setSkill 0.4;
+	_this setname "Atonio Veniri";;
+	_this setface "TanoanHead_A3_08";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.02;;
+};
+
+private _item2659 = objNull;
+if (_layerRoot) then {
+	_item2659 = _item717 createUnit ["O_GEN_Soldier_F",[12487,2427.6,9.53674e-007],[],0,"CAN_COLLIDE"];
+	_this = _item2659;
+	_objects pushback _this;
+	_objectIDs pushback 2659;
+	_this setPosWorld [12486.4,2428.78,6.86963];
+	_this setVectorDirAndUp [[0,0.990522,-0.137352],[-0.0080009,0.137348,0.990491]];
+	_this setUnitLoadout [["SMG_02_F","","acc_flashlight","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setSkill 0.4;
+	_this setname "Hoku Serevi";;
+	_this setface "TanoanHead_A3_08";;
+	_this setspeaker "Male02PER";;
+	_this setpitch 1.02;;
+};
+
+private _item726 = objNull;
+if (_layerRoot) then {
+	_item726 = _item725 createUnit ["O_T_Soldier_SL_F",[12495.6,2436.35,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_item725 selectLeader _item726;
+	_this = _item726;
+	_objects pushback _this;
+	_objectIDs pushback 726;
+	_this setPosWorld [12495.1,2439.02,6.51215];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.00265204,0.0929291,0.995669]];
+	_this setRank "SERGEANT";
+	_this setname "Xiang Hsiang";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.04761;;
+};
+
+private _item510 = objNull;
+if (_layerRoot) then {
+	_item510 = createVehicle ["O_T_LSV_02_unarmed_F",[12501.7,2436.04,-0.00761127],[],0,"CAN_COLLIDE"];
+	_this = _item510;
+	_objects pushback _this;
+	_objectIDs pushback 510;
+	_this setPosWorld [12501.7,2436.2,6.62207];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.0106641,0.0929241,0.995616]];
+	[_this,"[[[[""arifle_CTAR_blk_F""],[2]],[[""30Rnd_580x42_Mag_F"",""100Rnd_580x42_Mag_F"",""HandGrenade"",""SmokeShell"",""SmokeShellRed"",""SmokeShellYellow"",""SmokeShellOrange"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""16Rnd_9x21_Mag"",""RPG32_F""],[16,4,10,4,4,4,4,10,4,4,4,4,12,2]],[[""FirstAidKit""],[10]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item507 = objNull;
+if (_layerRoot) then {
+	_item507 = _item505 createUnit ["O_T_Soldier_AR_F",[12501.7,2436.2,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item507;
+	_objects pushback _this;
+	_objectIDs pushback 507;
+	_this setPosWorld [12502.2,2435.31,5.99159];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.0106641,0.0929241,0.995616]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Da Yeung";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.01622;;
+};
+
+private _item508 = objNull;
+if (_layerRoot) then {
+	_item508 = _item505 createUnit ["O_T_Medic_F",[12501.7,2436.2,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_item505 selectLeader _item508;
+	_this = _item508;
+	_objects pushback _this;
+	_objectIDs pushback 508;
+	_this setPosWorld [12500.9,2436.17,5.92923];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.0106641,0.0929241,0.995616]];
+	_this setname "Chang Chou";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.988057;;
+};
+
+private _item509 = objNull;
+if (_layerRoot) then {
+	_item509 = _item505 createUnit ["O_T_Soldier_TL_F",[12501.7,2436.2,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item509;
+	_objects pushback _this;
+	_objectIDs pushback 509;
+	_this setPosWorld [12502.2,2436.17,5.94624];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.0106641,0.0929241,0.995616]];
+	_this setSkill 0.4;
+	_this setname "Chen Wang";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "Male01CHI";;
+	_this setpitch 0.96;;
+};
+
+private _item728 = objNull;
+if (_layerRoot) then {
+	_item728 = _item727 createUnit ["O_T_Soldier_F",[12501.7,2436.2,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_item727 selectLeader _item728;
+	_this = _item728;
+	_objects pushback _this;
+	_objectIDs pushback 728;
+	_this setPosWorld [12501.5,2436.89,5.87681];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.0106641,0.0929241,0.995616]];
+	_this setname "Xiaobo Le";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.03763;;
+};
+
+private _item730 = objNull;
+if (_layerRoot) then {
+	_item730 = _item729 createUnit ["O_T_Soldier_SL_F",[12483.4,2470.28,0],[],0,"CAN_COLLIDE"];
+	_item729 selectLeader _item730;
+	_this = _item730;
+	_objects pushback _this;
+	_objectIDs pushback 730;
+	_this setPosWorld [12482.7,2472.82,6.48667];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Yan Wong";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.03313;;
+};
+
+private _item2695 = objNull;
+if (_layerRoot) then {
+	_item2695 = _item731 createUnit ["O_T_Soldier_F",[12534.4,2516.96,0],[],0,"CAN_COLLIDE"];
+	_this = _item2695;
+	_objects pushback _this;
+	_objectIDs pushback 2695;
+	_this setPosWorld [12534.4,2516.3,6.05826];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Qi Han";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.96735;;
+};
+
+private _item2696 = objNull;
+if (_layerRoot) then {
+	_item2696 = _item731 createUnit ["O_T_Soldier_F",[12534.4,2516.96,0],[],0,"CAN_COLLIDE"];
+	_item731 selectLeader _item2696;
+	_this = _item2696;
+	_objects pushback _this;
+	_objectIDs pushback 2696;
+	_this setPosWorld [12534.7,2514.85,6.23327];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Feng Lu";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.993843;;
+};
+
+private _item2716 = objNull;
+if (_layerRoot) then {
+	_item2716 = _item735 createUnit ["O_T_Soldier_F",[12473.7,2470.15,0],[],0,"CAN_COLLIDE"];
+	_this = _item2716;
+	_objects pushback _this;
+	_objectIDs pushback 2716;
+	_this setPosWorld [12473.6,2469.64,5.47209];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Zhen Mao";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.987907;;
+};
+
+private _item2718 = objNull;
+if (_layerRoot) then {
+	_item2718 = _item735 createUnit ["O_T_Soldier_F",[12473.7,2470.15,0],[],0,"CAN_COLLIDE"];
+	_item735 selectLeader _item2718;
+	_this = _item2718;
+	_objects pushback _this;
+	_objectIDs pushback 2718;
+	_this setPosWorld [12474.2,2470.18,5.46852];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Zhen Chen";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.957465;;
+};
+
+private _item2719 = objNull;
+if (_layerRoot) then {
+	_item2719 = _item735 createUnit ["O_T_Soldier_M_F",[12473.7,2470.15,0],[],0,"CAN_COLLIDE"];
+	_this = _item2719;
+	_objects pushback _this;
+	_objectIDs pushback 2719;
+	_this setPosWorld [12472.9,2469.32,5.43398];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Wei Yang";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.01091;;
+};
+
+private _item2720 = objNull;
+if (_layerRoot) then {
+	_item2720 = _item735 createUnit ["O_T_Soldier_AT_F",[12473.7,2470.15,0],[],0,"CAN_COLLIDE"];
+	_this = _item2720;
+	_objects pushback _this;
+	_objectIDs pushback 2720;
+	_this setPosWorld [12474.2,2469.32,5.43398];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Tengfei Kuo";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.992955;;
+};
+
+private _item2721 = objNull;
+if (_layerRoot) then {
+	_item2721 = _item735 createUnit ["O_T_Soldier_AR_F",[12473.7,2470.15,0],[],0,"CAN_COLLIDE"];
+	_this = _item2721;
+	_objects pushback _this;
+	_objectIDs pushback 2721;
+	_this setPosWorld [12473,2470.18,5.46538];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Xin Tou";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.978712;;
+};
+
+private _item2724 = objNull;
+if (_layerRoot) then {
+	_item2724 = _item735 createUnit ["O_T_Soldier_TL_F",[12473.7,2470.15,0],[],0,"CAN_COLLIDE"];
+	_this = _item2724;
+	_objects pushback _this;
+	_objectIDs pushback 2724;
+	_this setPosWorld [12474.2,2468.27,5.8116];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Xing Tan";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "Male01CHI";;
+	_this setpitch 1.02;;
+};
+
+private _item742 = objNull;
+if (_layerRoot) then {
+	_item742 = _item741 createUnit ["O_T_Crew_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_item741 selectLeader _item742;
+	_this = _item742;
+	_objects pushback _this;
+	_objectIDs pushback 742;
+	_this setPosWorld [12549.5,2520.12,5.90973];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Shirong Lung";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.989836;;
+};
+
+private _item744 = objNull;
+if (_layerRoot) then {
+	_item744 = _item741 createUnit ["O_T_Crew_F",[12549.8,2520.18,0],[],0,"CAN_COLLIDE"];
+	_this = _item744;
+	_objects pushback _this;
+	_objectIDs pushback 744;
+	_this setPosWorld [12549.4,2519.24,5.98429];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Da Choi";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.968741;;
+};
+
+private _item2661 = objNull;
+if (_layerRoot) then {
+	_item2661 = createVehicle ["O_T_Truck_02_transport_F",[12495.6,2436.13,-0.0103583],[],0,"CAN_COLLIDE"];
+	_this = _item2661;
+	_objects pushback _this;
+	_objectIDs pushback 2661;
+	_this setPosWorld [12495.6,2436.35,7.21037];
+	_this setVectorDirAndUp [[0,0.995673,-0.0929294],[-0.00265204,0.0929291,0.995669]];
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit""],[10]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item2666 = objNull;
+if (_layerRoot) then {
+	_item2666 = createVehicle ["O_Heli_Attack_02_dynamicLoadout_F",[12499.5,2444.65,244.172],[],0,"FLY"];
+	_this = _item2666;
+	_objects pushback _this;
+	_objectIDs pushback 2666;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.0505058,0.998724,0],[0,0,1]];
+	[_this,"Black"] call bis_fnc_initVehicle;
+	_this setPylonLoadout [1,"PylonRack_4Rnd_LG_scalpel"];
+	_this setPylonLoadout [2,"PylonRack_19Rnd_Rocket_Skyfire"];
+	_this setPylonLoadout [3,"PylonRack_19Rnd_Rocket_Skyfire"];
+	_this setPylonLoadout [4,"PylonRack_4Rnd_LG_scalpel"];
+	[_this,"[[[[""arifle_Katiba_C_F""],[2]],[[""SmokeShell"",""SmokeShellRed"",""30Rnd_65x39_caseless_green""],[2,2,4]],[[""FirstAidKit"",""ToolKit"",""ItemGPS""],[8,1,1]],[[""B_Parachute""],[8]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item2672 = objNull;
+if (_layerRoot) then {
+	_item2672 = createVehicle ["O_Heli_Attack_02_dynamicLoadout_F",[12447.6,2447.36,243.775],[],0,"FLY"];
+	_this = _item2672;
+	_objects pushback _this;
+	_objectIDs pushback 2672;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	[_this,"Black"] call bis_fnc_initVehicle;
+	_this setPylonLoadout [1,"PylonRack_4Rnd_LG_scalpel"];
+	_this setPylonLoadout [2,"PylonRack_19Rnd_Rocket_Skyfire"];
+	_this setPylonLoadout [3,"PylonRack_19Rnd_Rocket_Skyfire"];
+	_this setPylonLoadout [4,"PylonRack_4Rnd_LG_scalpel"];
+	[_this,"[[[[""arifle_Katiba_C_F""],[2]],[[""SmokeShell"",""SmokeShellRed"",""30Rnd_65x39_caseless_green""],[2,2,4]],[[""FirstAidKit"",""ToolKit"",""ItemGPS""],[8,1,1]],[[""B_Parachute""],[8]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item2691 = objNull;
+if (_layerRoot) then {
+	_item2691 = _item2676 createUnit ["O_T_Crew_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item2691;
+	_objects pushback _this;
+	_objectIDs pushback 2691;
+	_this setPosWorld [12523.6,2518.78,6.25146];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Shan Chao";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.965052;;
+};
+
+private _item2692 = objNull;
+if (_layerRoot) then {
+	_item2692 = _item2676 createUnit ["O_T_Crew_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item2692;
+	_objects pushback _this;
+	_objectIDs pushback 2692;
+	_this setPosWorld [12524.2,2518.83,5.5073];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Fu Tung";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.984364;;
+};
+
+private _item2693 = objNull;
+if (_layerRoot) then {
+	_item2693 = _item2676 createUnit ["O_T_Crew_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_item2676 selectLeader _item2693;
+	_this = _item2693;
+	_objects pushback _this;
+	_objectIDs pushback 2693;
+	_this setPosWorld [12524.8,2518.83,6.11258];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Fu Chou";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.00791;;
+};
+
+private _item2690 = objNull;
+if (_layerRoot) then {
+	_item2690 = createVehicle ["O_T_APC_Tracked_02_cannon_ghex_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item2690;
+	_objects pushback _this;
+	_objectIDs pushback 2690;
+	_this setPosWorld [12524.2,2518.78,6.9928];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	[_this,"[[[[""arifle_CTAR_blk_F"",""arifle_CTARS_blk_F"",""launch_RPG32_ghex_F""],[2,1,1]],[[""30Rnd_580x42_Mag_F"",""100Rnd_580x42_Mag_F"",""HandGrenade"",""MiniGrenade"",""SmokeShell"",""SmokeShellRed"",""SmokeShellYellow"",""SmokeShellOrange"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""RPG32_F"",""RPG32_HE_F"",""Titan_AT"",""Titan_AA""],[12,6,6,6,8,8,8,8,6,3,3,3,3,5,2,2,2]],[[""FirstAidKit""],[10]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item2694 = objNull;
+if (_layerRoot) then {
+	_item2694 = createVehicle ["O_T_MRAP_02_gmg_ghex_F",[12534.4,2516.96,0],[],0,"CAN_COLLIDE"];
+	_this = _item2694;
+	_objects pushback _this;
+	_objectIDs pushback 2694;
+	_this setPosWorld [12534.4,2516.95,7.21255];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	[_this,"[[[[""arifle_CTAR_blk_F""],[2]],[[""30Rnd_580x42_Mag_F"",""100Rnd_580x42_Mag_F"",""HandGrenade"",""SmokeShell"",""SmokeShellRed"",""SmokeShellYellow"",""SmokeShellOrange"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""16Rnd_9x21_Mag"",""RPG32_F""],[16,6,10,4,4,4,4,10,4,4,4,4,12,2]],[[""FirstAidKit""],[10]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item2705 = objNull;
+if (_layerRoot) then {
+	_item2705 = _item2697 createUnit ["O_T_Soldier_M_F",[12468.3,2468.72,0],[],0,"CAN_COLLIDE"];
+	_item2697 selectLeader _item2705;
+	_this = _item2705;
+	_objects pushback _this;
+	_objectIDs pushback 2705;
+	_this setPosWorld [12467.9,2465.63,6.21386];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Qiu Guo";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.0047;;
+};
+
+private _item2706 = objNull;
+if (_layerRoot) then {
+	_item2706 = _item2697 createUnit ["O_T_Soldier_AT_F",[12468.3,2468.72,0],[],0,"CAN_COLLIDE"];
+	_this = _item2706;
+	_objects pushback _this;
+	_objectIDs pushback 2706;
+	_this setPosWorld [12468,2466.55,6.13114];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Qiu Lam";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.04275;;
+};
+
+private _item2710 = objNull;
+if (_layerRoot) then {
+	_item2710 = _item2697 createUnit ["O_T_Soldier_AR_F",[12468.3,2468.72,0],[],0,"CAN_COLLIDE"];
+	_this = _item2710;
+	_objects pushback _this;
+	_objectIDs pushback 2710;
+	_this setPosWorld [12468.6,2465.53,6.23351];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Ai Sun";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.973081;;
+};
+
+private _item2701 = objNull;
+if (_layerRoot) then {
+	_item2701 = createVehicle ["O_T_MRAP_02_hmg_ghex_F",[12468.3,2468.72,0],[],0,"CAN_COLLIDE"];
+	_this = _item2701;
+	_objects pushback _this;
+	_objectIDs pushback 2701;
+	_this setPosWorld [12468.3,2468.72,7.21272];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	[_this,"[[[[""arifle_CTAR_blk_F""],[2]],[[""30Rnd_580x42_Mag_F"",""100Rnd_580x42_Mag_F"",""HandGrenade"",""SmokeShell"",""SmokeShellRed"",""SmokeShellYellow"",""SmokeShellOrange"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""16Rnd_9x21_Mag"",""RPG32_F""],[16,6,10,4,4,4,4,10,4,4,4,4,12,2]],[[""FirstAidKit""],[10]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item2714 = objNull;
+if (_layerRoot) then {
+	_item2714 = createVehicle ["O_T_LSV_02_armed_F",[12473.7,2470.15,0],[],0,"CAN_COLLIDE"];
+	_this = _item2714;
+	_objects pushback _this;
+	_objectIDs pushback 2714;
+	_this setPosWorld [12473.7,2470.15,6.14982];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	[_this,"[[[[""arifle_CTAR_blk_F""],[2]],[[""30Rnd_580x42_Mag_F"",""100Rnd_580x42_Mag_F"",""HandGrenade"",""SmokeShell"",""SmokeShellRed"",""SmokeShellYellow"",""SmokeShellOrange"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""16Rnd_9x21_Mag"",""RPG32_F""],[16,4,10,4,4,4,4,10,4,4,4,4,12,2]],[[""FirstAidKit""],[10]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item2715 = objNull;
+if (_layerRoot) then {
+	_item2715 = _item2725 createUnit ["O_T_Soldier_F",[12473.7,2470.15,0],[],0,"CAN_COLLIDE"];
+	_item2725 selectLeader _item2715;
+	_this = _item2715;
+	_objects pushback _this;
+	_objectIDs pushback 2715;
+	_this setPosWorld [12473.5,2470.9,5.4734];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Zhong Choi";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.959244;;
+};
+
+private _item2702 = objNull;
+if (_layerRoot) then {
+	_item2702 = _item2726 createUnit ["O_T_Soldier_F",[12468.3,2468.72,0],[],0,"CAN_COLLIDE"];
+	_item2726 selectLeader _item2702;
+	_this = _item2702;
+	_objects pushback _this;
+	_objectIDs pushback 2702;
+	_this setPosWorld [12468.3,2468.07,6.05826];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Feng Tuan";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.952353;;
+};
+
+private _item2703 = objNull;
+if (_layerRoot) then {
+	_item2703 = _item2726 createUnit ["O_T_Soldier_F",[12468.3,2468.72,0],[],0,"CAN_COLLIDE"];
+	_this = _item2703;
+	_objects pushback _this;
+	_objectIDs pushback 2703;
+	_this setPosWorld [12468.6,2466.61,6.23327];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Ai Kuo";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.959162;;
+};
+
+private _item2744 = objNull;
+if (_layerRoot) then {
+	_item2744 = _item2729 createUnit ["O_V_Soldier_M_ghex_F",[12534.4,2516.96,0],[],0,"CAN_COLLIDE"];
+	_item2729 selectLeader _item2744;
+	_this = _item2744;
+	_objects pushback _this;
+	_objectIDs pushback 2744;
+	_this setPosWorld [12534.1,2514.78,6.13114];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Tengfei Kuo";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "Male02CHI";;
+	_this setpitch 1.05;;
+	_this setVehicleReportRemoteTargets true;
+};
+
+private _item2745 = objNull;
+if (_layerRoot) then {
+	_item2745 = _item2729 createUnit ["O_V_Soldier_LAT_ghex_F",[12534.4,2516.96,0],[],0,"CAN_COLLIDE"];
+	_this = _item2745;
+	_objects pushback _this;
+	_objectIDs pushback 2745;
+	_this setPosWorld [12534.7,2513.76,6.23351];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Zhen Han";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "Male03CHI";;
+	_this setpitch 0.96;;
+};
+
+private _item2746 = objNull;
+if (_layerRoot) then {
+	_item2746 = _item2729 createUnit ["O_T_Recon_JTAC_F",[12534.4,2516.96,0],[],0,"CAN_COLLIDE"];
+	_this = _item2746;
+	_objects pushback _this;
+	_objectIDs pushback 2746;
+	_this setPosWorld [12534,2513.86,6.21386];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Peng Yang";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "Male02CHI";;
+	_this setpitch 1.01;;
+};
+
+private _item2735 = objNull;
+if (_layerRoot) then {
+	_item2735 = _item2734 createUnit ["O_T_Soldier_TL_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_item2734 selectLeader _item2735;
+	_this = _item2735;
+	_objects pushback _this;
+	_objectIDs pushback 2735;
+	_this setPosWorld [12524.2,2518.78,6.9928];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Chang Wang";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.01804;;
+};
+
+private _item2736 = objNull;
+if (_layerRoot) then {
+	_item2736 = _item2734 createUnit ["O_T_Soldier_AR_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item2736;
+	_objects pushback _this;
+	_objectIDs pushback 2736;
+	_this setPosWorld [12524.2,2518.78,6.9928];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Jiayi Hsiang";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.994761;;
+};
+
+private _item2737 = objNull;
+if (_layerRoot) then {
+	_item2737 = _item2734 createUnit ["O_T_Soldier_GL_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item2737;
+	_objects pushback _this;
+	_objectIDs pushback 2737;
+	_this setPosWorld [12524.2,2518.78,6.9928];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Weimin Chao";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.01129;;
+};
+
+private _item2738 = objNull;
+if (_layerRoot) then {
+	_item2738 = _item2734 createUnit ["O_T_Soldier_LAT_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item2738;
+	_objects pushback _this;
+	_objectIDs pushback 2738;
+	_this setPosWorld [12524.2,2518.78,6.9928];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Zhong Lung";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.995985;;
+};
+
+private _item2740 = objNull;
+if (_layerRoot) then {
+	_item2740 = _item2734 createUnit ["O_T_Soldier_TL_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item2740;
+	_objects pushback _this;
+	_objectIDs pushback 2740;
+	_this setPosWorld [12524.2,2518.78,6.9928];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Yang Le";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.996782;;
+};
+
+private _item2741 = objNull;
+if (_layerRoot) then {
+	_item2741 = _item2734 createUnit ["O_T_Soldier_AR_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item2741;
+	_objects pushback _this;
+	_objectIDs pushback 2741;
+	_this setPosWorld [12524.2,2518.78,6.9928];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Zhen Tong";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.00911;;
+};
+
+private _item2742 = objNull;
+if (_layerRoot) then {
+	_item2742 = _item2734 createUnit ["O_T_Soldier_GL_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item2742;
+	_objects pushback _this;
+	_objectIDs pushback 2742;
+	_this setPosWorld [12524.2,2518.78,6.9928];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Niu Pun";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.996797;;
+};
+
+private _item2743 = objNull;
+if (_layerRoot) then {
+	_item2743 = _item2734 createUnit ["O_T_Soldier_LAT_F",[12524.2,2518.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item2743;
+	_objects pushback _this;
+	_objectIDs pushback 2743;
+	_this setPosWorld [12524.2,2518.78,6.9928];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Hai Hou";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.963645;;
+};
+
+private _item2754 = objNull;
+if (_layerRoot) then {
+	_item2754 = _item2753 createUnit ["O_V_Soldier_TL_ghex_F",[12447.6,2447.36,243.775],[],0,"CAN_COLLIDE"];
+	_item2753 selectLeader _item2754;
+	_this = _item2754;
+	_objects pushback _this;
+	_objectIDs pushback 2754;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Qiu Lung";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.03168;;
+};
+
+private _item2755 = objNull;
+if (_layerRoot) then {
+	_item2755 = _item2753 createUnit ["O_V_Soldier_JTAC_ghex_F",[12447.6,2447.36,243.775],[],0,"CAN_COLLIDE"];
+	_this = _item2755;
+	_objects pushback _this;
+	_objectIDs pushback 2755;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Da Yang";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.0454;;
+};
+
+private _item2756 = objNull;
+if (_layerRoot) then {
+	_item2756 = _item2753 createUnit ["O_V_Soldier_M_ghex_F",[12447.6,2447.36,243.775],[],0,"CAN_COLLIDE"];
+	_this = _item2756;
+	_objects pushback _this;
+	_objectIDs pushback 2756;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Xiang Tse";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.957877;;
+};
+
+private _item2757 = objNull;
+if (_layerRoot) then {
+	_item2757 = _item2753 createUnit ["O_V_Soldier_Exp_ghex_F",[12447.6,2447.36,243.775],[],0,"CAN_COLLIDE"];
+	_this = _item2757;
+	_objects pushback _this;
+	_objectIDs pushback 2757;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Yun Jun";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.00135;;
+};
+
+private _item2759 = objNull;
+if (_layerRoot) then {
+	_item2759 = _item2758 createUnit ["O_T_Soldier_TL_F",[12447.6,2447.36,243.775],[],0,"CAN_COLLIDE"];
+	_item2758 selectLeader _item2759;
+	_this = _item2759;
+	_objects pushback _this;
+	_objectIDs pushback 2759;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Chang Guo";;
+	_this setface "AsianHead_A3_02";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.04509;;
+};
+
+private _item2760 = objNull;
+if (_layerRoot) then {
+	_item2760 = _item2758 createUnit ["O_T_Soldier_AR_F",[12447.6,2447.36,243.775],[],0,"CAN_COLLIDE"];
+	_this = _item2760;
+	_objects pushback _this;
+	_objectIDs pushback 2760;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Yan Meng";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.01273;;
+};
+
+private _item2761 = objNull;
+if (_layerRoot) then {
+	_item2761 = _item2758 createUnit ["O_T_Soldier_GL_F",[12447.6,2447.36,243.775],[],0,"CAN_COLLIDE"];
+	_this = _item2761;
+	_objects pushback _this;
+	_objectIDs pushback 2761;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Xiaobo Tung";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.02718;;
+};
+
+private _item2762 = objNull;
+if (_layerRoot) then {
+	_item2762 = _item2758 createUnit ["O_T_Soldier_LAT_F",[12447.6,2447.36,243.775],[],0,"CAN_COLLIDE"];
+	_this = _item2762;
+	_objects pushback _this;
+	_objectIDs pushback 2762;
+	_this setPosWorld [12447.6,2447.35,251.415];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Feng Chen";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.962644;;
+};
+
+private _item2764 = objNull;
+if (_layerRoot) then {
+	_item2764 = _item2763 createUnit ["O_V_Soldier_TL_ghex_F",[12499.5,2444.65,244.172],[],0,"CAN_COLLIDE"];
+	_item2763 selectLeader _item2764;
+	_this = _item2764;
+	_objects pushback _this;
+	_objectIDs pushback 2764;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Yun Jun";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male01chi";;
+	_this setpitch 1.04059;;
+};
+
+private _item2765 = objNull;
+if (_layerRoot) then {
+	_item2765 = _item2763 createUnit ["O_V_Soldier_JTAC_ghex_F",[12499.5,2444.65,244.172],[],0,"CAN_COLLIDE"];
+	_this = _item2765;
+	_objects pushback _this;
+	_objectIDs pushback 2765;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Weimin Han";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.967484;;
+};
+
+private _item2766 = objNull;
+if (_layerRoot) then {
+	_item2766 = _item2763 createUnit ["O_V_Soldier_M_ghex_F",[12499.5,2444.65,244.172],[],0,"CAN_COLLIDE"];
+	_this = _item2766;
+	_objects pushback _this;
+	_objectIDs pushback 2766;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Ru Guo";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.04205;;
+};
+
+private _item2767 = objNull;
+if (_layerRoot) then {
+	_item2767 = _item2763 createUnit ["O_V_Soldier_Exp_ghex_F",[12499.5,2444.65,244.172],[],0,"CAN_COLLIDE"];
+	_this = _item2767;
+	_objects pushback _this;
+	_objectIDs pushback 2767;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Chen Tou";;
+	_this setface "AsianHead_A3_05";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.986787;;
+};
+
+private _item2769 = objNull;
+if (_layerRoot) then {
+	_item2769 = _item2768 createUnit ["O_T_Soldier_TL_F",[12499.5,2444.65,244.172],[],0,"CAN_COLLIDE"];
+	_item2768 selectLeader _item2769;
+	_this = _item2769;
+	_objects pushback _this;
+	_objectIDs pushback 2769;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Tao Fu";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male01chi";;
+	_this setpitch 0.955963;;
+};
+
+private _item2770 = objNull;
+if (_layerRoot) then {
+	_item2770 = _item2768 createUnit ["O_T_Soldier_AR_F",[12499.5,2444.65,244.172],[],0,"CAN_COLLIDE"];
+	_this = _item2770;
+	_objects pushback _this;
+	_objectIDs pushback 2770;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Yang Fan";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male02chi";;
+	_this setpitch 0.966123;;
+};
+
+private _item2771 = objNull;
+if (_layerRoot) then {
+	_item2771 = _item2768 createUnit ["O_T_Soldier_GL_F",[12499.5,2444.65,244.172],[],0,"CAN_COLLIDE"];
+	_this = _item2771;
+	_objects pushback _this;
+	_objectIDs pushback 2771;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Song Hsiang";;
+	_this setface "AsianHead_A3_04";;
+	_this setspeaker "male03chi";;
+	_this setpitch 0.950876;;
+};
+
+private _item2772 = objNull;
+if (_layerRoot) then {
+	_item2772 = _item2768 createUnit ["O_T_Soldier_LAT_F",[12499.5,2444.65,244.172],[],0,"CAN_COLLIDE"];
+	_this = _item2772;
+	_objects pushback _this;
+	_objectIDs pushback 2772;
+	_this setPosWorld [12499.5,2444.71,251.856];
+	_this setVectorDirAndUp [[0.217539,0.976052,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Wen Choi";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.02569;;
+};
+
+private _item2775 = objNull;
+if (_layer2789) then {
+	_item2775 = createVehicle ["O_Plane_CAS_02_dynamicLoadout_F",[1389.29,12616.7,959.659],[],0,"FLY"];
+	_this = _item2775;
+	_objects pushback _this;
+	_objectIDs pushback 2775;
+	_this setPosWorld [1388.93,12616.8,954.732];
+	_this setVectorDirAndUp [[0.782858,-0.6222,0],[0,0,1]];
+	_this setPylonLoadout [1,"PylonRack_1Rnd_Missile_AA_03_F"];
+	_this setPylonLoadout [2,"PylonRack_1Rnd_Missile_AGM_01_F"];
+	_this setPylonLoadout [3,"PylonRack_20Rnd_Rocket_03_HE_F"];
+	_this setPylonLoadout [4,"PylonRack_1Rnd_Missile_AGM_01_F"];
+	_this setPylonLoadout [5,"PylonMissile_1Rnd_Bomb_03_F"];
+	_this setPylonLoadout [6,"PylonMissile_1Rnd_Bomb_03_F"];
+	_this setPylonLoadout [7,"PylonRack_1Rnd_Missile_AGM_01_F"];
+	_this setPylonLoadout [8,"PylonRack_20Rnd_Rocket_03_AP_F"];
+	_this setPylonLoadout [9,"PylonRack_1Rnd_Missile_AGM_01_F"];
+	_this setPylonLoadout [10,"PylonRack_1Rnd_Missile_AA_03_F"];
+	[_this,"[[[[],[]],[[],[]],[[],[]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item2776 = objNull;
+if (_layer2789) then {
+	_item2776 = _item2774 createUnit ["O_Fighter_Pilot_F",[1389.09,12616.9,959.668],[],0,"CAN_COLLIDE"];
+	_item2774 selectLeader _item2776;
+	_this = _item2776;
+	_objects pushback _this;
+	_objectIDs pushback 2776;
+	_this setPosWorld [1388.93,12616.8,954.732];
+	_this setVectorDirAndUp [[0.782858,-0.6222,0],[0,0,1]];
+	_this setname "Sibhatullah Haidari";;
+	_this setface "PersianHead_A3_01";;
+	_this setspeaker "male02per";;
+	_this setpitch 0.972172;;
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Triggers
+private _triggers = [];
+private _triggerIDs = [];
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Group attributes (applied only once group units exist)
+_this = _item449;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-1"];;
+};
+_this = _item152;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-1"];;
+};
+_this = _item463;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-1"];;
+};
+_this = _item488;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-2"];;
+};
+_this = _item494;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-3"];;
+};
+_this = _item526;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-4"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item530;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-5"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item549;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-6"];;
+};
+_this = _item554;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-1"];;
+};
+_this = _item559;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-2"];;
+};
+_this = _item562;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-3"];;
+};
+_this = _item577;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-4"];;
+};
+_this = _item586;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-5"];;
+};
+_this = _item639;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-6"];;
+};
+_this = _item647;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-1"];;
+};
+_this = _item678;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-2"];;
+};
+_this = _item683;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-3"];;
+};
+_this = _item710;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-4"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item717;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-5"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item725;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-6"];;
+};
+_this = _item505;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 4-1"];;
+};
+_this = _item727;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 4-2"];;
+};
+_this = _item729;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 4-3"];;
+};
+_this = _item731;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 4-4"];;
+};
+_this = _item735;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 4-5"];;
+};
+_this = _item741;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 4-6"];;
+};
+_this = _item2676;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 1-1"];;
+};
+_this = _item2697;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 1-2"];;
+};
+_this = _item2725;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 1-3"];;
+};
+_this = _item2726;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 1-4"];;
+};
+_this = _item2729;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 1-5"];;
+};
+_this = _item2734;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 1-6"];;
+};
+_this = _item2753;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 2-1"];;
+};
+_this = _item2758;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 2-2"];;
+};
+_this = _item2763;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 2-3"];;
+};
+_this = _item2768;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 2-4"];;
+};
+_this = _item2774;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Bravo 2-5"];;
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Waypoints
+private _waypoints = [];
+private _waypointIDs = [];
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Logics
+private _logics = [];
+private _logicIDs = [];
+
+private _item124 = objNull;
+if (_layer120) then {
+	_item124 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInit_F",[12687.1,2487.15,0],[],0,"CAN_COLLIDE"];
+	_this = _item124;
+	_logics pushback _this;
+	_logicIDs pushback 124;
+	_this setPosWorld [12687.1,2487.15,20.891];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Path',"a3\Missions_F_Oldman\Campaign\Missions\",true];;
+	_this setVariable ['Missions',"[]",true];;
+	_this setVariable ['CsatAiming',1,true];;
+	_this setVariable ['SyndikatAiming',1,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item137 = objNull;
+if (_layerRoot) then {
+	_item137 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOMSyndikatAgent",[11045.8,8524.97,1.174],[],0,"CAN_COLLIDE"];
+	_this = _item137;
+	_logics pushback _this;
+	_logicIDs pushback 137;
+	_this setPosWorld [11045.8,8524.97,216.787];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	BIS_SyndikatSupport = _this;
+	_this setVehicleVarName "BIS_SyndikatSupport";
+	_this setVariable ['PoolInitNumber',0,true];;
+	_this setVariable ['PoolMax',10,true];;
+	_this setVariable ['PoolMin',5,true];;
+	_this setVariable ['PoolIncomeUnits',2,true];;
+	_this setVariable ['PoolIncomeTime',20,true];;
+	_this setVariable ['MinTimeBetweenEvents',900,true];;
+	_this setVariable ['EventSelectionPeriod',180,true];;
+	_this setVariable ['MaximumActiveSupports',1,true];;
+	_this setVariable ['EnableSystem',false,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item345 = objNull;
+if (_layerRoot) then {
+	_item345 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOMEconomy",[12682,2484.23,0],[],0,"CAN_COLLIDE"];
+	_this = _item345;
+	_logics pushback _this;
+	_logicIDs pushback 345;
+	_this setPosWorld [12682,2484.23,20.4013];
+	_this setVectorDirAndUp [[0,0.990158,-0.139951],[-0.290852,0.1339,0.947352]];
+	_this setVariable ['InitialSum',95,true];;
+	_this setVariable ['IncomeSum',1,true];;
+	_this setVariable ['IncomeTime',9999,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item346 = objNull;
+if (_layerRoot) then {
+	_item346 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOMRadio_F",[12692.9,2491.44,0],[],0,"CAN_COLLIDE"];
+	_this = _item346;
+	_logics pushback _this;
+	_logicIDs pushback 346;
+	_this setPosWorld [12692.9,2491.44,21.6928];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	BIS_moduleRadio = _this;
+	_this setVehicleVarName "BIS_moduleRadio";
+	_this setVariable ['RadioChannel',0,true];;
+	_this setVariable ['NewsPeriod',0,true];;
+	_this setVariable ['NewsTypesToPlay_ManHunt',true,true];;
+	_this setVariable ['NewsTypesToPlay_Weather',true,true];;
+	_this setVariable ['NewsTypesToPlay_Unimportant',true,true];;
+	_this setVariable ['NewsTypesToPlay_Infection',true,true];;
+	_this setVariable ['NewsTypesToPlay_Events',true,true];;
+	_this setVariable ['EnableSystem',true,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item347 = objNull;
+if (_layerRoot) then {
+	_item347 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOMSmartMarkers_F",[12684.3,2485.73,-1.90735e-006],[],0,"CAN_COLLIDE"];
+	_this = _item347;
+	_logics pushback _this;
+	_logicIDs pushback 347;
+	_this setPosWorld [12684.3,2485.73,20.5893];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['RadioChannel',0,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item348 = objNull;
+if (_layerRoot) then {
+	_item348 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOMAwareness_F",[12694.9,2492.84,0],[],0,"CAN_COLLIDE"];
+	_this = _item348;
+	_logics pushback _this;
+	_logicIDs pushback 348;
+	_this setPosWorld [12694.9,2492.84,22.0273];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Frequency',1,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item349 = objNull;
+if (_layerRoot) then {
+	_item349 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmActionQueue_F",[12696.4,2493.91,0],[],0,"CAN_COLLIDE"];
+	_this = _item349;
+	_logics pushback _this;
+	_logicIDs pushback 349;
+	_this setPosWorld [12696.4,2493.91,22.1725];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['QueueMaxSize',16,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item453 = objNull;
+if (_layerRoot) then {
+	_item453 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmRelationship_F",[12689.1,2488.68,0],[],0,"CAN_COLLIDE"];
+	_this = _item453;
+	_logics pushback _this;
+	_logicIDs pushback 453;
+	_this setPosWorld [12689.1,2488.68,21.0863];
+	_this setVectorDirAndUp [[0,0.999826,-0.0186739],[-0.191083,0.0183298,0.981403]];
+	_this setVariable ['side',0,true];;
+	_this setVariable ['DefaultRating',0,true];;
+	_this setVariable ['MinRating',-1000,true];;
+	_this setVariable ['MaxRating',300,true];;
+	_this setVariable ['ThreatTreshold',10,true];;
+	_this setVariable ['EnemyTreshold',100,true];;
+	_this setVariable ['AllyTreshold',-50,true];;
+	_this setVariable ['Stabilization',1,true];;
+	_this setVariable ['IgnoreRestrictedZones',false,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item454 = objNull;
+if (_layerRoot) then {
+	_item454 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmRelationship_F",[12690.9,2489.95,0],[],0,"CAN_COLLIDE"];
+	_this = _item454;
+	_logics pushback _this;
+	_logicIDs pushback 454;
+	_this setPosWorld [12690.9,2489.95,21.3697];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['side',2,true];;
+	_this setVariable ['DefaultRating',0,true];;
+	_this setVariable ['MinRating',-300,true];;
+	_this setVariable ['MaxRating',300,true];;
+	_this setVariable ['ThreatTreshold',30,true];;
+	_this setVariable ['EnemyTreshold',150,true];;
+	_this setVariable ['AllyTreshold',10,true];;
+	_this setVariable ['Stabilization',3.5,true];;
+	_this setVariable ['IgnoreRestrictedZones',false,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item455 = objNull;
+if (_layerRoot) then {
+	_item455 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOMReputation_F",[12692.9,2487.42,0],[],0,"CAN_COLLIDE"];
+	_this = _item455;
+	_logics pushback _this;
+	_logicIDs pushback 455;
+	_this setPosWorld [12692.9,2487.42,21.5722];
+	_this setVectorDirAndUp [[0,0.999488,0.0319868],[-0.139951,-0.031672,0.989652]];
+	_this setVariable ['ReputationLevelMax',3,true];;
+	_this setVariable ['ReputationLevelMin',-3,true];;
+	_this setVariable ['ReputationLevelStart',-1,true];;
+	_this setVariable ['ReputationLevelWidth',600,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item483 = objNull;
+if (_layerRoot) then {
+	_item483 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmQRF_F_Third",[12538.8,2524.68,0],[],0,"CAN_COLLIDE"];
+	_this = _item483;
+	_logics pushback _this;
+	_logicIDs pushback 483;
+	_this setPosWorld [12538.8,2524.68,4.42];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item484 = objNull;
+if (_layerRoot) then {
+	_item484 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmQRF_F_Second",[12477.9,2460.47,4.76837e-007],[],0,"CAN_COLLIDE"];
+	_this = _item484;
+	_logics pushback _this;
+	_logicIDs pushback 484;
+	_this setPosWorld [12477.9,2460.47,4.42];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item504 = objNull;
+if (_layerRoot) then {
+	_item504 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmQRF_F",[12555.1,2473.04,0],[],0,"CAN_COLLIDE"];
+	_this = _item504;
+	_logics pushback _this;
+	_logicIDs pushback 504;
+	_this setPosWorld [12555.1,2473.04,4.42];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["areaSize", 100];
+	_this setVariable ["areaDefenseLimitPercentage", 50];
+	_this setVariable ["waveDefenseLimitPercentage", 40];
+	_this setVariable ["spawnRange", 300];
+	_this setVariable ["qrfCooldown", 1];
+	_this setVariable ["areaCooldown", 600];
+	_this setVariable ["unitMultiplier", 2];
+	_this setVariable ["unitMultiplierLevelThreshold", 1];
+	_this setVariable ["qrfVehicleSpeed", 60];
+	_this setVariable ["arivalFailSafeTimeout", 4];
+	_this setVariable ["waypointRadius", 250];
+	_this setVariable ["qrfAirSpeed", 200];
+	_this setVariable ["airLandingNearestObjectDistance", 20];
+	_this setVariable ["airLandingFindPosRadius", 500];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item533 = objNull;
+if (_layerRoot) then {
+	_item533 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmQRF_F_First",[12502.4,2444.5,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_this = _item533;
+	_logics pushback _this;
+	_logicIDs pushback 533;
+	_this setPosWorld [12502.4,2444.5,4.49077];
+	_this setVectorDirAndUp [[0,0.999712,-0.0239937],[-0.0080009,0.0239929,0.99968]];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item2665 = objNull;
+if (_layerRoot) then {
+	_item2665 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOMFastTravel_F",[12698.2,2494.79,0],[],0,"CAN_COLLIDE"];
+	_this = _item2665;
+	_logics pushback _this;
+	_logicIDs pushback 2665;
+	_this setPosWorld [12698.2,2494.79,22.2913];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	BIS_moduleFastTravel = _this;
+	_this setVehicleVarName "BIS_moduleFastTravel";
+	_this setVariable ['Dependencies',"[]",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item2804 = objNull;
+if (_layer2789) then {
+	_item2804 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[1388.88,12595.3,8.549],[],0,"CAN_COLLIDE"];
+	_this = _item2804;
+	_logics pushback _this;
+	_logicIDs pushback 2804;
+	_this setPosWorld [1388.88,12595.3,-0.196737];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"_this setVelocity [100,-100,200]",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item2773 = objNull;
+if (_layerRoot) then {
+	_item2773 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmSector_F",[1437.93,12629.7,500],[],0,"CAN_COLLIDE"];
+	_this = _item2773;
+	_logics pushback _this;
+	_logicIDs pushback 2773;
+	_this setPosWorld [1437.93,12629.7,495.969];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[100,100,0,false,-1]];
+	BIS_SC_JetQRF = _this;
+	_this setVehicleVarName "BIS_SC_JetQRF";
+	_this setVariable ['Condition',"false",true];;
+	_this setVariable ['SpawnDistance',400,true];;
+	_this setVariable ['VehicleSpawnDistance',1000,true];;
+	_this setVariable ['AirSpawnDistance',0,true];;
+	_this setVariable ['side',-1,true];;
+	_this setVariable ['AASector',false,true];;
+	_this setVariable ['RestrictedArea',0,true];;
+	_this setVariable ['CanAttack',false,true];;
+	_this setVariable ['QRFEnabled',true,true];;
+	_this setVariable ['ThreatRange',300,true];;
+	_this setVariable ['ThreatRate',1,true];;
+	_this setVariable ['Layer',"BIS_SC3Den_jETqrf",true];;
+	_this setVariable ['OnStateChangeCode',"",true];;
+	_this setVariable ['OnDespawnCode',"",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Layers
+if (_layer2789) then {missionNamespace setVariable ["common_BIS_SC3Den_jETqrf",[[_item2775,_item2776,_item2804],[]]];};
+if (_layer120) then {missionNamespace setVariable ["common_NoExport",[[_item124,_item450],[]]];};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Crews
+if (!isNull _item464 && !isNull _item466) then {_item464 moveInDriver _item466;};
+if (!isNull _item681 && !isNull _item466) then {_item681 moveInCargo [_item466,2];};
+if (!isNull _item682 && !isNull _item466) then {_item682 moveInCargo [_item466,4];};
+if (!isNull _item684 && !isNull _item466) then {_item684 moveInCargo [_item466,6];};
+if (!isNull _item685 && !isNull _item466) then {_item685 moveInCargo [_item466,8];};
+if (!isNull _item686 && !isNull _item466) then {_item686 moveInCargo [_item466,10];};
+if (!isNull _item687 && !isNull _item466) then {_item687 moveInCargo [_item466,12];};
+if (!isNull _item465 && !isNull _item466) then {_item465 moveInTurret [_item466,[0]];};
+if (!isNull _item679 && !isNull _item466) then {_item679 moveInTurret [_item466,[1]];};
+if (!isNull _item680 && !isNull _item466) then {_item680 moveInTurret [_item466,[2]];};
+if (!isNull _item742 && !isNull _item493) then {_item742 moveInDriver _item493;};
+if (!isNull _item2813 && !isNull _item493) then {_item2813 moveInCargo [_item493,0];};
+if (!isNull _item2814 && !isNull _item493) then {_item2814 moveInCargo [_item493,1];};
+if (!isNull _item2815 && !isNull _item493) then {_item2815 moveInCargo [_item493,2];};
+if (!isNull _item2816 && !isNull _item493) then {_item2816 moveInCargo [_item493,3];};
+if (!isNull _item618 && !isNull _item493) then {_item618 moveInCargo [_item493,4];};
+if (!isNull _item619 && !isNull _item493) then {_item619 moveInCargo [_item493,5];};
+if (!isNull _item620 && !isNull _item493) then {_item620 moveInCargo [_item493,6];};
+if (!isNull _item617 && !isNull _item493) then {_item617 moveInCargo [_item493,7];};
+if (!isNull _item744 && !isNull _item493) then {_item744 moveInTurret [_item493,[0]];};
+if (!isNull _item2651 && !isNull _item532) then {_item2651 moveInDriver _item532;};
+if (!isNull _item2649 && !isNull _item532) then {_item2649 moveInTurret [_item532,[0]];};
+if (!isNull _item2650 && !isNull _item532) then {_item2650 moveInTurret [_item532,[1]];};
+if (!isNull _item2653 && !isNull _item532) then {_item2653 moveInTurret [_item532,[2]];};
+if (!isNull _item2818 && !isNull _item532) then {_item2818 moveInTurret [_item532,[3]];};
+if (!isNull _item560 && !isNull _item567) then {_item560 moveInDriver _item567;};
+if (!isNull _item563 && !isNull _item567) then {_item563 moveInCargo [_item567,0];};
+if (!isNull _item564 && !isNull _item567) then {_item564 moveInCargo [_item567,1];};
+if (!isNull _item565 && !isNull _item567) then {_item565 moveInCargo [_item567,2];};
+if (!isNull _item566 && !isNull _item567) then {_item566 moveInCargo [_item567,3];};
+if (!isNull _item640 && !isNull _item567) then {_item640 moveInCargo [_item567,4];};
+if (!isNull _item641 && !isNull _item567) then {_item641 moveInCargo [_item567,5];};
+if (!isNull _item642 && !isNull _item567) then {_item642 moveInCargo [_item567,6];};
+if (!isNull _item643 && !isNull _item567) then {_item643 moveInCargo [_item567,7];};
+if (!isNull _item561 && !isNull _item567) then {_item561 moveInTurret [_item567,[0]];};
+if (!isNull _item730 && !isNull _item646) then {_item730 moveInDriver _item646;};
+if (!isNull _item651 && !isNull _item646) then {_item651 moveInCargo [_item646,0];};
+if (!isNull _item652 && !isNull _item646) then {_item652 moveInCargo [_item646,1];};
+if (!isNull _item653 && !isNull _item646) then {_item653 moveInCargo [_item646,2];};
+if (!isNull _item654 && !isNull _item646) then {_item654 moveInCargo [_item646,3];};
+if (!isNull _item655 && !isNull _item646) then {_item655 moveInCargo [_item646,4];};
+if (!isNull _item657 && !isNull _item646) then {_item657 moveInCargo [_item646,6];};
+if (!isNull _item658 && !isNull _item646) then {_item658 moveInCargo [_item646,7];};
+if (!isNull _item649 && !isNull _item646) then {_item649 moveInTurret [_item646,[0]];};
+if (!isNull _item650 && !isNull _item646) then {_item650 moveInTurret [_item646,[1]];};
+if (!isNull _item2655 && !isNull _item525) then {_item2655 moveInDriver _item525;};
+if (!isNull _item2658 && !isNull _item525) then {_item2658 moveInCargo [_item525,0];};
+if (!isNull _item2659 && !isNull _item525) then {_item2659 moveInCargo [_item525,1];};
+if (!isNull _item2654 && !isNull _item525) then {_item2654 moveInTurret [_item525,[0]];};
+if (!isNull _item2656 && !isNull _item525) then {_item2656 moveInTurret [_item525,[1]];};
+if (!isNull _item2657 && !isNull _item525) then {_item2657 moveInTurret [_item525,[2]];};
+if (!isNull _item728 && !isNull _item510) then {_item728 moveInDriver _item510;};
+if (!isNull _item509 && !isNull _item510) then {_item509 moveInTurret [_item510,[0]];};
+if (!isNull _item507 && !isNull _item510) then {_item507 moveInTurret [_item510,[2]];};
+if (!isNull _item508 && !isNull _item510) then {_item508 moveInTurret [_item510,[3]];};
+if (!isNull _item726 && !isNull _item2661) then {_item726 moveInDriver _item2661;};
+if (!isNull _item581 && !isNull _item2661) then {_item581 moveInCargo [_item2661,0];};
+if (!isNull _item582 && !isNull _item2661) then {_item582 moveInCargo [_item2661,1];};
+if (!isNull _item584 && !isNull _item2661) then {_item584 moveInCargo [_item2661,2];};
+if (!isNull _item2751 && !isNull _item2661) then {_item2751 moveInCargo [_item2661,3];};
+if (!isNull _item2752 && !isNull _item2661) then {_item2752 moveInCargo [_item2661,4];};
+if (!isNull _item579 && !isNull _item2661) then {_item579 moveInTurret [_item2661,[0]];};
+if (!isNull _item580 && !isNull _item2661) then {_item580 moveInTurret [_item2661,[1]];};
+if (!isNull _item2667 && !isNull _item2666) then {_item2667 moveInDriver _item2666;};
+if (!isNull _item2764 && !isNull _item2666) then {_item2764 moveInCargo [_item2666,0];};
+if (!isNull _item2765 && !isNull _item2666) then {_item2765 moveInCargo [_item2666,1];};
+if (!isNull _item2766 && !isNull _item2666) then {_item2766 moveInCargo [_item2666,2];};
+if (!isNull _item2767 && !isNull _item2666) then {_item2767 moveInCargo [_item2666,3];};
+if (!isNull _item2769 && !isNull _item2666) then {_item2769 moveInCargo [_item2666,4];};
+if (!isNull _item2770 && !isNull _item2666) then {_item2770 moveInCargo [_item2666,5];};
+if (!isNull _item2771 && !isNull _item2666) then {_item2771 moveInCargo [_item2666,6];};
+if (!isNull _item2772 && !isNull _item2666) then {_item2772 moveInCargo [_item2666,7];};
+if (!isNull _item2668 && !isNull _item2666) then {_item2668 moveInTurret [_item2666,[0]];};
+if (!isNull _item2673 && !isNull _item2672) then {_item2673 moveInDriver _item2672;};
+if (!isNull _item2754 && !isNull _item2672) then {_item2754 moveInCargo [_item2672,0];};
+if (!isNull _item2755 && !isNull _item2672) then {_item2755 moveInCargo [_item2672,1];};
+if (!isNull _item2756 && !isNull _item2672) then {_item2756 moveInCargo [_item2672,2];};
+if (!isNull _item2757 && !isNull _item2672) then {_item2757 moveInCargo [_item2672,3];};
+if (!isNull _item2759 && !isNull _item2672) then {_item2759 moveInCargo [_item2672,4];};
+if (!isNull _item2760 && !isNull _item2672) then {_item2760 moveInCargo [_item2672,5];};
+if (!isNull _item2761 && !isNull _item2672) then {_item2761 moveInCargo [_item2672,6];};
+if (!isNull _item2762 && !isNull _item2672) then {_item2762 moveInCargo [_item2672,7];};
+if (!isNull _item2674 && !isNull _item2672) then {_item2674 moveInTurret [_item2672,[0]];};
+if (!isNull _item2692 && !isNull _item2690) then {_item2692 moveInDriver _item2690;};
+if (!isNull _item2735 && !isNull _item2690) then {_item2735 moveInCargo [_item2690,0];};
+if (!isNull _item2736 && !isNull _item2690) then {_item2736 moveInCargo [_item2690,1];};
+if (!isNull _item2737 && !isNull _item2690) then {_item2737 moveInCargo [_item2690,2];};
+if (!isNull _item2738 && !isNull _item2690) then {_item2738 moveInCargo [_item2690,3];};
+if (!isNull _item2740 && !isNull _item2690) then {_item2740 moveInCargo [_item2690,4];};
+if (!isNull _item2741 && !isNull _item2690) then {_item2741 moveInCargo [_item2690,5];};
+if (!isNull _item2742 && !isNull _item2690) then {_item2742 moveInCargo [_item2690,6];};
+if (!isNull _item2743 && !isNull _item2690) then {_item2743 moveInCargo [_item2690,7];};
+if (!isNull _item2691 && !isNull _item2690) then {_item2691 moveInTurret [_item2690,[0]];};
+if (!isNull _item2693 && !isNull _item2690) then {_item2693 moveInTurret [_item2690,[0,0]];};
+if (!isNull _item2695 && !isNull _item2694) then {_item2695 moveInDriver _item2694;};
+if (!isNull _item2744 && !isNull _item2694) then {_item2744 moveInCargo [_item2694,0];};
+if (!isNull _item2745 && !isNull _item2694) then {_item2745 moveInCargo [_item2694,1];};
+if (!isNull _item2746 && !isNull _item2694) then {_item2746 moveInCargo [_item2694,2];};
+if (!isNull _item2696 && !isNull _item2694) then {_item2696 moveInTurret [_item2694,[0]];};
+if (!isNull _item2702 && !isNull _item2701) then {_item2702 moveInDriver _item2701;};
+if (!isNull _item2706 && !isNull _item2701) then {_item2706 moveInCargo [_item2701,0];};
+if (!isNull _item2710 && !isNull _item2701) then {_item2710 moveInCargo [_item2701,1];};
+if (!isNull _item2705 && !isNull _item2701) then {_item2705 moveInCargo [_item2701,2];};
+if (!isNull _item2703 && !isNull _item2701) then {_item2703 moveInTurret [_item2701,[0]];};
+if (!isNull _item2715 && !isNull _item2714) then {_item2715 moveInDriver _item2714;};
+if (!isNull _item2716 && !isNull _item2714) then {_item2716 moveInTurret [_item2714,[0]];};
+if (!isNull _item2718 && !isNull _item2714) then {_item2718 moveInTurret [_item2714,[1]];};
+if (!isNull _item2719 && !isNull _item2714) then {_item2719 moveInTurret [_item2714,[2]];};
+if (!isNull _item2720 && !isNull _item2714) then {_item2720 moveInTurret [_item2714,[3]];};
+if (!isNull _item2721 && !isNull _item2714) then {_item2721 moveInTurret [_item2714,[4]];};
+if (!isNull _item2724 && !isNull _item2714) then {_item2724 moveInTurret [_item2714,[5]];};
+if (!isNull _item2776 && !isNull _item2775) then {_item2776 moveInDriver _item2775;};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Vehicle cargo
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Connections
+if (!isNull _item153 && !isNull _item137) then {_item153 synchronizeObjectsAdd [_item137]; _item137 synchronizeObjectsAdd [_item153];};
+if (!isNull _item154 && !isNull _item137) then {_item154 synchronizeObjectsAdd [_item137]; _item137 synchronizeObjectsAdd [_item154];};
+if (!isNull _item155 && !isNull _item137) then {_item155 synchronizeObjectsAdd [_item137]; _item137 synchronizeObjectsAdd [_item155];};
+if (!isNull _item156 && !isNull _item137) then {_item156 synchronizeObjectsAdd [_item137]; _item137 synchronizeObjectsAdd [_item156];};
+if (!isNull _item157 && !isNull _item137) then {_item157 synchronizeObjectsAdd [_item137]; _item137 synchronizeObjectsAdd [_item157];};
+if (!isNull _item158 && !isNull _item137) then {_item158 synchronizeObjectsAdd [_item137]; _item137 synchronizeObjectsAdd [_item158];};
+if (!isNull _item159 && !isNull _item137) then {_item159 synchronizeObjectsAdd [_item137]; _item137 synchronizeObjectsAdd [_item159];};
+if (!isNull _item160 && !isNull _item137) then {_item160 synchronizeObjectsAdd [_item137]; _item137 synchronizeObjectsAdd [_item160];};
+if (!isNull _item466 && !isNull _item483) then {_item466 synchronizeObjectsAdd [_item483]; _item483 synchronizeObjectsAdd [_item466];};
+if (!isNull _item493 && !isNull _item483) then {_item493 synchronizeObjectsAdd [_item483]; _item483 synchronizeObjectsAdd [_item493];};
+if (!isNull _item532 && !isNull _item533) then {_item532 synchronizeObjectsAdd [_item533]; _item533 synchronizeObjectsAdd [_item532];};
+if (!isNull _item550 && !isNull _item504) then {_item550 synchronizeObjectsAdd [_item504]; _item504 synchronizeObjectsAdd [_item550];};
+if (!isNull _item555 && !isNull _item504) then {_item555 synchronizeObjectsAdd [_item504]; _item504 synchronizeObjectsAdd [_item555];};
+if (!isNull _item567 && !isNull _item483) then {_item567 synchronizeObjectsAdd [_item483]; _item483 synchronizeObjectsAdd [_item567];};
+if (!isNull _item646 && !isNull _item484) then {_item646 synchronizeObjectsAdd [_item484]; _item484 synchronizeObjectsAdd [_item646];};
+if (!isNull _item525 && !isNull _item533) then {_item525 synchronizeObjectsAdd [_item533]; _item533 synchronizeObjectsAdd [_item525];};
+if (!isNull _item510 && !isNull _item533) then {_item510 synchronizeObjectsAdd [_item533]; _item533 synchronizeObjectsAdd [_item510];};
+if (!isNull _item2661 && !isNull _item533) then {_item2661 synchronizeObjectsAdd [_item533]; _item533 synchronizeObjectsAdd [_item2661];};
+if (!isNull _item2666 && !isNull _item484) then {_item2666 synchronizeObjectsAdd [_item484]; _item484 synchronizeObjectsAdd [_item2666];};
+if (!isNull _item2672 && !isNull _item484) then {_item2672 synchronizeObjectsAdd [_item484]; _item484 synchronizeObjectsAdd [_item2672];};
+if (!isNull _item2690 && !isNull _item483) then {_item2690 synchronizeObjectsAdd [_item483]; _item483 synchronizeObjectsAdd [_item2690];};
+if (!isNull _item2694 && !isNull _item483) then {_item2694 synchronizeObjectsAdd [_item483]; _item483 synchronizeObjectsAdd [_item2694];};
+if (!isNull _item2701 && !isNull _item484) then {_item2701 synchronizeObjectsAdd [_item484]; _item484 synchronizeObjectsAdd [_item2701];};
+if (!isNull _item2714 && !isNull _item484) then {_item2714 synchronizeObjectsAdd [_item484]; _item484 synchronizeObjectsAdd [_item2714];};
+if (!isNull _item2775 && !isNull _item2804) then {_item2775 synchronizeObjectsAdd [_item2804]; _item2804 synchronizeObjectsAdd [_item2775];};
+if (!isNull _item454 && !isNull _item455) then {_item454 synchronizeObjectsAdd [_item455]; _item455 synchronizeObjectsAdd [_item454];};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Inits (executed only once all entities exist; isNil used to ensure non-scheduled environment)
+isNil {
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Module activations (only once everything is spawned and connected)
+if !(isNull _item124) then {_item124 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item137) then {_item137 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item345) then {_item345 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item346) then {_item346 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item347) then {_item347 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item348) then {_item348 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item349) then {_item349 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item453) then {_item453 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item454) then {_item454 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item455) then {_item455 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item483) then {_item483 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item484) then {_item484 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item504) then {_item504 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item533) then {_item533 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item2665) then {_item2665 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item2804) then {_item2804 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item2773) then {_item2773 setvariable ["BIS_fnc_initModules_activate",true];};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+[[_objects,_groups,_triggers,_waypoints,_logics,_markers],[_objectIDs,_groupIDs,_triggerIDs,_waypointIDs,_logicIDs,_markerIDs]]

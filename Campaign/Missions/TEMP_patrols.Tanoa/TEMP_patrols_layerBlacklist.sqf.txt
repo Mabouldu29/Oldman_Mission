@@ -1,0 +1,2 @@
+
+["sc_lumberyardcsatpatrol","bis_sc_hiddencave","bis_sc_aaoutpost","bis_sc_pacificboat","sc_sw_lumberyard"]

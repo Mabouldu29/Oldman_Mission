@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_soldierU_F","",[5224.86,10042.3,0.24434],271.174,0.5,0,"Auto",[["arifle_Katiba_ACO_pointer_F","","acc_pointer_IR","optic_ACO_grn",["30Rnd_65x39_caseless_green",30],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_CombatUniform_oucamo",[["FirstAidKit",1],["30Rnd_65x39_caseless_green",2,30],["Chemlight_red",1,1]]],["V_HarnessO_gry",[["30Rnd_65x39_caseless_green",7,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",2,1],["SmokeShell",1,1],["SmokeShellRed",1,1],["Chemlight_red",1,1]]],[],"H_HelmetO_oucamo","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_OPFOR"]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["Land_SandbagBarricade_01_half_F",[5222.43,10042.6,-0.379656],[[-0.876866,-0.480736,0],[0,0,1]],0,"",true,false,[],false,2],["Land_SandbagBarricade_01_half_F",[5222.52,10044.3,-0.38088],[[0.766875,-0.641797,0],[0,0,1]],0,"",true,false,[],false,2]]
+		,
+		//--- #size
+		20
+]

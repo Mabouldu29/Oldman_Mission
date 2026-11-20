@@ -1,0 +1,33 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_TrailerCistern_wreck_F",[14451.2,10545.1,0],[[-0.140535,0.990076,0],[0,0,1]],0,"",false,false,[],false,3,0],["Land_PowerGenerator_wreck_F",[14441.7,10541.7,0],[[-0.849292,-0.527923,0],[0,0,1]],0,"",false,false,[],false,3,1],["Land_Wreck_Skodovka_F",[14459,10546,0],[[-0.471685,0.881767,0],[0,0,1]],0,"",false,false,[],false,2,2],["Land_Wreck_Truck_F",[14448,10524.3,0],[[-0.820315,-0.571912,0],[0,0,1]],0,"",false,false,[],false,3,3],["Land_Wreck_CarDismantled_F",[14443.6,10531.1,0],[[-0.748731,-0.662874,0],[0,0,1]],0,"",false,false,[],false,3,4],["Land_Wreck_Car_F",[14469.7,10538.6,0.00242615],[[0.362588,-0.931658,-0.0233197],[0.00265199,-0.0239909,0.999709]],0,"",false,false,[],false,3,5],["Land_Wreck_Truck_dropside_F",[14467.1,10535.3,0.0102921],[[0.812223,-0.582909,-0.0226052],[0.0239934,-0.00533598,0.999698]],0,"",false,false,[],false,3,6],["Land_V3S_wreck_F",[14465.4,10532,0.040287],[[0.811128,-0.584605,-0.0175594],[0.0293202,0.0106595,0.999513]],0,"",false,false,[],false,3,7],["Land_Wreck_Offroad2_F",[14462.4,10526.7,0.000324249],[[0.88887,-0.458153,-0.00235728],[0.00265199,0,0.999996]],0,"",false,false,[],false,3,8],["Land_Stretcher_01_olive_F",[14438.5,10515.1,0],[[0.535075,-0.844805,0],[0,0,1]],0,"",false,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_smartmarkers_smartmarker_i_deliverypoint_f_sections_markertext0'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 0, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,9],["Land_WoodenCrate_01_F",[14437.9,10517.1,0.0500031],[[-0.855726,-0.51743,0],[0,0,1]],0,"",true,false,[],true,-1,10],["Land_WoodenCrate_01_stack_x5_F",[14441.3,10513.5,0],[[-0.581754,0.813365,0],[0,0,1]],0,"",false,false,[],false,2,11],["Item_Sleeping_bag_folded_01",[14440.3,10514,0],[[-0.581754,0.813365,0],[0,0,1]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,12],["Item_Sleeping_bag_folded_01",[14440.5,10514.4,0],[[0.164248,0.986419,0],[0,0,1]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,13]]
+		,
+		//--- #size
+		2
+]

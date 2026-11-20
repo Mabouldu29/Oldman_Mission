@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Truck_02_transport_F","",[11644.1,2993.44,-0.00917768],[[0.775621,-0.631196,-0.00169321],[-0.00541711,-0.009339,0.999942]],0,1,[],["a3\soft_f_beta\truck_02\data\truck_02_kab_co.paa","a3\soft_f_beta\truck_02\data\truck_02_kuz_co.paa","a3\soft_f_beta\truck_02\data\truck_02_int_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Garbage_square3_F",[11666.2,3011.3,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Land_Wreck_Car3_F",[11665,3010.31,0],[[0.824968,-0.565179,0],[0,0,1]],0,"",false,false,[],false,3],["Land_GarbageHeap_01_F",[11658.7,3015.9,0],[[-0.998698,0.0510052,0],[0,0,1]],0,"",false,false,[],false,2],["Land_GarbageHeap_02_F",[11661.4,3012.92,0],[[-0.66296,-0.748655,0],[0,0,1]],0,"",false,false,[],false,3],["Land_GarbageContainer_closed_F",[11668,3001.47,0.00400019],[[-0.574317,-0.818633,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_GarbageContainer_open_F",[11666.7,3002.63,0.00400019],[[-0.691945,-0.721951,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_Garbage_square3_F",[11695.7,2987.8,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Land_Garbage_square5_F",[11692.2,2991.96,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,3],["Land_GarbageHeap_02_F",[11692.7,2989.45,0],[[-0.534723,-0.845027,0],[0,0,1]],0,"",false,false,[],false,3],["Land_GarbageHeap_03_F",[11688.6,2992.3,4.76837e-007],[[0.629099,0.777325,0],[0,0,1]],0,"",false,false,[],false,3],["Land_GarbageHeap_04_F",[11695.1,2986.95,0],[[-0.546254,-0.837619,0],[0,0,1]],0,"",false,false,[],false,2]]
+		,
+		//--- #size
+		73.984
+]

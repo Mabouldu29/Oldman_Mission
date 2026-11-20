@@ -1,0 +1,32 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Cliff_wall_long_F",[11943.5,7288.35,-14.4558],[[0.601928,0.621455,0.501475],[0.0682241,-0.665706,0.743089]],0,"",false,false,[],false,3,0],["Land_Cliff_stone_big_F",[11946.1,7270.53,-0.0137329],[[0,0.970598,0.240708],[0.260065,-0.232426,0.937201]],0,"",false,false,[],false,2,1],["Land_Sleeping_bag_brown_F",[11908.6,7282.55,0.126663],[[0.451235,0.882483,0.132703],[0.0362601,-0.16671,0.985339]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_smartmarkers_smartmarker_i_deliverypoint_f_sections_markertext0'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 0, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,2],["Land_Ground_sheet_khaki_F",[11908.8,7282.41,-0.00840759],[[-0.432234,-0.896864,-0.0938536],[0.0487652,-0.127173,0.990681]],0,"",false,false,[],false,2,3],["Land_Ground_sheet_khaki_F",[11908.4,7282.67,0.0356293],[[-0.405482,-0.90759,-0.108924],[0.0583573,-0.144619,0.987765]],0,"",false,false,[],false,2,4],["Land_Cliff_boulder_F",[11943.8,7272.67,-3.26571],[[0.834654,-0.42559,-0.349608],[0.201136,-0.355391,0.912821]],0,"",false,false,[],false,3,5],["Land_Cliff_boulder_F",[11953.7,7273.41,-3.27404],[[-0.947671,0.0645341,-0.312657],[-0.294607,0.200508,0.934346]],0,"",false,false,[],false,3,6],["Land_Cliff_boulder_F",[11908.7,7275.4,3.99899],[[-0.255492,0.966811,0],[0,0,1]],0,"",false,false,[],false,3,7],["Land_Cliff_boulder_F",[11905,7289.47,-1.2095],[[0.695247,0.707258,0.128133],[0.0319849,-0.208533,0.977492]],0,"",false,false,[],false,3,8],["Land_Cliff_boulder_F",[11910.1,7269.41,2.71828],[[-0.997122,0.0182228,0.0735859],[0,-0.970679,0.240378]],0,"",false,false,[],false,3,9],["Land_Cliff_boulder_F",[11904.1,7283.83,-2.69889],[[0.61629,0.714293,-0.331621],[0.582082,-0.129532,0.802747]],0,"",false,false,[],false,3,10],["Land_Cliff_boulder_F",[11915,7277.3,0.00389862],[[-0.00263272,0.994061,0.108791],[0.0399653,-0.108599,0.993282]],0,"",false,false,[],false,3,11],["Land_Cliff_boulder_F",[11910.3,7280.59,4.57137],[[-0.00263482,0.999997,0],[0,0,1]],0,"",false,false,[],false,3,12],["Land_Cliff_boulder_F",[11912.9,7278.07,3.23258],[[-0.125531,-0.991944,0.0169786],[0.911153,-0.108503,0.397526]],0,"",false,false,[],false,3,13],["Land_Cliff_boulder_F",[11904,7279.56,3.81129],[[-0.00226078,0.999997,-0.0013514],[-0.514362,-3.93928e-006,0.857573]],0,"",false,false,[],false,3,14],["Land_Cliff_boulder_F",[11901.5,7273.84,3.61901],[[-0.293125,-0.429426,-0.854208],[-0.746354,-0.455608,0.485156]],0,"",false,false,[],false,3,15],["Land_Cliff_boulder_F",[11914.9,7285.98,-1.56472],[[0.152651,-0.0828158,-0.984804],[0.367876,0.929634,-0.0211533]],0,"",false,false,[],false,3,16],["Land_Cliff_boulder_F",[11902.5,7289,-2.39658],[[-0.775312,0.0769918,-0.626868],[-0.608158,0.176772,0.773883]],0,"",false,false,[],false,3,17],["Land_Cliff_boulder_F",[11903.8,7277.86,1.39755],[[-0.293125,-0.429426,-0.854208],[-0.746354,-0.455608,0.485156]],0,"",false,false,[],false,3,18],["Land_Cliff_boulder_F",[11906.2,7277.18,4.22897],[[-0.440497,-0.897754,0],[0,0,1]],0,"",false,false,[],false,3,19],["Land_Cliff_boulder_F",[11914.3,7282.41,0.045372],[[0.786388,0.617238,-0.0247266],[0.0955612,-0.0820078,0.99204]],0,"",false,false,[],false,3,20],["Land_Grave_forest_F",[11905,7272.15,-0.238205],[[0.214765,-0.976561,0.014329],[0.139548,0.0452036,0.989183]],0,"",false,false,[],false,2,21],["Land_TentLamp_01_suspended_red_F",[11905.6,7281.83,0.0565262],[[0.746456,0.656314,0.109797],[-0.61383,0.74284,-0.267211]],0,"",true,false,[],false,1,22],["Item_Sleeping_bag_folded_01",[11906.5,7280.76,0.0360718],[[-0.405602,-0.893324,-0.193543],[-0.0532564,-0.188287,0.980669]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,23]]
+		,
+		//--- #size
+		1
+]

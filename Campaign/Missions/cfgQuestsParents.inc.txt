@@ -1,0 +1,65 @@
+
+class OpeningQuest: ParentQuest
+{
+	title =  $STR_A3_Missions_cfgQuestsParents.incOpeningQuest0;
+	description[] = {$STR_A3_Missions_cfgQuestsParents.incOpeningQuest1};
+	iconType  = "default";
+	cancelCondition = "([date,([BIS_StartMissionDate, 12, 'h'] call BIS_fnc_CalculateDateTime) ] call BIS_fnc_IsDateTimeNewer) || (!isNil 'BIS_ArthurDead')";
+};
+class DisableTurretsParent: ParentQuest
+{
+	title =  $STR_A3_Missions_cfgQuestsParents.incDisableTurretsParent0;
+	description[] = {$STR_A3_Missions_cfgQuestsParents.incDisableTurretsParent1};
+	iconType  = "default";
+	cancelCondition = "['T_SQ_D_Facility'] call bis_fnc_questGetState == 3";
+};
+class GetSyndikatTrust: ParentQuest
+{
+	title =  $STR_A3_Missions_cfgQuestsParents.incGetSyndikatTrust0;
+	description[] = {$STR_A3_Missions_cfgQuestsParents.incGetSyndikatTrust1};
+	iconType  = "default";
+	cancelCondition = "!isNil 'BIS_SQ99fsm' && {BIS_SQ99fsm getFSMVariable ['_threatenFinished',false]}";
+};
+
+class HelpCivilians: ParentQuest
+{
+	title =  $STR_A3_Missions_cfgQuestsParents.incHelpCivilians0;
+	description[] = {$STR_A3_Missions_cfgQuestsParents.incHelpCivilians1};
+	iconType  = "default";
+	cancelCondition = "!isNil 'BIS_cancelDocQuests'";
+};
+
+class CSATActivity: ParentQuest
+{
+	title =  $STR_A3_Missions_cfgQuestsParents.incCSATActivity0;
+	description[] = { $STR_A3_Missions_cfgQuestsParents.incCSATActivity1,'CSAT_OumereBase','BIS_infectedVillageBefore'};
+	iconType  = "default";
+	cancelCondition = "['T_SQ_D_Facility'] call bis_fnc_questGetState == 3";
+};
+
+class FacilityPhotos: ParentQuest
+{
+	title =  $STR_A3_Missions_cfgQuestsParents.incFacilityPhotos0;
+	description[] = {$STR_A3_Missions_cfgQuestsParents.incFacilityPhotos1};
+	iconType  = "default";
+	cancelCondition = "['T_SQ_D_Facility'] call bis_fnc_questGetState == 3";
+};
+class MainQuest: ParentQuest
+{
+	title =  $STR_A3_Missions_cfgQuestsParents.incMainQuest0;
+	description[] = {$STR_A3_Missions_cfgQuestsParents.incMainQuest1};
+	iconType  = "default";
+};
+class SaveLucas: ParentQuest
+{
+	title =  $STR_A3_Missions_cfgQuestsParents.incSaveLucas0;
+	description[] = {$STR_A3_Missions_cfgQuestsParents.incSaveLucas1};
+	iconType  = "default";
+};
+class destroyRadar: ParentQuest
+{
+	title =  $STR_A3_Missions_cfgQuestsParents.incdestroyRadar0;
+	description[] = {$STR_A3_Missions_cfgQuestsParents.incdestroyRadar1};
+	iconType  = "default";
+	cancelCondition = "['T_SQ_D_Facility'] call bis_fnc_questGetState == 3";
+};

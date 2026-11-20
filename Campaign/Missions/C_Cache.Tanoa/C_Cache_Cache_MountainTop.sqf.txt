@@ -1,0 +1,32 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_Sleeping_bag_F",[12811.9,9419.2,0],[[0.510521,0.859865,0],[0,0,1]],0,"",false,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_smartmarkers_smartmarker_i_deliverypoint_f_sections_markertext0'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 0, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(TRUE) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,0],["Land_Ground_sheet_folded_blue_F",[12808.9,9421.11,-0.000946045],[[0.95464,0.297067,0.0203671],[-0.02133,0,0.999772]],0,"",true,false,[],true,-1,1],["Land_FoodContainer_01_F",[12808.6,9420.44,0.000701904],[[0.669247,-0.742902,0.0142783],[-0.02133,0,0.999772]],0,"",true,false,[],true,-1,2],["Land_WoodPile_F",[12812.2,9417.39,0],[[-0.472843,-0.881147,0],[0,0,1]],0,"",false,false,[],false,2,3],["Land_FirePlace_F",[12809,9419.23,3.05176e-005],[[0.914178,-0.404843,0.0195039],[-0.02133,0,0.999772]],0,"",true,false,[],false,1,4],["Land_FMradio_F",[12811.2,9420.39,0.370544],[[0.201403,-0.979508,-0.000478104],[0,-0.000488106,1]],0,"",true,false,[],true,-1,5],["Land_BakedBeans_F",[12809.5,9419.28,-0.00109863],[[0.996222,0.0841996,0.0212543],[-0.02133,0,0.999772]],0,"",true,false,[],true,-1,6],["Land_BakedBeans_F",[12809.5,9419.17,-0.00109863],[[0.327469,-0.944836,0.00698651],[-0.02133,0,0.999772]],0,"",true,false,[],true,-1,7],["Land_PortableWeatherStation_01_olive_F",[12810.6,9427.52,5.94986],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1,8],["Land_PortableLongRangeRadio_F",[12812.2,9420.08,0.0253601],[[0.447213,0.894376,-0.00960901],[0.000690285,0.0103981,0.999946]],0,"",true,false,[],true,-1,9],["Land_Laptop_03_olive_F",[12812.5,9418.91,0.000305176],[[0.848057,-0.529904,0],[0,0,1]],0,"",true,false,[],true,-1,10],["Land_ClothShelter_02_F",[12812.1,9417.29,0],[[-0.864251,0.503061,0],[0,0,1]],0,"",false,false,[],false,3,11],["Item_Sleeping_bag_folded_01",[12808.6,9421.12,9.15527e-005],[[0.998696,-0.0463916,0.0213033],[-0.0213263,0,0.999773]],0,"",true,false,[["#init",["_ranNumber = selectrandom [0,1,2,3,4,5,6,7,8];
+if (_ranNumber <= 2) then {deleteVehicle _this};"]]],false,1,12]]
+		,
+		//--- #size
+		2
+]
