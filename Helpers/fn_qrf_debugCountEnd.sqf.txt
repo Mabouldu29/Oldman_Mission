@@ -1,0 +1,6 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_message"];
+if (QRF_DEBUG) then {
+	[_message, DEBUG_COUNTER] call bis_fnc_logFormat;
+	DEBUG_COUNTER = 0;
+};

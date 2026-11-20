@@ -1,0 +1,18 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+
+QRF_Last_Debug_Msg = MGVARS("QRF_Last_Debug_Msg", "");
+
+private _msg = _this;
+private _uiMessage = "";
+if (typeName _msg == "ARRAY") then {
+	_uiMessage = format _msg;
+} else {
+	_uiMessage = _msg;
+};
+if (_uiMessage != QRF_Last_Debug_Msg) then {
+	QRF_Last_Debug_Msg = _uiMessage;
+	_msg call BIS_fnc_logFormat;
+} else {
+	_uiMessage = "";
+};
+_uiMessage

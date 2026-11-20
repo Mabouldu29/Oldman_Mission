@@ -1,0 +1,63 @@
+class helpers
+{
+	tag = "BIS";
+	project = "arma3";
+
+	class Functions
+	{
+		file = "\A3\Missions_F_Oldman\Systems\scripts\Helpers";
+
+		//roads
+		class isRealRoad;
+		class nearestRealRoad;
+		class realRoadInRadius;
+		class roadTraverse;
+		class roadDimensions;
+		class roadIsBlocked;
+
+		//debug
+		class qrf_debugCount;
+		class qrf_debugCountEnd;
+		class qrf_debugTimerStart;
+		class qrf_debugTimerEnd;
+		class qrf_debugLogUnique;
+		class qrf_debugLogRadio;
+		class qrf_debugDeleteVehicles;
+		class qrf_debugCreateVehicle;
+		class qrf_debugMarker;
+
+		//miscs
+		class objectsInArea;
+		class isKindOf;
+		class throwSmokeOrFlare;
+		class blowHornOrSiren;
+
+		//dates
+		//class dateIsGreaterOrEqual;
+		class isDayTime;
+		class dateToText;
+
+		//string
+		class capitalizeString;
+
+		//arrays
+		class sortByWeights;
+
+		//radio
+		class nearbyDeadUnitsRadioBroadcast;
+
+		//items-inventory
+		class countCargoItems;
+		class inventoryItemIsKindOf;
+		class countUnitItems;
+
+		//cfg
+		class cfg_realSubClasses;
+
+		class hostageAI;
+
+		//UI tools
+		class UIWidgetGetRelPos;
+		class UIWidgetSetPos;
+	};
+};

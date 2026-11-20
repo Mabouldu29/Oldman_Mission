@@ -1,0 +1,6 @@
+params["_object", "_classNames"];
+private _typeFound = false;
+{
+	if (_object isKindOf _x) exitWith {_typeFound = true;};
+} forEach _classNames;
+_typeFound

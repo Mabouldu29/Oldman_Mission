@@ -1,0 +1,15 @@
+params["_originalPos",
+	["_onlyFlare", false, [false]],
+	["_onlySmoke", false, [false]],
+	["_color", "Red", [""]]
+];
+
+private _pos = _originalPos getPos [random 10, random 360];
+_pos set [2, (_pos#2) + 250]; 
+
+// Launch flare if its dark enough and smoke effect at daytime
+if ([0, 0.7] call bis_fnc_isDayTime) then { 
+	if (!_onlyFlare) then { ("SmokeShell" + _color) createVehicle _pos; };
+} else {
+	if(!_onlySmoke) then { [_color, _pos, 40, true] spawn BIS_fnc_EXP_m04_flareCreate; };
+};

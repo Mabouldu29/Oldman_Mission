@@ -1,0 +1,6 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+
+params[["_debug", QRF_DEBUG]];
+if (QRF_DEBUG) then {
+	DEBUG_TIMER = time;
+};

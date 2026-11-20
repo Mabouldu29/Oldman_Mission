@@ -1,0 +1,5 @@
+params[["_sunriseOffset",0], ["_sunsetOffset", 0]];
+private _sunriseSunset = date call BIS_fnc_sunriseSunsetTime;
+_sunriseSunset params["_sunrise", "_sunset"];
+private _dateTime = daytime;
+(_dateTime - _sunrise >= _sunriseOffset) &&  (_sunset -_dateTime  >= -_sunsetOffset)

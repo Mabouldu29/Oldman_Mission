@@ -1,0 +1,6 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_i"];
+if (QRF_DEBUG) then {
+	if (isNil "DEBUG_COUNTER") then {DEBUG_COUNTER = 0;};
+	DEBUG_COUNTER = DEBUG_COUNTER + _i;
+};

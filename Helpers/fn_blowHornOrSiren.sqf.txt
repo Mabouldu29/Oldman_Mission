@@ -1,0 +1,21 @@
+params[["_vehicle", vehicle player, [objNull]], ["_onlySirens", false, [true]], ["_duration", 0, [0]] ];
+
+//play at least once and test for invalid duration. 0 = play once -1 = play forever x = play for given time
+if (_duration isEqualTo 0) then { _duration = 0.01; } else { if (_duration < 0 && !(_duration isEqualTo -1)) throw {"Error: Invalid duration!"}; };
+
+private _possibleHorns = [];
+if (_onlySirens) then {
+	_possibleHorns = [currentWeapon _vehicle];
+} else {
+	_possibleHorns = getArray(configFile >> "CfgVehicles" >> typeOf _vehicle >> "weapons");
+};
+
+private _result = false;
+private _firstHornIndex = _possibleHorns findIf {_x isEqualTo "CarHorn" || _x isKindOf ["CarHorn", configFile >> "CfgWeapons"]};
+if (!(_firstHornIndex isEqualTo -1)) then {
+	private _timeToEnd = time + _duration;
+	while {(time <= _timeToEnd || (_duration isEqualTo -1)) && alive _vehicle} do { //test time before duration check to make it more precise ?!
+		_result = [_vehicle, _possibleHorns#_firstHornIndex] call BIS_fnc_fire; 
+	};
+};
+_result

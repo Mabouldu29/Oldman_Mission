@@ -1,0 +1,5 @@
+params["_item", "_itemTypes"];
+if (_itemTypes isEqualType "") then {_itemTypes = [_itemTypes]; };
+private _items = _item;
+if (_items isEqualType "") then {_items = [_items]; };
+_items findIf {_item=_x; !isNil {_item} && {_item != ""} && {_itemTypes findIf { !isNil {_item} && {(_item isKindOf _x) || (_item isKindOf [_x, configFile >> "CfgWeapons"]) || (_item isKindOf [_x, configFile >> "CfgMagazines"])}	} != -1 } } != -1

@@ -1,0 +1,6 @@
+private _destinationPoint = _logic getVariable [ "BIS_OM_destination", [] ];
+
+player setPos ( _destinationPoint select 0 );
+player setDir ( _destinationPoint select 1 );
+player switchMove "";
+missionNamespace setVariable ["BIS_OM_waitDialogMode", "wait"];

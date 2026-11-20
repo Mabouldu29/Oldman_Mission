@@ -1,0 +1,4 @@
+private _roadSegment = _this;
+//some roads are connected
+(_roadSegment isEqualType objNull) && !(roadsConnectedTo _roadSegment isEqualTo [])
+

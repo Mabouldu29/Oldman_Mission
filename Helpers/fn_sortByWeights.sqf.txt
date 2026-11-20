@@ -1,0 +1,7 @@
+params[ ["_arra",[],[[]]], ["_keysArray",[],[[]]], ["_direction", "ASCEND", [""]] ];
+//add keys to array
+for "_i" from (count _arra -1) to 0 step -1 do {_arra set [_i, [_arra#_i, _keysArray#_i]];}; 
+//sort by given key array
+_arra = [_arra, [], {_x#1}, _direction] call BIS_fnc_sortBy; 
+//remove all key array elements and return the array
+_arra apply {_x#0}

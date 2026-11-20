@@ -1,0 +1,28 @@
+/*
+ * Author: ZoZo
+ *
+ * Description:
+ * Almost like ctrlSetPosition, but it takes IDC and it does the commit automatically
+ *
+ * Arguments:
+ * 0: IDC
+ - 1: ARRAY - 2D Control position
+ *
+ * Return Value:  NONE
+ *
+ * Example:
+ * [ IDC_DIARY_TOPIC_LISTINDEX, [0.5, 0.5 ] ] call BIS_fnc_repositionControl
+ * [ IDC_DIARY_TOPIC_LISTINDEX, [0.5, 0.5, 1, 1] ] call BIS_fnc_repositionControl
+ *
+ */
+
+params["_controlID", "_newPos"];
+/* ["UI: newpos %1", _newPos] call BIS_fnc_logFormat; */
+private _control =  (findDisplay 12) displayCtrl _controlID;
+private _ctrlPos = ctrlPosition _control;
+{
+    _ctrlPos set [_forEachIndex, _newPos select _forEachIndex];
+} forEach _newPos;
+
+_control ctrlSetPosition _ctrlPos;
+_control ctrlCommit 0;

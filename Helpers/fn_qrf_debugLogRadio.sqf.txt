@@ -1,0 +1,11 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+
+params["_msg", ["_radio", "sideChat"]];
+private _uiMessage = _msg call BIS_fnc_qrf_debugLogUnique;
+if (_uiMessage != "" && DEBUG_MODE) then {
+	private _unitVar = "";
+	if (!(_radio isEqualTo "systemChat")) then {
+		_unitVar = "player";
+	};
+	[] call compile format["%1 %2 ""%3"";",_unitVar, _radio, _uiMessage];
+};

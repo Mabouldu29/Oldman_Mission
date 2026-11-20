@@ -1,0 +1,58 @@
+BIS_fnc_OM_SelectDestinationPoint =
+{
+	params[ ["_sectorSelected",objNull, [objNull,[]] ] ];
+
+	if(_sectorSelected isEqualType []) then
+	{
+		_sectorSelected = (_sectorSelected select {!isNil {_x getVariable "BIS_OM_fTravelPoints"}}) select {count (_x getVariable "BIS_OM_fTravelPoints") > 0};
+		["FASTTRAVEL:_sectorSelected: %1", _sectorSelected] call BIS_fnc_logFormat;
+		if(count _sectorSelected > 0) then
+		{
+			_sectorSelected = _sectorSelected select 0;
+			private _destinationPoints = ( _sectorSelected getVariable ["BIS_OM_fTravelPoints", []] ) select {call compile (_x select 2)};
+			if( count _destinationPoints > 0 ) then
+			{
+				selectRandom _destinationPoints;	//RETURN
+			};
+		}
+		else
+		{
+			["FASTTRAVEL:BIS_fnc_OM_SelectDestinationPoint exits without any dest. point found %1", 1] call BIS_fnc_logFormat;
+			nil	//RETURN
+		};
+	};
+};
+
+
+BIS_fnc_OM_FastTravelAllowedToDestination =
+{
+	params [ "_smartMarker" ];
+	private _sectorsInRange = (position _smartMarker) nearEntities ["ModuleOmSector_F", MAX_DISTANCE_FROM_SECTOR];
+	if( (count _sectorsInRange) > 0 ) then
+	{
+		if( !isNil { [[_sectorsInRange, _smartMarker] call BIS_fnc_OM_getNearestSector] call BIS_fnc_OM_SelectDestinationPoint } ) then { true } else { false };
+	}
+};
+
+BIS_fnc_OM_getNearestSector =
+{
+	params["_sectorsInRange", "_smartMarkerPos"];
+	private _closest = [_sectorsInRange select 0, (_sectorsInRange select 0) distance _smartMarkerPos];
+	{
+		if(_forEachIndex > 0) then
+		{
+			private _dist = _x distance _smartMarkerPos;
+			if(_dist < _closest select 1) then
+			{
+				_closest = [_x, _dist];
+			};
+		}
+	} forEach _sectorsInRange;
+	_closest select 0
+};
+
+
+BIS_fnc_OM_GetAllSectorsPlayerCanTravelTo =
+{
+	(BIS_allSectors select { !isNil {_x getVariable "BIS_OM_fTravelPoints"} }) select { (_x getVariable "BIS_OM_fTravelpoints") findif {call compile (_x select 2)} != -1 }
+};

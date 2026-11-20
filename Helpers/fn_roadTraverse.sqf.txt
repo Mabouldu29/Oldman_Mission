@@ -1,0 +1,55 @@
+params["_initialRoadSegment","_maxDistance"];
+
+["ROAD TRAVERSE STARTED"] call bis_fnc_logFormat;
+BIS_fnc_qrf_roadsTraverse = {
+	params["_roadSegments","_maxDistance", "_initialPos", "_roadSegmentsScanned", "_roadTraversalResult", ["_currentIterationIndex", 0]];
+	if (isNil "_roadSegmentsScanned") then {_roadSegmentsScanned = _roadSegments;};
+	if (isNil "_roadTraversalResult") then {_roadTraversalResult = [objNull, []];};
+	private _connectedUnique = [];
+	private _maxIterations = 500000;
+	private _maxRecursionIterations = 100;
+	if (_currentIterationIndex >= _maxRecursionIterations) exitWith {["ROAD TRAVERSE MAX RECURSIONS LIMIT( %1) EXCEEDED", _maxRecursionIterations];[objNull, []] };		
+	for "_i" from 0 to (count _roadSegments-1) do {  //current road segments
+		if (canSuspend) then {sleep 0.01;};
+		if (_i > _maxIterations) exitWith {throw format["ROAD TRAVERSE MAX ITERATIONS LIMIT( %1) EXCEEDED", _maxIterations];[objNull, []];};
+		private _currentSegment =  (_roadSegments#_i); 
+		if (getPos _currentSegment distance _initialPos > _maxDistance) then {_roadTraversalResult set [0, _currentSegment];} 
+		else {	 
+			private _connected = roadsConnectedTo (_currentSegment);     //distance not reached, loop over connected roads, if we have them on the list, pushBackUnique so we could reiterate over them
+			{
+				private _currentConnected = _x;
+				if (!(_currentConnected in _roadSegmentsScanned) && ( (getModelInfo _currentConnected)#0 == "") ) then { //we ar now ignoring road segments containing model, such as bridges
+					// [1] call BIS_fnc_qrf_debugCount;
+					// ["Sign_Sphere200cm_F", getPos _currentConnected] call BIS_fnc_qrf_debugCreateVehicle;
+					_roadSegmentsScanned pushBackUnique(_currentConnected); 
+					_connectedUnique pushBackUnique(_currentConnected); 
+				}; 
+			} forEach _connected;
+		};
+	};
+	
+	if (isNull (_roadTraversalResult#0)) then { //TODO _roadTraversalResult => result ? 
+		_roadTraversalResult = [_connectedUnique, _maxDistance, _initialPos, _roadSegmentsScanned, _roadTraversalResult, _currentIterationIndex + 1] call BIS_fnc_qrf_roadsTraverse;
+	} else {
+		_roadTraversalResult set [1, _roadSegmentsScanned];
+	};
+	_roadTraversalResult
+};
+
+// "Sign_Sphere200cm_F" call BIS_fnc_qrf_debugDeleteVehicles;
+// "Sign_Arrow_F" call BIS_fnc_qrf_debugDeleteVehicles;
+// ["QRF ROAD TRAVERSE -", true] call BIS_fnc_qrf_debugTimerStart;
+
+private _roadTraversalResult = [[_initialRoadSegment], _maxDistance, getPos _initialRoadSegment] call BIS_fnc_qrf_roadsTraverse;
+private _lastSegment = _roadTraversalResult#0;
+
+private _maxTimeSec = 30; 
+// ["ROAD TRAVERSE - Iterated over %1 segments",_maxTimeSec,  true] call BIS_fnc_qrf_debugCountEnd;
+["ROAD TRAVERSE ENDED - Last segment found at %1", getPos _lastSegment] call bis_fnc_logFormat;
+
+if (!isNull _lastSegment) then {
+	//["Sign_Arrow_F", getPos _lastSegment] call BIS_fnc_qrf_debugCreateVehicle;
+};
+
+// ["QRF ROAD TRAVERSE -", 30] call BIS_fnc_qrf_debugTimerEnd;
+_roadTraversalResult

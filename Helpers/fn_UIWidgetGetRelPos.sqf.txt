@@ -1,0 +1,45 @@
+/*
+ * Author: ZoZo
+ *
+ * Description:
+ * Calculates the 2D position of a control relative to the origin control, taking their width/height in account
+ * The calculated relative position depends on the parameter passed.
+ * It can be from TOP, BOTTOM, LEFT, RIGHT or ORIGIN (middle).
+ *
+ * Arguments:
+ * 0: IDC - control to be repositioned
+ * 1: IDC - the origin control
+ * 2: SCALAR - direction (see defines)
+ * 3: ARRAY - offset added to the calculated posistion
+ *
+ * Return Value:
+ - ARRAY - 2D position [x,y]
+ *
+ * Example:
+ * // Get the diary topic list index control position, relative to the left side of the diary subtopic control and add the offset
+ - [ IDC_DIARY_TOPIC_LISTINDEX, IDC_DIARY_SUBTOPIC_BACKGROUND, DIR_LEFT, [0.003,0.03] ] call BIS_fnc_calculateControlPos
+	// use the calculated coordinates as parameter for ctrlSetPosition function
+ *
+ */
+ #define DIR_TOP         0
+ #define DIR_BOTTOM      1
+ #define DIR_LEFT        2
+ #define DIR_RIGHT       3
+ #define DIR_ORIGIN      4
+
+params ["_controlID", "_controlIDOrigin", ["_direction", DIR_RIGHT, [9]] , ["_offset", [0,0,0,0], [ [] ] ] ];
+
+private _controlPos =  ctrlPosition ((findDisplay 12) displayCtrl _ControlID);
+private _controlOriginPos =  ctrlPosition ((findDisplay 12) displayCtrl _ControlIDOrigin);
+_controlPos params ["_x1", "_y1", "_w1", "_h1"];
+_controlOriginPos params ["_x2", "_y2", "_w2", "_h2"];
+switch (_direction) do
+{
+    case (DIR_BOTTOM):{ _X1 = _x2; _y1 = _y2 + _h2 };
+    case (DIR_RIGHT): { _x1 = _x2 + _w2; _y1 = _y2 };
+    case (DIR_TOP):   { _x1 = _x2; _y1 = _y2 - _h1 };
+    case (DIR_LEFT):  { _x1 = _x2 - _w1; _y1 = _y2 };
+    case (DIR_ORIGIN):{ _x1 = _x2; _y1 = _y2 };
+};
+
+[_x1 + (_offset select 0), _y1 + (_offset select 1)]

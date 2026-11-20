@@ -1,0 +1,22 @@
+/*
+Description:
+Returns all objects in given area
+
+Parameter(s):
+_this select 0: STRING - classname
+_this select 1: OBJECT(Module/Trigger) or Array in format [center, a, b, angle, isRectangle, c].
+	
+Returns:
+Array of objects
+
+Example: ["ReammoBox_F", [getPos player], 20, 30, 45, false] call Bis_fnc_objectsInArea;
+Example: ["ReammoBox_F",[[100, 100, 0], 20, 30, 45, false] call Bis_fnc_objectsInArea;
+Example: ["ReammoBox_F", triggerObject] call Bis_fnc_objectsInArea;
+*/
+
+params["_class", "_objectOrArea"];
+private _area = //this will cover both objects and triggers
+if (_objectOrArea isEqualType objNull) then { [getPos _objectOrArea] +  (_objectOrArea getVariable ["objectArea", triggerArea _objectOrArea]) } else { _objectOrArea };
+//validate area
+if (!(_area isEqualTypeParams [[100, 100, 0], 20, 30, 45, false])) exitWith { [] };
+(_area#0 nearObjects [_class, (_area#1) max (_area#2)]) select {getPos _x inArea _area;}

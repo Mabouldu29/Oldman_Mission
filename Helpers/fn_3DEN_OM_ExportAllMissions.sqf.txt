@@ -1,0 +1,30 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc";
+
+//--- load and reexport mission
+
+BIS_3DEN_load_eh = add3DENEventHandler
+[
+	"OnMissionLoad",
+	{
+		uiNamespace setVariable [ 'BIS_OM_3DEN_exportMission', true ];
+		//move all sector modules from their layers since they would get ignored while the exported mission is being loaded (imported)
+		private _sectorLayersWithLayerSet = (all3DENEntities select 3 select {( ((typeOf _x) == "moduleOMSector_F") || ((typeOf _x) == "moduleOMSectorCheckpoint_F") && (_x getVariable "layer" != "")) });
+		{ _x set3DENLayer -1 } forEach _sectorLayersWithLayerSet;
+
+		diag_saveTextFile[ _folder + missionName + '.' + worldName + '\' + missionName + '.sqf', ([false] call BIS_fnc_3DENExportSQF), 2];
+		"SQF exported, executing mission..." call BIS_fnc_3DENNotification;
+
+		BIS_3DEN_eh = add3DENEventHandler
+		[
+			"OnMissionPreview",
+			{
+				endmission "END1"; forceEnd; remove3DENEventHandler ["OnMissionPreview", uiNameSpace getVariable "BIS_3DEN_eh"];
+			}
+		];
+		[] call BIS_fnc_3den_OM_ListSectorLayers;
+		'Mission exported' call BIS_fnc_3DENNotification;
+		do3DENAction "MissionPreview";
+	}
+];
+
+do3DENAction "MissionLoad";

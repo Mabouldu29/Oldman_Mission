@@ -1,0 +1,19 @@
+#include "\a3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "definitions.inc"
+#include "Awareness_Common.sqf"
+params ["_logic"];
+
+/* SMARTMARKERS_MODULE_LOGIC setVariable [SMARTMARKERS_VAR_CFG_STORAGE, []];            	    //storage for config of all smartmarkers */
+WaitUntil{sleep 0.5; !isNil "BIS_relEast"};
+while{alive player} do
+{
+  /* ["Waiting", [EAST] call BIS_fnc_om_threat] call BIS_fnc_logFormat; */
+  if(BIS_relEast getVariable "aggroMode" == M_AGRESSIVE) then
+  {
+    /* ["Threat: %1, starting sound", [EAST] call BIS_fnc_om_threat] call BIS_fnc_logFormat; */
+    private _playHndl = [] spawn BIS_fnc_OM_moduleAwareness_PlayRadioChatter;
+    WaitUntil {sleep 2; !(_logic getVariable ["playingMessages", true])};
+    /* ["Back in normal. Threat: %1 | PlayHndl = %2", [EAST] call BIS_fnc_om_threat, _playHndl] call BIS_fnc_logFormat; */
+  };
+  Sleep 2;
+};

@@ -1,0 +1,23 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_pos", "_markerName", "_markerType", "_markerDir", ["_markerSize", 0],  ["_deleteMarker", true], ["_markerBrush", "Solid"], ["_markerColor",  "ColorRed"] ];
+
+if (DEBUG_MODE) then {
+	if (_deleteMarker) then {deleteMarkerLocal _markerName; };
+	
+	// ["QRF Creating search marker at %1",_pos] call bis_fnc_logFormat;
+	private _detectedPosMarker = createMarkerLocal [_markerName, _pos];
+	_detectedPosMarker setMarkerTypeLocal _markerType;	
+	_detectedPosMarker setMarkerBrushLocal _markerBrush;
+	_detectedPosMarker setMarkerColorLocal _markerColor;	
+	_detectedPosMarker setMarkerTextLocal _markerName;
+
+	if (_markerSize > 0) then {
+		_detectedPosMarker setMarkerSizeLocal [_markerSize, _markerSize];
+		_detectedPosMarker setMarkerShapeLocal "ELLIPSE";
+		 _detectedPosMarker setMarkerAlpha 0.5;
+	};
+	
+	if (!isNil "_markerDir") then {
+		_detectedPosMarker setMarkerDirLocal _markerDir;
+	};
+};

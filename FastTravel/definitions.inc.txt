@@ -1,0 +1,59 @@
+#include "common_definitions.inc"
+
+#ifndef __FAST_TRAVEL_DEFINITIONS
+#define __FAST_TRAVEL_DEFINITIONS 1
+
+#define FAST_TRAVEL_DEPENDENCIES   ["BIS_allSectors"]
+
+#define MOUSE_LMB               0
+#define MOUSE_RMB               1
+#define EVENT_DESTROY           4
+#define EVENT_INIT							3
+#define EVENT_DRAW              2
+#define EVENT_MOUSE_BUTT_DOWN   1
+#define EVENT_MOUSE_BUTT_UP     0
+
+#define MARKER_CONTROL          "marker"
+#define MARKER_TYPE_FTRAVEL     "mil_box"
+//#define FASTTRAVEL_SPEED        5.5555555555555                               //20 km/h
+//#define FASTTRAVEL_SPEED        2.78					                                //10 km/h
+#define FASTTRAVEL_SPEED        2.22					                                //08 km/h
+#define DYNAMIC_RADIUS 					exp (ctrlMapScale (finddisplay 12 displayCtrl 51)) * 70
+
+#define MIN_DISTANCE_FROM_POINT_TO_ACTIVATE_FT	10
+
+#define SET_CALLBACK_ACTIVE(SILENT) \
+	[] spawn \
+	{	\
+		_idx = [ EVENT_INIT, [],	\
+		{	\
+			[ MODE_ALLOW_FAST_TRAVEL, [_this select 2, _this] ] call BIS_fnc_OM_moduleFastTravel; \
+		}, EVENT_MOUSE_BUTT_DOWN	\
+		] call BIS_fnc_OM_handleMapControls;	\
+		uiNamespace setVariable ["BIS_OM_FastTravel_ID", _idx];	\
+		_idx = [ EVENT_INIT, [],	\
+		{	\
+			{	(_this select 1) drawLine [ getPos player, position _x, MAP_LINE_COLOR ];	} forEach (BIS_FASTTRAVEL_LOGIC getVariable [ "BIS_OM_availableSectors", [] ]);	\
+		}, EVENT_DRAW	\
+		] call BIS_fnc_OM_handleMapControls;	\
+		uiNamespace setVariable ["BIS_OM_FastTravel_ID2", _idx];	\
+		if(!SILENT) then	\
+		{	\
+			["OMFastTravel", [format ["<t color='#38c713' size = '0.8' align = 'center' shadow = '0'>%1</t>",  localize "STR_A3_definitions.inc3"]] ] call BIS_fnc_showNotification;	\
+			if (missionNamespace getVariable ["BIS_OM_ahFastTravel",true]) then {missionNamespace setVariable ["BIS_OM_ahFastTravel",false]; [["Old_Man", "FastTravel"]] call BIS_fnc_advHint}; \
+		};	\
+	}
+
+#define SET_CALLBACK_INACTIVE(SILENT) \
+	[] spawn	\
+	{	\
+		[ EVENT_DESTROY, uiNamespace getVariable "BIS_OM_FastTravel_ID" ] call BIS_fnc_OM_handleMapControls;	\
+		[ EVENT_DESTROY, uiNamespace getVariable "BIS_OM_FastTravel_ID2" ] call BIS_fnc_OM_handleMapControls;	\
+		if(!SILENT) then	\
+		{	\
+			["OMFastTravel", [format ["<t color='#737373' size = '0.8' align = 'center' shadow = '0'>%1</t>",  localize "STR_A3_definitions.inc5"]] ] call BIS_fnc_showNotification;	\
+		};	\
+	}
+
+#endif
+/* {	(_this select 0) drawLine [ getPos player, position _x, MAP_LINE_COLOR ];	["FASTTRAVEL: calling drawlines"] call  BIS_fnc_logFormat} forEach (BIS_FASTTRAVEL_LOGIC getVariable [ "BIS_OM_availableSectors", [] ])	\ */

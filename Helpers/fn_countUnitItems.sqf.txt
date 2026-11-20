@@ -1,0 +1,19 @@
+params[["_unit", objNull, [objNull]], ["_itemTypes", [], [ [],""] ]];
+if (group _unit isEqualTo grpNull) exitWith {}; //not a unit
+
+private _recursiveCount = {
+	params["_arr", "_sum", "_itemTypes"];
+	for "_i" from 0 to (count _arr -1) do {
+		private _c = _arr#_i;
+		switch (true) do {
+			case (_c isEqualType "" && {([_c, _itemTypes] call bis_fnc_inventoryItemIsKindOf)}): {
+				private _itemsCount = _arr#(_i+1);
+				if (!(_itemsCount isEqualType 1)) then { _itemsCount = 1; };
+				_sum = _sum + _itemsCount;
+			};
+			case (_c isEqualType []): { _sum = ([_c, _sum, _itemTypes] call _recursiveCount); };
+		};
+	};
+	_sum
+};
+([getUnitLoadout _unit, 0, _itemTypes] call _recursiveCount)

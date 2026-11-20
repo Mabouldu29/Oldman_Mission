@@ -1,0 +1,52 @@
+params[
+	["_delay", 5, [0]],
+	["_delayRandomOffset", 0, [0]],
+	["_deadUnitsRadius", 40, [0]],
+	["_duration", 60, [0]],
+	["_maxDistance", 50, [0]]
+];
+
+private _say3DDelay = 10;
+private _protocol = [];
+private _CSATvoices =
+[
+	"OM_QRF_CSAT_report_Soldier_A_03_Chinese01_Processed",
+	"OM_QRF_CSAT_report_Soldier_A_03_Chinese02_Processed",
+	"OM_QRF_CSAT_report_Soldier_A_03_Chinese03_Processed",
+	"OM_QRF_CSAT_report_Soldier_A_03_Chinese04_Processed",
+	"QRF_CSAT_report_Soldier_A_01_Chinese01_Processed",
+	"QRF_CSAT_report_Soldier_A_01_Chinese02_Processed",
+	"QRF_CSAT_report_Soldier_A_01_Chinese03_Processed",
+	"QRF_CSAT_report_Soldier_A_01_Chinese04_Processed",
+	"QRF_CSAT_report_Soldier_A_02_Chinese01_Processed",
+	"QRF_CSAT_report_Soldier_A_02_Chinese02_Processed",
+	"QRF_CSAT_report_Soldier_A_02_Chinese03_Processed",
+	"QRF_CSAT_report_Soldier_A_02_Chinese04_Processed",
+	"QRF_CSAT_report_Soldier_A_03_Chinese01_Processed",
+	"QRF_CSAT_report_Soldier_A_03_Chinese02_Processed",
+	"QRF_CSAT_report_Soldier_A_03_Chinese03_Processed",
+	"QRF_CSAT_report_Soldier_A_03_Chinese04_Processed"
+];
+private _GENvoices =
+[
+	"QRF_Gendarmerie_report_Gendarme_A_01_Vincent_Processed",
+	"QRF_Gendarmerie_report_Gendarme_A_02_Vincent_Processed",
+	"QRF_Gendarmerie_report_Gendarme_A_Ahmeed_01_Processed",
+	"QRF_Gendarmerie_report_Gendarme_A_Ahmeed_02_Processed"
+];
+
+private _timeToEnd = time + _duration;
+sleep (5 + random 5);
+while {time <= _timeToEnd} do {
+	["QRF radio playting %1 <= %2", time, _timeToEnd] call bis_fnc_logFormat;
+	private _deadBodies = allDead select {_x distance player <= _deadUnitsRadius && side group _x isEqualTo EAST && _x iskindof "man"}; //TODO hardcoded player and side. AllDead vs nearby ?
+	if (count _deadBodies isEqualTo 0) exitWith {}; //TODO maybe we dont need to check it, if we would have pos instead of objects
+
+	private _dummySoundSource = "#particlesource" createVehicleLocal [0, 0, 0];
+	_randomBody = selectRandom _deadBodies;
+	if (_randomBody isKindOf "B_GEN_Commander_F" || _randomBody isKindOf "B_GEN_Soldier_F") then {_protocol = _GENvoices} else {_protocol = _CSATvoices};
+	_dummySoundSource setPos getPos _randomBody;
+	_dummySoundSource say3D [selectRandom _protocol, _maxDistance];
+	sleep (_say3DDelay + _delay + random _delay);
+	deleteVehicle _dummySoundSource;
+};

@@ -1,0 +1,18 @@
+params["_pos", "_radius"];
+
+private _minDistance = 99999;
+private _nearest = objNull;
+{
+	private _currentRoadSegment = _x;
+	if (_currentRoadSegment call BIS_fnc_isRealRoad) then { 
+		private _currentDistance = _currentRoadSegment distance _pos;
+		if (_currentDistance < _minDistance) then {
+			_nearest = _currentRoadSegment;
+			_minDistance = _currentDistance;
+		};
+	};
+} forEach (_pos nearRoads _radius);
+_nearest
+
+
+

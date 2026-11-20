@@ -1,0 +1,16 @@
+params["_road", ["_rounded", false]];
+private _bbox = boundingboxreal _road;
+private _bboxReal0 = _bbox#0;
+private _bboxReal1 = _bbox#1;
+
+private _width = abs ((_bboxReal1#0) - (_bboxReal0#0));
+private _length = abs ((_bboxReal1#1) - (_bboxReal0#1));
+private _height = abs ((_bboxReal1#2) - (_bboxReal0#2));
+
+if (_rounded) then {
+	_width = round _width;
+	_length = round _length;
+	_height = round _height;
+};
+
+[_width, _height, _length, [_road modelToWorld _bboxReal0, _road modelToWorld _bboxReal1]]

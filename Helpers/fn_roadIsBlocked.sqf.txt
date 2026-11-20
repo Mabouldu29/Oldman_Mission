@@ -1,0 +1,28 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc";
+//TODO finish
+params["_roadSegment"];
+
+private _excludeObjects = ["PowerLines_base_F", "PowerLines_Small_base_F"]; //TODO FIX hardcoded exceptiontypes
+
+// we assume that height(#1) is allways bigger
+private _radius = ([_roadSegment] call bis_fnc_roadDimensions)#1;
+
+/*
+	TODO use
+	https://forums.bohemia.net/forums/topic/189812-getting-real-size-of-a-buildingobject/
+*/
+
+// private _nearObjects = (nearestObjects [_roadSegmentOrPos, ["Building"], _radius, false]);
+private _nearObjects = (_roadSegment nearObjects ["Building", _radius]);
+private _heightLimit = 3; // We need to limit height of object as for example, road wires starts at 12 metres and would be taken into acc.
+private _findIndex = _nearObjects findIf {(isOnRoad _x) && ((getPos _x)#2 <= _heightLimit) && !([_x, _excludeObjects] call bis_fnc_isKindOf) && (([_x] call bis_fnc_roadDimensions)#0 >= 0.9) && 
+					 !(getText(configFile >> "CfgVehicles" >> typeOf _x >> "vehicleClass") in ["Objects", "Signs"])
+};
+private _found = FOUND(_findIndex);
+
+if (_found) then {
+	private _build = (_nearObjects#_findIndex);
+BG=_build;
+	["road IS BLOCKED BY %1", [typeOf _build, getPos _build, (_build distance2D _roadSegment),(_build modelToWorld ((boundingboxreal _build)#0)) distance2D _roadSegment,[_build] call bis_fnc_roadDimensions]] call bis_fnc_logFormat;
+};
+_found

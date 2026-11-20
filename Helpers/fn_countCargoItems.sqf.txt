@@ -1,0 +1,10 @@
+params["_container", ["_itemTypes", [], [ [],""] ]];
+ 
+private _cargos = [itemCargo _container, weaponCargo _container, magazineCargo _container]; 
+private _count = 0;
+if (_itemTypes isEqualTo []) then {
+	_cargos apply { _count = _count + count _x; };
+} else {
+	_count = selectMax (_cargos apply { {([_x, _itemTypes] call bis_fnc_inventoryItemIsKindOf)} count _x });
+};
+_count

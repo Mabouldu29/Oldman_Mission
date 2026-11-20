@@ -1,0 +1,92 @@
+#include "..\..\defines\escortAIDefines.inc";
+
+BIS_fnc_escortAIVehicle = {
+	params["_vehicle", ["_toggleOn", true]];
+	player setVariable ["_vehicleToggle", _toggleOn];
+	//case when thee player is outta vehicle
+	if (vehicle player isEqualTo player && _toggleOn) then {
+		_trackedUnit = player getVariable "_trackedUnit";
+		unassignVehicle _trackedUnit;
+		moveOut _trackedUnit;
+		[_vehicle, false] spawn BIS_fnc_holdActionVehicle; 	
+	};
+};
+BIS_fnc_holdActionVehicle = {
+	params["_vehicle", ["_toggleHoldAction", true], ["_codeOnEnd", {}], ["_toggleOn", true]];
+	if (!_toggleHoldAction) exitWith {
+		[_vehicle, false] call BIS_fnc_escortAIVehicle;
+		[_vehicle, _vehicle getVariable "_idHoldAction"] call BIS_fnc_holdActionRemove;
+		_vehicle setVariable ["_idHoldAction", nil];
+		player setVariable ["_vehicleToggle", nil];
+		// private _idDeletedHandler = _unit getVariable ["_idDeletedHandler", -1];
+		// if (_idDeletedHandler > -1) then { _unit removeEventHandler ["Deleted", _idDeletedHandler]; };
+		// _unit setVariable ["_idDeletedHandler", nil];
+		true
+	};
+	private _idHoldAction = ESCORT_AI_HOLDACTION(_vehicle, "true", "true", BIS_fnc_escortAIVehicle, BIS_fnc_holdActionVehicle, _toggleOn, {}, false);
+	_vehicle setVariable ["_idHoldAction", _idHoldAction];
+	player setVariable ["_vehicleToggle", _toggleOn];
+};
+
+
+params["_unit", ["_toggleOn", true]];
+if (!_toggleOn) exitWith {
+	doStop _unit;
+	player removeEventHandler ["GetInMan", player getVariable ["_idGetInMan", -1]];
+	player removeEventHandler ["GetOutMan",  player getVariable ["_idGetOutMan", -1]];
+	player setVariable ["_idGetInMan", nil];
+	player setVariable ["_idGetOutMan", nil];
+	player setVariable ["_npcIsFollowing", nil];
+};
+{deleteWaypoint _x} forEach waypoints group _unit; 
+_unit setSpeedMode "FULL";
+
+_unit setSkill 1;
+_unit setCombatMode "BLUE";
+_unit setBehaviour "CARELESS";
+_unit setUnloadInCombat [false, false];
+_unit doFollow _unit; //resuming unit from stop
+_unit enableSimulation TRUE;
+_unit switchMove "";
+player setVariable ["_npcIsFollowing", true];
+[_unit, (group _unit) getVariable ["#sector", objNull]] call BIS_fnc_om_removeFromSector;
+
+[_unit] spawn {
+	params["_unit"];
+	while {(player getVariable ["_npcIsFollowing", false])} do {
+		if (vehicle player isEqualTo player) then {
+			if (player distance2D _unit >= ESCORT_AI_PLAYER_RADIUS) then { _unit doMove (getPos vehicle player); } else {_unit lookAt player; doStop _unit;_unit doFollow _unit; }; // doStop _unit;_unit doFollow _unit; 
+		};
+		sleep ESCORT_AI_DELAY; 
+	};
+};
+player setVariable ["_trackedUnit", _unit];
+
+if ((player getVariable ["_idGetInMan", -1]) isEqualTo -1) then { 
+	_idGetInMan = player addEventHandler ["GetInMan", { 
+		["EscortAI HoldAction AI GetInMan"] call bis_fnc_logFormat;
+		params["_unit", "_positon", "_vehicle"];
+		_trackedUnit = _unit getVariable "_trackedUnit";
+		_trackedUnit setVariable ["_getInFired", time];
+		
+		_trackedUnit assignAsCargo _vehicle;
+		_trackedUnit moveInCargo _vehicle;
+		
+		if ((_vehicle getVariable ["_idHoldAction", -1]) isEqualTo -1 ) then {
+			[_vehicle, true, {}, !(player getVariable ["_vehicleToggle", true])] call BIS_fnc_holdActionVehicle; 	
+		};
+	}];
+	player setVariable ["_idGetInMan", _idGetInMan];
+};
+if ((player getVariable ["_idGetOutMan", -1]) isEqualTo -1) then {
+	_idGetOutMan = player addEventHandler ["GetOutMan", { 
+		params["_unit", "_positon", "_vehicle"];
+		if (!(player getVariable ["_vehicleToggle", true])) then {
+			_trackedUnit = _unit getVariable "_trackedUnit";
+			unassignVehicle _trackedUnit;
+			moveOut _trackedUnit;
+			[_vehicle, false] call BIS_fnc_holdActionVehicle;
+		};
+	}];
+	player setVariable ["_idGetOutMan", _idGetOutMan];
+};

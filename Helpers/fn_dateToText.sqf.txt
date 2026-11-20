@@ -1,0 +1,8 @@
+params["_date"];
+private _formattedDate = "";
+if (!(_date isEqualTo [])) then {
+	_date params ["_years", "_months", "_days", "_hours", "_minutes"];
+	if (_minutes < 10) then {_minutes = "0" + str _minutes};
+	_formattedDate = format["%1:%2", _hours, _minutes]; //TODO - other formats
+};
+_formattedDate

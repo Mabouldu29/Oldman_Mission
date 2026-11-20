@@ -1,0 +1,1507 @@
+class CSAT_Awareness_WT_01_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_01_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.039524;
+};
+class CSAT_Awareness_WT_01_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_01_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.804150;
+};
+class CSAT_Awareness_WT_01_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_01_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.553537;
+};
+class CSAT_Awareness_WT_01_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_01_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.636893;
+};
+class CSAT_Awareness_WT_02_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_02_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.779751;
+};
+class CSAT_Awareness_WT_02_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_02_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.890635;
+};
+class CSAT_Awareness_WT_02_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_02_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.340748;
+};
+class CSAT_Awareness_WT_02_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_02_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.464580;
+};
+class CSAT_Awareness_WT_03_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_03_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.917596;
+};
+class CSAT_Awareness_WT_03_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_03_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.973356;
+};
+class CSAT_Awareness_WT_03_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_03_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.771361;
+};
+class CSAT_Awareness_WT_03_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_03_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.953832;
+};
+class CSAT_Awareness_WT_04_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_04_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.985351;
+};
+class CSAT_Awareness_WT_04_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_04_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.321497;
+};
+class CSAT_Awareness_WT_04_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_04_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.159116;
+};
+class CSAT_Awareness_WT_04_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_04_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.298435;
+};
+class CSAT_Awareness_WT_05_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_05_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.963583;
+};
+class CSAT_Awareness_WT_05_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_05_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.048730;
+};
+class CSAT_Awareness_WT_05_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_05_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.627596;
+};
+class CSAT_Awareness_WT_05_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_05_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.904104;
+};
+class CSAT_Awareness_WT_06_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_06_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.805215;
+};
+class CSAT_Awareness_WT_06_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_06_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.231927;
+};
+class CSAT_Awareness_WT_06_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_06_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.402472;
+};
+class CSAT_Awareness_WT_06_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_06_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.544580;
+};
+class CSAT_Awareness_WT_07_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_07_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.466735;
+};
+class CSAT_Awareness_WT_07_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_07_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.865533;
+};
+class CSAT_Awareness_WT_07_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_07_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.509728;
+};
+class CSAT_Awareness_WT_07_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_07_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.643039;
+};
+class CSAT_Awareness_WT_08_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_08_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.391519;
+};
+class CSAT_Awareness_WT_08_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_08_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.452086;
+};
+class CSAT_Awareness_WT_08_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_08_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.055986;
+};
+class CSAT_Awareness_WT_08_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_08_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.181519;
+};
+class CSAT_Awareness_WT_09_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_09_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.932721;
+};
+class CSAT_Awareness_WT_09_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_09_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.467211;
+};
+class CSAT_Awareness_WT_09_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_09_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.989977;
+};
+class CSAT_Awareness_WT_09_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_09_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.978458;
+};
+class CSAT_Awareness_WT_10_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_10_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.571655;
+};
+class CSAT_Awareness_WT_10_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_10_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.068912;
+};
+class CSAT_Awareness_WT_10_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_10_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.391066;
+};
+class CSAT_Awareness_WT_10_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_10_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.448413;
+};
+class CSAT_Awareness_WT_11_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_11_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.470590;
+};
+class CSAT_Awareness_WT_11_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_11_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.479932;
+};
+class CSAT_Awareness_WT_11_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_11_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.441134;
+};
+class CSAT_Awareness_WT_11_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_11_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.449184;
+};
+class CSAT_Awareness_WT_12_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_12_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.681134;
+};
+class CSAT_Awareness_WT_12_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_12_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.463039;
+};
+class CSAT_Awareness_WT_12_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_12_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.700612;
+};
+class CSAT_Awareness_WT_12_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_12_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.709229;
+};
+class CSAT_Awareness_WT_13_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_13_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.432426;
+};
+class CSAT_Awareness_WT_13_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_13_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.811134;
+};
+class CSAT_Awareness_WT_13_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_13_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.119478;
+};
+class CSAT_Awareness_WT_13_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_13_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.344127;
+};
+class CSAT_Awareness_WT_14_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_14_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.378776;
+};
+class CSAT_Awareness_WT_14_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_14_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.541179;
+};
+class CSAT_Awareness_WT_14_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_14_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.179728;
+};
+class CSAT_Awareness_WT_14_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_14_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.238549;
+};
+class CSAT_Awareness_WT_15_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_15_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.799819;
+};
+class CSAT_Awareness_WT_15_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_15_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.416122;
+};
+class CSAT_Awareness_WT_15_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_15_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.600499;
+};
+class CSAT_Awareness_WT_15_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_15_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.799320;
+};
+class CSAT_Awareness_WT_16_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_16_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.416916;
+};
+class CSAT_Awareness_WT_16_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_16_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.808163;
+};
+class CSAT_Awareness_WT_16_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_16_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.414762;
+};
+class CSAT_Awareness_WT_16_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_16_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.504921;
+};
+class CSAT_Awareness_WT_17_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_17_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.151723;
+};
+class CSAT_Awareness_WT_17_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_17_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.483311;
+};
+class CSAT_Awareness_WT_17_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_17_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.343810;
+};
+class CSAT_Awareness_WT_17_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_17_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.101633;
+};
+class CSAT_Awareness_WT_18_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_18_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.225215;
+};
+class CSAT_Awareness_WT_18_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_18_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.203197;
+};
+class CSAT_Awareness_WT_18_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_18_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.940113;
+};
+class CSAT_Awareness_WT_18_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_18_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.386190;
+};
+class CSAT_Awareness_WT_19_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_19_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.196644;
+};
+class CSAT_Awareness_WT_19_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_19_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.241519;
+};
+class CSAT_Awareness_WT_19_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_19_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.967506;
+};
+class CSAT_Awareness_WT_19_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_19_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.112086;
+};
+class CSAT_Awareness_WT_20_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_20_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.638662;
+};
+class CSAT_Awareness_WT_20_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_20_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.294694;
+};
+class CSAT_Awareness_WT_20_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_20_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.323855;
+};
+class CSAT_Awareness_WT_20_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_20_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.413764;
+};
+class CSAT_Awareness_WT_21_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_21_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.729410;
+};
+class CSAT_Awareness_WT_21_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_21_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.588844;
+};
+class CSAT_Awareness_WT_21_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_21_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.735896;
+};
+class CSAT_Awareness_WT_21_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_21_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.858435;
+};
+class CSAT_Awareness_WT_22_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_22_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.069161;
+};
+class CSAT_Awareness_WT_22_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_22_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.859796;
+};
+class CSAT_Awareness_WT_22_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_22_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.874694;
+};
+class CSAT_Awareness_WT_22_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_22_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.935374;
+};
+class CSAT_Awareness_WT_23_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_23_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.296213;
+};
+class CSAT_Awareness_WT_23_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_23_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.213197;
+};
+class CSAT_Awareness_WT_23_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_23_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.293492;
+};
+class CSAT_Awareness_WT_23_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_23_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.113832;
+};
+class CSAT_Awareness_WT_24_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_24_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.155850;
+};
+class CSAT_Awareness_WT_24_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_24_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.360998;
+};
+class CSAT_Awareness_WT_24_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_24_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.023311;
+};
+class CSAT_Awareness_WT_24_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_24_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.113832;
+};
+class CSAT_Awareness_WT_25_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_25_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.131088;
+};
+class CSAT_Awareness_WT_25_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_25_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.207029;
+};
+class CSAT_Awareness_WT_25_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_25_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.138118;
+};
+class CSAT_Awareness_WT_25_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_25_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.984603;
+};
+class CSAT_Awareness_WT_26_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_26_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.193016;
+};
+class CSAT_Awareness_WT_26_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_26_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.250136;
+};
+class CSAT_Awareness_WT_26_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_26_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.992902;
+};
+class CSAT_Awareness_WT_26_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_26_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.990748;
+};
+class CSAT_Awareness_WT_27_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_27_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.402268;
+};
+class CSAT_Awareness_WT_27_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_27_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.549569;
+};
+class CSAT_Awareness_WT_27_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_27_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.144875;
+};
+class CSAT_Awareness_WT_27_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_27_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.470816;
+};
+class CSAT_Awareness_WT_28_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_28_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.591859;
+};
+class CSAT_Awareness_WT_28_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_28_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.675079;
+};
+class CSAT_Awareness_WT_28_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_28_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.242812;
+};
+class CSAT_Awareness_WT_28_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_28_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.353832;
+};
+class CSAT_Awareness_WT_29_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_29_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.172789;
+};
+class CSAT_Awareness_WT_29_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_29_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.250136;
+};
+class CSAT_Awareness_WT_29_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_29_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.019932;
+};
+class CSAT_Awareness_WT_29_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_29_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.105488;
+};
+class CSAT_Awareness_WT_30_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_30_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.986916;
+};
+class CSAT_Awareness_WT_30_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_30_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.163923;
+};
+class CSAT_Awareness_WT_30_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_30_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.999660;
+};
+class CSAT_Awareness_WT_30_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_30_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.899229;
+};
+class CSAT_Awareness_WT_31_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_31_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.581043;
+};
+class CSAT_Awareness_WT_31_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_31_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.675079;
+};
+class CSAT_Awareness_WT_31_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_31_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.648073;
+};
+class CSAT_Awareness_WT_31_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_31_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.555102;
+};
+class CSAT_Awareness_WT_32_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_32_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.031020;
+};
+class CSAT_Awareness_WT_32_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_32_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.143084;
+};
+class CSAT_Awareness_WT_32_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_32_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.985805;
+};
+class CSAT_Awareness_WT_32_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_32_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.074853;
+};
+class CSAT_Awareness_WT_33_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_33_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.009977;
+};
+class CSAT_Awareness_WT_33_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_33_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.955283;
+};
+class CSAT_Awareness_WT_33_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_33_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.962517;
+};
+class CSAT_Awareness_WT_33_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_33_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.117868;
+};
+class CSAT_Awareness_WT_34_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_34_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.293243;
+};
+class CSAT_Awareness_WT_34_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_34_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.406576;
+};
+class CSAT_Awareness_WT_34_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_34_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.151633;
+};
+class CSAT_Awareness_WT_34_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_34_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.394240;
+};
+class CSAT_Awareness_WT_35_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_35_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.779751;
+};
+class CSAT_Awareness_WT_35_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_35_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.805238;
+};
+class CSAT_Awareness_WT_35_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_35_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.756145;
+};
+class CSAT_Awareness_WT_35_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_35_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.913991;
+};
+class CSAT_Awareness_WT_36_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_36_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.898889;
+};
+class CSAT_Awareness_WT_36_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_36_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.790204;
+};
+class CSAT_Awareness_WT_36_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_36_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.820317;
+};
+class CSAT_Awareness_WT_36_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_36_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.922245;
+};
+class CSAT_Awareness_WT_37_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_37_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.829728;
+};
+class CSAT_Awareness_WT_37_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_37_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.887574;
+};
+class CSAT_Awareness_WT_37_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_37_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.730544;
+};
+class CSAT_Awareness_WT_37_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_37_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.742494;
+};
+class CSAT_Awareness_WT_38_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_38_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.465465;
+};
+class CSAT_Awareness_WT_38_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_38_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.489297;
+};
+class CSAT_Awareness_WT_38_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_38_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.445964;
+};
+class CSAT_Awareness_WT_38_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_38_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.451973;
+};
+class CSAT_Awareness_WT_39_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_39_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.159977;
+};
+class CSAT_Awareness_WT_39_Chinese02_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_39_Chinese02_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.331361;
+};
+class CSAT_Awareness_WT_39_Chinese03_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_39_Chinese03_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.143673;
+};
+class CSAT_Awareness_WT_39_Chinese04_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_39_Chinese04_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.138481;
+};
+class CSAT_Awareness_WT_40_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_40_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.177438;
+};
+class CSAT_Awareness_WT_41_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_41_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.533605;
+};
+class CSAT_Awareness_WT_42_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_42_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.876553;
+};
+class CSAT_Awareness_WT_43_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_43_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.350045;
+};
+class CSAT_Awareness_WT_44_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_44_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.562676;
+};
+class CSAT_Awareness_WT_45_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_45_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.951678;
+};
+class CSAT_Awareness_WT_48_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_48_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.889161;
+};
+class CSAT_Awareness_WT_50_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_50_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.328163;
+};
+class CSAT_Awareness_WT_55_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_55_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.727937;
+};
+class CSAT_Awareness_WT_57_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_57_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.400862;
+};
+class CSAT_Awareness_WT_59_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_59_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.810431;
+};
+class CSAT_Awareness_WT_72_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_72_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.765034;
+};
+class CSAT_Awareness_WT_76_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_76_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.127710;
+};
+
+class CSAT_Awareness_WT_77_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_77_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.829751;
+};
+class CSAT_Awareness_WT_79_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_79_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.829751;
+};
+class CSAT_Awareness_WT_78_Chinese01_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\CSAT_Awareness_WT_78_Chinese01_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.657007;
+};
+class Gendarmerie_Awareness_WT_01_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_01_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.030590;
+};
+class Gendarmerie_Awareness_WT_01_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_01_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.386122;
+};
+class Gendarmerie_Awareness_WT_02_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_02_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.162585;
+};
+class Gendarmerie_Awareness_WT_02_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_02_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.747460;
+};
+class Gendarmerie_Awareness_WT_03_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_03_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.052540;
+};
+class Gendarmerie_Awareness_WT_03_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_03_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.381134;
+};
+class Gendarmerie_Awareness_WT_04_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_04_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.045646;
+};
+class Gendarmerie_Awareness_WT_04_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_04_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.480204;
+};
+class Gendarmerie_Awareness_WT_05_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_05_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.369002;
+};
+class Gendarmerie_Awareness_WT_05_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_05_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.263175;
+};
+class Gendarmerie_Awareness_WT_06_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_06_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.336508;
+};
+class Gendarmerie_Awareness_WT_06_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_06_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.562948;
+};
+class Gendarmerie_Awareness_WT_07_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_07_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.194195;
+};
+class Gendarmerie_Awareness_WT_07_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_07_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.486100;
+};
+class Gendarmerie_Awareness_WT_08_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_08_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.963469;
+};
+class Gendarmerie_Awareness_WT_08_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_08_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.213197;
+};
+class Gendarmerie_Awareness_WT_09_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_09_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.045805;
+};
+class Gendarmerie_Awareness_WT_09_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_09_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.343991;
+};
+class Gendarmerie_Awareness_WT_10_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_10_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.354875;
+};
+class Gendarmerie_Awareness_WT_10_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_10_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.451020;
+};
+class Gendarmerie_Awareness_WT_11_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_11_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.460590;
+};
+class Gendarmerie_Awareness_WT_11_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_11_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.768050;
+};
+class Gendarmerie_Awareness_WT_12_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_12_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.773968;
+};
+class Gendarmerie_Awareness_WT_12_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_12_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.130794;
+};
+class Gendarmerie_Awareness_WT_13_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_13_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.864580;
+};
+class Gendarmerie_Awareness_WT_13_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_13_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.256122;
+};
+class Gendarmerie_Awareness_WT_14_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_14_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.898413;
+};
+class Gendarmerie_Awareness_WT_14_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_14_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.459773;
+};
+class Gendarmerie_Awareness_WT_15_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_15_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.102585;
+};
+class Gendarmerie_Awareness_WT_15_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_15_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.768571;
+};
+class Gendarmerie_Awareness_WT_16_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_16_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.447279;
+};
+class Gendarmerie_Awareness_WT_16_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_16_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.510907;
+};
+class Gendarmerie_Awareness_WT_17_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_17_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.079025;
+};
+class Gendarmerie_Awareness_WT_17_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_17_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.566780;
+};
+class Gendarmerie_Awareness_WT_18_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_18_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.102086;
+};
+class Gendarmerie_Awareness_WT_18_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_18_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.709320;
+};
+class Gendarmerie_Awareness_WT_19_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_19_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.776667;
+};
+class Gendarmerie_Awareness_WT_19_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_19_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 4.514626;
+};
+class Gendarmerie_Awareness_WT_20_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_20_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.449615;
+};
+class Gendarmerie_Awareness_WT_20_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_20_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.408186;
+};
+class Gendarmerie_Awareness_WT_21_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_21_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.990295;
+};
+class Gendarmerie_Awareness_WT_21_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_21_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.064104;
+};
+class Gendarmerie_Awareness_WT_22_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_22_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.793129;
+};
+class Gendarmerie_Awareness_WT_22_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_22_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.266531;
+};
+class Gendarmerie_Awareness_WT_23_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_23_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.194331;
+};
+class Gendarmerie_Awareness_WT_23_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_23_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.550862;
+};
+class Gendarmerie_Awareness_WT_24_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_24_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.723968;
+};
+class Gendarmerie_Awareness_WT_24_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_24_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.915737;
+};
+class Gendarmerie_Awareness_WT_25_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_25_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.668639;
+};
+class Gendarmerie_Awareness_WT_25_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_25_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.059751;
+};
+class Gendarmerie_Awareness_WT_26_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_26_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.760862;
+};
+class Gendarmerie_Awareness_WT_26_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_26_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.052358;
+};
+class Gendarmerie_Awareness_WT_27_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_27_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.323447;
+};
+class Gendarmerie_Awareness_WT_27_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_27_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.715692;
+};
+class Gendarmerie_Awareness_WT_28_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_28_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.530975;
+};
+class Gendarmerie_Awareness_WT_28_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_28_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.055533;
+};
+class Gendarmerie_Awareness_WT_29_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_29_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.839252;
+};
+class Gendarmerie_Awareness_WT_29_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_29_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.271837;
+};
+class Gendarmerie_Awareness_WT_30_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_30_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.539410;
+};
+class Gendarmerie_Awareness_WT_30_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_30_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.861927;
+};
+class Gendarmerie_Awareness_WT_31_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_31_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.539002;
+};
+class Gendarmerie_Awareness_WT_31_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_31_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.621701;
+};
+class Gendarmerie_Awareness_WT_32_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_32_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.729864;
+};
+class Gendarmerie_Awareness_WT_32_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_32_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 3.287166;
+};
+class Gendarmerie_Awareness_WT_33_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_33_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.396803;
+};
+class Gendarmerie_Awareness_WT_33_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_33_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.397052;
+};
+class Gendarmerie_Awareness_WT_34_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_34_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.396803;
+};
+class Gendarmerie_Awareness_WT_34_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_34_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.327166;
+};
+class Gendarmerie_Awareness_WT_35_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_35_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.934399;
+};
+class Gendarmerie_Awareness_WT_35_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_35_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.669819;
+};
+class Gendarmerie_Awareness_WT_36_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_36_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.745986;
+};
+class Gendarmerie_Awareness_WT_36_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_36_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 2.703696;
+};
+class Gendarmerie_Awareness_WT_37_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_37_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.949342;
+};
+class Gendarmerie_Awareness_WT_37_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_37_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.978707;
+};
+class Gendarmerie_Awareness_WT_38_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_38_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.128186;
+};
+class Gendarmerie_Awareness_WT_38_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_38_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.645986;
+};
+class Gendarmerie_Awareness_WT_39_Ahmeed_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_39_Ahmeed_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 0.990612;
+};
+class Gendarmerie_Awareness_WT_39_Vincent_Processed
+{
+	sound[] = { "\a3\Dubbing_F_Oldman\Barks\Awareness\Gendarmerie_Awareness_WT_39_Vincent_Processed.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1.510862;
+};
+class Gendarmerie_Awareness_End
+{
+	sound[] = { "\a3\Missions_F_Oldman\Data\sound\Gendarmerie_Awareness_End.ogg", db+0, 1 };
+	titles[] = {};
+	length = 1;
+};

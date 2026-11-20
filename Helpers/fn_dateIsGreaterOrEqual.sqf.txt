@@ -1,0 +1,9 @@
+params["_dateA", "_dateB"];
+
+private _dateToNumber = {
+	params["_dates"]; 
+	toFixed 8;
+	_dates#0 * dateToNumber _dates
+};
+
+(([_dateA] call _dateToNumber) >= ([_dateB] call _dateToNumber))

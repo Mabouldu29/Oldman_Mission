@@ -1,0 +1,26 @@
+params[ ["_hostageNPC", objNull, [objNull]], ["_holdActionText", Localize "STR_A3_OM_System_Quest_HostageHoldAction", [""]] , ["_codeOnEnd", {}], ["_holdActionDuration", 1, [1]] ]; 
+if (isNull _hostageNPC) exitWith {};
+private _hostageAnims = ["Acts_AidlPsitMstpSsurWnonDnon01", "Acts_AidlPsitMstpSsurWnonDnon02", "Acts_AidlPsitMstpSsurWnonDnon03", "Acts_AidlPsitMstpSsurWnonDnon04", "Acts_AidlPsitMstpSsurWnonDnon05"]; 
+_hostageNPC switchMove (selectRandom _hostageAnims);
+_hostageNPC setCaptive true;
+_hostageNPC addEventHandler ["Killed", {debuglog "killed"; [(_this # 0) getVariable "BIS_OM_hostageQuestID",  6] call bis_fnc_questSetState}];
+
+private _unbindIcon = "\a3\ui_f\data\IGUI\Cfg\holdactions\holdAction_unbind_ca.paa";
+private _holdActionConditon = "player distance _target < 6 && alive _target";
+[ 
+	_hostageNPC, 
+	_holdActionText, 
+	_unbindIcon, 
+	_unbindIcon, 
+	_holdActionConditon, 
+	_holdActionConditon, 
+	{},{}, 
+	{ 
+		_arguments params["_codeOnEnd"];
+		_target playMove "Acts_AidlPsitMstpSsurWnonDnon_out";
+		_target setCaptive false;
+		[] call _codeOnEnd;
+	}, 
+	{}, 
+	[_codeOnEnd], _holdActionDuration, 1, true, false
+] call BIS_fnc_holdActionAdd;

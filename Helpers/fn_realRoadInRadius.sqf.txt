@@ -1,0 +1,7 @@
+params["_searchPos", "_initialRoadDistance", "_finalRoadSegmentDistance"];
+private _nearRealRoadStart = [_searchPos, _initialRoadDistance] call BIS_fnc_nearestRealRoad;
+private _roadTraversalResult = [objNull, []];
+if (!isNull _nearRealRoadStart) then {
+	_roadTraversalResult = [_nearRealRoadStart, _finalRoadSegmentDistance] call BIS_fnc_roadTraverse;
+};
+_roadTraversalResult

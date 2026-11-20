@@ -1,0 +1,151 @@
+#include "definitions.inc"
+
+
+
+BIS_fnc_OM_moduleAwareness_PlayRadioChatter =
+{
+	/* #define CONDITION_FOR_PLAYING	true */
+	#define CONDITION_FOR_PLAYING		BIS_relEast getVariable "aggroMode" == M_AGRESSIVE
+	scriptName "BIS_fnc_OM_moduleAwareness_PlayRadioChatter";
+  AWARENESS_MODULE_LOGIC setVariable ["playingMessages", true];
+  //while{ BIS_relEast getVariable "aggroMode" == M_AGRESSIVE } do
+	[] spawn
+	{
+		Sleep (random[2,3,4]);
+		while{CONDITION_FOR_PLAYING} do
+		{
+
+			private _enemiesInRange = entities "man" select { side _x in [EAST,WEST] && {(_x distance player > 50 && _x distance player < 200 )} };
+			if ( count _enemiesInRange != 0 ) then
+			{
+
+				private _nrOfMessagesBulk = ceil random [0,3,5];
+				for "_iLoop" from 1 to (_nrOfMessagesBulk) do
+		    {
+					private _sound = ([RADIO_LANGUAGE_CH, PADDING] call BIS_fnc_OM_moduleAwareness_SelectMessage);
+					private _delay = _sound select 1;
+					["AWARENESS: %1 | %2", _sound, _delay] call BIS_fnc_logFormat;
+					_sound = _sound select 0;
+					playSound ( _sound );
+					Sleep ( _delay + (random[1,3,4]) );
+		    };
+		    Sleep (random[2,3,5]);
+			};
+			Sleep 1;
+  	};
+	};
+	while{CONDITION_FOR_PLAYING} do
+	{
+		private _language = RADIO_LANGUAGE_CH;
+		private _enemiesInRange = entities "man" select { side _x in [EAST,WEST] && {(_x distance player > 50 && _x distance player < 200 )} };
+
+		if ( count _enemiesInRange != 0 ) then
+		{
+			private _nrOfMessagesBulk = ceil random [0,3,5];
+			for "_iLoop" from 1 to (_nrOfMessagesBulk) do
+			{
+				private _nrOfChinese = ( {_x iskindof "O_Soldier_base_F"} count _enemiesInRange ) max 1;
+				private _nrOfGendarmes = ( {_x iskindof "B_Soldier_base_F"} count _enemiesInRange ) max 1;
+				["AWARENESS: chance: EN %1 / CH %2",  1 / ( (count _enemiesInRange) / _nrOfGendarmes),  1 / ( (count _enemiesInRange) / _nrOfChinese)] call BIS_fnc_logFormat;
+				_language = [ RADIO_LANGUAGE_EN, RADIO_LANGUAGE_CH ] selectRandomWeighted [ ( 1 / ( (count _enemiesInRange) / _nrOfGendarmes) ), (1 / ( (count _enemiesInRange) / _nrOfChinese)) ];
+				["AWARENESS: language selected: %1", _language] call BIS_fnc_logFormat;
+				private _sound = ([_language, CALLSIGN] call BIS_fnc_OM_moduleAwareness_SelectMessage);
+				private _delay = _sound select 1;
+				playSound ( _sound select 0 );
+				Sleep (_delay + random[1,2,3]);
+				private _rndType = selectRandom [2,3,4];
+				_sound = ([_language, _rndType] call BIS_fnc_OM_moduleAwareness_SelectMessage);
+				_delay = _sound select 1;
+				playSound ( _sound select 0 );
+				Sleep ( _delay + random[1,2,3] );
+				_sound = ([_language, HQ_REPLY] call BIS_fnc_OM_moduleAwareness_SelectMessage);
+				_delay = _sound select 1;
+				playSound ( _sound select 0 );
+				Sleep ( _delay + random[3,4,5] );
+			};
+			Sleep (random[4,5,6]);
+		};
+		Sleep 1;
+	};
+	_sound = ([ selectRandom [ RADIO_LANGUAGE_EN, RADIO_LANGUAGE_CH ], END] call BIS_fnc_OM_moduleAwareness_SelectMessage);
+	playSound ( _sound select 0 );
+	Sleep ( _sound select 1 );
+	playSound "Gendarmerie_Awareness_End";
+	AWARENESS_MODULE_LOGIC setVariable ["playingMessages", false];
+};
+
+
+BIS_fnc_OM_moduleAwareness_ConvertToString =
+{
+		params[ "_element" ];
+		if( _element isEqualType "") exitWith { _element };
+		if( _element / 10 >= 1) exitWith { format[ "%1", _element ] };
+		format[ "0%1", _element ];
+};
+
+BIS_fnc_OM_moduleAwareness_SelectMessage =
+{
+	params[ [ "_language", RADIO_LANGUAGE_EN ], [ "_messageType", CALLSIGN ] ];
+	private _prefix = RADIO_MESSAGES_PREFIX_EN;
+	private _actor = SELECT_ACTOR_EN();
+	private "_type";
+	if( _language == RADIO_LANGUAGE_CH ) then { _prefix = RADIO_MESSAGES_PREFIX_CH; _actor = SELECT_ACTOR_CH() };
+	switch (_messageType) do
+	{
+	    case CALLSIGN: 			{ _type = SELECT_CALLSIGN() };
+			case CONFIRMATION: 	{ _type = SELECT_CONFIRMATION() };
+			case BASEBREACHED: 	{ _type = SELECT_BASEBREACHED() };
+			case BODY: 					{ _type = SELECT_BODY() };
+			case REQUEST: 			{ _type = SELECT_REQUEST() };
+			case HQ_REPLY: 			{ _type = SELECT_HQ_REPLY() };
+			case END:			 			{ _type = SELECT_END() };
+			case PADDING: 			{ _type = SELECT_PADDING(); _actor = RADIO_MESSAGES_ACTORS_CH select 0 };		//ONLY CHINESE01
+	};
+
+
+	["AWARENESS: %1", _prefix + RADIO_MESSAGES_NAME + _type + "_" + _actor + RADIO_MESSAGES_SUFFIX ] call BIS_fnc_logFormat;
+	private _sound = format ["%1", _prefix + RADIO_MESSAGES_NAME + _type + "_" + _actor + RADIO_MESSAGES_SUFFIX];
+	[ _sound, getNumber ( configFile >> "cfgSounds" >> _sound >> "length") ];
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* BIS_fnc_OM_moduleAwareness_PlayRadioChatter =
+{
+	scriptName "BIS_fnc_OM_moduleAwareness_PlayRadioChatter";
+  AWARENESS_MODULE_LOGIC setVariable ["playingMessages", true];
+  while{ BIS_relEast getVariable "aggroMode" == M_AGRESSIVE } do
+  // while{true} do
+  {
+    private _nrOfMessagesCfg = count RADIO_MESSAGES;
+    if ({ side _x == EAST && {(_x distance player > 50 && _x distance player < 200 )} } count entities "man"  != 0) then
+    {
+      private _nrOfMessagesBulk = ceil random [0,3,5];
+      for "_iLoop" from 1 to (_nrOfMessagesBulk) do
+      {
+        playSound (RADIO_MESSAGES select (floor (random _nrOfMessagesCfg)));
+        Sleep (random[1.5,2,4]);
+      };
+      Sleep (random[5,10,20]);
+    };
+    sleep 3;
+  };
+  playSound RADIO_MESSAGE_END;
+  AWARENESS_MODULE_LOGIC setVariable ["playingMessages", false];
+}; */

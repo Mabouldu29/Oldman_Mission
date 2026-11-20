@@ -1,0 +1,6 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc";
+params["_vehicleName", "_pos"];
+if (QRF_DEBUG) then {
+	createSimpleObject [_vehicleName, AGLToASL _pos]; 
+};	
+

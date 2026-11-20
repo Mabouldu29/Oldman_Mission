@@ -1,0 +1,176 @@
+BIS_OM_FastTravel_condition =
+{
+	scriptName "BIS_OM_FastTravel_condition";
+	private _ret = false;
+	private _index = BIS_activeSectors findIf { _x distance player <= MAX_DISTANCE_FROM_SECTOR && { !(_x getVariable ["BIS_OM_fTravelPoints", []] isEqualTo []) } };
+	if (_index != -1) then
+	{
+		private _sector = BIS_activeSectors select _index;
+		BIS_FASTTRAVEL_LOGIC setVariable ["BIS_OM_playersSector", _sector];
+		_ret = ((_sector getVariable "BIS_OM_fTravelPoints") select { call compile ( _x select 2 ) } findIf { _x select 0 distance player < MAX_DISTANCE_FROM_TRAVELPOS }) != -1;
+	};
+	_ret;
+};
+
+BIS_om_fasttravel_spawn = [_logic] spawn
+{
+	scriptName "BIS_om_fasttravel_spawn";
+	private _codeToAddDescr =
+	{
+		params ["_smartMarker" ];
+		_smartMarker setVariable [ "BIS_FT_extraDescrRemoved", false ];
+		if( _smartmarker getVariable [ "BIS_FT_extraDescrAdded", false ] ) exitWith {};
+		if( [_smartmarker] call BIS_fnc_OM_FastTravelAllowedToDestination ) then
+		{
+			[_smartmarker, BIS_FASTTRAVEL_LOGIC, TOOLTIP_TEXT_FASTTRAVEL] call BIS_fnc_OM_moduleSmartMarkers_AddExtraDescription;
+			_smartMarker setVariable [ "BIS_FT_extraDescrAdded", true ];
+		};
+	},
+
+	private _codeToRemoveDescr =
+	{
+		params ["_smartMarker" ];
+		_smartMarker setVariable [ "BIS_FT_extraDescrAdded", false ];
+		if( _smartmarker getVariable [ "BIS_FT_extraDescrRemoved", false ] ) exitWith {};
+		[_smartmarker, BIS_OM_FastTravel_logic] call BIS_fnc_OM_moduleSmartMarkers_RemoveExtraDescriptionBySystemID;
+		_smartMarker setVariable [ "BIS_FT_extraDescrRemoved", true ];
+	};
+
+	private _drawLines =
+	{
+		{
+			(_this select 0) drawLine [ getPos player, position _x, MAP_LINE_COLOR ];
+		} forEach (BIS_FASTTRAVEL_LOGIC getVariable [ "BIS_OM_availableSectors", [] ]);
+	};
+
+	private [ "_callbackIDAdd", "_callbackIDRemove", "_mapDrawHandler", "_updateHndl", "_id", "_id2" ];
+
+	/*addMissionEventHandler
+	[	"Loaded",
+		{
+			params ["_saveType"];
+			[] spawn
+			{
+				scriptname "FastTravel_init.sqf: Loaded";
+				waituntil {!isnull finddisplay 12};
+				waitUntil {!isNil "BIS_fnc_OM_handleMapControls"};
+				["FASTTRAVEL: OnLoad event", 1] call BIS_fnc_logFormat;
+				if(call BIS_OM_FastTravel_condition) then { SET_CALLBACK_ACTIVE(false) } else { SET_CALLBACK_INACTIVE(true) };
+			};
+		}
+	];*/  // moved to fn_OM_addLoadedEH 
+
+	private _state1Set = false;
+	private _state2Set = false;
+	while{ true } do
+	{
+		/* ["FASTTRAVEL: Waiting for condition being satisfied", 0] call BIS_fnc_logFormat; */
+		WaitUntil { Sleep 1; call BIS_OM_FastTravel_condition };
+		_updateHndl = [] spawn {scriptName "FastTravel/_updateHndl"; while {true} do { BIS_FASTTRAVEL_LOGIC setVariable [ "BIS_OM_availableSectors", [] call BIS_fnc_OM_GetAllSectorsPlayerCanTravelTo ]; Sleep 2;	}; };
+		_callbackIDAdd = [ _codeToAddDescr, false ] call BIS_fnc_OM_moduleSmartMarkers_RegisterOnMouseOverCallback;
+		if( !isNil "_callbackIDRemove" ) then {	[ _callbackIDRemove ] call BIS_fnc_OM_moduleSmartMarkers_UnRegisterOnMouseOverCallback;	};
+		SET_CALLBACK_ACTIVE(false);
+
+		WaitUntil { Sleep 1; !call BIS_OM_FastTravel_condition };
+		terminate _updateHndl;
+		SET_CALLBACK_INACTIVE(false);
+		_callbackIDRemove =	[ _codeToRemoveDescr, false ] call BIS_fnc_OM_moduleSmartMarkers_RegisterOnMouseOverCallback;
+		[ _callbackIDAdd ] call BIS_fnc_OM_moduleSmartMarkers_UnRegisterOnMouseOverCallback;
+	};
+};
+
+/* params[ "_logic" ];
+BIS_om_fasttravel_spawn = [_logic] spawn
+{
+	private _cond =
+	{
+		private _ret = false;
+		private _ftPoint = BIS_activeSectors findIf { _x distance player <= MAX_DISTANCE_FROM_SECTOR };
+		if( _ftPoint != -1 ) then
+		{
+			BIS_FASTTRAVEL_LOGIC setVariable [ "BIS_OM_playersSector", ( BIS_activeSectors select _ftPoint ) ];
+			_ftPoint = ( BIS_activeSectors select _ftPoint ) getVariable "BIS_OM_fTravelPoints";
+			if( !isNil "_ftPoint" ) then
+			{
+//				_ftPoint = _ftPoint select { call compile ( _x select 2 ) };
+				_ftPoint = _ftPoint select { call compile ( _x select 2 ) } findIf { _x select 0 distance player < MAX_DISTANCE_FROM_TRAVELPOS };
+				if( _ftPoint != -1 ) then
+				{
+					_ret = true;
+				};
+			};
+		};
+		_ret;
+	};
+
+	private _codeToAddDescr =
+	{
+		params ["_smartMarker" ];
+		_smartMarker setVariable [ "BIS_FT_extraDescrRemoved", false ];
+		if( _smartmarker getVariable [ "BIS_FT_extraDescrAdded", false ] ) exitWith {};
+		if( [_smartmarker] call BIS_fnc_OM_FastTravelAllowedToDestination ) then
+		{
+			[_smartmarker, BIS_FASTTRAVEL_LOGIC, TOOLTIP_TEXT_FASTTRAVEL] call BIS_fnc_OM_moduleSmartMarkers_AddExtraDescription;
+			_smartMarker setVariable [ "BIS_FT_extraDescrAdded", true ];
+		};
+	},
+
+	private _codeToRemoveDescr =
+	{
+		params ["_smartMarker" ];
+		_smartMarker setVariable [ "BIS_FT_extraDescrAdded", false ];
+		if( _smartmarker getVariable [ "BIS_FT_extraDescrRemoved", false ] ) exitWith {};
+		[_smartmarker, BIS_OM_FastTravel_logic] call BIS_fnc_OM_moduleSmartMarkers_RemoveExtraDescriptionBySystemID;
+		_smartMarker setVariable [ "BIS_FT_extraDescrRemoved", true ];
+	};
+
+	private _drawLines =
+	{
+		{
+			(_this select 0) drawLine [ getPos player, position _x, MAP_LINE_COLOR ];
+		} forEach (BIS_FASTTRAVEL_LOGIC getVariable [ "BIS_OM_availableSectors", [] ]);
+	};
+
+	private [ "_callbackIDAdd", "_callbackIDRemove", "_mapDrawHandler", "_updateHndl", "_id", "_id2" ];
+
+	while{ true } do
+	{
+		["FASTTRAVEL: Waiting for condition being satisfied", 0] call BIS_fnc_logFormat;
+		waitUntil{ sleep 1; call _cond };
+		["FASTTRAVEL: Condition satisfied", 0] call BIS_fnc_logFormat;
+		_id =
+		[ EVENT_INIT, [],
+			{
+				[ MODE_ALLOW_FAST_TRAVEL, [_this select 2, _this] ] call BIS_fnc_OM_moduleFastTravel;
+			}, EVENT_MOUSE_BUTT_DOWN
+		] call BIS_fnc_OM_handleMapControls;
+		_id2 =
+		[ EVENT_INIT, [],
+			{
+				{ (_this select 1) drawLine [ getPos player, position _x, MAP_LINE_COLOR ] } forEach (BIS_FASTTRAVEL_LOGIC getVariable [ "BIS_OM_availableSectors", [] ])
+			},
+			EVENT_DRAW
+		] call BIS_fnc_OM_handleMapControls;
+		_callbackIDAdd = [ _codeToAddDescr, false ] call BIS_fnc_OM_moduleSmartMarkers_RegisterOnMouseOverCallback;
+		if( !isNil "_callbackIDRemove" ) then
+		{
+			[ _callbackIDRemove ] call BIS_fnc_OM_moduleSmartMarkers_UnRegisterOnMouseOverCallback;
+		};
+		_updateHndl = [] spawn {while {true} do { BIS_FASTTRAVEL_LOGIC setVariable [ "BIS_OM_availableSectors", [] call BIS_fnc_OM_GetAllSectorsPlayerCanTravelTo ]; Sleep 2;	}; };
+
+		["OMFastTravel", [format ["<t color='#38c713' size = '0.8' align = 'center' shadow = '0'>%1</t>",  localize "STR_A3_FastTravel_Init.sqf1"]] ] call BIS_fnc_showNotification;
+
+		["FASTTRAVEL: Waiting for condition being FALSE", 0] call BIS_fnc_logFormat;
+		waitUntil{ sleep 1; !(call _cond) };
+		["FASTTRAVEL: Condition false", 0] call BIS_fnc_logFormat;
+		terminate _updateHndl;
+
+		_callbackIDRemove =	[ _codeToRemoveDescr, false ] call BIS_fnc_OM_moduleSmartMarkers_RegisterOnMouseOverCallback;
+		[ _callbackIDAdd ] call BIS_fnc_OM_moduleSmartMarkers_UnRegisterOnMouseOverCallback;
+		[ EVENT_DESTROY, _id ] call BIS_fnc_OM_handleMapControls;
+		[ EVENT_DESTROY, _id2 ] call BIS_fnc_OM_handleMapControls;
+
+		["OMFastTravel", [format ["<t color='#737373' size = '0.8' align = 'center' shadow = '0'>%1</t>",  localize "STR_A3_FastTravel_Init.sqf3"]] ] call BIS_fnc_showNotification;
+	};
+	true;
+}; */

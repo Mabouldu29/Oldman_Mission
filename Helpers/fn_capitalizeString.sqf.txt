@@ -1,0 +1,5 @@
+//Convert string to first capital letter
+params[ ["_string", "", [""] ] ];
+private _arrayStr = _string splitString "";
+_arrayStr set [0, toUpper (_arrayStr#0)];
+(_arrayStr joinString "")

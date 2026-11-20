@@ -1,0 +1,51 @@
+#include "definitions.inc"
+#include "\a3\Missions_F_Oldman\Systems\UI\UIcommonDefines.inc"
+
+_dataset = param [ 1, [], [[]] ];
+_uidata = _dataset param [ 1, [], [[]] ];
+//_uidatasubset = param [ 1, [], [[]] ];
+_uidata params [ "_event", "_map", "_coordinates", "_mouseCoords", "_ctrlUnderMouse" ];
+
+if( _event == EVENT_MOUSE_BUTT_DOWN ) then
+{
+	["FASTTRAVEL: control under mouse: %1", _ctrlUnderMouse] call BIS_fnc_logFormat;
+	["FASTTRAVEL: _coordinates: %1", _coordinates] call BIS_fnc_logFormat;
+	["FASTTRAVEL: _mouseCoords: %1", _mouseCoords] call BIS_fnc_logFormat;
+	if( (_ctrlUnderMouse select 0) == MARKER_CONTROL ) then
+  {
+  	private _sectorsInRange = _coordinates nearObjects ["ModuleOmSector_F", DYNAMIC_RADIUS];
+		["FASTTRAVEL: _sectorsInRange: %1", _sectorsInRange] call BIS_fnc_logFormat;
+    if( (count _sectorsInRange) > 0 ) then
+    {
+			if( BIS_FASTTRAVEL_LOGIC getVariable "BIS_OM_playersSector" == _sectorsInRange select 0 ) exitWith { ["FASTTRAVEL: cannot travel to the actual sector", 1] call BIS_fnc_logFormat; };
+			["FASTTRAVEL: nearestSectors: %1", [_sectorsInRange, _coordinates] call BIS_fnc_OM_getNearestSector] call BIS_fnc_logFormat;
+      private _destinationPoint = [_sectorsInRange] call BIS_fnc_OM_SelectDestinationPoint;
+			if( !isNil "_destinationPoint" ) then
+			{
+				BIS_FASTTRAVEL_LOGIC setVariable
+				[
+					"estimatedTimeToSector",
+					((BIS_FASTTRAVEL_LOGIC getVariable "BIS_OM_playersSector") distance2D (_destinationPoint select 0))/FASTTRAVEL_SPEED
+				];
+				BIS_FASTTRAVEL_LOGIC setVariable [ "BIS_OM_destination", _destinationPoint ];
+				private _prevMode = missionNamespace getVariable ["BIS_OM_waitDialogMode", "wait"];
+				missionNamespace setVariable ["BIS_OM_waitDialogMode", "travel"];
+	      [] execVM "\a3\Missions_F_Oldman\Systems\UI\Sleeping\CreateRestUI.SQF";
+	      waitUntil {!isNull findDisplay IDD_REST_DISPLAY};
+				waitUntil {isNull findDisplay IDD_REST_DISPLAY};
+				if( !BIS_SleepTimeSelected ) then
+				{
+					missionNamespace setVariable ["BIS_OM_waitDialogMode", _prevMode];
+				};
+			}
+			else
+			{
+				["FASTTRAVEL: _destinationPoint doesn't exist (or disabled)", 0] call BIS_fnc_logFormat;
+			};
+    } else {"Nothing selected!"};
+  };
+};
+
+if( _event == EVENT_DRAW ) then
+{
+};

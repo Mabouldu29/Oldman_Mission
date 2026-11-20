@@ -1,0 +1,15 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc";
+
+//--- create list of 3DEN layers which are associated with sector
+params [ [ "_exportToFile", true, true ] ];
+private _sectors = (all3DENEntities select 3 select {( ((typeOf _x) == "moduleOMSector_F") || ((typeOf _x) == "moduleOMSectorCheckpoint_F")) && (_x getVariable "layer" != "") });
+private _layers = [];
+{
+  _layers pushBackUnique ( toLower(_x getVariable "layer"));
+} forEach _sectors;
+
+if(_exportToFile) then
+{
+	private _fileHandle = diag_saveTextFile [ COMPOSE_FILE_NAME_BLACKLIST( "",missionName), "\n" + str _layers,		FILE_CREATE_OR_REWRITE ];
+};
+_layers

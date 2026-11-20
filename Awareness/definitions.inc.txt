@@ -1,0 +1,84 @@
+//MODULE SYSTEMS
+#define FUNCTIONS_PATH    "\a3\Missions_F_Oldman\Systems\Scripts\Awareness\"
+#define FUNCTIONS_NAMES   ["Awareness_Init"]
+#define FUNCTIONS_PREFIX  "BIS_fnc_OM_module"
+
+#define MODE_INIT         		"init"
+#define MODE_ERROR           		9
+
+#define AWARENESS_MODULE_LOGIC       missionNameSpace getVariable "BIS_OM_Awareness_logic"
+
+#define RADIO_MESSAGES \
+  [ "Awareness_WT_01", "Awareness_WT_02", "Awareness_WT_03", "Awareness_WT_04", "Awareness_WT_05", "Awareness_WT_06",\
+    "Awareness_WT_07", "Awareness_WT_09", "Awareness_WT_09", "Awareness_WT_10", "Awareness_WT_11", "Awareness_WT_12" ]
+#define RADIO_MESSAGE_END "Awareness_WT_13"
+
+
+#define RADIO_MESSAGES_PREFIX_EN 			"Gendarmerie"
+#define RADIO_MESSAGES_PREFIX_CH 			"CSAT"
+#define RADIO_MESSAGES_NAME 					"_Awareness_WT_"
+
+#define RADIO_LANGUAGE_EN							0
+#define RADIO_LANGUAGE_CH							1
+#define RADIO_MESSAGES_ACTORS_EN 			[ "Vincent", "Ahmeed" ]
+#define RADIO_MESSAGES_ACTORS_CH			[ "Chinese01", "Chinese02", "Chinese03", "Chinese04" ]
+
+#define RADIO_MESSAGES_CALLSIGN				[ 01, 02, 06, 22, 24, 25, 26 ]
+#define RADIO_MESSAGES_CONFIRMATION		[ 08, 10, 11, 16, 17, 18 ]
+#define RADIO_MESSAGES_BASEBREACHED		[ 05, 07, 09 ]
+#define RADIO_MESSAGES_BODY 					[ 03, 04, 12, 13, 14, 15, 21, 29, 30, 31, 32, 33, 34, 37, 39 ]
+#define RADIO_MESSAGES_REQUEST				[ 19, 23 ]
+#define RADIO_MESSAGES_HQ_REPLY				[ 20, 35, 36, 38, 27, 28 ]
+#define RADIO_MESSAGES_ENDS						[ 21, 37 ]
+#define RADIO_MESSAGES_PADDING				[ 40, 41, 42, 43, 44, 45, 48, 50, 55, 57, 59, 72, 76, 77, 78 ]
+
+#define RADIO_MESSAGES_SUFFIX					"_Processed"
+#define RADIO_MESSAGES_VERSIONS 			[ "close", "normal", "far" ]
+
+#define CALLSIGN 											0
+#define CONFIRMATION									1
+#define BASEBREACHED									2
+#define BODY 													3
+#define REQUEST 											4
+#define HQ_REPLY											5
+#define END 													6
+#define PADDING												7
+
+#define SELECT_RANDOM_MESSAGE(TYPE)		([ (TYPE select (floor (random count TYPE))) ] call BIS_fnc_OM_moduleAwareness_ConvertToString)
+#define SELECT_CALLSIGN()							SELECT_RANDOM_MESSAGE(RADIO_MESSAGES_CALLSIGN)
+#define SELECT_CONFIRMATION()					SELECT_RANDOM_MESSAGE(RADIO_MESSAGES_CONFIRMATION)
+#define SELECT_BASEBREACHED()					SELECT_RANDOM_MESSAGE(RADIO_MESSAGES_BASEBREACHED)
+#define SELECT_BODY()									SELECT_RANDOM_MESSAGE(RADIO_MESSAGES_BODY)
+#define SELECT_REQUEST()							SELECT_RANDOM_MESSAGE(RADIO_MESSAGES_REQUEST)
+#define SELECT_HQ_REPLY()							SELECT_RANDOM_MESSAGE(RADIO_MESSAGES_HQ_REPLY)
+#define SELECT_END()									SELECT_RANDOM_MESSAGE(RADIO_MESSAGES_ENDS)
+#define SELECT_PADDING()							SELECT_RANDOM_MESSAGE(RADIO_MESSAGES_PADDING)
+#define SELECT_ACTOR_EN()							SELECT_RANDOM_MESSAGE(RADIO_MESSAGES_ACTORS_EN)
+#define SELECT_ACTOR_CH()							SELECT_RANDOM_MESSAGE(RADIO_MESSAGES_ACTORS_CH)
+
+
+
+//DEBUG STUFF
+#ifdef INTERNAL_VERSION
+    #define PROFILE_START(blockName)                                 profilingStart blockName
+    #define PROFILE_START_INFO(blockName,string,val)                 profilingStart blockName; profilingSetInfo format [string,val]
+    #define PROFILE_START_INFO2(blockName,string,val1,val2)         profilingStart blockName; profilingSetInfo format [string,val1,val2]
+    #define PROFILE_START_INFO3(blockName,string,val1,val2,val3)     profilingStart blockName; profilingSetInfo format [string,val1,val2,val3]
+    #define PROFILE_INFO(blockName,string,val)                         profilingSetInfo format [string,val]
+    #define PROFILE_INFO2(blockName,string,val1,val2)                 profilingSetInfo format [string,val1,val2]
+    #define PROFILE_INFO3(blockName,string,val1,val2,val3)             profilingSetInfo format [string,val1,val2,val3]
+    #define PROFILE_WATCH(var,val)                                     profilingWatch [var,val]
+    #define PROFILE_WATCH_CATEGORY(var,val,cat)                     profilingWatch [var,val,cat]
+    #define PROFILE_STOP(blockName)                                 profilingStop blockName
+#else
+    #define PROFILE_START(blockName)
+    #define PROFILE_START_INFO(blockName,string)
+    #define PROFILE_START_INFO2(blockName,string,val1,val2)
+    #define PROFILE_START_INFO3(blockName,string,val1,val2,val3)
+    #define PROFILE_INFO(blockName,string,val)
+    #define PROFILE_INFO2(blockName,string,val1,val2)
+    #define PROFILE_INFO3(blockName,string,val1,val2,val3)
+    #define PROFILE_WATCH(var,val)
+    #define PROFILE_WATCH_CATEGORY(var,val,cat)
+    #define PROFILE_STOP(blockName)
+#endif

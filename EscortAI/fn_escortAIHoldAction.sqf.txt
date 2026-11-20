@@ -1,0 +1,34 @@
+#include "..\..\defines\escortAIDefines.inc";
+
+params["_unit", ["_toggleHoldAction", true], ["_codeOnEnd", {}], ["_toggleOn", true]];
+["EscortAI HoldAction AI Toggle:%1", _toggleOn] call bis_fnc_logFormat;
+//if (vehicleVarName _unit isEqualTo "") exitWith {}; //TODO no variable name
+if (!_toggleHoldAction) exitWith {
+	[_unit, false] call BIS_fnc_escortAI;
+	[_unit, _unit getVariable "_idHoldAction"] call BIS_fnc_holdActionRemove;
+	// _unit setVariable ["_idHoldAction", nil];
+	// private _idDeletedHandler = _unit getVariable ["_idDeletedHandler", -1];
+	// if (_idDeletedHandler > -1) then { _unit removeEventHandler ["Deleted", _idDeletedHandler]; };
+	// _unit setVariable ["_idDeletedHandler", nil];
+	true
+};
+private _condition = "alive _target && _this distance _target <= 5";
+private _idHoldAction = ESCORT_AI_HOLDACTION(_unit, _condition, _condition, BIS_fnc_escortAI, BIS_fnc_escortAIHoldAction, _toggleOn, _codeOnEnd, true);
+_unit setVariable ["_idHoldAction", _idHoldAction];
+
+private _idDeletedHandler = _unit addEventHandler ["Deleted",{ 
+	params["_unit"];
+	private _getInFired = _unit getVariable ["_getInFired", 0];
+	if (_getInFired > 0 && (time-_getInFired) <= 5) exitWith {};
+
+	_unit setVariable ["_getInFired", nil];
+	[_unit, false] call BIS_fnc_escortAIHoldAction; 
+	[vehicleVarName _unit] spawn {
+	params["_unitName"];
+	sleep 2;
+	private _unit = objNull;
+	waitUntil {sleep 0.5; _unit = (missionNamespace getVariable [_unitName, objNull]); !isNull _unit};
+	["EscortAI HoldAction AI DeletedEventHandler"] call bis_fnc_logFormat;
+	[_unit] call BIS_fnc_escortAIHoldAction;
+}}];
+_unit setVariable ["_idDeletedHandler", _idDeletedHandler];

@@ -1,0 +1,18 @@
+#ifndef __FAST_TRAVEL_COMMON_DEFINITIONS
+#define __FAST_TRAVEL_COMMON_DEFINITIONS 1
+
+#define MODE_INIT 										    "init"
+#define MODE_SELECT_DESTINAION				    1
+#define MODE_TRAVEL							 			    2
+#define MODE_ALLOW_FAST_TRAVEL						3
+
+#define BIS_FASTTRAVEL_LOGIC                  (missionNameSpace getVariable "BIS_OM_FastTravel_logic")
+#define MAX_DISTANCE_FROM_SECTOR 					64
+#define MAX_DISTANCE_FROM_TRAVELPOS				20
+#define MAP_LINE_COLOR 										vec4(0.75, 0.78, 0.32, 0.29)
+
+#define TOOLTIP_TEXT_FASTTRAVEL						\
+	format["<br/><img color='#ffffff' size='1.8' shadow='0' image='\a3\Missions_F_Oldman\Data\img\PhoneCore\phone_menu_fasttravel.paa'/>\
+	<t font='RobotoCondensed' shadow='0' color='#b6bf81' size='0.58'>%1</t>", localize STR_A3_OM_FastTravelAvailable]
+
+#endif

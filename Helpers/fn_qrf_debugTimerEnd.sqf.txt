@@ -1,0 +1,15 @@
+#include "\A3\Missions_F_Oldman\Systems\defines\commonDefines.inc"
+#include "\A3\Missions_F_Oldman\Systems\defines\QRF_defines.inc"
+
+
+params["_messageStart", "_exceededTime", ["_debug", QRF_DEBUG]];
+if (_debug) then {
+	private _elapsed = time - DEBUG_TIMER;
+	if (isNil "_exceededTime") then {_exceededTime = _elapsed + 9999;};
+	["%1 Info elapsed time %2 sec.",_messageStart, _elapsed] call bis_fnc_logFormat;
+	
+	if (_elapsed > _exceededTime) then {
+		throw format["%1 Warning limit %2 sec. exceeded by %3 sec.", _messageStart, _exceededTime, _elapsed - _exceededTime];;
+	};
+	DEBUG_TIMER = 0;
+};
