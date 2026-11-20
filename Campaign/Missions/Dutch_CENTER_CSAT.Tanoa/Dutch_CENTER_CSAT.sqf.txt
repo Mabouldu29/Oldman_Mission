@@ -1,0 +1,3667 @@
+// Export of 'Dutch_CENTER_CSAT.Tanoa' by C.J. on v0.9
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Init
+params [["_layerWhiteList",[],[[]]],["_layerBlacklist",[],[[]]],["_posCenter",[0,0,0],[[]]],["_dir",0,[0]],["_idBlacklist",[],[[]]]];
+private _allWhitelisted = _layerWhiteList isEqualTo [];
+private _layerRoot = (_allWhitelisted || {true in _layerWhiteList}) && {!(true in _layerBlackList)};
+private _layer770 = (_allWhitelisted || {"bis_sc_syn_attackeddutchcp" in _layerWhiteList}) && {!("bis_sc_syn_attackeddutchcp" in _layerBlackList)};
+private _layer670 = (_allWhitelisted || {"bis_sc_dutchcpunderconstruction" in _layerWhiteList}) && {!("bis_sc_dutchcpunderconstruction" in _layerBlackList)};
+private _layer637 = (_allWhitelisted || {"bis_sc_syndikatsm2slaughtersite" in _layerWhiteList}) && {!("bis_sc_syndikatsm2slaughtersite" in _layerBlackList)};
+private _layer599 = (_allWhitelisted || {"bis_sc_dutchradiom2" in _layerWhiteList}) && {!("bis_sc_dutchradiom2" in _layerBlackList)};
+private _layer521 = (_allWhitelisted || {"bis_sc_dutch_radiotower" in _layerWhiteList}) && {!("bis_sc_dutch_radiotower" in _layerBlackList)};
+private _layer78 = (_allWhitelisted || {"bis_dutchc_check2" in _layerWhiteList}) && {!("bis_dutchc_check2" in _layerBlackList)};
+private _layer0 = (_allWhitelisted || {"noexport" in _layerWhiteList}) && {!("noexport" in _layerBlackList)};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Markers
+private _markers = [];
+private _markerIDs = [];
+
+private _item471 = "";
+if (_layerRoot) then {
+	_item471 = createMarker ["BIS_CSAT_CheckpointDutchAirportNorth",[11308.3,3257.46,0]];
+	_this = _item471;
+	_markers pushback _this;
+	_markerIDs pushback 471;
+	_this setMarkerType "Empty";
+	_this setMarkerText "Checkpoint";
+	_this setMarkerShape "ICON";
+	_this setMarkerColor "ColorEAST";
+};
+
+private _item475 = "";
+if (_layerRoot) then {
+	_item475 = createMarker ["BIS_CSAT_BaseDutchAirport",[11684.8,3098.6,0]];
+	_this = _item475;
+	_markers pushback _this;
+	_markerIDs pushback 475;
+	_this setMarkerType "Empty";
+	_this setMarkerText "Base";
+	_this setMarkerShape "ICON";
+	_this setMarkerColor "ColorEAST";
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Groups
+private _groups = [];
+private _groupIDs = [];
+
+private _item375 = grpNull;
+if (_layer0) then {
+	_item375 = createGroup west;
+	_this = _item375;
+	_groups pushback _this;
+	_groupIDs pushback 375;
+};
+
+private _item111 = grpNull;
+if (_layer78) then {
+	_item111 = createGroup east;
+	_this = _item111;
+	_groups pushback _this;
+	_groupIDs pushback 111;
+};
+
+private _item114 = grpNull;
+if (_layer78) then {
+	_item114 = createGroup east;
+	_this = _item114;
+	_groups pushback _this;
+	_groupIDs pushback 114;
+};
+
+private _item125 = grpNull;
+if (_layer78) then {
+	_item125 = createGroup east;
+	_this = _item125;
+	_groups pushback _this;
+	_groupIDs pushback 125;
+};
+
+private _item542 = grpNull;
+if (_layer521) then {
+	_item542 = createGroup east;
+	_this = _item542;
+	_groups pushback _this;
+	_groupIDs pushback 542;
+};
+
+private _item550 = grpNull;
+if (_layer521) then {
+	_item550 = createGroup east;
+	_this = _item550;
+	_groups pushback _this;
+	_groupIDs pushback 550;
+};
+
+private _item554 = grpNull;
+if (_layer521) then {
+	_item554 = createGroup east;
+	_this = _item554;
+	_groups pushback _this;
+	_groupIDs pushback 554;
+};
+
+private _item564 = grpNull;
+if (_layer521) then {
+	_item564 = createGroup east;
+	_this = _item564;
+	_groups pushback _this;
+	_groupIDs pushback 564;
+};
+
+private _item568 = grpNull;
+if (_layer521) then {
+	_item568 = createGroup east;
+	_this = _item568;
+	_groups pushback _this;
+	_groupIDs pushback 568;
+};
+
+private _item571 = grpNull;
+if (_layer521) then {
+	_item571 = createGroup east;
+	_this = _item571;
+	_groups pushback _this;
+	_groupIDs pushback 571;
+};
+
+private _item591 = grpNull;
+if (_layer599) then {
+	_item591 = createGroup east;
+	_this = _item591;
+	_groups pushback _this;
+	_groupIDs pushback 591;
+};
+
+private _item615 = grpNull;
+if (_layer637) then {
+	_item615 = createGroup east;
+	_this = _item615;
+	_groups pushback _this;
+	_groupIDs pushback 615;
+};
+
+private _item617 = grpNull;
+if (_layer637) then {
+	_item617 = createGroup east;
+	_this = _item617;
+	_groups pushback _this;
+	_groupIDs pushback 617;
+};
+
+private _item619 = grpNull;
+if (_layer637) then {
+	_item619 = createGroup east;
+	_this = _item619;
+	_groups pushback _this;
+	_groupIDs pushback 619;
+};
+
+private _item625 = grpNull;
+if (_layer637) then {
+	_item625 = createGroup resistance;
+	_this = _item625;
+	_groups pushback _this;
+	_groupIDs pushback 625;
+};
+
+private _item606 = grpNull;
+if (_layer637) then {
+	_item606 = createGroup resistance;
+	_this = _item606;
+	_groups pushback _this;
+	_groupIDs pushback 606;
+};
+
+private _item706 = grpNull;
+if (_layer670) then {
+	_item706 = createGroup east;
+	_this = _item706;
+	_groups pushback _this;
+	_groupIDs pushback 706;
+};
+
+private _item708 = grpNull;
+if (_layer670) then {
+	_item708 = createGroup east;
+	_this = _item708;
+	_groups pushback _this;
+	_groupIDs pushback 708;
+};
+
+private _item716 = grpNull;
+if (_layer670) then {
+	_item716 = createGroup east;
+	_this = _item716;
+	_groups pushback _this;
+	_groupIDs pushback 716;
+};
+
+private _item718 = grpNull;
+if (_layer670) then {
+	_item718 = createGroup civilian;
+	_this = _item718;
+	_groups pushback _this;
+	_groupIDs pushback 718;
+};
+
+private _item720 = grpNull;
+if (_layer670) then {
+	_item720 = createGroup civilian;
+	_this = _item720;
+	_groups pushback _this;
+	_groupIDs pushback 720;
+};
+
+private _item732 = grpNull;
+if (_layer670) then {
+	_item732 = createGroup east;
+	_this = _item732;
+	_groups pushback _this;
+	_groupIDs pushback 732;
+};
+
+private _item745 = grpNull;
+if (_layer770) then {
+	_item745 = createGroup resistance;
+	_this = _item745;
+	_groups pushback _this;
+	_groupIDs pushback 745;
+};
+
+private _item773 = grpNull;
+if (_layerRoot) then {
+	_item773 = createGroup resistance;
+	_this = _item773;
+	_groups pushback _this;
+	_groupIDs pushback 773;
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Objects
+private _objects = [];
+private _objectIDs = [];
+
+private _item376 = objNull;
+if (_layer0) then {
+	_item376 = _item375 createUnit ["B_RangeMaster_F",[11304.4,3880.8,3.8147e-006],[],0,"CAN_COLLIDE"];
+	_item375 selectLeader _item376;
+	_this = _item376;
+	_objects pushback _this;
+	_objectIDs pushback 376;
+	_this setPosWorld [11304.4,3880.85,50.8064];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [["arifle_RPK12_lush_F","","acc_flashlight","optic_Arco_lush_F",["75rnd_762x39_AK12_Lush_Mag_F",75],[],""],[],["hgun_Pistol_heavy_01_green_F","","","",["11Rnd_45ACP_Mag",11],[],""],["U_O_R_Gorka_01_camo_F",[["FirstAidKit",1],["Chemlight_green",1,1],["11Rnd_45ACP_Mag",1,11]]],["V_SmershVest_01_F",[["HandGrenade",2,1],["SmokeShell",1,1],["SmokeShellGreen",1,1],["SmokeShellOrange",1,1],["SmokeShellPurple",1,1],["Chemlight_green",1,1],["100Rnd_65x39_caseless_black_mag",3,100],["11Rnd_45ACP_Mag",2,11]]],["B_Carryall_taiga_F",[["SatchelCharge_Remote_Mag",2,1],["75rnd_762x39_AK12_Lush_Mag_F",3,75]]],"H_HelmetAggressor_cover_taiga_F","G_Balaclava_oli",["Rangefinder","","","",[],[],""],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch","O_NVGoggles_grn_F"]];
+	selectPlayer _this;
+	_this setname "William MacDonald";;
+	_this setface "GreekHead_A3_03";;
+	_this setpitch 0.96;;
+};
+
+private _item378 = objNull;
+if (_layer0) then {
+	_item378 = createVehicle ["B_Heli_Light_01_dynamicLoadout_F",[11300.5,3878.07,-0.00286865],[],0,"CAN_COLLIDE"];
+	_this = _item378;
+	_objects pushback _this;
+	_objectIDs pushback 378;
+	_this setPosWorld [11300.5,3878.01,52.6003];
+	_this setVectorDirAndUp [[0,0.9994,0.0346437],[0.00265199,-0.0346436,0.999396]];
+	_this setPylonLoadout [1,"PylonRack_12Rnd_missiles"];
+	_this setPylonLoadout [2,"PylonRack_12Rnd_missiles"];
+	[_this,"[[[[""arifle_MXC_F""],[2]],[[""SmokeShell"",""SmokeShellBlue"",""30Rnd_65x39_caseless_mag""],[2,2,4]],[[""FirstAidKit"",""ToolKit"",""ItemGPS""],[2,1,1]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item113 = objNull;
+if (_layer78) then {
+	_item113 = _item111 createUnit ["O_T_Soldier_SL_F",[11324.5,3280.95,0.15327],[],0,"CAN_COLLIDE"];
+	_item111 selectLeader _item113;
+	_this = _item113;
+	_objects pushback _this;
+	_objectIDs pushback 113;
+	_this setPosWorld [11324.5,3281,13.8147];
+	_this setVectorDirAndUp [[-0.852954,-0.521986,0],[0,0,1]];
+	_this setname "Yan Chao";;
+	_this setface "AsianHead_A3_03";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.0365;;
+};
+
+private _item115 = objNull;
+if (_layer78) then {
+	_item115 = _item114 createUnit ["O_T_Soldier_F",[11293.5,3279.35,2.28882e-005],[],0,"CAN_COLLIDE"];
+	_item114 selectLeader _item115;
+	_this = _item115;
+	_objects pushback _this;
+	_objectIDs pushback 115;
+	_this setPosWorld [11293.5,3279.4,16.972];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Rong Jin";;
+	_this setface "AsianHead_A3_06";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.04879;;
+};
+
+private _item116 = objNull;
+if (_layer78) then {
+	_item116 = _item114 createUnit ["O_T_Soldier_AR_F",[11288.5,3280.17,5.72205e-006],[],0,"CAN_COLLIDE"];
+	_this = _item116;
+	_objects pushback _this;
+	_objectIDs pushback 116;
+	_this setPosWorld [11288.5,3280.22,17.4721];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Weimin Jao";;
+	_this setface "AsianHead_A3_07";;
+	_this setspeaker "male02chi";;
+	_this setpitch 1.04163;;
+};
+
+private _item124 = objNull;
+if (_layer78) then {
+	_item124 = _item125 createUnit ["O_T_Soldier_AA_F",[11320.1,3279.87,7.62939e-006],[],0,"CAN_COLLIDE"];
+	_item125 selectLeader _item124;
+	_this = _item124;
+	_objects pushback _this;
+	_objectIDs pushback 124;
+	_this setPosWorld [11320.1,3279.92,13.6934];
+	_this setVectorDirAndUp [[-0.91585,-0.401521,0],[0,0,1]];
+	_this setname "Nianzu Lu";;
+	_this setface "AsianHead_A3_01";;
+	_this setspeaker "male03chi";;
+	_this setpitch 1.04326;;
+};
+
+private _item82 = objNull;
+if (_layer78) then {
+	_item82 = createVehicle ["Land_GarbageHeap_02_F",[11330.9,3279.79,-9.53674e-007],[],0,"CAN_COLLIDE"];
+	_this = _item82;
+	_objects pushback _this;
+	_objectIDs pushback 82;
+	_this setPosWorld [11330.9,3279.79,13.691];
+	_this setVectorDirAndUp [[-0.999546,-0.0286509,-0.00930458],[-0.0080009,-0.0452853,0.998942]];
+	_this enableSimulation false;
+};
+
+private _item81 = objNull;
+if (_layer78) then {
+	_item81 = createVehicle ["Land_GarbageHeap_03_F",[11330.7,3284.63,0],[],0,"CAN_COLLIDE"];
+	_this = _item81;
+	_objects pushback _this;
+	_objectIDs pushback 81;
+	_this setPosWorld [11330.7,3284.63,14.2139];
+	_this setVectorDirAndUp [[0.999949,0.00974842,-0.00270383],[0.00265199,0.00532648,0.999982]];
+	_this enableSimulation false;
+};
+
+private _item104 = objNull;
+if (_layer78) then {
+	_item104 = createVehicle ["PowerCable_01_Roll_F",[11322.6,3286.68,0.0422964],[],0,"CAN_COLLIDE"];
+	_this = _item104;
+	_objects pushback _this;
+	_objectIDs pushback 104;
+	_this setPosWorld [11322.6,3286.68,13.8444];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+	_this animateSource ['Cap_1_hide',0,true];
+	_this animateSource ['Cap_2_hide',0,true];
+};
+
+private _item106 = objNull;
+if (_layer78) then {
+	_item106 = createVehicle ["PowerCable_01_Roll_F",[11323.6,3280.34,1.15243],[],0,"CAN_COLLIDE"];
+	_this = _item106;
+	_objects pushback _this;
+	_objectIDs pushback 106;
+	_this setPosWorld [11323.6,3280.34,14.9056];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+	_this animateSource ['Cap_1_hide',0,true];
+	_this animateSource ['Cap_2_hide',0,true];
+};
+
+private _item94 = objNull;
+if (_layer78) then {
+	_item94 = createSimpleObject ["Land_DeskChair_01_black_F",[11326.9,3280.06,13.8086]];
+	_this = _item94;
+	_objects pushback _this;
+	_objectIDs pushback 94;
+	_this setPosWorld [11326.9,3280.06,14.0294];
+	_this setVectorDirAndUp [[0.335487,-0.942045,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item95 = objNull;
+if (_layer78) then {
+	_item95 = createSimpleObject ["Land_DeskChair_01_black_F",[11323.6,3283.21,13.8086]];
+	_this = _item95;
+	_objects pushback _this;
+	_objectIDs pushback 95;
+	_this setPosWorld [11323.6,3283.21,14.0294];
+	_this setVectorDirAndUp [[-0.867307,0.497774,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item135 = objNull;
+if (_layer78) then {
+	_item135 = createSimpleObject ["Land_DeskChair_01_black_F",[11322.8,3281.85,13.8283]];
+	_this = _item135;
+	_objects pushback _this;
+	_objectIDs pushback 135;
+	_this setPosWorld [11322.8,3281.85,14.0491];
+	_this setVectorDirAndUp [[0.10383,-0.994595,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item92 = objNull;
+if (_layer78) then {
+	_item92 = createSimpleObject ["Land_TripodScreen_01_dual_v2_black_F",[11323.9,3284.25,13.8133]];
+	_this = _item92;
+	_objects pushback _this;
+	_objectIDs pushback 92;
+	_this setPosWorld [11323.9,3284.25,14.6596];
+	_this setVectorDirAndUp [[0.782183,-0.623049,0],[0,0,1]];
+	_this enableSimulation false;
+	_this setObjectTextureGlobal [0,""];
+	_this setObjectTextureGlobal [1,""];
+};
+
+private _item90 = objNull;
+if (_layer78) then {
+	_item90 = createSimpleObject ["Land_MultiScreenComputer_01_black_F",[11326.2,3279.91,14.7094]];
+	_this = _item90;
+	_objects pushback _this;
+	_objectIDs pushback 90;
+	_this setPosWorld [11326.2,3279.91,14.9595];
+	_this setVectorDirAndUp [[0.0294532,-0.999566,0],[0,0,1]];
+	_this enableSimulation false;
+	_this setObjectTextureGlobal [1,"#(argb,8,8,3)color(0,0,0,0.0,co)"];
+	_this setObjectTextureGlobal [2,"#(argb,8,8,3)color(0,0,0,0.0,co)"];
+	_this setObjectTextureGlobal [3,"#(argb,8,8,3)color(0,0,0,0.0,co)"];
+};
+
+private _item96 = objNull;
+if (_layer78) then {
+	_item96 = createSimpleObject ["Land_PortableCabinet_01_7drawers_black_F",[11326.9,3279.84,14.7002]];
+	_this = _item96;
+	_objects pushback _this;
+	_objectIDs pushback 96;
+	_this setPosWorld [11326.9,3279.84,15.1182];
+	_this setVectorDirAndUp [[0.00247112,-0.999997,0],[0,0,1]];
+	_this enableSimulation false;
+	_this animate ['Drawer_2_move_source',0,true];
+	_this animate ['Drawer_3_move_source',0,true];
+	_this animate ['Drawer_4_move_source',0,true];
+	_this animate ['Drawer_5_move_source',0,true];
+	_this animate ['Drawer_6_move_source',0,true];
+	_this animate ['Drawer_2_hide_source',0,true];
+	_this animate ['Drawer_3_hide_source',0,true];
+	_this animate ['Drawer_4_hide_source',0,true];
+	_this animate ['Drawer_5_hide_source',0,true];
+	_this animate ['Drawer_6_hide_source',0,true];
+};
+
+private _item97 = objNull;
+if (_layer78) then {
+	_item97 = createSimpleObject ["Land_PortableCabinet_01_7drawers_black_F",[11328.7,3285.89,14.7094]];
+	_this = _item97;
+	_objects pushback _this;
+	_objectIDs pushback 97;
+	_this setPosWorld [11328.7,3285.89,15.1274];
+	_this setVectorDirAndUp [[0.999336,0.036438,0],[0,0,1]];
+	_this enableSimulation false;
+	_this animate ['Drawer_2_move_source',0,true];
+	_this animate ['Drawer_3_move_source',0,true];
+	_this animate ['Drawer_4_move_source',0,true];
+	_this animate ['Drawer_5_move_source',0,true];
+	_this animate ['Drawer_6_move_source',0,true];
+	_this animate ['Drawer_2_hide_source',0,true];
+	_this animate ['Drawer_3_hide_source',0,true];
+	_this animate ['Drawer_4_hide_source',0,true];
+	_this animate ['Drawer_5_hide_source',0,true];
+	_this animate ['Drawer_6_hide_source',0,true];
+};
+
+private _item93 = objNull;
+if (_layer78) then {
+	_item93 = createSimpleObject ["Land_PortableCabinet_01_bookcase_black_F",[11327.7,3279.8,13.8133]];
+	_this = _item93;
+	_objects pushback _this;
+	_objectIDs pushback 93;
+	_this setPosWorld [11327.7,3279.8,14.2312];
+	_this setVectorDirAndUp [[0.0459323,-0.998945,0],[0,0,1]];
+	_this enableSimulation false;
+	_this setObjectTextureGlobal [1,"a3\props_f_enoch\military\camps\data\portablecabinet_01_books_co.paa"];
+	_this setObjectTextureGlobal [2,"a3\props_f_enoch\military\camps\data\portablecabinet_01_books_co.paa"];
+	_this setObjectTextureGlobal [3,"a3\props_f_enoch\military\camps\data\portablecabinet_01_books_co.paa"];
+	_this setObjectTextureGlobal [4,"a3\props_f_enoch\military\camps\data\portablecabinet_01_books_co.paa"];
+	_this setObjectTextureGlobal [5,"a3\props_f_enoch\military\camps\data\portablecabinet_01_books_co.paa"];
+	_this setObjectTextureGlobal [6,"a3\props_f_enoch\military\camps\data\portablecabinet_01_books_co.paa"];
+	_this setObjectTextureGlobal [7,"a3\props_f_enoch\military\camps\data\portablecabinet_01_books_co.paa"];
+	_this setObjectTextureGlobal [8,"a3\props_f_enoch\military\camps\data\portablecabinet_01_books_co.paa"];
+	_this setObjectTextureGlobal [9,"a3\props_f_enoch\military\camps\data\portablecabinet_01_books_co.paa"];
+};
+
+private _item84 = objNull;
+if (_layer78) then {
+	_item84 = createSimpleObject ["Land_PortableDesk_01_black_F",[11328.4,3285.82,13.8133]];
+	_this = _item84;
+	_objects pushback _this;
+	_objectIDs pushback 84;
+	_this setPosWorld [11328.4,3285.82,14.2572];
+	_this setVectorDirAndUp [[0.999995,0.00302977,0],[0,0,1]];
+	_this enableSimulation false;
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_1_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_2_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_3_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_4_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_5_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_6_move_source',0,true]};
+	_this animate ['Lid_1_hide_source',1,true];
+	_this animate ['Lid_2_hide_source',1,true];
+	_this animate ['Wing_L_hide_source',0,true];
+	_this animate ['Wing_R_hide_source',0,true];
+};
+
+private _item85 = objNull;
+if (_layer78) then {
+	_item85 = createSimpleObject ["Land_PortableDesk_01_black_F",[11328.4,3283.32,13.8133]];
+	_this = _item85;
+	_objects pushback _this;
+	_objectIDs pushback 85;
+	_this setPosWorld [11328.4,3283.32,14.2572];
+	_this setVectorDirAndUp [[0.999995,0.00302977,0],[0,0,1]];
+	_this enableSimulation false;
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_1_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_2_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_3_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_4_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_5_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_6_move_source',0,true]};
+	_this animate ['Lid_1_hide_source',1,true];
+	_this animate ['Lid_2_hide_source',1,true];
+	_this animate ['Wing_L_hide_source',0,true];
+	_this animate ['Wing_R_hide_source',0,true];
+};
+
+private _item86 = objNull;
+if (_layer78) then {
+	_item86 = createSimpleObject ["Land_PortableDesk_01_black_F",[11326.1,3279.95,13.8133]];
+	_this = _item86;
+	_objects pushback _this;
+	_objectIDs pushback 86;
+	_this setPosWorld [11326.1,3279.95,14.2572];
+	_this setVectorDirAndUp [[0.0204424,-0.999791,0],[0,0,1]];
+	_this enableSimulation false;
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_1_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_2_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_3_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_4_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_5_move_source',0,true]};
+	if(_this animationSourcePhase 'Lid_2_hide_source' > 0)then{_this animate ['Drawer_6_move_source',0,true]};
+	_this animate ['Lid_1_hide_source',1,true];
+	_this animate ['Lid_2_hide_source',1,true];
+	_this animate ['Wing_L_hide_source',0,true];
+	_this animate ['Wing_R_hide_source',0,true];
+};
+
+private _item91 = objNull;
+if (_layer78) then {
+	_item91 = createSimpleObject ["Land_PortableGenerator_01_black_F",[11321.6,3286.74,13.7429]];
+	_this = _item91;
+	_objects pushback _this;
+	_objectIDs pushback 91;
+	_this setPosWorld [11321.6,3286.74,14.1186];
+	_this setVectorDirAndUp [[0.025037,-0.999687,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item88 = objNull;
+if (_layer78) then {
+	_item88 = createSimpleObject ["Land_PortableServer_01_black_F",[11328.6,3282.68,14.7002]];
+	_this = _item88;
+	_objects pushback _this;
+	_objectIDs pushback 88;
+	_this setPosWorld [11328.6,3282.68,14.8733];
+	_this setVectorDirAndUp [[-0.00634887,0.99998,0],[0,0,1]];
+	_this enableSimulation false;
+	_this animateSource ['Lights_Off_Source',0,true];
+	_this animateSource ['Server_Move_Source',0,true];
+	_this animateSource ['Server_Hide_Source',0,true];
+};
+
+private _item87 = objNull;
+if (_layer78) then {
+	_item87 = createSimpleObject ["Land_Router_01_black_F",[11328.5,3284.26,14.7002]];
+	_this = _item87;
+	_objects pushback _this;
+	_objectIDs pushback 87;
+	_this setPosWorld [11328.5,3284.26,14.816];
+	_this setVectorDirAndUp [[0.989568,-0.144065,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item126 = objNull;
+if (_layer78) then {
+	_item126 = createSimpleObject ["SatelliteAntenna_01_Black_F",[11322.2,3280.18,16.799]];
+	_this = _item126;
+	_objects pushback _this;
+	_objectIDs pushback 126;
+	_this setPosWorld [11322.2,3280.18,17.7181];
+	_this setVectorDirAndUp [[0.976714,0.214546,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item128 = objNull;
+if (_layer78) then {
+	_item128 = createSimpleObject ["Land_Tyre_F",[11339.5,3262.14,12.5761]];
+	_this = _item128;
+	_objects pushback _this;
+	_objectIDs pushback 128;
+	_this setPosWorld [11339.5,3262.14,12.6492];
+	_this setVectorDirAndUp [[0,0.993187,0.116534],[-0.139943,-0.115387,0.983413]];
+	_this enableSimulation false;
+};
+
+private _item129 = objNull;
+if (_layer78) then {
+	_item129 = createSimpleObject ["Land_Tyre_F",[11340.2,3261.88,12.6132]];
+	_this = _item129;
+	_objects pushback _this;
+	_objectIDs pushback 129;
+	_this setPosWorld [11340.2,3261.88,12.687];
+	_this setVectorDirAndUp [[0,0.993187,0.116534],[-0.0213272,-0.116508,0.992961]];
+	_this enableSimulation false;
+};
+
+private _item130 = objNull;
+if (_layer78) then {
+	_item130 = createSimpleObject ["Land_Tyre_F",[11335,3262.99,12.142]];
+	_this = _item130;
+	_objects pushback _this;
+	_objectIDs pushback 130;
+	_this setPosWorld [11335,3262.99,12.2163];
+	_this setVectorDirAndUp [[0,0.999488,0.031983],[-0.0186628,-0.0319774,0.999314]];
+	_this enableSimulation false;
+};
+
+private _item131 = objNull;
+if (_layer78) then {
+	_item131 = createSimpleObject ["Land_Tyre_F",[11330.1,3278.75,13.6186]];
+	_this = _item131;
+	_objects pushback _this;
+	_objectIDs pushback 131;
+	_this setPosWorld [11330.1,3278.75,13.6929];
+	_this setVectorDirAndUp [[0,1,0],[0.0373061,0,0.999304]];
+	_this enableSimulation false;
+};
+
+private _item132 = objNull;
+if (_layer78) then {
+	_item132 = createSimpleObject ["Land_Tyre_F",[11330,3287.74,13.6751]];
+	_this = _item132;
+	_objects pushback _this;
+	_objectIDs pushback 132;
+	_this setPosWorld [11330,3287.74,13.7492];
+	_this setVectorDirAndUp [[0,0.998284,-0.0585666],[0.0612179,0.0584567,0.996411]];
+	_this enableSimulation false;
+};
+
+private _item127 = objNull;
+if (_layer78) then {
+	_item127 = createVehicle ["Land_Tyres_F",[11339.2,3260.6,0],[],0,"CAN_COLLIDE"];
+	_this = _item127;
+	_objects pushback _this;
+	_objectIDs pushback 127;
+	_this setPosWorld [11339.2,3260.6,12.6107];
+	_this setVectorDirAndUp [[0,0.993187,0.116534],[-0.139943,-0.115387,0.983413]];
+	_this enableSimulation false;
+};
+
+private _item99 = objNull;
+if (_layer78) then {
+	_item99 = createSimpleObject ["TrashBagHolder_01_F",[11328.7,3281.79,13.8133]];
+	_this = _item99;
+	_objects pushback _this;
+	_objectIDs pushback 99;
+	_this setPosWorld [11328.7,3281.79,14.2363];
+	_this setVectorDirAndUp [[0.998894,-0.0470138,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item108 = objNull;
+if (_layer78) then {
+	_item108 = createSimpleObject ["Land_WaterBottle_01_pack_F",[11324.8,3284.46,13.8133]];
+	_this = _item108;
+	_objects pushback _this;
+	_objectIDs pushback 108;
+	_this setPosWorld [11324.8,3284.46,13.9441];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item109 = objNull;
+if (_layer78) then {
+	_item109 = createSimpleObject ["Land_WaterBottle_01_pack_F",[11325,3284.52,13.8133]];
+	_this = _item109;
+	_objects pushback _this;
+	_objectIDs pushback 109;
+	_this setPosWorld [11325,3284.52,13.9441];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item107 = objNull;
+if (_layer78) then {
+	_item107 = createSimpleObject ["Land_WaterCooler_01_new_F",[11328.8,3281.34,13.8133]];
+	_this = _item107;
+	_objects pushback _this;
+	_objectIDs pushback 107;
+	_this setPosWorld [11328.8,3281.34,14.5453];
+	_this setVectorDirAndUp [[0.999983,-0.00576032,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item100 = objNull;
+if (_layer78) then {
+	_item100 = createVehicle ["Land_WoodenCrate_01_stack_x3_F",[11328.9,3278.22,0],[],0,"CAN_COLLIDE"];
+	_this = _item100;
+	_objects pushback _this;
+	_objectIDs pushback 100;
+	_this setPosWorld [11328.9,3278.22,14.3721];
+	_this setVectorDirAndUp [[0,1,0],[0.0373061,0,0.999304]];
+	_this enableSimulation false;
+};
+
+private _item466 = objNull;
+if (_layer78) then {
+	_item466 = createVehicle ["Land_Laptop_Intel_01_F",[11328.4,3285.03,1.01062],[],0,"CAN_COLLIDE"];
+	_this = _item466;
+	_objects pushback _this;
+	_objectIDs pushback 466;
+	_this setPosWorld [11328.4,3285.03,14.8563];
+	_this setVectorDirAndUp [[-0.986394,-0.164399,0],[0,0,1]];
+	_this setObjectTextureGlobal [0,"a3\missions_f_oldman\data\img\screens\csatntb_co.paa"];
+};
+
+private _item516 = objNull;
+if (_layer78) then {
+	_item516 = createVehicle ["Item_Antimalaricum",[11323.5,3281.08,1.16],[],0,"CAN_COLLIDE"];
+	_this = _item516;
+	_objects pushback _this;
+	_objectIDs pushback 516;
+	_this setPosWorld [11323.5,3281.08,15.0876];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+};
+
+private _item519 = objNull;
+if (_layer78) then {
+	_item519 = createVehicle ["O_T_LSV_02_unarmed_F",[11323.2,3268.56,6.67572e-005],[],0,"CAN_COLLIDE"];
+	_this = _item519;
+	_objects pushback _this;
+	_objectIDs pushback 519;
+	_this setPosWorld [11323.3,3268.45,14.9523];
+	_this setVectorDirAndUp [[0.708917,-0.700642,-0.0808529],[0.0532583,-0.061131,0.996708]];
+	[_this,"[[[[""arifle_CTAR_blk_F""],[2]],[[""30Rnd_580x42_Mag_F"",""100Rnd_580x42_Mag_F"",""HandGrenade"",""SmokeShell"",""SmokeShellRed"",""SmokeShellYellow"",""SmokeShellOrange"",""1Rnd_HE_Grenade_shell"",""1Rnd_Smoke_Grenade_shell"",""1Rnd_SmokeYellow_Grenade_shell"",""1Rnd_SmokeOrange_Grenade_shell"",""1Rnd_SmokeRed_Grenade_shell"",""16Rnd_9x21_Mag"",""RPG32_F""],[16,4,10,4,4,4,4,10,4,4,4,4,12,2]],[[""FirstAidKit""],[10]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item541 = objNull;
+if (_layer521) then {
+	_item541 = createVehicle ["Land_TimberPile_01_F",[10989.7,4161.49,4.57764e-005],[],0,"CAN_COLLIDE"];
+	_this = _item541;
+	_objects pushback _this;
+	_objectIDs pushback 541;
+	_this setPosWorld [10989.7,4161.49,177.907];
+	_this setVectorDirAndUp [[0,0.990878,0.134762],[-0.02133,-0.134731,0.990653]];
+};
+
+private _item543 = objNull;
+if (_layer521) then {
+	_item543 = _item542 createUnit ["O_GEN_Commander_F",[11014.2,4198.74,0],[],0,"CAN_COLLIDE"];
+	_item542 selectLeader _item543;
+	_this = _item543;
+	_objects pushback _this;
+	_objectIDs pushback 543;
+	_this setPosWorld [11014.2,4198.79,182.514];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Commander_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",2,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["SmokeShellYellow",1,1],["30Rnd_762x39_Mag_F",1,30]]],[],"H_Beret_gen_F","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Ewe Babitu";;
+	_this setface "TanoanHead_A3_05";;
+	_this setspeaker "male01engfre";;
+	_this setpitch 0.982203;;
+};
+
+private _item544 = objNull;
+if (_layer521) then {
+	_item544 = _item542 createUnit ["O_GEN_Soldier_F",[11014.9,4199.13,1.52588e-005],[],0,"CAN_COLLIDE"];
+	_this = _item544;
+	_objects pushback _this;
+	_objectIDs pushback 544;
+	_this setPosWorld [11014.9,4199.18,182.516];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [["LMG_Mk200_black_F","","","optic_ACO_grn",["200Rnd_65x39_cased_Box",200],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["200Rnd_65x39_cased_Box",1,200]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Taine Molia";;
+	_this setface "TanoanHead_A3_03";;
+	_this setspeaker "male02engfre";;
+	_this setpitch 0.955332;;
+};
+
+private _item551 = objNull;
+if (_layer521) then {
+	_item551 = _item550 createUnit ["O_GEN_Soldier_F",[11022.6,4215.12,0],[],0,"CAN_COLLIDE"];
+	_item550 selectLeader _item551;
+	_this = _item551;
+	_objects pushback _this;
+	_objectIDs pushback 551;
+	_this setPosWorld [11022.6,4215.17,182.531];
+	_this setVectorDirAndUp [[-0.296795,-0.954941,0],[0,0,1]];
+	_this setUnitLoadout [["SMG_02_F","","acc_flashlight","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",1,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Siaki Bari";;
+	_this setface "TanoanHead_A3_02";;
+	_this setspeaker "male01engfre";;
+	_this setpitch 1.04226;;
+};
+
+private _item555 = objNull;
+if (_layer521) then {
+	_item555 = _item554 createUnit ["O_GEN_Soldier_F",[10990.3,4166.56,0],[],0,"CAN_COLLIDE"];
+	_item554 selectLeader _item555;
+	_this = _item555;
+	_objects pushback _this;
+	_objectIDs pushback 555;
+	_this setPosWorld [10990.3,4166.61,178.122];
+	_this setVectorDirAndUp [[-0.296795,-0.954941,0],[0,0,1]];
+	_this setUnitLoadout [["srifle_DMR_06_hunter_F","","","",["10Rnd_Mk14_762x51_Mag",10],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["10Rnd_Mk14_762x51_Mag",3,10]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Taine Turagabea";;
+	_this setface "TanoanHead_A3_01";;
+	_this setspeaker "male01engfre";;
+	_this setpitch 0.957669;;
+};
+
+private _item558 = objNull;
+if (_layer521) then {
+	_item558 = createVehicle ["B_GEN_Offroad_01_comms_F",[11023.5,4198.6,0.000305176],[],0,"CAN_COLLIDE"];
+	_this = _item558;
+	_objects pushback _this;
+	_objectIDs pushback 558;
+	_this setPosWorld [11023.5,4198.68,184.295];
+	_this setVectorDirAndUp [[0.987887,0.15517,0.00112676],[-0.0053265,0.0266522,0.999631]];
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit""],[4]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item559 = objNull;
+if (_layer521) then {
+	_item559 = createVehicle ["Land_Decal_ScorchMark_01_small_F",[11017.5,4215.68,0],[],0,"CAN_COLLIDE"];
+	_this = _item559;
+	_objects pushback _this;
+	_objectIDs pushback 559;
+	_this setPosWorld [11017.5,4215.68,182.522];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item560 = objNull;
+if (_layer521) then {
+	_item560 = createVehicle ["Land_Campfire_F",[11017.3,4215.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item560;
+	_objects pushback _this;
+	_objectIDs pushback 560;
+	_this setPosWorld [11017.3,4215.78,182.741];
+	_this setVectorDirAndUp [[0,0.999996,0.00265199],[-0.00265204,-0.00265198,0.999993]];
+};
+
+private _item561 = objNull;
+if (_layer521) then {
+	_item561 = createVehicle ["Land_WoodPile_F",[11014.2,4218.97,-1.52588e-005],[],0,"CAN_COLLIDE"];
+	_this = _item561;
+	_objects pushback _this;
+	_objectIDs pushback 561;
+	_this setPosWorld [11014.2,4218.97,182.782];
+	_this setVectorDirAndUp [[0,0.999996,0.00265199],[-0.00265204,-0.00265198,0.999993]];
+	_this enableSimulation false;
+};
+
+private _item562 = objNull;
+if (_layer521) then {
+	_item562 = createVehicle ["Land_ChairWood_F",[11014.9,4215.73,0],[],0,"CAN_COLLIDE"];
+	_this = _item562;
+	_objects pushback _this;
+	_objectIDs pushback 562;
+	_this setPosWorld [11014.9,4215.68,182.514];
+	_this setVectorDirAndUp [[-0.776245,0.630426,0.0026073],[0.000296895,-0.00377017,0.999993]];
+	_this enableDynamicSimulation true;
+};
+
+private _item563 = objNull;
+if (_layer521) then {
+	_item563 = createSimpleObject ["Land_WoodenLog_02_F",[11017.9,4217.85,182.529]];
+	_this = _item563;
+	_objects pushback _this;
+	_objectIDs pushback 563;
+	_this setPosWorld [11017.9,4217.85,182.85];
+	_this setVectorDirAndUp [[0.564622,0.825345,0.00265183],[-0.00368619,-0.000691234,0.999993]];
+	_this enableSimulation false;
+};
+
+private _item565 = objNull;
+if (_layer521) then {
+	_item565 = _item564 createUnit ["O_GEN_Commander_F",[11016.5,4217.51,-1.52588e-005],[],0,"CAN_COLLIDE"];
+	_item564 selectLeader _item565;
+	_this = _item565;
+	_objects pushback _this;
+	_objectIDs pushback 565;
+	_this setPosWorld [11016.5,4217.56,182.525];
+	_this setVectorDirAndUp [[0.239137,-0.970986,0],[0,0,1]];
+	_this setUnitLoadout [["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Commander_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",2,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["SmokeShellYellow",1,1],["30Rnd_762x39_Mag_F",1,30]]],[],"H_Beret_gen_F","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Fetu Babitu";;
+	_this setface "TanoanHead_A3_04";;
+	_this setspeaker "male01engfre";;
+	_this setpitch 0.974735;;
+};
+
+private _item569 = objNull;
+if (_layer521) then {
+	_item569 = _item568 createUnit ["O_GEN_Soldier_F",[11016,4214.27,0],[],0,"CAN_COLLIDE"];
+	_item568 selectLeader _item569;
+	_this = _item569;
+	_objects pushback _this;
+	_objectIDs pushback 569;
+	_this setPosWorld [11016,4214.32,182.517];
+	_this setVectorDirAndUp [[0.729722,0.683744,0],[0,0,1]];
+	_this setUnitLoadout [["LMG_Mk200_black_F","","acc_flashlight","optic_ACO_grn",["200Rnd_65x39_cased_Box",200],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["200Rnd_65x39_cased_Box",1,200]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Maui Veniri";;
+	_this setface "TanoanHead_A3_07";;
+	_this setspeaker "male01engfre";;
+	_this setpitch 1.03556;;
+};
+
+private _item572 = objNull;
+if (_layer521) then {
+	_item572 = _item571 createUnit ["O_GEN_Soldier_F",[11021.1,4217.77,0],[],0,"CAN_COLLIDE"];
+	_item571 selectLeader _item572;
+	_this = _item572;
+	_objects pushback _this;
+	_objectIDs pushback 572;
+	_this setPosWorld [11021.1,4217.82,182.531];
+	_this setVectorDirAndUp [[-0.296792,-0.954942,0],[0,0,1]];
+	_this setUnitLoadout [["SMG_02_F","","acc_flashlight","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Tanielu Katalou";;
+	_this setface "TanoanHead_A3_03";;
+	_this setspeaker "Male02ENGFRE";;
+	_this setpitch 0.98;;
+};
+
+private _item583 = objNull;
+if (_layer521) then {
+	_item583 = createVehicle ["Land_CampingTable_small_F",[11023.2,4217.34,0],[],0,"CAN_COLLIDE"];
+	_this = _item583;
+	_objects pushback _this;
+	_objectIDs pushback 583;
+	_this setPosWorld [11023.2,4217.34,182.935];
+	_this setVectorDirAndUp [[-0.344333,0.938847,0],[0,0,1]];
+	_this enableDynamicSimulation true;
+};
+
+private _item584 = objNull;
+if (_layer521) then {
+	_item584 = createVehicle ["Item_Sleeping_bag_folded_01",[11023.3,4217.44,0.813004],[],0,"CAN_COLLIDE"];
+	_this = _item584;
+	_objects pushback _this;
+	_objectIDs pushback 584;
+	_this setPosWorld [11023.3,4217.44,183.458];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableDynamicSimulation true;
+};
+
+private _item585 = objNull;
+if (_layer521) then {
+	_item585 = createVehicle ["Item_Antimalaricum",[11023,4217.09,0.813004],[],0,"CAN_COLLIDE"];
+	_this = _item585;
+	_objects pushback _this;
+	_objectIDs pushback 585;
+	_this setPosWorld [11023,4217.09,183.611];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableDynamicSimulation true;
+};
+
+private _item586 = objNull;
+if (_layer521) then {
+	_item586 = createVehicle ["Land_CampingChair_V1_F",[11022.9,4218.26,0],[],0,"CAN_COLLIDE"];
+	_this = _item586;
+	_objects pushback _this;
+	_objectIDs pushback 586;
+	_this setPosWorld [11022.9,4218.26,183.038];
+	_this setVectorDirAndUp [[0.913867,0.406013,0],[0,0,1]];
+	_this enableDynamicSimulation true;
+};
+
+private _item587 = objNull;
+if (_layer521) then {
+	_item587 = createVehicle ["Land_Ground_sheet_folded_blue_F",[11023.2,4217.66,0],[],0,"CAN_COLLIDE"];
+	_this = _item587;
+	_objects pushback _this;
+	_objectIDs pushback 587;
+	_this setPosWorld [11023.2,4217.66,182.603];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+};
+
+private _item588 = objNull;
+if (_layer521) then {
+	_item588 = createVehicle ["Land_Garbage_square5_F",[11019,4215.54,-0.001297],[],0,"CAN_COLLIDE"];
+	_this = _item588;
+	_objects pushback _this;
+	_objectIDs pushback 588;
+	_this setPosWorld [11019,4215.54,182.564];
+	_this setVectorDirAndUp [[0,0.999996,0.00265199],[-0.00265204,-0.00265198,0.999993]];
+	_this enableSimulation false;
+};
+
+private _item523 = objNull;
+if (_layer599) then {
+	_item523 = createVehicle ["O_G_HMG_02_high_F",[10997.7,4164.69,-7.62939e-005],[],0,"CAN_COLLIDE"];
+	_this = _item523;
+	_objects pushback _this;
+	_objectIDs pushback 523;
+	_this setPosWorld [10997.9,4164.28,179.119];
+	_this setVectorDirAndUp [[0.100439,-0.962965,-0.25022],[0.0850215,-0.242264,0.966478]];
+};
+
+private _item524 = objNull;
+if (_layer599) then {
+	_item524 = createVehicle ["Land_TimberLog_04_F",[10998.5,4162.43,-0.499252],[],0,"CAN_COLLIDE"];
+	_this = _item524;
+	_objects pushback _this;
+	_objectIDs pushback 524;
+	_this setPosWorld [10998.5,4162.43,176.546];
+	_this setVectorDirAndUp [[-0.737887,-0.674924,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item525 = objNull;
+if (_layer599) then {
+	_item525 = createVehicle ["Land_TimberLog_04_F",[10998.4,4162.44,-0.157089],[],0,"CAN_COLLIDE"];
+	_this = _item525;
+	_objects pushback _this;
+	_objectIDs pushback 525;
+	_this setPosWorld [10998.4,4162.44,176.894];
+	_this setVectorDirAndUp [[-0.737887,-0.674924,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item526 = objNull;
+if (_layer599) then {
+	_item526 = createVehicle ["Land_TimberLog_04_F",[10998.5,4162.36,-0.722107],[],0,"CAN_COLLIDE"];
+	_this = _item526;
+	_objects pushback _this;
+	_objectIDs pushback 526;
+	_this setPosWorld [10998.5,4162.36,176.271];
+	_this setVectorDirAndUp [[-0.737887,-0.674924,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item527 = objNull;
+if (_layer599) then {
+	_item527 = createVehicle ["Land_TimberLog_04_F",[10998.4,4162.47,0.174149],[],0,"CAN_COLLIDE"];
+	_this = _item527;
+	_objects pushback _this;
+	_objectIDs pushback 527;
+	_this setPosWorld [10998.4,4162.47,177.248];
+	_this setVectorDirAndUp [[0.739445,0.673217,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item528 = objNull;
+if (_layer599) then {
+	_item528 = createVehicle ["Land_TimberLog_04_F",[11000.4,4166.8,0.136948],[],0,"CAN_COLLIDE"];
+	_this = _item528;
+	_objects pushback _this;
+	_objectIDs pushback 528;
+	_this setPosWorld [11000.4,4166.8,177.822];
+	_this setVectorDirAndUp [[0.00777991,-0.99997,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item529 = objNull;
+if (_layer599) then {
+	_item529 = createVehicle ["Land_TimberLog_04_F",[10993.4,4162.21,-0.648804],[],0,"CAN_COLLIDE"];
+	_this = _item529;
+	_objects pushback _this;
+	_objectIDs pushback 529;
+	_this setPosWorld [10993.4,4162.21,176.976];
+	_this setVectorDirAndUp [[0.843139,-0.537695,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item530 = objNull;
+if (_layer599) then {
+	_item530 = createVehicle ["Land_TimberLog_04_F",[10993.4,4162.26,-0.311081],[],0,"CAN_COLLIDE"];
+	_this = _item530;
+	_objects pushback _this;
+	_objectIDs pushback 530;
+	_this setPosWorld [10993.4,4162.26,177.321];
+	_this setVectorDirAndUp [[-0.841412,0.540394,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item531 = objNull;
+if (_layer599) then {
+	_item531 = createVehicle ["Land_TimberLog_04_F",[10993.4,4162.26,-0.00352478],[],0,"CAN_COLLIDE"];
+	_this = _item531;
+	_objects pushback _this;
+	_objectIDs pushback 531;
+	_this setPosWorld [10993.4,4162.26,177.629];
+	_this setVectorDirAndUp [[0.843139,-0.537695,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item539 = objNull;
+if (_layer599) then {
+	_item539 = createVehicle ["Land_TimberLog_04_F",[10993.4,4162.23,-1.01256],[],0,"CAN_COLLIDE"];
+	_this = _item539;
+	_objects pushback _this;
+	_objectIDs pushback 539;
+	_this setPosWorld [10993.4,4162.23,176.615];
+	_this setVectorDirAndUp [[0.843139,-0.537695,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item540 = objNull;
+if (_layer599) then {
+	_item540 = createVehicle ["Land_TimberLog_04_F",[10998.4,4162.43,0.491714],[],0,"CAN_COLLIDE"];
+	_this = _item540;
+	_objects pushback _this;
+	_objectIDs pushback 540;
+	_this setPosWorld [10998.4,4162.43,177.55];
+	_this setVectorDirAndUp [[0.739445,0.673217,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item532 = objNull;
+if (_layer599) then {
+	_item532 = createVehicle ["Land_TimberLog_05_F",[10996.4,4160.91,0.156937],[],0,"CAN_COLLIDE"];
+	_this = _item532;
+	_objects pushback _this;
+	_objectIDs pushback 532;
+	_this setPosWorld [10996.4,4160.91,176.435];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item533 = objNull;
+if (_layer599) then {
+	_item533 = createVehicle ["Land_TimberLog_05_F",[10995.7,4161.1,-0.207489],[],0,"CAN_COLLIDE"];
+	_this = _item533;
+	_objects pushback _this;
+	_objectIDs pushback 533;
+	_this setPosWorld [10995.7,4161.1,176.521];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item534 = objNull;
+if (_layer599) then {
+	_item534 = createVehicle ["Land_TimberLog_05_F",[10995.8,4160.39,-0.118271],[],0,"CAN_COLLIDE"];
+	_this = _item534;
+	_objects pushback _this;
+	_objectIDs pushback 534;
+	_this setPosWorld [10995.8,4160.39,176.386];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item535 = objNull;
+if (_layer599) then {
+	_item535 = createVehicle ["Land_TimberLog_05_F",[10996.5,4160.3,0.291397],[],0,"CAN_COLLIDE"];
+	_this = _item535;
+	_objects pushback _this;
+	_objectIDs pushback 535;
+	_this setPosWorld [10996.5,4160.3,176.359];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item536 = objNull;
+if (_layer599) then {
+	_item536 = createVehicle ["Land_TimberLog_05_F",[11000.9,4164.15,0.897583],[],0,"CAN_COLLIDE"];
+	_this = _item536;
+	_objects pushback _this;
+	_objectIDs pushback 536;
+	_this setPosWorld [11000.9,4164.15,176.97];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item537 = objNull;
+if (_layer599) then {
+	_item537 = createVehicle ["Land_TimberLog_05_F",[10991.2,4163.2,-0.654739],[],0,"CAN_COLLIDE"];
+	_this = _item537;
+	_objects pushback _this;
+	_objectIDs pushback 537;
+	_this setPosWorld [10991.2,4163.2,176.98];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item538 = objNull;
+if (_layer599) then {
+	_item538 = createVehicle ["Land_TimberLog_05_F",[11000.1,4164.35,0.0426941],[],0,"CAN_COLLIDE"];
+	_this = _item538;
+	_objects pushback _this;
+	_objectIDs pushback 538;
+	_this setPosWorld [11000.1,4164.35,176.56];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item592 = objNull;
+if (_layer599) then {
+	_item592 = _item591 createUnit ["O_GEN_Commander_F",[10997.7,4164.69,-7.62939e-005],[],0,"CAN_COLLIDE"];
+	_item591 selectLeader _item592;
+	_this = _item592;
+	_objects pushback _this;
+	_objectIDs pushback 592;
+	_this setPosWorld [10997.9,4165.48,177.592];
+	_this setVectorDirAndUp [[0.100439,-0.962965,-0.25022],[0.0850215,-0.242264,0.966478]];
+	_this setUnitLoadout [["SMG_05_F","","acc_flashlight","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Commander_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",1,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",4,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["SmokeShellYellow",1,1]]],[],"H_Beret_gen_F","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_OPFOR"]];
+	_this setname "Keon Karetu";;
+	_this setface "TanoanHead_A3_04";;
+	_this setspeaker "male01engfre";;
+	_this setpitch 1.0491;;
+};
+
+private _item603 = objNull;
+if (_layer637) then {
+	_item603 = createVehicle ["I_C_Offroad_02_AT_F",[11020.1,3993.21,-0.000274658],[],0,"CAN_COLLIDE"];
+	_this = _item603;
+	_objects pushback _this;
+	_objectIDs pushback 603;
+	_this setPosWorld [11020.1,3993.08,117.087];
+	_this setVectorDirAndUp [[0.358988,0.9291,0.0888914],[-0.0266593,-0.0849937,0.996025]];
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit""],[4]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item605 = objNull;
+if (_layer637) then {
+	_item605 = createVehicle ["Land_BrokenCarGlass_01_4x4_F",[11019.4,3994.36,-7.62939e-005],[],0,"CAN_COLLIDE"];
+	_this = _item605;
+	_objects pushback _this;
+	_objectIDs pushback 605;
+	_this setPosWorld [11019.4,3994.36,115.626];
+	_this setVectorDirAndUp [[0,0.995904,0.0904137],[0,-0.0904137,0.995904]];
+};
+
+private _item610 = objNull;
+if (_layer637) then {
+	_item610 = createVehicle ["BloodSplatter_01_Large_New_F",[11019.2,3993.54,0],[],0,"CAN_COLLIDE"];
+	_this = _item610;
+	_objects pushback _this;
+	_objectIDs pushback 610;
+	_this setPosWorld [11019.2,3993.54,115.531];
+	_this setVectorDirAndUp [[0,0.996379,0.0850239],[-0.0266593,-0.0849937,0.996025]];
+	_this setObjectTextureGlobal [0,"a3\props_f_orange\humanitarian\garbage\data\bloodsplatter_large_fresh_ca.paa"];
+};
+
+private _item614 = objNull;
+if (_layer637) then {
+	_item614 = createVehicle ["Land_Bodybag_01_folded_black_F",[11018.2,3992.37,-3.8147e-005],[],0,"CAN_COLLIDE"];
+	_this = _item614;
+	_objects pushback _this;
+	_objectIDs pushback 614;
+	_this setPosWorld [11018.2,3992.37,115.408];
+	_this setVectorDirAndUp [[0,0.995168,0.0981904],[-0.0399685,-0.098112,0.994372]];
+};
+
+private _item616 = objNull;
+if (_layer637) then {
+	_item616 = _item615 createUnit ["O_GEN_Commander_F",[11018,3993.65,3.05176e-005],[],0,"CAN_COLLIDE"];
+	_item615 selectLeader _item616;
+	_this = _item616;
+	_objects pushback _this;
+	_objectIDs pushback 616;
+	_this setPosWorld [11018,3993.7,115.505];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [["srifle_DMR_06_hunter_F","","","",["10Rnd_Mk14_762x51_Mag",10],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Commander_F",[["FirstAidKit",1],["10Rnd_Mk14_762x51_Mag",3,10]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["SmokeShellYellow",1,1],["10Rnd_Mk14_762x51_Mag",7,10]]],[],"H_Beret_gen_F","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Henare Lomu";;
+	_this setface "TanoanHead_A3_08";;
+	_this setspeaker "male01engfre";;
+	_this setpitch 1.02721;;
+};
+
+private _item618 = objNull;
+if (_layer637) then {
+	_item618 = _item617 createUnit ["O_GEN_Soldier_F",[10997.6,4003.86,0.00012207],[],0,"CAN_COLLIDE"];
+	_item617 selectLeader _item618;
+	_this = _item618;
+	_objects pushback _this;
+	_objectIDs pushback 618;
+	_this setPosWorld [10997.6,4003.91,118.459];
+	_this setVectorDirAndUp [[0.776151,0.630547,0],[0,0,1]];
+	_this setUnitLoadout [["srifle_EBR_F","","acc_flashlight","optic_ACO_grn",["20Rnd_762x51_Mag",20],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["20Rnd_762x51_Mag",2,20]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["20Rnd_762x51_Mag",1,20]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Fale Veitayaki";;
+	_this setface "TanoanHead_A3_08";;
+	_this setspeaker "male01engfre";;
+	_this setpitch 1.02743;;
+};
+
+private _item620 = objNull;
+if (_layer637) then {
+	_item620 = _item619 createUnit ["O_GEN_Soldier_F",[11009.6,3985.34,2.28882e-005],[],0,"CAN_COLLIDE"];
+	_item619 selectLeader _item620;
+	_this = _item620;
+	_objects pushback _this;
+	_objectIDs pushback 620;
+	_this setPosWorld [11009.6,3985.39,114.715];
+	_this setVectorDirAndUp [[0.585162,0.810916,0],[0,0,1]];
+	_this setUnitLoadout [["arifle_Katiba_GL_F","","acc_flashlight","optic_Aco",["30Rnd_65x39_caseless_green",30],["1Rnd_HE_Grenade_shell",1],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_65x39_caseless_green",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["1Rnd_HE_Grenade_shell",2,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Atonio Potaka";;
+	_this setface "TanoanHead_A3_02";;
+	_this setspeaker "male01engfre";;
+	_this setpitch 1.00052;;
+};
+
+private _item622 = objNull;
+if (_layer637) then {
+	_item622 = createVehicle ["BloodTrail_01_New_F",[11011.8,3985.72,1.52588e-005],[],0,"CAN_COLLIDE"];
+	_this = _item622;
+	_objects pushback _this;
+	_objectIDs pushback 622;
+	_this setPosWorld [11011.8,3985.72,114.691];
+	_this setVectorDirAndUp [[-0.89425,-0.44721,-0.0178777],[0.00800059,-0.0559104,0.998404]];
+	_this setObjectTextureGlobal [0,"a3\props_f_orange\humanitarian\garbage\data\bloodtrail_fresh_ca.paa"];
+};
+
+private _item624 = objNull;
+if (_layer637) then {
+	_item624 = createVehicle ["Land_Bodybag_01_empty_black_F",[11013.1,3987.61,-3.8147e-005],[],0,"CAN_COLLIDE"];
+	_this = _item624;
+	_objects pushback _this;
+	_objectIDs pushback 624;
+	_this setPosWorld [11013.1,3987.61,114.839];
+	_this setVectorDirAndUp [[0.876777,0.477996,0.0527325],[-0.0106697,-0.0902918,0.995858]];
+};
+
+private _item626 = objNull;
+if (_layer637) then {
+	_item626 = _item625 createUnit ["I_C_Soldier_Para_3_F",[11013.8,3986.84,-9.91821e-005],[],0,"CAN_COLLIDE"];
+	_item625 selectLeader _item626;
+	_this = _item626;
+	_objects pushback _this;
+	_objectIDs pushback 626;
+	_this setPosWorld [11013.8,3986.89,114.755];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Aluna Waqanitoga";;
+	_this setface "TanoanHead_A3_03";;
+	_this setspeaker "male01fre";;
+	_this setpitch 0.992784;;
+};
+
+private _item628 = objNull;
+if (_layer637) then {
+	_item628 = createVehicle ["B_GEN_Offroad_01_gen_F",[11004.4,3984.62,2.28882e-005],[],0,"CAN_COLLIDE"];
+	_this = _item628;
+	_objects pushback _this;
+	_objectIDs pushback 628;
+	_this setPosWorld [11004.6,3984.57,116.803];
+	_this setVectorDirAndUp [[-0.973011,-0.195828,0.122073],[0.13476,-0.0527739,0.989472]];
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit""],[4]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item632 = objNull;
+if (_layer637) then {
+	_item632 = createVehicle ["BloodTrail_01_New_F",[11021,3992.04,-3.8147e-005],[],0,"CAN_COLLIDE"];
+	_this = _item632;
+	_objects pushback _this;
+	_objectIDs pushback 632;
+	_this setPosWorld [11021,3992.04,115.452];
+	_this setVectorDirAndUp [[-0.248107,0.965765,0.0757708],[-0.0266593,-0.0849937,0.996025]];
+	_this setObjectTextureGlobal [0,"a3\props_f_orange\humanitarian\garbage\data\bloodtrail_fresh_ca.paa"];
+};
+
+private _item633 = objNull;
+if (_layer637) then {
+	_item633 = createVehicle ["BloodTrail_01_New_F",[11020.8,3990.03,-7.62939e-006],[],0,"CAN_COLLIDE"];
+	_this = _item633;
+	_objects pushback _this;
+	_objectIDs pushback 633;
+	_this setPosWorld [11020.8,3990.03,115.27];
+	_this setVectorDirAndUp [[-0.297072,-0.949001,-0.105576],[-0.0399685,-0.098112,0.994372]];
+	_this setObjectTextureGlobal [0,"a3\props_f_orange\humanitarian\garbage\data\bloodtrail_fresh_ca.paa"];
+};
+
+private _item635 = objNull;
+if (_layer637) then {
+	_item635 = createVehicle ["Land_Bodybag_01_black_F",[11020.3,3987.62,0.0329971],[],0,"CAN_COLLIDE"];
+	_this = _item635;
+	_objects pushback _this;
+	_objectIDs pushback 635;
+	_this setPosWorld [11020.3,3987.6,115.162];
+	_this setVectorDirAndUp [[-0.0386046,0.994053,0.101829],[-0.0399685,-0.103359,0.993841]];
+};
+
+private _item638 = objNull;
+if (_layer637) then {
+	_item638 = createVehicle ["Land_Bodybag_01_black_F",[11010.5,3987.58,-0.000343323],[],0,"CAN_COLLIDE"];
+	_this = _item638;
+	_objects pushback _this;
+	_objectIDs pushback 638;
+	_this setPosWorld [11010.5,3987.57,114.956];
+	_this setVectorDirAndUp [[-0.0386342,0.996651,0.0720677],[0.00800059,-0.0718108,0.997386]];
+	_this enableSimulation false;
+};
+
+private _item640 = objNull;
+if (_layer637) then {
+	_item640 = createVehicle ["Land_Bodybag_01_black_F",[11008,3986.97,-3.05176e-005],[],0,"CAN_COLLIDE"];
+	_this = _item640;
+	_objects pushback _this;
+	_objectIDs pushback 640;
+	_this setPosWorld [11008,3986.96,115.084];
+	_this setVectorDirAndUp [[-0.357275,0.929001,0.096498],[0.0823849,-0.0715689,0.994027]];
+	_this enableSimulation false;
+};
+
+private _item641 = objNull;
+if (_layer637) then {
+	_item641 = createVehicle ["Land_Bodybag_01_blue_F",[11009.4,3987.45,7.62939e-006],[],0,"CAN_COLLIDE"];
+	_this = _item641;
+	_objects pushback _this;
+	_objectIDs pushback 641;
+	_this setPosWorld [11009.4,3987.44,115.005];
+	_this setVectorDirAndUp [[-0.0385003,0.996445,0.0749322],[0.082391,-0.071567,0.994027]];
+	_this enableSimulation false;
+};
+
+private _item663 = objNull;
+if (_layer637) then {
+	_item663 = createVehicle ["I_C_Offroad_02_LMG_F",[11015.5,4016.21,-0.0829773],[],0,"CAN_COLLIDE"];
+	_this = _item663;
+	_objects pushback _this;
+	_objectIDs pushback 663;
+	_this setPosWorld [11015.5,4016.13,118.888];
+	_this setVectorDirAndUp [[-0.259816,0.965651,0.00378414],[0.0357831,0.00571158,0.999343]];
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit""],[4]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item664 = objNull;
+if (_layer637) then {
+	_item664 = createVehicle ["BloodTrail_01_New_F",[11016.4,4014.24,1.52588e-005],[],0,"CAN_COLLIDE"];
+	_this = _item664;
+	_objects pushback _this;
+	_objectIDs pushback 664;
+	_this setPosWorld [11016.4,4014.24,116.717];
+	_this setVectorDirAndUp [[-0.285097,0.957813,0.0362462],[0.0106641,-0.0346436,0.999343]];
+	_this setObjectTextureGlobal [0,"a3\props_f_orange\humanitarian\garbage\data\bloodtrail_fresh_ca.paa"];
+};
+
+private _item665 = objNull;
+if (_layer637) then {
+	_item665 = createVehicle ["BloodSplatter_01_Large_New_F",[11016,4017.02,-1.52588e-005],[],0,"CAN_COLLIDE"];
+	_this = _item665;
+	_objects pushback _this;
+	_objectIDs pushback 665;
+	_this setPosWorld [11016,4017.02,116.828];
+	_this setVectorDirAndUp [[0,0.99885,0.0479446],[0.0106641,-0.0479419,0.998793]];
+	_this setObjectTextureGlobal [0,"a3\props_f_orange\humanitarian\garbage\data\bloodsplatter_large_fresh_ca.paa"];
+};
+
+private _item667 = objNull;
+if (_layer637) then {
+	_item667 = createVehicle ["Land_BrokenCarGlass_01_4x4_F",[11015.2,4009.16,0.00172424],[],0,"CAN_COLLIDE"];
+	_this = _item667;
+	_objects pushback _this;
+	_objectIDs pushback 667;
+	_this setPosWorld [11015.2,4009.16,116.539];
+	_this setVectorDirAndUp [[-0.0233127,0.999354,-0.0273688],[-0.00868089,0.0271729,0.999593]];
+};
+
+private _item642 = objNull;
+if (_layer637) then {
+	_item642 = createVehicle ["Weapon_arifle_AKM_F",[11007.7,3984.99,6.10352e-005],[],0,"CAN_COLLIDE"];
+	_this = _item642;
+	_objects pushback _this;
+	_objectIDs pushback 642;
+	_this setPosWorld [11007.7,3984.99,114.855];
+	_this setVectorDirAndUp [[0,0.998581,0.0532597],[0.0823844,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item643 = objNull;
+if (_layer637) then {
+	_item643 = createVehicle ["Weapon_arifle_AKS_F",[11007.6,3984.66,0],[],0,"CAN_COLLIDE"];
+	_this = _item643;
+	_objects pushback _this;
+	_objectIDs pushback 643;
+	_this setPosWorld [11007.6,3984.66,114.844];
+	_this setVectorDirAndUp [[-0.886835,0.451681,0.0975054],[0.0823844,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item653 = objNull;
+if (_layer637) then {
+	_item653 = createVehicle ["Land_Ammobox_rounds_F",[11007.8,3983.88,0],[],0,"CAN_COLLIDE"];
+	_this = _item653;
+	_objects pushback _this;
+	_objectIDs pushback 653;
+	_this setPosWorld [11007.8,3983.88,114.894];
+	_this setVectorDirAndUp [[0,0.998581,0.0532597],[0.082391,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item655 = objNull;
+if (_layer637) then {
+	_item655 = createVehicle ["Land_Ammobox_rounds_F",[11007.9,3983.6,0],[],0,"CAN_COLLIDE"];
+	_this = _item655;
+	_objects pushback _this;
+	_objectIDs pushback 655;
+	_this setPosWorld [11007.9,3983.59,114.87];
+	_this setVectorDirAndUp [[0.369568,0.927676,0.0532587],[0.0568896,-0.0797983,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item656 = objNull;
+if (_layer637) then {
+	_item656 = createVehicle ["Land_Ammobox_rounds_F",[11007.4,3983.72,-6.10352e-005],[],0,"CAN_COLLIDE"];
+	_this = _item656;
+	_objects pushback _this;
+	_objectIDs pushback 656;
+	_this setPosWorld [11007.4,3983.71,114.914];
+	_this setVectorDirAndUp [[0,0.998581,0.0532597],[0.0823844,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item658 = objNull;
+if (_layer637) then {
+	_item658 = createVehicle ["Land_CanisterFuel_F",[11007.5,3983.39,-1.52588e-005],[],0,"CAN_COLLIDE"];
+	_this = _item658;
+	_objects pushback _this;
+	_objectIDs pushback 658;
+	_this setPosWorld [11007.5,3983.38,115.06];
+	_this setVectorDirAndUp [[0.36891,0.92927,0.0190236],[0.0823844,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item646 = objNull;
+if (_layer637) then {
+	_item646 = createVehicle ["Weapon_LMG_03_F",[11007.9,3984.33,8.39233e-005],[],0,"CAN_COLLIDE"];
+	_this = _item646;
+	_objects pushback _this;
+	_objectIDs pushback 646;
+	_this setPosWorld [11007.9,3984.33,114.8];
+	_this setVectorDirAndUp [[0,0.998581,0.0532597],[0.0823844,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item644 = objNull;
+if (_layer637) then {
+	_item644 = createVehicle ["Weapon_srifle_DMR_06_hunter_F",[11008.1,3984.8,-7.62939e-006],[],0,"CAN_COLLIDE"];
+	_this = _item644;
+	_objects pushback _this;
+	_objectIDs pushback 644;
+	_this setPosWorld [11008.1,3984.8,114.811];
+	_this setVectorDirAndUp [[-0.645786,0.757726,0.0938737],[0.0823844,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item648 = objNull;
+if (_layer637) then {
+	_item648 = createVehicle ["Item_Money_bunch",[11008.5,3984.59,0.00127411],[],0,"CAN_COLLIDE"];
+	_this = _item648;
+	_objects pushback _this;
+	_objectIDs pushback 648;
+	_this setPosWorld [11008.5,3984.59,115.033];
+	_this setVectorDirAndUp [[0,0.998581,0.0532597],[0.0823844,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item647 = objNull;
+if (_layer637) then {
+	_item647 = createVehicle ["Item_Money_roll",[11008.3,3984.7,0.00134277],[],0,"CAN_COLLIDE"];
+	_this = _item647;
+	_objects pushback _this;
+	_objectIDs pushback 647;
+	_this setPosWorld [11008.3,3984.7,115.055];
+	_this setVectorDirAndUp [[0,0.998581,0.0532597],[0.0823844,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item650 = objNull;
+if (_layer637) then {
+	_item650 = createVehicle ["Item_Money_roll",[11008.5,3984.83,0.00134277],[],0,"CAN_COLLIDE"];
+	_this = _item650;
+	_objects pushback _this;
+	_objectIDs pushback 650;
+	_this setPosWorld [11008.5,3984.83,115.049];
+	_this setVectorDirAndUp [[-0.910164,0.410811,0.0532574],[0.0822689,0.0532534,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item645 = objNull;
+if (_layer637) then {
+	_item645 = createVehicle ["Weapon_hgun_Pistol_01_F",[11007.7,3984.6,0.000610352],[],0,"CAN_COLLIDE"];
+	_this = _item645;
+	_objects pushback _this;
+	_objectIDs pushback 645;
+	_this setPosWorld [11007.7,3984.6,114.835];
+	_this setVectorDirAndUp [[0,0.998581,0.0532597],[0.0823844,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item651 = objNull;
+if (_layer637) then {
+	_item651 = createVehicle ["Weapon_hgun_Pistol_01_F",[11008.4,3984.73,7.62939e-005],[],0,"CAN_COLLIDE"];
+	_this = _item651;
+	_objects pushback _this;
+	_objectIDs pushback 651;
+	_this setPosWorld [11008.4,3984.73,114.778];
+	_this setVectorDirAndUp [[0,0.998581,0.0532597],[0.0823844,-0.0530787,0.995186]];
+	_this enableDynamicSimulation true;
+};
+
+private _item669 = objNull;
+if (_layer637) then {
+	_item669 = createVehicle ["Land_PortableLight_02_single_olive_F",[11008.1,3982.88,0],[],0,"CAN_COLLIDE"];
+	_this = _item669;
+	_objects pushback _this;
+	_objectIDs pushback 669;
+	_this setPosWorld [11008.1,3982.88,115.251];
+	_this setVectorDirAndUp [[-0.593237,-0.805028,0],[0,0,1]];
+	_this enableDynamicSimulation true;
+	_this animateSource ['Light_1_pitch_source',0,true];
+	_this animateSource ['Light_1_yaw_source',180,true];
+	_this animateSource ['Light_1_extend_source',0,true];
+	_this setHitpointDamage ['Hit_Light_1',0];;
+};
+
+private _item607 = objNull;
+if (_layer637) then {
+	_item607 = _item606 createUnit ["I_C_Soldier_Para_7_F",[11020.1,3993.23,7.62939e-006],[],0,"CAN_COLLIDE"];
+	_item606 selectLeader _item607;
+	_this = _item607;
+	_objects pushback _this;
+	_objectIDs pushback 607;
+	_this setPosWorld [11020.1,3993.08,117.087];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setname "Onaona Ieremia";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "male01fre";;
+	_this setpitch 0.999141;;
+};
+
+private _item671 = objNull;
+if (_layer670) then {
+	_item671 = createVehicle ["RoadBarrier_small_F",[10080.6,4051.82,-1.3113e-005],[],0,"CAN_COLLIDE"];
+	_this = _item671;
+	_objects pushback _this;
+	_objectIDs pushback 671;
+	_this setPosWorld [10080.6,4051.82,4.62266];
+	_this setVectorDirAndUp [[0.92726,-0.374386,0.00493912],[-0.0053265,0,0.999986]];
+};
+
+private _item672 = objNull;
+if (_layer670) then {
+	_item672 = createVehicle ["Land_CncBarrier_F",[10076.7,4054.05,0.0033586],[],0,"CAN_COLLIDE"];
+	_this = _item672;
+	_objects pushback _this;
+	_objectIDs pushback 672;
+	_this setPosWorld [10076.7,4054.05,4.35953];
+	_this setVectorDirAndUp [[0,0.999996,-0.00265204],[-0.00265204,0.00265203,0.999993]];
+	_this enableSimulation false;
+};
+
+private _item673 = objNull;
+if (_layer670) then {
+	_item673 = createVehicle ["Land_CncBarrier_F",[10076.2,4053.43,0.00198889],[],0,"CAN_COLLIDE"];
+	_this = _item673;
+	_objects pushback _this;
+	_objectIDs pushback 673;
+	_this setPosWorld [10076.2,4053.43,4.35743];
+	_this setVectorDirAndUp [[0,1,0],[-0.00265204,0,0.999996]];
+	_this enableSimulation false;
+};
+
+private _item674 = objNull;
+if (_layer670) then {
+	_item674 = createVehicle ["Land_CncBarrier_F",[10074.9,4054.59,0.011965],[],0,"CAN_COLLIDE"];
+	_this = _item674;
+	_objects pushback _this;
+	_objectIDs pushback 674;
+	_this setPosWorld [10074.9,4054.59,4.36397];
+	_this setVectorDirAndUp [[-0.900914,0.43399,-0.00238927],[-0.00265204,0,0.999996]];
+	_this enableSimulation false;
+};
+
+private _item675 = objNull;
+if (_layer670) then {
+	_item675 = createVehicle ["Land_CncBarrier_F",[10076.2,4055.64,0.00429249],[],0,"CAN_COLLIDE"];
+	_this = _item675;
+	_objects pushback _this;
+	_objectIDs pushback 675;
+	_this setPosWorld [10076.2,4055.64,4.35492];
+	_this setVectorDirAndUp [[-0.900917,0.433989,-0.00115096],[0,0.00265204,0.999996]];
+	_this enableSimulation false;
+};
+
+private _item676 = objNull;
+if (_layer670) then {
+	_item676 = createVehicle ["Land_CncBarrier_F",[10074,4056.64,0.0240743],[],0,"CAN_COLLIDE"];
+	_this = _item676;
+	_objects pushback _this;
+	_objectIDs pushback 676;
+	_this setPosWorld [10074,4056.64,4.37205];
+	_this setVectorDirAndUp [[-0.900917,0.433989,-0.00115096],[0,0.00265204,0.999996]];
+	_this enableSimulation false;
+};
+
+private _item677 = objNull;
+if (_layer670) then {
+	_item677 = createVehicle ["Land_CncBarrierMedium_F",[10071.2,4055.37,0.0382767],[],0,"CAN_COLLIDE"];
+	_this = _item677;
+	_objects pushback _this;
+	_objectIDs pushback 677;
+	_this setPosWorld [10071.2,4055.37,4.84448];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item678 = objNull;
+if (_layer670) then {
+	_item678 = createVehicle ["Land_CncBarrierMedium_F",[10070.1,4057.15,0.087081],[],0,"CAN_COLLIDE"];
+	_this = _item678;
+	_objects pushback _this;
+	_objectIDs pushback 678;
+	_this setPosWorld [10070.1,4057.15,4.89328];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item679 = objNull;
+if (_layer670) then {
+	_item679 = createVehicle ["Land_CncBarrierMedium_F",[10068.5,4055.87,0.0611362],[],0,"CAN_COLLIDE"];
+	_this = _item679;
+	_objects pushback _this;
+	_objectIDs pushback 679;
+	_this setPosWorld [10068.5,4055.87,4.86734];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item680 = objNull;
+if (_layer670) then {
+	_item680 = createVehicle ["Land_Excavator_01_wreck_F",[10064,4060.01,0.00504446],[],0,"CAN_COLLIDE"];
+	_this = _item680;
+	_objects pushback _this;
+	_objectIDs pushback 680;
+	_this setPosWorld [10064,4060.01,7.0929];
+	_this setVectorDirAndUp [[0.979981,0.199092,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item681 = objNull;
+if (_layer670) then {
+	_item681 = createVehicle ["Land_CncBarrierMedium_F",[10067.7,4038.14,0.25249],[],0,"CAN_COLLIDE"];
+	_this = _item681;
+	_objects pushback _this;
+	_objectIDs pushback 681;
+	_this setPosWorld [10067.7,4038.14,4.81283];
+	_this setVectorDirAndUp [[0.990783,-0.135455,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item682 = objNull;
+if (_layer670) then {
+	_item682 = createVehicle ["Land_CncBarrierMedium_F",[10067.9,4040.05,0.224916],[],0,"CAN_COLLIDE"];
+	_this = _item682;
+	_objects pushback _this;
+	_objectIDs pushback 682;
+	_this setPosWorld [10067.9,4040.05,4.87403];
+	_this setVectorDirAndUp [[0.995136,-0.0985133,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item683 = objNull;
+if (_layer670) then {
+	_item683 = createVehicle ["Land_TimberPile_01_F",[10075.2,4058.88,0.066885],[],0,"CAN_COLLIDE"];
+	_this = _item683;
+	_objects pushback _this;
+	_objectIDs pushback 683;
+	_this setPosWorld [10075.2,4058.88,4.5342];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item684 = objNull;
+if (_layer670) then {
+	_item684 = createVehicle ["Land_TimberLog_05_F",[10072.9,4039.67,-2.67029e-005],[],0,"CAN_COLLIDE"];
+	_this = _item684;
+	_objects pushback _this;
+	_objectIDs pushback 684;
+	_this setPosWorld [10072.9,4039.67,3.82814];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item685 = objNull;
+if (_layer670) then {
+	_item685 = createVehicle ["Land_TimberLog_05_F",[10072.5,4039.83,-2.09808e-005],[],0,"CAN_COLLIDE"];
+	_this = _item685;
+	_objects pushback _this;
+	_objectIDs pushback 685;
+	_this setPosWorld [10072.5,4039.83,3.82627];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item686 = objNull;
+if (_layer670) then {
+	_item686 = createVehicle ["Land_TimberLog_05_F",[10071.8,4034.8,0.477485],[],0,"CAN_COLLIDE"];
+	_this = _item686;
+	_objects pushback _this;
+	_objectIDs pushback 686;
+	_this setPosWorld [10071.8,4034.8,4.03876];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+};
+
+private _item687 = objNull;
+if (_layer670) then {
+	_item687 = createVehicle ["Land_TimberLog_02_F",[10072.1,4037.2,0.250365],[],0,"CAN_COLLIDE"];
+	_this = _item687;
+	_objects pushback _this;
+	_objectIDs pushback 687;
+	_this setPosWorld [10072.1,4037.2,4.1078];
+	_this setVectorDirAndUp [[0.231424,0.972853,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item688 = objNull;
+if (_layer670) then {
+	_item688 = createVehicle ["Land_TimberLog_05_F",[10078.9,4056.84,0.175583],[],0,"CAN_COLLIDE"];
+	_this = _item688;
+	_objects pushback _this;
+	_objectIDs pushback 688;
+	_this setPosWorld [10078.9,4056.84,4.10752];
+	_this setVectorDirAndUp [[7.23584e-007,1,-1.0222e-005],[0.999434,-3.79208e-007,0.0336498]];
+	_this enableSimulation false;
+};
+
+private _item689 = objNull;
+if (_layer670) then {
+	_item689 = createVehicle ["Land_TimberLog_05_F",[10078.5,4056.14,0.0241041],[],0,"CAN_COLLIDE"];
+	_this = _item689;
+	_objects pushback _this;
+	_objectIDs pushback 689;
+	_this setPosWorld [10078.5,4056.14,3.95684];
+	_this setVectorDirAndUp [[-0.319935,0.947439,-1.67862e-005],[0.9473,0.319888,0.0171731]];
+	_this enableSimulation false;
+};
+
+private _item690 = objNull;
+if (_layer670) then {
+	_item690 = createVehicle ["Land_Plank_01_4m_F",[10077.1,4040.03,-0.00117898],[],0,"CAN_COLLIDE"];
+	_this = _item690;
+	_objects pushback _this;
+	_objectIDs pushback 690;
+	_this setPosWorld [10077.1,4040.03,3.9518];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item691 = objNull;
+if (_layer670) then {
+	_item691 = createVehicle ["Land_Pallets_stack_F",[10079.2,4054.92,0.000757456],[],0,"CAN_COLLIDE"];
+	_this = _item691;
+	_objects pushback _this;
+	_objectIDs pushback 691;
+	_this setPosWorld [10079.2,4054.92,4.40499];
+	_this setVectorDirAndUp [[0,0.999996,-0.00265204],[-0.00265204,0.00265203,0.999993]];
+	_this enableSimulation false;
+};
+
+private _item692 = objNull;
+if (_layer670) then {
+	_item692 = createVehicle ["Land_TimberLog_02_F",[10072.1,4037.31,9.05991e-006],[],0,"CAN_COLLIDE"];
+	_this = _item692;
+	_objects pushback _this;
+	_objectIDs pushback 692;
+	_this setPosWorld [10072.1,4037.31,3.86374];
+	_this setVectorDirAndUp [[0.231424,0.972853,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item693 = objNull;
+if (_layer670) then {
+	_item693 = createVehicle ["Land_BagFence_01_round_green_F",[10100.6,4051.26,-0.200974],[],0,"CAN_COLLIDE"];
+	_this = _item693;
+	_objects pushback _this;
+	_objectIDs pushback 693;
+	_this setPosWorld [10100.6,4051.26,4.69973];
+	_this setVectorDirAndUp [[-0.61552,0.788119,-0.00170571],[-0.0266571,-0.018656,0.999471]];
+	_this enableSimulation false;
+};
+
+private _item694 = objNull;
+if (_layer670) then {
+	_item694 = createVehicle ["Land_BagFence_01_round_green_F",[10101.2,4053.35,0.00019455],[],0,"CAN_COLLIDE"];
+	_this = _item694;
+	_objects pushback _this;
+	_objectIDs pushback 694;
+	_this setPosWorld [10101.2,4053.35,4.98779];
+	_this setVectorDirAndUp [[-0.893037,-0.446667,-0.054537],[-0.0459099,-0.0301244,0.998491]];
+	_this enableSimulation false;
+};
+
+private _item695 = objNull;
+if (_layer670) then {
+	_item695 = createVehicle ["Land_BagFence_01_round_green_F",[10099.2,4054.57,-0.243082],[],0,"CAN_COLLIDE"];
+	_this = _item695;
+	_objects pushback _this;
+	_objectIDs pushback 695;
+	_this setPosWorld [10099.2,4054.57,4.6193];
+	_this setVectorDirAndUp [[0.0778555,-0.996965,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item696 = objNull;
+if (_layer670) then {
+	_item696 = createVehicle ["Land_BagFence_01_round_green_F",[10096.8,4054.17,-0.044652],[],0,"CAN_COLLIDE"];
+	_this = _item696;
+	_objects pushback _this;
+	_objectIDs pushback 696;
+	_this setPosWorld [10096.8,4054.17,4.69454];
+	_this setVectorDirAndUp [[0.47557,-0.879678,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item697 = objNull;
+if (_layer670) then {
+	_item697 = createVehicle ["Land_BagFence_01_round_green_F",[10099.2,4054.64,0.297394],[],0,"CAN_COLLIDE"];
+	_this = _item697;
+	_objects pushback _this;
+	_objectIDs pushback 697;
+	_this setPosWorld [10099.2,4054.64,5.15576];
+	_this setVectorDirAndUp [[0.0305838,-0.999532,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item698 = objNull;
+if (_layer670) then {
+	_item698 = createVehicle ["Land_BagFence_01_end_green_F",[10099.1,4050.55,-0.0726762],[],0,"CAN_COLLIDE"];
+	_this = _item698;
+	_objects pushback _this;
+	_objectIDs pushback 698;
+	_this setPosWorld [10099.1,4050.55,4.76547];
+	_this setVectorDirAndUp [[0.506056,-0.862499,-0.00171522],[0.0288888,0.0149624,0.999471]];
+	_this enableSimulation false;
+};
+
+private _item699 = objNull;
+if (_layer670) then {
+	_item699 = createVehicle ["Land_BagFence_01_round_green_F",[10100.7,4051.29,0.21834],[],0,"CAN_COLLIDE"];
+	_this = _item699;
+	_objects pushback _this;
+	_objectIDs pushback 699;
+	_this setPosWorld [10100.7,4051.29,5.12062];
+	_this setVectorDirAndUp [[-0.61552,0.788119,-0.00170571],[-0.0266571,-0.018656,0.999471]];
+	_this enableSimulation false;
+};
+
+private _item700 = objNull;
+if (_layer670) then {
+	_item700 = createVehicle ["O_G_HMG_02_high_F",[10099.3,4052.65,-0.0358176],[],0,"CAN_COLLIDE"];
+	_this = _item700;
+	_objects pushback _this;
+	_objectIDs pushback 700;
+	_this setPosWorld [10099.2,4052.62,6.1163];
+	_this setVectorDirAndUp [[0.904249,-0.427006,0],[0,0,1]];
+};
+
+private _item701 = objNull;
+if (_layer670) then {
+	_item701 = createVehicle ["Land_SignWarning_01_CheckpointZone1_F",[10081.8,4054.66,-0.982],[],0,"CAN_COLLIDE"];
+	_this = _item701;
+	_objects pushback _this;
+	_objectIDs pushback 701;
+	_this setPosWorld [10081.8,4054.66,4.03663];
+	_this setVectorDirAndUp [[0,0.00710346,-0.999975],[0,0.999975,0.00710346]];
+	_this enableSimulation false;
+	_this setObjectTextureGlobal [0,"a3\structures_f_oldman\signs	raffic\data\sign01_co.paa"];
+};
+
+private _item702 = objNull;
+if (_layer670) then {
+	_item702 = createVehicle ["Land_SignWarning_01_CheckpointZone1_F",[10069.8,4036.1,-0.949282],[],0,"CAN_COLLIDE"];
+	_this = _item702;
+	_objects pushback _this;
+	_objectIDs pushback 702;
+	_this setPosWorld [10069.8,4036.1,3.7558];
+	_this setVectorDirAndUp [[-0.0372861,-0.00899354,-0.999264],[-0.943173,0.330738,0.0322165]];
+	_this enableSimulation false;
+	_this setObjectTextureGlobal [0,"a3\structures_f_oldman\signs	raffic\data\sign01_co.paa"];
+};
+
+private _item703 = objNull;
+if (_layer670) then {
+	_item703 = createVehicle ["Land_DirtPatch_05_F",[10070.8,4039.43,0.129515],[],0,"CAN_COLLIDE"];
+	_this = _item703;
+	_objects pushback _this;
+	_objectIDs pushback 703;
+	_this setPosWorld [10070.8,4039.43,3.95648];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item704 = objNull;
+if (_layer670) then {
+	_item704 = createVehicle ["Land_DirtPatch_05_F",[10071.8,4057.51,0],[],0,"CAN_COLLIDE"];
+	_this = _item704;
+	_objects pushback _this;
+	_objectIDs pushback 704;
+	_this setPosWorld [10071.8,4057.51,3.96];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item705 = objNull;
+if (_layer670) then {
+	_item705 = createVehicle ["Land_DirtPatch_05_F",[10079.9,4055.98,0.906265],[],0,"CAN_COLLIDE"];
+	_this = _item705;
+	_objects pushback _this;
+	_objectIDs pushback 705;
+	_this setPosWorld [10079.9,4055.98,4.87993];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this enableSimulation false;
+};
+
+private _item707 = objNull;
+if (_layer670) then {
+	_item707 = _item706 createUnit ["O_GEN_Commander_F",[10085.6,4054.86,1.43051e-006],[],0,"CAN_COLLIDE"];
+	_item706 selectLeader _item707;
+	_this = _item707;
+	_objects pushback _this;
+	_objectIDs pushback 707;
+	_this setPosWorld [10085.6,4054.91,3.97161];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [["srifle_DMR_06_olive_F","","","optic_KHS_blk",["20Rnd_762x51_Mag",20],[],"bipod_02_F_tan"],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Commander_F",[["FirstAidKit",1],["20Rnd_762x51_Mag",1,20]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["SmokeShellYellow",1,1],["20Rnd_762x51_Mag",2,20],["10Rnd_Mk14_762x51_Mag",5,10]]],[],"H_Beret_gen_F","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Aluna Vunibaka";;
+	_this setface "TanoanHead_A3_01";;
+	_this setspeaker "male02engfre";;
+	_this setpitch 1.00375;;
+};
+
+private _item709 = objNull;
+if (_layer670) then {
+	_item709 = _item708 createUnit ["O_GEN_Soldier_F",[10096.7,4028.65,5.91278e-005],[],0,"CAN_COLLIDE"];
+	_item708 selectLeader _item709;
+	_this = _item709;
+	_objects pushback _this;
+	_objectIDs pushback 709;
+	_this setPosWorld [10096.7,4028.7,3.74631];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [["arifle_MX_Black_F","","acc_flashlight","optic_Holosight_blk_F",["30Rnd_65x39_caseless_black_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_65x39_caseless_black_mag",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",1,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Tane Turagabea";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "Male01ENGFRE";;
+	_this setpitch 1.02626;;
+};
+
+private _item710 = objNull;
+if (_layer670) then {
+	_item710 = _item708 createUnit ["O_GEN_Soldier_F",[10098,4028.88,8.7738e-005],[],0,"CAN_COLLIDE"];
+	_this = _item710;
+	_objects pushback _this;
+	_objectIDs pushback 710;
+	_this setPosWorld [10098,4028.93,3.92631];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [["SMG_05_F","","acc_flashlight","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",2,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",3,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Ahonui Duvuduvukulu";;
+	_this setface "TanoanHead_A3_04";;
+	_this setspeaker "Male01ENGFRE";;
+	_this setpitch 0.984138;;
+};
+
+private _item762 = objNull;
+if (_layer670) then {
+	_item762 = _item708 createUnit ["O_GEN_Soldier_F",[10099.4,4028.18,8.79765e-005],[],0,"CAN_COLLIDE"];
+	_this = _item762;
+	_objects pushback _this;
+	_objectIDs pushback 762;
+	_this setPosWorld [10099.4,4028.23,3.92196];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [["arifle_RPK12_F","","acc_flashlight","",["75rnd_762x39_AK12_Mag_F",75],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["75rnd_762x39_AK12_Mag_F",1,75]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["75rnd_762x39_AK12_Mag_F",2,75],["30Rnd_762x39_AK12_Mag_F",2,30]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Iram Erenavula";;
+	_this setface "TanoanHead_A3_03";;
+	_this setspeaker "Male01ENGFRE";;
+	_this setpitch 0.964939;;
+};
+
+private _item717 = objNull;
+if (_layer670) then {
+	_item717 = _item716 createUnit ["O_GEN_Soldier_F",[10064.9,4039.33,0.00118899],[],0,"CAN_COLLIDE"];
+	_item716 selectLeader _item717;
+	_this = _item717;
+	_objects pushback _this;
+	_objectIDs pushback 717;
+	_this setPosWorld [10064.9,4039.38,3.71417];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Soldier_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",3,30]]],["V_TacVest_gen_F",[["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["75Rnd_762x39_Mag_F",2,75]]],[],"H_MilCap_gen_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+	_this setname "Hekeoro Neho";;
+	_this setface "TanoanHead_A3_01";;
+	_this setspeaker "male02engfre";;
+	_this setpitch 0.981385;;
+};
+
+private _item719 = objNull;
+if (_layer670) then {
+	_item719 = _item718 createUnit ["C_man_polo_6_F_afro",[10078.1,4051.84,-3.09944e-006],[],0,"CAN_COLLIDE"];
+	_item718 selectLeader _item719;
+	_this = _item719;
+	_objects pushback _this;
+	_objectIDs pushback 719;
+	_this setPosWorld [10078.1,4051.89,3.97645];
+	_this setVectorDirAndUp [[0.16578,0.986163,0],[0,0,1]];
+	_this setUnitLoadout [[],[],[],["U_C_ConstructionCoverall_Blue_F",[]],["V_Safety_yellow_F",[]],[],"H_Construction_basic_orange_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
+	_this setUnitPos "MIDDLE";
+	_this setname "Oringo Sununu";;
+	_this setface "AfricanHead_01";;
+	_this setpitch 0.98;;
+};
+
+private _item721 = objNull;
+if (_layer670) then {
+	_item721 = _item720 createUnit ["C_man_polo_6_F_afro",[10071.4,4040.87,0],[],0,"CAN_COLLIDE"];
+	_item720 selectLeader _item721;
+	_this = _item721;
+	_objects pushback _this;
+	_objectIDs pushback 721;
+	_this setPosWorld [10071.4,4040.92,3.87834];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setUnitLoadout [[],[],[],["U_C_ConstructionCoverall_Black_F",[]],["V_Safety_yellow_F",[]],[],"H_Construction_basic_orange_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
+	_this setname "Hamidi Odili";;
+	_this setface "AfricanHead_02";;
+	_this setpitch 1.01;;
+};
+
+private _item727 = objNull;
+if (_layer670) then {
+	_item727 = createVehicle ["B_GEN_Offroad_01_gen_F",[10055.8,4045.78,-0.00138664],[],0,"CAN_COLLIDE"];
+	_this = _item727;
+	_objects pushback _this;
+	_objectIDs pushback 727;
+	_this setPosWorld [10055.8,4045.8,5.57115];
+	_this setVectorDirAndUp [[0.844607,-0.535347,-0.0065232],[0.00265199,-0.00800056,0.999964]];
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit""],[4]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item728 = objNull;
+if (_layer670) then {
+	_item728 = createVehicle ["C_Van_02_service_F",[10054.4,4066.52,-2.3365e-005],[],0,"CAN_COLLIDE"];
+	_this = _item728;
+	_objects pushback _this;
+	_objectIDs pushback 728;
+	_this setPosWorld [10054.4,4066.53,5.60848];
+	_this setVectorDirAndUp [[0.990311,0.138749,-0.00564301],[0.00532655,0.00265201,0.999982]];
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit"",""ToolKit""],[4,2]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+private _item733 = objNull;
+if (_layer670) then {
+	_item733 = _item732 createUnit ["O_GEN_Soldier_F",[10099.3,4052.65,-0.0342975],[],0,"CAN_COLLIDE"];
+	_item732 selectLeader _item733;
+	_this = _item733;
+	_objects pushback _this;
+	_objectIDs pushback 733;
+	_this setPosWorld [10098.6,4053.13,4.34808];
+	_this setVectorDirAndUp [[0.904249,-0.427006,0],[0,0,1]];
+	_this setname "Alika Duvuduvukulu";;
+	_this setface "TanoanHead_A3_07";;
+	_this setspeaker "male01engfre";;
+	_this setpitch 0.992167;;
+};
+
+private _item736 = objNull;
+if (_layer670) then {
+	_item736 = createVehicle ["Item_Antimalaricum",[10079.6,4054.27,0.862741],[],0,"CAN_COLLIDE"];
+	_this = _item736;
+	_objects pushback _this;
+	_objectIDs pushback 736;
+	_this setPosWorld [10079.6,4054.27,5.10781];
+	_this setVectorDirAndUp [[0,0.999996,-0.0026529],[-0.0026529,0.00265289,0.999993]];
+	_this enableDynamicSimulation true;
+};
+
+private _item746 = objNull;
+if (_layer770) then {
+	_item746 = _item745 createUnit ["I_C_Soldier_Para_2_F",[10169,4336.93,0.0534172],[],0,"CAN_COLLIDE"];
+	_item745 selectLeader _item746;
+	_this = _item746;
+	_objects pushback _this;
+	_objectIDs pushback 746;
+	_this setPosWorld [10169,4336.98,55.2571];
+	_this setVectorDirAndUp [[-0.335257,-0.942127,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Maro Karetu";;
+	_this setface "TanoanHead_A3_04";;
+	_this setspeaker "male03fre";;
+	_this setpitch 0.957562;;
+};
+
+private _item747 = objNull;
+if (_layer770) then {
+	_item747 = _item745 createUnit ["I_C_Soldier_Para_4_F",[10166,4343.32,0.409279],[],0,"CAN_COLLIDE"];
+	_this = _item747;
+	_objects pushback _this;
+	_objectIDs pushback 747;
+	_this setPosWorld [10166,4343.37,55.1395];
+	_this setVectorDirAndUp [[-0.335257,-0.942127,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Kimo Maraiwai";;
+	_this setface "TanoanHead_A3_03";;
+	_this setspeaker "male02fre";;
+	_this setpitch 1.02242;;
+};
+
+private _item748 = objNull;
+if (_layer770) then {
+	_item748 = _item745 createUnit ["I_C_Soldier_Para_6_F",[10175.4,4339.97,0.409279],[],0,"CAN_COLLIDE"];
+	_this = _item748;
+	_objects pushback _this;
+	_objectIDs pushback 748;
+	_this setPosWorld [10175.4,4340.02,57.9983];
+	_this setVectorDirAndUp [[-0.335257,-0.942127,0],[0,0,1]];
+	_this setRank "SERGEANT";
+	_this setname "Ropata Koroi";;
+	_this setface "TanoanHead_A3_07";;
+	_this setspeaker "male01fre";;
+	_this setpitch 0.98914;;
+};
+
+private _item749 = objNull;
+if (_layer770) then {
+	_item749 = _item745 createUnit ["I_C_Soldier_Para_1_F",[10162.9,4349.71,0.409279],[],0,"CAN_COLLIDE"];
+	_this = _item749;
+	_objects pushback _this;
+	_objectIDs pushback 749;
+	_this setPosWorld [10162.9,4349.76,54.6811];
+	_this setVectorDirAndUp [[-0.335257,-0.942127,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Kimo Karetu";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "male03fre";;
+	_this setpitch 0.967887;;
+};
+
+private _item750 = objNull;
+if (_layer770) then {
+	_item750 = _item745 createUnit ["I_C_Soldier_Para_7_F",[10181.8,4343,0.409279],[],0,"CAN_COLLIDE"];
+	_this = _item750;
+	_objects pushback _this;
+	_objectIDs pushback 750;
+	_this setPosWorld [10181.8,4343.05,60.337];
+	_this setVectorDirAndUp [[-0.335257,-0.942127,0],[0,0,1]];
+	_this setSkill 0.45;
+	_this setRank "CORPORAL";
+	_this setname "Hoaka Babitu";;
+	_this setface "TanoanHead_A3_01";;
+	_this setspeaker "male03fre";;
+	_this setpitch 0.967118;;
+};
+
+private _item751 = objNull;
+if (_layer770) then {
+	_item751 = _item745 createUnit ["I_C_Soldier_Para_5_F",[10159.9,4356.09,0.409279],[],0,"CAN_COLLIDE"];
+	_this = _item751;
+	_objects pushback _this;
+	_objectIDs pushback 751;
+	_this setPosWorld [10159.9,4356.14,54.1754];
+	_this setVectorDirAndUp [[-0.335257,-0.942127,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Wehilani Veniri";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "male02fre";;
+	_this setpitch 1.0015;;
+};
+
+private _item752 = objNull;
+if (_layer770) then {
+	_item752 = _item745 createUnit ["I_C_Soldier_Para_8_F",[10188.2,4346.04,0.409279],[],0,"CAN_COLLIDE"];
+	_this = _item752;
+	_objects pushback _this;
+	_objectIDs pushback 752;
+	_this setPosWorld [10188.2,4346.09,62.3191];
+	_this setVectorDirAndUp [[-0.335257,-0.942127,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Henare Molias";;
+	_this setface "TanoanHead_A3_01";;
+	_this setspeaker "male02fre";;
+	_this setpitch 0.96427;;
+};
+
+private _item753 = objNull;
+if (_layer770) then {
+	_item753 = _item745 createUnit ["I_C_Soldier_Para_3_F",[10156.9,4362.48,0.409279],[],0,"CAN_COLLIDE"];
+	_this = _item753;
+	_objects pushback _this;
+	_objectIDs pushback 753;
+	_this setPosWorld [10156.9,4362.53,53.1037];
+	_this setVectorDirAndUp [[-0.335257,-0.942127,0],[0,0,1]];
+	_this setSkill 0.4;
+	_this setname "Wehilani Heke";;
+	_this setface "TanoanHead_A3_05";;
+	_this setspeaker "male03fre";;
+	_this setpitch 1.00048;;
+};
+
+private _item775 = objNull;
+if (_layerRoot) then {
+	_item775 = _item773 createUnit ["I_C_Soldier_Para_1_F",[10010.7,4369.31,-9.72748e-005],[],0,"CAN_COLLIDE"];
+	_this = _item775;
+	_objects pushback _this;
+	_objectIDs pushback 775;
+	_this setPosWorld [10010.4,4369.62,26.1663];
+	_this setVectorDirAndUp [[0.959826,0.229762,0.161069],[-0.160557,-0.0210504,0.986802]];
+	_this setname "Atonio Vunibaka";;
+	_this setface "TanoanHead_A3_03";;
+	_this setspeaker "male02fre";;
+	_this setpitch 1.04219;;
+};
+
+private _item776 = objNull;
+if (_layerRoot) then {
+	_item776 = _item773 createUnit ["I_C_Soldier_Para_1_F",[10010.7,4369.31,-9.72748e-005],[],0,"CAN_COLLIDE"];
+	_item773 selectLeader _item776;
+	_this = _item776;
+	_objects pushback _this;
+	_objectIDs pushback 776;
+	_this setPosWorld [10009.9,4368.8,25.918];
+	_this setVectorDirAndUp [[0.959826,0.229762,0.161069],[-0.160557,-0.0210504,0.986802]];
+	_this setname "Holokai Nakaunicina";;
+	_this setface "TanoanHead_A3_06";;
+	_this setspeaker "male01fre";;
+	_this setpitch 1.00173;;
+};
+
+private _item774 = objNull;
+if (_layerRoot) then {
+	_item774 = createVehicle ["I_C_Offroad_02_LMG_F",[10010.7,4369.24,-0.0024147],[],0,"CAN_COLLIDE"];
+	_this = _item774;
+	_objects pushback _this;
+	_objectIDs pushback 774;
+	_this setPosWorld [10010.3,4369.19,27.2113];
+	_this setVectorDirAndUp [[0.959826,0.229762,0.161069],[-0.160557,-0.0210504,0.986802]];
+	[_this,"[[[[],[]],[[],[]],[[""FirstAidKit""],[4]],[[],[]]],false]"] call bis_fnc_initAmmoBox;;
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Triggers
+private _triggers = [];
+private _triggerIDs = [];
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Group attributes (applied only once group units exist)
+_this = _item375;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-1"];;
+};
+_this = _item111;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-1"];;
+};
+_this = _item114;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-2"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item125;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-3"];;
+};
+_this = _item542;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-4"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item550;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-5"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item554;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-6"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item564;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-1"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item568;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-2"];;
+};
+_this = _item571;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-3"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item591;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-4"];;
+};
+_this = _item615;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-5"];;
+};
+_this = _item617;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 2-6"];;
+};
+_this = _item619;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-1"];;
+};
+_this = _item625;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-1"];;
+};
+_this = _item606;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-2"];;
+};
+_this = _item706;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-2"];;
+};
+_this = _item708;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-3"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item716;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-4"];;
+};
+_this = _item718;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-1"];;
+};
+_this = _item720;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-2"];;
+	_this setBehaviour "SAFE";
+	_this setSpeedMode "LIMITED";
+};
+_this = _item732;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 3-5"];;
+};
+_this = _item745;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-3"];;
+};
+_this = _item773;
+if !(units _this isEqualTo []) then {
+	[_this,0] setWaypointPosition [position leader _this,0];
+	_this setGroupID ["Alpha 1-4"];;
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Waypoints
+private _waypoints = [];
+private _waypointIDs = [];
+
+private _item117 = [];
+if (_layer78) then {
+	_item117 = _item114 addWaypoint [[11342.5,3247.58,0.0342417],0];
+	_this = _item117;
+	_waypoints pushback _this;
+	_waypointIDs pushback 117;
+	_this setWaypointType "MOVE";
+};
+
+private _item118 = [];
+if (_layer78) then {
+	_item118 = _item114 addWaypoint [[11412.9,3225.84,0],0];
+	_this = _item118;
+	_waypoints pushback _this;
+	_waypointIDs pushback 118;
+	_this setWaypointType "MOVE";
+	_this setWaypointTimeout [10,10,10];
+};
+
+private _item119 = [];
+if (_layer78) then {
+	_item119 = _item114 addWaypoint [[11278.4,3340.64,0],0];
+	_this = _item119;
+	_waypoints pushback _this;
+	_waypointIDs pushback 119;
+	_this setWaypointType "MOVE";
+};
+
+private _item120 = [];
+if (_layer78) then {
+	_item120 = _item114 addWaypoint [[11258.6,3313.44,0],0];
+	_this = _item120;
+	_waypoints pushback _this;
+	_waypointIDs pushback 120;
+	_this setWaypointType "MOVE";
+};
+
+private _item121 = [];
+if (_layer78) then {
+	_item121 = _item114 addWaypoint [[11340.1,3247.83,-6.86646e-005],0];
+	_this = _item121;
+	_waypoints pushback _this;
+	_waypointIDs pushback 121;
+	_this setWaypointType "CYCLE";
+};
+
+private _item517 = [];
+if (_layer78) then {
+	_item517 = _item125 addWaypoint [[11319.7,3278.92,0],0];
+	_this = _item517;
+	_waypoints pushback _this;
+	_waypointIDs pushback 517;
+	_this setWaypointType "GUARD";
+};
+
+private _item545 = [];
+if (_layer521) then {
+	_item545 = _item542 addWaypoint [[10996.4,4184.78,-0.000244141],0];
+	_this = _item545;
+	_waypoints pushback _this;
+	_waypointIDs pushback 545;
+	_this setWaypointType "MOVE";
+};
+
+private _item546 = [];
+if (_layer521) then {
+	_item546 = _item542 addWaypoint [[10975.6,4232.66,-0.000183105],0];
+	_this = _item546;
+	_waypoints pushback _this;
+	_waypointIDs pushback 546;
+	_this setWaypointType "SAD";
+};
+
+private _item547 = [];
+if (_layer521) then {
+	_item547 = _item542 addWaypoint [[11047.4,4245.15,0],0];
+	_this = _item547;
+	_waypoints pushback _this;
+	_waypointIDs pushback 547;
+	_this setWaypointType "SAD";
+};
+
+private _item548 = [];
+if (_layer521) then {
+	_item548 = _item542 addWaypoint [[11045,4207.19,0.000335693],0];
+	_this = _item548;
+	_waypoints pushback _this;
+	_waypointIDs pushback 548;
+	_this setWaypointType "MOVE";
+};
+
+private _item549 = [];
+if (_layer521) then {
+	_item549 = _item542 addWaypoint [[10999.4,4185.87,-6.10352e-005],0];
+	_this = _item549;
+	_waypoints pushback _this;
+	_waypointIDs pushback 549;
+	_this setWaypointType "CYCLE";
+};
+
+private _item552 = [];
+if (_layer521) then {
+	_item552 = _item550 addWaypoint [[11021.7,4213.62,0],0];
+	_this = _item552;
+	_waypoints pushback _this;
+	_waypointIDs pushback 552;
+	_this setWaypointType "GUARD";
+};
+
+private _item556 = [];
+if (_layer521) then {
+	_item556 = _item554 addWaypoint [[10989.4,4165.06,0],0];
+	_this = _item556;
+	_waypoints pushback _this;
+	_waypointIDs pushback 556;
+	_this setWaypointType "GUARD";
+};
+
+private _item566 = [];
+if (_layer521) then {
+	_item566 = _item564 addWaypoint [[11019.8,4210.66,0],0];
+	_this = _item566;
+	_waypoints pushback _this;
+	_waypointIDs pushback 566;
+	_this setWaypointType "GUARD";
+};
+
+private _item570 = [];
+if (_layer521) then {
+	_item570 = _item568 addWaypoint [[11018.9,4214.39,0],0];
+	_this = _item570;
+	_waypoints pushback _this;
+	_waypointIDs pushback 570;
+	_this setWaypointType "SAD";
+};
+
+private _item573 = [];
+if (_layer521) then {
+	_item573 = _item571 addWaypoint [[11028.7,4202.13,0],0];
+	_this = _item573;
+	_waypoints pushback _this;
+	_waypointIDs pushback 573;
+	_this setWaypointType "MOVE";
+};
+
+private _item574 = [];
+if (_layer521) then {
+	_item574 = _item571 addWaypoint [[11001.8,4191.83,-0.00038147],0];
+	_this = _item574;
+	_waypoints pushback _this;
+	_waypointIDs pushback 574;
+	_this setWaypointType "MOVE";
+};
+
+private _item575 = [];
+if (_layer521) then {
+	_item575 = _item571 addWaypoint [[10991.8,4221.49,3.05176e-005],0];
+	_this = _item575;
+	_waypoints pushback _this;
+	_waypointIDs pushback 575;
+	_this setWaypointType "MOVE";
+};
+
+private _item576 = [];
+if (_layer521) then {
+	_item576 = _item571 addWaypoint [[11030.2,4232.4,-7.62939e-005],0];
+	_this = _item576;
+	_waypoints pushback _this;
+	_waypointIDs pushback 576;
+	_this setWaypointType "MOVE";
+};
+
+private _item577 = [];
+if (_layer521) then {
+	_item577 = _item571 addWaypoint [[11037.7,4207.99,9.15527e-005],0];
+	_this = _item577;
+	_waypoints pushback _this;
+	_waypointIDs pushback 577;
+	_this setWaypointType "MOVE";
+};
+
+private _item578 = [];
+if (_layer521) then {
+	_item578 = _item571 addWaypoint [[11031.3,4204.88,-1.52588e-005],0];
+	_this = _item578;
+	_waypoints pushback _this;
+	_waypointIDs pushback 578;
+	_this setWaypointType "MOVE";
+};
+
+private _item579 = [];
+if (_layer521) then {
+	_item579 = _item571 addWaypoint [[11019.6,4215,0],0];
+	_this = _item579;
+	_waypoints pushback _this;
+	_waypointIDs pushback 579;
+	_this setWaypointType "MOVE";
+	_this setWaypointTimeout [30,30,30];
+};
+
+private _item580 = [];
+if (_layer521) then {
+	_item580 = _item571 addWaypoint [[11028.3,4202.69,0],0];
+	_this = _item580;
+	_waypoints pushback _this;
+	_waypointIDs pushback 580;
+	_this setWaypointType "CYCLE";
+};
+
+private _item630 = [];
+if (_layer637) then {
+	_item630 = _item617 addWaypoint [[10998,4003.47,-5.34058e-005],0];
+	_this = _item630;
+	_waypoints pushback _this;
+	_waypointIDs pushback 630;
+	_this setWaypointType "GUARD";
+};
+
+private _item711 = [];
+if (_layer670) then {
+	_item711 = _item708 addWaypoint [[10016.8,4038.01,0.0135074],0];
+	_this = _item711;
+	_waypoints pushback _this;
+	_waypointIDs pushback 711;
+	_this setWaypointType "MOVE";
+};
+
+private _item712 = [];
+if (_layer670) then {
+	_item712 = _item708 addWaypoint [[10019.5,4091.43,0.000280857],0];
+	_this = _item712;
+	_waypoints pushback _this;
+	_waypointIDs pushback 712;
+	_this setWaypointType "MOVE";
+};
+
+private _item713 = [];
+if (_layer670) then {
+	_item713 = _item708 addWaypoint [[10116.4,4054.49,-0.332643],0];
+	_this = _item713;
+	_waypoints pushback _this;
+	_waypointIDs pushback 713;
+	_this setWaypointType "MOVE";
+};
+
+private _item714 = [];
+if (_layer670) then {
+	_item714 = _item708 addWaypoint [[10105.3,4025.82,1.5974e-005],0];
+	_this = _item714;
+	_waypoints pushback _this;
+	_waypointIDs pushback 714;
+	_this setWaypointType "MOVE";
+};
+
+private _item715 = [];
+if (_layer670) then {
+	_item715 = _item708 addWaypoint [[10019.6,4037.79,0.0192499],0];
+	_this = _item715;
+	_waypoints pushback _this;
+	_waypointIDs pushback 715;
+	_this setWaypointType "CYCLE";
+};
+
+private _item722 = [];
+if (_layer670) then {
+	_item722 = _item720 addWaypoint [[10071.2,4053.44,0],0];
+	_this = _item722;
+	_waypoints pushback _this;
+	_waypointIDs pushback 722;
+	_this setWaypointType "MOVE";
+	_this setWaypointTimeout [20,20,20];
+};
+
+private _item723 = [];
+if (_layer670) then {
+	_item723 = _item720 addWaypoint [[10053.3,4064.57,0],0];
+	_this = _item723;
+	_waypoints pushback _this;
+	_waypointIDs pushback 723;
+	_this setWaypointType "MOVE";
+};
+
+private _item724 = [];
+if (_layer670) then {
+	_item724 = _item720 addWaypoint [[10081.8,4058.63,2.38419e-006],0];
+	_this = _item724;
+	_waypoints pushback _this;
+	_waypointIDs pushback 724;
+	_this setWaypointType "MOVE";
+};
+
+private _item725 = [];
+if (_layer670) then {
+	_item725 = _item720 addWaypoint [[10071.4,4040.87,0.5],0];
+	_this = _item725;
+	_waypoints pushback _this;
+	_waypointIDs pushback 725;
+	_this setWaypointType "MOVE";
+};
+
+private _item726 = [];
+if (_layer670) then {
+	_item726 = _item720 addWaypoint [[10070.7,4053.75,0],0];
+	_this = _item726;
+	_waypoints pushback _this;
+	_waypointIDs pushback 726;
+	_this setWaypointType "CYCLE";
+};
+
+private _item754 = [];
+if (_layer770) then {
+	_item754 = _item745 addWaypoint [[10163.8,4333.41,0],0];
+	_this = _item754;
+	_waypoints pushback _this;
+	_waypointIDs pushback 754;
+	_this setWaypointType "MOVE";
+	_this setWaypointFormation "LINE";
+	_this setWaypointTimeout [30,30,30];
+};
+
+private _item766 = [];
+if (_layer770) then {
+	_item766 = _item745 addWaypoint [[10087.6,4073.21,7.22408e-005],0];
+	_this = _item766;
+	_waypoints pushback _this;
+	_waypointIDs pushback 766;
+	_this setWaypointType "MOVE";
+};
+
+private _item769 = [];
+if (_layer770) then {
+	_item769 = _item745 addWaypoint [[10047.6,3787.99,-8.01086e-005],0];
+	_this = _item769;
+	_waypoints pushback _this;
+	_waypointIDs pushback 769;
+	_this setWaypointType "MOVE";
+};
+
+private _item777 = [];
+if (_layerRoot) then {
+	_item777 = _item773 addWaypoint [[10016.3,4370.44,0],0];
+	_this = _item777;
+	_waypoints pushback _this;
+	_waypointIDs pushback 777;
+	_this setWaypointType "MOVE";
+	_this setWaypointTimeout [60,60,60];
+};
+
+private _item778 = [];
+if (_layerRoot) then {
+	_item778 = _item773 addWaypoint [[10114,4115.55,0],0];
+	_this = _item778;
+	_waypoints pushback _this;
+	_waypointIDs pushback 778;
+	_this setWaypointType "SAD";
+};
+
+private _item779 = [];
+if (_layerRoot) then {
+	_item779 = _item773 addWaypoint [[10121.1,4100.2,0],0];
+	_this = _item779;
+	_waypoints pushback _this;
+	_waypointIDs pushback 779;
+	_this setWaypointType "GUARD";
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Logics
+private _logics = [];
+private _logicIDs = [];
+
+private _item377 = objNull;
+if (_layer0) then {
+	_item377 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInit_F",[11306.6,3878.08,0],[],0,"CAN_COLLIDE"];
+	_this = _item377;
+	_logics pushback _this;
+	_logicIDs pushback 377;
+	_this setPosWorld [11306.6,3878.08,50.8];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Path',"\a3\Missions_F_Oldman\Campaign\Missions\",true];;
+	_this setVariable ['Missions',"[""common""]",true];;
+	_this setVariable ['CsatAiming',1,true];;
+	_this setVariable ['SyndikatAiming',1,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item199 = objNull;
+if (_layer78) then {
+	_item199 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11321,3272.79,0.426118],[],0,"CAN_COLLIDE"];
+	_this = _item199;
+	_logics pushback _this;
+	_logicIDs pushback 199;
+	_this setPosWorld [11321,3272.79,13.9717];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilListening_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM""; 
+ _this switchmove """"; 
+ _this playAction ""Stand"" 
+};",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item200 = objNull;
+if (_layer78) then {
+	_item200 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11316.4,3276.81,-0.066],[],0,"CAN_COLLIDE"];
+	_this = _item200;
+	_logics pushback _this;
+	_logicIDs pushback 200;
+	_this setPosWorld [11316.4,3276.81,13.8641];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"[_this,""STAND"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item197 = objNull;
+if (_layer78) then {
+	_item197 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmNight_F",[11312.2,3264.43,6.67572e-005],[],0,"CAN_COLLIDE"];
+	_this = _item197;
+	_logics pushback _this;
+	_logicIDs pushback 197;
+	_this setPosWorld [11312.2,3264.43,13.7418];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Fireplaces',1,true];;
+	_this setVariable ['Flashlights',1,true];;
+	_this setVariable ['AmbientCivilians',0,true];;
+	_this setVariable ['DeleteGroups',1,true];;
+	_this setVariable ['DeleteVehicles',0,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item198 = objNull;
+if (_layer78) then {
+	_item198 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11318.2,3273.42,0.227226],[],0,"CAN_COLLIDE"];
+	_this = _item198;
+	_logics pushback _this;
+	_logicIDs pushback 198;
+	_this setPosWorld [11318.2,3273.42,13.9872];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilTalking_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM""; 
+ _this switchmove """"; 
+ _this playAction ""Stand"" 
+};",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item220 = objNull;
+if (_layer78) then {
+	_item220 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11325.7,3272.86,0.0889997],[],0,"CAN_COLLIDE"];
+	_this = _item220;
+	_logics pushback _this;
+	_logicIDs pushback 220;
+	_this setPosWorld [11325.7,3272.86,13.56];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"_this setVehicleAmmo 0.12",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item448 = objNull;
+if (_layerRoot) then {
+	_item448 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleEditTerrainObject_F",[12070.2,2380.28,0],[],0,"CAN_COLLIDE"];
+	_this = _item448;
+	_logics pushback _this;
+	_logicIDs pushback 448;
+	_this setPosWorld [12070.2,2380.28,-0.781733];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[1,1,0,false,-1]];
+	_this setVariable ["#name",""];
+	_this setVariable ["#initServer",""];
+	_this setVariable ["#init",""];
+	_this setVariable ["#filter",7];
+	_this setVariable ["#state",5];
+	_this setVariable ["#allowDamage",true];
+	_this setVariable ["#doorStates",[0,0,0]];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item449 = objNull;
+if (_layerRoot) then {
+	_item449 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleEditTerrainObject_F",[12064.8,2389.19,0],[],0,"CAN_COLLIDE"];
+	_this = _item449;
+	_logics pushback _this;
+	_logicIDs pushback 449;
+	_this setPosWorld [12064.8,2389.19,0.536739];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[1,1,0,false,-1]];
+	_this setVariable ["#name",""];
+	_this setVariable ["#initServer",""];
+	_this setVariable ["#init",""];
+	_this setVariable ["#filter",7];
+	_this setVariable ["#state",5];
+	_this setVariable ["#allowDamage",true];
+	_this setVariable ["#doorStates",[0,0,0]];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item450 = objNull;
+if (_layerRoot) then {
+	_item450 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleEditTerrainObject_F",[12077.8,2366.18,0],[],0,"CAN_COLLIDE"];
+	_this = _item450;
+	_logics pushback _this;
+	_logicIDs pushback 450;
+	_this setPosWorld [12077.8,2366.18,-2.09202];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[1,1,0,false,-1]];
+	_this setVariable ["#name",""];
+	_this setVariable ["#initServer",""];
+	_this setVariable ["#init",""];
+	_this setVariable ["#filter",7];
+	_this setVariable ["#state",5];
+	_this setVariable ["#allowDamage",true];
+	_this setVariable ["#doorStates",[0,0,0]];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item451 = objNull;
+if (_layerRoot) then {
+	_item451 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleEditTerrainObject_F",[12085.4,2352.05,0],[],0,"CAN_COLLIDE"];
+	_this = _item451;
+	_logics pushback _this;
+	_logicIDs pushback 451;
+	_this setPosWorld [12085.4,2352.05,-2.67485];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[1,1,0,false,-1]];
+	_this setVariable ["#name",""];
+	_this setVariable ["#initServer",""];
+	_this setVariable ["#init",""];
+	_this setVariable ["#filter",7];
+	_this setVariable ["#state",5];
+	_this setVariable ["#allowDamage",true];
+	_this setVariable ["#doorStates",[0,0,0]];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item452 = objNull;
+if (_layerRoot) then {
+	_item452 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleEditTerrainObject_F",[12093,2337.91,0],[],0,"CAN_COLLIDE"];
+	_this = _item452;
+	_logics pushback _this;
+	_logicIDs pushback 452;
+	_this setPosWorld [12093,2337.91,-0.39979];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[1,1,0,false,-1]];
+	_this setVariable ["#name",""];
+	_this setVariable ["#initServer",""];
+	_this setVariable ["#init",""];
+	_this setVariable ["#filter",7];
+	_this setVariable ["#state",5];
+	_this setVariable ["#allowDamage",true];
+	_this setVariable ["#doorStates",[0,0,0]];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item453 = objNull;
+if (_layerRoot) then {
+	_item453 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleEditTerrainObject_F",[12097.9,2330.03,0],[],0,"CAN_COLLIDE"];
+	_this = _item453;
+	_logics pushback _this;
+	_logicIDs pushback 453;
+	_this setPosWorld [12097.9,2330.03,0.7309];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[1,1,0,false,-1]];
+	_this setVariable ["#name",""];
+	_this setVariable ["#initServer",""];
+	_this setVariable ["#init",""];
+	_this setVariable ["#filter",7];
+	_this setVariable ["#state",5];
+	_this setVariable ["#allowDamage",true];
+	_this setVariable ["#doorStates",[0,0,0]];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item458 = objNull;
+if (_layerRoot) then {
+	_item458 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmRestrictedArea_F",[11325.3,3281.52,0.150958],[],0,"CAN_COLLIDE"];
+	_this = _item458;
+	_logics pushback _this;
+	_logicIDs pushback 458;
+	_this setPosWorld [11325.3,3281.52,13.8133];
+	_this setVectorDirAndUp [[-0.0395331,0.999218,0],[0,0,1]];
+	_this setVariable ["objectArea",[4.91467,7.52894,357.734,true,-1]];
+	_this setVariable ['Condition',"",true];;
+	_this setVariable ['side',0,true];;
+	_this setVariable ['RestrictedArea',1,true];;
+	_this setVariable ['ThreatRange',300,true];;
+	_this setVariable ['ThreatRate',3,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item76 = objNull;
+if (_layerRoot) then {
+	_item76 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmSector_F",[11316.2,3263.08,0.399],[],0,"CAN_COLLIDE"];
+	_this = _item76;
+	_logics pushback _this;
+	_logicIDs pushback 76;
+	_this setPosWorld [11316.2,3263.08,13.6601];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[33.354,32.673,0,false,-1]];
+	_this setVariable ['Condition',"",true];;
+	_this setVariable ['SpawnDistance',200,true];;
+	_this setVariable ['VehicleSpawnDistance',250,true];;
+	_this setVariable ['side',0,true];;
+	_this setVariable ['AASector',false,true];;
+	_this setVariable ['RestrictedArea',0,true];;
+	_this setVariable ['CanAttack',false,true];;
+	_this setVariable ['QRFEnabled',true,true];;
+	_this setVariable ['ThreatRange',300,true];;
+	_this setVariable ['ThreatRate',1,true];;
+	_this setVariable ['Layer',"BIS_DutchC_Check2",true];;
+	_this setVariable ['OnStateChangeCode',"",true];;
+	_this setVariable ['OnDespawnCode',"",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item520 = objNull;
+if (_layerRoot) then {
+	_item520 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmSector_F",[11014.1,4191.76,0],[],0,"CAN_COLLIDE"];
+	_this = _item520;
+	_logics pushback _this;
+	_logicIDs pushback 520;
+	_this setPosWorld [11014.1,4191.76,182.513];
+	_this setVectorDirAndUp [[0,0.999968,-0.00799352],[0.113914,0.00794149,0.993459]];
+	_this setVariable ["objectArea",[100,100,0,false,-1]];
+	_this setVariable ['Condition',"",true];;
+	_this setVariable ['SpawnDistance',100,true];;
+	_this setVariable ['VehicleSpawnDistance',100,true];;
+	_this setVariable ['AirSpawnDistance',0,true];;
+	_this setVariable ['side',-1,true];;
+	_this setVariable ['AASector',false,true];;
+	_this setVariable ['RestrictedArea',0,true];;
+	_this setVariable ['CanAttack',false,true];;
+	_this setVariable ['QRFEnabled',true,true];;
+	_this setVariable ['ThreatRange',300,true];;
+	_this setVariable ['ThreatRate',1,true];;
+	_this setVariable ['Layer',"BIS_SC_Dutch_RadioTower",true];;
+	_this setVariable ['OnStateChangeCode',"",true];;
+	_this setVariable ['OnDespawnCode',"",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item553 = objNull;
+if (_layer521) then {
+	_item553 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11022.7,4214.05,0],[],0,"CAN_COLLIDE"];
+	_this = _item553;
+	_logics pushback _this;
+	_logicIDs pushback 553;
+	_this setPosWorld [11022.7,4214.05,182.53];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"[_this,""WATCH"",""ASIS""] call BIS_fnc_ambientAnimCombat;",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item557 = objNull;
+if (_layer521) then {
+	_item557 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[10987.8,4165.45,0],[],0,"CAN_COLLIDE"];
+	_this = _item557;
+	_logics pushback _this;
+	_logicIDs pushback 557;
+	_this setPosWorld [10987.8,4165.45,177.874];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"[_this,""STAND"",""ASIS""] call BIS_fnc_ambientAnimCombat;",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item567 = objNull;
+if (_layer521) then {
+	_item567 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmNight_F",[11020.8,4202.07,1.52588e-005],[],0,"CAN_COLLIDE"];
+	_this = _item567;
+	_logics pushback _this;
+	_logicIDs pushback 567;
+	_this setPosWorld [11020.8,4202.07,182.523];
+	_this setVectorDirAndUp [[0,0.999996,-0.00265204],[-0.00267442,0.00265203,0.999993]];
+	_this setVariable ['Fireplaces',true,true];;
+	_this setVariable ['Flashlights',true,true];;
+	_this setVariable ['AmbientCivilians',false,true];;
+	_this setVariable ['DeleteGroups',true,true];;
+	_this setVariable ['DeleteVehicles',false,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item581 = objNull;
+if (_layer521) then {
+	_item581 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11017,4213.95,0],[],0,"CAN_COLLIDE"];
+	_this = _item581;
+	_logics pushback _this;
+	_logicIDs pushback 581;
+	_this setPosWorld [11017,4213.95,182.519];
+	_this setVectorDirAndUp [[0,1,0],[-0.00267035,0,0.999996]];
+	_this setVariable ['Code',"IF (bis_night) then {[_this,""WATCH"",""ASIS""] call BIS_fnc_ambientAnimCombat;} else {deleteVehicle _this};",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item582 = objNull;
+if (_layer521) then {
+	_item582 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11016.8,4218.45,0],[],0,"CAN_COLLIDE"];
+	_this = _item582;
+	_logics pushback _this;
+	_logicIDs pushback 582;
+	_this setPosWorld [11016.8,4218.45,182.527];
+	_this setVectorDirAndUp [[0,0.999996,0.00265294],[-0.0026529,-0.00265293,0.999993]];
+	_this setVariable ['Code',"if (bis_night) then {[_this,""SIT_LOW"",""ASIS""] call BIS_fnc_ambientAnimCombat;} else {deleteVehicle _this};",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item589 = objNull;
+if (_layer521) then {
+	_item589 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11020.3,4216.4,0],[],0,"CAN_COLLIDE"];
+	_this = _item589;
+	_logics pushback _this;
+	_logicIDs pushback 589;
+	_this setPosWorld [11020.3,4216.4,182.53];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"if !(bis_night) then {deleteVehicle _this};",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item590 = objNull;
+if (_layerRoot) then {
+	_item590 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmRestrictedArea_F",[11014.1,4207.13,2.61533],[],0,"CAN_COLLIDE"];
+	_this = _item590;
+	_logics pushback _this;
+	_logicIDs pushback 590;
+	_this setPosWorld [11014.1,4207.13,185.125];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[54.0781,64.0952,0,false,-1]];
+	_this setVariable ['Condition',"",true];;
+	_this setVariable ['side',0,true];;
+	_this setVariable ['RestrictedArea',1,true];;
+	_this setVariable ['ThreatRange',300,true];;
+	_this setVariable ['ThreatRate',3,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item598 = objNull;
+if (_layerRoot) then {
+	_item598 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmSector_F",[11043.7,3993.68,-7.62939e-006],[],0,"CAN_COLLIDE"];
+	_this = _item598;
+	_logics pushback _this;
+	_logicIDs pushback 598;
+	_this setPosWorld [11043.7,3993.68,117.317];
+	_this setVectorDirAndUp [[-0.166579,0.986028,0],[0,0,1]];
+	_this setVariable ["objectArea",[144.94,219.039,350.411,false,-1]];
+	_this setVariable ['Condition',"",true];;
+	_this setVariable ['SpawnDistance',100,true];;
+	_this setVariable ['VehicleSpawnDistance',100,true];;
+	_this setVariable ['AirSpawnDistance',0,true];;
+	_this setVariable ['side',0,true];;
+	_this setVariable ['AASector',false,true];;
+	_this setVariable ['RestrictedArea',0,true];;
+	_this setVariable ['CanAttack',false,true];;
+	_this setVariable ['QRFEnabled',false,true];;
+	_this setVariable ['ThreatRange',300,true];;
+	_this setVariable ['ThreatRate',1,true];;
+	_this setVariable ['Layer',"BIS_SC_DutchRadioM2",true];;
+	_this setVariable ['OnStateChangeCode',"",true];;
+	_this setVariable ['OnDespawnCode',"",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item593 = objNull;
+if (_layer599) then {
+	_item593 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[10995.3,4166.33,0],[],0,"CAN_COLLIDE"];
+	_this = _item593;
+	_logics pushback _this;
+	_logicIDs pushback 593;
+	_this setPosWorld [10995.3,4166.33,178.11];
+	_this setVectorDirAndUp [[0,0.982545,0.186027],[0.0850173,-0.185353,0.978987]];
+	_this setVariable ['Code',"_this setskill 1;_this setskill [""spotDistance"",1];_this setskill [""aimingShake"",0.3];",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item522 = objNull;
+if (_layerRoot) then {
+	_item522 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleHideTerrainObjects_F",[10998.4,4163.15,1.82306],[],0,"CAN_COLLIDE"];
+	_this = _item522;
+	_logics pushback _this;
+	_logicIDs pushback 522;
+	_this setPosWorld [10998.4,4163.15,178.873];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[2.69434,4.22742,0,false,-1]];
+	_this setVariable ["#filter",15];
+	_this setVariable ["#hideLocally",false];
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item600 = objNull;
+if (_layerRoot) then {
+	_item600 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmSector_F",[11010.2,3990.23,0],[],0,"CAN_COLLIDE"];
+	_this = _item600;
+	_logics pushback _this;
+	_logicIDs pushback 600;
+	_this setPosWorld [11010.2,3990.23,115.025];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[100,100,0,false,-1]];
+	_this setVariable ['Condition',"isnil ""BIS_SlaughterSiteVisited""",true];;
+	_this setVariable ['SpawnDistance',200,true];;
+	_this setVariable ['VehicleSpawnDistance',200,true];;
+	_this setVariable ['AirSpawnDistance',0,true];;
+	_this setVariable ['side',-1,true];;
+	_this setVariable ['AASector',false,true];;
+	_this setVariable ['RestrictedArea',0,true];;
+	_this setVariable ['CanAttack',false,true];;
+	_this setVariable ['QRFEnabled',true,true];;
+	_this setVariable ['ThreatRange',300,true];;
+	_this setVariable ['ThreatRate',1,true];;
+	_this setVariable ['Layer',"BIS_SC_SyndikatsM2SlaughterSite",true];;
+	_this setVariable ['OnStateChangeCode',"",true];;
+	_this setVariable ['OnDespawnCode',"",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item601 = objNull;
+if (_layerRoot) then {
+	_item601 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11012.6,3991.85,7.62939e-006],[],0,"CAN_COLLIDE"];
+	_this = _item601;
+	_logics pushback _this;
+	_logicIDs pushback 601;
+	_this setPosWorld [11012.6,3991.85,115.2];
+	_this setVectorDirAndUp [[0,0.99615,0.08766],[-0.0026529,-0.0876597,0.996147]];
+	_this setVariable ['Code',"BIS_SlaughterSiteVisited = true;",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item604 = objNull;
+if (_layer637) then {
+	_item604 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11019.9,3997.78,0],[],0,"CAN_COLLIDE"];
+	_this = _item604;
+	_logics pushback _this;
+	_logicIDs pushback 604;
+	_this setPosWorld [11019.9,3997.78,115.959];
+	_this setVectorDirAndUp [[0,0.99615,0.08766],[-0.0346553,-0.0876074,0.995552]];
+	_this setVariable ['Code',"_this setdamage 0.8;",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item608 = objNull;
+if (_layer637) then {
+	_item608 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11020.6,3996.83,7.62939e-006],[],0,"CAN_COLLIDE"];
+	_this = _item608;
+	_logics pushback _this;
+	_logicIDs pushback 608;
+	_this setPosWorld [11020.6,3996.83,115.891];
+	_this setVectorDirAndUp [[0,0.994905,0.100813],[-0.0346379,-0.100753,0.994308]];
+	_this setVariable ['Code',"_this setCaptive true;removeAllWeapons _this;_this setdamage 1",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item627 = objNull;
+if (_layer637) then {
+	_item627 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11014.4,3987.35,0],[],0,"CAN_COLLIDE"];
+	_this = _item627;
+	_logics pushback _this;
+	_logicIDs pushback 627;
+	_this setPosWorld [11014.4,3987.35,114.816];
+	_this setVectorDirAndUp [[0,0.995914,0.0903021],[-0.0266655,-0.09027,0.99556]];
+	_this setVariable ['Code',"_this setCaptive true;_this disableai ""ANIM"";_this setmimic ""DEAD"";_this switchmove ""static_dead"";_this disableai ""all""; _this setdamage 0.9;",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item629 = objNull;
+if (_layer637) then {
+	_item629 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11016.7,3996.2,0],[],0,"CAN_COLLIDE"];
+	_this = _item629;
+	_logics pushback _this;
+	_logicIDs pushback 629;
+	_this setPosWorld [11016.7,3996.2,115.695];
+	_this setVectorDirAndUp [[0,0.995673,0.0929265],[-0.0399748,-0.0928523,0.994877]];
+	_this setVariable ['Code',"[_this,""STAND"",""ASIS""] call BIS_fnc_ambientAnimCombat;",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item631 = objNull;
+if (_layer637) then {
+	_item631 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[11011,3988.21,0],[],0,"CAN_COLLIDE"];
+	_this = _item631;
+	_logics pushback _this;
+	_logicIDs pushback 631;
+	_this setPosWorld [11011,3988.21,114.863];
+	_this setVectorDirAndUp [[0,0.99615,0.08766],[-0.0026529,-0.0876597,0.996147]];
+	_this setVariable ['Code',"[_this,""WATCH"",""ASIS""] call BIS_fnc_ambientAnimCombat;",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item729 = objNull;
+if (_layer670) then {
+	_item729 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmProtectedVehicle_F",[10061,4066.8,0],[],0,"CAN_COLLIDE"];
+	_this = _item729;
+	_logics pushback _this;
+	_logicIDs pushback 729;
+	_this setPosWorld [10061,4066.8,4.02971];
+	_this setVectorDirAndUp [[0,0.999304,0.0373065],[-0.0797466,-0.0371877,0.996121]];
+	_this setVariable ['Side',3,true];;
+	_this setVariable ['Penalty',200,true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item734 = objNull;
+if (_layerRoot) then {
+	_item734 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmSector_F",[10105.3,4047.71,-0.413808],[],0,"CAN_COLLIDE"];
+	_this = _item734;
+	_logics pushback _this;
+	_logicIDs pushback 734;
+	_this setPosWorld [10105.3,4047.71,4.10059];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ["objectArea",[100,100,0,false,-1]];
+	_this setVariable ['Condition',"",true];;
+	_this setVariable ['SpawnDistance',400,true];;
+	_this setVariable ['VehicleSpawnDistance',500,true];;
+	_this setVariable ['AirSpawnDistance',0,true];;
+	_this setVariable ['side',-1,true];;
+	_this setVariable ['AASector',false,true];;
+	_this setVariable ['RestrictedArea',0,true];;
+	_this setVariable ['CanAttack',false,true];;
+	_this setVariable ['QRFEnabled',true,true];;
+	_this setVariable ['ThreatRange',300,true];;
+	_this setVariable ['ThreatRate',1,true];;
+	_this setVariable ['Layer',"BIS_SC_DutchCPunderConstruction",true];;
+	_this setVariable ['OnStateChangeCode',"",true];;
+	_this setVariable ['OnDespawnCode',"",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item759 = objNull;
+if (_layerRoot) then {
+	_item759 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[10087.5,4052.73,0],[],0,"CAN_COLLIDE"];
+	_this = _item759;
+	_logics pushback _this;
+	_logicIDs pushback 759;
+	_this setPosWorld [10087.5,4052.73,4.00082];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"[_this,""STAND"",""ASIS""] call BIS_fnc_ambientAnimCombat;",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item760 = objNull;
+if (_layerRoot) then {
+	_item760 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[10062.1,4040.7,0],[],0,"CAN_COLLIDE"];
+	_this = _item760;
+	_logics pushback _this;
+	_logicIDs pushback 760;
+	_this setPosWorld [10062.1,4040.7,3.789];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"[_this,""WATCH"",""ASIS""] call BIS_fnc_ambientAnimCombat;",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item765 = objNull;
+if (_layerRoot) then {
+	_item765 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[10094.4,4050.27,0],[],0,"CAN_COLLIDE"];
+	_this = _item765;
+	_logics pushback _this;
+	_logicIDs pushback 765;
+	_this setPosWorld [10094.4,4050.27,4.21596];
+	_this setVectorDirAndUp [[0,1,0],[0,0,1]];
+	_this setVariable ['Code',"_this setskill [""aimingShake"",0.05];",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item767 = objNull;
+if (_layerRoot) then {
+	_item767 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmSector_F",[10146.2,4208.03,31.23],[],0,"CAN_COLLIDE"];
+	_this = _item767;
+	_logics pushback _this;
+	_logicIDs pushback 767;
+	_this setPosWorld [10146.2,4208.03,49.7616];
+	_this setVectorDirAndUp [[0.187467,0.982271,0],[0,0,1]];
+	_this setVariable ["objectArea",[100,218.602,10.805,false,-1]];
+	_this setVariable ['Condition',"isnil ""BIS_Syn_attackedDutchCP"" ",true];;
+	_this setVariable ['SpawnDistance',400,true];;
+	_this setVariable ['VehicleSpawnDistance',500,true];;
+	_this setVariable ['AirSpawnDistance',0,true];;
+	_this setVariable ['side',-1,true];;
+	_this setVariable ['AASector',false,true];;
+	_this setVariable ['RestrictedArea',0,true];;
+	_this setVariable ['CanAttack',false,true];;
+	_this setVariable ['QRFEnabled',false,true];;
+	_this setVariable ['ThreatRange',300,true];;
+	_this setVariable ['ThreatRate',1,true];;
+	_this setVariable ['Layer',"BIS_SC_Syn_attackedDutchCP",true];;
+	_this setVariable ['OnStateChangeCode',"",true];;
+	_this setVariable ['OnDespawnCode',"",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item768 = objNull;
+if (_layer770) then {
+	_item768 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[10186,4365.55,0],[],0,"CAN_COLLIDE"];
+	_this = _item768;
+	_logics pushback _this;
+	_logicIDs pushback 768;
+	_this setPosWorld [10186,4365.55,62.5419];
+	_this setVectorDirAndUp [[0,0.990521,0.137358],[-0.30247,-0.130924,0.944124]];
+	_this setVariable ['Code',"SYN_grupa = group _this;
+_ran = selectrandom [0,1,2,3,4,5];
+if (_ran >=4) then {BIS_Syn_attackedDutchCP = true;} else {0= [] spawn {sleep 5;{DELETEVEHICLE _X} foreach units SYN_grupa;}};",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item771 = objNull;
+if (_layerRoot) then {
+	_item771 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmInitScript_F",[10088,4042.07,-1.4782e-005],[],0,"CAN_COLLIDE"];
+	_this = _item771;
+	_logics pushback _this;
+	_logicIDs pushback 771;
+	_this setPosWorld [10088,4042.07,4.03678];
+	_this setVectorDirAndUp [[0,0.999986,0.00533751],[-0.0186628,-0.00533659,0.999812]];
+	_this setVariable ['Code',"_this setskill [""aimingShake"",0.2];",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+private _item772 = objNull;
+if (_layerRoot) then {
+	_item772 = (group (missionNamespace getvariable ["BIS_functions_mainscope",objnull])) createUnit ["ModuleOmSector_F",[9999.23,4352.76,0],[],0,"CAN_COLLIDE"];
+	_this = _item772;
+	_logics pushback _this;
+	_logicIDs pushback 772;
+	_this setPosWorld [9999.23,4352.76,19.4337];
+	_this setVectorDirAndUp [[0,0.994636,0.103435],[-0.157986,-0.102136,0.982145]];
+	_this setVariable ["objectArea",[100,100,0,false,-1]];
+	_this setVariable ['Condition',"!isnil ""BIS_Syn_attackedDutchCP""",true];;
+	_this setVariable ['SpawnDistance',500,true];;
+	_this setVariable ['VehicleSpawnDistance',500,true];;
+	_this setVariable ['AirSpawnDistance',0,true];;
+	_this setVariable ['side',-1,true];;
+	_this setVariable ['AASector',false,true];;
+	_this setVariable ['RestrictedArea',0,true];;
+	_this setVariable ['CanAttack',false,true];;
+	_this setVariable ['QRFEnabled',true,true];;
+	_this setVariable ['ThreatRange',300,true];;
+	_this setVariable ['ThreatRate',1,true];;
+	_this setVariable ['Layer',"",true];;
+	_this setVariable ['OnStateChangeCode',"",true];;
+	_this setVariable ['OnDespawnCode',"",true];;
+	_this setvariable ["BIS_fnc_initModules_disableAutoActivation",true];
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Layers
+if (_layer770) then {missionNamespace setVariable ["Dutch_CENTER_CSAT_BIS_SC_Syn_attackedDutchCP",[[_item746,_item747,_item748,_item749,_item750,_item751,_item752,_item753,_item768],[]]];};
+if (_layer670) then {missionNamespace setVariable ["Dutch_CENTER_CSAT_BIS_SC_DutchCPunderConstruction",[[_item671,_item672,_item673,_item674,_item675,_item676,_item677,_item678,_item679,_item680,_item681,_item682,_item683,_item684,_item685,_item686,_item687,_item688,_item689,_item690,_item691,_item692,_item693,_item694,_item695,_item696,_item697,_item698,_item699,_item700,_item701,_item702,_item703,_item704,_item705,_item707,_item709,_item710,_item762,_item717,_item719,_item721,_item727,_item728,_item729,_item733,_item736],[]]];};
+if (_layer637) then {missionNamespace setVariable ["Dutch_CENTER_CSAT_BIS_SC_SyndikatsM2SlaughterSite",[[_item603,_item604,_item605,_item608,_item610,_item614,_item616,_item618,_item620,_item622,_item624,_item626,_item627,_item628,_item629,_item631,_item632,_item633,_item635,_item638,_item640,_item641,_item663,_item664,_item665,_item667,_item642,_item643,_item653,_item655,_item656,_item658,_item646,_item644,_item648,_item647,_item650,_item645,_item651,_item669,_item607],[]]];};
+if (_layer599) then {missionNamespace setVariable ["Dutch_CENTER_CSAT_BIS_SC_DutchRadioM2",[[_item523,_item524,_item525,_item526,_item527,_item528,_item529,_item530,_item531,_item539,_item540,_item532,_item533,_item534,_item535,_item536,_item537,_item538,_item593,_item592],[]]];};
+if (_layer521) then {missionNamespace setVariable ["Dutch_CENTER_CSAT_BIS_SC_Dutch_RadioTower",[[_item541,_item543,_item544,_item551,_item553,_item555,_item557,_item558,_item559,_item560,_item561,_item562,_item563,_item565,_item567,_item569,_item572,_item581,_item582,_item583,_item584,_item585,_item586,_item587,_item588,_item589],[]]];};
+if (_layer78) then {missionNamespace setVariable ["Dutch_CENTER_CSAT_BIS_DutchC_Check2",[[_item113,_item115,_item116,_item124,_item82,_item81,_item104,_item106,_item94,_item95,_item135,_item92,_item90,_item96,_item97,_item93,_item84,_item85,_item86,_item91,_item88,_item87,_item126,_item128,_item129,_item130,_item131,_item132,_item127,_item99,_item108,_item109,_item107,_item100,_item199,_item200,_item197,_item198,_item220,_item466,_item516,_item519],[]]];};
+if (_layer0) then {missionNamespace setVariable ["Dutch_CENTER_CSAT_NoExport",[[_item376,_item377,_item378],[]]];};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Crews
+if (!isNull _item592 && !isNull _item523) then {_item592 moveInTurret [_item523,[0]];};
+if (!isNull _item607 && !isNull _item603) then {_item607 moveInDriver _item603;};
+if (!isNull _item733 && !isNull _item700) then {_item733 moveInTurret [_item700,[0]];};
+if (!isNull _item775 && !isNull _item774) then {_item775 moveInDriver _item774;};
+if (!isNull _item776 && !isNull _item774) then {_item776 moveInTurret [_item774,[0]];};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Vehicle cargo
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Connections
+if (!isNull _item113 && !isNull _item197) then {_item113 synchronizeObjectsAdd [_item197]; _item197 synchronizeObjectsAdd [_item113];};
+if (!isNull _item113 && !isNull _item199) then {_item113 synchronizeObjectsAdd [_item199]; _item199 synchronizeObjectsAdd [_item113];};
+if (!isNull _item115 && !isNull _item197) then {_item115 synchronizeObjectsAdd [_item197]; _item197 synchronizeObjectsAdd [_item115];};
+if (!isNull _item116 && !isNull _item197) then {_item116 synchronizeObjectsAdd [_item197]; _item197 synchronizeObjectsAdd [_item116];};
+if (!isNull _item124 && !isNull _item197) then {_item124 synchronizeObjectsAdd [_item197]; _item197 synchronizeObjectsAdd [_item124];};
+if (!isNull _item124 && !isNull _item200) then {_item124 synchronizeObjectsAdd [_item200]; _item200 synchronizeObjectsAdd [_item124];};
+if (!isNull _item551 && !isNull _item553) then {_item551 synchronizeObjectsAdd [_item553]; _item553 synchronizeObjectsAdd [_item551];};
+if (!isNull _item555 && !isNull _item557) then {_item555 synchronizeObjectsAdd [_item557]; _item557 synchronizeObjectsAdd [_item555];};
+if (!isNull _item555 && !isNull _item567) then {_item555 synchronizeObjectsAdd [_item567]; _item567 synchronizeObjectsAdd [_item555];};
+if (!isNull _item565 && !isNull _item567) then {_item565 synchronizeObjectsAdd [_item567]; _item567 synchronizeObjectsAdd [_item565];};
+if (!isNull _item565 && !isNull _item582) then {_item565 synchronizeObjectsAdd [_item582]; _item582 synchronizeObjectsAdd [_item565];};
+if (!isNull _item569 && !isNull _item567) then {_item569 synchronizeObjectsAdd [_item567]; _item567 synchronizeObjectsAdd [_item569];};
+if (!isNull _item569 && !isNull _item581) then {_item569 synchronizeObjectsAdd [_item581]; _item581 synchronizeObjectsAdd [_item569];};
+if (!isNull _item572 && !isNull _item567) then {_item572 synchronizeObjectsAdd [_item567]; _item567 synchronizeObjectsAdd [_item572];};
+if (!isNull _item572 && !isNull _item589) then {_item572 synchronizeObjectsAdd [_item589]; _item589 synchronizeObjectsAdd [_item572];};
+if (!isNull _item592 && !isNull _item567) then {_item592 synchronizeObjectsAdd [_item567]; _item567 synchronizeObjectsAdd [_item592];};
+if (!isNull _item592 && !isNull _item593) then {_item592 synchronizeObjectsAdd [_item593]; _item593 synchronizeObjectsAdd [_item592];};
+if (!isNull _item603 && !isNull _item604) then {_item603 synchronizeObjectsAdd [_item604]; _item604 synchronizeObjectsAdd [_item603];};
+if (!isNull _item616 && !isNull _item629) then {_item616 synchronizeObjectsAdd [_item629]; _item629 synchronizeObjectsAdd [_item616];};
+if (!isNull _item620 && !isNull _item631) then {_item620 synchronizeObjectsAdd [_item631]; _item631 synchronizeObjectsAdd [_item620];};
+if (!isNull _item626 && !isNull _item627) then {_item626 synchronizeObjectsAdd [_item627]; _item627 synchronizeObjectsAdd [_item626];};
+if (!isNull _item663 && !isNull _item604) then {_item663 synchronizeObjectsAdd [_item604]; _item604 synchronizeObjectsAdd [_item663];};
+if (!isNull _item607 && !isNull _item608) then {_item607 synchronizeObjectsAdd [_item608]; _item608 synchronizeObjectsAdd [_item607];};
+if (!isNull _item707 && !isNull _item759) then {_item707 synchronizeObjectsAdd [_item759]; _item759 synchronizeObjectsAdd [_item707];};
+if (!isNull _item707 && !isNull _item771) then {_item707 synchronizeObjectsAdd [_item771]; _item771 synchronizeObjectsAdd [_item707];};
+if (!isNull _item709 && !isNull _item771) then {_item709 synchronizeObjectsAdd [_item771]; _item771 synchronizeObjectsAdd [_item709];};
+if (!isNull _item710 && !isNull _item771) then {_item710 synchronizeObjectsAdd [_item771]; _item771 synchronizeObjectsAdd [_item710];};
+if (!isNull _item762 && !isNull _item771) then {_item762 synchronizeObjectsAdd [_item771]; _item771 synchronizeObjectsAdd [_item762];};
+if (!isNull _item717 && !isNull _item760) then {_item717 synchronizeObjectsAdd [_item760]; _item760 synchronizeObjectsAdd [_item717];};
+if (!isNull _item717 && !isNull _item771) then {_item717 synchronizeObjectsAdd [_item771]; _item771 synchronizeObjectsAdd [_item717];};
+if (!isNull _item728 && !isNull _item729) then {_item728 synchronizeObjectsAdd [_item729]; _item729 synchronizeObjectsAdd [_item728];};
+if (!isNull _item733 && !isNull _item765) then {_item733 synchronizeObjectsAdd [_item765]; _item765 synchronizeObjectsAdd [_item733];};
+if (!isNull _item746 && !isNull _item768) then {_item746 synchronizeObjectsAdd [_item768]; _item768 synchronizeObjectsAdd [_item746];};
+if (!isNull _item600 && !isNull _item601) then {_item600 synchronizeObjectsAdd [_item601]; _item601 synchronizeObjectsAdd [_item600];};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Inits (executed only once all entities exist; isNil used to ensure non-scheduled environment)
+isNil {
+};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+// Module activations (only once everything is spawned and connected)
+if !(isNull _item377) then {_item377 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item199) then {_item199 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item200) then {_item200 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item197) then {_item197 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item198) then {_item198 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item220) then {_item220 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item448) then {_item448 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item449) then {_item449 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item450) then {_item450 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item451) then {_item451 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item452) then {_item452 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item453) then {_item453 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item458) then {_item458 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item76) then {_item76 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item520) then {_item520 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item553) then {_item553 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item557) then {_item557 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item567) then {_item567 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item581) then {_item581 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item582) then {_item582 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item589) then {_item589 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item590) then {_item590 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item598) then {_item598 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item593) then {_item593 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item522) then {_item522 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item600) then {_item600 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item601) then {_item601 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item604) then {_item604 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item608) then {_item608 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item627) then {_item627 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item629) then {_item629 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item631) then {_item631 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item729) then {_item729 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item734) then {_item734 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item759) then {_item759 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item760) then {_item760 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item765) then {_item765 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item767) then {_item767 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item768) then {_item768 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item771) then {_item771 setvariable ["BIS_fnc_initModules_activate",true];};
+if !(isNull _item772) then {_item772 setvariable ["BIS_fnc_initModules_activate",true];};
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+[[_objects,_groups,_triggers,_waypoints,_logics,_markers],[_objectIDs,_groupIDs,_triggerIDs,_waypointIDs,_logicIDs,_markerIDs]]

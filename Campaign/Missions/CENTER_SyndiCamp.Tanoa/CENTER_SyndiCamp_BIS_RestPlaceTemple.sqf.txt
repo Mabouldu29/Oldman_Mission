@@ -1,0 +1,226 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Bandit_1_F","",[11054.4,8461.27,0.00143433],54.7824,0.5,0,"Auto",[["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_1_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_F",1,30]]],[],["B_FieldPack_khk_Bandit_1_F",[["Medikit",1],["FirstAidKit",4],["30Rnd_545x39_Mag_F",4,30]]],"","G_Bandanna_khk",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[GUER,["SAFE","LIMITED","WEDGE","YELLOW"],[[[11079.8,8468.66,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11055.4,8486.61,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11062.8,8461.97,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11079.5,8468.91,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["I_C_Soldier_Bandit_5_F","",[11063.3,8462.64,0.00143433],8.23903,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_5_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",1,30]]],["V_Chestrig_blk",[["30Rnd_762x39_Mag_F",4,30],["MiniGrenade",2,1]]],[],"H_Cap_grn_Syndikat_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Para_7_F","",[11068.4,8466.34,0.236923],189.78,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Para_4_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",2,30]]],["V_Chestrig_khk",[["30Rnd_762x39_Mag_F",3,30],["HandGrenade",2,1]]],[],"","G_Bandanna_sport",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["SyndikatSoldier_Default","",[11079.5,8480.27,0.00143433],311.048,0.5,0,"Auto",[["arifle_AK12_F","","","",["30Rnd_762x39_AK12_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Para_1_F",[["FirstAidKit",1],["30Rnd_762x39_AK12_Mag_F",2,30]]],["V_Chestrig_khk",[["30Rnd_762x39_AK12_Mag_F",3,30],["HandGrenade",2,1]]],[],"","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Para_2_F","",[11077.7,8479.24,0.00143433],0,0.5,0,"Auto",[["arifle_AK12_F","","","",["30Rnd_762x39_AK12_Mag_F",30],[],""],[],["hgun_Pistol_01_F","","","",["10Rnd_9x21_Mag",10],[],""],["U_I_C_Soldier_Para_2_F",[["FirstAidKit",1],["30Rnd_762x39_AK12_Mag_F",2,30]]],["V_TacVest_oli",[["30Rnd_762x39_AK12_Mag_F",3,30],["10Rnd_9x21_Mag",2,10],["HandGrenade",2,1]]],[],"H_Cap_grn_Syndikat_F","G_Shades_Red",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Bandit_4_F","BIS_OM_shopkeeper_ir3fsd5m2ho9pfz",[11078.5,8464.99,0.00143433],343.77,0.5,0,"Auto",[["srifle_DMR_07_ghex_F","muzzle_snds_65_TI_blk_F","","optic_Arco_ghex_F",["20Rnd_650x39_Cased_Mag_F",20],[],""],[],[],["U_I_C_Soldier_Para_2_F",[["FirstAidKit",1],["20Rnd_650x39_Cased_Mag_F",3,20]]],["V_CarrierRigKBT_01_light_EAF_F",[["MiniGrenade",2,1]]],[],"","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["
+	[_this] spawn
+	{
+		scriptName '_cHandleShopKeeperAvailability';
+		private _shopkeeper = _this select 0;
+		private _cond = {(!isNull _shopkeeper && {alive _shopkeeper && (behaviour _shopkeeper != 'COMBAT') && call {true} })} ;
+   'MARKETS: starting' call BIS_fnc_Log;
+  	while { !isNull _shopkeeper && alive _shopkeeper } do
+  	{
+		   'MARKETS: waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; call _cond };
+		   _shopkeeper setVariable ['BIS_Market', 'STR_A3_shoping_armory'];
+		   _shopkeeper setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 3];
+		   [_shopkeeper, BIS_TempleStorage] spawn BIS_fnc_OM_addKaufMan;
+		   'MARKETS: running kaufman and waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; !(call _cond) };
+			 ['MARKETS: keeper %1 is not available!', _shopkeeper] call BIS_fnc_logFormat;
+  	}
+	};
+	"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Stretcher_01_sand_F",[11063,8456.26,-0.000976563],[[0.0313403,-0.999509,8.27336e-009],[1.09202e-006,4.25185e-008,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,0],["Land_WoodenCrate_01_F",[11063.2,8453.96,0.0500031],[[0.0114837,0.999934,0],[0,0,1]],0,"",false,false,[],true,-1,1],["Land_Stretcher_01_sand_F",[11061.5,8453.55,-0.000976563],[[0.99957,0.0293168,2.94848e-007],[-1.81248e-007,-3.87756e-006,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,2],["Land_WoodenCrate_01_F",[11057.8,8453.7,0.0500031],[[-0.999955,0.00945794,0],[0,0,1]],0,"",false,false,[],true,-1,3],["Land_Stretcher_01_sand_F",[11055.7,8453.7,3.05176e-005],[[0.999999,-0.00127697,-1.75954e-007],[1.71996e-007,-3.1003e-006,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,4],["Land_Stretcher_01_sand_F",[11052.9,8455.76,-0.000976563],[[0.99957,0.0293201,1.63229e-007],[-1.74755e-007,3.90542e-007,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,5],["Land_Stretcher_01_sand_F",[11049.7,8453.58,-0.000976563],[[0.99994,-0.0109589,2.31583e-007],[-2.31084e-007,4.68032e-008,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,6],["MetalBarrel_burning_F",[11058.9,8455.44,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,1,7],["Land_ChairWood_F",[11054.4,8455.78,-0.000656128],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,8],["Land_WoodenBox_F",[11049.4,8454.22,0],[[0.00582241,0.999983,0],[0,0,1]],0,"",false,false,[],true,-1,9],["Land_Stretcher_01_sand_F",[11048.4,8455.82,3.05176e-005],[[-0.00647492,0.999979,-4.78825e-007],[-2.88523e-007,4.76967e-007,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,10],["Land_ChairWood_F",[11056.6,8463.88,-0.000656128],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,11],["Land_CampingChair_V2_F",[11057.4,8461.2,0.00500488],[[0.76588,-0.642983,0],[0,0,1]],0,"",false,false,[],true,-1,12],["Land_CampingChair_V2_F",[11058.1,8463.02,0.00500488],[[0.983827,0.179119,0],[0,0,1]],0,"",false,false,[],true,-1,13],["Campfire_burning_F",[11056.2,8462.36,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,2,14],["Land_Stretcher_01_sand_F",[11050,8464.56,-0.00102234],[[0.00208834,0.999998,-2.6532e-007],[3.76501e-006,2.57458e-007,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,15],["Land_Stretcher_01_sand_F",[11048.6,8460.5,0.26413],[[-0.329769,0.944061,0.000714585],[0.940165,0.328339,0.0910073]],0,"",false,false,[],true,2,16],["Land_Stretcher_01_sand_F",[11052.7,8462.4,-3.05176e-005],[[0.99988,0.0155073,4.40856e-007],[-4.35188e-007,-3.6889e-007,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,17],["Land_Stretcher_01_sand_F",[11049.5,8468.94,-0.000244141],[[-0.999575,-0.0291508,-6.84195e-005],[6.92753e-006,-0.00258462,0.999997]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,18],["Land_Stretcher_01_sand_F",[11048.4,8464.55,-0.0010376],[[0.0401326,0.999194,3.09672e-007],[4.29724e-006,-4.8252e-007,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,19],["Land_Ground_sheet_khaki_F",[11050.2,8458.03,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,2,20],["Land_EmergencyBlanket_01_discarded_F",[11050.3,8457.94,0.0279999],[[0,1,0],[0,0,1]],0,"",false,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,21],["Land_Pillow_grey_F",[11050.3,8458.91,0.0303192],[[0.367075,0.930191,0],[0,0,1]],0,"",false,false,[],true,-1,22],["Land_WoodenCrate_01_F",[11048.5,8458.16,0.0500031],[[0.0399051,-0.999204,0],[0,0,1]],0,"",false,false,[],true,-1,23],["Land_WoodenCrate_01_F",[11048.6,8462.38,0.0500031],[[-0.999809,-0.019551,0],[0,0,1]],0,"",false,false,[],true,-1,24],["Land_WoodenCrate_01_stack_x3_F",[11059.1,8468.23,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,25],["Land_WoodenCrate_01_stack_x5_F",[11060.8,8468.3,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,26],["Land_FoodSacks_01_large_brown_F",[11061,8466.83,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,27],["Land_BarrelWater_grey_F",[11062.1,8466.78,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1,28],["Land_FoodSack_01_full_white_idap_F",[11058.6,8467.93,0.631363],[[-0.388027,0.921648,0],[0,0,1]],0,"",false,false,[],false,1,29],["Land_FoodContainer_01_F",[11058.5,8469.23,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1,30],["Land_FoodContainer_01_F",[11058.1,8469.28,0],[[-0.46295,0.886384,0],[0,0,1]],0,"",false,false,[],false,1,31],["Land_Ground_sheet_folded_F",[11061.2,8458.04,0.269714],[[0,1,0],[-0.999875,0,0.0158121]],0,"",false,false,[],true,-1,32],["Land_Sleeping_bag_brown_F",[11061.7,8459.23,0],[[0,1,0],[0,0,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,33],["Land_Ammobox_rounds_F",[11086.6,8462.88,-7.62939e-005],[[0.35655,0.934276,0],[0,0,1]],0,"",false,false,[],true,-1,34],["Land_Ammobox_rounds_F",[11076,8453.93,-7.62939e-005],[[0.774298,0.632821,0],[0,0,1]],0,"",false,false,[],true,-1,35],["Land_Ammobox_rounds_F",[11076.4,8453.66,-7.62939e-005],[[-0.778522,0.627617,0],[0,0,1]],0,"",false,false,[],true,-1,36],["Land_Ammobox_rounds_F",[11087.6,8456.85,-7.62939e-005],[[-0.712883,0.701283,0],[0,0,1]],0,"",false,false,[],true,-1,37],["Land_Ammobox_rounds_F",[11076.5,8464.42,0.907074],[[-0.974671,0.223643,0],[0,0,1]],0,"",false,false,[],true,-1,38],["Land_Ammobox_rounds_F",[11076.2,8464.13,0.907074],[[-0.554124,0.832434,0],[0,0,1]],0,"",false,false,[],true,-1,39],["Land_Axe_F",[11080,8480.83,0.000946045],[[0.83529,0.54981,0],[0,0,1]],0,"",false,false,[],true,-1,40],["Land_BasaltKerb_01_pile_F",[11044.7,8473.49,0.251328],[[-0.046541,0.991815,-0.1189],[-0.816315,0.0308395,0.576783]],0,"",false,false,[],false,3,41],["Land_BasaltKerb_01_pile_F",[11047.7,8473.38,0.260529],[[-0.148834,-0.98169,-0.118887],[0.794419,-0.190293,0.57679]],0,"",false,false,[],false,3,42],["Land_BasaltKerb_01_pile_F",[11068.7,8493.44,0.126816],[[0.982275,-0.144909,-0.118899],[0.187124,0.795177,0.576783]],0,"",false,false,[],false,3,43],["Land_BasaltKerb_01_pile_F",[11067.8,8491.92,0.289673],[[-0.991428,0.0541742,-0.118895],[-0.113375,-0.808986,0.576791]],0,"",false,false,[],false,3,44],["Land_BasaltKerb_01_pile_F",[11091.4,8473.56,0.255585],[[-0.0223788,-0.992655,-0.118889],[0.812206,-0.0873917,0.576787]],0,"",false,false,[],false,3,45],["Land_BasaltKerb_01_pile_F",[11082.2,8473.57,0.126816],[[-0.046541,0.991815,-0.1189],[-0.816315,0.0308395,0.576783]],0,"",false,false,[],false,3,46],["Land_BasaltKerb_01_pile_F",[11067.8,8464.9,-0.0205383],[[-0.0543795,-0.986976,-0.1514],[-0.0935175,-0.145924,0.984866]],0,"",false,false,[],false,3,47],["Box_Syndicate_Ammo_F",[11087.5,8467.59,-0.0117035],[[-0.994318,-0.106455,0],[0,0,1]],0,"",true,false,[],true,-1,48],["Box_Syndicate_Ammo_F",[11080,8457,-0.0117035],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1,49],["Box_Syndicate_Ammo_F",[11076.4,8455.47,-0.0117035],[[0.223897,0.974613,0],[0,0,1]],0,"",true,false,[],true,-1,50],["Box_Syndicate_Wps_F",[11086.4,8461.14,0],[[-0.985509,-0.169625,0],[0,0,1]],0,"",true,false,[],true,-1,51],["Box_Syndicate_Wps_F",[11080.7,8456.89,-0.000213623],[[-0.985509,-0.169625,0],[0,0,1]],0,"",true,false,[],true,-1,52],["Box_Syndicate_Wps_F",[11079.8,8461.67,0],[[-0.985509,-0.169625,0],[0,0,1]],0,"",true,false,[],true,-1,53],["Land_Basket_F",[11056.7,8490.54,0.00236511],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,54],["Land_Bench_05_F",[11077.6,8483.62,0],[[-0.202796,0.979221,0],[0,0,1]],0,"",false,false,[],false,2,55],["Land_Bucket_F",[11086.2,8462.95,-0.000228882],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,56],["Land_Bucket_F",[11076.1,8454.64,-0.000228882],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,57],["Campfire_burning_F",[11077.8,8482.21,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,2,58],["Land_CampingChair_V2_F",[11077.6,8453.8,0.00500488],[[0.835448,-0.549569,0],[0,0,1]],0,"",false,false,[],true,-1,59],["Land_CampingChair_V2_F",[11083.8,8467.29,0.00500488],[[0.83169,-0.555241,0],[0,0,1]],0,"",false,false,[],true,-1,60],["Land_CanisterFuel_F",[11081.5,8493.31,0.184143],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,61],["Land_CanisterOil_F",[11082.4,8493.5,0.0042572],[[0.296099,-0.955157,0],[0,0,1]],0,"",false,false,[],true,-1,62],["Land_CanisterPlastic_F",[11082.6,8493.87,0.0040741],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,63],["Land_PaperBox_01_small_destroyed_brown_F",[11084.2,8453.9,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,64],["Land_PaperBox_01_small_destroyed_brown_F",[11075.2,8455.88,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,65],["Land_PaperBox_01_small_destroyed_brown_F",[11081.4,8457.78,0],[[-0.733845,0.679317,0],[0,0,1]],0,"",false,false,[],true,-1,66],["Land_PaperBox_01_small_destroyed_brown_F",[11086.4,8453.83,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,67],["Land_PaperBox_01_small_destroyed_brown_F",[11081.8,8456.91,0],[[-0.998923,-0.0463967,0],[0,0,1]],0,"",false,false,[],true,-1,68],["Land_PaperBox_01_small_destroyed_brown_IDAP_F",[11084.9,8453.83,0],[[0.510322,0.859983,0],[0,0,1]],0,"",false,false,[],true,-1,69],["Land_CratesPlastic_F",[11081.7,8493.8,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1,70],["Box_IED_Exp_F",[11086.3,8462.27,-0.0117035],[[-0.821995,0.569494,0],[0,0,1]],0,"",true,false,[],true,-1,71],["Box_IED_Exp_F",[11076.5,8463.67,0.893661],[[-0.839601,-0.543204,0],[0,0,1]],0,"",true,false,[],true,-1,72],["Box_IED_Exp_F",[11079.6,8460.77,-0.0117035],[[-0.956753,0.290902,0],[0,0,1]],0,"",true,false,[],true,-1,73],["Box_FIA_Support_F",[11085.4,8461.54,0],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1,74],["Box_FIA_Support_F",[11074.8,8454.78,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,75],["Land_FoodContainer_01_F",[11050.9,8477.81,0.000579834],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,76],["Land_FoodContainer_01_F",[11051.5,8477.79,0.000579834],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,77],["Land_FoodContainer_01_F",[11051.1,8478.09,0.000579834],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,78],["Land_FoodContainer_01_F",[11052.1,8486.97,0.000579834],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,79],["Land_FoodContainer_01_F",[11049.7,8486.55,0.000579834],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,80],["Land_FoodContainer_01_F",[11050.1,8486.35,0.000579834],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,81],["Land_FoodContainer_01_White_F",[11052,8477.78,0.000579834],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,82],["Land_FoodSacks_01_large_brown_F",[11048.4,8478.21,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,83],["Land_FoodSacks_01_large_brown_F",[11051,8486.67,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,84],["Land_FoodSacks_01_large_brown_F",[11062.1,8489.38,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,85],["Land_FoodSacks_01_large_white_idap_F",[11048.4,8479.65,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,86],["Land_FoodSacks_01_small_white_idap_F",[11049.8,8478,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,87],["Box_Syndicate_WpsLaunch_F",[11076,8463,0.911621],[[-0.965012,-0.262206,0],[0,0,1]],0,"",true,false,[],true,-1,88],["Land_LiquidDispenser_01_F",[11051.1,8480.42,7.62939e-005],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,89],["Land_LiquidDispenser_01_F",[11060.3,8493.49,7.62939e-005],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,90],["Land_MetalBarrel_F",[11087.5,8464.78,0.000350952],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,91],["Land_MetalBarrel_F",[11087.6,8465.65,0.000350952],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,92],["Land_MetalBarrel_F",[11074.5,8456.39,0.000350952],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,93],["Land_MetalBarrel_F",[11074.6,8457.29,0.000350952],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,94],["Land_MetalBarrel_F",[11073.9,8457.25,0.000350952],[[0.998186,0.0602002,0],[0,0,1]],0,"",false,false,[],true,1,95],["Land_MetalBarrel_F",[11081.5,8458.62,0.118652],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,96],["Land_MetalBarrel_F",[11083.3,8460.73,0.000350952],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,97],["Land_MetalBarrel_F",[11083.2,8461.44,0.000350952],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,98],["Land_MetalBarrel_F",[11083.2,8462.14,0.000350952],[[-0.396031,-0.918237,0],[0,0,1]],0,"",false,false,[],true,1,99],["Land_MetalBarrel_F",[11083.9,8461.16,0.000350952],[[0.242989,0.970029,0],[0,0,1]],0,"",false,false,[],true,1,100],["Land_Net_Fence_8m_F",[11073.6,8459.44,0],[[-0.038397,-0.999263,0],[0,0,1]],0,"",false,false,[],false,3,101],["Land_Net_Fence_8m_F",[11079.3,8459.51,0],[[-0.038397,-0.999263,0],[0,0,1]],0,"",false,false,[],false,3,102],["Land_Net_Fence_8m_F",[11082.8,8462.5,0],[[0.999618,0.0276292,0],[0,0,1]],0,"",false,false,[],false,3,103],["Land_Pallets_F",[11080.1,8484.84,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,104],["Land_PicnicTable_01_F",[11076.3,8463.58,0],[[-0.99971,-0.0241008,0],[0,0,1]],0,"",false,false,[],false,3,105],["Land_BarrelWater_grey_F",[11048.4,8484.78,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,106],["Land_PortableLight_single_F",[11071.1,8487.92,4.26752],[[0.491089,0.871109,0],[0,0,1]],0,"",true,false,[],false,2,107],["Land_PortableLight_single_F",[11064.8,8487.85,4.15051],[[-0.521229,0.853417,0],[0,0,1]],0,"",true,false,[],false,2,108],["Land_Pumpkin_01_F",[11056.1,8492.74,-0.00137329],[[0.00279417,0.999909,-0.0132248],[-0.0134777,0.0132613,0.999821]],0,"",true,false,[],false,1,109],["Land_Pumpkin_01_F",[11056.4,8492.87,-0.00131226],[[-0.868206,0.494657,-0.0391493],[-0.0413204,0.00655088,0.999124]],0,"",true,false,[],false,1,110],["Land_Sack_F",[11055.2,8493.46,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1,111],["Land_Sack_F",[11056,8493.4,0],[[-0.999338,0.0363694,0],[0,0,1]],0,"",false,false,[],false,1,112],["Land_Sack_F",[11055.6,8492.84,0],[[-0.999338,0.0363694,0],[0,0,1]],0,"",false,false,[],false,1,113],["Land_Sack_F",[11061.1,8493.32,0],[[-0.607342,0.79444,0],[0,0,1]],0,"",false,false,[],false,1,114],["Land_Sack_F",[11048.6,8492.26,0],[[-0.391711,-0.920088,0],[0,0,1]],0,"",false,false,[],false,1,115],["Land_Sacks_goods_F",[11057.2,8493.19,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,116],["Land_Sacks_heap_F",[11059.1,8493.44,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,117],["Land_BagFence_01_end_green_F",[11067.3,8465.43,0.508011],[[-0.827249,-0.561836,0],[0,0,1]],0,"",true,false,[],false,1,118],["Land_BagFence_01_round_green_F",[11066.9,8465.03,0.100006],[[-0.101039,0.994882,0],[0,0,1]],0,"",false,false,[],false,2,119],["Land_BagFence_01_round_green_F",[11068.8,8464.84,0.500977],[[0,1,0],[-0.000942478,0,1]],0,"",false,false,[],false,2,120],["Land_ShelvesWooden_F",[11048.4,8493.3,0.00982666],[[0.0363495,-0.999339,0],[0,0,1]],0,"",false,false,[],true,-1,121],["Land_ShelvesWooden_F",[11048.3,8491.31,0.00982666],[[0.00303569,-0.999995,0],[0,0,1]],0,"",false,false,[],true,-1,122],["C_supplyCrate_F",[11083,8454.01,-0.00527954],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1,123],["C_supplyCrate_F",[11080.2,8458.05,-0.00527954],[[0,1,0],[0,0,1]],0,"",true,false,[],true,-1,124],["Land_WaterBottle_01_pack_F",[11051.6,8478.12,0],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,125],["Land_WaterBottle_01_pack_F",[11051.6,8478.4,0],[[-0.533987,0.845493,0],[0,0,1]],0,"",false,false,[],true,-1,126],["Land_WaterBottle_01_pack_F",[11052,8478.13,0],[[-0.533987,0.845493,0],[0,0,1]],0,"",false,false,[],true,-1,127],["Land_WaterBottle_01_stack_F",[11049.2,8487.6,-0.00413513],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,128],["Land_WaterBottle_01_stack_F",[11048.7,8486.07,-0.00413513],[[-0.999787,0.0206608,0],[0,0,1]],0,"",false,false,[],true,-1,129],["Land_WaterTank_03_F",[11054.2,8493.21,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,130],["Land_WoodenCrate_01_F",[11073.1,8456.24,0.0500031],[[-0.877077,-0.480349,0],[0,0,1]],0,"",false,false,[],true,-1,131],["Land_WoodenCrate_01_F",[11087.4,8455.8,0.0500031],[[0.0262051,0.999657,0],[0,0,1]],0,"",false,false,[],true,-1,132],["Land_WoodenCrate_01_F",[11061,8470.14,0.0500031],[[-0.417264,0.908785,0],[0,0,1]],0,"",false,false,[],true,-1,133],["Land_WoodenCrate_01_F",[11056.7,8489.32,0.0500031],[[-0.0444817,0.99901,0],[0,0,1]],0,"",false,false,[],true,-1,134],["Land_WoodenCrate_01_stack_x3_F",[11071.5,8460.55,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,135],["Land_WoodenCrate_01_stack_x3_F",[11080.9,8461.91,0],[[0.999559,0.0296969,0],[0,0,1]],0,"",false,false,[],false,2,136],["Land_WoodenCrate_01_stack_x3_F",[11087.1,8468.8,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,137],["Land_WoodenCrate_01_stack_x3_F",[11063,8485.47,-0.00062561],[[8.02617e-007,1,7.8879e-007],[-0.0124102,-7.78769e-007,0.999923]],0,"",false,false,[],false,2,138],["Land_WoodenCrate_01_stack_x5_F",[11081,8460.39,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,139],["Land_WoodenCrate_01_stack_x5_F",[11073,8454.67,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,140],["Land_WoodenCrate_01_stack_x5_F",[11062.5,8493.03,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,141],["Land_WoodenTable_small_F",[11082.8,8467.32,0.00508118],[[0.998972,0.0453396,0],[0,0,1]],0,"",false,false,[],true,-1,142],["Land_WoodPile_F",[11081.3,8481.45,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,143],["Land_WoodPile_F",[11081.3,8483.94,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,144],["Land_WoodPile_F",[11080.7,8482.29,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,145],["Land_WoodPile_F",[11080.3,8493.53,0],[[-0.994017,-0.109228,0],[0,0,1]],0,"",false,false,[],false,2,146],["Land_WoodPile_F",[11078.6,8493.65,0],[[-0.999719,0.023688,0],[0,0,1]],0,"",false,false,[],false,2,147],["Item_Antimalaricum",[11087.2,8456.12,0.707077],[[-0.712869,0.701275,0.00558714],[0.00628116,-0.00158194,0.999979]],0,"",true,false,[],false,1,148],["Land_WoodPile_04_F",[11074.1,8479.74,0],[[-0.992474,-0.122452,0],[0,0,1]],0,"",false,false,[],false,2,149],["Land_WoodPile_03_F",[11073.7,8481.88,0],[[0.916596,0.399814,0],[0,0,1]],0,"",false,false,[],false,2,150],["Land_WoodPile_02_F",[11072.8,8492.85,0],[[0.99726,0.0739742,0],[0,0,1]],0,"",false,false,[],false,2,151],["Land_WoodPile_02_F",[11071.9,8479.46,0],[[0.298284,-0.954477,0],[0,0,1]],0,"",false,false,[],false,2,152],["Land_WoodPile_02_F",[11086.8,8479.15,0],[[-0.959036,-0.283285,0],[0,0,1]],0,"",false,false,[],false,2,153],["Land_WoodPile_02_F",[11085.5,8478.89,0],[[-0.987248,0.159188,0],[0,0,1]],0,"",false,false,[],false,2,154],["Land_WoodPile_02_F",[11084.2,8478.68,0],[[-0.832318,-0.554298,0],[0,0,1]],0,"",false,false,[],false,2,155],["Land_WoodenLog_02_F",[11077.8,8480.57,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1,156],["Land_WoodenLog_02_F",[11080.5,8480.94,0.100998],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,157],["Land_WoodenLog_02_F",[11076.6,8481.47,0.100998],[[0.960493,0.278305,0],[0,0,1]],0,"",false,false,[],true,1,158],["Land_WoodenLog_02_F",[11075.9,8493.8,0.100998],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1,159],["Land_WoodenLog_02_F",[11076.6,8493.82,0.100998],[[-0.575022,-0.818138,0],[0,0,1]],0,"",false,false,[],true,1,160],["Land_WoodenLog_02_F",[11076.2,8493.45,0.100998],[[-0.659053,0.752097,0],[0,0,1]],0,"",false,false,[],true,1,161],["Land_CanisterFuel_Red_F",[11075.3,8480.43,0],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1,162],["Land_CanisterFuel_White_F",[11075.3,8479.85,0],[[0.957695,0.287785,0],[0,0,1]],0,"",false,false,[],false,1,163],["Land_DirtPatch_05_F",[11052,8467.49,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,164],["Land_DirtPatch_05_F",[11051.1,8462.37,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,165],["Land_DirtPatch_05_F",[11055.7,8457.46,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,166],["Land_DirtPatch_05_F",[11061.7,8456.93,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,167],["Land_DirtPatch_05_F",[11051,8454.76,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,168],["Land_DirtPatch_05_F",[11063,8463.84,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,169],["Land_DirtPatch_05_F",[11072.1,8463.67,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,170],["Land_DirtPatch_05_F",[11077.5,8467,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,171],["Land_DirtPatch_05_F",[11078.5,8462.62,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,172],["Land_DirtPatch_05_F",[11074,8458.91,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,173],["Land_DirtPatch_05_F",[11083.1,8467.66,0.864594],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,174],["Land_DirtPatch_05_F",[11087.1,8463.41,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,175],["Land_DirtPatch_05_F",[11086.4,8457.16,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,176],["Land_DirtPatch_05_F",[11078.5,8455.67,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,177],["Land_DirtPatch_05_F",[11075.4,8488.08,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,178],["Land_DirtPatch_05_F",[11080.4,8490.21,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,179],["Land_DirtPatch_05_F",[11081.9,8485.52,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,180],["Land_DirtPatch_05_F",[11079.3,8474.68,0.0450134],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,181],["Land_DirtPatch_05_F",[11051.2,8479.46,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,182],["Land_DirtPatch_05_F",[11052.3,8486.2,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,183],["Land_DirtPatch_05_F",[11055.2,8491.19,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,184],["Land_DirtPatch_05_F",[11061.8,8488.87,0.82782],[[0,0.991065,0.133382],[-0.165168,-0.13155,0.977453]],0,"",true,false,[],false,3,185],["Land_DirtPatch_05_F",[11050.1,8492.55,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,186],["Land_DirtPatch_05_F",[11061.3,8479.12,0.514069],[[0,0.893898,-0.44827],[0.11448,0.445322,0.888022]],0,"",true,false,[],false,3,187],["Land_DirtPatch_05_F",[11058.3,8482.61,0],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,188],["Land_DirtPatch_05_F",[11068,8477.76,0.0656891],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,189],["Land_DirtPatch_05_F",[11072.2,8477.75,0],[[0,0.987493,-0.157664],[0.200533,0.154461,0.967434]],0,"",true,false,[],false,3,190],["Land_DirtPatch_05_F",[11057,8471.37,0.0656891],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,191],["Land_Garbage_square5_F",[11074,8464.75,0],[[0.00656912,0.999978,0],[0,0,1]],0,"",true,false,[],false,3,192],["Land_Garbage_square5_F",[11078,8476.77,0],[[0.00656912,0.999978,0],[0,0,1]],0,"",true,false,[],false,3,193],["Land_Garbage_square5_F",[11060.1,8480.8,0.0699921],[[0.00656912,0.999978,0],[0,0,1]],0,"",true,false,[],false,3,194],["Land_Garbage_square5_F",[11079.5,8469.3,0],[[0.00656912,0.999978,0],[0,0,1]],0,"",true,false,[],false,3,195],["Land_Decal_ScorchMark_01_small_F",[11077.5,8481.9,0.357849],[[-0.57272,0.817206,-0.0645486],[-0.457122,-0.253015,0.852656]],0,"",true,false,[],false,2,196],["Land_Decal_ScorchMark_01_small_F",[11078.8,8482.88,0],[[-0.643937,0.765079,0],[0,0,1]],0,"",true,false,[],false,2,197],["Land_Decal_ScorchMark_01_small_F",[11078.1,8481.27,0],[[-0.643937,0.765079,0],[0,0,1]],0,"",true,false,[],false,2,198],["Land_PortableLight_02_single_olive_F",[11063.1,8454.17,0.676025],[[0.795838,-0.60548,-0.00592322],[0.00630071,-0.00150088,0.999979]],0,"",true,false,[],false,1,199],["Land_PortableLight_02_double_olive_F",[11081.2,8469.57,0],[[0.699925,0.714216,0],[0,0,1]],0,"",true,false,[],false,2,200],["Item_Antimalaricum",[11051.3,8478.37,0],[[-0.712883,0.701283,0],[0,0,1]],0,"",true,false,[],false,1,201],["Land_PortableLight_02_single_olive_F",[11068.8,8463.46,0],[[0.228963,0.973435,0],[0,0,1]],0,"",true,false,[],false,1,202]]
+		,
+		//--- #size
+		22.722
+]

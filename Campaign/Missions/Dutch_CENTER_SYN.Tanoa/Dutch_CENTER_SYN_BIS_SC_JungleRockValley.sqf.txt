@@ -1,0 +1,21 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["SyndikatSoldier_Default","",[10563.3,3442.37,0.00149536],229.397,0.5,0,"Auto",[["arifle_AK12_F","","","",["30Rnd_762x39_AK12_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Para_1_F",[["FirstAidKit",1],["30Rnd_762x39_AK12_Mag_F",2,30]]],["V_Chestrig_khk",[["30Rnd_762x39_AK12_Mag_F",3,30],["HandGrenade",2,1]]],[],"H_Bandanna_gry","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["[_this,""STAND"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]],["I_C_Soldier_Bandit_4_F","",[10566.6,3440.78,0.0015564],225.344,0.5,0,"Middle",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_4_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",1,30]]],["V_BandollierB_blk",[["30Rnd_762x39_Mag_F",4,30],["MiniGrenade",2,1]]],[],"H_Booniehat_khk","G_Bandanna_beast",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[]],["I_C_Soldier_Bandit_7_F","",[10565.4,3455.85,0.00172424],159.199,0.5,0,"Auto",[["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_1_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_F",1,30],["MiniGrenade",1,1]]],["V_BandollierB_rgr",[["30Rnd_545x39_Mag_F",4,30],["MiniGrenade",1,1]]],[],"","G_Shades_Blue",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn   
+{_this disableAI ""ANIM"";  
+ _this playAction ""SitDown""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM"";  
+ _this playAction ""Stand"" 
+};"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_BagFence_01_round_green_F",[10565.2,3441.54,0.00767517],[[0.902762,-0.429063,0.0304372],[-0.0506943,-0.0358604,0.99807]],0,"",false,false,[],false,2,0],["Land_BagFence_01_round_green_F",[10565,3440.74,-0.164825],[[0.986171,0.165731,0],[0,0,1]],0,"",false,false,[],false,2,1],["Land_CampingChair_V2_F",[10566.8,3447.06,0.010849],[[0.928217,0.349095,0.128632],[-0.116534,-0.0555322,0.991633]],0,"",false,false,[],true,-1,2],["Land_BagFence_01_round_green_F",[10566.5,3439.06,-0.0652161],[[0.118039,0.993009,0],[0,0,1]],0,"",false,false,[],false,2,3],["FirePlace_burning_F",[10566.3,3453.86,6.10352e-005],[[0.983433,0.161151,0.0830103],[-0.0744596,-0.0584037,0.995512]],0,"",true,false,[],false,1,4],["Land_Decal_ScorchMark_01_small_F",[10566.3,3453.72,0],[[0.920837,0.0614323,0.385078],[-0.357923,-0.258754,0.897183]],0,"",true,false,[],false,2,5],["Land_WoodPile_F",[10567.3,3453.3,-0.00679016],[[0.143749,0.988918,0.0371057],[-0.0744588,-0.0265807,0.99687]],0,"",false,false,[],false,2,6],["Land_WoodenLog_02_F",[10566.6,3454.94,0.0116119],[[0.142677,0.97894,0.146016],[-0.142528,-0.125666,0.981781]],0,"",false,false,[],false,1,7],["Land_Canteen_F",[10566,3452.66,0.000823975],[[0.143749,0.988918,0.0371057],[-0.0744588,-0.0265807,0.99687]],0,"",false,false,[],false,1,8],["Item_Antimalaricum",[10566.3,3455.39,0.00611877],[[0.142677,0.97894,0.146013],[-0.142525,-0.125665,0.981781]],0,"",true,false,[],false,1,9]]
+		,
+		//--- #size
+		10
+]

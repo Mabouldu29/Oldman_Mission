@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Offroad_01_F","",[11539.6,2820.47,0.0243998],[[-0.828629,0.555925,-0.0657371],[-0.0424071,0.0547546,0.997599]],0,1,[],["a3\soft_f\offroad_01\data\offroad_01_ext_co.paa","a3\soft_f\offroad_01\data\offroad_01_ext_co.paa"],false,[],[true,false]],["C_Van_01_transport_F","",[11517.4,2855.34,-0.0111294],[[0.836901,0.541012,-0.0830771],[0.0243516,0.114827,0.993087]],0,1,[],["a3\soft_f_gamma\van_01\data\van_01_ext_co.paa","a3\soft_f_gamma\van_01\data\van_01_adds_co.paa","a3\soft_f_gamma\van_01\data\van_01_int_base_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[11539.4,2889.22,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11510.3,2847.51,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11577.7,2785.42,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11542.1,2887.35,-1.14441e-005],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_casual_3_F_afro","",[11540.9,2891.72,0.00150585],316.8,0.5,0,"Up",[[],[],[],["U_C_Man_casual_3_F",[]],[],[],"","G_Shades_Blue",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[11548.4,2790.19,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11502.9,2855.18,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11599.7,2855.56,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11538.6,2913.3,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11545.6,2796.56,4.76837e-006],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_casual_5_F_afro","",[11549.9,2788.33,0.0012598],348.108,0.5,0,"Up",[[],[],[],["U_C_Man_casual_5_F",[]],[],[],"","G_Sport_Greenblack",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		153.202
+]

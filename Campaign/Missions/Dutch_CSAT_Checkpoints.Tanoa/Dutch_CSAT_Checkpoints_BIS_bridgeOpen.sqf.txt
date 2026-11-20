@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["RoadBarrier_F",[11307.8,5866.78,12.0803],[[-0.999977,-0.00390562,-0.00554212],[-0.0055421,-1.52253e-005,0.999985]],0.00995093,"",true,false,[["#init",["0 = [_this] spawn {waitUntil {!isNil ""BIS_bridgeClosed"" && {[BIS_bridgeClosed, date] call BIS_fnc_IsDateTimeNewer}}; {deleteVehicle _x} forEach _this}"]]],false,2],["Land_CncBarrier_stripes_F",[11308.4,5869.19,10.6604],[[-0.997167,-0.0752196,0],[0,0,1]],0,"",false,false,[["#init",["0 = [_this] spawn {waitUntil {!isNil ""BIS_bridgeClosed"" && {[BIS_bridgeClosed, date] call BIS_fnc_IsDateTimeNewer}}; {deleteVehicle _x} forEach _this}"]]],false,2],["Land_CncBarrier_stripes_F",[11307.4,5870.01,10.3385],[[0.986631,-0.162972,0],[0,0,1]],0,"",false,false,[["#init",["0 = [_this] spawn {waitUntil {!isNil ""BIS_bridgeClosed"" && {[BIS_bridgeClosed, date] call BIS_fnc_IsDateTimeNewer}}; {deleteVehicle _x} forEach _this}"]]],false,2],["Land_CncBarrier_stripes_F",[11318.1,5873.86,11.7787],[[-0.982085,-0.188439,0],[0,0,1]],0,"",false,false,[["#init",["0 = [_this] spawn {waitUntil {!isNil ""BIS_bridgeClosed"" && {[BIS_bridgeClosed, date] call BIS_fnc_IsDateTimeNewer}}; {deleteVehicle _x} forEach _this}"]]],false,2],["RoadBarrier_F",[11319.1,5874.11,12.2963],[[0.953327,-0.301938,-0.00121414],[0.00406399,0.00881052,0.999953]],0,"",true,false,[["#init",["0 = [_this] spawn {waitUntil {!isNil ""BIS_bridgeClosed"" && {[BIS_bridgeClosed, date] call BIS_fnc_IsDateTimeNewer}}; {deleteVehicle _x} forEach _this}"]]],false,2],["RoadBarrier_small_F",[11319.3,5872.04,13.2238],[[0.998665,-0.0516031,0.00209316],[-0.00147775,0.011961,0.999927]],0,"",true,false,[["#init",["0 = [_this] spawn {waitUntil {!isNil ""BIS_bridgeClosed"" && {[BIS_bridgeClosed, date] call BIS_fnc_IsDateTimeNewer}}; {deleteVehicle _x} forEach _this}"]]],false,2]]
+		,
+		//--- #size
+		1
+]

@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Boat_Civil_01_F","",[12274.3,2810.88,2.54927],[[-0.206796,-0.978092,-0.0238904],[-0.0119026,-0.0219014,0.999689]],0,1,[],["a3\boat_f_gamma\boat_civil_01\data\boat_civil_01_ext_co.paa","a3\boat_f_gamma\boat_civil_01\data\boat_civil_01_int_co.paa"],false,[],[true,false]],["C_Rubberboat","",[12454.5,2595.04,2.32046],[[-0.987922,0.151784,0.0311618],[0.0311438,-0.00249667,0.999512]],0,1,[],["a3\boat_f\boat_transport_01\data\boat_transport_01_civilian_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		242.185
+]

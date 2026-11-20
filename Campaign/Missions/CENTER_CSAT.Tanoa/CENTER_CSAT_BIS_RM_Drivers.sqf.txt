@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Truck_02_transport_F","",[12063.3,10609.3,-0.00865173],[[-0.988414,-0.151442,-0.0101613],[-0.0101031,-0.0011534,0.999948]],0,1,[],["a3\soft_f_beta\truck_02\data\truck_02_kab_co.paa","a3\soft_f_beta\truck_02\data\truck_02_kuz_co.paa","a3\soft_f_beta\truck_02\data\truck_02_int_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[12204,10575.3,-0.897369],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11911.9,10189.8,-3.05176e-005],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11878.6,10233,-0.274994],"GETOUT","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11914.4,10241.5,0],"MOVE","SAFE","LIMITED","NO CHANGE","NO CHANGE",[10,10,10],0],[[11879.1,10233.2,-0.00785828],"GETIN NEAREST","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11319.6,10324,-0.000259399],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11947.2,10542.8,1.04321],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[12215.2,10570.7,-27.6934],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[12069,10598.4,0],"GETOUT","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[12064.3,10615.1,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[30,30,30],0],[[12068.4,10599,0],"GETIN NEAREST","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[12201.2,10575.2,0.0648956],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_casual_1_F_tanoan","",[12060.7,10608.3,1.68561],261.289,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Black_F",[]],[],[],"H_Construction_earprot_yellow_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"C_Truck_02_transport_F",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		570
+]

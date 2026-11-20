@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Truck_02_transport_F","",[11113,9596.39,-0.00469971],[[-0.211501,-0.977177,-0.0198164],[-0.0219027,-0.0155313,0.999639]],0,1,[],["a3\soft_f_beta\truck_02\data\truck_02_kab_co.paa","a3\soft_f_beta\truck_02\data\truck_02_kuz_co.paa","a3\soft_f_beta\truck_02\data\truck_02_int_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[11102.1,9571.2,0.226646],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11114.6,9592.94,-7.62939e-006],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[20,20,20],0],[[11122.7,9615.82,-7.62939e-006],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11127.7,9580.08,0.111],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[11102.3,9571.05,0.187019],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_ConstructionWorker_01_Black_F","",[11127.4,9578.34,0.0488892],0,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Black_F",[["FirstAidKit",1]]],[],[],"","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["Land_WorkStand_F",[11119.8,9586.2,-0.0644836],[[0.99005,-0.140083,-0.0133334],[0.0195327,0.0429732,0.998885]],0,"",false,false,[],false,2,0],["Land_Pallets_stack_F",[11114.3,9611.79,-0.0152588],[[0.706401,0.707686,0.0133307],[-0.0339325,0.0150468,0.999311]],0,"",false,false,[],false,2,1],["Land_Pallets_stack_F",[11116.6,9611.15,0.0495453],[[0.142565,-0.989785,0],[0,0,1]],0,"",false,false,[],false,2,2],["Land_Tyres_F",[11120,9590.38,-0.0309906],[[-0.993158,0.116657,-0.0053288],[-0.00995037,-0.0390705,0.999187]],0,"",false,false,[],false,2,3],["Land_SCF_01_heap_sugarcane_F",[11123.5,9589.47,0.376755],[[-0.998586,-0.0531599,0],[0,0,1]],0,"",false,false,[],false,3,4],["Land_SCF_01_heap_sugarcane_F",[11130.1,9591.84,0.364204],[[-1,-0.000893581,0],[0,0,1]],0,"",false,false,[],false,3,5],["Land_SCF_01_heap_sugarcane_F",[11130,9586.23,-1.52588e-005],[[-0.998586,-0.0531599,0],[0,0,1]],0,"",false,false,[],false,3,6],["Land_SCF_01_heap_sugarcane_F",[11126.6,9612.96,-0.333939],[[0.999528,-0.0307138,0],[0,0,1]],0,"",false,false,[],false,3,7],["Land_SCF_01_heap_sugarcane_F",[11114.9,9614.93,-0.374481],[[0.0218302,-0.999762,0],[0,0,1]],0,"",false,false,[],false,3,8],["Land_SCF_01_heap_sugarcane_F",[11123.8,9584.76,-1.12309],[[-0.998586,-0.0531599,0],[0,0,1]],0,"",false,false,[],false,3,9],["Land_Pallets_stack_F",[11130.7,9575.04,0.218048],[[0.142565,-0.989785,0],[0,0,1]],0,"",false,false,[],false,2,10],["Land_Pallets_stack_F",[11128.5,9575.04,0.159752],[[-0.667559,0.743942,-0.0302564],[-0.0237591,0.0193317,0.999531]],0,"",false,false,[],false,2,11],["Land_BarrelEmpty_grey_F",[11129.4,9575.96,0.194855],[[0,0.999813,-0.019337],[-0.0237517,0.0193316,0.999531]],0,"",false,false,[],false,1,12]]
+		,
+		//--- #size
+		30
+]

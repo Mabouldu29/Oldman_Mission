@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_ConstructionWorker_01_Blue_F","",[10984.3,9817.76,0.0014801],259.163,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Black_F",[["FirstAidKit",1]]],[],[],"","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_ConstructionWorker_01_Red_F","",[10982.2,9818.43,0.00133514],96.216,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Red_F",[["FirstAidKit",1]]],[],[],"","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[10987,9818.46,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10953.8,9819.5,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10943.4,9852.17,7.62939e-006],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10987.3,9819.23,-1.27258],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_ConstructionWorker_01_Black_F","",[10983.7,9813.02,0.00151825],0,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Black_F",[["FirstAidKit",1]]],[],[],"","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["Land_Gloves_F",[10983.4,9816.86,0.938057],[[0,1,0],[0,0,1]],0,"",false,false,[],false,0,0],["Land_Shovel_F",[10983.6,9817.8,0.451576],[[0.0933038,0.246277,-0.964698],[0.341773,0.902127,0.263359]],0,"",false,false,[],false,1,1],["Headgear_H_Construction_basic_orange_F",[10983.5,9817.24,0.948074],[[0,1,0],[0,0,1]],0,"",true,false,[],false,2,2],["Headgear_H_Construction_earprot_red_F",[10983.3,9817.43,0.948105],[[-0.869164,-0.494524,0],[0,0,1]],0,"",true,false,[],false,2,3],["Land_Gloves_F",[10983.1,9816.95,0.937469],[[-0.926731,0.375726,0],[0,0,1]],0,"",false,false,[],false,0,4],["Land_Shovel_F",[10983.9,9816.57,0.930984],[[0.159018,0.987275,0.0012846],[0.0144217,-0.00362388,0.999889]],0,"",false,false,[],false,1,5],["Land_WoodenCrate_01_stack_x3_F",[10990.3,9813.37,0.0227127],[[0,0.997605,-0.0691654],[0,0.0691654,0.997605]],0,"",false,false,[],false,2,6],["Land_WoodenCrate_01_stack_x5_F",[10992,9813.03,0.0119629],[[0,0.999911,-0.0133317],[-0.031983,0.0133248,0.9994]],0,"",false,false,[],false,2,7],["Land_PortableLongRangeRadio_F",[10983,9816.73,0.931808],[[0.891385,-0.453247,0],[0,0,1]],0,"",false,false,[],false,0,8]]
+		,
+		//--- #size
+		9.338
+]

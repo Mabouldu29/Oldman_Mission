@@ -1,0 +1,2 @@
+
+["sc_vagalalarailstation","sc_vagalalaviphousebarrier","bis_targethouse_destroyed","sc_vaggasstation","sc_vagalalaworkers","sc_vagalalarailcross","bis_rm_workers_01","bis_rm_drivers","bis_rm_mainstorage","bis_vag_center","sc_vaggenstorage","sc_vagcsatbuilding","sc_apex_lumberyard","bis_rm_b_storage","sc_redmineentrance","sugargendarm"]

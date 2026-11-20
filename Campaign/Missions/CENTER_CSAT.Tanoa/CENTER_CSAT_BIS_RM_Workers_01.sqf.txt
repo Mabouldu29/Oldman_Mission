@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Van_01_transport_F","",[12080.2,10612.5,0.0148468],[[-2.34843e-005,0.999833,-0.0182736],[0.00111407,0.0182736,0.999833]],0,1,[],["a3\soft_f_gamma\van_01\data\van_01_ext_black_co.paa","a3\soft_f_gamma\van_01\data\van_01_adds_co.paa","a3\soft_f_gamma\van_01\data\van_01_int_base_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[[[12066.7,10616.2,0],"MOVE","SAFE","LIMITED","NO CHANGE","NO CHANGE",[20,20,20],0],[[12078,10611.2,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[10,10,10],0],[[12066.8,10616.4,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_casual_1_F_tanoan","",[12067,10616,0.00143433],285.668,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Black_F",[]],[],[],"H_Construction_earprot_yellow_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_1_F_tanoan","",[12064.7,10616.7,0.00143433],150.39,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Black_F",[]],[],[],"H_Construction_earprot_yellow_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_1_F_tanoan","",[12062.5,10631.5,8.34306],0,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Black_F",[]],[],[],"H_Construction_earprot_yellow_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_1_F_tanoan","",[12012.1,10598.2,4.74004],0,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Black_F",[]],[],[],"H_Construction_earprot_yellow_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[12016.8,10599.8,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[10,10,10],0],[[12058.4,10618.1,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[10,10,10],0],[[12017.3,10600.6,3.05176e-005],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_casual_1_F_tanoan","",[12058.1,10618.8,0.00143433],0,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Black_F",[]],[],[],"H_Construction_earprot_yellow_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_1_F_tanoan","",[12065,10615.6,0.00143433],0,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Black_F",[]],[],[],"H_Construction_earprot_yellow_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		280.843
+]

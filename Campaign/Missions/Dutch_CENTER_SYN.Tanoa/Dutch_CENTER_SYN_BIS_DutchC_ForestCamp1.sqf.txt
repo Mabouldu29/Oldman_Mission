@@ -1,0 +1,93 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["I_C_Offroad_02_LMG_F","",[10599.3,3612.38,-0.000991821],[[0.608563,0.793505,-0.000611886],[-0.023594,0.0188657,0.999543]],0,1,[],["a3\soft_f_exp\offroad_02\data\offroad_02_ext_olive_co.paa","a3\soft_f_exp\offroad_02\data\offroad_02_ext_olive_co.paa","a3\soft_f_exp\offroad_02\data\offroad_02_int_olive_co.paa","a3\soft_f_exp\offroad_02\data\offroad_02_int_olive_co.paa"],false,[["#steal",[GUER,300]]],[true,false]],["O_G_Offroad_01_F","",[10597.4,3628.93,-0.0270538],[[0.274068,-0.961705,-0.00298596],[-0.0206624,-0.00899247,0.999746]],0,1,[],["a3\soft_f_bootcamp\offroad_01\data\offroad_01_ext_ig_01_co.paa","a3\soft_f_bootcamp\offroad_01\data\offroad_01_ext_ig_01_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[GUER,["SAFE","LIMITED","WEDGE","YELLOW"],[[[10662.8,3642.27,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10647.4,3632,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10625.9,3624.57,1.52588e-005],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10624,3612.89,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10620.2,3604.17,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10587.1,3635.27,-1.52588e-005],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10580.3,3638.33,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10593.3,3629.78,4.57764e-005],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10598.7,3624.22,-1.52588e-005],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10604.6,3617.55,4.57764e-005],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10610.6,3611.61,1.52588e-005],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10615.3,3606.05,3.05176e-005],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10618.6,3601.18,0],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["I_C_Soldier_Bandit_5_F","",[10674.8,3645.27,0.0014801],211.635,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_5_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",1,30]]],["V_Chestrig_blk",[["30Rnd_762x39_Mag_F",4,30],["MiniGrenade",2,1]]],[],"H_Bandanna_sand","G_Shades_Blue",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Bandit_1_F","",[10628.5,3619.35,0.00144958],38.3281,0.5,0,"Auto",[["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_1_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_F",1,30]]],[],["B_FieldPack_khk_Bandit_1_F",[["Medikit",1],["FirstAidKit",4],["30Rnd_545x39_Mag_F",4,30]]],"H_Bandanna_cbr","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["[_this,""WATCH"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Bandit_2_F","",[10578.8,3642.54,0.00160217],326.66,0.5,0,"Auto",[["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],["launch_RPG7_F","","","",["RPG7_F",1],[],""],[],["U_I_C_Soldier_Bandit_2_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_F",1,30]]],[],["B_Kitbag_cbr_Bandit_2_F",[["30Rnd_545x39_Mag_F",4,30],["RPG7_F",3,1]]],"H_Cap_oli_Syndikat_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["[_this,""WATCH1"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Bandit_5_F","",[10596.2,3624.46,0.000915527],165.546,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_5_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",1,30]]],["V_Chestrig_blk",[["30Rnd_762x39_Mag_F",4,30],["MiniGrenade",2,1]]],[],"H_Cap_blk_Syndikat_F","G_Bandanna_beast",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilListening_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM""; 
+ _this switchmove """"; 
+ _this playAction ""Stand"" 
+};"]]]],["I_C_Soldier_Bandit_4_F","",[10596.2,3622.93,0.00157166],328.251,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_4_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",1,30]]],["V_BandollierB_blk",[["30Rnd_762x39_Mag_F",4,30],["MiniGrenade",2,1]]],[],"","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn   
+{_this disableai ""anim""; 
+ _this switchMove ""Acts_CivilTalking_1""; 
+ waituntil {sleep 1; behaviour _this != ""AWARE"" || !(alive _this)};  
+ _this enableAI ""ANIM""; 
+ _this switchmove """"; 
+ _this playAction ""Stand"" 
+};"]]]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Para_2_F","",[10607.1,3610.84,0.00141907],12.6242,0.5,0,"Auto",[["arifle_AK12_F","","","",["30Rnd_762x39_AK12_Mag_F",30],[],""],[],["hgun_Pistol_01_F","","","",["10Rnd_9x21_Mag",10],[],""],["U_I_C_Soldier_Para_2_F",[["FirstAidKit",1],["30Rnd_762x39_AK12_Mag_F",2,30]]],["V_TacVest_oli",[["30Rnd_762x39_AK12_Mag_F",3,30],["10Rnd_9x21_Mag",2,10],["HandGrenade",2,1]]],[],"H_Bandanna_sgg","G_Bandanna_oli",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["[_this,""LEAN"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Ammobox_rounds_F",[10619.2,3611.32,0.680939],[[0.0122211,0.99467,0.102384],[-0.056747,-0.101537,0.993212]],0,"",false,false,[],true,-1,0],["Land_Ammobox_rounds_F",[10619.5,3611.13,0.666992],[[-0.411484,0.908765,0.0694802],[-0.0619761,-0.103956,0.992649]],0,"",false,false,[],true,-1,1],["Land_Bench_01_F",[10605.1,3609.74,0.594177],[[-0.68372,-0.729745,0],[0,0,1]],0,"",false,false,[],false,2,2],["Land_Bench_03_F",[10613.4,3605.07,0],[[-0.695,-0.719009,0],[0,0,1]],0,"",false,false,[],false,2,3],["Land_ClothShelter_01_F",[10613.9,3600.1,-0.315002],[[0.664761,-0.747056,0],[0,0,1]],0,"",false,false,[],false,3,4],["Flag_Syndikat_F",[10612.5,3606.55,1.52588e-005],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3,5],["Land_GarbageBarrel_02_F",[10617.7,3609.15,0.00335693],[[0,0.999996,0.0026744],[-0.0744588,-0.00266698,0.997221]],0,"",false,false,[],false,1,6],["Land_GarbageHeap_03_F",[10601.4,3597.85,0.0203247],[[0.638592,0.761623,0.110139],[-0.0797466,-0.0768562,0.993848]],0,"",false,false,[],false,3,7],["Land_GarbageHeap_04_F",[10599,3600.59,-0.0030365],[[-0.544438,-0.838025,-0.0360853],[-0.0293202,-0.0239807,0.999282]],0,"",false,false,[],false,2,8],["Land_GarbageHeap_04_F",[10593.2,3610.97,0.000732422],[[-0.54467,-0.838634,-0.00526527],[0.00265199,-0.00800056,0.999964]],0,"",true,false,[],false,2,9],["Land_Sack_F",[10618.6,3610.56,0.000473022],[[-0.821919,0.5668,-0.0564621],[-0.0612227,0.0106438,0.998067]],0,"",false,false,[],false,1,10],["Land_BagFence_01_long_green_F",[10577.2,3640.74,4.57764e-005],[[0.991817,-0.127509,0.00630338],[-0.0053265,0.00800078,0.999954]],0,"",false,false,[],false,2,11],["Land_BagFence_01_long_green_F",[10580.5,3644.16,0.00172424],[[0.252646,-0.965729,0.0594788],[-0.0213272,0.0558997,0.998209]],0,"",false,false,[],false,2,12],["Land_BagFence_01_round_green_F",[10578.1,3643.14,-0.00137329],[[0.728303,-0.68358,0.0478883],[-0.0106697,0.0585632,0.998227]],0,"",false,false,[],false,2,13],["Land_BagFence_01_round_green_F",[10629,3620.39,-9.15527e-005],[[-0.486173,-0.8731,0.0364839],[0.00799344,0.0373051,0.999272]],0,"",false,false,[],false,2,14],["Land_ShelvesWooden_khaki_F",[10608.3,3609.9,-0.000946045],[[-0.720973,0.692958,-0.0025839],[-0.0123135,-0.00908297,0.999883]],0,"",true,false,[],false,1,15],["Land_Shovel_F",[10610.1,3629.29,0.0170898],[[0.249662,0.967731,-0.0341307],[-0.00799352,0.0373053,0.999272]],0,"",false,false,[],true,-1,16],["Land_WheelCart_F",[10608.5,3629.3,0.0150452],[[-0.287061,0.957478,-0.0288498],[0.0239963,0.0372957,0.999016]],0,"",false,false,[],true,-1,17],["Land_WoodenCrate_01_F",[10619.2,3611.47,0.0522919],[[-0.820433,0.571648,0.0103692],[-0.0612219,-0.105869,0.992494]],0,"",true,false,[],true,-1,18],["Land_WoodenCrate_01_stack_x3_F",[10617.7,3611.88,0.0055542],[[0.424839,0.897025,0.121897],[-0.0612227,-0.105874,0.992493]],0,"",false,false,[],false,2,19],["Land_ShelvesWooden_khaki_F",[10601.1,3600.51,0.738159],[[-0.683159,-0.730266,-0.0023165],[-0.00159454,-0.00168044,0.999997]],0,"",true,false,[],false,1,20],["Land_TableSmall_01_F",[10598.6,3602.06,0.776291],[[-0.704397,0.709806,0],[0,0,1]],0,"",false,false,[],true,-1,21],["Land_FMradio_F",[10598.6,3602.1,1.21332],[[0.685629,0.727951,0],[0,0,1]],0,"",false,false,[],true,-1,22],["Land_LampShabby_F",[10616.5,3613.71,-1.54453],[[-0.0577568,-0.998331,0],[0,0,1]],0,"",true,false,[],false,3,23],["MetalBarrel_burning_F",[10596.8,3621.44,-0.00515747],[[0,0.999872,0.0159975],[0.0213271,-0.0159939,0.999645]],0,"",true,false,[["#init",["if !(bis_night) exitwith {deletevehicle _this}"]]],false,1,24],["MetalBarrel_burning_F",[10610.6,3604.38,0.57756],[[0,1,0],[0,0,1]],0,"",true,false,[["#init",["if !(bis_night) exitwith {deletevehicle _this}"]]],false,1,25],["Land_MobilePhone_old_F",[10597.5,3603.55,0.772675],[[0.991314,0.131513,0],[0,0,1]],0,"",false,false,[],true,-1,26],["Land_Orange_01_F",[10597.3,3603.13,0.797379],[[0.362139,-0.932124,0],[0,0,1]],0,"",false,false,[],true,-1,27],["Land_PCSet_01_case_F",[10600.6,3606.8,1.5186],[[-0.759348,0.650685,0],[0,0,1]],0,"",false,false,[],true,-1,28],["Land_PCSet_01_keyboard_F",[10601.3,3607.25,1.49614],[[-0.779628,0.626243,0],[0,0,1]],0,"",false,false,[],true,-1,29],["Land_PCSet_01_mouse_F",[10601.4,3607.61,1.49466],[[-0.865117,0.501571,0],[0,0,1]],0,"",false,false,[],true,-1,30],["Land_PCSet_01_screen_F",[10600.9,3607.56,1.50594],[[-0.709052,0.705156,0],[0,0,1]],0,"",false,false,[],true,-1,31],["Land_PortableLight_02_single_folded_olive_F",[10600.4,3606.87,0.659653],[[0.63334,0.773874,0],[0,0,1]],0,"",false,false,[],false,1,32],["Land_Sleeping_bag_F",[10598.5,3603.38,0.746719],[[-0.696838,-0.717229,0],[0,0,1]],0,"",false,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,33],["Land_Sleeping_bag_blue_F",[10603.8,3601.9,0.644943],[[-0.767448,0.641111,0],[0,0,1]],0,"",false,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,34],["Land_Sleeping_bag_brown_F",[10604.6,3602.87,0.630295],[[-0.690725,0.723118,0],[0,0,1]],0,"",false,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,35],["Land_Ground_sheet_folded_blue_F",[10597.3,3603.52,0.789307],[[-0.988185,-0.153266,0],[0,0,1]],0,"",false,false,[],true,-1,36],["Land_Sofa_01_F",[10603.1,3604.18,0.632385],[[-0.698003,0.716094,3.77136e-006],[3.13711e-007,-4.96078e-006,1]],0,"",true,false,[["#init",["
+		[_this] spawn
+		{
+			scriptName '_cHandleRestPointAvailability';
+			private _bed = _this select 0;
+			while{ !isNull _bed } do
+			{
+				waitUntil { sleep 1; (!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat;};
+				_bed setVariable ['BIS_RestPlace', localize 'str_a3_SafeHouse_Marker'];
+				_bed setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ];
+				private _id = [_bed, 1, [CIVILIAN, WEST, EAST, RESISTANCE] select 0 ] call BIS_fnc_om_NewSafeHouse;
+				waitUntil { sleep 1; !(!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])) || isNull _bed };
+				if( isNull _bed ) exitWith {['SAVEPOINTS: %1: EXITING', _bed] call BIS_fnc_logFormat};
+				[_bed, _id] call BIS_fnc_holdActionRemove;
+			};
+		};"]]],false,2,37],["Land_TentSolar_01_folded_sand_F",[10600.2,3600.49,0.769562],[[-0.635285,-0.772278,0],[0,0,1]],0,"",false,false,[],false,1,38],["Land_WaterBottle_01_full_F",[10597.5,3603.46,0.776596],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,39],["Land_WaterTank_04_F",[10601.7,3626.35,0],[[0.932374,0.361494,0],[0,0,1]],0,"",false,false,[],false,2,40],["Land_WoodenCrate_01_F",[10605.7,3607.24,0.566315],[[0.606238,-0.795283,0],[0,0,1]],0,"",false,false,[],true,-1,41],["Land_WoodenCrate_01_stack_x3_F",[10604.1,3608.72,0.609589],[[0.678285,0.734799,0],[0,0,1]],0,"",false,false,[],false,2,42],["Land_WoodenTable_large_F",[10601,3607.46,0.643127],[[-0.67776,-0.735284,0],[0,0,1]],0,"",false,false,[],true,-1,43],["Land_Camping_Light_off_F",[10601.3,3608.16,1.49522],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1,44],["Land_MapBoard_01_Wall_Syndikat_Tanoa_F",[10605.2,3604.18,0.585159],[[-0.930457,-0.270236,-0.247432],[-0.239332,-0.0630738,0.968887]],0,"",true,false,[],false,2,45],["Item_Sleeping_bag_folded_01",[10599.2,3601.59,0.772003],[[0.863879,-0.503699,0],[0,0,1]],0,"",true,false,[],false,1,46],["Item_Sleeping_bag_folded_01",[10603.5,3602.94,0.639008],[[-0.493805,-0.869572,0],[0,0,1]],0,"",true,false,[],false,1,47],["Land_WoodenCrate_01_stack_x3_F",[10613.4,3600.75,-0.0020752],[[0.424901,0.905217,-0.0064398],[-0.0585655,0.0345878,0.997684]],0,"",true,false,[],false,2,48],["Land_BagFence_01_round_green_F",[10629.8,3618.42,0.000442505],[[-0.968262,0.249898,0.00440882],[0.00799344,0.0133312,0.999879]],0,"",false,false,[],false,2,49],["Item_Antimalaricum",[10619,3611.69,0.690857],[[0.0122147,0.99467,0.102382],[-0.0567451,-0.101535,0.993212]],0,"",true,false,[],false,1,50]]
+		,
+		//--- #size
+		84.2774
+]

@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_T_Soldier_A_F","",[11561.8,9294.95,0.00131226],148.611,0.5,0,"Auto",[["arifle_CTAR_blk_ACO_Pointer_F","","acc_pointer_IR","optic_ACO_grn",["30Rnd_580x42_Mag_F",30],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_T_Soldier_F",[["FirstAidKit",1],["30Rnd_580x42_Mag_F",3,30]]],["V_HarnessO_ghex_F",[["30Rnd_580x42_Mag_F",8,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",2,1],["SmokeShell",1,1],["SmokeShellRed",1,1],["Chemlight_red",2,1]]],["B_Carryall_ghex_OTAmmo_F",[["FirstAidKit",4],["30Rnd_580x42_Mag_F",6,30],["100Rnd_580x42_Mag_F",1,100],["RPG32_F",1,1],["HandGrenade",2,1],["MiniGrenade",2,1],["1Rnd_HE_Grenade_shell",6,1],["10Rnd_93x64_DMR_05_Mag",2,10],["20Rnd_650x39_Cased_Mag_F",3,20]]],"H_HelmetO_ghex_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","O_NVGoggles_ghex_F"]],"",false,[]]]],[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_T_Engineer_F","",[11560.7,9291.52,0.00131226],48.5111,0.5,0,"Auto",[["arifle_CTAR_blk_ACO_Pointer_F","","acc_pointer_IR","optic_ACO_grn",["30Rnd_580x42_Mag_F",30],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_T_Soldier_F",[["FirstAidKit",1],["30Rnd_580x42_Mag_F",3,30]]],["V_HarnessO_ghex_F",[["30Rnd_580x42_Mag_F",2,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",2,1],["SmokeShell",1,1],["SmokeShellRed",1,1],["SmokeShellOrange",1,1],["SmokeShellYellow",1,1],["Chemlight_red",2,1]]],["B_Carryall_ghex_OTEng_F",[["ToolKit",1],["MineDetector",1],["SatchelCharge_Remote_Mag",1,1],["DemoCharge_Remote_Mag",2,1]]],"H_HelmetO_ghex_F","G_Squares",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","O_NVGoggles_ghex_F"]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["Land_WoodenLog_F",[11563.9,9291.24,0.0513306],[[0,0.999201,-0.0399655],[-0.0080009,0.0399642,0.999169]],0,"",false,false,[],true,-1,0],["Land_WoodPile_F",[11562.5,9289.96,-0.00202942],[[0.996671,0.0811711,0.00760615],[-0.0106641,0.0373058,0.999247]],0,"",false,false,[],false,2,1],["Land_WoodPile_F",[11561.2,9289.15,0.00535583],[[0.0589472,0.997595,-0.036456],[-0.0133317,0.037303,0.999215]],0,"",false,false,[],false,2,2],["Campfire_burning_F",[11562.6,9292.62,4.57764e-005],[[0,0.998719,-0.0506028],[-0.0080009,0.0506012,0.998687]],0,"",true,false,[],false,2,3]]
+		,
+		//--- #size
+		10
+]

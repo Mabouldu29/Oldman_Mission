@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Offroad_01_F","",[10972.6,9635.77,0.0121765],[[0.76562,-0.64322,-0.00966463],[-0.0195438,-0.0382743,0.999076]],0,1,[],["a3\soft_f\offroad_01\data\offroad_01_ext_base01_co.paa","a3\soft_f\offroad_01\data\offroad_01_ext_base01_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[10971.5,9633.88,0.00824738],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10981.9,9706.02,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[10,10,10],0],[[10996.8,9720.22,1.22222],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10960.9,9633.64,0.0239334],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[10970.7,9634.14,-0.0344086],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_casual_5_F_tanoan","",[10962.3,9632.41,0.00131989],315.492,0.5,0,"Up",[[],[],[],["U_C_Man_casual_5_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["Land_RailwayCar_01_passenger_F",[10986.5,9593.61,0.0609589],[[0.979355,-0.20047,0.0260105],[-0.0259895,0.00273665,0.999658]],0,"",false,false,[],false,3,0],["Land_RailwayCar_01_passenger_F",[10992,9592.41,0.120537],[[0.976104,-0.215743,0.0260105],[-0.0259436,0.0031423,0.999658]],0,"",false,false,[],false,3,1]]
+		,
+		//--- #size
+		40
+]

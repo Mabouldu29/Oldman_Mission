@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["O_G_HMG_02_high_F","",[10997.9,4164.27,0.15976],[[0.100748,-0.962981,-0.250033],[0.0823646,-0.242376,0.96668]],0,1,[],["a3\static_f_oldman\hmg_02\data\static_m2_co.paa","a3\static_f_oldman\hmg_02\data\m2_combined_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_GEN_Commander_F","",[10997.9,4165.47,-0.0453033],173.911,0.5,0,"Auto",[["SMG_05_F","","acc_flashlight","",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_O_GEN_Commander_F",[["FirstAidKit",1],["30Rnd_9x21_Mag_SMG_02",1,30]]],["V_TacVest_gen_F",[["30Rnd_9x21_Mag_SMG_02",4,30],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["SmokeShellYellow",1,1]]],[],"H_Beret_gen_F","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles_OPFOR"]],"O_G_HMG_02_high_F",true,[["#init",["_this setskill 1;_this setskill [""spotDistance"",1];_this setskill [""aimingShake"",0.3];"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_TimberLog_04_F",[10998.5,4162.43,-0.499252],[[-0.737887,-0.674924,0],[0,0,1]],0,"",false,false,[],false,3],["Land_TimberLog_04_F",[10998.4,4162.44,-0.157089],[[-0.737887,-0.674924,0],[0,0,1]],0,"",false,false,[],false,3],["Land_TimberLog_04_F",[10998.5,4162.36,-0.722107],[[-0.737887,-0.674924,0],[0,0,1]],0,"",false,false,[],false,3],["Land_TimberLog_04_F",[10998.4,4162.47,0.174149],[[0.739445,0.673217,0],[0,0,1]],0,"",false,false,[],false,3],["Land_TimberLog_04_F",[11000.4,4166.8,0.136948],[[0.00777991,-0.99997,0],[0,0,1]],0,"",false,false,[],false,3],["Land_TimberLog_04_F",[10993.4,4162.21,-0.648804],[[0.843139,-0.537695,0],[0,0,1]],0,"",false,false,[],false,3],["Land_TimberLog_04_F",[10993.4,4162.26,-0.311081],[[-0.841412,0.540394,0],[0,0,1]],0,"",false,false,[],false,3],["Land_TimberLog_04_F",[10993.4,4162.26,-0.00352478],[[0.843139,-0.537695,0],[0,0,1]],0,"",false,false,[],false,3],["Land_TimberLog_04_F",[10993.4,4162.23,-1.01256],[[0.843139,-0.537695,0],[0,0,1]],0,"",false,false,[],false,3],["Land_TimberLog_04_F",[10998.4,4162.43,0.491714],[[0.739445,0.673217,0],[0,0,1]],0,"",false,false,[],false,3],["Land_TimberLog_05_F",[10996.4,4160.91,0.156937],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Land_TimberLog_05_F",[10995.7,4161.1,-0.207489],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Land_TimberLog_05_F",[10995.8,4160.39,-0.118271],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Land_TimberLog_05_F",[10996.5,4160.3,0.291397],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Land_TimberLog_05_F",[11000.9,4164.15,0.897583],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Land_TimberLog_05_F",[10991.2,4163.2,-0.654739],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Land_TimberLog_05_F",[11000.1,4164.35,0.0426941],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2]]
+		,
+		//--- #size
+		219.039
+]

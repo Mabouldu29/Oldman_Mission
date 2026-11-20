@@ -1,0 +1,4 @@
+waituntil {!isNil "BIS_missionInitDone"};
+bis_Startmissiondate = date;
+
+#include "\a3\Missions_F_Oldman\Campaign\Missions\Oldman.tanoa\init_systemExec.sqf"

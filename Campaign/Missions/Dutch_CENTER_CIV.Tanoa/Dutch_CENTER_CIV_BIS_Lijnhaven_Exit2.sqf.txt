@@ -1,0 +1,29 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["B_T_Quadbike_01_F","",[11164.8,2381.06,0.0171192],[[-0.989498,0.144454,0.00518742],[0.00361386,-0.0111534,0.999931]],0,1,[],["a3\soft_f_exp\quadbike_01\data\quadbike_01_olive_co.paa","a3\soft_f_exp\quadbike_01\data\quadbike_01_wheel_olive_co.paa"],false,[["#steal",[CIV,200]]],[true,false]]]
+		,
+		//--- #groupData
+		[[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[11169.9,2381.18,0.00146055],97.368,0.5,0,"Auto",[["SMG_01_F","","","",["30Rnd_45ACP_Mag_SMG_01",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_C_CBRN_Suit_01_Blue_F",[["30Rnd_45ACP_Mag_SMG_01",3,30]]],["V_TacVest_gen_F",[["FirstAidKit",1],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"","G_AirPurifyingRespirator_01_F",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn 
+{removeGoggles _this; 
+_this addGoggles ""G_AirPurifyingRespirator_01_F""};"]],["#init",["[_this,""STAND"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]]]],[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["O_GEN_Soldier_F","",[11170.2,2374.12,0.00145245],95.3071,0.5,0,"Auto",[["SMG_01_F","","","",["30Rnd_45ACP_Mag_SMG_01",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_C_CBRN_Suit_01_Blue_F",[["30Rnd_45ACP_Mag_SMG_01",3,30]]],["V_TacVest_gen_F",[["FirstAidKit",1],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1]]],[],"","G_AirPurifyingRespirator_01_F",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn 
+{removeGoggles _this; 
+_this addGoggles ""G_AirPurifyingRespirator_01_F""};"]],["#init",["[_this] spawn  
+{  
+ params [""_guy""];  
+ waituntil {sleep 0.5; player distance _guy < 10};  
+ if (behaviour _guy != ""COMBAT"") then {_guy playmove ""Acts_PercMstpSlowWrflDnon_handup2C""};  
+};"]]]]]],[EAST,["AWARE","NORMAL","WEDGE","YELLOW"],[[[11162.5,2369.69,-3.19481e-005],"GUARD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["O_GEN_Soldier_F","",[11162.1,2369.16,0.00147796],55.5993,0.5,0,"Auto",[["SMG_03C_TR_hex","","","optic_Aco_smg",["50Rnd_570x28_SMG_03",50],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",16],[],""],["U_C_CBRN_Suit_01_Blue_F",[["50Rnd_570x28_SMG_03",2,50]]],["V_TacVest_gen_F",[["FirstAidKit",1],["16Rnd_9x21_Mag",2,16],["HandGrenade",1,1],["SmokeShell",1,1],["50Rnd_570x28_SMG_03",1,50]]],[],"","G_AirPurifyingRespirator_01_F",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",true,[["#init",["0 = _this spawn 
+{removeGoggles _this; 
+_this addGoggles ""G_AirPurifyingRespirator_01_F""};"]],["#init",["[_this,""WATCH"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_RoadBarrier_01_F",[11169.6,2374.91,0],[[-0.992142,0.125119,0],[0,0,1]],0,"",true,false,[],false,3,0],["Land_Portable_generator_F",[11174,2383.21,0.0011282],[[0.143045,0.987496,0.0662582],[-0.02133,-0.0638551,0.997731]],0,"",false,false,[],true,-1,1],["Land_PortableLight_single_F",[11174.2,2382.09,0],[[-0.805587,0.592477,0],[0,0,1]],0,"",true,false,[],false,2,2],["Land_PortableLight_single_F",[11165.8,2368.59,2.38419e-007],[[-0.533519,-0.845788,0],[0,0,1]],0,"",true,false,[],false,2,3],["Land_Razorwire_F",[11169.4,2366.73,-0.0625401],[[-0.995334,-0.0950121,-0.0168269],[-0.0133317,-0.0373027,0.999215]],0,"",true,false,[],false,3,4],["Land_SandbagBarricade_01_half_F",[11172.9,2379.51,-0.220549],[[0.991141,-0.132817,0],[0,0,1]],0,"",false,false,[],false,2,5],["Land_SandbagBarricade_01_half_F",[11173,2381.55,-0.20785],[[-0.980543,0.196304,0],[0,0,1]],0,"",false,false,[],false,2,6],["Land_SandbagBarricade_01_half_F",[11171.2,2378.91,-0.20098],[[-0.154407,-0.988007,0],[0,0,1]],0,"",false,false,[],false,2,7],["Land_Sign_MinesDanger_Greek_F",[11184.1,2377.15,0.00507545],[[-0.993745,0.0963786,-0.0564143],[-0.0479956,0.0875416,0.995004]],0,"",true,false,[["#init",["_this setobjecttexture [0,""a3\Missions_F_Oldman\Data\img\Mosquito_Sign_ca.paa""];
+"]]],false,2,8],["Land_Sign_MinesDanger_Greek_F",[11179.9,2344.75,0.00277996],[[-0.993745,0.103369,-0.0422645],[-0.0479956,-0.0535983,0.997408]],0,"",true,false,[["#init",["_this setobjecttexture [0,""a3\Missions_F_Oldman\Data\img\Mosquito_Sign_ca.paa""];
+"]]],false,2,9],["Land_Sign_MinesDanger_Greek_F",[11189.3,2418.23,0.00277996],[[-0.993745,0.103369,-0.0422645],[-0.0479956,-0.0535983,0.997408]],0,"",true,false,[["#init",["_this setobjecttexture [0,""a3\Missions_F_Oldman\Data\img\Mosquito_Sign_ca.paa""];
+"]]],false,2,10],["Land_WoodenShelter_01_F",[11164.7,2381.52,0.35021],[[-0.990549,0.137159,0],[0,0,1]],0,"",true,false,[],false,3,11],["Land_WoodenTable_small_F",[11172,2382.34,0.00573397],[[-0.984507,0.175266,0.00530965],[-0.00267442,-0.0452866,0.99897]],0,"",false,false,[],true,-1,12],["Item_Antimalaricum",[11172,2382.2,0.86459],[[-0.451483,-0.891309,-0.0416146],[-0.00267442,-0.0452866,0.99897]],0,"",true,false,[],false,1,13],["Item_Antimalaricum",[11171.7,2382.25,0.855015],[[-0.770675,-0.635868,-0.041614],[-0.0205885,-0.0404237,0.998971]],0,"",true,false,[],false,1,14]]
+		,
+		//--- #size
+		56.2596
+]

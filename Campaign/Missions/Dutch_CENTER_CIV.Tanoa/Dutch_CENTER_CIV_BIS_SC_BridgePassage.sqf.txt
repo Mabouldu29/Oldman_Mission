@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_p_beggar_F_afro","BIS_OM_ambientConvo_mvskyk7i6bdf1yo",[11682.8,2546.34,0.00143886],206.007,0.5,0,"Up",[[],[],[],["U_C_Poor_2",[]],[],[],"H_Cap_blk","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",[" [ [""BIS_OM_ambientConvo_yunm7a73zrkpb4m"",""BIS_OM_ambientConvo_mvskyk7i6bdf1yo""], true] spawn BIS_fnc_OM_createConversation "]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_p_beggar_F_afro","BIS_OM_ambientConvo_yunm7a73zrkpb4m",[11680.7,2543.93,0.00143886],18.0228,0.5,0,"Up",[[],[],[],["U_C_Man_casual_5_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_polo_5_F_afro","BIS_OM_ambientConvo_5jbac83az2y4j4y",[11666.8,2632.76,0.0576546],119.604,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_salmon",[]],[],[],"H_Cap_tan","G_Aviator",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",[" [ [""BIS_OM_ambientConvo_5jbac83az2y4j4y""], true] spawn BIS_fnc_OM_createConversation "]]]]]]]
+		,
+		//--- #objectData
+		[["Land_dirt_road_damage_long_05_F",[11679.4,2544.45,0],[[-0.725218,-0.688519,0],[0,0,1]],0,"",false,false,[],false,3,0],["Land_dirt_road_damage_long_04_F",[11676.3,2550.95,0],[[-0.128897,0.991658,0],[0,0,1]],0,"",false,false,[],false,3,1],["Land_Garbage_square5_F",[11682.4,2542.38,0],[[-0.725218,-0.688519,0],[0,0,1]],0,"",false,false,[],false,3,2]]
+		,
+		//--- #size
+		100
+]
