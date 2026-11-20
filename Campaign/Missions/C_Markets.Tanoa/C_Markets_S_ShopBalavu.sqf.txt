@@ -1,0 +1,34 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Tractor_01_F","",[2184.6,7632.81,0.0236473],[[0.000629491,0.999734,-0.0230643],[-0.0399153,0.023071,0.998936]],0,1,[],["a3\soft_f_enoch\tractor_01\data\tractor_01_2_red_co.paa"],false,[],[true,false]],["C_Offroad_01_covered_F","",[2160.93,7651.62,0.0275307],[[0.749919,-0.655602,-0.0883613],[0.100239,-0.0194144,0.994774]],0,1,[],["a3\soft_f_enoch\offroad_01\data\offroad_01_ext_blk_co.paa","a3\soft_f_enoch\offroad_01\data\offroad_01_ext_blk_co.paa","a3\soft_f_enoch\offroad_01\data\offroad_01_cover_blk_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_6_F_afro","BIS_OM_shopkeeper_cpanjgpnvshe9mn",[2130.47,7660.14,0.589001],136.966,0.5,0,"Up",[[],[],[],["U_I_L_Uniform_01_tshirt_skull_F",[]],["V_Pocketed_coyote_F",[]],[],"","G_Sport_Blackyellow",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["
+	[_this] spawn
+	{
+		scriptName '_cHandleShopKeeperAvailability';
+		private _shopkeeper = _this select 0;
+		private _cond = {(!isNull _shopkeeper && {alive _shopkeeper && (behaviour _shopkeeper != 'COMBAT') && call {!(missionNameSpace getVariable [""BIS_SynikatSmugglersRestricted"", true])} })} ;
+   'MARKETS: starting' call BIS_fnc_Log;
+  	while { !isNull _shopkeeper && alive _shopkeeper } do
+  	{
+		   'MARKETS: waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; call _cond };
+		   _shopkeeper setVariable ['BIS_Market', 'STR_A3_shoping_market'];
+		   _shopkeeper setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 3];
+		   [_shopkeeper, BIS_OM_box_zioaw2u5xj4dvzu] spawn BIS_fnc_OM_addKaufMan;
+		   'MARKETS: running kaufman and waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; !(call _cond) };
+			 ['MARKETS: keeper %1 is not available!', _shopkeeper] call BIS_fnc_logFormat;
+  	}
+	};
+	"]],["#init",["_this addItemToVest ""Money_Stack"";_this addItemToVest ""Money_Stack""; BIS_merchant = _this"]]]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[2147.13,7640.4,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[2128.28,7649.41,2.28882e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[2147.91,7640.93,9.34601e-005],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_man_polo_1_F_afro","",[2145.65,7640.31,0.00149536],51.6728,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_blue",[]],[],[],"H_Cap_tan","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["Land_Ammobox_rounds_F",[2131.1,7661.05,0.661408],[[0.519187,-0.854661,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_PaperBox_open_empty_F",[2137.6,7660.18,0.569005],[[-0.558101,0.829773,0],[0,0,1]],0,"",false,false,[],false,2],["Land_Bucket_F",[2130.75,7660.86,0.650138],[[0.519187,-0.854661,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_CampingChair_V2_F",[2129.14,7659.21,0.464216],[[0.215157,-0.97658,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_CanisterFuel_F",[2134.06,7657.22,0.533371],[[-0.000225614,1,2.98735e-005],[1.35213e-005,-2.98705e-005,1]],0,"",true,false,[],false,1],["Land_EmergencyBlanket_01_discarded_F",[2130.99,7661.22,0.662584],[[0.823154,-0.567818,0],[0,0,1]],0,"",false,false,[],true,2],["Land_EmergencyBlanket_01_stack_F",[2131.96,7661.26,0.600177],[[0.519187,-0.854661,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_FMradio_F",[2132.78,7662.13,1.21415],[[-0.0120755,-0.999927,0],[0,0,1]],0,"",false,false,[],true,0],["Land_Garbage_square5_F",[2136.53,7661.97,0.547689],[[-0.506303,0.862355,0],[0,0,1]],0,"",false,false,[],false,3],["Land_Garbage_square5_F",[2138.54,7658.31,0.653038],[[-0.506303,0.862355,0],[0,0,1]],0,"",false,false,[],false,3],["Land_Laptop_unfolded_F",[2128.93,7659.93,1.44406],[[0.591651,-0.806194,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_Rope_01_F",[2135.03,7657.56,1.18194],[[3.05685e-007,1,-1.35154e-006],[-7.81875e-008,1.35154e-006,1]],0,"",true,false,[],false,1],["Land_Rug_01_Traditional_F",[2131.38,7659.24,0.56743],[[-0.211743,0.977325,0],[0,0,1]],0,"",false,false,[],false,2],["Land_Sofa_01_F",[2130.11,7661.25,0.638024],[[0.515184,-0.85708,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_WoodenCrate_01_F",[2134.94,7657.6,0.580002],[[0.845415,0.53411,0],[0,0,1]],0,"",false,false,[],true,2],["Land_WoodenCrate_01_stack_x3_F",[2131.91,7662.27,0.599894],[[0.519187,-0.854661,0],[0,0,1]],0,"",false,false,[],false,2],["Land_WoodenCrate_01_stack_x3_F",[2131.82,7655.12,0.38798],[[-0.552767,0.833336,0],[0,0,1]],0,"",false,false,[],false,2],["Land_WoodenCrate_01_stack_x5_F",[2130.74,7656.71,0.413202],[[-0.551676,0.834058,0],[0,0,1]],0,"",false,false,[],false,2],["Land_WoodenCrate_01_stack_x5_F",[2136.51,7661.84,0.521105],[[-0.539274,0.84213,0],[0,0,1]],0,"",false,false,[],false,2],["Land_WoodenTable_small_F",[2128.65,7660.04,0.556157],[[0.81771,0.57563,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_Ammobox_rounds_F",[2131.05,7660.69,0.646373],[[-0.331356,-0.943506,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_TrailerCistern_wreck_F",[2184.07,7625.89,0],[[-0.971438,0.233514,0.0421715],[0.0452867,0.00799269,0.998942]],0,"",true,false,[],false,3],["Land_PortableLight_02_single_folded_olive_F",[2136.42,7665.49,0.769169],[[-0.0467724,0.998906,0],[0,0,1]],0,"",true,false,[],false,1],["Land_PortableLight_02_single_folded_olive_F",[2132.76,7652.55,0.28863],[[-0.549764,-0.83532,0],[0,0,1]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		39.7315
+]

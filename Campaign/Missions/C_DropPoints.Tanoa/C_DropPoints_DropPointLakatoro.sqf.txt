@@ -1,0 +1,106 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_WoodenShelter_01_F",[8661.48,8829.15,-0.681099],[[-0.78456,0.620053,0],[0,0,1]],0,"",false,false,[],false,3,0],["Land_dirt_road_damage_long_02_F",[8669.83,8827.45,-0.00376129],[[0,1,0],[0,0,1]],0,"",false,false,[],false,3,1],["Land_dirt_road_damage_long_02_F",[8669,8827.43,0.000167847],[[0.753307,0.657669,0],[0,0,1]],0,"",false,false,[],false,3,2],["Land_dirt_road_damage_long_02_F",[8669.96,8824.37,1.52588e-005],[[0,1,0],[0,0,1]],0,"",false,false,[],false,3,3],["Land_dirt_road_damage_long_02_F",[8673.69,8831.81,-0.0476685],[[0.798536,0.601947,0],[0,0,1]],0,"",false,false,[],false,3,4],["Land_dirt_road_damage_long_02_F",[8666.04,8825.64,-0.02211],[[0.893543,0.448977,0],[0,0,1]],0,"",false,false,[],false,3,5],["Land_CanisterPlastic_F",[8660.29,8828.14,-0.0580902],[[0,0.997958,-0.0638688],[-0.0532564,0.0637782,0.996542]],0,"",false,false,[],false,1,6],["Land_Bucket_F",[8663.18,8829.68,-0.00786591],[[0,0.998284,-0.0585635],[-0.0797461,0.058377,0.995104]],0,"",false,false,[],false,1,7],["Land_Ammobox_rounds_F",[8660.21,8829.18,0.00404358],[[0,0.997958,-0.0638688],[-0.0532564,0.0637782,0.996542]],0,"",false,false,[],false,1,8],["Land_Ammobox_rounds_F",[8659.97,8828.82,0.0129852],[[0.930564,0.360516,-0.0638677],[0.0402307,0.0727003,0.996542]],0,"",false,false,[],false,1,9],["Land_WoodenWall_05_m_end_F",[8663.57,8829.2,-0.54438],[[-0.779877,0.625933,0],[0,0,1]],0,"",false,false,[],false,2,10],["Land_WoodenWall_05_m_end_F",[8660.89,8827.17,-0.476738],[[0.612822,0.790221,0],[0,0,1]],0,"",false,false,[],false,2,11],["Land_WoodenWall_05_m_end_F",[8660.89,8831.03,-0.573242],[[-0.779877,0.625933,0],[0,0,1]],0,"",false,false,[],false,2,12],["Land_WoodenWall_05_m_end_F",[8659.99,8830.01,-0.519264],[[-0.779877,0.625933,0],[0,0,1]],0,"",false,false,[],false,2,13],["VirtualReammoBox_camonet_F",[8661.58,8830.07,0.00931549],[[-0.000121264,0.998282,-0.0585956],[-0.0584512,0.0584883,0.996575]],0,"",true,false,[["#init",["
+ [_this] spawn
+ {
+	 	scriptName '_cHandleDropPointHoldAction';
+	  private _stash = _this select 0;
+	  if !(isNull _stash) then
+	  { 'DROPPOINTS: adding HA' call BIS_fnc_Log;
+	   _transferAction =
+		 [
+		    player,
+		    localize 'STR_A3_moduleDepot_Unload',
+		    '\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa',
+		    '\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa',
+		    'call {!isNil ""BIS_addDropPointsLocation""} && (vehicle player != player && {abs speed vehicle player < 1}) && !BIS_OM_sellingEquip && (player inArea [[8663.36,8826.64,0.198997],6.032,7.616,309.796,true,-1])',
+		    'call {!isNil ""BIS_addDropPointsLocation""} && (vehicle player != player && {abs speed vehicle player < 1}) && !BIS_OM_sellingEquip && (player inArea [[8663.36,8826.64,0.198997],6.032,7.616,309.796,true,-1])',
+		    {
+		     BIS_OM_sellingEquipFrom = (if ((vehicle player) != player) then {vehicle player} else {cursorObject}); hint localize 'STR_A3_moduleDepot_Hint' },
+		    {
+
+		    },
+		    {
+		     hintSilent '';
+		     [BIS_OM_sellingEquipFrom, TRUE] spawn BIS_fnc_OM_sellEquipment;
+		    },
+		    {
+
+		    },
+		    [],
+		    5,
+		    nil,
+		    FALSE,
+		    FALSE
+	   ] call BIS_fnc_holdActionAdd;
+		 waituntil{ isNull _stash };
+		 'DROPPOINTS: REMOVING hold action' call BIS_fnc_Log;
+		 [ player, _transferAction ] call BIS_fnc_holdActionRemove;
+	  };
+	};"]],["#init",["
+	[_this] spawn
+	{
+		scriptName '_cHandleDropPointBoxes';
+		private _boxObject = _this select 0;
+		waitUntil {sleep 1; call {!isNil ""BIS_addDropPointsLocation""} && !isNull _boxObject};
+		if (isNull (uiNamespace getVariable ['BIS_OM_gearTransfer', controlNull])) then
+		{
+			uiNamespace setVariable ['BIS_OM_gearTransfer', (findDisplay 46) ctrlCreate ['RscStructuredText', 9999014]];
+		};
+		_gearTransfer = uiNamespace getVariable 'BIS_OM_gearTransfer';
+		_gearTransfer ctrlShow FALSE;
+		_gearTransfer ctrlSetBackgroundColor [0,0,0,0];
+		_gearTransfer ctrlCommit 0;
+		private _contOpenHndl = _boxObject addEventHandler
+		[
+			'ContainerOpened',
+			{
+				if( !call {!isNil ""BIS_addDropPointsLocation""} ) exitWith {};
+				(_this select 0) spawn
+				{
+					scriptName 'moduleDepot/ContainerOpenedEventhandler';
+					waitUntil {!isNull (findDisplay 602)};
+					if (isNull (uiNamespace getVariable ['BIS_OM_gearTransfer', controlNull])) then
+					{
+						uiNamespace setVariable ['BIS_OM_gearTransfer', (findDisplay 46) ctrlCreate ['RscStructuredText', 9999014]];
+					};
+					_gearTransfer = uiNamespace getVariable 'BIS_OM_gearTransfer';
+					_gearTransfer ctrlSetPosition ctrlPosition (findDisplay 602 displayCtrl 6307);
+					_gearTransfer ctrlCommit 0;
+					_gearTransfer ctrlShow TRUE;
+					_gearTransfer ctrlSetStructuredText parseText ('<t align = ''left''>' + (localize 'STR_A3_moduleDepot_close') + '</t><t align = ''right'' color = ''#61af64''>$0</t>');
+					_totalItemsLoaded = [];
+					while {ctrlShown _gearTransfer} do
+					{
+						waitUntil {sleep 0.5; !(_totalItemsLoaded isEqualTo [itemCargo _this, weaponCargo _this, magazineCargo _this, backpackCargo _this])};
+						_totalItemsLoaded = +[itemCargo _this, weaponCargo _this, magazineCargo _this, backpackCargo _this];
+						_gearTransfer ctrlSetStructuredText parseText ('<t align = ''left''>' + (localize 'STR_A3_moduleDepot_close') + '</t><t align = ''right'' color = ''#61af64''>' + (str([_this, FALSE] call BIS_fnc_OM_sellEquipment)) + '</t>');
+					};
+				};
+			}
+		];
+		private _contCloseHndl = _boxObject addEventHandler
+		['ContainerClosed',
+			{
+				if( !call {!isNil ""BIS_addDropPointsLocation""} ) exitWith {};
+				(uiNamespace getVariable ['BIS_OM_gearTransfer', controlNull]) ctrlShow FALSE;
+				[(_this select 0), TRUE] spawn BIS_fnc_OM_sellEquipment;
+			}
+		];
+		waitUntil {sleep 1; isNull _boxObject};
+		_boxObject removeEventHandler ['ContainerOpened', _contOpenHndl];
+		_boxObject removeEventHandler ['ContainerClosed', _contCloseHndl];
+	};
+	"]]],false,2,14]]
+		,
+		//--- #size
+		10
+]

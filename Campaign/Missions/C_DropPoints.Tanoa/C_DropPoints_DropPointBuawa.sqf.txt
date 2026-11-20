@@ -1,0 +1,106 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[]
+		,
+		//--- #objectData
+		[["Land_ChairWood_F",[7800.68,11312.1,0.115433],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,0],["Land_Ammobox_rounds_F",[7801.2,11312.1,0.112778],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1,1],["Land_Ammobox_rounds_F",[7801.61,11311.8,0.112717],[[0.916802,-0.399343,0],[0,0,1]],0,"",false,false,[],false,1,2],["Land_Garbage_square5_F",[7802.25,11309.3,0.102005],[[0,1,0],[0,0,1]],0,"",false,false,[],false,3,3],["Land_Garbage_square5_F",[7800.43,11303.5,0.170135],[[0.973172,-0.230079,0],[0,0,1]],0,"",false,false,[],false,3,4],["Land_WoodenCrate_01_stack_x5_F",[7801.18,11300.6,0.194366],[[0.284457,0.958689,0],[0,0,1]],0,"",false,false,[],false,2,5],["Land_WoodenCrate_01_stack_x3_F",[7801.46,11302.3,0.149902],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2,6],["Land_WoodenBox_F",[7798.44,11304.8,0.184952],[[0.931266,-0.36434,0],[0,0,1]],0,"",false,false,[],false,2,7],["VirtualReammoBox_camonet_F",[7803.67,11310.5,0.109177],[[-0.253523,-0.967329,5.35404e-006],[-5.74461e-007,5.68543e-006,1]],0,"",true,false,[["#init",["
+ [_this] spawn
+ {
+	 	scriptName '_cHandleDropPointHoldAction';
+	  private _stash = _this select 0;
+	  if !(isNull _stash) then
+	  { 'DROPPOINTS: adding HA' call BIS_fnc_Log;
+	   _transferAction =
+		 [
+		    player,
+		    localize 'STR_A3_moduleDepot_Unload',
+		    '\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa',
+		    '\a3\UI_F_Oldman\Data\IGUI\Cfg\HoldActions\holdAction_market_ca.paa',
+		    'call {!isNil ""BIS_addDropPointsLocation""} && (vehicle player != player && {abs speed vehicle player < 1}) && !BIS_OM_sellingEquip && (player inArea [[7795.46,11307.3,1.52588e-005],9.381,9.947,197.397,true,-1])',
+		    'call {!isNil ""BIS_addDropPointsLocation""} && (vehicle player != player && {abs speed vehicle player < 1}) && !BIS_OM_sellingEquip && (player inArea [[7795.46,11307.3,1.52588e-005],9.381,9.947,197.397,true,-1])',
+		    {
+		     BIS_OM_sellingEquipFrom = (if ((vehicle player) != player) then {vehicle player} else {cursorObject}); hint localize 'STR_A3_moduleDepot_Hint' },
+		    {
+
+		    },
+		    {
+		     hintSilent '';
+		     [BIS_OM_sellingEquipFrom, TRUE] spawn BIS_fnc_OM_sellEquipment;
+		    },
+		    {
+
+		    },
+		    [],
+		    5,
+		    nil,
+		    FALSE,
+		    FALSE
+	   ] call BIS_fnc_holdActionAdd;
+		 waituntil{ isNull _stash };
+		 'DROPPOINTS: REMOVING hold action' call BIS_fnc_Log;
+		 [ player, _transferAction ] call BIS_fnc_holdActionRemove;
+	  };
+	};"]],["#init",["
+	[_this] spawn
+	{
+		scriptName '_cHandleDropPointBoxes';
+		private _boxObject = _this select 0;
+		waitUntil {sleep 1; call {!isNil ""BIS_addDropPointsLocation""} && !isNull _boxObject};
+		if (isNull (uiNamespace getVariable ['BIS_OM_gearTransfer', controlNull])) then
+		{
+			uiNamespace setVariable ['BIS_OM_gearTransfer', (findDisplay 46) ctrlCreate ['RscStructuredText', 9999014]];
+		};
+		_gearTransfer = uiNamespace getVariable 'BIS_OM_gearTransfer';
+		_gearTransfer ctrlShow FALSE;
+		_gearTransfer ctrlSetBackgroundColor [0,0,0,0];
+		_gearTransfer ctrlCommit 0;
+		private _contOpenHndl = _boxObject addEventHandler
+		[
+			'ContainerOpened',
+			{
+				if( !call {!isNil ""BIS_addDropPointsLocation""} ) exitWith {};
+				(_this select 0) spawn
+				{
+					scriptName 'moduleDepot/ContainerOpenedEventhandler';
+					waitUntil {!isNull (findDisplay 602)};
+					if (isNull (uiNamespace getVariable ['BIS_OM_gearTransfer', controlNull])) then
+					{
+						uiNamespace setVariable ['BIS_OM_gearTransfer', (findDisplay 46) ctrlCreate ['RscStructuredText', 9999014]];
+					};
+					_gearTransfer = uiNamespace getVariable 'BIS_OM_gearTransfer';
+					_gearTransfer ctrlSetPosition ctrlPosition (findDisplay 602 displayCtrl 6307);
+					_gearTransfer ctrlCommit 0;
+					_gearTransfer ctrlShow TRUE;
+					_gearTransfer ctrlSetStructuredText parseText ('<t align = ''left''>' + (localize 'STR_A3_moduleDepot_close') + '</t><t align = ''right'' color = ''#61af64''>$0</t>');
+					_totalItemsLoaded = [];
+					while {ctrlShown _gearTransfer} do
+					{
+						waitUntil {sleep 0.5; !(_totalItemsLoaded isEqualTo [itemCargo _this, weaponCargo _this, magazineCargo _this, backpackCargo _this])};
+						_totalItemsLoaded = +[itemCargo _this, weaponCargo _this, magazineCargo _this, backpackCargo _this];
+						_gearTransfer ctrlSetStructuredText parseText ('<t align = ''left''>' + (localize 'STR_A3_moduleDepot_close') + '</t><t align = ''right'' color = ''#61af64''>' + (str([_this, FALSE] call BIS_fnc_OM_sellEquipment)) + '</t>');
+					};
+				};
+			}
+		];
+		private _contCloseHndl = _boxObject addEventHandler
+		['ContainerClosed',
+			{
+				if( !call {!isNil ""BIS_addDropPointsLocation""} ) exitWith {};
+				(uiNamespace getVariable ['BIS_OM_gearTransfer', controlNull]) ctrlShow FALSE;
+				[(_this select 0), TRUE] spawn BIS_fnc_OM_sellEquipment;
+			}
+		];
+		waitUntil {sleep 1; isNull _boxObject};
+		_boxObject removeEventHandler ['ContainerOpened', _contOpenHndl];
+		_boxObject removeEventHandler ['ContainerClosed', _contCloseHndl];
+	};
+	"]]],false,2,8]]
+		,
+		//--- #size
+		10
+]

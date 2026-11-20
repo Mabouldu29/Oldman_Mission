@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_man_p_fugitive_F_afro","",[8821.05,6600.73,0.0014658],69.6131,0.5,0,"Up",[[],[],[],["U_C_Mechanic_01_F",[]],["V_LegStrapBag_olive_F",[]],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this doWatch (vehicle player);[_this,""SmartMarker_I_CarCharge_F""] spawn BIS_fnc_OM_addRepairMan;"]]]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Bandit_5_F","",[8823.63,6607.18,0.00149012],163.294,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_5_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",1,30]]],["V_Chestrig_blk",[["30Rnd_762x39_Mag_F",4,30],["MiniGrenade",2,1]]],[],"H_Bandanna_sgg","G_Bandanna_khk",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["[_this,""LEAN"",""FULL"",{(behaviour _this) != ""AWARE""}] call BIS_fnc_ambientAnimCombat;"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Tyres_F",[8834.48,6607.54,0.0672674],[[0.707323,-0.70689,0],[0,0,1]],0,"",false,false,[],false,2],["Tire_Van_02_Cargo_F",[8827.22,6593.78,0.375047],[[0,0.517132,-0.855906],[0.00533751,0.855893,0.517125]],0,"",false,false,[],true,-1],["Land_Decal_roads_oil_stain_01_F",[8828.66,6603.1,0.160177],[[0,1,0],[0,0,1]],0,"",false,false,[],false,2],["Oil_Spill_F",[8828.26,6603.63,-0.0560656],[[0,0.994359,0.106065],[-0.0373079,-0.105991,0.993667]],0,"",false,false,[],false,2],["Oil_Spill_F",[8828.28,6602.27,4.19617e-005],[[0.986977,-0.160859,0],[0,0,1]],0,"",false,false,[],false,2],["Land_ButaneCanister_F",[8829.75,6603.24,0.0557656],[[-0.105969,0.994359,-0.00449732],[-0.991191,-0.105991,-0.0794168]],0,"",false,false,[],true,-1],["Land_CanisterFuel_F",[8821.4,6602.5,0.18155],[[0,0.999996,0.00265199],[0.00800059,-0.00265191,0.999964]],0,"",false,false,[],true,1],["Land_CanisterPlastic_F",[8821.16,6601.87,0.00371552],[[0.926578,0.376103,0],[0,0,1]],0,"",false,false,[],true,1],["Land_Gloves_F",[8829.79,6603.57,0.00524092],[[0,0.994359,0.106065],[-0.0373079,-0.105991,0.993667]],0,"",false,false,[],true,-1],["Land_Pliers_F",[8830.02,6602.95,0.000738144],[[0,0.994359,0.106065],[-0.0373079,-0.105991,0.993667]],0,"",false,false,[],true,-1],["Land_ToolTrolley_02_F",[8819.94,6599.26,-0.0157709],[[0.19314,-0.981171,0],[0,0,1]],0,"",false,false,[],true,-1]]
+		,
+		//--- #size
+		50
+]

@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Tractor_01_F","",[8991.91,10361.6,0.0958366],[[0.95927,-0.26859,-0.0875317],[0.0575397,-0.117586,0.991395]],0,0.65,[],["a3\soft_f_enoch\tractor_01\data\tractor_01_2_green_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_1_F_tanoan","BIS_OM_ambientConvo_wnk8asnrghhceox",[8997.31,10361.6,0.00167274],124.445,0.5,0,"Up",[[],[],[],["U_C_WorkerCoveralls",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_null = _this spawn {_this disableAI ""anim""; _this switchMove ""Acts_CivilListening_1""; waitUntil {sleep 1; behaviour _this != ""Aware""}; _this enableAI ""anim""; _this switchMove """"};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_1_F_tanoan","BIS_OM_ambientConvo_u1bwfjmwovmbi5d",[8998.38,10360.7,0.00131416],305.378,0.5,0,"Up",[[],[],[],["U_I_C_Soldier_Bandit_4_F",[]],[],[],"H_Hat_checker","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",[" [ [""BIS_OM_ambientConvo_wnk8asnrghhceox"",""BIS_OM_ambientConvo_u1bwfjmwovmbi5d""], true] spawn BIS_fnc_OM_createConversation "]],["#init",["_null = _this spawn {_this disableAI ""anim""; _this switchMove ""Acts_CivilTalking_1""; waitUntil {sleep 1; behaviour _this != ""Aware""}; _this enableAI ""anim""; _this switchMove """"};"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_GarbageHeap_03_F",[9012.52,10442.9,0.436157],[[-0.98744,0.133568,0.0843886],[-0.0296033,-0.681082,0.731608]],0,"",false,false,[],false,3],["Land_GarbageHeap_04_F",[9025.73,10439.1,0.00612068],[[-0.24395,0.969777,-0.00459226],[-0.039967,-0.00532229,0.999187]],0,"",false,false,[],false,2],["Land_GarbageHeap_02_F",[9025.32,10435.9,1.07578],[[-0.988014,0.151465,-0.0297884],[-0.0293202,0.00532421,0.999556]],0,"",false,false,[],false,3],["Land_GarbageHeap_01_F",[9027.52,10437,0.00681305],[[0.993459,-0.104007,0.0471327],[-0.0479448,-0.00532042,0.998836]],0,"",false,false,[],false,2],["Land_Barricade_01_10m_F",[9024.99,10414.9,0],[[-0.994111,0.107007,-0.0171311],[-0.0186628,-0.013329,0.999737]],0,"",false,false,[],false,3],["Land_Wreck_Car3_F",[9009.03,10420,-0.00367737],[[-0.954101,0.298736,0.0211519],[0.0213271,-0.00267379,0.999769]],0,"",false,false,[],false,3]]
+		,
+		//--- #size
+		10
+]

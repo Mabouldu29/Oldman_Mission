@@ -1,0 +1,34 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_6_F_afro","BIS_OM_shopkeeper_8i3vm3dvq7wvzht",[8415.65,7431.96,0.00138474],2.8079,0.5,0,"Up",[[],[],[],["U_C_Poor_1",[]],["V_LegStrapBag_olive_F",[]],[],"H_Hat_Safari_olive_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["
+	[_this] spawn
+	{
+		scriptName '_cHandleShopKeeperAvailability';
+		private _shopkeeper = _this select 0;
+		private _cond = {(!isNull _shopkeeper && {alive _shopkeeper && (behaviour _shopkeeper != 'COMBAT') && call {TRUE} })} ;
+   'MARKETS: starting' call BIS_fnc_Log;
+  	while { !isNull _shopkeeper && alive _shopkeeper } do
+  	{
+		   'MARKETS: waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; call _cond };
+		   _shopkeeper setVariable ['BIS_Market', 'STR_A3_shoping_market'];
+		   _shopkeeper setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 3];
+		   [_shopkeeper, BIS_OM_box_4zyxd49mmebhrnf] spawn BIS_fnc_OM_addKaufMan;
+		   'MARKETS: running kaufman and waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; !(call _cond) };
+			 ['MARKETS: keeper %1 is not available!', _shopkeeper] call BIS_fnc_logFormat;
+  	}
+	};
+	"]],["#init",["_this addItemToVest ""Money_Stack"";_this addItemToVest ""Money_Stack""; BIS_merchant = _this"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_EmergencyBlanket_01_F",[8412.69,7435.45,0.463287],[[-0.5442,0.838956,0],[0,0,1]],0,"",false,false,[],true,1],["MetalBarrel_burning_F",[8413.53,7437.71,0.00062561],[[0,0.999201,0.0399667],[-0.0080009,-0.0399655,0.999169]],0,"",true,false,[],false,1],["Land_WoodenBox_F",[8414.2,7430.24,0.572361],[[-0.635631,0.771994,1.34087e-007],[1.63641e-007,-3.8953e-008,1]],0,"",true,false,[],false,2],["Land_WoodenBox_F",[8414.58,7429.69,0.575706],[[-0.591708,0.806152,1.1199e-006],[7.78211e-007,-8.17989e-007,1]],0,"",true,false,[],false,2],["Land_WoodenBox_F",[8413.78,7430.78,0.569195],[[-0.608511,0.793545,8.51422e-006],[5.10462e-006,-6.81498e-006,1]],0,"",true,false,[],false,2],["Land_ChairPlastic_F",[8412.63,7435.45,0.00748825],[[-0.538367,0.842483,0.0195975],[-0.0053265,-0.0266567,0.99963]],0,"",false,false,[],true,1],["Land_PortableLight_02_single_black_F",[8411.71,7437.29,0.938099],[[-0.69404,0.718826,0.0399666],[0.0220108,-0.0343018,0.999169]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		20
+]

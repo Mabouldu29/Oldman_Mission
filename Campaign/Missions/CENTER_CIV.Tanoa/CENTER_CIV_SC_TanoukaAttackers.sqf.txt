@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[[[9042.74,10257.5,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[8918.7,10182.9,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[8772.29,10180.5,0],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[9156.67,10252.9,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["I_C_Soldier_Bandit_6_F","",[9188.86,10260.3,0.00107956],0,0.5,0,"Auto",[["arifle_AK12_GL_F","","","",["30Rnd_762x39_AK12_Mag_F",30],["1Rnd_HE_Grenade_shell",1],""],[],[],["U_I_C_Soldier_Bandit_3_F",[["FirstAidKit",1],["30Rnd_762x39_AK12_Mag_F",1,30]]],["V_Chestrig_khk",[["30Rnd_762x39_AK12_Mag_F",4,30],["1Rnd_HE_Grenade_shell",5,1]]],[],"","G_Bandanna_tan",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]],["I_C_Soldier_Bandit_2_F","",[9193.86,10255.3,0.00115585],43.2,0.4,0,"Auto",[["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],["launch_RPG7_F","","","",["RPG7_F",1],[],""],[],["U_I_C_Soldier_Bandit_2_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_F",1,30]]],[],["B_Kitbag_cbr_Bandit_2_F",[["30Rnd_545x39_Mag_F",4,30],["RPG7_F",3,1]]],"","G_Shades_Black",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]],["I_C_Soldier_Bandit_7_F","",[9183.86,10255.3,0.00117493],316.8,0.45,0,"Auto",[["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_1_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_F",1,30],["MiniGrenade",1,1]]],["V_BandollierB_rgr",[["30Rnd_545x39_Mag_F",4,30],["MiniGrenade",1,1]]],[],"H_Cap_oli_Syndikat_F","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]],["I_C_Soldier_Bandit_8_F","",[9198.86,10250.3,0.00104523],43.2,0.4,0,"Auto",[["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_5_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_F",1,30],["MiniGrenade",2,1]]],[],["B_FieldPack_blk_Bandit_8_F",[["ToolKit",1],["30Rnd_545x39_Mag_F",4,30],["APERSTripMine_Wire_Mag",2,1],["APERSMine_Range_Mag",2,1]]],"H_Booniehat_oli","G_Aviator",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[]
+		,
+		//--- #size
+		20
+]

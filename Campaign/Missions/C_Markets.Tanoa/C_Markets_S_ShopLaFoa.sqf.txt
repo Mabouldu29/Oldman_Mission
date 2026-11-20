@@ -1,0 +1,34 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Para_7_F","",[8661.4,4867.94,0.0014658],150.703,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Para_4_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",2,30]]],["V_Chestrig_khk",[["30Rnd_762x39_Mag_F",3,30],["HandGrenade",2,1]]],[],"H_Bandanna_surfer_blk","G_Bandanna_blk",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Para_3_F","",[8659.95,4865.08,0.00154638],62.0205,0.5,0,"Auto",[["arifle_AKM_F","","","",["30Rnd_762x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Para_3_F",[["FirstAidKit",1],["30Rnd_762x39_Mag_F",1,30]]],[],["B_Kitbag_rgr_Para_3_F",[["Medikit",1],["FirstAidKit",4],["30Rnd_762x39_Mag_F",4,30]]],"H_Bandanna_sgg","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[]]]],[GUER,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["I_C_Soldier_Bandit_7_F","BIS_OM_shopkeeper_jk1ib5ebl8cqrjz",[8674.08,4869.25,1.13908],0,0.5,0,"Auto",[["arifle_AKS_F","","","",["30Rnd_545x39_Mag_F",30],[],""],[],[],["U_I_C_Soldier_Bandit_1_F",[["FirstAidKit",1],["30Rnd_545x39_Mag_F",1,30],["MiniGrenade",1,1]]],["V_BandollierB_rgr",[["30Rnd_545x39_Mag_F",4,30],["MiniGrenade",1,1]]],[],"H_Booniehat_tan","G_Bandanna_shades",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]],"",false,[["#init",["
+	[_this] spawn
+	{
+		scriptName '_cHandleShopKeeperAvailability';
+		private _shopkeeper = _this select 0;
+		private _cond = {(!isNull _shopkeeper && {alive _shopkeeper && (behaviour _shopkeeper != 'COMBAT') && call {!(missionNameSpace getVariable [""BIS_SyndikatRestpointsRestricted"", true])} })} ;
+   'MARKETS: starting' call BIS_fnc_Log;
+  	while { !isNull _shopkeeper && alive _shopkeeper } do
+  	{
+		   'MARKETS: waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; call _cond };
+		   _shopkeeper setVariable ['BIS_Market', 'STR_A3_shoping_market'];
+		   _shopkeeper setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 3];
+		   [_shopkeeper, BIS_OM_box_u6o1u68ph7wrivc] spawn BIS_fnc_OM_addKaufMan;
+		   'MARKETS: running kaufman and waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; !(call _cond) };
+			 ['MARKETS: keeper %1 is not available!', _shopkeeper] call BIS_fnc_logFormat;
+  	}
+	};
+	"]],["#init",["_this addItemToVest ""Money_Stack"";_this addItemToVest ""Money_Stack""; BIS_merchant = _this"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Ammobox_rounds_F",[8668.46,4869.37,0.737199],[[-0.9691,0.246669,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_Bucket_F",[8677.07,4872.83,1.32629],[[0.0136016,0.999907,-2.14886e-008],[0.000689808,-9.3619e-006,1]],0,"",false,false,[],true,-1],["Land_ChairWood_F",[8673.74,4868.6,1.10918],[[-0.176295,-0.984337,0],[0,0,1]],0,"",false,false,[],false,2],["Land_EmergencyBlanket_01_stack_F",[8677.21,4870.25,1.86343],[[0,1,-0.00059802],[0,0.00059802,1]],0,"",false,false,[],true,-1],["Land_Garbage_square5_F",[8673.26,4870.6,1.04848],[[0,1,0],[0.000690285,0,1]],0,"",false,false,[],false,3],["Land_Pallet_MilBoxes_F",[8676.34,4869.02,1.38548],[[0,1,0],[0.000690285,0,1]],0,"",false,false,[],false,2],["Land_Pallets_F",[8669.63,4872.57,0.892122],[[0,1,0],[0.000690285,0,1]],0,"",false,false,[],false,2],["Land_PlasticBucket_01_closed_F",[8676.12,4873.44,1.22016],[[0,1,0],[0.000690285,0,1]],0,"",false,false,[],true,-1],["Land_PlasticCase_01_large_olive_F",[8677.02,4873.28,1.38917],[[-0.99983,-0.0184468,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_PlasticCase_01_large_olive_F",[8669.11,4870.8,0.739187],[[0.0246873,-0.999695,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_PlasticCase_01_medium_olive_F",[8677.6,4872.43,1.37597],[[0,1,0],[0.000690285,0,1]],0,"",false,false,[],true,-1],["Land_PlasticCase_01_medium_olive_F",[8677.58,4872.42,1.74138],[[0,1,0],[0.000690285,0,1]],0,"",false,false,[],true,-1],["Land_PlasticCase_01_medium_olive_F",[8668.63,4868.69,0.752951],[[0.014753,-0.999891,6.03774e-006],[-0.000688268,-4.11669e-006,1]],0,"",false,false,[],true,-1],["Land_PlasticCase_01_medium_olive_F",[8668.65,4868.69,1.12197],[[0.014753,-0.999891,6.03774e-006],[-0.000688268,-4.11669e-006,1]],0,"",false,false,[],true,-1],["Land_PortableLight_02_single_folded_olive_F",[8676.92,4871.2,1.806],[[0.960658,0.277734,0],[0,0,1]],0,"",true,false,[],false,1],["Land_Sleeping_bag_blue_folded_F",[8676.61,4870.05,1.38251],[[0,1,0],[0.000690285,0,1]],0,"",false,false,[],true,-1],["Land_Ground_sheet_folded_blue_F",[8676.59,4870.42,1.36262],[[0.691129,0.722732,-1.25758e-007],[0.000497643,-0.000475709,1]],0,"",false,false,[],true,-1],["Land_WoodenBox_F",[8677.02,4870.83,1.39184],[[-0.958269,-0.285869,-5.72109e-007],[-0.000197722,0.000660789,1]],0,"",false,false,[],true,2],["Land_Ammobox_rounds_F",[8668.81,4869.38,0.758994],[[-0.247426,0.968907,0],[0,0,1]],0,"",false,false,[],true,-1],["MetalBarrel_burning_F",[8661.81,4865.8,0.00816488],[[0,0.999968,-0.0080009],[0.0452867,0.00799269,0.998942]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		20
+]

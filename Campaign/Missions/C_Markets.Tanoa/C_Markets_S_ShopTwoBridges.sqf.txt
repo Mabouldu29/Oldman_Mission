@@ -1,0 +1,34 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_6_F_afro","BIS_OM_shopkeeper_kxpiy27jz6evjki",[8010.89,12416.7,0.414268],302.053,0.5,0,"Up",[[],[],[],["U_C_Man_casual_6_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["
+	[_this] spawn
+	{
+		scriptName '_cHandleShopKeeperAvailability';
+		private _shopkeeper = _this select 0;
+		private _cond = {(!isNull _shopkeeper && {alive _shopkeeper && (behaviour _shopkeeper != 'COMBAT') && call {TRUE} })} ;
+   'MARKETS: starting' call BIS_fnc_Log;
+  	while { !isNull _shopkeeper && alive _shopkeeper } do
+  	{
+		   'MARKETS: waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; call _cond };
+		   _shopkeeper setVariable ['BIS_Market', 'STR_A3_shoping_market'];
+		   _shopkeeper setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 3];
+		   [_shopkeeper, BIS_OM_box_y2xnp5n25p1vaqf] spawn BIS_fnc_OM_addKaufMan;
+		   'MARKETS: running kaufman and waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; !(call _cond) };
+			 ['MARKETS: keeper %1 is not available!', _shopkeeper] call BIS_fnc_logFormat;
+  	}
+	};
+	"]],["#init",["_this addItemToVest ""Money_Stack"";_this addItemToVest ""Money_Stack""; BIS_merchant = _this"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_CanisterFuel_Red_F",[8017.05,12416.2,0.334709],[[-0.947154,0.32078,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_Ammobox_rounds_F",[8017.56,12413.6,0.166847],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_Ammobox_rounds_F",[8017.7,12413.9,0.143608],[[0.966192,-0.257823,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_CratesPlastic_F",[8015.68,12411.7,0.147514],[[-0.00226385,0.999997,0],[0,0,1]],0,"",false,false,[],false,1],["Land_Garbage_square5_F",[8015.32,12413.7,0.249138],[[0,1,0],[0,0,1]],0,"",false,false,[],false,3],["Land_MetalBarrel_F",[8018.22,12414.2,0.0900879],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1],["Land_BarrelEmpty_F",[8016.08,12412.5,0.205368],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1],["Land_PlasticCase_01_large_black_F",[8017.99,12413.1,0.149345],[[0.28,0.96,0],[0,0,1]],0,"",false,false,[],true,1],["Land_PlasticCase_01_small_black_F",[8017.23,12413.2,0.202957],[[0.778584,0.62754,0],[0,0,1]],0,"",false,false,[],true,-1],["Land_WoodenCrate_01_F",[8015.83,12415,0.271652],[[-0.188898,0.981997,0],[0,0,1]],0,"",false,false,[],true,2],["Land_WoodenCrate_01_stack_x3_F",[8017.08,12411.9,0.187904],[[-0.908502,0.417881,0],[0,0,1]],0,"",false,false,[],false,2],["Land_WoodenCrate_01_stack_x5_F",[8017.97,12415.5,0.0581055],[[0.278388,0.960469,0],[0,0,1]],0,"",false,false,[],false,2],["MetalBarrel_burning_F",[8012.06,12418.6,-0.0564346],[[-0.00226909,0.999997,0],[0,0,1]],0,"",true,false,[],false,1]]
+		,
+		//--- #size
+		20
+]

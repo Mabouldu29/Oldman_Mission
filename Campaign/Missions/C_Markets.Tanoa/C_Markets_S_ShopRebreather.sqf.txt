@@ -1,0 +1,38 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[],[["C_man_sport_2_F_afro","",[9253.64,5970.27,0.00146323],0,0.5,0,"Middle",[[],[],[],["U_C_man_sport_2_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[9256.3,5972.48,0],"MOVE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[100,100,100],0],[[9272.08,5960.73,6.32405e-005],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[9256.67,5971.77,1.16825e-005],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_man_sport_1_F_afro","",[9257.31,5972.76,0.00134611],285.894,0.5,0,"Up",[[],[],[],["U_C_man_sport_1_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["if (BIS_night) then {deletevehicle _This};"]]]]]],[CIV,["CARELESS","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_4_F_tanoan","BIS_OM_shopkeeper_nxhjhxcgkckxwl5",[9266.89,5956.8,0.00120693],342.296,0.5,0,"Up",[[],[],[],["U_C_Man_casual_4_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["
+	[_this] spawn
+	{
+		scriptName '_cHandleShopKeeperAvailability';
+		private _shopkeeper = _this select 0;
+		private _cond = {(!isNull _shopkeeper && {alive _shopkeeper && (behaviour _shopkeeper != 'COMBAT') && call {TRUE} })} ;
+   'MARKETS: starting' call BIS_fnc_Log;
+  	while { !isNull _shopkeeper && alive _shopkeeper } do
+  	{
+		   'MARKETS: waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; call _cond };
+		   _shopkeeper setVariable ['BIS_Market', 'STR_A3_shoping_market'];
+		   _shopkeeper setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 3];
+		   [_shopkeeper, BIS_OM_box_yre1fsxd1horwqj] spawn BIS_fnc_OM_addKaufMan;
+		   'MARKETS: running kaufman and waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; !(call _cond) };
+			 ['MARKETS: keeper %1 is not available!', _shopkeeper] call BIS_fnc_logFormat;
+  	}
+	};
+	"]],["#init",["_this addItemToVest ""Money_Stack"";_this addItemToVest ""Money_Stack""; BIS_merchant = _this"]],["#init",["0 = _this spawn 
+{
+waituntil {player distance _this < 5};
+BIS_OM_box_yre1fsxd1horwqj additemcargo [""V_rebreatherB"",2];
+};"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Boat_02_abandoned_F",[9253.71,5945.69,0.00196838],[[0.611306,-0.789708,-0.0516379],[0.0293173,-0.0426069,0.998662]],0,"",false,false,[],false,3],["Land_Ammobox_rounds_F",[9270.44,5950.19,0.130012],[[0,1,0],[0,0,1]],0,"",false,false,[],true,-1],["Campfire_burning_F",[9262.59,5957.14,6.35982e-005],[[0,0.999911,0.0133313],[0.0186626,-0.013329,0.999737]],0,"",true,false,[],false,2],["Campfire_burning_F",[9254.51,5972.1,-0.00242716],[[0,0.999943,-0.0106641],[-0.00265204,0.010664,0.99994]],0,"",true,false,[],false,2],["Land_ChairPlastic_F",[9265.58,5954.21,-0.00132337],[[-0.997586,-0.0677972,0.0150251],[0.0186564,-0.0532505,0.998407]],0,"",false,false,[],false,1],["Land_CratesPlastic_F",[9271.7,5950.18,0.136236],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1],["Land_CratesShabby_F",[9270.74,5947.96,0.205631],[[-0.974037,-0.226388,0],[0,0,1]],0,"",false,false,[],false,2],["Land_Garbage_square5_F",[9269.77,5949.79,0.135064],[[0,1,0],[0,0,1]],0,"",true,false,[],false,3],["Land_Garbage_square5_F",[9269.3,5951.91,0.0880572],[[-0.472359,0.881406,0],[0,0,1]],0,"",true,false,[],false,3],["Land_BarrelEmpty_F",[9270.77,5949.4,0.158571],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1],["Land_BarrelEmpty_F",[9270.52,5948.67,0.180928],[[0,1,0],[0,0,1]],0,"",false,false,[],true,1],["Land_TentSolar_01_folded_olive_F",[9270.94,5950.03,0.119759],[[0,1,0],[0,0,1]],0,"",false,false,[],false,1],["Land_TentSolar_01_folded_olive_F",[9271.03,5950.48,0.0692415],[[-0.750378,0.661009,0],[0,0,1]],0,"",false,false,[],false,1],["Land_TentSolar_01_folded_olive_F",[9271.59,5950.15,0.4184],[[0.823036,-0.567989,0],[0,0,1]],0,"",false,false,[],false,1],["Land_WoodenCrate_01_stack_x3_F",[9271.85,5948.93,0.179692],[[0.961761,0.273891,0],[0,0,1]],0,"",false,false,[],false,2]]
+		,
+		//--- #size
+		100
+]

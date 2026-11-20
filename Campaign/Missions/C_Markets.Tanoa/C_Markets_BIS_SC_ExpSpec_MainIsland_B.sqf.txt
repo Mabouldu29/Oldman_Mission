@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_5_F_tanoan","",[9271.58,11177.9,0.00157928],120.665,0.5,0,"Up",[[],[],[],["U_C_WorkerCoveralls",[]],["V_LegStrapBag_black_F",[]],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_this doWatch (vehicle player);[_this,""SmartMarker_I_CarCharge_F""] spawn BIS_fnc_OM_addRepairMan;"]]]]]]]
+		,
+		//--- #objectData
+		[["Oil_Spill_F",[9278.41,11176.7,-0.0162964],[[0,0.998581,0.0532564],[-0.0266571,-0.0532375,0.998226]],0,"",false,false,[],false,2],["Oil_Spill_F",[9279.27,11176.3,-0.00943756],[[0.0874395,-0.99617,0],[0,0,1]],0,"",false,false,[],false,2],["Land_CanisterFuel_F",[9270.57,11178.9,0.178726],[[0,0.999091,0.0426262],[-0.0266571,-0.042611,0.998736]],0,"",true,false,[],true,1],["Land_CanisterPlastic_F",[9270.77,11179.5,0.00332642],[[-0.842989,-0.537931,0],[0,0,1]],0,"",true,false,[],true,1],["Land_Tyres_F",[9270.9,11181.1,-0.00659943],[[0,0.999091,0.0426252],[-0.0266655,-0.04261,0.998736]],0,"",false,false,[],false,2],["Land_ButaneTorch_F",[9276.41,11176.6,0.0386124],[[-0.0489094,0.227353,0.972583],[-0.927291,-0.372158,0.0403647]],0,"",true,false,[],true,-1],["Land_Pliers_F",[9277.08,11177.1,0.00230408],[[0,0.998581,0.0532564],[-0.0266571,-0.0532375,0.998226]],0,"",true,false,[],true,-1],["Land_Wrench_F",[9276.65,11177,1.52588e-005],[[0,0.998581,0.0532564],[-0.0266571,-0.0532375,0.998226]],0,"",true,false,[],true,-1]]
+		,
+		//--- #size
+		100
+]

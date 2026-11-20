@@ -1,0 +1,2 @@
+
+["sc_tanoukaattackers","village_100093","bis_sec_galilialways","bis_sec_galilicalm","bis_sec_galilioutbreak","bis_sec_galiliateroutbreak","bis_sec_galilicsat","imone","farmanddepot","tanoukas","tanoukan","tanoukaciv"]

@@ -1,0 +1,34 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_SUV_01_F","",[5758.18,12256.8,0.00436211],[[0.0978859,0.9947,0.0314799],[-0.0539953,-0.026277,0.998195]],0,1,[],["a3\soft_f_gamma\suv_01\data\suv_01_ext_04_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_6_F_afro","BIS_OM_shopkeeper_dybbmfqdxb3ulzx",[5752.06,12259.2,0.697466],301.166,0.5,0,"Up",[[],[],[],["U_Marshal",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["
+	[_this] spawn
+	{
+		scriptName '_cHandleShopKeeperAvailability';
+		private _shopkeeper = _this select 0;
+		private _cond = {(!isNull _shopkeeper && {alive _shopkeeper && (behaviour _shopkeeper != 'COMBAT') && call {!(missionNameSpace getVariable [""BIS_SynikatSmugglersRestricted"", true])} })} ;
+   'MARKETS: starting' call BIS_fnc_Log;
+  	while { !isNull _shopkeeper && alive _shopkeeper } do
+  	{
+		   'MARKETS: waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; call _cond };
+		   _shopkeeper setVariable ['BIS_Market', 'STR_A3_shoping_market'];
+		   _shopkeeper setVariable ['BIS_Owner', [CIVILIAN, WEST, EAST, RESISTANCE] select 3];
+		   [_shopkeeper, BIS_OM_box_tl2engl5u7zo1ym] spawn BIS_fnc_OM_addKaufMan;
+		   'MARKETS: running kaufman and waiting' call BIS_fnc_Log;
+		   waitUntil { sleep 1; !(call _cond) };
+			 ['MARKETS: keeper %1 is not available!', _shopkeeper] call BIS_fnc_logFormat;
+  	}
+	};
+	"]],["#init",["_this addItemToVest ""Money_Stack"";_this addItemToVest ""Money_Stack""; BIS_merchant = _this"]]]]]],[CIV,["SAFE","LIMITED","WEDGE","YELLOW"],[[[5746.56,12275.1,0.135],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[5723.06,12296.7,0.114],"SAD","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0],[[5746.35,12275.4,0.124039],"CYCLE","UNCHANGED","UNCHANGED","NO CHANGE","NO CHANGE",[0,0,0],0]],[["C_Man_casual_2_F","",[5744.88,12274.5,0.124865],71.352,0.5,0,"Up",[[],[],[],["U_C_Man_casual_2_F",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[]]]]]
+		,
+		//--- #objectData
+		[["Land_TableSmall_01_F",[5748.42,12257.5,0.686018],[[0.602055,0.798454,-2.22769e-006],[0.000386063,-0.000288312,1]],0,"",false,false,[],true,-1],["Land_EmergencyBlanket_01_discarded_F",[5739.63,12258.7,1.34643],[[0.532677,0.846319,0],[0,0,1]],0,"",false,false,[],true,2],["Land_Garbage_square5_F",[5740.97,12259.9,0.535],[[-0.571817,-0.820381,0],[0,0,1]],0,"",false,false,[],false,3],["Land_OfficeChair_01_F",[5743.28,12253.9,0.800533],[[0,1,0],[0.000488106,0,1]],0,"",false,false,[],false,2],["Land_PlasticCase_01_large_black_F",[5740.76,12254.3,0.888655],[[-0.852022,0.523506,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PlasticCase_01_large_black_F",[5744.16,12251.9,0.888708],[[-0.771179,0.636618,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PlasticCase_01_large_black_F",[5744.09,12259,0.640549],[[-0.852022,0.523506,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PlasticCase_01_large_black_F",[5739.12,12258.4,0.617733],[[-0.852022,0.523506,0],[0,0,1]],0,"",false,false,[],true,1],["Land_PlasticCase_01_large_black_F",[5739.43,12258.9,0.594778],[[-0.852022,0.523506,0],[0,0,1]],0,"",false,false,[],true,1],["Land_PlasticCase_01_large_black_F",[5739.72,12259.4,0.555441],[[0.855654,-0.517548,0],[0,0,1]],0,"",false,false,[],true,1],["Land_MultiScreenComputer_01_black_F",[5742.43,12253.3,1.75818],[[-0.825057,-0.56505,0],[0,0,1]],0,"",false,false,[],false,1],["Land_MultiScreenComputer_01_closed_black_F",[5741.04,12255.5,0.756977],[[-0.713903,-0.700245,0],[0,0,1]],0,"",false,false,[],false,1],["Land_MultiScreenComputer_01_closed_black_F",[5745.76,12253.6,0.756838],[[0.646607,-0.762823,0],[0,0,1]],0,"",false,false,[],false,1],["Land_MultiScreenComputer_01_closed_black_F",[5746.77,12254.9,1.04179],[[0.934797,-0.355184,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PortableCabinet_01_closed_black_F",[5741.3,12254.8,0.79283],[[0.97313,0.230255,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PortableCabinet_01_closed_black_F",[5746.24,12254.3,0.702074],[[-0.808338,0.588719,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PortableCabinet_01_closed_black_F",[5746.24,12254.3,1.02076],[[-0.808338,0.588719,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PortableCabinet_01_closed_black_F",[5746.27,12254.2,1.34458],[[-0.808338,0.588719,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PortableCabinet_01_closed_black_F",[5746.72,12255,0.710737],[[-0.808338,0.588719,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PortableCabinet_01_closed_black_F",[5745.16,12258.4,0.673489],[[-0.965993,-0.258567,0],[0,0,1]],0,"",false,false,[],false,1],["Land_PortableCabinet_01_closed_black_F",[5739.58,12259.1,1.32233],[[-0.965993,-0.258567,0],[0,0,1]],0,"",false,false,[],true,1],["Land_PortableCabinet_01_closed_black_F",[5742.36,12258.6,0.618645],[[-0.743737,0.668472,0],[0,0,1]],0,"",false,false,[],true,1],["Land_PortableGenerator_01_black_F",[5742.63,12257,0.664577],[[-0.382611,0.92391,-3.98388e-007],[0.000449483,0.000186572,1]],0,"",false,false,[],false,2],["Land_PortableLight_02_double_black_F",[5743.42,12258.5,0.644955],[[0,1,0],[0,0,1]],0,"",true,false,[],false,2],["Land_PortableServer_01_black_F",[5743.18,12252.7,1.72814],[[-0.634317,-0.773073,0],[0,0,1]],0,"",false,false,[],false,1],["Land_MapBoard_01_Wall_Tanoa_F",[5745.15,12252.7,0.830072],[[0.74576,-0.60739,-0.273714],[0.219706,-0.163642,0.961743]],0,"",false,false,[],false,2],["Weapon_hgun_Pistol_heavy_02_F",[5748.23,12257.5,1.12148],[[-0.998429,0.0560343,0],[0,0,1]],0,"",true,false,[],false,1],["Land_ArmChair_01_F",[5747.54,12256.9,0.680521],[[-0.250436,0.968133,-1.43954e-006],[0.000467126,0.000122323,1]],0,"",false,false,[],true,-1],["Land_WoodenTable_large_F",[5742.69,12253,0.878],[[0.819611,-0.572921,0],[0,0,1]],0,"",false,false,[],false,2],["Land_PortableCabinet_01_closed_black_F",[5745.42,12261.1,0.62541],[[0.847167,-0.531326,0],[0,0,1]],0,"",false,false,[],false,1],["Land_WoodenBox_F",[5739.16,12261.8,0.412125],[[-0.819572,0.572976,-1.1403e-006],[0.000279252,0.000401426,1]],0,"",false,false,[],true,2],["Land_PortableLight_02_single_black_F",[5739.61,12262.5,0.820885],[[-0.972055,0.234755,0],[0,0,1]],0,"",true,false,[],false,1],["Land_PortableCabinet_01_closed_black_F",[5742.38,12258.6,0.937654],[[-0.745857,0.666106,0],[0,0,1]],0,"",false,false,[],false,1]]
+		,
+		//--- #size
+		20
+]

@@ -1,0 +1,2 @@
+
+["s_shoprebreather","s_shopdoodstil","s_shopbalajunglevillage","s_shopkoumac","s_bank","s_shopgeorgetown","s_shopregina","s_shoplobaka","s_shopbalavu","s_shoprautake","s_shopidap","s_shopkatkoula","s_shoplafoa","s_shoplinhaven","s_shopdutchfarmer","s_shopvatukoulo","s_shoplarochelle","s_shoptwobridges","s_shopouaoue","s_shopfactory","s_shoplakatoro","s_shopcentervalley","s_shoplamifield","s_shopmine","bis_sc_expspec_mainisland_a","bis_sc_expspec_mainisland_b"]

@@ -1,0 +1,15 @@
+#define CIV	CIVILIAN
+#define GUER	RESISTANCE
+[
+		//--- #vehicleData
+		[["C_Quadbike_01_F","",[8590.12,10029.7,0.0147514],[[0.699198,-0.714075,0.0348996],[-0.0522038,-0.00230915,0.998634]],0,0.3,[],["a3\soft_f_beta\quadbike_01\data\quadbike_01_civ_blue_co.paa","a3\soft_f_beta\quadbike_01\data\quadbike_01_wheel_civblue_co.paa"],false,[],[true,false]]]
+		,
+		//--- #groupData
+		[[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_1_F_tanoan","",[8591.5,10030.8,0.00148773],135.135,0.5,0,"Up",[[],[],[],["U_C_Poloshirt_tricolour",[]],[],[],"H_Booniehat_tan","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_null = _this spawn {_this disableAI ""anim""; _this switchMove ""Acts_CivilListening_1""; waitUntil {sleep 1; behaviour _this != ""Aware""}; _this enableAI ""anim""; _this switchMove """"};"]]]]]],[CIV,["AWARE","NORMAL","WEDGE","YELLOW"],[],[["C_Man_casual_1_F_tanoan","",[8592.4,10029.8,0.00138664],316.068,0.5,0,"Up",[[],[],[],["U_C_ConstructionCoverall_Red_F",[]],[],[],"H_Construction_basic_white_F","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],"",false,[["#init",["_null = _this spawn {_this disableAI ""anim""; _this switchMove ""Acts_CivilTalking_1""; waitUntil {sleep 1; behaviour _this != ""Aware""}; _this enableAI ""anim""; _this switchMove """"};"]]]]]]]
+		,
+		//--- #objectData
+		[["Land_Wreck_Truck_F",[8625.72,10060.7,0.00929642],[[0.455748,-0.889882,-0.0200823],[-0.0080009,-0.0266563,0.999613]],0,"",false,false,[],false,3],["Land_GarbageHeap_03_F",[8614.08,10038.6,0.00524902],[[-0.717936,0.695939,-0.0153836],[-0.0239912,-0.00265123,0.999709]],0,"",false,false,[],false,3],["Land_GarbageHeap_04_F",[8619.67,10047.9,0.002285],[[0.525327,0.850802,0.0129371],[-0.0159977,-0.00532587,0.999858]],0,"",false,false,[],false,2],["Land_GarbageHeap_02_F",[8617.11,10046,0.0509205],[[-0.579903,0.814591,-0.0123689],[-0.0213244,0,0.999773]],0,"",false,false,[],false,3],["Land_GarbageHeap_01_F",[8619.43,10045.2,0.0029335],[[0.618583,-0.785657,0.00989485],[-0.015994,0,0.999872]],0,"",false,false,[],false,2],["Land_Barricade_01_10m_F",[8602.83,10026.5,0],[[0.744012,-0.667676,0.0255787],[-0.031983,0.00265069,0.999485]],0,"",false,false,[],false,3],["WaterSpill_01_Large_Old_F",[8618.51,10060.7,1.90735e-006],[[0.775694,-0.631051,-0.00855818],[-0.0106638,-0.0266642,0.999588]],0,"",false,false,[],false,3]]
+		,
+		//--- #size
+		10
+]
